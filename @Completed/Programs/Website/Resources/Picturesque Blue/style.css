@@ -1,0 +1,184 @@
+body
+{
+	height:100%;
+	font-size:100%;
+	margin:0;
+	padding:0;
+	background-color:black;
+	background-image:url('Background.jpg');
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-size:120%;
+	-moz-background-size:120%;
+	font-family:'Segoe UI Light',Helvetica,Arial,sans-serif;
+	font-size:1em;
+}
+
+@font-face
+{
+ 	font-family:'Segoe UI Light';
+ 	src:url('Segoe UI Light.ttf') format('truetype');
+}
+
+p { margin:0; }
+
+div#content
+{
+	width:40%;
+	position:relative;
+	left:5%;
+}
+
+div.list
+{
+ 	font-size:1em;
+ 	color:#EEEEEE;
+}
+
+h1
+{
+	position:relative;
+	text-align:right;
+	font-size:5em;
+	font-weight:lighter;
+	top:-0.25em;
+	right:0.1em;
+	padding:0;
+	margin:0;
+	color:white;
+}
+
+h2
+{
+	position:relative;
+	text-align:right;
+	font-size:1.5em;
+	font-weight:lighter;
+	top:-1em;
+	right:3em;
+	padding:0;
+	margin:0;
+	color:#EEEEEE;
+}
+
+h3
+{
+	font-size:3em;
+	font-weight:lighter;
+}
+
+ul
+{
+	margin:0;
+	padding:0;
+	width:100%;
+}
+
+li.entry
+{
+	list-style-type:none;
+	width:100%;
+	font-size:1.5em;
+	color:white;
+	margin:0.2em;
+}
+
+li.entry div { visibility:hidden; }
+
+li.entry:target div { visibility:visible; }
+
+li.entry:target a.main { background-color:#2098E5; }
+
+a.title
+{
+	text-decoration:none;
+	color:inherit;
+}
+
+a.title:hover { color:#E5E5E5; }
+
+a.main
+{
+	display:block;
+	left:0;
+	top:0;
+	width:100%;
+	right:100%;
+	background-color:#46A0FF;
+	background-color:rgba(70,160,255,0.8);
+	text-align:center;
+	color:white;
+	padding:0.3em;
+	text-decoration:none;
+}
+
+a.main:hover, a.main:focus { background-color:#00A4F0; }
+
+a.main:active { background-color:#0078EE; }
+
+div.actions
+{
+	right:0;
+	margin-top:1em;
+	text-align:right;
+	font-size:1.2em;
+}
+
+a.action
+{
+	color:white;
+	background-color:#1EB4FF;
+	text-align:center;
+	padding:0.3em;
+	text-decoration:none;
+}
+
+a.action:hover, a.action:focus { background-color:#10A4FF; }
+
+a.action:active { background-color:#0580F5; }
+
+a.link { color:#4EE0FF; }
+
+a.link:hover, a.link:focus { color:#40D0FF; }
+
+a.link:active { color:#15BDFF; }
+
+div.info
+{
+	font-size:0.8em;
+	position:fixed;
+	float:right;
+	top:25%;
+	right:5%;
+	width:40%;
+	margin:1em;
+	text-align:left;
+	background-color:#46A0FF;
+	background-color:rgba(70,160,255,0.8);
+	padding:1em;
+	margin:0px;
+}
+
+img
+{
+	border-style:none;
+	display:block;
+	max-width:100%;
+	max-height:15em;
+	margin:auto;
+	margin-bottom:1em;
+}
+
+p#credits
+{
+	color:white;
+	font-size:0.8em;
+	text-align:right;
+}
+
+p#footer
+{
+	text-align:right;
+	padding:1em;
+	color:white;
+}

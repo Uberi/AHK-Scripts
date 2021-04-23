@@ -1,0 +1,5 @@
+A	Classical	Some\Path\To\Music\A.mp3
+B	Jazz	Some\Path\To\Music\B.mp3
+C	Country	Some\Path\To\Music\C.mp3
+D	Contemporary	Some\Path\To\Music\D.mp3
+E	Pop	Some\Path\To\Music\E.mp3

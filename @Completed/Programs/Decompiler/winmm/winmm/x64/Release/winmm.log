@@ -1,0 +1,45 @@
+﻿Build started 8/12/2012 10:12:49 PM.
+     1>Project "E:\Projects\winmm\winmm\winmm\winmm.vcxproj" on node 2 (rebuild target(s)).
+     1>InitializeBuildStatus:
+         Touching "x64\Release\winmm.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D WINMM_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /errorReport:prompt dllmain.cpp
+         dllmain.cpp
+     1>dllmain.cpp(110): warning C4996: 'wcscpy': This function or variable may be unsafe. Consider using wcscpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(283) : see declaration of 'wcscpy'
+     1>dllmain.cpp(115): warning C4996: 'wcscpy': This function or variable may be unsafe. Consider using wcscpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(283) : see declaration of 'wcscpy'
+     1>dllmain.cpp(116): warning C4996: 'wcscpy': This function or variable may be unsafe. Consider using wcscpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(283) : see declaration of 'wcscpy'
+     1>dllmain.cpp(118): warning C4996: '_wfopen': This function or variable may be unsafe. Consider using _wfopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(601) : see declaration of '_wfopen'
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D WINMM_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /errorReport:prompt FindResource.cpp LoadString.cpp ResCommon.cpp Utils.cpp
+         FindResource.cpp
+         LoadString.cpp
+         ResCommon.cpp
+         Utils.cpp
+     1>Utils.cpp(7): warning C4172: returning address of local variable or temporary
+     1>Utils.cpp(17): warning C4996: 'wcscpy': This function or variable may be unsafe. Consider using wcscpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(283) : see declaration of 'wcscpy'
+     1>Utils.cpp(19): warning C4267: 'initializing' : conversion from 'size_t' to 'int', possible loss of data
+     1>Utils.cpp(35): warning C4172: returning address of local variable or temporary
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Projects\winmm\winmm\x64\Release\winmm.dll" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:"winmm.def" /MANIFEST /ManifestFile:"x64\Release\winmm.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"E:\Projects\winmm\winmm\x64\Release\winmm.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Projects\winmm\winmm\x64\Release\winmm.lib" /MACHINE:X64 /DLL x64\Release\dllmain.obj
+         x64\Release\FindResource.obj
+         x64\Release\LoadString.obj
+         x64\Release\ResCommon.obj
+         x64\Release\Utils.obj
+            Creating library E:\Projects\winmm\winmm\x64\Release\winmm.lib and object E:\Projects\winmm\winmm\x64\Release\winmm.exp
+         Generating code
+         Finished generating code
+         winmm.vcxproj -> E:\Projects\winmm\winmm\x64\Release\winmm.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"E:\Projects\winmm\winmm\x64\Release\winmm.dll;#2" /manifest x64\Release\winmm.dll.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "x64\Release\winmm.unsuccessfulbuild".
+         Touching "x64\Release\winmm.lastbuildstate".
+     1>Done Building Project "E:\Projects\winmm\winmm\winmm\winmm.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.12

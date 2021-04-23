@@ -1,0 +1,407 @@
+========================================================================
+	DYNAMIC LINK LIBRARY : winmm Project Overview
+
+
+	Autors: Based upon fincs idea and example code,
+		    this version is enhanced by IsNull
+
+========================================================================
+
+#Preface
+To abuse the dll loading order and get this one injected properly,
+it must export and proxy the whole interface of the original winmm.dll.
+
+We let all the methods point to our dummy method, as we are just
+interested to get our own code injected & executed at startup time.
+
+
+# Defs
+
+To make things easy, we use a definition file to wrapp all winmm.dll-methods
+to our dummy method.
+
+To build the project as 32bit build, copy & paste all the defs below 
+from the "Defs for 32bit build:" section into winmm.def.
+The same applies for the 64bit build where you have to replace the
+defs with the appropriate 64bit dummys.
+
+have phun
+IsNull
+eOt
+------------------------------------------------------------------------
+
+
+
+
+
+Defs for 32bit build:
+
+LIBRARY winmm
+EXPORTS
+   mixerOpen=?dummyFunc@@YGXXZ
+	CloseDriver=?dummyFunc@@YGXXZ
+	DefDriverProc=?dummyFunc@@YGXXZ
+	DriverCallback=?dummyFunc@@YGXXZ
+	DrvGetModuleHandle=?dummyFunc@@YGXXZ
+	GetDriverModuleHandle=?dummyFunc@@YGXXZ
+	OpenDriver=?dummyFunc@@YGXXZ
+	PlaySound=?dummyFunc@@YGXXZ
+	PlaySoundA=?dummyFunc@@YGXXZ
+	PlaySoundW=?dummyFunc@@YGXXZ
+	SendDriverMessage=?dummyFunc@@YGXXZ
+	WOWAppExit=?dummyFunc@@YGXXZ
+	auxGetDevCapsA=?dummyFunc@@YGXXZ
+	auxGetDevCapsW=?dummyFunc@@YGXXZ
+	auxGetNumDevs=?dummyFunc@@YGXXZ
+	auxGetVolume=?dummyFunc@@YGXXZ
+	auxOutMessage=?dummyFunc@@YGXXZ
+	auxSetVolume=?dummyFunc@@YGXXZ
+	joyConfigChanged=?dummyFunc@@YGXXZ
+	joyGetDevCapsA=?dummyFunc@@YGXXZ
+	joyGetDevCapsW=?dummyFunc@@YGXXZ
+	joyGetNumDevs=?dummyFunc@@YGXXZ
+	joyGetPos=?dummyFunc@@YGXXZ
+	joyGetPosEx=?dummyFunc@@YGXXZ
+	joyGetThreshold=?dummyFunc@@YGXXZ
+	joyReleaseCapture=?dummyFunc@@YGXXZ
+	joySetCapture=?dummyFunc@@YGXXZ
+	joySetThreshold=?dummyFunc@@YGXXZ
+	mciDriverNotify=?dummyFunc@@YGXXZ
+	mciDriverYield=?dummyFunc@@YGXXZ
+	mciExecute=?dummyFunc@@YGXXZ
+	mciFreeCommandResource=?dummyFunc@@YGXXZ
+	mciGetCreatorTask=?dummyFunc@@YGXXZ
+	mciGetDeviceIDA=?dummyFunc@@YGXXZ
+	mciGetDeviceIDFromElementIDA=?dummyFunc@@YGXXZ
+	mciGetDeviceIDFromElementIDW=?dummyFunc@@YGXXZ
+	mciGetDeviceIDW=?dummyFunc@@YGXXZ
+	mciGetDriverData=?dummyFunc@@YGXXZ
+	mciGetErrorStringA=?dummyFunc@@YGXXZ
+	mciGetErrorStringW=?dummyFunc@@YGXXZ
+	mciGetYieldProc=?dummyFunc@@YGXXZ
+	mciLoadCommandResource=?dummyFunc@@YGXXZ
+	mciSendCommandA=?dummyFunc@@YGXXZ
+	mciSendCommandW=?dummyFunc@@YGXXZ
+	mciSendStringA=?dummyFunc@@YGXXZ
+	mciSendStringW=?dummyFunc@@YGXXZ
+	mciSetDriverData=?dummyFunc@@YGXXZ
+	mciSetYieldProc=?dummyFunc@@YGXXZ
+	midiConnect=?dummyFunc@@YGXXZ
+	midiDisconnect=?dummyFunc@@YGXXZ
+	midiInAddBuffer=?dummyFunc@@YGXXZ
+	midiInClose=?dummyFunc@@YGXXZ
+	midiInGetDevCapsA=?dummyFunc@@YGXXZ
+	midiInGetDevCapsW=?dummyFunc@@YGXXZ
+	midiInGetErrorTextA=?dummyFunc@@YGXXZ
+	midiInGetErrorTextW=?dummyFunc@@YGXXZ
+	midiInGetID=?dummyFunc@@YGXXZ
+	midiInGetNumDevs=?dummyFunc@@YGXXZ
+	midiInMessage=?dummyFunc@@YGXXZ
+	midiInOpen=?dummyFunc@@YGXXZ
+	midiInPrepareHeader=?dummyFunc@@YGXXZ
+	midiInReset=?dummyFunc@@YGXXZ
+	midiInStart=?dummyFunc@@YGXXZ
+	midiInStop=?dummyFunc@@YGXXZ
+	midiInUnprepareHeader=?dummyFunc@@YGXXZ
+	midiOutCacheDrumPatches=?dummyFunc@@YGXXZ
+	midiOutCachePatches=?dummyFunc@@YGXXZ
+	midiOutClose=?dummyFunc@@YGXXZ
+	midiOutGetDevCapsA=?dummyFunc@@YGXXZ
+	midiOutGetDevCapsW=?dummyFunc@@YGXXZ
+	midiOutGetErrorTextA=?dummyFunc@@YGXXZ
+	midiOutGetErrorTextW=?dummyFunc@@YGXXZ
+	midiOutGetID=?dummyFunc@@YGXXZ
+	midiOutGetNumDevs=?dummyFunc@@YGXXZ
+	midiOutGetVolume=?dummyFunc@@YGXXZ
+	midiOutLongMsg=?dummyFunc@@YGXXZ
+	midiOutMessage=?dummyFunc@@YGXXZ
+	midiOutOpen=?dummyFunc@@YGXXZ
+	midiOutPrepareHeader=?dummyFunc@@YGXXZ
+	midiOutReset=?dummyFunc@@YGXXZ
+	midiOutSetVolume=?dummyFunc@@YGXXZ
+	midiOutShortMsg=?dummyFunc@@YGXXZ
+	midiOutUnprepareHeader=?dummyFunc@@YGXXZ
+	midiStreamClose=?dummyFunc@@YGXXZ
+	midiStreamOpen=?dummyFunc@@YGXXZ
+	midiStreamOut=?dummyFunc@@YGXXZ
+	midiStreamPause=?dummyFunc@@YGXXZ
+	midiStreamPosition=?dummyFunc@@YGXXZ
+	midiStreamProperty=?dummyFunc@@YGXXZ
+	midiStreamRestart=?dummyFunc@@YGXXZ
+	midiStreamStop=?dummyFunc@@YGXXZ
+	mixerClose=?dummyFunc@@YGXXZ
+	mixerGetControlDetailsA=?dummyFunc@@YGXXZ
+	mixerGetControlDetailsW=?dummyFunc@@YGXXZ
+	mixerGetDevCapsA=?dummyFunc@@YGXXZ
+	mixerGetDevCapsW=?dummyFunc@@YGXXZ
+	mixerGetID=?dummyFunc@@YGXXZ
+	mixerGetLineControlsA=?dummyFunc@@YGXXZ
+	mixerGetLineControlsW=?dummyFunc@@YGXXZ
+	mixerGetLineInfoA=?dummyFunc@@YGXXZ
+	mixerGetLineInfoW=?dummyFunc@@YGXXZ
+	mixerGetNumDevs=?dummyFunc@@YGXXZ
+	mixerMessage=?dummyFunc@@YGXXZ
+	mixerSetControlDetails=?dummyFunc@@YGXXZ
+	mmDrvInstall=?dummyFunc@@YGXXZ
+	mmGetCurrentTask=?dummyFunc@@YGXXZ
+	mmTaskBlock=?dummyFunc@@YGXXZ
+	mmTaskCreate=?dummyFunc@@YGXXZ
+	mmTaskSignal=?dummyFunc@@YGXXZ
+	mmTaskYield=?dummyFunc@@YGXXZ
+	mmioAdvance=?dummyFunc@@YGXXZ
+	mmioAscend=?dummyFunc@@YGXXZ
+	mmioClose=?dummyFunc@@YGXXZ
+	mmioCreateChunk=?dummyFunc@@YGXXZ
+	mmioDescend=?dummyFunc@@YGXXZ
+	mmioFlush=?dummyFunc@@YGXXZ
+	mmioGetInfo=?dummyFunc@@YGXXZ
+	mmioInstallIOProcA=?dummyFunc@@YGXXZ
+	mmioInstallIOProcW=?dummyFunc@@YGXXZ
+	mmioOpenA=?dummyFunc@@YGXXZ
+	mmioOpenW=?dummyFunc@@YGXXZ
+	mmioRead=?dummyFunc@@YGXXZ
+	mmioRenameA=?dummyFunc@@YGXXZ
+	mmioRenameW=?dummyFunc@@YGXXZ
+	mmioSeek=?dummyFunc@@YGXXZ
+	mmioSendMessage=?dummyFunc@@YGXXZ
+	mmioSetBuffer=?dummyFunc@@YGXXZ
+	mmioSetInfo=?dummyFunc@@YGXXZ
+	mmioStringToFOURCCA=?dummyFunc@@YGXXZ
+	mmioStringToFOURCCW=?dummyFunc@@YGXXZ
+	mmioWrite=?dummyFunc@@YGXXZ
+	mmsystemGetVersion=?dummyFunc@@YGXXZ
+	sndPlaySoundA=?dummyFunc@@YGXXZ
+	sndPlaySoundW=?dummyFunc@@YGXXZ
+	timeBeginPeriod=?dummyFunc@@YGXXZ
+	timeEndPeriod=?dummyFunc@@YGXXZ
+	timeGetDevCaps=?dummyFunc@@YGXXZ
+	timeGetSystemTime=?dummyFunc@@YGXXZ
+	timeGetTime=?dummyFunc@@YGXXZ
+	timeKillEvent=?dummyFunc@@YGXXZ
+	timeSetEvent=?dummyFunc@@YGXXZ
+	waveInAddBuffer=?dummyFunc@@YGXXZ
+	waveInClose=?dummyFunc@@YGXXZ
+	waveInGetDevCapsA=?dummyFunc@@YGXXZ
+	waveInGetDevCapsW=?dummyFunc@@YGXXZ
+	waveInGetErrorTextA=?dummyFunc@@YGXXZ
+	waveInGetErrorTextW=?dummyFunc@@YGXXZ
+	waveInGetID=?dummyFunc@@YGXXZ
+	waveInGetNumDevs=?dummyFunc@@YGXXZ
+	waveInGetPosition=?dummyFunc@@YGXXZ
+	waveInMessage=?dummyFunc@@YGXXZ
+	waveInOpen=?dummyFunc@@YGXXZ
+	waveInPrepareHeader=?dummyFunc@@YGXXZ
+	waveInReset=?dummyFunc@@YGXXZ
+	waveInStart=?dummyFunc@@YGXXZ
+	waveInStop=?dummyFunc@@YGXXZ
+	waveInUnprepareHeader=?dummyFunc@@YGXXZ
+	waveOutBreakLoop=?dummyFunc@@YGXXZ
+	waveOutClose=?dummyFunc@@YGXXZ
+	waveOutGetDevCapsA=?dummyFunc@@YGXXZ
+	waveOutGetDevCapsW=?dummyFunc@@YGXXZ
+	waveOutGetErrorTextA=?dummyFunc@@YGXXZ
+	waveOutGetErrorTextW=?dummyFunc@@YGXXZ
+	waveOutGetID=?dummyFunc@@YGXXZ
+	waveOutGetNumDevs=?dummyFunc@@YGXXZ
+	waveOutGetPitch=?dummyFunc@@YGXXZ
+	waveOutGetPlaybackRate=?dummyFunc@@YGXXZ
+	waveOutGetPosition=?dummyFunc@@YGXXZ
+	waveOutGetVolume=?dummyFunc@@YGXXZ
+	waveOutMessage=?dummyFunc@@YGXXZ
+	waveOutOpen=?dummyFunc@@YGXXZ
+	waveOutPause=?dummyFunc@@YGXXZ
+	waveOutPrepareHeader=?dummyFunc@@YGXXZ
+	waveOutReset=?dummyFunc@@YGXXZ
+	waveOutRestart=?dummyFunc@@YGXXZ
+	waveOutSetPitch=?dummyFunc@@YGXXZ
+	waveOutSetPlaybackRate=?dummyFunc@@YGXXZ
+	waveOutSetVolume=?dummyFunc@@YGXXZ
+	waveOutUnprepareHeader=?dummyFunc@@YGXXZ
+	waveOutWrite=?dummyFunc@@YGXXZ
+
+
+
+Defs for 64bit build:
+
+LIBRARY winmm
+EXPORTS
+	mixerOpen=?dummyFunc@@YAXXZ
+	CloseDriver=?dummyFunc@@YAXXZ
+	DefDriverProc=?dummyFunc@@YAXXZ
+	DriverCallback=?dummyFunc@@YAXXZ
+	DrvGetModuleHandle=?dummyFunc@@YAXXZ
+	GetDriverModuleHandle=?dummyFunc@@YAXXZ
+	OpenDriver=?dummyFunc@@YAXXZ
+	PlaySound=?dummyFunc@@YAXXZ
+	PlaySoundA=?dummyFunc@@YAXXZ
+	PlaySoundW=?dummyFunc@@YAXXZ
+	SendDriverMessage=?dummyFunc@@YAXXZ
+	WOWAppExit=?dummyFunc@@YAXXZ
+	auxGetDevCapsA=?dummyFunc@@YAXXZ
+	auxGetDevCapsW=?dummyFunc@@YAXXZ
+	auxGetNumDevs=?dummyFunc@@YAXXZ
+	auxGetVolume=?dummyFunc@@YAXXZ
+	auxOutMessage=?dummyFunc@@YAXXZ
+	auxSetVolume=?dummyFunc@@YAXXZ
+	joyConfigChanged=?dummyFunc@@YAXXZ
+	joyGetDevCapsA=?dummyFunc@@YAXXZ
+	joyGetDevCapsW=?dummyFunc@@YAXXZ
+	joyGetNumDevs=?dummyFunc@@YAXXZ
+	joyGetPos=?dummyFunc@@YAXXZ
+	joyGetPosEx=?dummyFunc@@YAXXZ
+	joyGetThreshold=?dummyFunc@@YAXXZ
+	joyReleaseCapture=?dummyFunc@@YAXXZ
+	joySetCapture=?dummyFunc@@YAXXZ
+	joySetThreshold=?dummyFunc@@YAXXZ
+	mciDriverNotify=?dummyFunc@@YAXXZ
+	mciDriverYield=?dummyFunc@@YAXXZ
+	mciExecute=?dummyFunc@@YAXXZ
+	mciFreeCommandResource=?dummyFunc@@YAXXZ
+	mciGetCreatorTask=?dummyFunc@@YAXXZ
+	mciGetDeviceIDA=?dummyFunc@@YAXXZ
+	mciGetDeviceIDFromElementIDA=?dummyFunc@@YAXXZ
+	mciGetDeviceIDFromElementIDW=?dummyFunc@@YAXXZ
+	mciGetDeviceIDW=?dummyFunc@@YAXXZ
+	mciGetDriverData=?dummyFunc@@YAXXZ
+	mciGetErrorStringA=?dummyFunc@@YAXXZ
+	mciGetErrorStringW=?dummyFunc@@YAXXZ
+	mciGetYieldProc=?dummyFunc@@YAXXZ
+	mciLoadCommandResource=?dummyFunc@@YAXXZ
+	mciSendCommandA=?dummyFunc@@YAXXZ
+	mciSendCommandW=?dummyFunc@@YAXXZ
+	mciSendStringA=?dummyFunc@@YAXXZ
+	mciSendStringW=?dummyFunc@@YAXXZ
+	mciSetDriverData=?dummyFunc@@YAXXZ
+	mciSetYieldProc=?dummyFunc@@YAXXZ
+	midiConnect=?dummyFunc@@YAXXZ
+	midiDisconnect=?dummyFunc@@YAXXZ
+	midiInAddBuffer=?dummyFunc@@YAXXZ
+	midiInClose=?dummyFunc@@YAXXZ
+	midiInGetDevCapsA=?dummyFunc@@YAXXZ
+	midiInGetDevCapsW=?dummyFunc@@YAXXZ
+	midiInGetErrorTextA=?dummyFunc@@YAXXZ
+	midiInGetErrorTextW=?dummyFunc@@YAXXZ
+	midiInGetID=?dummyFunc@@YAXXZ
+	midiInGetNumDevs=?dummyFunc@@YAXXZ
+	midiInMessage=?dummyFunc@@YAXXZ
+	midiInOpen=?dummyFunc@@YAXXZ
+	midiInPrepareHeader=?dummyFunc@@YAXXZ
+	midiInReset=?dummyFunc@@YAXXZ
+	midiInStart=?dummyFunc@@YAXXZ
+	midiInStop=?dummyFunc@@YAXXZ
+	midiInUnprepareHeader=?dummyFunc@@YAXXZ
+	midiOutCacheDrumPatches=?dummyFunc@@YAXXZ
+	midiOutCachePatches=?dummyFunc@@YAXXZ
+	midiOutClose=?dummyFunc@@YAXXZ
+	midiOutGetDevCapsA=?dummyFunc@@YAXXZ
+	midiOutGetDevCapsW=?dummyFunc@@YAXXZ
+	midiOutGetErrorTextA=?dummyFunc@@YAXXZ
+	midiOutGetErrorTextW=?dummyFunc@@YAXXZ
+	midiOutGetID=?dummyFunc@@YAXXZ
+	midiOutGetNumDevs=?dummyFunc@@YAXXZ
+	midiOutGetVolume=?dummyFunc@@YAXXZ
+	midiOutLongMsg=?dummyFunc@@YAXXZ
+	midiOutMessage=?dummyFunc@@YAXXZ
+	midiOutOpen=?dummyFunc@@YAXXZ
+	midiOutPrepareHeader=?dummyFunc@@YAXXZ
+	midiOutReset=?dummyFunc@@YAXXZ
+	midiOutSetVolume=?dummyFunc@@YAXXZ
+	midiOutShortMsg=?dummyFunc@@YAXXZ
+	midiOutUnprepareHeader=?dummyFunc@@YAXXZ
+	midiStreamClose=?dummyFunc@@YAXXZ
+	midiStreamOpen=?dummyFunc@@YAXXZ
+	midiStreamOut=?dummyFunc@@YAXXZ
+	midiStreamPause=?dummyFunc@@YAXXZ
+	midiStreamPosition=?dummyFunc@@YAXXZ
+	midiStreamProperty=?dummyFunc@@YAXXZ
+	midiStreamRestart=?dummyFunc@@YAXXZ
+	midiStreamStop=?dummyFunc@@YAXXZ
+	mixerClose=?dummyFunc@@YAXXZ
+	mixerGetControlDetailsA=?dummyFunc@@YAXXZ
+	mixerGetControlDetailsW=?dummyFunc@@YAXXZ
+	mixerGetDevCapsA=?dummyFunc@@YAXXZ
+	mixerGetDevCapsW=?dummyFunc@@YAXXZ
+	mixerGetID=?dummyFunc@@YAXXZ
+	mixerGetLineControlsA=?dummyFunc@@YAXXZ
+	mixerGetLineControlsW=?dummyFunc@@YAXXZ
+	mixerGetLineInfoA=?dummyFunc@@YAXXZ
+	mixerGetLineInfoW=?dummyFunc@@YAXXZ
+	mixerGetNumDevs=?dummyFunc@@YAXXZ
+	mixerMessage=?dummyFunc@@YAXXZ
+	mixerSetControlDetails=?dummyFunc@@YAXXZ
+	mmDrvInstall=?dummyFunc@@YAXXZ
+	mmGetCurrentTask=?dummyFunc@@YAXXZ
+	mmTaskBlock=?dummyFunc@@YAXXZ
+	mmTaskCreate=?dummyFunc@@YAXXZ
+	mmTaskSignal=?dummyFunc@@YAXXZ
+	mmTaskYield=?dummyFunc@@YAXXZ
+	mmioAdvance=?dummyFunc@@YAXXZ
+	mmioAscend=?dummyFunc@@YAXXZ
+	mmioClose=?dummyFunc@@YAXXZ
+	mmioCreateChunk=?dummyFunc@@YAXXZ
+	mmioDescend=?dummyFunc@@YAXXZ
+	mmioFlush=?dummyFunc@@YAXXZ
+	mmioGetInfo=?dummyFunc@@YAXXZ
+	mmioInstallIOProcA=?dummyFunc@@YAXXZ
+	mmioInstallIOProcW=?dummyFunc@@YAXXZ
+	mmioOpenA=?dummyFunc@@YAXXZ
+	mmioOpenW=?dummyFunc@@YAXXZ
+	mmioRead=?dummyFunc@@YAXXZ
+	mmioRenameA=?dummyFunc@@YAXXZ
+	mmioRenameW=?dummyFunc@@YAXXZ
+	mmioSeek=?dummyFunc@@YAXXZ
+	mmioSendMessage=?dummyFunc@@YAXXZ
+	mmioSetBuffer=?dummyFunc@@YAXXZ
+	mmioSetInfo=?dummyFunc@@YAXXZ
+	mmioStringToFOURCCA=?dummyFunc@@YAXXZ
+	mmioStringToFOURCCW=?dummyFunc@@YAXXZ
+	mmioWrite=?dummyFunc@@YAXXZ
+	mmsystemGetVersion=?dummyFunc@@YAXXZ
+	sndPlaySoundA=?dummyFunc@@YAXXZ
+	sndPlaySoundW=?dummyFunc@@YAXXZ
+	timeBeginPeriod=?dummyFunc@@YAXXZ
+	timeEndPeriod=?dummyFunc@@YAXXZ
+	timeGetDevCaps=?dummyFunc@@YAXXZ
+	timeGetSystemTime=?dummyFunc@@YAXXZ
+	timeGetTime=?dummyFunc@@YAXXZ
+	timeKillEvent=?dummyFunc@@YAXXZ
+	timeSetEvent=?dummyFunc@@YAXXZ
+	waveInAddBuffer=?dummyFunc@@YAXXZ
+	waveInClose=?dummyFunc@@YAXXZ
+	waveInGetDevCapsA=?dummyFunc@@YAXXZ
+	waveInGetDevCapsW=?dummyFunc@@YAXXZ
+	waveInGetErrorTextA=?dummyFunc@@YAXXZ
+	waveInGetErrorTextW=?dummyFunc@@YAXXZ
+	waveInGetID=?dummyFunc@@YAXXZ
+	waveInGetNumDevs=?dummyFunc@@YAXXZ
+	waveInGetPosition=?dummyFunc@@YAXXZ
+	waveInMessage=?dummyFunc@@YAXXZ
+	waveInOpen=?dummyFunc@@YAXXZ
+	waveInPrepareHeader=?dummyFunc@@YAXXZ
+	waveInReset=?dummyFunc@@YAXXZ
+	waveInStart=?dummyFunc@@YAXXZ
+	waveInStop=?dummyFunc@@YAXXZ
+	waveInUnprepareHeader=?dummyFunc@@YAXXZ
+	waveOutBreakLoop=?dummyFunc@@YAXXZ
+	waveOutClose=?dummyFunc@@YAXXZ
+	waveOutGetDevCapsA=?dummyFunc@@YAXXZ
+	waveOutGetDevCapsW=?dummyFunc@@YAXXZ
+	waveOutGetErrorTextA=?dummyFunc@@YAXXZ
+	waveOutGetErrorTextW=?dummyFunc@@YAXXZ
+	waveOutGetID=?dummyFunc@@YAXXZ
+	waveOutGetNumDevs=?dummyFunc@@YAXXZ
+	waveOutGetPitch=?dummyFunc@@YAXXZ
+	waveOutGetPlaybackRate=?dummyFunc@@YAXXZ
+	waveOutGetPosition=?dummyFunc@@YAXXZ
+	waveOutGetVolume=?dummyFunc@@YAXXZ
+	waveOutMessage=?dummyFunc@@YAXXZ
+	waveOutOpen=?dummyFunc@@YAXXZ
+	waveOutPause=?dummyFunc@@YAXXZ
+	waveOutPrepareHeader=?dummyFunc@@YAXXZ
+	waveOutReset=?dummyFunc@@YAXXZ
+	waveOutRestart=?dummyFunc@@YAXXZ
+	waveOutSetPitch=?dummyFunc@@YAXXZ
+	waveOutSetPlaybackRate=?dummyFunc@@YAXXZ
+	waveOutSetVolume=?dummyFunc@@YAXXZ
+	waveOutUnprepareHeader=?dummyFunc@@YAXXZ
+	waveOutWrite=?dummyFunc@@YAXXZ
