@@ -1,0 +1,114 @@
+body {
+	font: 14px Georgia, serif;
+	color: #676767;
+	
+	background-color: white;
+}
+#page {
+	width: 800px;
+	margin: 8px auto;
+	padding-bottom: 24px;
+	
+	background: url(logo_bac.gif) black repeat-x;
+}
+
+#header {
+	padding: 12px 8px;
+
+	font-size: 18px;
+	font-weight: bold;
+	color: white;
+}
+.ruby { color: #BB0000; }
+.quiz { font-family: cursive; }
+
+#content {
+	width: 547px;
+	margin: 24px 24px 0px 0px;
+	padding: 24px 24px 0px 24px;
+	float: right;
+	display: inline;	/* ugly hack to workaround Win IE Double Margin bug */
+	
+	background: url(content_.gif) white no-repeat;
+}
+#content .title { font-size: 18px; font-weight: bold; color: black; }
+a { color: #BB0000; text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:active { color: #676767; }
+a:visited { color: #BB0000; }
+hr { width: 50%; }
+dt {
+	padding-bottom: 12px;
+	
+	font-weight: bold;
+}
+dd { padding-bottom: 12px; }
+#content .example {
+	padding: 8px;
+	border: 1px solid #676767;
+	
+	font:  12px Monaco, monospace;
+	color: black;
+	white-space: pre;
+	white-space: pre-wrap; /* avoid overflow */
+	_white-space: pre;
+	
+	background-color:  #CBCBCB;
+}
+#content .code {
+	margin: 8px 0px;
+	border: 1px solid #BB0000;
+	
+	font:  12px Monaco, monospace;
+	color: black;
+	white-space: pre;
+	white-space: pre-wrap; /* avoid overflow */
+	_white-space: pre;
+	
+	background-color:  #FFE5E5;
+}
+@media all { /* keep IE Mac out of here */
+* html #content .code { /* IE win only */
+	width: 100%;
+	float: left;
+	margin-right: -2%; /* reversed right margin */
+}
+}
+#content .code .type {
+	padding: 0px 8px;
+	
+	color: white;
+	
+	background-color:  #BB0000;
+}
+#content .code .body {
+	padding: 8px 0px 8px 2px;
+}
+#content .code .body .string { color: #009999; }
+#content .code .body .comment { color: #999999; }
+#content .code .body .keyword { color: #0000CC; }
+#content .code .body .global { color: #BB0000; }
+#content .code .body .variable { color: #9900FF; }
+
+#logo {
+	padding: 12px 0px 12px 8px;
+
+	background-color: #CBCBCB;
+}
+
+#links { padding: 12px 16px; }
+#links .title { font-size: 18px; font-weight: bold; color: white; }
+#links ol {
+	padding-left: 0px;
+	margin-left: 0px;
+	
+	list-style-position: inside;
+	color: #CBCBCB;
+}
+
+#footer {
+	width: 800px; height: 24px;
+	clear: both;
+	
+	background-image: url(content0.gif);
+}

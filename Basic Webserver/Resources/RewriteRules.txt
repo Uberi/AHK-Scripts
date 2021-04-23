@@ -1,0 +1,2 @@
+S)^/blog/([^/]+)/([^/]+)/([^/]+)	scripts/Blog.ahk?Year=$1&Month=$2&Day=$3
+S)^/wiki/(.+)	scripts/Wiki.ahk?PageName=$1

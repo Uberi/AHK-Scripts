@@ -1,0 +1,677 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- Saved from "http://www.autohotkey.net/~Bentschi/wrapper/agl.html" -->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title> agl.ahk (AutoHotkey - OpenGL library) </title>
+	<style type="text/css">
+		body {font-family:Arial; font-size:90%; padding:0px 40px 40px;}
+		h1 {color:#302090; padding-top:40px;}
+		a {text-decoration:none;}
+		.syntax {color:#000080; padding:10px;}
+		.syntax .opt {color:#3030F0;}
+		.param {color:#808080; font-weight:bold;}
+		.description {padding-top:10px;}
+		.top {padding-top:10px;}
+		.bottom {padding-top:60px;}
+		
+		.code {color:#000080; margin:5px; padding:10px; border:1px solid #808080;}
+	</style>
+</head>
+<body>
+<h1 id="top">Overview (agl.ahk)</h1>
+<ul>
+	<li><a href="#aglInit">aglInit</a> - Initializes opengl32.dll and GLU32.DLL</li>
+	<li><a href="#aglFree">aglFree / aglCleanup</a> - Is opengl32.dll and GLU32.DLL free</li>
+	<br>
+	<li><a href="#aglUseGui">aglUseGui</a> - Creates a drawing surface (rendering context) on a AutoHotkey Gui</li>
+	<li><a href="#aglUseGuiControl">aglUseGuiControl</a> - Creates a drawing surface (rendering context) on a AutoHotkey GuiControl</li>
+	<li><a href="#aglUseWindow">aglUseWindow</a> - Creates a drawing surface (rendering context) on a window</li>
+	<br>
+	<li><a href="#aglIsMultisampleSupported">aglIsMultisampleSupported</a> - Determine whether hardware-accelerated anti-aliasing is available</li>
+	<li><a href="#aglUseGuiMultisample">aglUseGuiMultisample</a> - Creates a drawing surface (rendering context) on a AutoHotkey Gui, when using multisampling (antialiasing)</li>
+	<li><a href="#aglUseGuiControlMultisample">aglUseGuiControlMultisample</a> - Creates a drawing surface (rendering context) on a AutoHotkey GuiControl when using multisampling (antialiasing)</li>
+	<li><a href="#aglUseWindowMultisample">aglUseWindowMultisample</a> - Creates a drawing surface (rendering context) on a window when using multisampling (antialiasing)</li>
+	<br>
+	<li><a href="#aglGetDC">aglGetDC</a> - Get the device context of a window</li>
+	<li><a href="#aglGetDC">aglReleaseDC</a> - Specifies the device context of a window's released</li>
+	<br>
+	<li><a href="#aglInitExt">aglInitExt</a> - Initializes the OpenGL extensions (extensions)</li>
+	<li><a href="#aglIsExt">aglIsExt</a> - Checks if an OpenGL extension (extension) is available </li>
+	<li><a href="#aglIsWglExt">aglIsWglExt</a> - Finds whether a Windows OpenGL extension (extension) is available </li>
+	<br>
+	<li><a href="#aglGetVersion">aglGetVersion</a> - Get the version number of the OpenGL implementation </li>
+	<li><a href="#aglGetInteger">aglGetInteger</a> - Returns a single integer value (similar glGetIntegerv) </li>
+	<li><a href="#aglGetFloat">aglGetFloat</a> - Get a single 32-bit floating-point number (similar glGetFloatv) </li>
+	<li><a href="#aglGetDouble">aglGetDouble</a> - Get a single 64-bit floating-point number (similar glGetDoublev) </li>
+	<li><a href="#aglGetBoolean">aglGetBoolean</a> - Gets a single Booleanwert (similar glGetBooleanv) </li>
+	<br>
+	<li><a href="#aglLoadTexImage1D">aglLoadTexImage1D</a> - Loads a one-dimensional image of a file, for use as a texture </li>
+	<li><a href="#aglLoadTexImage2D">aglLoadTexImage2D</a> - Loads a two-dimensional image of a file, for use as a texture </li>
+	<li><a href="#aglLoadMipmaps1D">aglLoadMipmaps1D</a> - Loads a one-dimensional image of a file, for use as mipmaps </li>
+	<li><a href="#aglLoadMipmaps2D">aglLoadMipmaps2D</a> - Loads a two-dimensional image of a file, for use as mipmaps </li>
+	<li><a href="#aglGenTexture">aglGenTexture</a> - Generates a single texture </li>
+	<li><a href="#aglDeleteTexture">aglDeleteTexture</a> - Deletes a single texture </li>
+	<li><a href="#aglRenderToTexture">aglRenderToTexture</a> - Renders the current scene to a texture </li>
+	<br>
+	<li><a href="#aglSetLoadWarnings">aglSetLoadWarnings</a> - Sets the stage for warnings when loading models and materials </li>
+	<li><a href="#aglLoadModel">aglLoadModel</a> - Loads a model from a file </li>
+	<li><a href="#aglCallModel">aglCallModel</a> - Draw a Model </li>
+	<li><a href="#aglDeleteModel">aglDeleteModel</a> - Delete a model </li>
+	<li><a href="#aglLoadMaterial">aglLoadMaterial</a> - Load a material from a file </li>
+	<li><a href="#aglCallMaterial">aglCallMaterial</a> - a material used for drawing </li>
+	<li><a href="#aglDeleteMaterial">aglDeleteMaterial</a> - Deletes a material </li>
+	<br>
+	<li><a href="#aglBlur">aglBlur</a> - Draws the contents of the soft color buffer </li>
+	<br>
+	<li><a href="#aglLoadProgram">aglLoadProgram</a> - Loads shaders from files or strings </li>
+	<li><a href="#aglShaderSource">aglShaderSource</a> - Sets the source code for a shader object </li>
+	<li><a href="#aglGetShaderInfoLog">aglGetShaderInfoLog</a> - Get the Infolog the driver for a shader object </li>
+	<li><a href="#aglGetProgramInfoLog">aglGetProgramInfoLog</a> - Get the Infolog the driver for a program object</li>
+</ul>
+
+<h1 id="aglInit"> aglInit</h1>
+<div>Initializes opengl32.dll and glu32.dll</div>
+<div class="syntax"><code>aglInit()</code></div>
+<div><span class="param">Return value:</span> Returns 1 if the initialization was successful, Otherwise 0.</div>
+<div class="description">
+	<b>aglInit</b> libraries and initializes the opengl32.dll GLU32.DLL to use the wrapper is needed for.
+	<br>If not used is <b>aglInit</b> and the two libraries are not loaded, generate most of wrapper functions and the functions of the library a mistake!
+	<br>The libraries which are loaded with <b>aglInit</b> can, with <a href="#aglFree">aglFree</a> or <a href="#aglFree">aglCleanup</a> be freed.
+</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglFree"> aglFree / aglCleanup</h1>
+<div>Is opengl32.dll and GLU32.DLL free</div>
+<div class="syntax"><code>aglFree()</code></div>
+<div class="description">
+	<b>aglFree aglCleanup</b> and both lead to the same result.
+	<br>These two functions return the memory for opengl32.dll and GLU32.DLL again.
+	<br>The libraries can opengl32.dll and GLU32.DLL with <a href="#aglInit">aglInit</a> be loaded.</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglUseGui"> aglUseGui</h1>
+<div>Creates a drawing surface (rendering context) on a AutoHotkey Gui</div>
+<div class="syntax"><code>aglUseGui( <span class="opt">[nGui=0, flags=PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER, colorbits=24, alphabits=0, accumbits=32, depthbits=24, stencilbits=8]</span> )</code></div>
+<div><span class="param">nGui:</span> The number of Gui's, or 0 for the "default" Gui.</div>
+<div><span class="param">flags:</span> flags that should be used for the pixel format.</div>
+<div><span class="param">colobits:</span> Number of color bits for the color buffer.</div>
+<div><span class="param">AlphaBit:</span> Number of AlphaBit for the color buffer.</div>
+<div><span class="param">accumbits:</span> Number of bits for the accumulation buffer.</div>
+<div><span class="param">depthbits:</span> Number of bits for the depth buffer.</div>
+<div><span class="param">stencilbits:</span> Number of bits for the stencil buffer.</div>
+<div><span class="param">Return value:</span> Returns a handle to the created rendering context that back, or 0 if an error has occurred.</div>
+<div class="description">
+	<b>aglUseGui</b> creates a rendering context on an AutoHotkey Gui.
+	<br>The rendering context should be created after the Gui by "Gui, Show" was shown, the viewport must contain solutions to be set again.
+	<br>This function enables the created rendering context, and makes it speak to the "current" rendering context.
+	<br>Once a rendering context is created, are the OpenGL functions. Otherwise, generate the most OpenGL functions errors.
+	<br>If the flag <b>PFD_DOUBLEBUFFER</b> is used, the updated frames with <b>SwapBuffers</b> (defined in wgl.ahk) done.
+	<br>The device context for <b>SwapBuffers</b> may, after calling this function with <b>wglGetCurrentDC,</b> or even by <a href="#aglGetDC">aglGetDC</a> be determined.
+	<br>If <b>PFD_DOUBLEBUFFER</b> not used enough for updating a call to <b>glFlush.</b>
+	<br>The rendering context of the function is returned in this, can be deleted with <b>wglDeleteContext.</b>
+	<br>This function initializes opengl32.dll and GLU32.DLL if the two libraries have not been initialized (see <a href="#aglInit">aglInit</a> ).
+</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglUseGui"> aglUseGuiControl</h1>
+<div>Creates a drawing surface (rendering context) on a AutoHotkey GuiControl</div>
+<div class="syntax"><code>aglUseGuiControl(vLabel <span class="opt">[, nGui=0, flags=PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER, colorbits=24, alphabits=0, accumbits=32, depthbits=24, stencilbits=8]</span> )</code></div>
+<div><span class="param">vLabel:</span> The vLabel of GuiControl's.</div>
+<div><span class="param">nGui:</span> The number of Gui's, or 0 for the "default" Gui.</div>
+<div><span class="param">flags:</span> flags that should be used for the pixel format.</div>
+<div><span class="param">colobits:</span> Number of color bits for the color buffer.</div>
+<div><span class="param">alphabits:</span> Number of AlphaBit for the color buffer.</div>
+<div><span class="param">accumbits:</span> Number of bits for the accumulation buffer.</div>
+<div><span class="param">depthbits:</span> Number of bits for the depth buffer.</div>
+<div><span class="param">stencilbits:</span> Number of bits for the stencil buffer.</div>
+<div><span class="param">Return value:</span> Returns a handle to the created rendering context that back, or 0 if an error has occurred.</div>
+<div class="description">
+	<b>aglUseGuiGontrol</b> creates a rendering context on an AutoHotkey GuiControl.
+	<br>If possible, a "STATIC" Control can be used, such as "Gui, add text, or "Gui, add, pic, ...".
+	<br>The rendering context should be created after the Gui by Gui, show, was shown, the viewport must contain solutions to be set again.
+	<br>This function enables the created rendering context, and makes it speak to the "current" rendering context.
+	<br>Once a rendering context is created, are the OpenGL functions. Otherwise, generate the most OpenGL functions errors.
+	<br>If the flag <b>PFD_DOUBLEBUFFER</b> is used, the updated frames with <b>SwapBuffers</b> (defined in wgl.ahk) done.
+	<br>The device context for <b>SwapBuffers</b> may, after calling this function with <b>wglGetCurrentDC,</b> or even by <a href="#aglGetDC">aglGetDC</a> be determined.
+	<br>If <b>PFD_DOUBLEBUFFER</b> not used enough for updating a call to <b>glFlush.</b>
+	<br>The rendering context of the function is returned in this, can be deleted with <b>wglDeleteContext.</b>
+	<br>This function initializes opengl32.dll and GLU32.DLL if the two libraries have not been initialized (see <a href="#aglInit">aglInit</a> ).
+</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglUseGui"> aglUseWindow</h1>
+<div>Creates a drawing surface (rendering context) on a window</div>
+<div class="syntax"><code>aglUseWindow(hWnd <span class="opt">[, flags=PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER, colorbits=24, alphabits=0, accumbits=32, depthbits=24, stencilbits=8]</span> )</code></div>
+<div><span class="param">hWnd:</span> The handle of the window's.</div>
+<div><span class="param">flags:</span> flags that should be used for the pixel format.</div>
+<div><span class="param">colobits:</span> Number of color bits for the color buffer.</div>
+<div><span class="param">alphabits:</span> Number of AlphaBit for the color buffer.</div>
+<div><span class="param">accumbits:</span> Number of bits for the accumulation buffer.</div>
+<div><span class="param">depthbits:</span> Number of bits for the depth buffer.</div>
+<div><span class="param">stencilbits:</span> Number of bits for the stencil buffer.</div>
+<div><span class="param">Return value:</span> Returns a handle to the created rendering context that back, or 0 if an error has occurred.</div>
+<div class="description">
+	<b>aglUseWindow</b> erstellt einen Renderkontext auf einem Fenster.</span> <b>aglUseWindow</b> creates a rendering context to a window.
+	<br>This function enables the created rendering context, and makes it speak to the "current" rendering context.
+	<br>Once a rendering context is created, are the OpenGL functions.Ansonsten erzeugen die meisten OpenGL-Funktionen Fehler.</span> Otherwise, generate the most OpenGL functions errors.
+	<br>Wenn das Flag <b>PFD_DOUBLEBUFFER</b> verwendet wird, muss die Aktualiserung der Frames mit <b>SwapBuffers</b> (definiert in wgl.ahk) erfolgen.</span> If the flag <b>PFD_DOUBLEBUFFER</b> is used, the updated frames with <b>SwapBuffers</b> (defined in wgl.ahk) done.
+	<br>Der Gerätekontext für <b>SwapBuffers</b> , kann nach dem Aufruf dieser Funktion mit <b>wglGetCurrentDC</b> , oder überhaupt mittels <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglGetDC">aglGetDC</a> ermittelt werden.</span> The device context for <b>SwapBuffers</b> may, after calling this function with <b>wglGetCurrentDC,</b> or even by <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglGetDC">aglGetDC</a> be determined.
+	<br>Wird <b>PFD_DOUBLEBUFFER</b> nicht verwendet, reicht für die Aktualisierung ein Aufruf von <b>glFlush</b> .</span> If <b>PFD_DOUBLEBUFFER</b> not used enough for updating a call to <b>glFlush.</b>
+	<br>Der Renderkontext der bei dieser Funktion zurückgegeben wird, kann mit <b>wglDeleteContext</b> gelöscht werden.</span> The rendering context of the function is returned in this, can be deleted with <b>wglDeleteContext.</b>
+	<br>Diese Funktion Initialisiert opengl32.dll und glu32.dll, wenn die beiden Bibliotheken nicht initialisiert wurden (siehe <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglInit">aglInit</a> ).</span> This function initializes opengl32.dll and GLU32.DLL if the two libraries have not been initialized (see <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglInit">aglInit</a> ).</span>
+</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglIsMultisampleSupported"> aglIsMultisampleSupported</h1>
+<div>Hardware accelerated anti-aliasing check if available</div>
+<div class="syntax"><code>aglIsMultisampleSupported( <span class="opt">[multisample=0]</span> )</code></div>
+<div><span class="param">multisample:</span> The multi-level sample should be tested for this, or 0 for the maximum level.</div>
+<div><span class="param">Return value:</span> If a certain level tested, or the return value of 1, 0 if the multi-level sample is not available. When the "multi-sample" is 0, the maximum level is returned, or 0 if multisampling is not supported.</div>
+<div class="description">
+	<b>aglIsMultisampleSupported</b> prüft auf einem temporären Fenster ob OpenGL mit Multisampling initialisiert werden kann.</span> <b>aglIsMultisampleSupported</b> reviewed on a temporary window if OpenGL can be initialized with multisampling.
+	<br>For the parameter "multi-sample" should be used a multiple of 2 (2, 4, 8, 16, ...), should be checked if a certain level.</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglUseGuiMultisample"> aglUseGuiMultisample</h1>
+<div>Creates a drawing surface (rendering context) on a AutoHotkey Gui, when using multisampling (antialiasing)</div>
+<div class="syntax"><code>aglUseGuiMultisample( <span class="opt">[nGui=0, multisample=2, colorbits=24, alphabits=0, accumbits=32, depthbits=24, stencilbits=8]</span> )</code></div>
+<div><span class="param">nGui:</span> The number of Gui's, or 0 for the "default" Gui.</div>
+<div><span class="param">multisample:</span> The multi-level, the sample should be used.</div>
+<div><span class="param">colobits:</span> Number of color bits for the color buffer.</div>
+<div><span class="param">alphabits:</span> Number of AlphaBit for the color buffer.</div>
+<div><span class="param">accumbits:</span> Number of bits for the accumulation buffer.</div>
+<div><span class="param">depthbits:</span> Number of bits for the depth buffer.</div>
+<div><span class="param">stencilbits:</span> Number of bits for the stencil buffer.</div>
+<div><span class="param">Return value:</span> Returns a handle to the created rendering context that back, or 0 if an error has occurred.</div>
+<div class="description">
+	<b>aglUseGuiMultisample</b> erstellt einen Renderkontext auf einem AutoHotkey-Gui.</span> <b>aglUseGuiMultisample</b> creates a rendering context on an AutoHotkey Gui.
+	<br>For the parameter "multi-sample" should be used a multiple of 2 (2, 4, 8, 16, ...).
+	<br>Wenn die Initialisierung fehlschlägt, wird statdessen automatisch <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseGui">aglUseGui</a> verwendet.</span> If initialization fails, it will automatically statdessen <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseGui">aglUseGui</a> used.
+	<br>Mit <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/aglIsMultisampleSupported&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhhcos0Ov7f7fFaiBpdqONKY2POlGA">aglIsMultisampleSupported</a> kann im vorhinein geprüft werden, ob Multisampling, bzw das Multisample-Level verwendet werden kann.</span> With <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/aglIsMultisampleSupported&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhhcos0Ov7f7fFaiBpdqONKY2POlGA">aglIsMultisampleSupported</a> can be checked in advance whether multisampling, or the multi-level sample can be used.
+	<br>The rendering context should be created after the Gui by Gui, show, ... "angezeigt wurde, ansonten muss der Viewport neu gesetzt werden.</span> was shown, the viewport must contain solutions to be set again.
+	<br>This function enables the created rendering context, and makes it speak to the "current" rendering context.
+	<br>Once a rendering context is created, are the OpenGL functions.Ansonsten erzeugen die meisten OpenGL-Funktionen Fehler.</span> Otherwise, generate the most OpenGL functions errors.
+	<br>Für den Renderkontext wird Doppelbufferung verwendet, daher muss die Aktualiserung der Frames mit <b>SwapBuffers</b> (definiert in wgl.ahk) erfolgen.</span> For the rendering context Doppelbufferung used, so the frames must be updated with <b>SwapBuffers</b> (defined in wgl.ahk) take place.
+	<br>Der Gerätekontext für <b>SwapBuffers</b> , kann nach dem Aufruf dieser Funktion mit <b>wglGetCurrentDC</b> , oder überhaupt mittels <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglGetDC">aglGetDC</a> ermittelt werden.</span> The device context for <b>SwapBuffers</b> may, after calling this function with <b>wglGetCurrentDC,</b> or even by <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglGetDC">aglGetDC</a> be determined.
+	<br>Der Renderkontext der bei dieser Funktion zurückgegeben wird, kann mit <b>wglDeleteContext</b> gelöscht werden.</span> The rendering context of the function is returned in this, can be deleted with <b>wglDeleteContext.</b>
+	<br>Diese Funktion Initialisiert opengl32.dll und glu32.dll, wenn die beiden Bibliotheken nicht initialisiert wurden (siehe <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglInit">aglInit</a> ).</span> This function initializes opengl32.dll and GLU32.DLL if the two libraries have not been initialized (see <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglInit">aglInit</a> ).</span>
+</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglUseGuiControlMultisample"> aglUseGuiControlMultisample</h1>
+<div>Creates a drawing surface (rendering context) on a AutoHotkey GuiControl when using multisampling (antialiasing)</div>
+<div class="syntax"><code>aglUseGuiControlMultisample(vLabel <span class="opt">[, nGui=0, multisample=2, colorbits=24, alphabits=0, accumbits=32, depthbits=24, stencilbits=8]</span> )</code></div>
+<div><span class="param">vLabel:</span> The vLabel of GuiControl's.</div>
+<div><span class="param">nGui:</span> The number of Gui's, or 0 for the "default" Gui.</div>
+<div><span class="param">multisample:</span> The multi-level, the sample should be used.</div>
+<div><span class="param">colobits:</span> Number of color bits for the color buffer.</div>
+<div><span class="param">alphabits:</span> Number of AlphaBit for the color buffer.</div>
+<div><span class="param">accumbits:</span> Number of bits for the accumulation buffer.</div>
+<div><span class="param">depthbits:</span> Number of bits for the depth buffer.</div>
+<div><span class="param">stencilbits:</span> Number of bits for the stencil buffer.</div>
+<div><span class="param">Return value:</span> Returns a handle to the created rendering context that back, or 0 if an error has occurred.</div>
+<div class="description">
+	<b>aglUseGuiControlMultisample</b> erstellt einen Renderkontext auf einem AutoHotkey-Gui.</span> <b>aglUseGuiControlMultisample</b> creates a rendering context on an AutoHotkey Gui.
+	<br>For the parameter "multi-sample" should be used a multiple of 2 (2, 4, 8, 16, ...).
+	<br>Wenn die Initialisierung fehlschlägt, wird statdessen automatisch <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseGuiControl">aglUseGuiControl</a> verwendet.</span> If initialization fails, it will automatically statdessen <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseGuiControl">aglUseGuiControl</a> used.
+	<br>Mit <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/aglIsMultisampleSupported&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhhcos0Ov7f7fFaiBpdqONKY2POlGA">aglIsMultisampleSupported</a> kann im vorhinein geprüft werden, ob Multisampling, bzw das Multisample-Level verwendet werden kann.</span> With <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/aglIsMultisampleSupported&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhhcos0Ov7f7fFaiBpdqONKY2POlGA">aglIsMultisampleSupported</a> can be checked in advance whether multisampling, or the multi-level sample can be used.
+	<br>If possible, a "STATIC" Control can be used, such as "Gui, add text, ..."oder "Gui, add, pic, ...".</span> or "Gui, add, pic, ...".
+	<br>The rendering context should be created after the Gui by Gui, show, ... "angezeigt wurde, ansonten muss der Viewport neu gesetzt werden.</span> was shown, the viewport must contain solutions to be set again.
+	<br>This function enables the created rendering context, and makes it speak to the "current" rendering context.
+	<br>Once a rendering context is created, are the OpenGL functions.Ansonsten erzeugen die meisten OpenGL-Funktionen Fehler.</span> Otherwise, generate the most OpenGL functions errors.
+	<br>Für den Renderkontext wird Doppelbufferung verwendet, daher muss die Aktualiserung der Frames mit <b>SwapBuffers</b> (definiert in wgl.ahk) erfolgen.</span> For the rendering context Doppelbufferung used, so the frames must be updated with <b>SwapBuffers</b> (defined in wgl.ahk) take place.
+	<br>Der Gerätekontext für <b>SwapBuffers</b> , kann nach dem Aufruf dieser Funktion mit <b>wglGetCurrentDC</b> , oder überhaupt mittels <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglGetDC">aglGetDC</a> ermittelt werden.</span> The device context for <b>SwapBuffers</b> may, after calling this function with <b>wglGetCurrentDC,</b> or even by <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglGetDC">aglGetDC</a> be determined.
+	<br>Der Renderkontext der bei dieser Funktion zurückgegeben wird, kann mit <b>wglDeleteContext</b> gelöscht werden.</span> The rendering context of the function is returned in this, can be deleted with <b>wglDeleteContext.</b>
+	<br>Diese Funktion Initialisiert opengl32.dll und glu32.dll, wenn die beiden Bibliotheken nicht initialisiert wurden (siehe <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglInit">aglInit</a> ).</span> This function initializes opengl32.dll and GLU32.DLL if the two libraries have not been initialized (see <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglInit">aglInit</a> ).</span>
+</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglUseWindowMultisample"> aglUseWindowMultisample</h1>
+<div>Creates a drawing surface (rendering context) on windows, when using multisampling (antialiasing)</div>
+<div class="syntax"><code>aglUseWindowMultisample(hWnd <span class="opt">[, multisample=2, colorbits=24, alphabits=0, accumbits=32, depthbits=24, stencilbits=8]</span> )</code></div>
+<div><span class="param">hWnd:</span> The handle of the window's.</div>
+<div><span class="param">multisample:</span> The multi-level, the sample should be used.</div>
+<div><span class="param">colobits:</span> Number of color bits for the color buffer.</div>
+<div><span class="param">AlphaBit:</span> Number of AlphaBit for the color buffer.</div>
+<div><span class="param">accumbits:</span> Number of bits for the accumulation buffer.</div>
+<div><span class="param">depthbits:</span> Number of bits for the depth buffer.</div>
+<div><span class="param">stencilbits:</span> Number of bits for the stencil buffer.</div>
+<div><span class="param">Return value:</span> Returns a handle to the created rendering context that back, or 0 if an error has occurred.</div>
+<div class="description">
+	aglUseWindowMultisample creates a rendering context on an AutoHotkey Gui.
+	<br>For the parameter "multi-sample" should be used a multiple of 2 (2, 4, 8, 16, ...).
+	<br>If initialization fails, statdessen aglUseWindow used automatically.
+	<br>With aglIsMultisampleSupported can be checked in advance whether multisampling, or the multi-level sample can be used.
+	<br>This function enables the created rendering context, and makes it speak to the "current" rendering context.
+	<br>Once a rendering context is created, are the OpenGL functions.Ansonsten erzeugen die meisten OpenGL-Funktionen Fehler.</span> Otherwise, generate the most OpenGL functions errors.
+	<br>For the rendering context Doppelbufferung used, so the frames must be updated with SwapBuffers (defined in wgl.ahk) take place.
+	<br>The device context for SwapBuffers may, after calling this function with wglGetCurrentDC, or be determined by aglGetDC at all.
+	<br>The rendering context of the function is returned in this, can be deleted with wglDeleteContext.
+	<br>This function initializes opengl32.dll and GLU32.DLL if the two libraries have not been initialized (see aglInit).
+</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="GetDC"> aglGetDC</h1>
+<div>Returns the device context of a window</div>
+<div class="syntax"> aglGetDC (hWnd)</div>
+<div><span class="param">hWnd:</span> The handle of the window's.</div>
+<div><span class="param">Return value:</span> Specifies the device context handle to the back, or 0 if an error has occurred.</div>
+<div class="description">
+	aglGetDC determined the device context of a window.
+	<br>This function is a short form of DllCall ("GetDC", "ptr", hWnd, "ptr").
+</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="GetDC"> aglReleaseDC</h1>
+<div>Specifies the device context of a window's released</div>
+<div class="syntax"><code>aglReleaseDC(hDC)</code></div>
+<div><span class="param">hDC:</span> Device Context to be released.</div>
+<div><span class="param">Return value:</span> 1, or 0 if an error has occurred.</div>
+<div class="description">
+	<b>aglGetDC</b> ermittelt den Gerätekontext von einem Fenster.</span> <b>aglGetDC</b> determined the device context of a window.
+	<br>This function is a short form of DllCall ("ReleaseDC", "ptr", hDC, uint).</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglInitExt"> aglInitExt</h1>
+<div>Initializes the OpenGL extensions (extensions)</div>
+<div class="syntax"><code>aglInitExt()</code></div>
+<div><span class="param">Return value:</span> Returns 1 if the initialization was successful.</span> Otherwise 0.
+<div class="description">
+	<b>aglInitExt</b> initialisiert die OpenGL-Erweiterungen, die in glext.ahk definiert sind.</span> <b>aglInitExt</b> initializes the OpenGL extensions that are defined in glext.ahk.
+	<br>Wenn <b>aglInitExt</b> nicht verwendet wird, geben die Funktionen aus glext.ahk den errorlevel -4 zurück!</span> If not used is <b>aglInitExt,</b> functions return the error from the level -4 glext.ahk back!
+	<br>Für die Initialisierung der Extensions muss bereits ein Renderkontext existieren bzw. aktiv sein (siehe: <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseGui">aglUseGui</a> , <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseGui">aglUseGuiControl</a> und/oder <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseWindow">aglUseWindow</a> ).</span> For the initialization of the extensions must be a rendering context already exist and be active (see: <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseGui">aglUseGui</a> , <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseGui">aglUseGuiControl</a> and / or <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseWindow">aglUseWindow</a> ).</span>
+</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglIsExt"> aglIsExt</h1>
+<div>Checks if an OpenGL extension (extension) is available</div>
+<div class="syntax"><code>aglIsExt(extension)</code></div>
+<div><span class="param">extension:</span> The OpenGL extension that should be examined.</div>
+<div><span class="param">Return value:</span> Returns 1 if the extension is available.</span> Otherwise 0.</div>
+<div class="description">
+	<b>aglIsExt</b> prüft ob eine OpenGL-Erweiterung verfügbar ist.</span> <b>aglIsExt</b> checks if an OpenGL extension is available.
+	<br>Für die überprüfung muss bereits ein Renderkontext existieren bzw. aktiv sein (siehe: <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseGui">aglUseGui</a> , <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseGui">aglUseGuiControl</a> und/oder <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseWindow">aglUseWindow</a> ).</span> For the verification must be a rendering context already exist and be active (see: <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseGui">aglUseGui</a> , <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseGui">aglUseGuiControl</a> and / or <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseWindow">aglUseWindow</a> ).</span>
+</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglIsWglExt"> aglIsWglExt</h1>
+<div>Checks if a Windows OpenGL extension (extension) is available</div>
+<div class="syntax"><code>aglIsWglExt(extension)</code></div>
+<div><span class="param">extension:</span> The Windows OpenGL extension that should be examined.</div>
+<div><span class="param">Return value:</span> Returns 1 if the extension is available.</span> Otherwise 0.</div>
+<div class="description">
+	<b>aglIsWglExt</b> prüft ob eine Windows-OpenGL-Erweiterung verfügbar ist.</span> <b>aglIsWglExt</b> check if a Windows OpenGL extension is available.
+	<br>Für kompatiblität zu älteren OpenGL-Implementationen wird <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglIsExt">aglIsExt</a> ausgeführt, wenn die Erweiterung nicht gefunden wurde.</span> For compatibility with older OpenGL implementations will <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglIsExt">aglIsExt</a> executed when the extension was not found.
+	<br>Für die überprüfung muss bereits ein Renderkontext existieren bzw. aktiv sein (siehe: <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseGui">aglUseGui</a> , <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseGui">aglUseGuiControl</a> und/oder <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseWindow">aglUseWindow</a> ).</span> For the verification must be a rendering context already exist and be active (see: <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseGui">aglUseGui</a> , <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseGui">aglUseGuiControl</a> and / or <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglUseWindow">aglUseWindow</a> ).</span>
+</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglGetVersion"> aglGetVersion</h1>
+<div>Determines the version number of the OpenGL implementation</div>
+<div class="syntax"><code>aglGetVersion()</code></div>
+<div><span class="param">Return value:</span> Returns the version number of the OpenGL implementation in the format. &lt;minor&gt; &lt;major&gt; Back.</span> Or 0 if an error has occurred.</div>
+<div class="description">
+	<b>aglGetVersion</b> führt glGetString(GL_VERSION) aus und trimmt das Ergebniss auf das Format einer Fließkommazahl (float).</span> <b>aglGetVersion</b> out glGetString (GL_VERSION) and trim the result to the format of a floating-point number (float).
+	<br>If specified for the OpenGL implementation, a build or additional vendor information, this is not included in the return value.</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglGetInteger"> aglGetInteger</h1>
+<div>Determines a single integer value (similar glGetIntegerv)</div>
+<div class="syntax"><code>aglGetInteger(cap)</code></div>
+<div><span class="param">cap:</span> the parameters of which the value should be determined.</div>
+<div><span class="param">Return value:</span> Returns the value of the parameter.</div>
+<div class="description">
+	<b>aglGetInteger</b> ermittelt einen einzelnen Integerwert.</span> <b>aglGetInteger</b> encountered a single integer value.
+	<br>Im Gegensatz zu <b>glGetIntegerv</b> muss kein Puffer alloziiert werden.</span> Unlike <b>glGetIntegerv</b> must not be Allocated buffer.</span> Statdessen the return value is used.
+	<br>This feature can be used only when parameters do not return as a value.
+	<br>Für nähere Informationen zu den Parametern siehe <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://wiki.delphigl.com/index.php/glGet&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhj8dlRVdI6Vyd-lIt8J5KJvfx8hHQ">glGet (http://wiki.delphigl.com)</a> .</span> For more information about the parameters see <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://wiki.delphigl.com/index.php/glGet&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhj8dlRVdI6Vyd-lIt8J5KJvfx8hHQ">glGet (http://wiki.delphigl.com)</a> .</span>
+</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglGetFloat"> aglGetFloat</h1>
+<div>Identified a single 32-bit floating-point number (similar glGetFloatv)</div>
+<div class="syntax"><code>aglGetFloat(cap)</code></div>
+<div><span class="param">cap:</span> the parameters of which the value should be determined.</div>
+<div><span class="param">Return value:</span> Returns the value of the parameter.</div>
+<div class="description">
+	<b>aglGetFloat</b> ermittelt eine einzelne 32-Bit Fließkommazahl.</span> <b>aglGetFloat</b> identified a single 32-bit floating-point number.
+	<br>Im Gegensatz zu <b>glGetFloatv</b> muss kein Puffer alloziiert werden.</span> Unlike <b>glGetFloatv</b> must not be Allocated buffer.</span> Statdessen the return value is used.
+	<br>This feature can be used only when parameters do not return as a value.
+	<br>Für nähere Informationen zu den Parametern siehe <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://wiki.delphigl.com/index.php/glGet&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhj8dlRVdI6Vyd-lIt8J5KJvfx8hHQ">glGet (http://wiki.delphigl.com)</a> .</span> For more information about the parameters see <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://wiki.delphigl.com/index.php/glGet&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhj8dlRVdI6Vyd-lIt8J5KJvfx8hHQ">glGet (http://wiki.delphigl.com)</a> .</span>
+</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglGetDouble"> aglGetDouble</h1>
+<div>Identified a single 64-bit floating-point number (similar glGetDoublev)</div>
+<div class="syntax"><code>aglGetDouble(cap)</code></div>
+<div><span class="param">cap:</span> the parameters of which the value should be determined.</div>
+<div><span class="param">Return value:</span> Returns the value of the parameter.</div>
+<div class="description">
+	<b>aglGetDouble</b> ermittelt eine einzelne 64-Bit Fließkommazahl.</span> <b>aglGetDouble</b> identified a single 64-bit floating-point number.
+	<br>Im Gegensatz zu <b>glGetDoublev</b> muss kein Puffer alloziiert werden.</span> Unlike <b>glGetDoublev</b> must not be Allocated buffer.</span> Statdessen the return value is used.
+	<br>This feature can be used only when parameters do not return as a value.
+	<br>Für nähere Informationen zu den Parametern siehe <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://wiki.delphigl.com/index.php/glGet&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhj8dlRVdI6Vyd-lIt8J5KJvfx8hHQ">glGet (http://wiki.delphigl.com)</a> .</span> For more information about the parameters see <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://wiki.delphigl.com/index.php/glGet&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhj8dlRVdI6Vyd-lIt8J5KJvfx8hHQ">glGet (http://wiki.delphigl.com)</a> .</span>
+</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglGetBoolean"> aglGetBoolean</h1>
+<div>Determines an individual Booleanwert (similar glGetBooleanv)</div>
+<div class="syntax"><code>aglGetBoolean(cap)</code></div>
+<div><span class="param">cap:</span> the parameters of which the value should be determined.</div>
+<div><span class="param">Return value:</span> Returns the value of the parameter (1 = True 0 = False).</div>
+<div class="description">
+	<b>aglGetBoolean</b> einen einzelnen Booleanwert.</span> <b>aglGetBoolean</b> a single Booleanwert.
+	<br>Im Gegensatz zu <b>glGetBooleanv</b> muss kein Puffer alloziiert werden.</span> Unlike <b>glGetBooleanv</b> must not be Allocated buffer.</span> Statdessen the return value is used.
+	<br>This feature can be used only when parameters do not return as a value.
+	<br>Für nähere Informationen zu den Parametern siehe <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://wiki.delphigl.com/index.php/glGet&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhj8dlRVdI6Vyd-lIt8J5KJvfx8hHQ">glGet (http://wiki.delphigl.com)</a> .</span> For more information about the parameters see <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://wiki.delphigl.com/index.php/glGet&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhj8dlRVdI6Vyd-lIt8J5KJvfx8hHQ">glGet (http://wiki.delphigl.com)</a> .</span>
+</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglLoadTexImage1D"> aglLoadTexImage1D</h1>
+<div>Downloads a one-dimensional image of a file, for use as a texture</div>
+<div class="syntax"><code>aglLoadTexImage1D(target, filename <span class="opt">[, internalformat=GL_RGBA, minfilter=GL_LINEAR, magfilter=GL_LINEAR]</span> )</code></div>
+<div><span class="param">target:</span> The target texture (or GL_TEXTURE_1D GL_PROXY_TEXTURE_1D).</div>
+<div><span class="param">filename:</span> The path / name of the file to be used.</div>
+<div><span class="param">internalformat:</span> The format in which it is stored internally OpenGL (to GL_RGB, GL_RGBA, GL_ALPHA, GL_LUMINANCE, GL_INTENSITY, ...).</div>
+<div><span class="param">minfilter:</span> The reduction filter for the texture.</div>
+<div><span class="param">magfilter:</span> The magnification filter for the texture.</div>
+<div><span class="param">Return value:</span> Returns the texture number back, or 0 if an error has occurred.</div>
+<div class="description">
+	<b>aglLoadTexImage1D</b> lädt eine eindimensionale Grafik von einer Datei, zur Verwendung als Textur.</span> <b>aglLoadTexImage1D</b> charges a one-dimensional image of a file, for use as a texture.
+	<br>Supported formats include BMP, GIF, JPG, JPEG, PNG, uncompressed TGA, TIF, TIFF, if GDI + is available on the system.
+	<br>If GDI + is not available, only uncompressed BMP and TGA to load.
+	<br>If the OpenGL version 1.2 is smaller than the color of BGR to RGB using GDI + to be converted.
+	<br>If in this case, GDI + is not available, the function fails and returns 0 (no texture) back.
+	<br>If the height and width of the image is not a multiple of 2 (2, 4, 8, 16, 32, 64, ...), the GL version is less than 2.0, the extension GL_ARB_texture_non_power_of_two not available, or the graphic is larger GL_MAX_TEXTURE_SIZE as the graphics with GDI + on a compatible size is scaled.
+	<br>If in this case, GDI + is not available, GDI is used.
+	<br>If the color depth of the image is not 24 or 32 bit, it will be converted to 32 bit using GDI.
+	<br>GDI + is Windows XP (Service Pack 2) part of the operating system.Auf älteren Windows-Betriebssystemen kann die gdiplus.dll dem Script (in A_WorkingDir) beigelegt werden (siehe <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.microsoft.com/downloads/en/details.aspx%3FFamilyId%3D6A63AB9C-DF12-4D41-933C-BE590FEAA05A%26displaylang%3Den&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhgoIlulBzdtGQ3hi6_QdOTkt8_fNw">Platform SDK Redistributable: GDI+</a> )</span> On older Windows operating systems, the gdiplus.dll to the script (in A_WorkingDir) are included (see <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.microsoft.com/downloads/en/details.aspx%3FFamilyId%3D6A63AB9C-DF12-4D41-933C-BE590FEAA05A%26displaylang%3Den&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhgoIlulBzdtGQ3hi6_QdOTkt8_fNw">Platform SDK Redistributable: GDI +</a> )
+	<br>The texture is created automatically bound to the selected target texture.
+	<br>If image is greater than 1 pixel, only the top horizontal line with 1 pixel height is used.
+	<br>Texturen können kann mit <b>glBindTexture</b> und dem selben target gebunden werden, und mit <b>glDeleteTextures</b> oder <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglDeleteTextur">aglDeleteTextur</a> gelöscht werden.</span> Textures can be bound to the same target and with <b>glBindTexture,</b> and <b>glDeleteTextures</b> or <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglDeleteTextur">aglDeleteTextur</a> be deleted.</span>
+</div>
+
+<h1 id="aglLoadTexImage2D"> aglLoadTexImage2D</h1>
+<div>Downloads a two-dimensional image of a file, for use as a texture</div>
+<div class="syntax"><code>aglLoadTexImage2D(target, filename <span class="opt">[, internalformat=GL_RGBA, minfilter=GL_LINEAR, magfilter=GL_LINEAR]</span> )</code></div>
+<div><span class="param">target:</span> The texture target (GL_TEXTURE_2D, GL_PROXY_TEXTURE_2D, GL_TEXTURE_CUBE_MAP_POSITIVE_X, GL_CUBE_MAP_NEGATIVE_X, ...).</div>
+<div><span class="param">filename:</span> The path / name of the file to be used.</div>
+<div><span class="param">internalformat:</span> The format in which it is stored internally OpenGL (to GL_RGB, GL_RGBA, GL_ALPHA, GL_LUMINANCE, GL_INTENSITY, ...).</div>
+<div><span class="param">minfilter:</span> The reduction filter for the texture.</div>
+<div><span class="param">magfilter:</span> The magnification filter for the texture.</div>
+<div><span class="param">Return value:</span> Returns the texture number back, or 0 if an error has occurred.</div>
+<div class="description">
+	<b>aglLoadTexImage2D</b> lädt eine zweidimensionale Grafik von einer Datei, zur Verwendung als Textur.</span> <b>aglLoadTexImage2D</b> loads a two-dimensional image of a file, for use as a texture.
+	<br>Supported formats include BMP, GIF, JPG, JPEG, PNG, uncompressed TGA, TIF, TIFF, if GDI + is available on the system.
+	<br>If GDI + is not available, only uncompressed BMP and TGA to load.
+	<br>If the OpenGL version 1.2 is smaller than the color of BGR to RGB using GDI + to be converted.
+	<br>If in this case, GDI + is not available, the function fails and returns 0 (no texture) back.
+	<br>If the height and width of the image is not a multiple of 2 (2, 4, 8, 16, 32, 64, ...), the GL version is less than 2.0, the extension GL_ARB_texture_non_power_of_two not available, or the graphic is larger GL_MAX_TEXTURE_SIZE as the graphics with GDI + on a compatible size is scaled.
+	<br>If in this case, GDI + is not available, GDI is used.
+	<br>If the color depth of the image is not 24 or 32 bit, it will be converted to 32 bit using GDI.
+	<br>GDI + is Windows XP (Service Pack 2) part of the operating system.Auf älteren Windows-Betriebssystemen kann die gdiplus.dll dem Script (in A_WorkingDir) beigelegt werden (siehe <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.microsoft.com/downloads/en/details.aspx%3FFamilyId%3D6A63AB9C-DF12-4D41-933C-BE590FEAA05A%26displaylang%3Den&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhgoIlulBzdtGQ3hi6_QdOTkt8_fNw">Platform SDK Redistributable: GDI+</a> )</span> On older Windows operating systems, the gdiplus.dll to the script (in A_WorkingDir) are included (see <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.microsoft.com/downloads/en/details.aspx%3FFamilyId%3D6A63AB9C-DF12-4D41-933C-BE590FEAA05A%26displaylang%3Den&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhgoIlulBzdtGQ3hi6_QdOTkt8_fNw">Platform SDK Redistributable: GDI +</a> )
+	<br>The texture is created automatically bound to the selected target texture.
+	<br>Texturen können mit <b>glBindTexture</b> und dem selben target gebunden werden, und mit <b>glDeleteTextures</b> oder <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglDeleteTextur">aglDeleteTextur</a> gelöscht werden.</span> Textures can be bound to the same target and with <b>glBindTexture,</b> and <b>glDeleteTextures</b> or <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglDeleteTextur">aglDeleteTextur</a> be deleted.</span>
+</div>
+
+<h1 id="aglLoadMipmaps1D"> aglLoadMipmaps1D</h1>
+<div>Downloads a one-dimensional image of a file, for use as mipmaps</div>
+<div class="syntax"><code>aglLoadMipmaps1D(target, filename <span class="opt">[, internalformat=GL_RGBA, minfilter=GL_LINEAR, magfilter=GL_LINEAR]</span> )</code></div>
+<div><span class="param">target:</span> The target texture (or GL_TEXTURE_1D GL_PROXY_TEXTURE_1D).</div>
+<div><span class="param">filename:</span> The path / name of the file to be used.</div>
+<div><span class="param">internalformat:</span> The format in which it is stored internally OpenGL (to GL_RGB, GL_RGBA, GL_ALPHA, GL_LUMINANCE, GL_INTENSITY, ...).</div>
+<div><span class="param">minfilter:</span> The reduction filters for the mipmap.</div>
+<div><span class="param">magfilter:</span> The magnification filter for the mipmap.</div>
+<div><span class="param">Return value:</span> Returns the texture number back, or 0 if an error has occurred.</div>
+<div class="description">
+	<b>aglLoadMipmaps1D</b> lädt eine eindimensionale Grafik von einer Datei, zur Verwendung als Mipmaps.</span> <b>aglLoadMipmaps1D</b> charges a one-dimensional image of a file, for use as mipmaps.
+	<br>Supported formats include BMP, GIF, JPG, JPEG, PNG, uncompressed TGA, TIF, TIFF, if GDI + is available on the system.
+	<br>If GDI + is not available, only uncompressed BMP and TGA to load.
+	<br>If the OpenGL version 1.2 is smaller than the color of BGR to RGB using GDI + to be converted.
+	<br>If in this case, GDI + is not available, the function fails and returns 0 (no texture) back.
+	<br>With mipmaps, the level and / or width of the graphics are not a multiple of 2.
+	<br>If the color depth of the image is not 24 or 32 bit, it will be converted to 32 bit using GDI.
+	<br>GDI + is Windows XP (Service Pack 2) part of the operating system.Auf älteren Windows-Betriebssystemen kann die gdiplus.dll dem Script (in A_WorkingDir) beigelegt werden (siehe <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.microsoft.com/downloads/en/details.aspx%3FFamilyId%3D6A63AB9C-DF12-4D41-933C-BE590FEAA05A%26displaylang%3Den&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhgoIlulBzdtGQ3hi6_QdOTkt8_fNw">Platform SDK Redistributable: GDI+</a> )</span> On older Windows operating systems, the gdiplus.dll to the script (in A_WorkingDir) are included (see <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.microsoft.com/downloads/en/details.aspx%3FFamilyId%3D6A63AB9C-DF12-4D41-933C-BE590FEAA05A%26displaylang%3Den&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhgoIlulBzdtGQ3hi6_QdOTkt8_fNw">Platform SDK Redistributable: GDI +</a> )
+	<br>The texture is created automatically bound to the selected target texture.
+	<br>If image is greater than 1 pixel, only the top horizontal line with 1 pixel height is used.
+	<br>Texturen (oder Mipmaps) können mit <b>glBindTexture</b> und dem selben target gebunden werden, und mit <b>glDeleteTextures</b> oder <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglDeleteTextur">aglDeleteTextur</a> gelöscht werden.</span> Textures (mipmaps or) the same target can be bound and with <b>glBindTexture,</b> and <b>glDeleteTextures</b> or <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglDeleteTextur">aglDeleteTextur</a> be deleted.</span>
+</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglLoadMipmaps2D"> aglLoadMipmaps2D</h1>
+<div>Downloads a two-dimensional image of a file, for use as mipmaps</div>
+<div class="syntax"><code>aglLoadMipmaps2D(target, filename <span class="opt">[, components=4, minfilter=GL_LINEAR, magfilter=GL_LINEAR]</span> )</code></div>
+<div><span class="param">target:</span> The target texture (or GL_TEXTURE_1D GL_PROXY_TEXTURE_1D).</div>
+<div><span class="param">filename:</span> The path / name of the file to be used.</div>
+<div><span class="param">components:</span> the number of color components for which OpenGL is to be stored internally (1 = R 2 = RG, 3 = RGB, 4 = RGBA).</div>
+<div><span class="param">minfilter:</span> The reduction filters for the mipmap.</div>
+<div><span class="param">magfilter:</span> The magnification filter for the mipmap.</div>
+<div><span class="param">Return value:</span> Returns the texture number back, or 0 if an error has occurred.</div>
+<div class="description">
+	<b>aglLoadMipmaps2D</b> lädt eine eindimensionale Grafik von einer Datei, zur Verwendung als Mipmaps.</span> <b>aglLoadMipmaps2D</b> charges a one-dimensional image of a file, for use as mipmaps.
+	<br>Supported formats include BMP, GIF, JPG, JPEG, PNG, uncompressed TGA, TIF, TIFF, if GDI + is available on the system.
+	<br>If GDI + is not available, only uncompressed BMP and TGA to load.
+	<br>If the OpenGL version 1.2 is smaller than the color of BGR to RGB using GDI + to be converted.
+	<br>If in this case, GDI + is not available, the function fails and returns 0 (no texture) back.
+	<br>With mipmaps, the level and / or width of the graphics are not a multiple of 2.
+	<br>If the color depth of the image is not 24 or 32 bit, it will be converted to 32 bit using GDI.
+	<br>GDI + is Windows XP (Service Pack 2) part of the operating system.Auf älteren Windows-Betriebssystemen kann die gdiplus.dll dem Script (in A_WorkingDir) beigelegt werden (siehe <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.microsoft.com/downloads/en/details.aspx%3FFamilyId%3D6A63AB9C-DF12-4D41-933C-BE590FEAA05A%26displaylang%3Den&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhgoIlulBzdtGQ3hi6_QdOTkt8_fNw">Platform SDK Redistributable: GDI+</a> )</span> On older Windows operating systems, the gdiplus.dll to the script (in A_WorkingDir) are included (see <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.microsoft.com/downloads/en/details.aspx%3FFamilyId%3D6A63AB9C-DF12-4D41-933C-BE590FEAA05A%26displaylang%3Den&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhgoIlulBzdtGQ3hi6_QdOTkt8_fNw">Platform SDK Redistributable: GDI +</a> )
+	<br>The texture is created automatically bound to the selected target texture.
+	<br>Texturen (oder Mipmaps) können mit <b>glBindTexture</b> und dem selben target gebunden werden, und mit <b>glDeleteTextures</b> oder <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglDeleteTextur">aglDeleteTextur</a> gelöscht werden.</span> Textures (mipmaps or) the same target can be bound and with <b>glBindTexture,</b> and <b>glDeleteTextures</b> or <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglDeleteTextur">aglDeleteTextur</a> be deleted.</span>
+</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglGenTexture"> aglGenTexture</h1>
+<div>Generates a single texture</div>
+<div class="syntax"><code>aglGenTexture()</code></div>
+<div><span class="param">Return value:</span> Returns the texture number back, or 0 if an error has occurred.</div>
+<div class="description">
+	<b>aglGenTexture</b> generiert eine einzelne Textur, die mit <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglRenderToTexture">aglRenderToTexture</a> oder ähnlichem verwendet werden kann.</span> <b>aglGenTexture</b> generates a single texture, which <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglRenderToTexture">aglRenderToTexture</a> can be used, or the like.
+	<br>Diese Funktion ist das selbe wie <b>glGenTextures</b> .</span> This function is the same as <b>glGenTextures.</b></span> However, it is the return value instead of the buffer used and will always generate only one texture.
+	<br>Eine Textur kann mit <b>glDeleteTextures</b> oder <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglDeleteTexture">aglDeleteTexture</a> gelöscht werden.</span> A texture can be or <b>glDeleteTextures</b> <a href="http://translate.googleusercontent.com/translate_c?hl=en&ie=UTF-8&sl=de&tl=en&u=http://www.autohotkey.net/~Bentschi/wrapper/agl.html&prev=_t&rurl=translate.google.com&twu=1&usg=ALkJrhjmQrtrAK0Y-YuFv2pj5XSrqlWMUA#aglDeleteTexture">aglDeleteTexture</a> be deleted.</span>
+</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglDeleteTexture"> aglDeleteTexture</h1>
+<div>Deletes a single texture</div>
+<div class="syntax"><code>aglDeleteTexture(texture)</code></div>
+<div><span class="param">texture:</span> The number of texture that is to be deleted.</div>
+<div><span class="param">Return value:</span> Returns 1 or 0 if an error has occurred.</div>
+<div class="description">
+	<b>aglDeleteTexture</b> löscht eine einzelne Textur.</span> <b>aglDeleteTexture</b> destroy a single texture.
+	<br>Diese Funktion ist das selbe wie <b>glDeleteTextures</b> .</span> This function is the same as <b>glDeleteTextures.</b></span> However, it is the return value instead of the buffer used, and can be only one texture deleted.</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglRenderToTexture"> aglRenderToTexture</h1>
+<div>Renders the current scene to a texture</div>
+<div class="syntax"><code>aglRenderToTexture(texture <span class="opt">[, x=0, y=0, width=0, height=0, internalformat=GL_RGBA, minfilter=GL_LINEAR, magfilter=GL_LINEAR]</span> )</code></div>
+<div><span class="param">texture:</span> The number of texture should be rendered in the.</div>
+<div><span class="param">x:</span> The X coordinate of a rectangle to the color buffer to be used (in pixels).</div>
+<div><span class="param">y:</span> The Y coordinate of a rectangle to the color buffer to be used (in pixels).</div>
+<div><span class="param">width:</span> The width of a rectangle to the color buffer to be used (in pixels).</div>
+<div><span class="param">height:</span> The height of a rectangle to the color buffer to be used (in pixels).</div>
+<div><span class="param">internalformat:</span> The format in which it is stored internally OpenGL (to GL_RGB, GL_RGBA, GL_ALPHA, GL_LUMINANCE, GL_INTENSITY, ...).</div>
+<div><span class="param">minfilter:</span> The reduction filters for the mipmap.</div>
+<div><span class="param">magfilter:</span> The magnification filter for the mipmap.</div>
+<div><span class="param">Return value:</span> Returns 1 or 0 if an error has occurred.</div>
+<div class="description">
+	aglRenderToTexture copies the color values ​​from the color buffer to a texture.
+	<br>For the parameter texture, a texture can be used, which was created with aglGenTexture.
+	<br>If the width or height parameter is 0, the size of the viewport is used.
+	<br>The texture in the render is automatically bound to the target GL_TEXTURE_2D.
+	<br>If the GL version is less than 2.0, the extension is not available GL_ARB_texture_non_power_of_two or the graphic is larger than GL_MAX_TEXTURE_SIZE, graphics, the gluScaleImage to a compatible scale with size.</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglSetLoadWarnings"> aglSetLoadWarnings</h1>
+<div>Sets the stage for warnings when loading models and materials</div>
+<div class="syntax"> aglSetLoadWarnings (warnings)</div>
+<div><span class="param">warnings:</span> The level of warning (-1 = Warnings are ingoriert, 0 = When warning Laden, the aborted, 1 = When warning is loading Canceled, and display a message).</div>
+<div><span class="param">Return value:</span> Returns 1 or 0 if an error has occurred.</div>
+<div class="description">
+	aglSetLoadWarnings sets the stage for warnings when loading models and materials.
+	<br>The initial value is 0 for aglSetLoadWarnings, warnings, loading is aborted at where.</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglLoadModel"> aglLoadModel</h1>
+<div>Loads a model from a file</div>
+<div class="syntax"> aglLoadModel (filename [, model = "", load = 1 materials, textures load = 1])</div>
+<div><span class="param">filename:</span> The path / name of the file to be used.</div>
+<div><span class="param">model:</span> The model that should be loaded from the file, or "" for all models.</div>
+<div><span class="param">load material:</span> figure will be charged if materials (0 = no, 1 = yes).</div>
+<div><span class="param">load textures:</span> Details will be charged if textures (0 = no, 1 = yes).</div>
+<div><span class="param">Return value:</span> Specifies the number of the model back, or 0 if an error has occurred (see aglSetLoadWarnings).</div>
+<div class="description">
+	aglLoadModel loads a model from a file.
+	<br>Currently only the Wavefront OBJ file format is supported.
+	<br>If load materials 0 are no textures loaded, the texture coordinates already, however.
+	<br>If textures load is greater than 1 is the number of parameters load textures textures, instead of using glTexCoord4f glMultiTexCoord4f.
+	<br>The model is stored internally in a display list, the return value is not the number of the display list!
+	<br>The loaded model can be drawn with aglCallModel, and deleted with aglDeleteModel.</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglCallModel"> aglCallModel</h1>
+<div>Draw a Model</div>
+<div class="syntax"> aglCallModel (model)</div>
+<div><span class="param">model:</span> the number of models that should be drawn.</div>
+<div><span class="param">Return value:</span> Indicates number of display list for the model back, or 0 if an error has occurred.</div>
+<div class="description">
+	aglCallModel features a model who was charged with aglLoadModel.
+	<br>To draw the current matrix, and used the material.Es sei denn das Model hat sein eigenes Material.</span> Unless the model has its own material.
+	<br>In this case, the material of the model is used, but not being reset.
+	<br>the material will need to reset the drawing glPushAttrib (before) and glPopAttrib (after) This will be called.</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglDeleteModel"> aglDeleteModel</h1>
+<div>Deletes a Model</div>
+<div class="syntax"> aglDeleteModel (model)</div>
+<div><span class="param">model:</span> the number of models that should be deleted.
+<div><span class="param">Return value:</span> Returns 1 or 0 if an error has occurred.
+<div class="description">
+	aglDeleteModel deletes a model who was charged with aglLoadModel.
+</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglLoadMaterial"> aglLoadMaterial</h1>
+<div>Loads a material from a file</div>
+<div class="syntax"> aglLoadMaterial (filename, format [, textures load = 1])</div>
+<div><span class="param">filename:</span> The path / name of the file to be used.</div>
+<div><span class="param">mat:</span> The material should be loaded from the file.</div>
+<div><span class="param">load textures:</span> Details will be charged if textures (0 = no, 1 = yes).</div>
+<div><span class="param">Return value:</span> Specifies the number of the material back, or 0 if an error has occurred (see aglSetLoadWarnings).</div>
+<div class="description">
+	aglLoadMaterial material invites from a file.
+	<br>Currently, only the wavefront-MAT supported file format.
+	<br>The material is stored internally in a display list, the return value is not the number of the display list!
+	<br>The loaded material can aglCallMaterial drawn with, and deleted with aglDeleteMaterial.</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglCallMaterial"> aglCallMaterial</h1>
+<div>A material used for drawing</div>
+<div class="syntax"> aglCallMaterial (material)</div>
+<div><span class="param">material:</span> The number of the material to be drawn.</div>
+<div><span class="param">Return value:</span> Indicates number of display list for the material back, or 0 if an error has occurred.</div>
+<div class="description">
+	aglCallMaterial paints a material that was loaded with aglLoadMaterial.
+	<br>the material will need to reset the drawing glPushAttrib (before) and glPopAttrib (after) This will be called.</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglDeleteMaterial"> aglDeleteMaterial</h1>
+<div>Deletes a material</div>
+<div class="syntax"> aglDeleteMaterial (material)</div>
+<div><span class="param">material:</span> The number of the material to be deleted.</div>
+<div><span class="param">Return value:</span> Returns 1 or 0 if an error has occurred.</div>
+<div class="description">
+	aglDeleteMaterial deletes a material that was loaded with aglLoadMaterial.</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglBlur"> aglBlur</h1>
+<div>Blurs the content of the color buffer</div>
+<div class="syntax"> aglBlur ([level = 1])</div>
+<div><span class="param">level:</span> The Blurlevel.</div>
+<div><span class="param">Return value:</span> Returns 1 or 0 if an error has occurred.</div>
+<div class="description">
+	aglBlur color buffer records the contents of the tender.
+	<br>For this operation, the size of the viewport used, the color buffer to half-size scale and scaled back, with the use of gluScaleImage.
+	<br>This feature is not very performant, especially when level is set higher.</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglLoadProgram"> aglLoadProgram</h1>
+<div>Loading shaders from files or strings</div>
+<div class="syntax"> aglLoadProgram (shader [, byref log = ""])</div>
+<div><span class="param">shader:</span> A string containing the shader or a path to a file.<div><span class="param">log:</span> Specifies the back log of compiling and linking the results.</div>
+<div><span class="param">Return value:</span> Specifies handle to the program object that back, or 0 if an error has occurred.</div>
+<div class="description">
+	aglLoadProgram invites one or more shader from a string or a file.
+	<br>This feature will only GLSL (OpenGL Shading Language) shader.
+	<br>Since GLSL OpenGL 1.5 was introduced first, functions are most used for this glext.ahk defined in (see also: aglInitExt).
+	<br>The handle that is returned may glUseProgram used, and deleted with glDeleteProgram.
+	<br>For the parameters passed to the shaders, and ... is glUniform glGetUniformLocation used.
+	<br>If the parameter is "shader" is an existing file, it tries to read.
+	<br>Otherwise, the contents of this parameter is used.
+	<br>This function searches in the parameter "shader" (or file) to AGL_VERTEX_SHADER #, # # AGL_FRAGMENT_SHADER and AGL_GEOMETRY_SHADER.
+	<br>If one of the gennanten flag is found, the subsequent text is interpreted as the respective shader until another flag is set, or reached the end of the string or file.
+	<br>The basic structure of the content looks therefore as follows from ...</div>
+<div class="code"> # AGL_VERTEX_SHADER / / create a new Vertex Shader
+	<br>
+	<br>void main (void)
+	<br>{
+	<br>/ / ...
+	<br>}
+	<br>
+	<br># AGL_FRAGMENT_SHADER / / creates a new fragment shader
+	<br>
+	<br>void main (void)
+	<br>{
+	<br>/ / ...
+	<br>}
+	<br></div>
+<div class="description">
+	It is also possible to define multiple shaders of the same type (for example, two fragment shaders).
+	<br>The log that is returned in the parameter "log" contains the information how many shaders were found (AutoHotkey implementation) and also provides more information to the driver.
+	<br>The log might look like as follows ...</div><img src="agl.ahk (AutoHotkey - OpenGL library)_files/shader_success.png"><img src="agl.ahk (AutoHotkey - OpenGL library)_files/shader_faild.png"><div class="description">
+	A very good tutorial and reference book on GLSL is under GLSL Tutorial - (DE) to find DGL Wiki.</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglShaderSource"> aglShaderSource</h1>
+<div>Sets the source code for a shader object</div>
+<div class="syntax"> aglShaderSource (shader, source)</div>
+<div><span class="param">shader:</span> Shader The Object for which the source code to be set.
+<div><span class="param">source:</span> The GLSL source code.</div>
+<div><span class="param">Return value:</span> Returns 1 or 0 if an error has occurred.
+<div class="description">
+	aglShaderSource Source code is the GLSL shader for an object.
+	<br>This function is a simplified version of glShaderSource.
+	<br>Unlike glShaderSource, it is possible a source code for a shader object to set.
+	<br>But the source code can be directly specified in the parameter "source", and must therefore not need to convert ANSI, written in a buffer and entered into an array.
+	<br>If more than one source code is used, but ultimately only the program object is needed, can also be used aglLoadProgram.</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglGetShaderInfoLog"> aglGetShaderInfoLog</h1>
+<div>Returns the Infolog the driver for a shader object</div>
+<div class="syntax"> aglGetShaderInfoLog (object)</div>
+<div><span class="param">shader:</span> Shader The Object for which the Infolog to be read.</div>
+<div><span class="param">Return value:</span> Returns Infolog for shader returns the object, or an empty string ("") if the log is missing or an error has occurred.
+<div class="description">
+	aglGetShaderInfoLog driver determines the Infolog of a shader object
+	<br>This function is a simplified version of glGetShaderInfoLog.
+	<br>Unlike glGetShaderInfoLog, the size must not be identified and a buffer to be set.
+	<br>This function returns the Infolog simply as a return value (string).</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<h1 id="aglGetProgramInfoLog"> aglGetProgramInfoLog</h1>
+<div>Returns the Infolog the driver for a program object</div>
+<div class="syntax"> aglGetProgramInfoLog (program)</div>
+<div><span class="param">program:</span> The program object for which the Infolog to be read.</div>
+<div><span class="param">Return value:</span> Returns Infolog for the Program returns the object, or an empty string ("") if the log is missing or an error has occurred.
+<div class="description">
+	aglGetProgramInfoLog driver determines the Infolog of a Program Object
+	<br>This function is a simplified version of glGetProgramInfoLog.
+	<br>Unlike glGetProgramInfoLog, the size must not be identified and a buffer to be set.
+	<br>This function returns the Infolog simply as a return value (string).</div>
+<div class="top"><a href="#top">&uArr; Home</a></div>
+
+<div class="bottom"> last modified: 11/03/2011</div>
+
+</body>
+</html>

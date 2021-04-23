@@ -1,0 +1,128 @@
+/**
+ * Joom!Fish - Multi Lingual extention and translation manager for Joomla!
+ * Copyright (C) 2003 - 2010, Think Network GmbH, Munich
+ *
+ * All rights reserved.  The Joom!Fish project is a set of extentions for
+ * the content management system Joomla!. It enables Joomla!
+ * to manage multi lingual sites especially in all dynamic information
+ * which are stored in the database.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,USA.
+ *
+ * The "GNU General Public License" (GPL) is available at
+ * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * -----------------------------------------------------------------------------
+ * $Id: mod_jflanguageselection.css 1462 2010-03-16 15:47:13Z akede $
+ * @package joomfish
+ * @subpackage mod_jflanguageselection
+ *
+*/
+
+/* Joom!Fish CSS definition used by the module or component. You might overwrite it in your
+ * template and remove this. Within your module configuration you can switch off the loading of the css*/
+
+
+#jflanguageselection
+{
+    float: right;
+	margin: 15px 0px 10px 5px;    
+}
+
+/* language lists with UL (names & images) */
+#jflanguageselection ul.jflanguageselection
+{
+	list-style: none;
+	padding: 0;
+	margin-top: 3px;
+	font-weight: normal;
+}
+
+#jflanguageselection ul.jflanguageselection li
+{
+	background-image: none;
+	padding-left: 0px;
+	padding-right: 0px;
+	float: left;
+	margin: 1px 1px 1px 1px;
+	white-space: nowrap;
+	border: none;
+	font-size: 0.9em;
+}
+
+#jflanguageselection ul.jflanguageselection li#active_language
+{
+ 	font-weight: bold;
+	font-size: 1.0em;
+}
+
+#jflanguageselection ul.jflanguageselection li a
+{
+	display: block;
+}
+
+#jflanguageselection ul.jflanguageselection img
+{
+	border: none;
+}
+
+div#jflanguageselection img.langImg {
+	float: left;
+	border: none;
+	margin-top: 3px;
+}
+div#jflanguageselection li img.langImg {
+	float: left;
+	border: none;
+	margin: 0px 1px 0px 1px;
+}
+
+/** Styles for the drop down list */
+
+#jflanguageselection select.jflanguageselection
+{
+	border: 1px solid #cccccc;
+}
+
+#jflanguageselection label.jflanguageselection
+{
+	position:absolute;
+	left:-1000px;
+}
+
+/** Controls Raw Display of Images **/
+
+.rawimages {
+	text-align: center;
+	margin-top: 3px;
+}
+.rawimages img {
+	border: none;
+	margin:2px;
+}
+.rawimages span#active_language img
+{
+	margin:2px;
+	border: none;
+}
+
+div#jflanguageselection img.langImg{ float: left; border: none; margin-top: 3px; }
+div#jflanguageselection li img.langImg{ float: left; border: none; margin: 1px 3px 0px 0px; }
+
+#jflanguageselection .opaque{
+	filter:alpha(opacity=30);
+}
+#jflanguageselection option.opaque{
+	color:graytext;
+}

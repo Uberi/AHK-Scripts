@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Welcome</title>
+	<style type="text/css">
+		body {
+			margin:0px;
+			padding:0px;
+			font-family:Tahoma;
+			font-size:10pt;
+			background-color:#e0e0e0;
+			background-image:url(img/sparrow-bg.gif);
+			background-position:bottom right;
+			background-repeat:no-repeat;
+			background-attachment:fixed;
+			}
+		a:link, a:active, a:visited {
+			text-decoration:none;
+			color: #0000ff;
+			}
+		a:hover {
+			text-decoration:underline;
+			}
+		p {margin-left: 20px; margin-right:20px}
+		ul li {margin-left: 20px;}
+	</style>
+</head>
+
+<body>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td width=140px><img src="img/ahk_sparrow.png" width="140" height="140" alt="" border="0"></td>
+		<td style="background-image: url(img/ahk_stick.png); background-repeat: repeat-x;">
+			<table width="600px" border="0" cellpadding="0" cellspacing="0">
+				<tr><td><div style="font-family:Comic Sans MS;font-weight:900;font-size:28pt;">Sparrow WebServer</div></td></tr>
+				<tr><td><div align="center" style="font-family:Comic Sans MS;font-size:12pt;">powered by AutoHotkey</div></td></tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<div Style="margin:12px;">
+<h3>Congratulations!</h3>
+<p>It works! If you're watching this page, it just means, that you got Sparrow WebServer <?ahk echo(%Sparrow[ServerVersion]%) ?> just working.</p>
+<h3>Next thing to do?</h3>
+<p>The next step will be to adapt sparrow to your needs. Train the lil birdy by setting up your environment and Your preferences.</p>
+<p>You can also view some ready setup testpages. Clicking on the [src] will show the Source file of each page. By means it will show the content of the hkml file which produces the webpage you can see.
+<ul>
+	<li>[<a href="viewsrc.hkml?t=status">src</a>] <a href="status.hkml">Server Status Page</a></li>
+	<li>[<a href="viewsrc.hkml?t=404spec">src</a>] <a href="404spec.hkml">404 Test (With specified homepage)</a></li>
+	<li>[<a href="viewsrc.hkml?t=404unspec">src</a>] <a href="404unspec.hkml">404 Test (With specified but not existent 404 error page)</a></li>
+	<li>[src] <a href="404.hkml">Current 404 - Not found</a></li>
+	<li>[<a href="viewsrc.hkml?t=wrongCommand">src</a>] <a href="wrongCommand.hkml">Script Error Page (wrong/not existent command)</a></li>
+	<li>[<a href="viewsrc.hkml?t=wrongRun">src</a>] <a href="wrongRun.hkml">Script Error Page (wrong run parameter)</a></li>
+	<li>[<a href="viewsrc.hkml?t=form">src</a>] <a href="form.hkml">FORM-Test Page</a></li>
+	<li>[<a href="viewsrc.hkml?t=viewsrc">[src]-SourcePage</a>]</li>
+</ul>
+<h3>Documentation</h3>
+<p>Now that You've had a glimpse of the usability, read the <a href="doc.hkml">Documentation</a>! It includes: </p>
+<ul>
+	<li>Why this sparrow thingy?</li>
+	<li>What is H.K.M.L.?</li>
+	<li>How does HKML work?</li>
+	<li>Are there extra commands?</li>
+	<li>What wont work with Sparrow?</li>
+	<li>What will be next / Whats on the todo?</li>
+	<li>Can is use this for my project XY?</li>
+	<li>I want to have a specific feature!</li>
+	<li>How can i help?</li>
+</ul>
+</p>
+<p>Have fun!<br>dR / Sep 26 2008</p></div>
+<hr>
+<div align="center"><?ahk echo(%Sparrow[ServerSig]%) ?></div><br />
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Status</title>
+	<style type="text/css">
+		body {
+			margin:0px;
+			padding:0px;
+			font-family:Tahoma;
+			font-size:10pt;
+			background-color:#e0e0e0;
+			background-image:url(img/sparrow-bg.gif);
+			background-position:bottom right;
+			background-repeat:no-repeat;
+			background-attachment:fixed;
+		}
+		a:link, a:active, a:visited {
+			text-decoration:none;
+		}
+		a:hover {
+			text-decoration:underline;
+		}
+		.block {
+			margin-left: 20px; 
+			margin-right:20px; 
+			border: 1px; 
+			border-style: solid; 
+			border-color: gray; 
+			padding:10px;
+			background-color: #ffffff;
+		}
+		ul li {
+			margin-left: 20px;
+		}
+		.comment {
+			color:#008000;
+			font-family: Courier New;
+			font-size:10pt
+		}
+	</style>
+</head>
+
+<body>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td width=140px><img src="img/ahk_sparrow.png" width="140" height="140" alt="" border="0"></td>
+		<td style="background-image: url(img/ahk_stick.png); background-repeat: repeat-x;">
+			<table width="600px" border="0" cellpadding="0" cellspacing="0">
+				<tr><td><div style="font-family:Comic Sans MS;font-weight:900;font-size:28pt;">Sparrow WebServer</div></td></tr>
+				<tr><td><div align="center" style="font-family:Comic Sans MS;font-size:12pt;">powered by AutoHotkey</div></td></tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<div Style="margin:12px;">
+<div class="block">
+<h3>Why this Sparrow thingy?</h3>
+<p>Well, sparrow is a project which never would have happened if several individuals in AHK's forum community weren't there with their great expirience and enthusiasm by showing others all the possibilities of AHK in combination with knowledge.</p>
+<h4>About Usage</h4>
+<p>Sparrow might either be used to toy around with AHK and having it generate homepages. It might come in handy for all those who want to use a homewebserver to control windows applications. It can be used as a frontend for remote control applications, a lightweight webserver for CDROMs/DVDs ... and much more</p>
+<p>The server has been tested with AHK 1.047.05 / 06 on windows XP sp2 and Windows 2k sp4. When running with 1 GHz makes the server response but rather slow. running with 2 Ghz Athlon works quite easy with fast response times.</p>
+<p>This version includes Hotkeys for testing purposes: CTRL+F12 restarts the server, ALT+F12 Shuts it down and CTRL+F11 toggles that annoying header debug mode on off. It features a simple tray icon menu. By default the server binds to 0.0.0.0:81 that is ALL available IP adresses and to Port 81 which is NOT standard (but allows using multiple webservers at the same time, such as XAMPP etc). To access your webserver, simply type lh in the address bar from the brwoser of your choice which expands to http://localhost:81/index.hkml an included abbrevation.</p>
+<h4>Files</h4>
+<p>
+<ul>
+<li>\img<br>
+the pictures for the error messages
+</li>
+<li>\www<br>
+standard document rootdir
+</li>
+<li>sparrow.core.ahk<br>
+The webservers core file - much of this file is subject to change
+</li>
+<li>sparrow.settings.ahk<br>
+The webservers core settings file - all settings take place in here
+</li>
+<li>sparrow.helper.ahk<br>
+The webservers core include file - also gets included into each spawned scriplet from HKML
+</li>
+<li>hkml.includeMe.ahk<br>
+The additional syntax for HKML Scriplets
+</li>
+<li>StdOutToVar.ahk<br>
+a great script from sean used as include file in www\status.hkml
+</li>
+<li>mime.lst<br>
+MimeTypes per ext - dont bother
+</li>
+<li>sparrow.ico<br>
+the nice lil icon you see in ur tray
+</li>
+</ul>
+</p>
+<h4>Security</h4>
+<p>At current state of development (that is Alpha Release 0.1.3) Sparrow shows that AHK can be used as an instance to server Winsocks (namely being a webserver) but also kick off scripts and having their content returned to requested webserver. Many features one would expect of a real webserver are missing. So using it to a public accessible audience is not the wisest thing to do at the moment. I checked against a Path traversal Hack, which didnt work, but this has nothing to say.</p>
+<h4>Integrate AHK in Webpages?</h4>
+<p>AutoHotkey (AHK) is easy to learn and there is plenty of stuff which can be done with. Because of being that easy compared to other languages, embedded AHK in HTML (The webages, like the one you're reading right now) is called HKML. This name came up when i was discussing several issues of this Skript with Lexikos on IRC. I wanted to know if he likes ahkml as a name for the embedded pages, and he asked why not naming it hkml instead where its to be pronounced H-Key-ML, like in HotKeyMarkupLanguage. Well, here we are!</p>
+<p>Additionally you might use POST or GET Methods to transmit content to the webserver. Untill release 0.2.0 this will be limited to a total header size of 4k, so file transfer are likely to fail due to this limitation. Sparrow understands text/plain, www-urlencoded, and multipart POST messages.</p>
+<h4>How does it work?</h4>
+<p>HKML is fairly simple. Basically its a HTML page with a special scripting Tag. This one is <span class=comment>&lt?ahk ?&gt;</span>. The Server reads the hkml source file, extracts the script tag and pass it on to a script spawner which executes it by writing it to a pipe. the results of this script are captured and either an error is displayed or the given result.<br />
+Within this script-tag a standard AHK Script may be embedded. Using Loops, If-Else-Cases ... virtually anything. To get it back to webserver, you just use the <span class=comment>echo()</span>-function and whatever you want is sent back!</br>
+A simple example would look like this:
+<pre>&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;HKML TestFile&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;?ahk echo("Hello World from AHK embedded in HTML") ?&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+Technically each embedded script is an own process started off by sparrow's core. So having a variable spanned over a set of embedded scripts is not possible at the moment, aswell as using dynamic session variables.</p>
+<p>writing code as in following example wont work</p>
+<pre>&lt;html&gt;<br>&lt;head&gt;<br>&nbsp; &lt;title&gt;HKML TestFile&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;?ahk a := 5 ?&gt;<br>&lt;p&gt;Some HTML content&lt;/p&gt;<br>&lt;?ahk echo(a) ?&gt;<br>&lt;/body&gt;&lt;/html&gt;</pre>
+<p>whereas using a heredoc attempt 'd look like this</p>
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;HKML TestFile&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;?ahk 
+    echo("Hello World") 
+    echo(
+(Join`n
+"&lt;p&gt; HTML &lt;/p&gt;
+&lt;p&gt; more HTML &lt;/p&gt;
+&lt;p&gt; some more HTML &lt;/p&gt;"
+))
+    echo("Hello again from AHK") 
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>when using the AHK pendant of heredoc (continuation sections) make sure that when used directly in an function call, you supply quotationmarks, otherwise you get an error.</p>
+<h4>Are there any extra commands?</h4>
+<p>Here is a List of all currently available extra commands to sparrow (additionally to standard AHK)
+<ul>
+<li>echo(str [, length])<br>
+This will write buffer back to core which will be embedded in the html page to serve. The Length parameter is not used at the moment and can be left out. It might be later used for sending raw binary data such as directly generated images. whic is subject to exploit.
+</li>
+<li>nl2br(str)<br>
+This will transform any new lines of the string to &lt;br&gt;`n in the output stream
+</li>
+<li>IsSet(varname)<br>
+Returns True if varible is set, false otherwise
+</li>
+<li>uriEncode(str) / uriDecode(str)<br>
+This pair of functions encodes or decodes a string with standard uri encodings (that is hex notation for ascii non safe chars with leading percent sign)</li>
+<li>FileContent(file)<br>
+Returns the content of a given filename<br>
+!! usage is subject to change in future versions !!
+</li></ul></p>
+<p>A List of usable Variables which are known to each script
+<ul>
+<li>$_SERVER[METHOD]<br>
+The RequestMethod either GET or POST</li>
+<li>$_SERVER[REQUEST]<br>
+The requested file</li>
+<li>$_SERVER[QUERY]<br>
+the query that is all what comes after the questionmark. like in index.hkml?blah=blup</li>
+<li>$_SERVER[PROTOCOL]<br>
+the protocoll from header</li>
+<li>$_GET<br>
+This includes all he variables generated off from GET request header</li>
+<li>$_GET[]<br>
+putting a name into the brackets will make its transmitted content available</li>
+<li>$_POST<br>
+This includes all he variables generated off from POST request header</li>
+<li>$_POST[]<br>
+putting a name into the brackets will make its transmitted content available</li>
+</ul>
+</p>
+<p>More to come</p>
+<h4>What's wrong with sparrow?</h4>
+<p>current known issues in a handy list:
+<ul>
+<li>Having a gui created with ahk gui commands transferred thru net to client's browser will _NOT_ work.</li>
+<li>no Setting http-header</li>
+<li>no Servercontrolled Session cookies</li>
+<li>broken Fileuploading</li>
+<li>Headers with greater size of total 4k crash the server</li>
+<li>no CGI</li>
+<li>broken Custom 404 templates support</li>
+<li>no SuperGlobalVariables (Variables known to every Script on any hkml page)</li>
+<li>no SiteGlobalVariable (variables known to all script on ONE hkml page)</li>
+</ul>
+</p>
+<p>I am pretty sure that there is more, that simply wont work as expected, but these are the most annoying NOGOs</p>
+<h4>What will be next / What on the todo?</h4>
+<p>Besides from nearly every point except CGI from the not working list, additionally a Plugin Modules Structure is on its way, CGI along with extra plugins for additional features like php pearl, vbs (aka asp) will be available but till then other features are more important (IMHO)<br>
+here is a little roadmap / milestone / version list:<br>
+Initialrelease (atwt 0.1.3)<br>
+0.2 Fix of receive buffers / selected global variables<br>
+0.3 rewrite the backends for winsock2 library<br>
+0.4 real Pluginstructure<br>
+0.5 Multiple Listeners, for the Sparrow. So core will spawn multiple worker processes to better split the net load<br>
+</p>
+<h4>Can i use sparrow for my Project XY?</h4>
+<p>if u want to embed an alpha release? off you go the only limitation is to credit where found and who wrote.</p>
+<h4>I want to have a specific feature?</h4>
+<p>Sure. Post it on Sparrow Thread List and we talk about it.</p>
+<h4>How can i help?</h4>
+<p>By checking the software and when expiriencing an error to give a report as exact (and reproducable) as possible. If you want to contribute code, do rewrites whatever, please ask 1st so doublework is unlikely to happen</p>
+<h4>Credits</h4>
+<p>A big thanks to Lexikos for helping with the socket stuff and the Custom ExecScript Version, Sean for his great StdOutToVar (which is also used here to capture any occured AHK errors in the scrippets), Zed Gecko for his wonderfull TCP/IP ServerScript which was the very base of sparrow.core, [VxE], Laszlo, Titan, Denick, BoBo and all the rest who i forgot to name here for those many lil hints and tipps scattered all acros AutoHotkey's Forums. Without all your help this project wont have been possible at all! Thank YOU!</p>
+</div><br />
+<hr size=1>
+<div align="center"><?ahk echo(%Sparrow[ServerSig]%) ?></div><br />
+</body>
+</html>

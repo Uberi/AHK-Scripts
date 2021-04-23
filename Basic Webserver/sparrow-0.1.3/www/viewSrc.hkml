@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Status</title>
+	<style type="text/css">
+		body {
+			margin:0px;
+			padding:0px;
+			font-family:Tahoma;
+			font-size:10pt;
+			background-color:#e0e0e0;
+			background-image:url(img/sparrow-bg.gif);
+			background-position:bottom right;
+			background-repeat:no-repeat;
+			background-attachment:fixed;
+		}
+		a:link, a:active, a:visited {
+			text-decoration:none;
+		}
+		a:hover {
+			text-decoration:underline;
+		}
+		.block {
+			margin-left: 20px; 
+			margin-right:20px; 
+			border: 1px; 
+			border-style: solid; 
+			border-color: gray; 
+			padding:10px;
+			background-color: #ffffff;
+		}
+		ul li {
+			margin-left: 20px;
+		}
+	</style>
+</head>
+
+<body>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td width=140px><img src="img/ahk_sparrow.png" width="140" height="140" alt="" border="0"></td>
+		<td style="background-image: url(img/ahk_stick.png); background-repeat: repeat-x;">
+			<table width="600px" border="0" cellpadding="0" cellspacing="0">
+				<tr><td><div style="font-family:Comic Sans MS;font-weight:900;font-size:28pt;">Sparrow WebServer</div></td></tr>
+				<tr><td><div align="center" style="font-family:Comic Sans MS;font-size:12pt;">powered by AutoHotkey</div></td></tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<div Style="margin:12px;">
+<?ahk
+
+; The following Line which looks as its double referencing is Sparrow Specific
+; 
+; In early Builds, this allows to access server defined Setting Variables
+; In some future this will be checked agains an allowance list
+; The parser output 'd look similar to this:
+;    wwwPath := "X:\Path\To\Sparrow\document\rootDir\from\Settings"
+;
+wwwPath := %Sparrow[documentRoot]%
+
+If (IsSet($_GET[T])) && (RegExMatch($_GET[T],"status|404(spec|unspec)|wrong(Command|Run)|form|viewsrc"))
+	Valid := 1
+
+If ((IsSet(Valid)) && (FileExist(wwwPath "\" $_GET[T] ".hkml")))
+{
+	fileName := wwwPath "\" $_GET[T] ".hkml"
+	
+	hkml := FileContent(FileName)
+	hkml := RegExReplace(hkml,"``n","````n")
+	hkml := RegExReplace(hkml,"<","&lt;")
+	hkml := RegExReplace(hkml,">","&gt;")
+	hkml := RegExReplace(hkml,"\t","  ")
+	hkml := RegExReplace(hkml,"\r")
+	
+	out := "<h3>This is the content of " $_GET[T] ".hkml</h3>`n<hr size=1 />`n<pre>" hkml "</pre><hr size=1 />"
+	
+} else {
+	out := "<h3>Sorry, but the file <span style=""color:red"">" $_GET[T] ".hkml</span> is unavailable</h3>`n"
+	     . "You may view the <a href=""viewSrc.hkml?t=viewsrc"">content of this file</a>, if You want to.`n"
+}
+echo(out)
+
+?>
+</div>
+<hr size=1 />
+<div align="center"><?ahk echo(%Sparrow[ServerSig]%) ?></div><br />
+</body>
+</html>

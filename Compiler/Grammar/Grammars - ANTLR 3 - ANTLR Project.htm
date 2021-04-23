@@ -1,0 +1,975 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0049)http://www.antlr.org/wiki/display/ANTLR3/Grammars -->
+<html><script id="abine.stub.Google Analytics">var abPrm={};var abNoOp=function(i,a){return (a&&a.length?a[0]:null)||true;},abSC=function(n,v){document.cookie=n+'='+v+';path=/;expires='+(new Date((new Date()).getTime()+(30000*60*60*24))).toGMTString();},abGC=function(n){return document.cookie.indexOf(n+'=')!=-1;},abAddNoOpMethods=function(o,m){m=m.split(',');for(var i=0;i<m.length;i++){if(m[i].match(/^#/)){o['get'+m[i].substr(1)]=o['set'+m[i].substr(1)]=abNoOp;}else{o[m[i]]=abNoOp;}}};var abClickEvent=function(n){if(n.click){n.click();}else{var e=n.ownerDocument.createEvent('MouseEvents');e.initMouseEvent('click',true, true, n.ownerDocument.defaultView, 1,0,0,0,0,false,false,false,false,0,null);n.dispatchEvent(e);}};var abTrkr={},abGT=function(){return abTrkr},_gat={_getTracker:abGT,_createTracker:abGT,_getTrackerByName:abGT,_anonymizeIp:abNoOp},urchinTracker=__utmSetTrans=__utmLinkerUrl=__utmLinkPost=__utmSetVar=__utmVisitorCode=abNoOp,_gaq={_createAsyncTracker:abTrkr,_getAsyncTracker:abTrkr,push:function(a){for (var b = arguments, c = 0, d = 0; d < b.length; d++) {try {if (typeof b[d] === 'function') b[d]();else {var e = '', f = b[d][0], k = f.lastIndexOf('.');k > 0 && (e = f[z](0, k), f = f[z](k + 1));var p = e == '_gat' ? _gat : e == '_gaq' ? _gaq : _gat._getTracker(e);p[f].apply(p, b[d].slice(1))}} catch (r) {c++}}return c;}};abAddNoOpMethods(abTrkr,'_deleteCustomVar,_getName,_getAccount,_getVersion,_getVisitorCustomVar,_initData,_setAccount,_setCookiePersistence,_setCustomVar,_setSampleRate,_setSessionTimeout,_setSessionCookieTimeout,_setVar,_setVisitorCookieTimeout,_trackPageview,_setAllowAnchor,_setCampContentKey,_setCampMediumKey,_setCampNameKey,_setCampNOKey,_setCampSourceKey,_setCampTermKey,_setCampaignTrack,_setCampaignCookieTimeout,_setCookieTimeout,_setReferrerOverride,_cookiePathCopy,_getLinkerUrl,_linkByPost,_setAllowHash,_setAllowLinker,_setCookiePath,_setDomainName,_addItem,_addTrans,_trackTrans,_trackEvent,_addIgnoredOrganic,_addIgnoredRef,_addOrganic,_clearIgnoredOrganic,_clearIgnoredRef,_clearOrganic,_trackSocial,_getClientInfo,_getDetectFlash,_getDetectTitle,_setClientInfo,_setDetectFlash,_setDetectTitle,_getLocalGifPath,_getServiceMode,_setLocalGifPath,_setLocalRemoteServerMode,_setLocalServerMode,_setRemoteServerMode,_trackPageLoadTime');abTrkr._link=__utmLinker=function(l){if(l)location.href=l;};</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <title>Grammars - ANTLR 3 - ANTLR Project</title>
+    
+        
+
+                        
+    
+                        
+    
+    
+            <meta http-equiv="X-UA-Compatible" content="IE=EDGE,chrome=IE7">
+<meta charset="UTF-8">
+<!-- Deprecated since 3.4. To be removed in a future version of Confluence; use AJS.Confluence.getContextPath() -->
+<meta id="confluence-context-path" name="confluence-context-path" content="/wiki">
+<meta id="confluence-base-url" name="confluence-base-url" content="http://www.antlr.org/wiki">
+
+<meta id="atlassian-token" name="atlassian-token" content="6c880febb6cb4566acce460beecc7daa195bcee9">
+
+<meta id="confluence-space-key" name="confluence-space-key" content="ANTLR3">
+<script type="text/javascript">
+    // Deprecated global variables. To be removed in a future version of Confluence.
+    var contextPath = '/wiki';
+</script>
+
+    
+
+<!-- include system css resources -->
+
+
+    <link type="text/css" rel="stylesheet" href="./Grammars - ANTLR 3 - ANTLR Project_files/batch.css" media="all">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/wiki/s/en_GB/3148/5/11/_/download/superbatch/css/batch.css?conditionalComment=lt+IE+9" media="all">
+<![endif]-->
+<!--[if IE 9]>
+<link type="text/css" rel="stylesheet" href="/wiki/s/en_GB/3148/5/11/_/download/superbatch/css/batch.css?conditionalComment=IE+9" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/wiki/s/en_GB/3148/5/11/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="./Grammars - ANTLR 3 - ANTLR Project_files/batch(1).css" media="print">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/wiki/s/en_GB/3148/5/905bbe94e525636cf4c03949efd3ee7f/_/download/contextbatch/css/page/batch.css?conditionalComment=lt+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="./Grammars - ANTLR 3 - ANTLR Project_files/batch(2).css" media="all">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/wiki/s/en_GB/3148/5/6a0f00b2b8b63a64648fcde5843040aa/_/download/contextbatch/css/viewcontent,main/batch.css?conditionalComment=lt+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="./Grammars - ANTLR 3 - ANTLR Project_files/batch(3).css" media="all">
+<link type="text/css" rel="stylesheet" href="./Grammars - ANTLR 3 - ANTLR Project_files/colors.css" media="all">
+<link type="text/css" rel="stylesheet" href="./Grammars - ANTLR 3 - ANTLR Project_files/default-theme.css" media="all">
+
+<!-- end system css resources -->
+
+    <meta name="confluence-request-time" content="1338041800270">
+            <meta name="ajs-page-id" content="1407">
+            <meta name="ajs-page-title" content="Grammars">
+            <meta name="ajs-parent-page-id" content="791">
+            <meta name="ajs-space-key" content="ANTLR3">
+            <meta name="ajs-space-name" content="ANTLR 3">
+            <meta name="ajs-parent-page-title" content="ANTLR v3 documentation">
+            <meta name="ajs-from-page-title" content="">
+            <meta name="ajs-browse-page-tree-mode" content="view">
+            <meta name="ajs-context-path" content="/wiki">
+            <meta name="ajs-version-number" content="4.1.9">
+            <meta name="ajs-build-number" content="3148">
+            <meta name="ajs-remote-user" content="">
+            <meta name="ajs-static-resource-url-prefix" content="/wiki/s/en_GB/3148/5/_">
+            <meta name="ajs-global-settings-attachment-max-size" content="30485760">
+            <meta name="ajs-user-locale" content="en_GB">
+            <meta name="ajs-enabled-dark-features" content="">
+            <meta name="ajs-atl-token" content="6c880febb6cb4566acce460beecc7daa195bcee9">
+            
+            <meta name="ajs-keyboardshortcut-hash" content="bae102033c71ecf8a8b026776b9ea08">
+            <meta name="ajs-use-keyboard-shortcuts" content="true">
+    <!-- Deprecated since 3.4. To be removed in a future version of Confluence; use atl.header -->
+        
+            <script type="text/x-template" title="share-content-popup">
+    <form action="#" method="post" class="aui share-content-popup">
+        <fieldset>
+            <label for="users">User name or email</label>
+            <div class="autocomplete-user-target">
+                <input class="text autocomplete-sharepage" id="users" data-max="10" data-dropdown-target=".autocomplete-user-target" data-none-message="No matching user or email found"/>
+            </div>
+            <ol class="recipients">
+            </ol>
+            <div><label for="note">Note</label></div>
+            <textarea class="textarea" id="note" placeholder="Add an optional note"/>
+        </fieldset>
+        <div class="button-panel">
+            <div class="progress-messages-icon"></div>
+            <div class="progress-messages">
+            </div>
+            <input class="button submit" type="submit" value="Share" disabled/>
+            <a class="close-dialog" href="#">Cancel</a>
+        </div>
+    </form>
+</script>
+
+<script type="text/x-template" title="share-content-popup-recipient-username">
+    <li data-username="{username}" style="display: none">
+        <span>
+            <img src="{thumbnailLink.href}" title="{title}">
+            <span>{title}</span>
+            <span class="remove-recipient"/>
+        </span>
+    </li>
+</script>
+
+<script type="text/x-template" title="share-content-popup-recipient-email">
+    <li data-email="{email}" style="display: none">
+        <span>
+            <img src="{icon}" title="{email}">
+            <span>{email}</span>
+            <span class="remove-recipient"/>
+        </span>
+    </li>
+</script>
+    
+    <link rel="shortcut icon" href="http://www.antlr.org/wiki/favicon.ico">
+    <link rel="icon" type="image/png" href="http://www.antlr.org/wiki/s/en_GB/3148/5/_/images/logo/confluence_16_white.png">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://www.antlr.org/wiki/opensearch/osd.action" title="ANTLR Project">
+
+        <!-- include system javascript resources -->
+                        
+    
+    <script type="text/javascript" src="./Grammars - ANTLR 3 - ANTLR Project_files/batch.js"></script>
+<!--[if lte IE 8]>
+<script type="text/javascript" src="/wiki/s/en_GB/3148/5/11/_/download/superbatch/js/batch.js?conditionalComment=lte+IE+8" ></script>
+<![endif]-->
+<script type="text/javascript" src="./Grammars - ANTLR 3 - ANTLR Project_files/batch(4).js"></script>
+<script type="text/javascript" src="./Grammars - ANTLR 3 - ANTLR Project_files/batch(5).js"></script>
+
+    
+    <!-- end system javascript resources -->
+
+    
+
+    
+    <link rel="canonical" href="./Grammars - ANTLR 3 - ANTLR Project_files/Grammars - ANTLR 3 - ANTLR Project.htm">
+    <link rel="shortlink" href="http://www.antlr.org/wiki/x/fwU">
+    <meta name="wikilink" content="[ANTLR3:Grammars]">
+    <meta name="page-version" content="36">
+
+
+</head><link rel="stylesheet" type="text/css" href="data:text/css,">
+    
+<body onload="placeFocus()" id="com-atlassian-confluence" class="theme-default ">
+<ul id="assistive-skip-links" class="assistive">
+    <li><a href="http://www.antlr.org/wiki/display/ANTLR3/Grammars#title-heading">Skip to content</a></li>
+    <li><a href="http://www.antlr.org/wiki/display/ANTLR3/Grammars#breadcrumbs">Skip to breadcrumbs</a></li>
+    <li><a href="http://www.antlr.org/wiki/display/ANTLR3/Grammars#header-menu-bar">Skip to header menu</a></li>
+    <li><a href="http://www.antlr.org/wiki/display/ANTLR3/Grammars#navigation">Skip to action menu</a></li>
+    <li><a href="http://www.antlr.org/wiki/display/ANTLR3/Grammars#quick-search-query">Skip to quick search</a></li>
+</ul>
+<div id="page">
+<div id="full-height-container">
+
+
+
+    
+<div id="header" class="">
+                      
+    <form id="quick-search" class="quick-search" method="get" action="http://www.antlr.org/wiki/dosearchsite.action">
+        <fieldset>
+            <label class="assistive" for="quick-search-query">Quick Search</label>
+            <input id="quick-search-query" class="quick-search-query" type="search" accesskey="q" autocomplete="off" name="queryString" size="25" title="Quick Search ( Type &#39;/&#39; )" results="10" placeholder="Search">
+            <input id="quick-search-submit" class="quick-search-submit" type="submit" value="Search">
+            <div class="aui-dd-parent quick-nav-drop-down"></div>
+        </fieldset>
+        <div class="hidden parameters">
+                                        <!-- putMetadata failed to add value for key "quick-nav-enabled" so rendering metadata inline - see server debug log for details -->
+        <meta name="ajs-quick-nav-enabled" content="true">
+                                                    </div>
+    </form>
+    <ul id="header-menu-bar" class="ajs-menu-bar">
+                    
+        
+            <li class="normal ajs-menu-item">
+        <a id="browse-menu-link" class="browse trigger ajs-menu-title" href="http://www.antlr.org/wiki/display/ANTLR3/Grammars#"><span><span>Browse</span></span></a>         <div class="ajs-drop-down assistive" hidden="" style="">
+                        <ul id="browse-menu-link-leading" class="section-leading first">
+                                        <li>
+    
+        
+    
+    <a id="space-pages-link" href="http://www.antlr.org/wiki/pages/listpages.action?key=ANTLR3" class="" title="Browse pages in the ANTLR 3 space ( Type &#39;g&#39; then &#39;s&#39; )">
+                   <span>Pages</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="space-blogposts-link" href="http://www.antlr.org/wiki/pages/viewrecentblogposts.action?key=ANTLR3" class="" title="Browse blogs in the ANTLR 3 space">
+                   <span>Blog</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="space-labels-link" href="http://www.antlr.org/wiki/labels/listlabels-heatmap.action?key=ANTLR3" class="" title="Browse labels in the ANTLR 3 space">
+                   <span>Labels</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="space-attachments-link" href="http://www.antlr.org/wiki/spaces/listattachmentsforspace.action?key=ANTLR3" class="" title="Browse attachments in the ANTLR 3 space">
+                   <span>Attachments</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="space-mail-link" href="http://www.antlr.org/wiki/mail/archive/viewmailarchive.action?key=ANTLR3" class="" title="Browse mail in the ANTLR 3 space">
+                   <span>Mail</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="space-advanced-link" href="http://www.antlr.org/wiki/spaces/viewspacesummary.action?key=ANTLR3" class="" title="Browse additional space functions in the ANTLR 3 space">
+                   <span>Advanced</span></a>        </li>
+                            </ul>
+                        <ul id="browse-menu-link-global" class="section-global">
+                                        <li>
+    
+        
+    
+    <a id="whats-new-menu-link" href="http://docs.atlassian.com/confluence/docs-41/whatsnew/iframe" class="" title="">
+                   <span>What’s New</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="people-directory-link" href="http://www.antlr.org/wiki/peopledirectory.action" class="" title="Browse the Confluence people directory">
+                   <span>People Directory</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="space-directory-link" href="http://www.antlr.org/wiki/spacedirectory/view.action" class="" title="Browse the Confluence space directory">
+                   <span>Space Directory</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="feed-builder-link" href="http://www.antlr.org/wiki/dashboard/configurerssfeed.action" class="" title="Create your custom RSS feed.">
+                   <span>Feed Builder</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="keyboard-shortcuts-link" href="http://www.antlr.org/wiki" class="" title="View available keyboard shortcuts ( Type &#39;?&#39; )">
+                   <span>Keyboard Shortcuts</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="gadget-directory-link" href="http://www.antlr.org/wiki" class="user-item administration-link" title="Browse gadgets provided by Confluence">
+                   <span>Confluence Gadgets</span></a>        </li>
+                            </ul>
+                    </div>
+    </li>
+        
+                                                         <li class="ajs-menu-item normal">
+        
+        
+    
+    <a id="login-link" href="http://www.antlr.org/wiki/login.action?os_destination=%2Fdisplay%2FANTLR3%2FGrammars" class="user-item login-link" title="">
+                   <span>Log In</span></a>        </li>
+                            <li class="ajs-menu-item normal">
+    
+        
+    
+    <a id="signup-link" href="http://www.antlr.org/wiki/signup.action" class="user-item signup-link" title="">
+                   <span>Sign Up</span></a>        </li>
+                            </ul>
+    
+    
+    <ol id="breadcrumbs">
+                    
+                        
+        <li class="first">
+                                    <span><a href="http://www.antlr.org/wiki/dashboard.action" title="Go to Dashboard ( Type &#39;g&#39; then &#39;d&#39; )">Dashboard</a></span>
+                </li>
+                    
+                
+        <li>
+                                    <span><a href="http://www.antlr.org/wiki/display/ANTLR3">ANTLR 3</a></span>
+                </li>
+                                        <li id="ellipsis" title="Show all breadcrumbs"><span><strong>…</strong></span></li>
+                                    
+                
+        <li class="hidden-crumb">
+                                    <span><a href="http://www.antlr.org/wiki/display/ANTLR3/ANTLR+3+Wiki+Home">ANTLR 3 Wiki Home</a></span>
+                </li>
+                                
+                
+        <li class="hidden-crumb">
+                                    <span><a href="http://www.antlr.org/wiki/display/ANTLR3/ANTLR+v3+documentation">ANTLR v3 documentation</a></span>
+                </li>
+                    
+                
+        <li>
+                                    <span><a href="./Grammars - ANTLR 3 - ANTLR Project_files/Grammars - ANTLR 3 - ANTLR Project.htm">Grammars</a></span>
+                </li>
+        </ol>
+
+</div><!-- \#header -->
+
+<div id="main">
+    
+    
+    <div id="navigation" class="content-navigation view">
+                    <ul class="ajs-menu-bar">
+                                
+                        
+            <li class="normal ajs-menu-item">
+        <a id="action-menu-link" class="action trigger ajs-menu-title" href="http://www.antlr.org/wiki/display/ANTLR3/Grammars#"><span><span>Tools</span></span></a>         <div class="ajs-drop-down most-right-menu-item assistive" hidden="">
+                        <ul id="action-menu-link-primary" class="section-primary first">
+                                        <li>
+    
+        
+    
+    <a id="view-attachments-link" href="http://www.antlr.org/wiki/pages/viewpageattachments.action?pageId=1407" class="action-view-attachments" accesskey="a" title="View Attachments ( Type &#39;t&#39; )">
+                   <span><u>A</u>ttachments (0)</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="action-view-history-link" href="http://www.antlr.org/wiki/pages/viewpreviousversions.action?pageId=1407" class="action-view-history" title="">
+                   <span>Page History</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="action-page-permissions-link" href="http://www.antlr.org/wiki/pages/viewinfo.action?pageId=1407" class="action-page-permissions" title="Edit restrictions">
+                   <span>Restrictions</span></a>        </li>
+                            </ul>
+                        <ul id="action-menu-link-secondary" class="section-secondary">
+                                        <li>
+    
+        
+    
+    <a id="view-page-info-link" href="http://www.antlr.org/wiki/pages/viewinfo.action?pageId=1407" class="action-view-info" title="">
+                   <span>Info</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="link-to-page-link" href="http://www.antlr.org/wiki/pages/viewinfo.action?pageId=1407" class="" title="Link to this Page ( Type &#39;k&#39; )">
+                   <span>Link to this Page…</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="view-in-hierarchy-link" href="http://www.antlr.org/wiki/pages/listpages-dirview.action?key=ANTLR3&openId=1407#selectedPageInHierarchy" class="" title="">
+                   <span>View in Hierarchy</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="action-view-source-link" href="http://www.antlr.org/wiki/plugins/viewsource/viewpagesrc.action?pageId=1407" class="action-view-source popup-link" title="">
+                   <span>View Source</span></a>        </li>
+                            </ul>
+                    </div>
+    </li>
+            </ul>
+    </div>
+
+    
+    <h1 id="title-heading" class="pagetitle">
+                    <a href="http://www.antlr.org/wiki/display/ANTLR3"><img class="logo space custom" src="./Grammars - ANTLR 3 - ANTLR Project_files/ANTLR3" alt=""></a>        
+		<span id="title-text">
+					            <a href="./Grammars - ANTLR 3 - ANTLR Project_files/Grammars - ANTLR 3 - ANTLR Project.htm">Grammars</a>
+    				</span>
+    </h1>
+
+    
+
+                        
+    
+    
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+
+
+
+
+        
+
+    
+    
+        
+    
+    
+                    
+    
+
+    
+
+
+<div id="content" class="page view">
+    
+<div id="action-messages">
+    </div>
+
+
+
+                
+<script type="text/x-template" title="movePageDialog">
+    <div class="row information">
+        <div class="inner">
+            <div class="element">
+                Specify the new parent page for this page and its children by space and title.
+            </div>
+        </div>
+    </div>
+    <div class="form">
+        <fieldset>
+                
+
+    <legend class="assistive"><span>Change the Parent Page to a Known Page</span></legend>
+            <div class="row">
+                <label for="new-space">New space:</label>
+                <div class="value new-space-value">
+                    <input id="new-space-key" name="new-space-key" type="hidden" value="ANTLR3">
+                                            <span class="space-input">
+                            <input id="new-space" name="new-space" value="ANTLR 3" disabled="disabled">
+                        </span>
+                        <span class="description warning">You cannot move this page to another space because you do not have permission to remove it from this space.</span>
+                                        <div class="new-space-dropdown aui-dd-parent autocomplete"></div>
+                </div>
+            </div>
+            <div class="row">
+                <label for="new-parent-page">New parent page:</label>
+                <div class="value new-parent-page-value">
+                    <span class="page-input">
+                        <input id="new-parent-page" name="new-parent-page" value="ANTLR v3 documentation">
+                    </span>
+                    <span class="description">Start typing a page title to see a list of suggestions.</span>
+                    <div class="new-parent-page-dropdown aui-dd-parent autocomplete"></div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="location-info">
+        <div class="row">
+            <label>Current location:</label>
+            <div class="value breadcrumbs-container">
+                <div class="breadcrumbs-line">
+                    <ul id="current-parent-breadcrumbs" class="breadcrumbs">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <label>New location:</label>
+            <div class="value breadcrumbs-container">
+                <div class="breadcrumbs-line">
+                    <ul id="new-parent-breadcrumbs" class="breadcrumbs">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-template" title="movePageSearchPanel">
+    <div class="row information">
+        <div class="inner">
+            <div class="element">
+                Search for and select the new parent page for this page and its children.
+            </div>
+        </div>
+    </div>
+    <div id="move-page-search-container" class="row">
+        <div class="search-form">
+            <fieldset>
+                    
+
+    <legend class="assistive"><span>Search for a New Parent Page</span></legend>
+                    
+
+    <label  for="move-page-search-query" class="assistive">Search keywords</label>
+                <input class="search-query" id="move-page-search-query">
+                    
+
+    <label  for="move-page-search-space" class="assistive">Search in space</label>
+                                    <select id="move-page-search-space" class="search-space" disabled="disabled">
+                        <option value="ANTLR3" selected="selected">ANTLR 3</option>
+                    </select>
+                                <input type="button" value="Search">
+                                    <div class="description warning">You cannot move this page to another space because you do not have permission to remove it from this space.</div>
+                            </fieldset>
+        </div>
+        <div class="search-results">
+        </div>
+    </div>
+</script>
+<script type="text/x-template" title="searchResultsGrid">
+    <table>
+        <thead>
+            <tr class="header">
+                <th class="search-result-title">Page Title</th>
+                <th class="search-result-space">Space</th>
+                <th class="search-result-date">Updated</th>
+            </tr>
+        </thead>
+    </table>
+</script>
+<script type="text/x-template" title="searchResultsGridCount">
+    <p class="search-result-count">{0}</p>
+</script>
+<script type="text/x-template" title="searchResultsGridRow">
+    <tr class="search-result">
+        <th class="search-result-title"><a href="{1}" class="content-type-{2}"><span>{0}</span></a></th>
+        <td class="search-result-space"><a class="space" href="/wiki/display/{4}/" title="{3}">{3}</a></td>
+        <td class="search-result-date"><span class="date" title="{6}">{5}</span></td>
+    </tr>
+</script><!-- Start restrictions section -->
+<script type="text/x-template" title="page-permissions-div">
+<div id="page-permissions-div">
+    <div id="page-permissions-editor-form">
+
+                <div id="page-permissions-error-div" class="hidden">
+            <a href="#" id="permissions-error-div-close">Ok</a>
+            <div></div>
+        </div>
+
+                <div id="page-permissions-type-radios" class="page-permissions-label-rows">
+            <div>
+                <input id="restrictViewRadio" type="radio" checked="checked" name="pagePermissionTypeRadio" value="view"/>
+                <label for="restrictViewRadio">Restrict viewing of this page</label>
+                <input id="restrictEditRadio" type="radio" name="pagePermissionTypeRadio" value="edit"/>
+                <label for="restrictEditRadio">Restrict editing of this page</label>
+            </div>
+        </div>
+        <div id="page-permissions-input" class="page-permissions-label-rows">
+            <div class="page-permissions-label">To:</div>
+            <div id="page-permissions-chooser-box">
+                                <span id="page-permissions-choose-user" class="ajs-button">
+                    
+
+
+
+    
+
+
+
+<a href="#" id='userpicker-popup-link-image' onClick="var picker = window.open('/wiki/spaces/openuserpicker.action?key=ANTLR3&amp;startIndex=0&amp;onPopupSubmit=AJS.PagePermissions.addUserPermissions', 'EntitiesPicker', 'status=yes,resizable=yes,top=100,left=200,width=700,height=680,scrollbars=yes'); picker.focus(); return false;"><img src="/wiki/s/en_GB/3148/5/_/images/icons/user_16.gif" height=16 width=16 border=0 align="absmiddle"  title="Choose users" /></a>
+<a href="#" id='userpicker-popup-link-text' onClick="var picker = window.open('/wiki/spaces/openuserpicker.action?key=ANTLR3&amp;startIndex=0&amp;onPopupSubmit=AJS.PagePermissions.addUserPermissions', 'EntitiesPicker', 'status=yes,resizable=yes,top=100,left=200,width=700,height=680,scrollbars=yes'); picker.focus(); return false;">Person...</a>
+
+
+                </span>
+                <span id="page-permissions-choose-group" class="ajs-button">
+                    
+
+
+
+    
+
+ 
+
+<a href="#" id='grouppicker-popup-link-image' onClick="var picker = window.open('/wiki/spaces/opengrouppicker.action?key=ANTLR3&amp;startIndex=0&amp;actionName=dosearchgroups.action&amp;onPopupSubmit=AJS.PagePermissions.addGroupPermissions', 'EntitiesPicker', 'status=yes,resizable=yes,top=100,left=200,width=580,height=550,scrollbars=yes'); picker.focus(); return false;"><img src="/wiki/s/en_GB/3148/5/_/images/icons/group_16.gif" height=16 width=16 border=0 align="absmiddle"  title="Choose groups" /></a>
+<a href="#" id='grouppicker-popup-link-text' onClick="var picker = window.open('/wiki/spaces/opengrouppicker.action?key=ANTLR3&amp;startIndex=0&amp;actionName=dosearchgroups.action&amp;onPopupSubmit=AJS.PagePermissions.addGroupPermissions', 'EntitiesPicker', 'status=yes,resizable=yes,top=100,left=200,width=580,height=550,scrollbars=yes'); picker.focus(); return false;">Group...</a>
+
+
+                </span>
+            </div>
+            <div id="page-permissions-input-box">
+                <input type="text" id="page-permissions-names-input" name="permissionNames"
+                    placeholder="Enter user or group name" class="autocomplete-user"
+                    data-max="10" data-none-message="No matches"
+                    data-target="#page-permissions-names-hidden" data-template="{username}"
+                    data-dropdown-target="#page-perms-name-dropdown-wrapper" data-resize-to-input="true"
+                    size="30"/>
+                <input
+    type="hidden"
+                            id="page-permissions-names-hidden"           />                <img height="16px" width="1px" src="/wiki/s/en_GB/3148/5/_/images/border/spacer.gif"/>
+                <input type="button" id="add-typed-names" value="Restrict">
+                <div id="page-perms-name-dropdown-wrapper" class="aui-dd-parent autocomplete"></div>
+            </div>
+        </div>
+    </div>
+    <div id="page-permissions-tables">
+        <div id="page-permissions-table-div">
+                        <table id="page-permissions-table" class="page-permissions-table">
+                <tr id="page-permissions-no-views" class="marker-row">
+                    <td colspan="3" class="page-permissions-marker-cell"><span>No view restrictions are defined for this page</span></td>
+                </tr>
+                <tr id="page-permissions-no-edits" class="marker-row">
+                    <td colspan="3" class="page-permissions-marker-cell"><span>No edit restrictions are defined for this page</span></td>
+                </tr>
+            </table>
+        </div>
+        <div id="page-inherited-permissions-table-div" class="hidden">
+            <span id="page-inherited-permissions-table-desc">
+                <a class="icon twisty-closed">Show/Hide</a>
+                <a id="toggle-inherited-permissions" title="Click to see inherited restrictions">This page has restricted parent pages. It can only be seen by users who can see those parent pages.</a>
+            </span>
+            <div id="page-inherited-permissions-tables" class="hidden page-inheritance-togglable"></div>
+        </div>
+    </div>
+</div>
+</script>
+
+<!-- End restrictions section -->
+
+        
+    
+    
+        
+                            
+    
+
+                    
+
+        
+        <a href="http://www.antlr.org/wiki/display/ANTLR3/Grammars#page-metadata-end" class="assistive">Skip to end of metadata</a>
+<div id="page-metadata-start" class="assistive"></div>
+
+    <div class="page-metadata">
+        <ul>
+                            <li class="page-metadata-item noprint">
+    
+            
+    
+    <a id="content-metadata-page-restrictions" href="http://www.antlr.org/wiki/display/ANTLR3/Grammars#" class="page-metadata-icon page-restrictions hidden" title="Page restrictions apply. Click the lock icon to view or edit the restriction.">
+                   <span>Page restrictions apply</span></a>        </li>
+                        <li class="page-metadata-modification-info">
+                                    Added by <a href="http://www.antlr.org/wiki/display/~admin" class="url fn confluence-userlink userlink-0" data-username="admin" title="" data-user-hover-bound="true">Terence Parr</a>, last edited by <a href="http://www.antlr.org/wiki/display/~cowang" class="url fn confluence-userlink userlink-1" data-username="cowang" title="" data-user-hover-bound="true">George S. Cowan</a> on Oct 17, 2009
+                                                                <span class="noprint">&nbsp;(<a id="view-change-link" href="http://www.antlr.org/wiki/pages/diffpages.action?pageId=1407&originalId=30605698">view change</a>)</span>
+                                                </li>
+                            <li class="show-hide-comment-link">
+                    <a id="show-version-comment" class="inline-control-link" href="http://www.antlr.org/wiki/display/ANTLR3/Grammars#">show comment</a>
+                    <a id="hide-version-comment" class="inline-control-link" style="display:none;" href="http://www.antlr.org/wiki/display/ANTLR3/Grammars#">hide comment</a>
+                </li>
+                    </ul>
+                <div id="version-comment" class="noteMacro" style="display: none; ">
+        <strong>Comment:</strong>
+        Migrated to Confluence 4.0<br>
+    </div>
+        </div>
+
+
+<a href="http://www.antlr.org/wiki/display/ANTLR3/Grammars#page-metadata-start" class="assistive">Go to start of metadata</a>
+<div id="page-metadata-end" class="assistive"></div>
+        
+                                
+        <div id="main-content" class="wiki-content">
+                           <h2 id="Grammars-Grammarsyntax">Grammar syntax</h2>
+
+<p>All grammars are of the form:</p>
+
+<div class="panel" style="border-width: 1px;"><div class="panelContent">
+<p>/** This is a grammar doc comment */<br>
+<em>grammar-type</em> <code>grammar</code> <em>name</em>;<br>
+<a href="http://www.antlr.org/wiki/display/ANTLR3/Grammar+options">options</a> { <em>name1</em> <code>=</code> <em>value</em>; <em>name2</em> <code>=</code> <em>value2</em>; ... }<br>
+import <em>delegateName1</em>=<em>grammar1</em>, ..., <em>delegateNameN</em>=<em>grammarN</em>; // can omit delegateName<br>
+tokens { <em>token-name1</em>; <em>token-name2</em> <code>=</code> <em>value</em>; ... }<br>
+scope <em>global-scope-name-1</em> { «<em>attribute-definitions</em>» }<br>
+scope <em>global-scope-name-2</em> { «<em>attribute-definitions</em>» }<br>
+...<br>
+@header { ... }<br>
+@lexer::header { ... }<br>
+@members { ... }</p>
+
+<p>«<em>rules</em>»</p>
+</div></div>
+<p>The type of the grammar, specified via the <em>grammar-type</em> modifier above, can be one of: <code>lexer</code>, <code>parser</code>, <code>tree</code>, and combined (no modifier). To set the superclass of the generated parser class, use the <code>superClass</code> option. See <a href="http://www.antlr.org/wiki/display/ANTLR3/Grammar+options">Grammar options</a> for a list of valid grammar options and their semantics.</p>
+
+<h2 id="Grammars-Rulesyntax">Rule syntax</h2>
+
+<div class="panel" style="border-width: 1px;"><div class="panelContent">
+<p>/** rule comment */<br>
+<em>access-modifier</em> <em>rule-name</em>[«arguments»] returns [«return-values»] throws <em>name1</em>, <em>name2</em>, ...<br>
+<a href="http://www.antlr.org/wiki/display/ANTLR3/Rule+and+subrule+options">options</a> {...}<br>
+scope {...}<br>
+scope <em>global-scope-name</em>, ..., <em>global-scope-nameN</em>;<br>
+@init {...}<br>
+@after {...}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;: «<em>alternative-1</em>» -&gt; «<em>rewrite-rule-1</em>»<br>
+&nbsp;&nbsp;&nbsp;&nbsp;| «<em>alternative-2</em>» -&gt; «<em>rewrite-rule-2</em>»<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;| «<em>alternative-n</em>» -&gt; «<em>rewrite-rule-n</em>»<br>
+&nbsp;&nbsp;&nbsp;&nbsp;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;catch [«<em>exception-arg-1</em>»] {...}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;catch [«<em>exception-arg-2</em>»] {...}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;finally {...}</p>
+</div></div>
+
+<p>See <a href="http://www.antlr.org/wiki/display/ANTLR3/Rule+and+subrule+options">Rule and subrule options</a> for a list of valid rule options and their semantics.</p>
+
+<h3 id="Grammars-Lexerrules">Lexer rules</h3>
+
+<p>Rules in a lexical grammar are token names:</p>
+
+<div class="preformatted panel" style="border-width: 1px;"><div class="preformattedContent panelContent">
+<pre>ID : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')* ;
+</pre>
+</div></div>
+<p>Here are some common lexical rules for programming languages:</p>
+
+<div class="preformatted panel" style="border-width: 1px;"><div class="preformattedContent panelContent">
+<pre>WS  : (' '|'\r'|'\t'|'\u000C'|'\n') {$channel=HIDDEN;}
+    ;
+COMMENT
+    : '/*' .* '*/' {$channel=HIDDEN;}
+    ;
+LINE_COMMENT
+    : '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
+    ;
+</pre>
+</div></div>
+<p>The <code>$channel=HIDDEN;</code> action places those tokens on a hidden channel.  They are still sent to the parser, but the parser does not see them.  Actions, however, can ask for the hidden channel tokens.  If you want to literally throw out tokens then use action <code>skip();</code> (see <a href="http://www.antlr.org/api/Java/classorg_1_1antlr_1_1runtime_1_1_lexer.html#2a0d5c0c2539d27e2a86a0ec45ec784e" class="external-link" rel="nofollow">org.antlr.runtime.Lexer.skip()</a>).</p>
+
+<p>Sometimes you will need some help or rules to make your lexer grammar more readable.  Use the <code>fragment</code> modifier in front of the rule:</p>
+
+<div class="preformatted panel" style="border-width: 1px;"><div class="preformattedContent panelContent">
+<pre>HexLiteral : '0' ('x'|'X') HexDigit+ ;
+fragment HexDigit : ('0'..'9'|'a'..'f'|'A'..'F') ;
+</pre>
+</div></div>
+<p>In this case, <code>HexDigit</code> is not a token in its own right; it can only be called from <code>HexLiteral</code>.</p>
+
+<h3 id="Grammars-Treegrammarrules">Tree grammar rules</h3>
+
+<p>Rules in tree grammars are identical to parser grammars except that they can specify a tree element to match.  The syntax is <code>^( <em>root child1 child2 ... childn</em> )</code>. For example:</p>
+
+<div class="preformatted panel" style="border-width: 1px;"><div class="preformattedContent panelContent">
+<pre>decl : ^(DECL type declarator) {System.out.println($type.text+" "+$declarator.text);}
+     ;
+</pre>
+</div></div>
+<h2 id="Grammars-Attributescopesyntax">Attribute scope syntax</h2>
+
+<p>Attribute scopes are a set of attribute definitions of the form:</p>
+
+<div class="panel" style="border-width: 1px;"><div class="panelContent">
+<p><code>scope</code> <em>name</em> {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<em>type1</em> <em>attribute-name1</em>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<em>type2</em> <em>attribute-name2</em>;<br>
+}</p>
+</div></div>
+<h2 id="Grammars-Grammaractionsyntax">Grammar action syntax</h2>
+
+<p>Grammar actions are, in general, of the form:</p>
+
+<div class="panel" style="border-width: 1px;"><div class="panelContent">
+<p><code>@</code><em>action-name</em> { ... }<br>
+<code>@</code><em>scope-name</em><code>::</code><em>action-name</em> { ... }</p>
+</div></div>
+<p>The default <em>scope-name</em> is <code>parser</code>. For instance, <code>@header</code> is the same as <code>@parser::header</code>. Valid <em>scope-name</em> 's differ depending on the <a href="http://www.antlr.org/wiki/display/ANTLR3/Code+Generation+Targets">target</a>, but most targets should support <code>parser</code> and <code>lexer</code>. Two common <em>action-name</em> 's are <code>header</code> and <code>members</code>. The <code>header</code> action is placed at the top of a generated class definition and the <code>members</code> action is inserted within the body of a generated class definition. For example, the following grammar actions would ensure generated parser and lexer Java classes include a package declaration:</p>
+
+<div class="preformatted panel" style="border-width: 1px;"><div class="preformattedContent panelContent">
+<pre>@parser::header { package my.example.package; }
+@lexer::header { package my.example.package; }
+</pre>
+</div></div>
+<h2 id="Grammars-Ruleelements">Rule elements</h2>
+
+<p>Rules may reference:</p>
+
+<div class="table-wrap"><table class="confluenceTable"><tbody>
+<tr>
+<th class="confluenceTh"><p> Element </p></th>
+<th class="confluenceTh"><p> Description </p></th>
+</tr>
+<tr>
+<td class="confluenceTd"><p> <em>T</em> </p></td>
+<td class="confluenceTd"><p> Token reference. An uppercase identifier; lexer grammars may use optional arguments for fragment token rules. </p></td>
+</tr>
+<tr>
+<td class="confluenceTd"><p> <em>T</em>&lt;node=<em>V</em>&gt; or <em>T</em>&lt;<em>V</em>&gt; </p></td>
+<td class="confluenceTd"><p> Token reference with the optional token option <code>node</code> to indicate tree construction note type; can be followed by arguments on right hand side of -&gt; rewrite rule </p></td>
+</tr>
+<tr>
+<td class="confluenceTd"><p> <em>T</em>[«args»] </p></td>
+<td class="confluenceTd"><p> Lexer rule (token rule) reference. Lexer grammars may use optional arguments for fragment token rules. </p></td>
+</tr>
+<tr>
+<td class="confluenceTd"><p> <em>r</em> [«args»] </p></td>
+<td class="confluenceTd"><p> Rule reference. A lowercase identifier with optional arguments. </p></td>
+</tr>
+<tr>
+<td class="confluenceTd"><p> '«one-or-more-char»' </p></td>
+<td class="confluenceTd"><p> String or char literal in single quotes.  In parser, a token reference; in lexer, match that string. </p></td>
+</tr>
+<tr>
+<td class="confluenceTd"><p> {«action»} </p></td>
+<td class="confluenceTd"><p> An action written in target language.  Executed right after previous element and right before next element. </p></td>
+</tr>
+<tr>
+<td class="confluenceTd"><p> {«action»}? </p></td>
+<td class="confluenceTd"><p> Semantic predicate. </p></td>
+</tr>
+<tr>
+<td class="confluenceTd"><p> {«action»}?=&gt; </p></td>
+<td class="confluenceTd"><p> Gated semantic predicate. </p></td>
+</tr>
+<tr>
+<td class="confluenceTd"><p> («subrule»)=&gt; </p></td>
+<td class="confluenceTd"><p> Syntactic predicate. </p></td>
+</tr>
+<tr>
+<td class="confluenceTd"><p> («x»|«y»|«z») </p></td>
+<td class="confluenceTd"><p> Subrule. Like a call to a rule with no name. </p></td>
+</tr>
+<tr>
+<td class="confluenceTd"><p> («x»|«y»|«z»)? </p></td>
+<td class="confluenceTd"><p> Optional subrule. </p></td>
+</tr>
+<tr>
+<td class="confluenceTd"><p> («x»|«y»|«z»)* </p></td>
+<td class="confluenceTd"><p> Zero-or-more subrule. </p></td>
+</tr>
+<tr>
+<td class="confluenceTd"><p> («x»|«y»|«z»)+ </p></td>
+<td class="confluenceTd"><p> One-or-more subrule. </p></td>
+</tr>
+<tr>
+<td class="confluenceTd"><p> «x»? </p></td>
+<td class="confluenceTd"><p> Optional element. </p></td>
+</tr>
+<tr>
+<td class="confluenceTd"><p> «x»* </p></td>
+<td class="confluenceTd"><p> Zero-or-more element. </p></td>
+</tr>
+<tr>
+<td class="confluenceTd"><p> «x»+ </p></td>
+<td class="confluenceTd"><p> One-or-more element. </p></td>
+</tr>
+</tbody></table></div>
+    
+        </div>
+
+        <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="http://www.antlr.org/wiki/display/ANTLR3/Grammars"
+    dc:identifier="http://www.antlr.org/wiki/display/ANTLR3/Grammars"
+    dc:title="Grammars"
+    trackback:ping="http://www.antlr.org/wiki/rpc/trackback/1407"/>
+</rdf:RDF>
+-->
+
+                    <script type="text/x-template" title="labels-dialog-div">
+
+    
+    <div id="labels-dialog">
+        <div class="labels-editor">
+            <span class="errorMessage error" id="errorSpan"></span>
+            <form method="GET" action="" id="add-labels-form">
+                <div id="labelOperationErrorContainer">
+                    <span class="error"><span class="errorMessage" id="labelOperationErrorMessage"></span></span>
+                </div>
+    
+                <div id="label-input-fields">
+                    <input autocomplete="off" id="labelsString" name="labelsString" value="">
+                    <input id="add-labels-editor-button" type="submit" class="add-labels" value="Add">
+                </div>
+                <div id="labelsAutocompleteList" class="aui-dd-parent resize-to-input" style="width: 417px"></div>
+                <div id="dialog-label-list">
+                    
+<span id="labels-section-title-none" class="no-labels-message" >
+None
+</span>
+<ul class="label-list">
+</ul>
+                </div>
+                <div id="waitImageAndStatus">
+                    <img class="waiting" alt="Please wait" src="/wiki/s/en_GB/3148/5/_/images/icons/wait.gif">&nbsp;
+                    <span id="labelOperationStatus" class="smalltext"></span>
+                </div>
+                <div class="labels-tip"></div>
+            </form>
+        </div>
+    </div>
+</script>
+                
+    
+
+
+<div id="labels-section" class="pageSection group">
+    <div class="labels-editor">
+        <span id="labels-section-title" class="label-title">Labels:</span>
+        <div id="labels-section-content" class="content-column">
+            
+<span id="labels-section-title-none" class="no-labels-message">
+None
+</span>
+<ul class="label-list">
+</ul>
+
+                            <a id="labels-edit" href="http://www.antlr.org/wiki/display/ANTLR3/Grammars#" class="show-labels-editor editor-icon" title="Edit Labels ( Type &#39;l&#39; )">
+                    <span class="icon icon-edit">Edit Labels</span>
+                </a>
+                    </div>
+    </div>
+</div>
+        
+            
+            
+
+
+
+
+            
+    
+
+
+
+
+
+
+
+<div id="comments-section" class="pageSection group">
+    
+    
+    
+    
+    </div>
+
+
+            
+</div>
+
+
+    
+
+
+
+    
+    
+
+    
+    
+    
+
+
+    
+
+
+
+    <br class="clear">
+</div><!-- \#main -->
+
+<div id="footer">
+                                                <p class="license license-opensource">
+                  Powered by a free <b>Atlassian Confluence Open Source Project License</b> granted to ANTLR. <a href="http://www.atlassian.com/c/conf/11461">Evaluate Confluence today</a>.<br>
+                </p>
+                        
+    <ul id="poweredby">
+        <li class="noprint">Powered by <a href="http://www.atlassian.com/software/confluence" class="hover-footer-link">Atlassian Confluence</a> <span id="footer-build-information">4.1.9</span>, the <a href="http://www.atlassian.com/software/confluence/tour/enterprise-wiki.jsp" class="hover-footer-link">Enterprise Wiki</a></li>
+        <li class="print-only">Printed by Atlassian Confluence 4.1.9, the Enterprise Wiki.</li>        
+        <li class="noprint"> &nbsp;·&nbsp; <a href="http://jira.atlassian.com/secure/BrowseProject.jspa?id=10470" class="hover-footer-link">Report a bug</a></li>
+        <li class="noprint"> &nbsp;·&nbsp; <a href="http://www.atlassian.com/about/connected.jsp?s_kwcid=Confluence-stayintouch" class="hover-footer-link">Atlassian News</a></li>
+    </ul>
+
+    
+
+            
+    </div></div><!-- \#full-height-container -->
+</div><!-- \#page -->
+
+<script src="./Grammars - ANTLR 3 - ANTLR Project_files/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1024344-1";
+urchinTracker();
+</script>
+
+
+
+<div id="content-hover-0" class="ajs-content-hover" style="display: none; "><div class="contents" style="width: 300px; "></div></div><div id="content-hover-1" class="ajs-content-hover" style="display: none; "><div class="contents" style="width: 300px; "></div></div><div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><div id="content-hover-shadow" style="display: none; "><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div><div id="fileuploadShim" style="position: relative; z-index: 0; "></div><div id="p16u4o33auist6r21s664rf3vq0_html5_container" style="position: absolute; background-color: transparent; width: 1263px; height: 0px; overflow: hidden; z-index: -1; opacity: 0; top: 685px; left: 0px; background-position: initial initial; background-repeat: initial initial; " class="plupload html5"><input id="p16u4o33auist6r21s664rf3vq0_html5" style="font-size: 999px; position: absolute; width: 100%; height: 100%; " type="file" accept="" multiple="multiple"></div></body></html>

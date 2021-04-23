@@ -1,0 +1,686 @@
+#reset-translation a
+{
+	text-decoration: none;
+}
+
+/* @group Global Reset */
+body {
+	margin: 0;
+	padding: 0;
+}
+html, body, form, fieldset {
+	margin: 0;
+	padding: 0;
+	font: 100%/140% Geneva, Trebuchet MS, Lucida, Arial, sans-serif;
+}
+a img  {
+	border: none;
+}
+h1, h2, h3, h4, h5, h6, p, pre,blockquote, ul, ol, dl, address {
+	margin: 0;
+	padding: 0;
+}
+ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+li {	
+	padding-left: 9px;
+	margin: 0px;
+}
+
+/* Miscellaneous conveniences: */
+form label {
+	cursor: pointer;
+}
+fieldset {
+	border: none;
+}
+/* Form field text-scaling */
+input, select, textarea {
+	font-size: 100%;
+}
+a:focus
+{
+	outline: none;
+}
+/* @end */
+
+/* @group Typography */
+
+/* Module Column Typography - sightly smaller headings */
+
+.module h1,.moduletable h1 {
+	font-size: 18px;
+}
+.module h2,.moduletable h2 {
+	font-size: 16px;
+}
+.module h4,.moduletable h4 {
+	font-size: 14px;
+}
+
+/* Basic Typography */
+div.main-left-only ol,
+div.main-left-only ul,
+div.main-right-only ol,
+div.main-right-only ul,
+div.main-wide ol,
+div.main-wide ul,
+div.main-both ol,
+div.main-both ul {
+	margin-left: 20px;
+}
+p {
+	padding-bottom: 10px;
+}
+
+
+h1 {
+	font-size: 20px;
+	line-height: 125%;
+	padding: 4px;
+	letter-spacing: -1px;
+}
+
+h2 {
+	font-size: 18px;
+	line-height: 125%;
+	padding: 4px;
+	letter-spacing: -1px;
+}
+
+h3 {
+	font-size: 16px;
+	line-height: 125%;
+	padding: 4px;
+	letter-spacing: -1px;
+}
+
+h4 {
+	font-size: 14px;
+	line-height: 125%;
+	padding: 4px;
+	letter-spacing: -1px;
+}
+
+/* EXTRA STYLES */
+
+p.alert {
+	background: #f8bda9 url(exc00000.png) no-repeat 15px 50%; /* x-pos y-pos */
+    text-align: left;
+    padding: 5px 20px 5px 45px;
+    border-top: 2px solid #FF0000;
+    border-bottom: 2px solid #FF0000;
+	color: #57060a;
+}
+
+
+p.info {
+    background: #b9cce5 url(info0000.png) no-repeat 15px 50%; /* x-pos y-pos */
+    text-align: left;
+    padding: 5px 20px 5px 45px;
+    border-top: 2px solid #466eae;
+    border-bottom: 2px solid #466eae;
+	color: #000;
+}
+p.warn {
+    background: #faffb5 url(warn0000.png) no-repeat 15px 50%; /* x-pos y-pos */
+    text-align: left;
+    padding: 5px 20px 5px 45px;
+    border-top: 2px solid #F7D229;
+    border-bottom: 2px solid #F7D229;
+	color: #463b0b;
+}
+/*-----SPECIAL LIST STYLE (CHANGE OR ADD ANOTHER)-----*/
+
+ul.checklist li {
+	list-style: none;
+	line-height: 16px;
+	padding: 2px 0px 2px 18px;
+	list-style-position: outside;
+}
+
+ul.checklist a {
+	text-decoration: underline;
+	padding: 1px;
+}
+ul.checklist a:hover {
+	text-decoration: none;
+	padding: 1px;
+}
+
+/*-----BLOCKQUOTE STYLE-----*/
+
+blockquote {
+  padding: 10px;
+  font-style: italic;
+  padding: 10px;
+}
+
+div.code {
+  	padding: 10px;
+	text-decoration: none;
+	font: normal normal normal 11px "Courier New", Courier, mono;
+}
+/* @end */
+
+/* @group Structure */
+
+/* Header Text */
+#header_text	{width: 960px;margin: 0px auto;}
+
+#header_text h1, #header_text h1 a {
+	padding:0px;
+	text-decoration: none;
+}
+#header_text h2 {
+	padding: 0px;
+	margin: 0px;
+}
+
+/* CSS for Header Image */
+#header_graphic a img {
+	border: none;
+}
+#header_graphic	{width: 960px;margin: 0px auto;}
+#header_text .inside,#header_graphic .inside {padding:0; margin:0;}
+#header_graphic h2 {text-indent: -6000em;padding:0px;margin:0px;line-height: 0px;font-size: 0;}
+#header_graphic .inside {padding:0; margin:0;}
+
+#pathway {
+	margin: 0px 0px 5px 0px;
+	font-size: 11px;
+}
+#header-wrap	{
+	width: 100%;
+	margin: 0;
+}
+#main-wrapper	{
+	width: 964px;
+	margin: 14px auto 0px auto;
+}
+
+#mainbody-both {
+	padding: 0px;
+	margin: 0px;
+}
+.main-top-right-only,.main-top-both,.main-top-left-only {
+	height: 11px;
+	width: 964px;
+}
+.main-top-wide {
+	height: 11px;
+	width: 964px;
+}
+.main-both	{
+	margin: 0px 210px 0px 200px;
+}
+.main-wide	{
+	margin: 0px auto;
+	width: 952px;
+	position: relative;
+}
+.main-left-only	{
+	margin: 0px 10px 0px 200px;
+	width: 755px;
+}
+.main-right-only	{
+	margin: 0px 200px 0px 10px;
+	width: 750px;
+}
+#leftcol {
+	float: left;
+	width: 188px;
+	padding: 0;
+	margin: 0;
+}
+#leftcol .left-inside {
+	margin: 0;
+	padding: 0px 10px 0px 10px;
+}
+#rightcol {
+	float: right;
+	width: 200px;
+ 	}
+#rightcol .right-inside {
+	margin: 0;
+ 	width: auto;
+	padding: 5px 10px 0px 0px;
+}
+
+
+/* Footer */
+.bottom-right-only,.bottom-both,.bottom-left-only,.bottom-wide	{
+	height: 11px;
+	margin: 0px 0px 5px 0px;
+	padding: 0px;
+}
+.footer {
+	margin: 0px;
+	padding: 0px 10px;
+	text-align: center;
+	font-size: 11px;
+	line-height: 12px;
+}
+.footer p {
+	margin: 0px;
+	padding: 2px 0px;
+}
+.clear {
+	clear: both;
+	margin: 0px;
+	padding: 0px;
+	height: 0px;
+}
+
+/* @end */
+
+/* @group Modules */
+ 
+ /* Header Module */
+#headermod {
+	float: right;
+	overflow: hidden;
+	position: relative;
+}
+#headermod .moduletable h3 {
+	font-size: 16px;
+	line-height: 16px;
+	font-weight: bold;
+	font-variant: normal;
+	padding-top: 8px;
+	margin: 0;
+	text-indent: 0px;
+	background-image: none;
+}
+#headermod .moduletable {
+	font-size: 11px;
+	line-height: 145%;
+}
+#headermod .contentheading,#headermod a.contentpagetitle {
+	font-size: 16px;
+	line-height: 18px;
+}
+
+/* Module  (Default) */
+div.module {margin-bottom: 8px;}
+div.module div{}
+div.module div div  {}
+div.module div div div  {padding: 5px 0px 0px 0px;}
+div.module div div div div {padding: 0;}
+div.module h3,div.moduletable h3 {
+	padding: 0;
+	line-height: 100%;
+	margin: 0 0 5px 0;
+	font-weight: normal;
+	text-indent: 9px;
+	font-size: 16px;
+}
+
+
+/* Module Unstyled */
+div.module-none {
+	margin-bottom: 10px;
+	background: none;
+}
+div.module-none div {
+	background: none;
+}
+div.module-none div div {
+	background: none;
+}
+div.module-none div div div {
+	background: none;
+	padding: 0px;
+	margin: 0px;
+}
+div.module-none div div div div {
+	background: transparent none;
+	padding: 0;
+}
+div.module-none h3 {
+	margin: 10px 0;
+	padding:0;
+	line-height: 100%;
+	height: auto;
+	margin: 0 0 5px 0;
+	font-weight: normal;
+	text-indent: 15px;
+	font-size: 18px;
+	font-style: normal;
+	border: none;
+	color: #2F462B;
+}
+/* Overrides - Must come after module structure */
+#showcase, .bottom  {
+	margin: 0px;padding: 0px;
+}
+#leftcol ul#mainlevel li,#rightcol ul#mainlevel li,
+#leftcol ul#mainlevel-sidenav li,#rightcol ul#mainlevel-sidenav li {
+	background-image: none;
+	padding: 0px;
+}
+#leftcol ul#mainlevel,#rightcol ul#mainlevel,
+#leftcol ul#mainlevel-sidenav,#rightcol ul#mainlevel-sidenav {
+	background-image: none;
+	list-style: none;
+}
+
+#leftcol a.mainlevel,#rightcol a.mainlevel,
+#leftcol a.mainlevel-sidenav,#rightcol a.mainlevel-sidenav {
+	line-height: 27px;
+	height: 27px;
+	padding-left: 8px;
+	margin-bottom: 2px;
+	text-decoration: none;
+	display: block;
+	font-size: 12px;
+}
+#leftcol a.mainlevel:hover,#rightcol a.mainlevel:hover,
+#leftcol a.mainlevel-sidenav:hover,#rightcol a.mainlevel-sidenav:hover {
+}
+#leftcol a#active_menu.mainlevel,#leftcol a#active_menu.mainlevel:hover,
+#rightcol a#active_menu.mainlevel,#rightcol a#active_menu.mainlevel:hover {
+}
+a.sublevel,a.sublevel-sidenav {
+	padding-left: 4px;
+	font-size: 12px;
+}
+a.sublevel.img {
+}
+
+/* Banner */
+div#banner {
+	margin: 0px auto 10px auto;
+	text-align: center;
+}
+/* @end */
+
+/* @group Joomla Styles */
+table.contentpaneopen ul, table.contentpaneopen ol {
+	list-style-position: inside;
+}
+/* Tables */
+table.contentpaneopen {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+table.blog table.contentpaneopen {
+	white-space: normal;
+	border-collapse:separate;
+}
+
+table table.contentpaneopen td, table table.contentpane td {
+	padding: 0px 4px;
+}
+table.contentpaneopen, table.contentpane, table.blog {
+	border-collapse: collapse;
+	width: 100%;
+}
+div.blog_more {
+	padding: 0px 10px;
+}
+div.blog_more strong {
+	position: relative;
+}
+
+div.blog_more ul li {
+	list-style: none;
+	background-image: none;
+	padding: 0px;
+}
+div.blog_more ul li a {
+	text-decoration: none;
+	display: block;
+	padding: 4px;
+}
+div.blog_more ul li a:hover {
+	text-decoration: none;
+	display: block;
+	padding: 4px;
+}
+
+/* Polls Module */
+table.pollstableborder {
+	width: 100%;
+	text-align: left;
+}
+table.poll {
+	font-size: 11px;
+}
+.smalldark {
+white-space: nowrap;
+}
+
+.sectiontableentry1 a,
+.sectiontableentry2 a {
+text-decoration: none;
+}
+li a.category {
+	font-weight: bold;
+	text-decoration: none;
+}
+table.contentpane tr td ul {
+	list-style: none;
+}
+/* Print-PDF-EMail */
+
+body.contentpane {
+	background: #fff;
+	margin: 25px;
+}
+span.pagenav {
+	color: #9e9984;
+}
+td.modifydate {
+line-height: 30px;
+}
+div.mosimage {
+	margin: 10px;
+}
+div.mosimage_caption {
+	font: 10px/12px Arial, Helvetica, Geneva, sans-serif;
+	padding: 2px;
+}
+div.mosimage img {
+	padding: 5px;
+}
+/* Content Headings */
+a.contentpagetitle {
+	font-size: 20px;
+	font-weight: normal;
+	white-space: normal;
+	line-height: 145%;
+	padding: 4px 0px 0px 0px;
+	margin-bottom: 6px;
+	text-decoration: none;
+}
+a.contentpagetitle:hover {
+	text-decoration: none;
+}
+td.contentheading {
+	width: 100%;
+}
+.contentheading {
+	font-size: 20px;
+	font-weight: normal;
+	white-space: normal;
+	line-height: 115%;
+	padding: 4px 0px 0px 0px;
+	margin-bottom: 6px;
+	font-style: normal;
+	letter-spacing: -1px;
+}
+.componentheading {
+	font-size: 20px;
+	line-height: 30px;
+	font-weight: bold;
+}
+a.readon {
+	float: right;
+	padding-left: 18px;
+	line-height: 15px;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+.pagenav_next a,.pagenav_prev a {
+	margin: 15px 15px 0px 0px;
+	padding: 1px 4px;
+	text-align: center;
+	text-decoration:none;
+	font: 12px Arial, Helvetica, Geneva, sans-serif;
+}
+div.back_button a {
+	margin: 15px 15px 0px 0px;
+	border: 1px solid #adc387;
+	padding: 1px 2px;
+	text-align: center;
+	text-decoration:none;
+	float: right;
+	font: 12px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+.pagenav_next a:hover,.pagenav_prev a:hover,div.back_button a:hover {
+	text-decoration:none;
+}
+
+div.pagenavbar a, div.pagenavbar {
+	text-decoration: none;
+	font-size: 11px;
+}
+table.contenttoc {
+	font-size: 12px;
+}
+
+table.contenttoc th {
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: small-caps;
+}
+table.contenttoc td {
+	font-size: 14px;
+	padding: 2px 8px;
+}
+table.contenttoc a.toclink  {
+	font-size: 12px;
+	text-decoration: none;
+}
+
+
+
+/* @end */
+
+
+/**
+ * @version 1.5.1 $Id: style.css
+ * @package Joomla 1.5.x
+ * @subpackage RS-Monials
+ * @copyright (C) 2009 RS Web Solutions (http://www.rswebsols.com)
+ * @license GNU/GPL
+ */
+ 
+/* Success Message Text after submitting a testimonial */
+.RSM_success { color:#009900; font-weight:bold; }
+
+/* Css class for "Submit a Testimonial" Link */
+.RSM_submit_link { text-align:right; }
+.RSM_submit_link a { }
+.RSM_submit_link a:hover { }
+
+/* Horizontal Rule Color */
+.RSM_hr_color { color:#cccccc; }
+
+/* Manage the image and alignment of both quotation */
+.RSM_left_quote { padding-right:0px; }
+
+.RSM_right_quote { padding-left:0px; }
+
+/* Manage Testimonial Text */
+.RSM_testimonial { font-size:12px; font-weight:bold; text-align:justify; }
+
+/* Manage the Subtext of Testimonial, i.e. Date of Posting, Posted By etc. etc. */
+.RSM_testmonial_subtext { text-align:right; }
+
+/* Manage Text and link of Pagination */
+.RSM_pagination_text { text-align:center; }
+.RSM_pagination_text a { }
+.RSM_pagination_text a:hover { }
+
+/*********************************************************/
+/*** Manage the display of Testimonial Submission Form ***/
+/*********************************************************/
+
+/* Text "Submit A Testimonial" */
+.RSM_form_heading
+{
+color: white;
+background-color: #B5761C;
+border: 1px solid #781351;
+padding: 2px 6px;
+} 
+
+
+/* Manage the Style of main Table */
+.RSM_form_main { width:95%; }
+
+/* Manage the error Text */
+.RSM_form_error { color:#ff0000; }
+.RSM_form_error p { }
+.RSM_form_error div ul li { }
+
+/* Manage the row that is displaying " * fields are mandatory" */
+.RSM_form_mandatory { text-align:right; }
+
+/* Color of the "*" (Star) */
+.RSM_form_star_color { color:#B5761C; }
+
+/* Manage width of the First Column, i.e. the column that is showing text like "Your First Name", "Your Last Name" etc. */
+.RSM_form_first_col { width:15%; }
+
+/* Manage the style of text in the form */
+.RSM_form_text 
+{
+float: left;
+text-align: right;
+margin-right: 0.5em;
+display: block
+}
+
+/* Manage Input fields of the form */
+.RSM_form_input {
+ width:100%; 
+color: #781351;
+background:#FFCC2F;
+border: 1px solid #781351
+
+}
+
+/* Manage Textarea field of the form */
+.RSM_form_textarea { 
+width:100%; height:150px; 
+color: #781351;
+background:#FFCC2F;
+border: 1px solid #781351
+}
+
+/* Manage Button field of the form */
+.RSM_form_button 
+{ 
+color: white;
+background-color: #B5761C;
+border: 1px solid #781351;
+padding: 2px 6px;
+}
+
+
+.RSM_fieldset
+{
+border: 1px solid #781351;
+width: 80%;
+margin-left:10%;
+}
+

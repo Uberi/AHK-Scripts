@@ -1,0 +1,41 @@
+3.each fn('i) {
+	print "Run #" .. i
+}
+
+loop 5 'i {
+	print "Iteration " .. i
+}
+
+loop 23 {
+	print "Spam"
+}
+
+;fizzbuzz code
+loop 48 'i {
+	print(
+		i % 3 = 0 ?
+			i % 5 = 0 ?
+				"FizzBuzz"
+			: "Fizz"
+		: i % 5 = 0 ?
+			"Buzz"
+		: i
+	)
+}
+
+match x, [
+	2: { print "Two" },
+	5: { print "Five" },
+	8: { print "Eight" }
+], { print "Unknown" }
+
+SomeClass := [
+	test: fn('a) {
+		print "test"
+	},
+	abc: fn('b) {
+		print "abc"
+	}
+]
+
+with Patterns { "a"[1:] .. "b"[:1] .. "c"[:] } ;equivalent to re.match("a+b?c*")

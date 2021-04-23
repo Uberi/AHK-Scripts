@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8;charset=utf-8">
+	<title>Ruby Quiz - Postfix to Infix (#148)</title>
+	<link rel="stylesheet" type="text/css" href="Ruby%20Quiz%20-%20Postfix%20to%20Infix%20%28%23148%29_files/quiz0000.css" />
+	<link rel="stylesheet" type="text/css" href="Ruby%20Quiz%20-%20Postfix%20to%20Infix%20%28%23148%29_files/print000.css" media="print" />
+</head><body>
+	<div id="page">
+		<div id="header"><span class="ruby">Ruby</span> <span class="quiz">Quiz</span></div>
+		<div id="content">
+			<span class="title">Postfix to Infix (#148)</span>
+			<p>There are many different ways to write mathematical equations.  Infix notation is probably the most popular and yields expressions like:</p>
+			<p class="example">2 * (3 + 5)</p>
+			<p>Some people like to work with a postfix notation (often called Reverse Polish Notation or just RPN) though, which doesn't require parentheses for the same equation:</p>
+			<p class="example">2 3 5 + *</p>
+			<p>You can compare the results of these equations using the Unix utilities bc (infix) and dc (postfix):</p>
+			<p class="example">$ bc &lt;&lt;&lt; '2 * (3 + 5)'<br />16<br />$ dc &lt;&lt;&lt; '2 3 5 + * p'<br />16</p>
+			<p>The "p" instruction tacked onto the end of the expression for dc just tells it to print the result.</p>
+			<p>This week's quiz is to write a script that translates postfix expressions into the equivalent infix expression.  In the simplest form, your script should function as such:</p>
+			<p class="example">$ ruby postfix_to_infix.rb '2 3 +'<br />2 + 3</p>
+			<p>At minimum, try to support the four basic math operators:  +, -, *, and /.  Feel free to add others though.  For numbers, remember to accept decimal values.</p>
+			<p>You can count on the postfix expressions having spaces between each term, if you like.  While dc is content with 2 3+p, you don't have to support it unless you want to.</p>
+			<p>For an added bonus, try to keep the parentheses added to infix expressions to the minimum of what is needed.  For example, prefer these results:</p>
+			<p class="example">$ ruby postfix_to_infix.rb '56 34 213.7 + * 678 -'<br />56 * (34 + 213.7) - 678<br />$ ruby postfix_to_infix.rb '1 56 35 + 16 9 - / +'<br />1 + (56 + 35) / (16 - 9)</p>
+			<p>to these:</p>
+			<p class="example">$ ruby postfix_to_infix.rb '56 34 213.7 + * 678 -'<br />((56 * (34 + 213.7)) - 678)<br />$ ruby postfix_to_infix.rb '1 56 35 + 16 9 - / +'<br />(1 + ((56 + 35) / (16 - 9)))</p>
+			<p>Posting equations and your output is not a spoiler.</p>
+			<hr />
+			<p><span class="title">Quiz Summary</span></p>
+			<p>The big advantage of postfix expressions is that they are built with a stack in mind.  This turns out to be a powerful way to do math both for computers and humans.  HP makes some great RPN calculators that literally display a stack on the screen and give you the tools the manipulate it.  To handle the expression:</p>
+			<p class="example">2 3 +</p>
+			<p>on a calculator like that, you could type a two followed by the enter key to push the number onto the stack.  Similarly, three and enter pushes that number, shifting the two up a slot.  Finally, pressing the plus key pops two values from the stack, performs the requested operation, and pushes the result back onto the stack.</p>
+			<p>We can solve this problem just like that.  We only need to change that final step to push an equivalent infix expression back to the stack, instead of some mathematical result.  Here is some code from Jesús that does just that:</p>
+			<div class="code"><span class="type">ruby</span><div class="body">    stack = []<br />    expr = ARGV.join(<span class="string">" "</span>)<br />    expr.split(<span class="string">/ /</span>).each <span class="keyword">do</span> |x|<br />      <span class="keyword">case</span> x<br />      <span class="keyword">when</span> *<span class="string">%w{+ * - /}</span><br />        op2 = stack.pop<br />        op1 = stack.pop<br />        stack.push <span class="string">"(#{op1} #{x} #{op2})"</span><br />      <span class="keyword">else</span><br />        stack.push x<br />      <span class="keyword">end</span><br />    <span class="keyword">end</span><br />    puts stack.pop<br /><br /></div></div>
+			<p>Note that the first line creates the key data structure, our stack.  From there the code iterates over each chunk of the expression.  When the chunk isn't an operator it must be a number and push()ed onto the stack by the else clause.  For operators, two values are pop()ped, transformed into an infix String, and pushed back onto the stack.  The first operand pop()ped is actually the right-hand side operand, so it's important to remember to reverse them as Jesús does here.  The final line of code just pop()s and prints the final element from the stack which will be our infix expression.</p>
+			<p>This code solves the problem and produces perfectly accurate translations.  The only downside is that it adds a lot of parentheses to ensure the order of evaluation is handled correctly.  While that's not at all wrong, the expressions could be a little prettier if we drop some of the unneeded symbols.</p>
+			<p>To do that, we need to make our stack a little smarter.  James Koppel sent in a solution that reads the postfix expression like we have already seen, but instead of building Strings as the results it builds a custom syntax tree object.  That object is smart enough to convert itself into an infix expression with minimal parentheses.  Let's examine how that works.</p>
+			<p>Here's the start of the code:</p>
+			<div class="code"><span class="type">ruby</span><div class="body">    PREC        = {:+ =&gt; 0,:- =&gt; 0,:* =&gt; 1,:/ =&gt; 1,:% =&gt; 1,:^ =&gt; 2}<br />    LEFT_ASSOCS = {:+ =&gt; <span class="keyword">true</span>, :- =&gt; <span class="keyword">true</span>, :* =&gt; <span class="keyword">true</span>, :/ =&gt; <span class="keyword">true</span>,<br />                   :% =&gt; <span class="keyword">true</span>, :^ =&gt; <span class="keyword">false</span>}<br />    RIGHT_ASSOCS = {:+ =&gt; <span class="keyword">true</span>,  :- =&gt; <span class="keyword">false</span>, :* =&gt; <span class="keyword">true</span>, :/ =&gt; <span class="keyword">false</span>,<br />                    :% =&gt; <span class="keyword">false</span>, :^ =&gt; <span class="keyword">true</span>}<br /><br />    <span class="keyword">class</span> TreeNode<br />      attr_accessor :el,:left,:right<br />      <span class="keyword">def</span> initialize(el,left,right)<br />        <span class="variable">@el</span>,<span class="variable">@left</span>,<span class="variable">@right</span>=el,left,right<br />      <span class="keyword">end</span><br /><br />      <span class="comment"># ...</span><br /><br /></div></div>
+			<p>We are looking at two things here.  First, we have some tables for future checks against operator precedence and associativity.  We will see how these get put to use when we examine the conversion code.  Note that this code supports two additional operations:  modulo division and exponents.</p>
+			<p>The rest of the code lays out the design for a node in the syntax tree.  Each node has an element, or operator, as well as the subexpressions to the left and right.  These subexpresions can be Float objects or additional nodes in the tree.</p>
+			<p>Here is the method that constructs the syntax tree:</p>
+			<div class="code"><span class="type">ruby</span><div class="body">      <span class="comment"># ...</span><br /><br />      <span class="keyword">def</span> TreeNode.from_postfix(exp_arr)<br />        stack = []<br />        exp_arr.each <span class="keyword">do</span> |exp_str|<br />          <span class="keyword">if</span> PREC.keys.include? exp_str.to_sym<br />            op2,op1 = stack.pop,stack.pop<br />            stack.push(TreeNode.new(exp_str.to_sym,op1,op2))<br />          <span class="keyword">else</span><br />            stack.push(exp_str.to_f)<br />          <span class="keyword">end</span><br />        <span class="keyword">end</span><br />        stack.first<br />      <span class="keyword">end</span><br /><br />      <span class="comment"># ...</span><br /><br /></div></div>
+			<p>You've seen this code before.  It's almost identical to Jesús's solution.  The primary difference here is that the code is converting to Float and TreeNode objects, instead of working in Strings.  The stack still guides the process, but the result is an abstract syntax tree.</p>
+			<p>Once we have a tree, we need the code to convert it to an infix expression:</p>
+			<div class="code"><span class="type">ruby</span><div class="body">      <span class="comment"># ...</span><br /><br />      <span class="keyword">def</span> to_minparen_infix<br />        l,r = [left,right].map{|o|o.to_minparen_infix}<br />        l = <span class="string">"(#{l})"</span> <span class="keyword">if</span> left.respond_to?(:el) <span class="keyword">and</span><br />                        ( PREC[left.el]&lt;PREC[<span class="keyword">self</span>.el] <span class="keyword">or</span><br />                          ( PREC[<span class="keyword">self</span>.el]==PREC[left.el] <span class="keyword">and</span><br />                            <span class="keyword">not</span> LEFT_ASSOCS[<span class="keyword">self</span>.el] ) )<br />        r= <span class="string">"(#{r})"</span> <span class="keyword">if</span> right.respond_to?(:el) <span class="keyword">and</span><br />                       ( PREC[right.el]&lt;PREC[<span class="keyword">self</span>.el] <span class="keyword">or</span><br />                         ( PREC[<span class="keyword">self</span>.el]==PREC[right.el] <span class="keyword">and</span><br />                           <span class="keyword">not</span> RIGHT_ASSOCS[<span class="keyword">self</span>.el] ) )<br />        l+<span class="string">" #{self.el} "</span>+r<br />      <span class="keyword">end</span><br />    <span class="keyword">end</span><br /><br />    <span class="keyword">class</span> Float<br />      <span class="keyword">def</span> to_minparen_infix<br />        <span class="keyword">if</span> <span class="keyword">self</span>%1==0<br />          to_i.to_s<br />        <span class="keyword">else</span><br />          to_s<br />        <span class="keyword">end</span><br />      <span class="keyword">end</span><br />    <span class="keyword">end</span><br /><br />    <span class="comment"># ...</span><br /><br /></div></div>
+			<p>The conversion for a given node isn't too hard to understand.  First, convert the left and right subexpressions.  For Floats this amounts to the helper method that Stringifies them with or without trailing decimal digits at the bottom of the code.  For another TreeNode this is just a recursive process.</p>
+			<p>Once we have the minimal left and right subexpression the question becomes, do they need parentheses?  The middle lines of TreeNode#to_minparen_infix sort this out.  If a subexpression isn't a simple Float (which won't have an el() method) and it has a precedence lower than us or the same us when we aren't a left associative operator, parentheses are added.  A similar check then is made for the right side using the right associativity table.  With any needed parenthesis in place, the expression is simply the left subexpression followed by our operator and the right subexpression.</p>
+			<p>The application code just needs to hand-off the argument to the program and trigger the conversion of the root node.  The result of that conversion can be printed as a final infix expression with minimal parentheses.  Here's that code:</p>
+			<div class="code"><span class="type">ruby</span><div class="body">    <span class="comment"># ...</span><br /><br />    puts TreeNode.from_postfix(ARGV.first.split(<span class="string">/ /</span>)).to_minparen_infix<br /><br /></div></div>
+			<p>thanks. My +</p>
+			<p>Tomorrow we will teach Ruby to tie knots in our words...</p>
+		</div>
+		<div id="logo"><img src="Ruby%20Quiz%20-%20Postfix%20to%20Infix%20%28%23148%29_files/ruby_qui.jpg" alt="" width="157" height="150" /></div>
+		<div id="links">
+			<span class="title">Quiz Solutions</span>
+			<ol>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281701">Robert Dober</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281703">Eric DUMINIL</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281708">Harry Kakueki</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281710">Thomas</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281712">Jes&uacute;s Gabriel y Gal&aacute;n</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281713">Ken Bloom</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281714">Thomas (2)</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281716">James Koppel</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281717">Daniel Lindsley</a></li>
+				<li><a href="http://groups.google.com/group/comp.lang.ruby/msg/7a5a1472fa7fd157">Pawel Radecki</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281722">Justin Ethier</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281723">Lee Jarvis</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281730">Thomas (3)</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281735">Daniel Martin</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281740">Adam Shelly</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281741">Adam Shelly (2)</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281743">Alex Shulgin</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281747">Alex Shulgin (2)</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281755">Eugene Kalenkovich</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281772">Artem Voroztsov</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281778">Joe</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281787">Dave Pederson</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281793">Eric Mahurin</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281799">Omari Stephens</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281817">Dave Pederson (2)</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281831">inuyasha</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281834">Thomas (4)</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281850">Eric Mahurin (2)</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281870">Christian von Kleist</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281871">Christian von Kleist (2)</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281888">Artem Voroztsov (2)</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281896">Eric DUMINIL (2)</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281899">Christian von Kleist (3)</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281908">Alpha Chen</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281909">Adam Shelly (3)</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/281920">James Koppel (2)</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/282009">Dave</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/282023">Jim Truher</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/282197">Vasil Vangelovski</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/282216">Vasil Vangelovski (2)</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/282339">Vasil Vangelovski (3)</a></li>
+				<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/282347">Aaron Suggs</a></li>
+			</ol>
+			<p><a href="http://www.rubyquiz.com/quiz148_sols.zip">Download Solutions</a></p>
+			<p><a href="http://www.rubyquiz.com/index.html">Back to Quiz Listing</a></p>
+		</div>
+		<div id="footer">&nbsp;</div>
+	</div>
+</body>
+</html>
+
+<!-- This document saved from http://www.rubyquiz.com/quiz148.html -->

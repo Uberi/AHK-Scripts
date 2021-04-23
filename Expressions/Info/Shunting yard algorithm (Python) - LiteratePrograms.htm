@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8;charset=utf-8" />
+		<meta name="keywords" content="Shunting yard algorithm (Python),Shunting yard algorithm (C),Shunting yard algorithm (Perl),Shunting yard algorithm (Python),Shunting yard algorithm (Python)" />
+<link rel="shortcut icon" href="Shunting%20yard%20algorithm%20%28Python%29%20-%20LiteratePrograms_files/favicon0.ico" />
+<link rel="copyright" href="/LiteratePrograms:Copyrights" />
+		<title>Shunting yard algorithm (Python) - LiteratePrograms</title>
+		<style type="text/css" media="screen,projection">/*<![CDATA[*/ @import "Shunting\ yard\ algorithm\ \(Python\)\ -\ LiteratePrograms_files/main0000.css"; /*]]>*/</style>
+		<link rel="stylesheet" type="text/css" media="print" href="Shunting%20yard%20algorithm%20%28Python%29%20-%20LiteratePrograms_files/commonPr.css" />
+		<!--[if lt IE 5.5000]><style type="text/css">@import "/skins/monobook/IE50Fixes.css";</style><![endif]-->
+		<!--[if IE 5.5000]><style type="text/css">@import "/skins/monobook/IE55Fixes.css";</style><![endif]-->
+		<!--[if IE 6]><style type="text/css">@import "/skins/monobook/IE60Fixes.css";</style><![endif]-->
+		<!--[if IE 7]><style type="text/css">@import "/skins/monobook/IE70Fixes.css?1";</style><![endif]-->
+		<!--[if lt IE 7]><script type="text/javascript" src="/skins/common/IEFixes.js"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		<script type="text/javascript">var skin = 'monobook';var stylepath = '/skins';</script>
+		<script type="text/javascript" src="Shunting%20yard%20algorithm%20%28Python%29%20-%20LiteratePrograms_files/wikibits.js"><!-- wikibits js --></script>
+		<script type="text/javascript" src="/-?action=raw&amp;gen=js"><!-- site js --></script>
+		<style type="text/css">/*<![CDATA[*/
+@import "Shunting\ yard\ algorithm\ \(Python\)\ -\ LiteratePrograms_files/css00000.css";
+@import "Shunting\ yard\ algorithm\ \(Python\)\ -\ LiteratePrograms_files/css00001.css";
+@import "Shunting\ yard\ algorithm\ \(Python\)\ -\ LiteratePrograms_files/-0000000.css";
+/*]]>*/</style>
+		<!-- Head Scripts -->
+			</head>
+<body  class="ns-0 ltr">
+	<div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+				<h1 class="firstHeading">Shunting yard algorithm (Python)</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From LiteratePrograms</h3>
+			<div id="contentSub"></div>
+									<div id="jump-to-nav">Jump to: <a href="">navigation</a>, <a href="">search</a></div>			<!-- start content -->
+			<dl><dd><b>Other implementations</b>: <a href="http://en.literateprograms.org/Shunting_yard_algorithm_(C)" title="Shunting yard algorithm (C)">C</a> | <a href="http://en.literateprograms.org/Shunting_yard_algorithm_(Perl)" title="Shunting yard algorithm (Perl)">Perl</a> | <strong>Python</strong>
+</dd></dl>
+<p>In this article, we describe an implementation of the <a href="http://en.wikipedia.org/wiki/Shunting_yard_algorithm" class='external text' title="http://en.wikipedia.org/wiki/Shunting_yard_algorithm" rel="nofollow">Shunting yard algorithm</a> in <a href="http://en.wikipedia.org/wiki/Python_(programming_language)" class='external text' title="http://en.wikipedia.org/wiki/Python_(programming_language)" rel="nofollow">Python</a>. The algorithm is a simple way of parsing expressions in <a href="http://en.wikipedia.org/wiki/Infix_notation" class='external text' title="http://en.wikipedia.org/wiki/Infix_notation" rel="nofollow">infix notation</a>.
+</p><p>In this implementation we generate a form of <a href="http://en.wikipedia.org/wiki/Reverse_Polish_notation" class='external text' title="http://en.wikipedia.org/wiki/Reverse_Polish_notation" rel="nofollow">RPN</a> which is readable by the <a href="http://en.wikipedia.org/wiki/Dc_(Unix)" class='external text' title="http://en.wikipedia.org/wiki/Dc_(Unix)" rel="nofollow">dc UNIX tool</a>.
+</p>
+<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class='toclevel-1'><a href=""><span class="tocnumber">1</span> <span class="toctext">Tokens</span></a></li>
+<li class='toclevel-1'><a href=""><span class="tocnumber">2</span> <span class="toctext">Operators</span></a></li>
+<li class='toclevel-1'><a href=""><span class="tocnumber">3</span> <span class="toctext">The parser</span></a></li>
+<li class='toclevel-1'><a href=""><span class="tocnumber">4</span> <span class="toctext">Output</span></a></li>
+<li class='toclevel-1'><a href=""><span class="tocnumber">5</span> <span class="toctext">The program</span></a></li>
+</ul>
+</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="http://en.literateprograms.org/Shunting_yard_algorithm_(Python)?action=edit&amp;section=1" title="Edit section: Tokens">edit</a>]</div><a name="Tokens"></a><h2> Tokens </h2>
+<p>The first step is to split the input string containing the expression into tokens. The only token types we support are numbers and operators (+, -, *, /) and parentheses. This is easily accomplished with the <i>re.split</i> function.
+</p>
+<pre>
+<font face="times" color="#000000"><b>&lt;&lt;<a name="chunk def:tokens" href="">tokens</a>&gt;&gt;=</b></font>
+<font color="#2040a0">tokens</font> <font color="#4444FF">=</font> <font color="#2040a0">re</font>.<font color="#2040a0">split</font><font color="#4444FF">(</font><font color="#008000">' *([+<font color="#77dd77">\-</font>*/()]|<font color="#77dd77">\d</font>+<font color="#77dd77">\.</font><font color="#77dd77">\d</font>+|<font color="#77dd77">\d</font>+) *'</font>, <font color="#2040a0">expr</font><font color="#4444FF">)</font>
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="http://en.literateprograms.org/Shunting_yard_algorithm_(Python)?action=edit&amp;section=2" title="Edit section: Operators">edit</a>]</div><a name="Operators"></a><h2> Operators </h2>
+<p>We use a hash to store the operator precedences. The unary <i>-</i> operator is called <i>-u</i> to distinguish it from the binary operator with the same name.
+</p>
+<pre>
+<font face="times" color="#000000"><b>&lt;&lt;<a name="chunk def:operators" href="">operators</a>&gt;&gt;=</b></font>
+<font color="#2040a0">prec</font> <font color="#4444FF">=</font> <font color="#4444FF"><strong>{</strong></font><font color="#008000">'-u'</font><font color="#4444FF">:</font> <font color="#FF0000">5</font>, <font color="#008000">'*'</font><font color="#4444FF">:</font> <font color="#FF0000">4</font>, <font color="#008000">'/'</font><font color="#4444FF">:</font> <font color="#FF0000">3</font>, <font color="#008000">'+'</font><font color="#4444FF">:</font> <font color="#FF0000">2</font>, <font color="#008000">'-'</font><font color="#4444FF">:</font> <font color="#FF0000">1</font>, <font color="#008000">'('</font><font color="#4444FF">:</font> <font color="#FF0000">0</font>, <font color="#008000">''</font><font color="#4444FF">:</font> <font color="#FF0000">9</font><font color="#4444FF"><strong>}</strong></font>
+</pre>
+<p>Right-associative operators must be treated specially. In this example, we only have one (the unary <i>-</i>), and store it in another hash.
+</p>
+<pre>
+<font face="times" color="#000000"><b>&lt;&lt;<a name="chunk def:operators" href="">operators</a>&gt;&gt;=</b></font>
+<font color="#2040a0">right</font> <font color="#4444FF">=</font> <font color="#4444FF"><strong>{</strong></font><font color="#008000">'-u'</font><font color="#4444FF">:</font> <font color="#FF0000">1</font><font color="#4444FF"><strong>}</strong></font>
+</pre>
+<p>We provide a function to easily find the operator precedence.
+</p>
+<pre>
+<font face="times" color="#000000"><b>&lt;&lt;<a name="chunk def:operators" href="">operators</a>&gt;&gt;=</b></font>
+<strong>def</strong> <font color="#2040a0">getprec</font><font color="#4444FF">(</font><font color="#2040a0">op</font><font color="#4444FF">)</font><font color="#4444FF">:</font>
+    <strong>return</strong> <font color="#2040a0">prec</font>.<font color="#2040a0">get</font><font color="#4444FF">(</font><font color="#2040a0">op</font>, <font color="#4444FF">-</font><font color="#FF0000">1</font><font color="#4444FF">)</font>
+</pre>
+<p>The way we used the <i>split</i> function, will leave some empty tokens. We just ignore them.
+</p><p>A unary operator is the first token or any operator that is preceded by another operator (not parentheses).
+</p>
+<pre>
+<font face="times" color="#000000"><b>&lt;&lt;<a name="chunk def:tokens-preprocessing" href="">tokens-preprocessing</a>&gt;&gt;=</b></font>
+<strong>if</strong> <strong>not</strong> <font color="#2040a0">token</font><font color="#4444FF">:</font>
+    <strong>continue</strong>
+
+<strong>if</strong> <font color="#2040a0">token</font> <font color="#4444FF">=</font><font color="#4444FF">=</font> <font color="#008000">'-'</font> <strong>and</strong> <font color="#2040a0">getprec</font><font color="#4444FF">(</font><font color="#2040a0">last</font><font color="#4444FF">)</font> <font color="#4444FF">&gt;</font><font color="#4444FF">=</font> <font color="#FF0000">0</font><font color="#4444FF">:</font>
+    <font color="#2040a0">token</font> <font color="#4444FF">=</font> <font color="#008000">'-u'</font>
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="http://en.literateprograms.org/Shunting_yard_algorithm_(Python)?action=edit&amp;section=3" title="Edit section: The parser">edit</a>]</div><a name="The_parser"></a><h2> The parser </h2>
+<p>The shunting yard algorithm is quite simple. All numbers are added to the output stream (here represented by <i>@rpn</i>). Operators are pushed on a stack. Each time we reach a new operator, we pop operators from the stack until we reach one that has lower precedence. In the case of a right associative operator, we also stop if we reach an operator of the same precedence.
+</p><p>All popped operators are appended to the output stream.
+</p><p>When we reach a right parenthesis, we pop all operators until the matching left parenthesis. The parentheses are thrown away.
+</p>
+<pre>
+<font face="times" color="#000000"><b>&lt;&lt;<a name="chunk def:parsing" href="">parsing</a>&gt;&gt;=</b></font>
+<font color="#444444"># Parsing</font>
+
+<font color="#2040a0">op_stack</font> <font color="#4444FF">=</font> <font color="#4444FF">[</font><font color="#4444FF">]</font>
+<font color="#2040a0">rpn</font> <font color="#4444FF">=</font> <font color="#4444FF">[</font><font color="#4444FF">]</font>
+
+<font color="#2040a0">last</font> <font color="#4444FF">=</font> <font color="#008000">''</font>
+<strong>for</strong> <font color="#2040a0">token</font> <strong>in</strong> <font color="#2040a0">tokens</font><font color="#4444FF">:</font>
+    <span style="border: 1px solid #a0a0a0; padding: 0.05em 0.2em 0.03em 0.2em;"><font face="times" color="#000000"><a name="chunk use:tokens-preprocessing" href="">tokens-preprocessing</a></font></span>
+
+    <strong>if</strong> <font color="#2040a0">re</font>.<font color="#2040a0">match</font><font color="#4444FF">(</font><font color="#008000">'^<font color="#77dd77">\d</font>+$|^<font color="#77dd77">\d</font>+<font color="#77dd77">\.</font><font color="#77dd77">\d</font>+$'</font>, <font color="#2040a0">token</font><font color="#4444FF">)</font><font color="#4444FF">:</font>
+        <strong>if</strong> <font color="#2040a0">re</font>.<font color="#2040a0">match</font><font color="#4444FF">(</font><font color="#008000">'^<font color="#77dd77">\d</font>+$|^<font color="#77dd77">\d</font>+<font color="#77dd77">\.</font><font color="#77dd77">\d</font>+$'</font>, <font color="#2040a0">last</font><font color="#4444FF">)</font> <strong>or</strong> <font color="#2040a0">last</font> <font color="#4444FF">=</font><font color="#4444FF">=</font> <font color="#008000">')'</font><font color="#4444FF">:</font>
+            <strong>raise</strong> <font color="#2040a0">Exception</font>, <font color="#008000">&quot;Value tokens must be separated by an operator&quot;</font>
+
+        <font color="#2040a0">rpn</font>.<font color="#2040a0">append</font><font color="#4444FF">(</font><font color="#2040a0">token</font><font color="#4444FF">)</font>
+    <strong>elif</strong> <font color="#2040a0">token</font> <font color="#4444FF">=</font><font color="#4444FF">=</font> <font color="#008000">'('</font><font color="#4444FF">:</font>
+        <font color="#2040a0">op_stack</font>.<font color="#2040a0">append</font><font color="#4444FF">(</font><font color="#2040a0">token</font><font color="#4444FF">)</font>
+    <strong>elif</strong> <font color="#2040a0">token</font> <font color="#4444FF">=</font><font color="#4444FF">=</font> <font color="#008000">')'</font><font color="#4444FF">:</font>
+        <strong>while</strong> <font color="#2040a0">op_stack</font><font color="#4444FF">[</font><font color="#4444FF">-</font><font color="#FF0000">1</font><font color="#4444FF">]</font> <font color="#4444FF">!</font><font color="#4444FF">=</font> <font color="#008000">'('</font><font color="#4444FF">:</font>
+            <font color="#2040a0">t</font> <font color="#4444FF">=</font> <font color="#2040a0">op_stack</font>.<font color="#2040a0">pop</font><font color="#4444FF">(</font><font color="#4444FF">)</font>
+            <font color="#2040a0">rpn</font>.<font color="#2040a0">append</font><font color="#4444FF">(</font><font color="#2040a0">t</font><font color="#4444FF">)</font>
+        <strong>if</strong> <font color="#2040a0">op_stack</font>.<font color="#2040a0">pop</font><font color="#4444FF">(</font><font color="#4444FF">)</font> <font color="#4444FF">!</font><font color="#4444FF">=</font> <font color="#008000">'('</font><font color="#4444FF">:</font>
+            <strong>raise</strong> <font color="#2040a0">Exception</font>, <font color="#008000">&quot;No matching (&quot;</font>
+    <strong>elif</strong> <font color="#2040a0">getprec</font><font color="#4444FF">(</font><font color="#2040a0">token</font><font color="#4444FF">)</font> <font color="#4444FF">&gt;</font> <font color="#FF0000">0</font><font color="#4444FF">:</font>
+        <font color="#2040a0">pr</font> <font color="#4444FF">=</font> <font color="#2040a0">getprec</font><font color="#4444FF">(</font><font color="#2040a0">token</font><font color="#4444FF">)</font>
+        <strong>if</strong> <font color="#2040a0">token</font> <strong>in</strong> <font color="#2040a0">right</font><font color="#4444FF">:</font>
+            <strong>while</strong> <font color="#2040a0">op_stack</font> <strong>and</strong> <font color="#2040a0">pr</font> <font color="#4444FF">&lt;</font> <font color="#2040a0">getprec</font><font color="#4444FF">(</font><font color="#2040a0">op_stack</font><font color="#4444FF">[</font><font color="#4444FF">-</font><font color="#FF0000">1</font><font color="#4444FF">]</font><font color="#4444FF">)</font><font color="#4444FF">:</font>
+                <font color="#2040a0">rpn</font>.<font color="#2040a0">append</font><font color="#4444FF">(</font><font color="#2040a0">op_stack</font>.<font color="#2040a0">pop</font><font color="#4444FF">(</font><font color="#4444FF">)</font><font color="#4444FF">)</font>
+        <strong>else</strong><font color="#4444FF">:</font>
+            <strong>while</strong> <font color="#2040a0">op_stack</font> <strong>and</strong> <font color="#2040a0">pr</font> <font color="#4444FF">&lt;</font><font color="#4444FF">=</font> <font color="#2040a0">getprec</font><font color="#4444FF">(</font><font color="#2040a0">op_stack</font><font color="#4444FF">[</font><font color="#4444FF">-</font><font color="#FF0000">1</font><font color="#4444FF">]</font><font color="#4444FF">)</font><font color="#4444FF">:</font>
+               <font color="#2040a0">rpn</font>.<font color="#2040a0">append</font><font color="#4444FF">(</font><font color="#2040a0">op_stack</font>.<font color="#2040a0">pop</font><font color="#4444FF">(</font><font color="#4444FF">)</font><font color="#4444FF">)</font>
+
+        <font color="#2040a0">op_stack</font>.<font color="#2040a0">append</font><font color="#4444FF">(</font><font color="#2040a0">token</font><font color="#4444FF">)</font>
+    <strong>else</strong><font color="#4444FF">:</font>
+        <strong>raise</strong> <font color="#2040a0">Exception</font>, <font color="#008000">&quot;Unknown token: <font color="#77dd77">\&quot;</font>%s<font color="#77dd77">\&quot;</font>&quot;</font> <font color="#4444FF">%</font> <font color="#2040a0">token</font>
+
+    <font color="#2040a0">last</font> <font color="#4444FF">=</font> <font color="#2040a0">token</font>
+</pre>
+<p>When we have reached the end of the input stream, all remaining operators are popped and appended to the output stream.
+</p>
+<pre>
+<font face="times" color="#000000"><b>&lt;&lt;<a name="chunk def:parsing" href="">parsing</a>&gt;&gt;=</b></font>
+
+<strong>while</strong> <font color="#2040a0">op_stack</font><font color="#4444FF">:</font>
+    <font color="#2040a0">rpn</font>.<font color="#2040a0">append</font><font color="#4444FF">(</font><font color="#2040a0">op_stack</font>.<font color="#2040a0">pop</font><font color="#4444FF">(</font><font color="#4444FF">)</font><font color="#4444FF">)</font>
+
+
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="http://en.literateprograms.org/Shunting_yard_algorithm_(Python)?action=edit&amp;section=4" title="Edit section: Output">edit</a>]</div><a name="Output"></a><h2> Output </h2>
+<p>As we want to generate code for <i>dc</i>, we have to do some small adjustments in the output stream.
+</p><p>The unary <i>-</i> operator doesn't exist in <i>dc</i>, so we have to fake it by multiplying with <i>-1</i>, which is encoded as <i>_1</i> in <i>dc</i>.
+</p><p>We also want the result to be printed, so we append the <i>p</i> command.
+</p>
+<pre>
+<font face="times" color="#000000"><b>&lt;&lt;<a name="chunk def:output" href="">output</a>&gt;&gt;=</b></font>
+
+<strong>for</strong> <font color="#2040a0">token</font> <strong>in</strong> <font color="#2040a0">rpn</font><font color="#4444FF">:</font>
+    <strong>if</strong> <font color="#2040a0">token</font> <font color="#4444FF">=</font><font color="#4444FF">=</font> <font color="#008000">'-u'</font><font color="#4444FF">:</font>
+        <strong>print</strong> <font color="#008000">'_1*'</font>,
+    <strong>else</strong><font color="#4444FF">:</font>
+        <strong>print</strong> <font color="#2040a0">token</font>,
+<strong>print</strong> <font color="#008000">'p'</font>
+
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="http://en.literateprograms.org/Shunting_yard_algorithm_(Python)?action=edit&amp;section=5" title="Edit section: The program">edit</a>]</div><a name="The_program"></a><h2> The program </h2>
+<p>This program expects an expression on the command line. The output can be piped to <i>dc</i> like this: <code>./shunting-yard.py '1+2*3' | dc</code>.
+</p>
+<pre>
+<font face="times" color="#000000"><b>&lt;&lt;<a name="chunk def:shunting-yard.py" href="">shunting-yard.py</a>&gt;&gt;=</b></font>
+<font color="#444444">#!/usr/bin/env python</font>
+
+<strong>import</strong> <font color="#2040a0">re</font>, <font color="#2040a0">sys</font>
+
+<strong>try</strong><font color="#4444FF">:</font>
+    <font color="#2040a0">expr</font> <font color="#4444FF">=</font> <font color="#2040a0">sys</font>.<font color="#2040a0">argv</font><font color="#4444FF">[</font><font color="#FF0000">1</font><font color="#4444FF">]</font>
+<strong>except</strong><font color="#4444FF">:</font>
+    <strong>print</strong> <font color="#008000">&quot;Usage %s expression&quot;</font> <font color="#4444FF">%</font> <font color="#2040a0">sys</font>.<font color="#2040a0">argv</font><font color="#4444FF">[</font><font color="#FF0000">0</font><font color="#4444FF">]</font>
+    <font color="#2040a0">sys</font>.<font color="#2040a0">exit</font><font color="#4444FF">(</font><font color="#FF0000">1</font><font color="#4444FF">)</font>
+
+<span style="border: 1px solid #a0a0a0; padding: 0.05em 0.2em 0.03em 0.2em;"><font face="times" color="#000000"><a name="chunk use:tokens" href="">tokens</a></font></span>
+
+<span style="border: 1px solid #a0a0a0; padding: 0.05em 0.2em 0.03em 0.2em;"><font face="times" color="#000000"><a name="chunk use:operators" href="">operators</a></font></span>
+
+<span style="border: 1px solid #a0a0a0; padding: 0.05em 0.2em 0.03em 0.2em;"><font face="times" color="#000000"><a name="chunk use:parsing" href="">parsing</a></font></span>
+
+<span style="border: 1px solid #a0a0a0; padding: 0.05em 0.2em 0.03em 0.2em;"><font face="times" color="#000000"><a name="chunk use:output" href="">output</a></font></span>
+
+</pre>
+
+<!-- Saved in parser cache with key moonflar_literateprogramsdb:pcache:idhash:3473-0!1!0!0!!en!2 and timestamp 20110220180948 -->
+<table style="border:5px double;background-color:#D0FFE0;font-size:12pt;color:grey;width:100%">
+<tr>
+<td align="center"> <span class="plainlinks"><a href="http://en.literateprograms.org/Special:Downloadcode/Shunting_yard_algorithm_(Python)" class='external text' title="http://en.literateprograms.org/Special:Downloadcode/Shunting_yard_algorithm_%28Python%29" rel="nofollow">Download code</a></span>
+</td></tr></table>
+<div class="printfooter">
+Retrieved from "<a href="">http://en.literateprograms.org/Shunting_yard_algorithm_%28Python%29</a>"</div>
+			<div id="catlinks"><p class='catlinks'><a href="http://en.literateprograms.org/Special:Categories?article=Shunting_yard_algorithm_%28Python%29" title="Special:Categories">Categories</a>: <span dir='ltr'><a href="http://en.literateprograms.org/Category:Shunting_yard_algorithm" title="Category:Shunting yard algorithm">Shunting yard algorithm</a></span> | <span dir='ltr'><a href="http://en.literateprograms.org/Category:Programming_language:Python" title="Category:Programming language:Python">Programming language:Python</a></span></p></div>			<!-- end content -->
+			<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<ul>
+				 <li id="ca-nstab-main" class="selected"><a href="">Article</a></li>
+				 <li id="ca-talk" class="new"><a href="http://en.literateprograms.org/Talk:Shunting_yard_algorithm_(Python)?action=edit">Discussion</a></li>
+				 <li id="ca-download"><a href="http://en.literateprograms.org/Special:Downloadcode/Shunting_yard_algorithm_(Python)">Download code</a></li>
+				 <li id="ca-edit"><a href="http://en.literateprograms.org/Shunting_yard_algorithm_(Python)?action=edit">Edit</a></li>
+				 <li id="ca-history"><a href="http://en.literateprograms.org/Shunting_yard_algorithm_(Python)?action=history">History</a></li>
+		</ul>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="http://en.literateprograms.org/Special:Userlogin?returnto=Shunting_yard_algorithm_(Python)">Log in / create account</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(/skins/common/images/LiteratePrograms_logo.png);" href="http://en.literateprograms.org/LiteratePrograms:Welcome" title="LiteratePrograms:Welcome"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+		<div class='portlet' id='p-navigation'>
+		<h5>Navigation</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-mainpagesidebartext"><a href="http://en.literateprograms.org/LiteratePrograms:Welcome">Welcome</a></li>
+				<li id="n-portal"><a href="http://en.literateprograms.org/LiteratePrograms:Community_Portal">Community portal</a></li>
+				<li id="n-recentchanges"><a href="http://en.literateprograms.org/Special:Recentchanges">Recent changes</a></li>
+				<li id="n-newarticles"><a href="http://en.literateprograms.org/Special:Newpages">New articles</a></li>
+				<li id="n-randompage"><a href="http://en.literateprograms.org/Special:Random">Random article</a></li>
+				<li id="n-help"><a href="http://en.literateprograms.org/Help:Contents">Help</a></li>
+			</ul>
+		</div>
+	</div>
+		<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="http://en.literateprograms.org/Special:Search" id="searchform"><div>
+				<input id="searchInput" name="search" type="text" accesskey="f" value="" />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" value="Search" />&nbsp;
+				<input type='submit' name="create" class="searchButton" value="Create/Edit" />
+			</div></form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="http://en.literateprograms.org/Special:Whatlinkshere/Shunting_yard_algorithm_(Python)">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="http://en.literateprograms.org/Special:Recentchangeslinked/Shunting_yard_algorithm_(Python)">Related changes</a></li>
+<li id="t-upload"><a href="http://en.literateprograms.org/Special:Upload">Upload file</a></li>
+<li id="t-specialpages"><a href="http://en.literateprograms.org/Special:Specialpages">Special pages</a></li>
+				<li id="t-print"><a href="http://en.literateprograms.org/Shunting_yard_algorithm_(Python)?printable=yes">Printable version</a></li>				<li id="t-permalink"><a href="http://en.literateprograms.org/Shunting_yard_algorithm_(Python)?oldid=13636">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+			<div id="footer">
+				<div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="Shunting%20yard%20algorithm%20%28Python%29%20-%20LiteratePrograms_files/poweredb.png" alt="MediaWiki" /></a></div>
+			<ul id="f-list">
+				<li id="viewcount">This page has been accessed 1,971 times.</li>
+				<li id="copyright">Content is available under the <a href="http://en.literateprograms.org/LiteratePrograms:Copyrights" title="LiteratePrograms:Copyrights">MIT/X11 License</a>.</li>
+<br />				<li id="privacy"><a href="http://en.literateprograms.org/LiteratePrograms:Privacy_policy" title="LiteratePrograms:Privacy policy">Privacy policy</a></li>
+				<li id="about"><a href="http://en.literateprograms.org/LiteratePrograms:About" title="LiteratePrograms:About">About LiteratePrograms</a></li>
+				<li id="disclaimer"><a href="http://en.literateprograms.org/LiteratePrograms:General_disclaimer" title="LiteratePrograms:General disclaimer">Disclaimers</a></li>
+			</ul>
+		</div>
+	<script type="text/javascript"> if (window.runOnloadHook) runOnloadHook();</script>
+</div>
+<!-- Served by ip-10-244-43-62 in 0.37 secs. -->
+</body></html>
+
+<!-- This document saved from http://en.literateprograms.org/Shunting_yard_algorithm_(Python) -->

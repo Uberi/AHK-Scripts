@@ -1,0 +1,258 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>chris-j.co.uk</title>
+<link rel="stylesheet" href="chris-j.co.uk.mht_files/style000.css" type="text/css">
+<script type="text/javascript">
+	function getStyle(x,styleProp)
+	{
+		if (x.currentStyle)
+			var y = x.currentStyle[styleProp];
+		else if (window.getComputedStyle)
+			var y = document.defaultView.getComputedStyle(x,null).getPropertyValue(styleProp);
+		return y;
+	}
+
+	function toggleDisplay(_objeId)
+	{
+			var obje = document.getElementById(_objeId);
+			if (getStyle(obje,'display')!='block') obje.style.display='block';
+			else obje.style.display='none';	
+	}
+
+	function isEmpty(elem, helperMsg)
+	{
+		if(elem.value.length == 0)
+		{
+			alert(helperMsg);
+			elem.focus(); // set the focus to this input
+			return true;
+		}
+		return false;
+	}
+
+	function commentsValidator()
+	{
+		if (isEmpty(document.getElementById('message_id'), 'You cannot submit a blank comment')) return false;
+		if (isEmpty(document.getElementById('name_id'), 'You must put a name to your comment')) return false;
+		if (isEmpty(document.getElementById('spamq_id'), 'Remember to answer the anti-spam question')) return false;
+		return true;
+	}
+
+</script>
+</head>
+
+<body>
+<div align="center"><div id="page">
+
+<table width="580" align="center" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center" width="180">
+<font face="Arial, Helvetica, sans-serif" size="3">
+<b><a href="http://www.chris-j.co.uk/">chris-j.co.uk</a></b>
+<br>
+<br>
+</font>
+</td>
+<td colspan="2" width="60"></td>
+<td align="center" width="340"><div id="title">Parsing infix notation</div></td>
+</tr>
+</table>
+
+
+<div class="para">A common problem in computer science is that of parsing expressions, that is, reading and interpreting (obtaining the semantic meaning of) strings of a given <a href="http://en.wikipedia.org/wiki/Formal_language">formal language</a>. This is a key part of the process of compiling or interpreting a programming language, or other languages such as those describing mathematical expressions or <a href="http://en.wikipedia.org/wiki/Regular_expressions">regular expressions</a>. This article describes an efficient method of parsing <i>infix notation</i>, the syntax in which mathematical expressions are conventionally written. While mathematical expressions are used as examples, the principles extend to any language using infix operators.</div>
+
+<div class="para">Infix notation is the name given to a syntax where binary operators are placed between their two operands. In mathematical expressions, the operands may be numbers, or they may be expressions themselves; in the infix expression:</div> 
+<div class="eqn">3 + 7 &divide; (4 &times; 5 &minus; 6)</div> 
+<div class="para">the operator <span class="maths">&divide;</span> is applied to (and lies between) the operands <span class="maths">7</span> and <span class="maths">(4 &times; 5 &minus; 6)</span>.</div>
+
+<div class="para">To parse the expression we require also that the operator precedences be defined. This is because infix notation allows an operand surrounded by two operators &mdash; such as the 5 in the example above &mdash; to be an operand of either neighbouring operator. Here, the expression could be evaluated as:
+<div class="indent"><span class="maths">(4 &times; 5) &minus; 6</span>, &nbsp;&nbsp;&nbsp;&nbsp;where &times; has a higher precidence than &minus;, or as</div>
+<div class="indent"><span class="maths">4 &times; (5 &minus; 6)</span>, &nbsp;&nbsp;&nbsp;&nbsp;where &minus; has a higher precidence than &times;.</div>
+
+It's possible to make the order of evaluation unambiguous using brackets alone, but this can be overly verbose.</div>
+
+<div class="smtitle">Direct evaluation</div>
+<div class="para">Infix expressions can be evaluated by scanning through the expression for the highest precidence operator remaining in it. The operands adjacent to this operator must be associated with it, since there is no higher precidence operator in the expression to 'steal' one of the operands. This operator and pair of operands are then replaced in the expression with the result of the operator applied to the operands, and the procedure is repeated until all operators in the expression have been evaluated. This algorithm is complicated by the presence of brackets, which are outside the framework of binary operators and operands, and are often the highest precidence operator. Brackets can be dealt with recursively by evaluating the sub-expression within the brackets as an expression in its own right, and substituting the evaluated value back into the original expression in place of the bracketed sub-expression. As an example, in the expression above:
+<div class="eqn">3 + 7 &divide; (4 &times 5 &minus; 6)</div>
+the brackets are the highest precidence operator. The bracketed term:
+<div class="eqn">4 &times; 5 &minus; 6</div>
+is therefore evaluated first as a new expression. The highest precidence operator in this expression is &times;, so this and its operands are evaluated to give:
+<div class="eqn">20 &minus; 6.</div>
+ The highest precidence (and only) operator in this expression is &minus; , whose evaluation to:
+<div class="eqn">14</div>
+completes the evaluation of the bracketed term. This value is substituted into the original expression to give:
+<div class="eqn">3 + 7 &divide; 14</div>
+The &divide, as the remaining operator of highest precidence, evaluates to give: 
+<div class="eqn">3 + &frac12;</div>
+and the final answer: <span class="maths">3&frac12;</span>.</div>
+
+<div class="para">While this algorithm works, it is a slow process to search through the expression for the highest precidence operator at every step. When an expression may be evaluated many times (for example if it defines a user-inputted function to be plotted), another approach may be needed.</div>
+
+<div class="smtitle">Postfix notation</div>
+<div class="para">It's possible to rewrite expressions in infix notation in other ways, such as in <i>prefix notation</i>, and in <i>postfix notation</i> (also known as <i>Reverse-Polish notation</i> (RPN)). In postfix notation, a binary operator is placed after both its operands: the expression <span class="maths">3 + 7</span> in infix notation is written <span class="maths">3 7 +</span> in postfix notation. A compound expression such as <span class="maths">(4 &times 5) &minus; 6</span> (in infix) is be written as <span class="math">4 5 &times; 6 &minus;</span> in postfix. The expression is read from left-to-right, replacing an operator (when one occurs) with the result of that operator applied to the two previous operands: the first operator in
+<div class="eqn">4 5 &times; 6 &minus;</div>
+is the &times; operator, which is evaluated with the two previous operands, <span class="math">4</span> and <span class="math">5</span>, to give:
+<div class="eqn">20 6 &minus;</div>
+The next operator, &minus;, is then evaluated on <span class="math">20</span> and <span class="math">6</span> to give the answer: <span class="maths">14</span>.</div>
+<div class="para">Postfix notation, while less common than infix notation in written mathematics, is much more explicit in sense that the operands belonging to a particular operator can be expressed without the need for brackets or operator precidence. Rebracketting the infix expression to <span class="math">4 &times (5 &minus; 6)</span> does not introduce brackets into the postfix form, but instead causes a change in token ordering, to <span class="math">4 5 6 &minus; &times;</span>.</div>
+
+<div class="para">This explicitness means that the algorithm for evaluating postfix notation can be made much faster than that for evaluating infix notation. A fast implemention of the postfix evaluation algorithm uses a stack: as operands are read from left-to-right, they are pushed onto the stack. When an operator is reached, its two operands are popped from the stack, the result of the operation is calculated, and the result is pushed back onto the stack. For a correctly formed postfix expression, processing all the tokens in the expression in this way will result in one number &mdash; the evaluated expression &mdash; being left on the stack.</div>
+
+<div class="para">The algorithm for evaluating an expression in postfix notation can also be used to generate an <a href="http://en.wikipedia.org/wiki/Abstract_syntax_tree">abstract syntax tree</a> for the expression. In this case, the stack is a stack of trees, on to which single-node trees (operands) are pushed. When an operator is reached in the parsing of the postfix expression, it becomes the root of a new tree, with the two trees popped off the stack (the operands for this operator) becoming the two main 'branches'. This new tree is then pushed onto the stack as before.</div>
+
+<div class="smtitle">The shunting-yard algorithm</div>
+<div class="para">Ascertaining that expressions in postfix notation can be evaluated much more quickly than those in infix notation suggests that a fast way to evaluate an infix expression might be to convert it first from infix into postfix notation, then evaluate the postfix version. <a href="http://en.wikipedia.org/wiki/Edsger_W._Dijkstra">Dijkstra</a>'s shunting-yard algorithm is such an algorithm for converting infix expressions to postfix expressions. The algorithm reads tokens and outputs tokens from left-to-right: the next character to be read/written immidiately follows the previous one. It is is based around a stack, which is used to store brackets, and operators which are to occur later in the output. Note that only the operators and brackets are stored on a stack for later use: the operands are output in postfix notation in exactly the same order as they occur in the infix expression. The most basic form of the shunting-yard algorithm is as follows:
+</div>
+<div class="centered"><span onClick="toggleDisplay('short_al');" class="hidsectitle">Click to display</span></div>
+<div class="hidsec" id="short_al">
+For each token in turn in the input infix expression:
+<ul>
+<li>If the token is an operand, append it to the postfix output.</li>
+<li>If the token is an operator <span class="maths">A</span> then:
+<ul>
+	<li>While there is an operator <span class="maths">B</span> of higher or equal precidence than <span class="maths">A</span> at the top of the stack, pop <span class="maths">B</span> off the stack and append it to the output.</li>
+	<li>Push <span class="maths">A</span> onto the stack.</li>
+</ul>
+</li>
+<li>If the token is an opening bracket, then push it onto the stack.</li>
+<li>If the token is a closing bracket:
+<ul>
+	<li>Pop operators off the stack and append them to the output, until the operator at the top of the stack is a opening bracket.</li>
+	<li>Pop the opening bracket off the stack.</li>
+</ul>
+</li>
+</ul>
+
+When all the tokens have been read:
+<ul>
+	<li> While there are still operator tokens in the stack:
+	<ul>
+		<li>Pop the operator on the top of the stack, and append it to the output.</li>
+	</ul>
+	</li>
+	
+</ul>
+</div>
+<div class="smtitle">A practical infix-to-prefix algorithm for mathematical expressions</div>
+<div class="para">The algorithm as presented above deals only with brackets and left-associative binary infix operators. While mathematical expressions mainly use this notation, non-binary operators are common in maths, and have varying conventions. Factorial (<span class="maths">n!</span>) is a unary postfix operator (that is, it occurs after a single argument), while arithmetic negation (<span class="maths">&minus;</span>, in the context of "<span class="maths">&minus;5</span>" rather than "<span class="maths">5 &minus; 4</span>") is a unary prefix operator. Functions (with arbitrarily many arguments) are also conventially written in prefix operators, with further brackets, commas and other symbols used to distinguish their arguments. Furthermore, while most common arithmetic operations are left-associative (that is, <span class="maths">a &minus; b &minus; c = (a &minus; b) &minus; c</span>), the binary operation of exponentiation is conventionally right-associative <span class="maths">a ^ b ^ c = a ^ (b ^ c)</span>). These conventions of syntax can be incorperated into the shunting-yard algorithm, at the expense of reduced clarity.</div>
+<div class="centered"><span onClick="toggleDisplay('long_al');" class="hidsectitle">Click to display</span></div>
+<div id="long_al" class="hidsec">
+For each token in turn in the input infix expression:
+<ul>
+<li>If the token is an operand, append it to the postfix output.</li>
+<li>If the token is a unary postfix operator, append it to the postfix output.</li>
+<li>If the token is a unary prefix operator, push it on to the stack.</li>
+<li>If the token is a function token, push it on to the stack.</li>
+<li>If the token is a function argument separator
+<ul>
+<li>Pop the top element off the stack and append it to the output, until the top element of the stack is an opening bracket</li>
+</ul>
+</li>
+<li>If the token is a binary operator <span class="maths">A</span> then:
+<ul>
+	<li>If <span class="maths">A</span> is left-associative, while there is an operator <span class="maths">B</span> of higher or equal precidence than <span class="maths">A</span> at the top of the stack, pop <span class="maths">B</span> off the stack and append it to the output.</li>
+	<li>If <span class="maths">A</span> is right-associative, while there is an operator <span class="maths">B</span> of higher precidence than <span class="maths">A</span> at the top of the stack, pop <span class="maths">B</span> off the stack and append it to the output.</li>
+	<li>Push <span class="maths">A</span> onto the stack.</li>
+</ul>
+</li>
+<li>If the token is an opening bracket, then push it onto the stack.</li>
+<li>If the token is a closing bracket:
+<ul>
+	<li>Pop operators off the stack and append them to the output, until the operator at the top of the stack is a opening bracket.</li>
+	<li>Pop the opening bracket off the stack.</li>
+	<li>If the token at the top of the stack is a function token, pop it and append it to the output.</li>
+</ul>
+</li>
+</ul>
+
+When all the tokens have been read:
+<ul>
+	<li> While there are still operator tokens in the stack:
+	<ul>
+		<li>Pop the operator on the top of the stack, and append it to the output.</li>
+	</ul>
+	</li>
+</ul>
+</div>
+<div class="para">
+The following Java applet evaluates a mathematical expression in infix notation by converting it first to postfix notation using the shunting-yard algorithm, then evaluating the expression in postfix notation. Each step of the shunting-yard algorithm and the postfix evaluation algorithm are shown. The supported operators are <span class="maths">+, &minus;, &times; &divide;, ^</span>, parentheses and arithmetic negation, with conventional operator precidence and associativity.
+</div>
+<div align="center">
+<applet code=ShuntingYard.class codebase="/java/shuntingyard/" width="500" height="500">
+There should be a Java applet here. If you can read this, then you are probably either using an old browser, or an old version of the Java runtime engine. See <a href="http://java.sun.com/">http://java.sun.com/</a> for the latest version.</applet>
+</div>
+
+
+<div id="commentstitle" onclick="toggleDisplay('commentsDiv')">
+<hr noshade size="1" width="100%">
+<span class="commtitle">34 Comments:</span></div>
+<div id="commentsDiv"><div class="comment"><b>Johans Marvin Taboada Villca</b>&nbsp;&nbsp;-&nbsp;&nbsp;Jul 22nd 2009, 5:14 PM<div class="commentbody">&quot;Parsing infix notation&quot; has an error in &quot;Postfix notation&quot; section just at the end of the middle paragraph, &quot;4 * (5 - 6)&quot; shouldn't be written in Postfix as &quot;4 5 6 * -&quot; but as &quot;4 5 6 - *&quot; as you can verify using the applet.<br>Article was very useful, many thanks.</div></div>
+<div class="comment"><b>Chris</b>&nbsp;&nbsp;-&nbsp;&nbsp;Sep 9th 2009, 11:00 PM<div class="commentbody">Thanks for pointing that out! Now fixed.</div></div>
+<div class="comment"><b>Johans Marvin Taboada Villca</b>&nbsp;&nbsp;-&nbsp;&nbsp;Sep 10th 2009, 6:03 AM<div class="commentbody">You're welcome.</div></div>
+<div class="comment"><b>Vipul Malhotra</b>&nbsp;&nbsp;-&nbsp;&nbsp;Sep 23rd 2009, 5:58 PM<div class="commentbody">Your calculator saved my life!<br>Thanks a lot for making this out. Other calculators on the net seem to produce wrong answers. Anyways, your calculator saved me from losing marks in my computer exam. <br>Thanks a lot!</div></div>
+<div class="comment"><b>Chris2</b>&nbsp;&nbsp;-&nbsp;&nbsp;Oct 12th 2009, 8:20 PM<div class="commentbody">How do you determine if an operator is unary - or unary +? And how exactly do you handle it when you evaluate the postfix to get the final value?<br><br>Cheers!</div></div>
+<div class="comment"><b>Chris</b>&nbsp;&nbsp;-&nbsp;&nbsp;Oct 22nd 2009, 1:06 PM<div class="commentbody">I presume you mean distinguishing unary '&minus;' from binary '&minus;'?<br><br>My applet does this at the tokenise stage: if a '-' character is read, and the previous token read is a number or a closing parenthesis, the meaning is taken to be a binary &minus;, whereas if the previous token is an operator (or if there is no previous token), the meaning is taken to be unary &minus;. When evaluating the expression, a unary &minus; token pops one number off the token stack, multiplies it by -1, and pushes it back on the stack.</div></div>
+<div class="comment"><b>Paulo</b>&nbsp;&nbsp;-&nbsp;&nbsp;Nov 11th 2009, 5:23 PM<div class="commentbody">Excellent ...helped me so much.... I am writing a compiler.....  Thanks</div></div>
+<div class="comment"><b>Sara</b>&nbsp;&nbsp;-&nbsp;&nbsp;Nov 16th 2009, 5:11 PM<div class="commentbody">the calculator does not work with expresions as this: <br>)78*1<br>(1+3))<br></div></div>
+<div class="comment"><b>Sean</b>&nbsp;&nbsp;-&nbsp;&nbsp;Nov 19th 2009, 8:12 PM<div class="commentbody">Thanks for the great help! My professor recommended using this site to make sure our postfix was right.<br><br>Great tool.</div></div>
+<div class="comment"><b>CompSci Student</b>&nbsp;&nbsp;-&nbsp;&nbsp;Dec 23rd 2009, 12:34 AM<div class="commentbody">)78*1<br>(1+3)) <br><br>have mismatching parentheses, so will not work. It just does not filter these inputs out.</div></div>
+<div class="comment"><b>ARUN</b>&nbsp;&nbsp;-&nbsp;&nbsp;Apr 20th 2010, 10:12 AM<div class="commentbody">Tihs applet is  very useful in understanding polish noataion <br>Thank you Sir</div></div>
+<div class="comment"><b>cincoutprabu</b>&nbsp;&nbsp;-&nbsp;&nbsp;May 17th 2010, 6:15 AM<div class="commentbody">Hi chris, no variables and functions are allowed in the input. You can enable it so that everybody will use this as a validation tool for infix-to-postfix conversion. However, you can turn off evaluation if variables and functions are used in the input expression.</div></div>
+<div class="comment"><b>Chris</b>&nbsp;&nbsp;-&nbsp;&nbsp;May 29th 2010, 11:29 PM<div class="commentbody">cincoutprabu: Good suggestion. I'll think about it, but it's not quite trivial to implement. Specifically, deciding whether an arbitrary string is a variable or a function in the tokenise step requires context, as with the binary/unary minus earlier in the comments. Obviously in a real parser, symbol tables would take care of this.</div></div>
+<div class="comment"><b>cincoutprabu</b>&nbsp;&nbsp;-&nbsp;&nbsp;Jul 11th 2010, 6:25 PM<div class="commentbody">Hi chris, I have posted a silverlight widget for live demo similar to the applet in this page. It can handle variables also. Will be useful, for other beginners and students !!</div></div>
+<div class="comment"><b>cincoutprabu</b>&nbsp;&nbsp;-&nbsp;&nbsp;Jul 11th 2010, 6:27 PM<div class="commentbody">Hi chris, I have posted a silverlight widget for live demo similar to the applet in this page. It can handle variables also. Will be useful, for other beginners and students !!  Widget is available here: <a href="http://www.codeding.com/?article=11" target="_blank">http://www.codeding.com/?article=11</a></div></div>
+<div class="comment"><b>Chris</b>&nbsp;&nbsp;-&nbsp;&nbsp;Jul 19th 2010, 8:48 PM<div class="commentbody">cincoutprabu: hey, that's cool</div></div>
+<div class="comment"><b>kyro</b>&nbsp;&nbsp;-&nbsp;&nbsp;Jul 20th 2010, 1:36 PM<div class="commentbody">thanks alot, this have helped alot</div></div>
+<div class="comment"><b>Charlie</b>&nbsp;&nbsp;-&nbsp;&nbsp;Aug 11th 2010, 2:39 PM<div class="commentbody">In the case of 4 &times; (5 &minus; 6) =&gt; 4 5 6 &minus; &times; for example, is it truly a stack if you have to pop and buffer or skip the 4 to evaluate 5 6 - before evaluating the x? You've got associated tokens at opposite ends of the stack...</div></div>
+<div class="comment"><b>Chris</b>&nbsp;&nbsp;-&nbsp;&nbsp;Aug 13th 2010, 11:12 PM<div class="commentbody">Charlie: The in the evaluation of the postfix expression, the stack isn't initially filled with the postfix expression - it's initially empty. In your example, the 4, then 5, then 6 are pushed onto the token stack in turn, then (in response to the -) the 5 and 6 are popped and -1 pushed, and (in response to the *) the -1 and 4 are popped and -4 pushed. The column headers in the java applet indicate what is a stack.</div></div>
+<div class="comment"><b>James</b>&nbsp;&nbsp;-&nbsp;&nbsp;Nov 4th 2010, 3:57 PM<div class="commentbody">if we input -(3+2)-1 this algorithm answer  6.0<br>truthful answer is -6.0 ! ! !</div></div>
+<div class="comment"><b>Chris</b>&nbsp;&nbsp;-&nbsp;&nbsp;Nov 10th 2010, 8:43 AM<div class="commentbody">James: paste your expression in: it gives -6!</div></div>
+<div class="comment"><b>Bri</b>&nbsp;&nbsp;-&nbsp;&nbsp;Nov 16th 2010, 7:41 PM<div class="commentbody">Can the Shunting Yard algorithm be extended to handle ternary operators, such as conditional operators?  In C, the syntax for a conditional would be something like this:<br><br>a ? b : c<br></div></div>
+<div class="comment"><b>Chris</b>&nbsp;&nbsp;-&nbsp;&nbsp;Nov 18th 2010, 6:42 PM<div class="commentbody">Bri: Yes, I think it should be possible, but it may be quite a major extension. The C conditional only ever executes one of &quot;b&quot; or &quot;c&quot;, which will not be the case if the infix/ternary operators are just converted to postfix at compile time and the postfix expression evaluated at run time.</div></div>
+<div class="comment"><b>Bri</b>&nbsp;&nbsp;-&nbsp;&nbsp;Nov 19th 2010, 9:09 PM<div class="commentbody">Why can't it just be converted to postfix at compile time and then evaluated at run-time?  It should operate like a function:<br><br>conditional(a, b, c) {<br>  if (a == 0) then return c;<br>  else return b;<br>}<br><br>You can then get it to work in the parser within an expression:<br><br>3 + cond(1, 4, 5)<br><br>(would evalute to 7 in this case)<br><br>I was able to get it to work as a function, but it would be nice to be able to build it into the parser.  Wouldn't the above be equivalent to:<br><br>3 + (1 ? 4 : 5)<br><br>Or, in postfix:<br><br>3145?+<br><br></div></div>
+<div class="comment"><b>francis</b>&nbsp;&nbsp;-&nbsp;&nbsp;Nov 21st 2010, 12:02 AM<div class="commentbody">i mean that shuting-yard  get a numbers with the sign implicit in them.<br><br>because :<br>IN: 2*(-1)<br>OUT: 2, 1, -, *,<br><br>you disting between unary minus and binary minus.!!</div></div>
+<div class="comment"><b>rols</b>&nbsp;&nbsp;-&nbsp;&nbsp;Nov 21st 2010, 12:42 PM<div class="commentbody">Thanks for this - it's a great reduction of the infix parsing algorithm and saved me a whole load of time working it out. <br><br>One comment. You presume that a postfix operator is always higher precedence than what's on stack. In reality that's probably true but if I close my eyes and think really hard I could imagine a world in which something like x ^ y! wanted the power to come before the factorial. You could tweak your algorithm for unary postfix operator to say that if you get one, instead of appending it directly to the output, you first pop off anything on the stack which is of higher precedence, then you append it to the output. <br><br>If you did that, in the very constructed example I have, instead of <br><br>x ^ y! --&gt; x y ! ^ <br><br>it would be<br><br>x ^ y! --&gt; x y ^ !<br><br>I don't know if this matters in the real world ... there may be a case where you do want a postfix operator not to be all-powerful<br><br></div></div>
+<div class="comment"><b>Chris</b>&nbsp;&nbsp;-&nbsp;&nbsp;Nov 22nd 2010, 11:21 AM<div class="commentbody">Bri: That's not quite true in C, since if one executes<br>conditional(a,++b,++c)<br>both b and c are incremented, whereas with<br>a?(++b):(++c)<br>only one of b or c is incremented, depending on the value of a.<br><br>However, if one doesn't have operators like ++ which alter the state of the variables, the functional form is equivalent as you say. <br><br>I can't see a way to add it to the parser without some slightly messy code. One way would be to treat ? as a unary postfix operator in the infix-&gt;postfix conversion step, and as a three-arg function during postfix evaluation, and to treat : as a binary operator in infix-&gt;postfix conversion, but remove it from the postfix queue before postfix evaluation. (but see rols's comment above about postfix precedence)</div></div>
+<div class="comment"><b>Chris</b>&nbsp;&nbsp;-&nbsp;&nbsp;Nov 22nd 2010, 11:37 AM<div class="commentbody">rols: Thanks! I noticed this myself a couple of days ago when thinking about Bri's comment, but didn't have time to think about a solution. I will add yours to the page.<br><br>I'm sure there are instances (perhaps outside of mathematical notation) where one might want a unary postfix operator to have a low precedence. </div></div>
+<div class="comment"><b>Bri</b>&nbsp;&nbsp;-&nbsp;&nbsp;Nov 22nd 2010, 2:36 PM<div class="commentbody">You have to look at both associativity and precedence to see whether an operator on the stack gets popped to the output before the current operator is pushed, according to the following rules (assume o1 is the current operator, and o2 is an operator at the top of the stack):<br><br>        * while there is an operator token, o2, at the top of the stack, and<br>                either o1 is left-associative and its precedence is less than or equal to that of o2,<br>                or o1 is right-associative and its precedence is less than that of o2,<br>            pop o2 off the stack, onto the output queue;<br><br>        * push o1 onto the stack.<br><br>Chris, I don't have any ++ operators or anything like that in my parser so I'm not concerned about that.  It would be fine if it acted like the function form.  That said, I assume you can add ++ to a parameter of a function as well, so I imagine it acts similar to a function either way doesn't it?<br><br>cond(a,++b,++c)<br><br>What happens in this case in C?<br><br></div></div>
+<div class="comment"><b>Chris</b>&nbsp;&nbsp;-&nbsp;&nbsp;Nov 22nd 2010, 10:13 PM<div class="commentbody">Bri: in C<br><br>int a=1, b=1, c=1;<br>a?++b:++c; // leaves a=1, b=2, c=1<br><br>whereas:<br><br>int a=1, b=1, c=1;<br>cond(a,++b,++c); // leaves a=1, b=2, c=2<br></div></div>
+<div class="comment"><b>Calmarius</b>&nbsp;&nbsp;-&nbsp;&nbsp;Nov 24th 2010, 7:01 PM<div class="commentbody">In order to evaluate expressions containing the conditional operator we need to add THEN,ELSE and END points to the resulting postfix form.<br><br>Infix to postfix conversion:<br><br>Several modifications needed:<br><br>- Add a &quot;conditional operator counter&quot; to algorithm it will be 0 at start.<br>- Treat '?' as a right associative low precedence operator (multiple ?-s can stack on each other)<br>- Treat ':' as a left associative with the same precedence as '?'<br>- ':' operator will stack on '?'<br>- The ':?' pair can be popped from the stack only together.<br>- When a lower precedence operator trying to pop the '?' operator alone issue a parse error (': expected').<br><br>Now about the conditional operator counter:<br><br>- When you push a '?' on the stack increase the counter and put a THEN(counter) token to the output.<br>- When you push a ':' on the stack put and ELSE(counter) token to the output.<br>- When you pop a ':?' pair from the stack put and END(counter) token to the output and decrease the coutner.<br>- If COC is nonzero when the parsing finishes issue a parse error.<br><br>Evaluating the postfix form.<br><br>- When encountering a THEN(x) token...<br>	- if there is true (nonzero) on the operand stack continue evaluating<br>	- if there is false (zero) on the operand stack skip after the next ELSE(x) token and continue evaluation.<br>- When you encounter and ELSE(x) token (you came from the THEN branch) skip after the next END(x) token and continue evaluation.<br>- When you encounter an END(x) token ignore it.<br><br>Now let's try it. Let's see the following expression:<br><br>a&lt;b ? x++ : y++<br><br>Start parsing:<br><br>INPUT:a&lt;b ? x++ : y++<br>OUTPUT:<br>STACK:<br>COC:0<br><br>You encounter the first ? here, stack already popped:<br><br>INPUT: ? x++ : y++<br>OUTPUT:a b &lt;<br>STACK:<br>COC:0<br><br>So, increase the COC, add a THEN(COC) token (for short '?COC') then push the '?' on the stack.<br><br>INPUT: x++ : y++<br>OUTPUT:a b &lt; ?1<br>STACK: ?<br>COC:1<br><br>Parsing continues as usual then you encounter the first ':':<br><br>INPUT: : y++<br>OUTPUT:a b &lt; ?1 x++<br>STACK: ?<br>COC:1<br><br>At this point add an ELSE(COC) (':COC' for short) token and stack the ':' on the '?'. <br><br>INPUT: y++<br>OUTPUT:a b &lt; ?1 x++ :1<br>STACK: :?<br>COC:1<br><br>After we exhausted the input we need to pop the ':?':<br><br>INPUT:<br>OUTPUT:a b &lt; ?1 x++ :1  y++<br>STACK: :?<br>COC:1<br><br>Add an END(COC) ('eCOC' for short) then decrease the COC.<br><br>INPUT:<br>OUTPUT:a b &lt; ?1 x++ :1  y++ e1<br>STACK: <br>COC:0<br><br>Now let's play with a more complex expression a nested conditional:<br><br>a&lt;b ? c&lt;d ? x : y : e&lt;f ? z : w<br><br>Conditional operator is right associative so we should parse it as: a&lt;b ? (c&lt;d ? x : y) : (e&lt;f ? z : w)<br><br>So start parsing now:<br><br>INPUT: a&lt;b ? c&lt;d ? x : y : e&lt;f ? z : w<br>OUTPUT:<br>STACK:<br>COC: 0<br><br>After encountering the first '?':<br><br>INPUT:   c&lt;d ? x : y : e&lt;f ? z : w<br>OUTPUT:a b &lt; ?1<br>STACK: ? <br>COC: 1<br><br>After encountering the second '?':<br><br>INPUT:   x : y : e&lt;f ? z : w<br>OUTPUT:a b &lt; ?1 c d &lt; ?2<br>STACK: ?? <br>COC: 2<br><br>After encountering the first ':':<br><br>INPUT:   y : e&lt;f ? z : w<br>OUTPUT:a b &lt; ?1 c d &lt; ?2 x :2<br>STACK: :?? <br>COC: 2<br><br>After encountering the second ':'. Being left associative it will pop the ':?' out first (triggering its effect too):<br><br>INPUT: e&lt;f ? z : w<br>OUTPUT:a b &lt; ?1 c d &lt; ?2 x :2 y e2 :1<br>STACK: :? <br>COC: 1<br><br>After encountering the third '?' (being right associative it will stack on the ':?'):<br><br>INPUT: z : w<br>OUTPUT:a b &lt; ?1 c d &lt; ?2 x :2 y e2 :1 e f &lt; ?2<br>STACK: ?:? <br>COC: 2<br><br>Then the last colon:<br><br>INPUT:  w<br>OUTPUT:a b &lt; ?1 c d &lt; ?2 x :2 y e2 :1 e f &lt; ?2 z :2<br>STACK: :?:? <br>COC: 2<br><br>And the final clean up:<br><br>INPUT: <br>OUTPUT:a b &lt; ?1 c d &lt; ?2 x :2 y e2 :1 e f &lt; ?2 z :2 w e2 e1<br>STACK:<br>COC: 0<br><br>Those THEN tokens can be easily compiled to JNZ instructions. ELSE tokens can be converted to JMP (to end) instructions in assembly by a compiler. END tokens are removed they are for the sake to know where is the end.<br></div></div>
+<div class="comment"><b>castamir</b>&nbsp;&nbsp;-&nbsp;&nbsp;Nov 26th 2010, 4:55 PM<div class="commentbody">input:<br>+5(5*6)<br><br>outup:<br>35<br><br>well... +5(5*6) is not a correct input but your applet count it instead any error msg</div></div>
+<div class="comment"><b>Chris</b>&nbsp;&nbsp;-&nbsp;&nbsp;Nov 27th 2010, 12:25 PM<div class="commentbody">That's correct - the shunting yard algorithm converts valid infix to valid postfix, but doesn't determine if the input is valid infix.</div></div>
+<div class="comment"><b>Nieko Borela</b>&nbsp;&nbsp;-&nbsp;&nbsp;Dec 27th 2010, 12:28 PM<div class="commentbody">sir can this solve the eq:<br>2(5)?</div></div>
+</div><form action="" method="post" onsubmit='return commentsValidator()'>
+<div class="smtitle" onclick="toggleDisplay('addcomment')">Add a comment:</div>
+<table id='addcomment'>
+<tr><td class="comment">Name: </td>
+<td><input type="text" size="50" name="name" id="name_id"></td></tr>
+<tr><td class="comment">E-mail (optional, will not be published): </td>
+<td><input type="text" size="50" name="email"></td></tr>
+<tr><td class="comment">Comment:<br>
+<td><textarea cols="50" rows="5" name="message" id="message_id"></textarea></td></tr>
+<tr><td class="comment">Anti-spam question: <br>What colour is an orange?</td>
+<td><input type="text" size="15" name="spamq" id="spamq_id"></td>
+<tr><td><input type="hidden" name="formid" value="89e507292004212fb116bda83c657d65"></td>
+<td><input type="submit" name="addbutton" value="Post Comment"></td>
+</tr></table></form>
+<div class="footer">
+<hr noshade size="1" width="100%">
+Content from <a href="http://www.chris-j.co.uk/">chris-j.co.uk</a>, &copy;Chris Johnson 2010 unless otherwise noted.
+</div>
+
+</div></div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-1808482-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+</body></html>
+
+<!-- This document saved from http://www.chris-j.co.uk/parsing.php -->

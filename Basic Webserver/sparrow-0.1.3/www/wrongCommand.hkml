@@ -1,0 +1,9 @@
+<?ahk
+; The whole purpose of this file is to demonstrate how an Scriping error 'd look like
+; and here we go: our Error
+
+; Variant I
+; =========
+
+A := SubStr(b,1,1,2,3)
+?>

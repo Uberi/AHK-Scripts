@@ -1,0 +1,9 @@
+<html>
+<head><title>404 - Not Found</title></head>
+<body>
+<h1>404 - Not Found</h1>
+<hr>
+Sorry, but the document <?ahk echo($_SERVER[REQUEST]) ?> was not found on this server.
+<hr />
+<i><?ahk echo(%Sparrow[ServerSig]%) ?></i>
+</body></html>

@@ -1,0 +1,920 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0103)http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required -->
+<html><script id="abine.stub.Google Analytics">var abPrm={};var abNoOp=function(i,a){return (a&&a.length?a[0]:null)||true;},abSC=function(n,v){document.cookie=n+'='+v+';path=/;expires='+(new Date((new Date()).getTime()+(30000*60*60*24))).toGMTString();},abGC=function(n){return document.cookie.indexOf(n+'=')!=-1;},abAddNoOpMethods=function(o,m){m=m.split(',');for(var i=0;i<m.length;i++){if(m[i].match(/^#/)){o['get'+m[i].substr(1)]=o['set'+m[i].substr(1)]=abNoOp;}else{o[m[i]]=abNoOp;}}};var abClickEvent=function(n){if(n.click){n.click();}else{var e=n.ownerDocument.createEvent('MouseEvents');e.initMouseEvent('click',true, true, n.ownerDocument.defaultView, 1,0,0,0,0,false,false,false,false,0,null);n.dispatchEvent(e);}};var abTrkr={},abGT=function(){return abTrkr},_gat={_getTracker:abGT,_createTracker:abGT,_getTrackerByName:abGT,_anonymizeIp:abNoOp},urchinTracker=__utmSetTrans=__utmLinkerUrl=__utmLinkPost=__utmSetVar=__utmVisitorCode=abNoOp,_gaq={_createAsyncTracker:abTrkr,_getAsyncTracker:abTrkr,push:function(a){for (var b = arguments, c = 0, d = 0; d < b.length; d++) {try {if (typeof b[d] === 'function') b[d]();else {var e = '', f = b[d][0], k = f.lastIndexOf('.');k > 0 && (e = f[z](0, k), f = f[z](k + 1));var p = e == '_gat' ? _gat : e == '_gaq' ? _gaq : _gat._getTracker(e);p[f].apply(p, b[d].slice(1))}} catch (r) {c++}}return c;}};abAddNoOpMethods(abTrkr,'_deleteCustomVar,_getName,_getAccount,_getVersion,_getVisitorCustomVar,_initData,_setAccount,_setCookiePersistence,_setCustomVar,_setSampleRate,_setSessionTimeout,_setSessionCookieTimeout,_setVar,_setVisitorCookieTimeout,_trackPageview,_setAllowAnchor,_setCampContentKey,_setCampMediumKey,_setCampNameKey,_setCampNOKey,_setCampSourceKey,_setCampTermKey,_setCampaignTrack,_setCampaignCookieTimeout,_setCookieTimeout,_setReferrerOverride,_cookiePathCopy,_getLinkerUrl,_linkByPost,_setAllowHash,_setAllowLinker,_setCookiePath,_setDomainName,_addItem,_addTrans,_trackTrans,_trackEvent,_addIgnoredOrganic,_addIgnoredRef,_addOrganic,_clearIgnoredOrganic,_clearIgnoredRef,_clearOrganic,_trackSocial,_getClientInfo,_getDetectFlash,_getDetectTitle,_setClientInfo,_setDetectFlash,_setDetectTitle,_getLocalGifPath,_getServiceMode,_setLocalGifPath,_setLocalRemoteServerMode,_setLocalServerMode,_setRemoteServerMode,_trackPageLoadTime');abTrkr._link=__utmLinker=function(l){if(l)location.href=l;};</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <title>Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project</title>
+    
+        
+
+                        
+    
+                        
+    
+    
+            <meta http-equiv="X-UA-Compatible" content="IE=EDGE,chrome=IE7">
+<meta charset="UTF-8">
+<!-- Deprecated since 3.4. To be removed in a future version of Confluence; use AJS.Confluence.getContextPath() -->
+<meta id="confluence-context-path" name="confluence-context-path" content="/wiki">
+<meta id="confluence-base-url" name="confluence-base-url" content="http://www.antlr.org/wiki">
+
+<meta id="atlassian-token" name="atlassian-token" content="6c880febb6cb4566acce460beecc7daa195bcee9">
+
+<meta id="confluence-space-key" name="confluence-space-key" content="ANTLR3">
+<script type="text/javascript">
+    // Deprecated global variables. To be removed in a future version of Confluence.
+    var contextPath = '/wiki';
+</script>
+
+    
+
+<!-- include system css resources -->
+
+
+    <link type="text/css" rel="stylesheet" href="./Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project_files/batch.css" media="all">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/wiki/s/en_GB/3148/5/11/_/download/superbatch/css/batch.css?conditionalComment=lt+IE+9" media="all">
+<![endif]-->
+<!--[if IE 9]>
+<link type="text/css" rel="stylesheet" href="/wiki/s/en_GB/3148/5/11/_/download/superbatch/css/batch.css?conditionalComment=IE+9" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/wiki/s/en_GB/3148/5/11/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="./Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project_files/batch(1).css" media="print">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/wiki/s/en_GB/3148/5/905bbe94e525636cf4c03949efd3ee7f/_/download/contextbatch/css/page/batch.css?conditionalComment=lt+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="./Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project_files/batch(2).css" media="all">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/wiki/s/en_GB/3148/5/6a0f00b2b8b63a64648fcde5843040aa/_/download/contextbatch/css/viewcontent,main/batch.css?conditionalComment=lt+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="./Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project_files/batch(3).css" media="all">
+<link type="text/css" rel="stylesheet" href="./Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project_files/com.atlassian.confluence.ext.newcode-macro-plugin-syntaxhighlighter.css" media="all">
+<link type="text/css" rel="stylesheet" href="./Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project_files/com.atlassian.confluence.ext.newcode-macro-plugin-sh-theme-confluence.css" media="all">
+<link type="text/css" rel="stylesheet" href="./Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project_files/colors.css" media="all">
+<link type="text/css" rel="stylesheet" href="./Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project_files/default-theme.css" media="all">
+
+<!-- end system css resources -->
+
+    <meta name="confluence-request-time" content="1338042806464">
+            <meta name="ajs-page-id" content="1846">
+            <meta name="ajs-page-title" content="Quick Starter on Parser Grammars - No Past Experience Required">
+            <meta name="ajs-parent-page-id" content="968">
+            <meta name="ajs-space-key" content="ANTLR3">
+            <meta name="ajs-space-name" content="ANTLR 3">
+            <meta name="ajs-parent-page-title" content="Tutorials">
+            <meta name="ajs-from-page-title" content="">
+            <meta name="ajs-browse-page-tree-mode" content="view">
+            <meta name="ajs-context-path" content="/wiki">
+            <meta name="ajs-version-number" content="4.1.9">
+            <meta name="ajs-build-number" content="3148">
+            <meta name="ajs-remote-user" content="">
+            <meta name="ajs-static-resource-url-prefix" content="/wiki/s/en_GB/3148/5/_">
+            <meta name="ajs-global-settings-attachment-max-size" content="30485760">
+            <meta name="ajs-user-locale" content="en_GB">
+            <meta name="ajs-enabled-dark-features" content="">
+            <meta name="ajs-atl-token" content="6c880febb6cb4566acce460beecc7daa195bcee9">
+            
+            <meta name="ajs-keyboardshortcut-hash" content="bae102033c71ecf8a8b026776b9ea08">
+            <meta name="ajs-use-keyboard-shortcuts" content="true">
+    <!-- Deprecated since 3.4. To be removed in a future version of Confluence; use atl.header -->
+        
+            <script type="text/x-template" title="share-content-popup">
+    <form action="#" method="post" class="aui share-content-popup">
+        <fieldset>
+            <label for="users">User name or email</label>
+            <div class="autocomplete-user-target">
+                <input class="text autocomplete-sharepage" id="users" data-max="10" data-dropdown-target=".autocomplete-user-target" data-none-message="No matching user or email found"/>
+            </div>
+            <ol class="recipients">
+            </ol>
+            <div><label for="note">Note</label></div>
+            <textarea class="textarea" id="note" placeholder="Add an optional note"/>
+        </fieldset>
+        <div class="button-panel">
+            <div class="progress-messages-icon"></div>
+            <div class="progress-messages">
+            </div>
+            <input class="button submit" type="submit" value="Share" disabled/>
+            <a class="close-dialog" href="#">Cancel</a>
+        </div>
+    </form>
+</script>
+
+<script type="text/x-template" title="share-content-popup-recipient-username">
+    <li data-username="{username}" style="display: none">
+        <span>
+            <img src="{thumbnailLink.href}" title="{title}">
+            <span>{title}</span>
+            <span class="remove-recipient"/>
+        </span>
+    </li>
+</script>
+
+<script type="text/x-template" title="share-content-popup-recipient-email">
+    <li data-email="{email}" style="display: none">
+        <span>
+            <img src="{icon}" title="{email}">
+            <span>{email}</span>
+            <span class="remove-recipient"/>
+        </span>
+    </li>
+</script>
+    
+    <link rel="shortcut icon" href="http://www.antlr.org/wiki/favicon.ico">
+    <link rel="icon" type="image/png" href="http://www.antlr.org/wiki/s/en_GB/3148/5/_/images/logo/confluence_16_white.png">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://www.antlr.org/wiki/opensearch/osd.action" title="ANTLR Project">
+
+        <!-- include system javascript resources -->
+                        
+    
+    <script type="text/javascript" src="./Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project_files/batch.js"></script>
+<!--[if lte IE 8]>
+<script type="text/javascript" src="/wiki/s/en_GB/3148/5/11/_/download/superbatch/js/batch.js?conditionalComment=lte+IE+8" ></script>
+<![endif]-->
+<script type="text/javascript" src="./Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project_files/batch(4).js"></script>
+<script type="text/javascript" src="./Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project_files/batch(5).js"></script>
+<script type="text/javascript" src="./Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project_files/com.atlassian.confluence.ext.newcode-macro-plugin-syntaxhighlighter.js"></script>
+<script type="text/javascript" src="./Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project_files/com.atlassian.confluence.ext.newcode-macro-plugin-syntaxhighlighter-brushes.js"></script>
+
+    
+    <!-- end system javascript resources -->
+
+    
+
+    
+    <link rel="canonical" href="./Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project_files/Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project.htm">
+    <link rel="shortlink" href="http://www.antlr.org/wiki/x/Ngc">
+    <meta name="wikilink" content="[ANTLR3:Quick Starter on Parser Grammars - No Past Experience Required]">
+    <meta name="page-version" content="18">
+
+
+</head><link rel="stylesheet" type="text/css" href="data:text/css,">
+    
+<body onload="placeFocus()" id="com-atlassian-confluence" class="theme-default ">
+<ul id="assistive-skip-links" class="assistive">
+    <li><a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#title-heading">Skip to content</a></li>
+    <li><a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#breadcrumbs">Skip to breadcrumbs</a></li>
+    <li><a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#header-menu-bar">Skip to header menu</a></li>
+    <li><a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#navigation">Skip to action menu</a></li>
+    <li><a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#quick-search-query">Skip to quick search</a></li>
+</ul>
+<div id="page">
+<div id="full-height-container">
+
+
+
+    
+<div id="header" class="">
+                      
+    <form id="quick-search" class="quick-search" method="get" action="http://www.antlr.org/wiki/dosearchsite.action">
+        <fieldset>
+            <label class="assistive" for="quick-search-query">Quick Search</label>
+            <input id="quick-search-query" class="quick-search-query" type="search" accesskey="q" autocomplete="off" name="queryString" size="25" title="Quick Search ( Type &#39;/&#39; )" results="10" placeholder="Search">
+            <input id="quick-search-submit" class="quick-search-submit" type="submit" value="Search">
+            <div class="aui-dd-parent quick-nav-drop-down"></div>
+        </fieldset>
+        <div class="hidden parameters">
+                                        <!-- putMetadata failed to add value for key "quick-nav-enabled" so rendering metadata inline - see server debug log for details -->
+        <meta name="ajs-quick-nav-enabled" content="true">
+                                                    </div>
+    </form>
+    <ul id="header-menu-bar" class="ajs-menu-bar">
+                    
+        
+            <li class="normal ajs-menu-item">
+        <a id="browse-menu-link" class="browse trigger ajs-menu-title" href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#"><span><span>Browse</span></span></a>         <div class="ajs-drop-down assistive" hidden="" style="">
+                        <ul id="browse-menu-link-leading" class="section-leading first">
+                                        <li>
+    
+        
+    
+    <a id="space-pages-link" href="http://www.antlr.org/wiki/pages/listpages.action?key=ANTLR3" class="" title="Browse pages in the ANTLR 3 space ( Type &#39;g&#39; then &#39;s&#39; )">
+                   <span>Pages</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="space-blogposts-link" href="http://www.antlr.org/wiki/pages/viewrecentblogposts.action?key=ANTLR3" class="" title="Browse blogs in the ANTLR 3 space">
+                   <span>Blog</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="space-labels-link" href="http://www.antlr.org/wiki/labels/listlabels-heatmap.action?key=ANTLR3" class="" title="Browse labels in the ANTLR 3 space">
+                   <span>Labels</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="space-attachments-link" href="http://www.antlr.org/wiki/spaces/listattachmentsforspace.action?key=ANTLR3" class="" title="Browse attachments in the ANTLR 3 space">
+                   <span>Attachments</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="space-mail-link" href="http://www.antlr.org/wiki/mail/archive/viewmailarchive.action?key=ANTLR3" class="" title="Browse mail in the ANTLR 3 space">
+                   <span>Mail</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="space-advanced-link" href="http://www.antlr.org/wiki/spaces/viewspacesummary.action?key=ANTLR3" class="" title="Browse additional space functions in the ANTLR 3 space">
+                   <span>Advanced</span></a>        </li>
+                            </ul>
+                        <ul id="browse-menu-link-global" class="section-global">
+                                        <li>
+    
+        
+    
+    <a id="whats-new-menu-link" href="http://docs.atlassian.com/confluence/docs-41/whatsnew/iframe" class="" title="">
+                   <span>What’s New</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="people-directory-link" href="http://www.antlr.org/wiki/peopledirectory.action" class="" title="Browse the Confluence people directory">
+                   <span>People Directory</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="space-directory-link" href="http://www.antlr.org/wiki/spacedirectory/view.action" class="" title="Browse the Confluence space directory">
+                   <span>Space Directory</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="feed-builder-link" href="http://www.antlr.org/wiki/dashboard/configurerssfeed.action" class="" title="Create your custom RSS feed.">
+                   <span>Feed Builder</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="keyboard-shortcuts-link" href="http://www.antlr.org/wiki" class="" title="View available keyboard shortcuts ( Type &#39;?&#39; )">
+                   <span>Keyboard Shortcuts</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="gadget-directory-link" href="http://www.antlr.org/wiki" class="user-item administration-link" title="Browse gadgets provided by Confluence">
+                   <span>Confluence Gadgets</span></a>        </li>
+                            </ul>
+                    </div>
+    </li>
+        
+                                                         <li class="ajs-menu-item normal">
+        
+        
+    
+    <a id="login-link" href="http://www.antlr.org/wiki/login.action?os_destination=%2Fdisplay%2FANTLR3%2FQuick%2BStarter%2Bon%2BParser%2BGrammars%2B-%2BNo%2BPast%2BExperience%2BRequired" class="user-item login-link" title="">
+                   <span>Log In</span></a>        </li>
+                            <li class="ajs-menu-item normal">
+    
+        
+    
+    <a id="signup-link" href="http://www.antlr.org/wiki/signup.action" class="user-item signup-link" title="">
+                   <span>Sign Up</span></a>        </li>
+                            </ul>
+    
+    
+    <ol id="breadcrumbs">
+                    
+                        
+        <li class="first">
+                                    <span><a href="http://www.antlr.org/wiki/dashboard.action" title="Go to Dashboard ( Type &#39;g&#39; then &#39;d&#39; )">Dashboard</a></span>
+                </li>
+                    
+                
+        <li>
+                                    <span><a href="http://www.antlr.org/wiki/display/ANTLR3">ANTLR 3</a></span>
+                </li>
+                                        <li id="ellipsis" title="Show all breadcrumbs"><span><strong>…</strong></span></li>
+                                    
+                
+        <li class="hidden-crumb">
+                                    <span><a href="http://www.antlr.org/wiki/display/ANTLR3/ANTLR+3+Wiki+Home">ANTLR 3 Wiki Home</a></span>
+                </li>
+                                
+                
+        <li class="hidden-crumb">
+                                    <span><a href="http://www.antlr.org/wiki/display/ANTLR3/Tutorials">Tutorials</a></span>
+                </li>
+                    
+                
+        <li>
+                                    <span><a href="./Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project_files/Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project.htm">Quick Starter on Parser Grammars - No Past Experience Required</a></span>
+                </li>
+        </ol>
+
+</div><!-- \#header -->
+
+<div id="main">
+    
+    
+    <div id="navigation" class="content-navigation view">
+                    <ul class="ajs-menu-bar">
+                                
+                        
+            <li class="normal ajs-menu-item">
+        <a id="action-menu-link" class="action trigger ajs-menu-title" href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#"><span><span>Tools</span></span></a>         <div class="ajs-drop-down most-right-menu-item assistive" hidden="">
+                        <ul id="action-menu-link-primary" class="section-primary first">
+                                        <li>
+    
+        
+    
+    <a id="view-attachments-link" href="http://www.antlr.org/wiki/pages/viewpageattachments.action?pageId=1846" class="action-view-attachments" accesskey="a" title="View Attachments ( Type &#39;t&#39; )">
+                   <span><u>A</u>ttachments (0)</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="action-view-history-link" href="http://www.antlr.org/wiki/pages/viewpreviousversions.action?pageId=1846" class="action-view-history" title="">
+                   <span>Page History</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="action-page-permissions-link" href="http://www.antlr.org/wiki/pages/viewinfo.action?pageId=1846" class="action-page-permissions" title="Edit restrictions">
+                   <span>Restrictions</span></a>        </li>
+                            </ul>
+                        <ul id="action-menu-link-secondary" class="section-secondary">
+                                        <li>
+    
+        
+    
+    <a id="view-page-info-link" href="http://www.antlr.org/wiki/pages/viewinfo.action?pageId=1846" class="action-view-info" title="">
+                   <span>Info</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="link-to-page-link" href="http://www.antlr.org/wiki/pages/viewinfo.action?pageId=1846" class="" title="Link to this Page ( Type &#39;k&#39; )">
+                   <span>Link to this Page…</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="view-in-hierarchy-link" href="http://www.antlr.org/wiki/pages/listpages-dirview.action?key=ANTLR3&openId=1846#selectedPageInHierarchy" class="" title="">
+                   <span>View in Hierarchy</span></a>        </li>
+                                        <li>
+    
+        
+    
+    <a id="action-view-source-link" href="http://www.antlr.org/wiki/plugins/viewsource/viewpagesrc.action?pageId=1846" class="action-view-source popup-link" title="">
+                   <span>View Source</span></a>        </li>
+                            </ul>
+                    </div>
+    </li>
+            </ul>
+    </div>
+
+    
+    <h1 id="title-heading" class="pagetitle">
+                    <a href="http://www.antlr.org/wiki/display/ANTLR3"><img class="logo space custom" src="./Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project_files/ANTLR3" alt=""></a>        
+		<span id="title-text">
+					            <a href="./Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project_files/Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project.htm">Quick Starter on Parser Grammars - No Past Experience Required</a>
+    				</span>
+    </h1>
+
+    
+
+                        
+    
+    
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+
+
+
+
+        
+
+    
+    
+        
+    
+    
+                    
+    
+
+    
+
+
+<div id="content" class="page view">
+    
+<div id="action-messages">
+    </div>
+
+
+
+                
+<script type="text/x-template" title="movePageDialog">
+    <div class="row information">
+        <div class="inner">
+            <div class="element">
+                Specify the new parent page for this page and its children by space and title.
+            </div>
+        </div>
+    </div>
+    <div class="form">
+        <fieldset>
+                
+
+    <legend class="assistive"><span>Change the Parent Page to a Known Page</span></legend>
+            <div class="row">
+                <label for="new-space">New space:</label>
+                <div class="value new-space-value">
+                    <input id="new-space-key" name="new-space-key" type="hidden" value="ANTLR3">
+                                            <span class="space-input">
+                            <input id="new-space" name="new-space" value="ANTLR 3" disabled="disabled">
+                        </span>
+                        <span class="description warning">You cannot move this page to another space because you do not have permission to remove it from this space.</span>
+                                        <div class="new-space-dropdown aui-dd-parent autocomplete"></div>
+                </div>
+            </div>
+            <div class="row">
+                <label for="new-parent-page">New parent page:</label>
+                <div class="value new-parent-page-value">
+                    <span class="page-input">
+                        <input id="new-parent-page" name="new-parent-page" value="Tutorials">
+                    </span>
+                    <span class="description">Start typing a page title to see a list of suggestions.</span>
+                    <div class="new-parent-page-dropdown aui-dd-parent autocomplete"></div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="location-info">
+        <div class="row">
+            <label>Current location:</label>
+            <div class="value breadcrumbs-container">
+                <div class="breadcrumbs-line">
+                    <ul id="current-parent-breadcrumbs" class="breadcrumbs">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <label>New location:</label>
+            <div class="value breadcrumbs-container">
+                <div class="breadcrumbs-line">
+                    <ul id="new-parent-breadcrumbs" class="breadcrumbs">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-template" title="movePageSearchPanel">
+    <div class="row information">
+        <div class="inner">
+            <div class="element">
+                Search for and select the new parent page for this page and its children.
+            </div>
+        </div>
+    </div>
+    <div id="move-page-search-container" class="row">
+        <div class="search-form">
+            <fieldset>
+                    
+
+    <legend class="assistive"><span>Search for a New Parent Page</span></legend>
+                    
+
+    <label  for="move-page-search-query" class="assistive">Search keywords</label>
+                <input class="search-query" id="move-page-search-query">
+                    
+
+    <label  for="move-page-search-space" class="assistive">Search in space</label>
+                                    <select id="move-page-search-space" class="search-space" disabled="disabled">
+                        <option value="ANTLR3" selected="selected">ANTLR 3</option>
+                    </select>
+                                <input type="button" value="Search">
+                                    <div class="description warning">You cannot move this page to another space because you do not have permission to remove it from this space.</div>
+                            </fieldset>
+        </div>
+        <div class="search-results">
+        </div>
+    </div>
+</script>
+<script type="text/x-template" title="searchResultsGrid">
+    <table>
+        <thead>
+            <tr class="header">
+                <th class="search-result-title">Page Title</th>
+                <th class="search-result-space">Space</th>
+                <th class="search-result-date">Updated</th>
+            </tr>
+        </thead>
+    </table>
+</script>
+<script type="text/x-template" title="searchResultsGridCount">
+    <p class="search-result-count">{0}</p>
+</script>
+<script type="text/x-template" title="searchResultsGridRow">
+    <tr class="search-result">
+        <th class="search-result-title"><a href="{1}" class="content-type-{2}"><span>{0}</span></a></th>
+        <td class="search-result-space"><a class="space" href="/wiki/display/{4}/" title="{3}">{3}</a></td>
+        <td class="search-result-date"><span class="date" title="{6}">{5}</span></td>
+    </tr>
+</script><!-- Start restrictions section -->
+<script type="text/x-template" title="page-permissions-div">
+<div id="page-permissions-div">
+    <div id="page-permissions-editor-form">
+
+                <div id="page-permissions-error-div" class="hidden">
+            <a href="#" id="permissions-error-div-close">Ok</a>
+            <div></div>
+        </div>
+
+                <div id="page-permissions-type-radios" class="page-permissions-label-rows">
+            <div>
+                <input id="restrictViewRadio" type="radio" checked="checked" name="pagePermissionTypeRadio" value="view"/>
+                <label for="restrictViewRadio">Restrict viewing of this page</label>
+                <input id="restrictEditRadio" type="radio" name="pagePermissionTypeRadio" value="edit"/>
+                <label for="restrictEditRadio">Restrict editing of this page</label>
+            </div>
+        </div>
+        <div id="page-permissions-input" class="page-permissions-label-rows">
+            <div class="page-permissions-label">To:</div>
+            <div id="page-permissions-chooser-box">
+                                <span id="page-permissions-choose-user" class="ajs-button">
+                    
+
+
+
+    
+
+
+
+<a href="#" id='userpicker-popup-link-image' onClick="var picker = window.open('/wiki/spaces/openuserpicker.action?key=ANTLR3&amp;startIndex=0&amp;onPopupSubmit=AJS.PagePermissions.addUserPermissions', 'EntitiesPicker', 'status=yes,resizable=yes,top=100,left=200,width=700,height=680,scrollbars=yes'); picker.focus(); return false;"><img src="/wiki/s/en_GB/3148/5/_/images/icons/user_16.gif" height=16 width=16 border=0 align="absmiddle"  title="Choose users" /></a>
+<a href="#" id='userpicker-popup-link-text' onClick="var picker = window.open('/wiki/spaces/openuserpicker.action?key=ANTLR3&amp;startIndex=0&amp;onPopupSubmit=AJS.PagePermissions.addUserPermissions', 'EntitiesPicker', 'status=yes,resizable=yes,top=100,left=200,width=700,height=680,scrollbars=yes'); picker.focus(); return false;">Person...</a>
+
+
+                </span>
+                <span id="page-permissions-choose-group" class="ajs-button">
+                    
+
+
+
+    
+
+ 
+
+<a href="#" id='grouppicker-popup-link-image' onClick="var picker = window.open('/wiki/spaces/opengrouppicker.action?key=ANTLR3&amp;startIndex=0&amp;actionName=dosearchgroups.action&amp;onPopupSubmit=AJS.PagePermissions.addGroupPermissions', 'EntitiesPicker', 'status=yes,resizable=yes,top=100,left=200,width=580,height=550,scrollbars=yes'); picker.focus(); return false;"><img src="/wiki/s/en_GB/3148/5/_/images/icons/group_16.gif" height=16 width=16 border=0 align="absmiddle"  title="Choose groups" /></a>
+<a href="#" id='grouppicker-popup-link-text' onClick="var picker = window.open('/wiki/spaces/opengrouppicker.action?key=ANTLR3&amp;startIndex=0&amp;actionName=dosearchgroups.action&amp;onPopupSubmit=AJS.PagePermissions.addGroupPermissions', 'EntitiesPicker', 'status=yes,resizable=yes,top=100,left=200,width=580,height=550,scrollbars=yes'); picker.focus(); return false;">Group...</a>
+
+
+                </span>
+            </div>
+            <div id="page-permissions-input-box">
+                <input type="text" id="page-permissions-names-input" name="permissionNames"
+                    placeholder="Enter user or group name" class="autocomplete-user"
+                    data-max="10" data-none-message="No matches"
+                    data-target="#page-permissions-names-hidden" data-template="{username}"
+                    data-dropdown-target="#page-perms-name-dropdown-wrapper" data-resize-to-input="true"
+                    size="30"/>
+                <input
+    type="hidden"
+                            id="page-permissions-names-hidden"           />                <img height="16px" width="1px" src="/wiki/s/en_GB/3148/5/_/images/border/spacer.gif"/>
+                <input type="button" id="add-typed-names" value="Restrict">
+                <div id="page-perms-name-dropdown-wrapper" class="aui-dd-parent autocomplete"></div>
+            </div>
+        </div>
+    </div>
+    <div id="page-permissions-tables">
+        <div id="page-permissions-table-div">
+                        <table id="page-permissions-table" class="page-permissions-table">
+                <tr id="page-permissions-no-views" class="marker-row">
+                    <td colspan="3" class="page-permissions-marker-cell"><span>No view restrictions are defined for this page</span></td>
+                </tr>
+                <tr id="page-permissions-no-edits" class="marker-row">
+                    <td colspan="3" class="page-permissions-marker-cell"><span>No edit restrictions are defined for this page</span></td>
+                </tr>
+            </table>
+        </div>
+        <div id="page-inherited-permissions-table-div" class="hidden">
+            <span id="page-inherited-permissions-table-desc">
+                <a class="icon twisty-closed">Show/Hide</a>
+                <a id="toggle-inherited-permissions" title="Click to see inherited restrictions">This page has restricted parent pages. It can only be seen by users who can see those parent pages.</a>
+            </span>
+            <div id="page-inherited-permissions-tables" class="hidden page-inheritance-togglable"></div>
+        </div>
+    </div>
+</div>
+</script>
+
+<!-- End restrictions section -->
+
+        
+    
+    
+        
+                            
+    
+
+                    
+
+        
+        <a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#page-metadata-end" class="assistive">Skip to end of metadata</a>
+<div id="page-metadata-start" class="assistive"></div>
+
+    <div class="page-metadata">
+        <ul>
+                            <li class="page-metadata-item noprint">
+    
+            
+    
+    <a id="content-metadata-page-restrictions" href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#" class="page-metadata-icon page-restrictions hidden" title="Page restrictions apply. Click the lock icon to view or edit the restriction.">
+                   <span>Page restrictions apply</span></a>        </li>
+                        <li class="page-metadata-modification-info">
+                                    Added by <a href="http://www.antlr.org/wiki/display/~jluber" class="url fn confluence-userlink userlink-0" data-username="jluber" title="" data-user-hover-bound="true">Johannes Luber</a>, last edited by <a href="http://www.antlr.org/wiki/display/~ty.connell@gmail.com" class="url fn confluence-userlink userlink-1" data-username="ty.connell@gmail.com" title="" data-user-hover-bound="true">Ty Connell</a> on Jul 08, 2011
+                                                                <span class="noprint">&nbsp;(<a id="view-change-link" href="http://www.antlr.org/wiki/pages/diffpages.action?pageId=1846&originalId=30605847">view change</a>)</span>
+                                                </li>
+                            <li class="show-hide-comment-link">
+                    <a id="show-version-comment" class="inline-control-link" href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#">show comment</a>
+                    <a id="hide-version-comment" class="inline-control-link" style="display:none;" href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#">hide comment</a>
+                </li>
+                    </ul>
+                <div id="version-comment" class="noteMacro" style="display: none; ">
+        <strong>Comment:</strong>
+        Migrated to Confluence 4.0<br>
+    </div>
+        </div>
+
+
+<a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#page-metadata-start" class="assistive">Go to start of metadata</a>
+<div id="page-metadata-end" class="assistive"></div>
+        
+                                
+        <div id="main-content" class="wiki-content">
+                           <h1 id="QuickStarteronParserGrammars-NoPastExperienceRequired-Introduction ">Introduction&nbsp;</h1>
+
+<p>You need a parser and want to use ANTLR, but you never learned how to write parser grammars? Then the following tutorial should teach you the very basics of understanding on following matters:</p>
+<ul>
+	<li>EBNFs</li>
+	<li>Left recursion</li>
+	<li>Grammar ambiguities</li>
+	<li>Difference between lexer and parser rules</li>
+	<li>How to define tokens</li>
+	<li>How to build a grammar from a language specification</li>
+</ul>
+
+
+<p>Nonetheless the study of a few books will be helpful: The free <a href="http://www.diku.dk/hjemmesider/ansatte/torbenm/Basics/" class="external-link" rel="nofollow">Basics of Compiler Design</a> and <a href="http://www.ethoberon.ethz.ch/WirthPubl/CBEAll.pdf" class="external-link" rel="nofollow">Compiler Construction</a> PDFs and the famous <a href="http://www.amazon.com/Compilers-Principles-Techniques-Tools-2nd/dp/0321486811/ref=sr_11_1/104-1983223-5011908?ie=UTF8&qid=1176457314&sr=11-1" class="external-link" rel="nofollow">dragon book</a> in the newest edition for understanding the theory of compilers and <a href="http://www.pragmaticprogrammer.com/titles/tpantlr/index.html" class="external-link" rel="nofollow">The Definitive ANTLR Reference</a> for in-depth understanding of intricate details of the ANTLR software and how to write complex grammars. The use of <a href="http://www.antlr.org/works/index.html" class="external-link" rel="nofollow">ANTLRworks</a> is heavily recommended. Note: If the downloaded ANTLRworks file ends with .zip, rename it into .jar! All sample grammars below are fully functional except that at the beginning of the test file one has to add</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<div><div id="highlighter_194179" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">grammar Grammarname;</code></div></div></td></tr></tbody></table></div></div>
+</div></div>
+<p>where <em>Grammarname</em> is the name of the test file with the suffix .g.</p>
+
+<h1 id="QuickStarteronParserGrammars-NoPastExperienceRequired-EBNFs ">EBNFs&nbsp;</h1>
+
+<p>EBNF means Extended Backus-Naur Form, the grammar for describing parser grammars. The basic form of an EBNF rule is simple:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<div><div id="highlighter_222983" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">a : b;</code></div></div></td></tr></tbody></table></div></div>
+</div></div>
+<p>and describes that symbol <span style="color: rgb(153,0,0);">a</span> on the left side can be replaced with the symbol <span style="color: rgb(153,0,0);">b</span> on the right side. If <span style="color: rgb(153,0,0);">b</span> is itself a rule, <span style="color: rgb(153,0,0);">b</span> is also replaced with its right side, and so on, until no symbol referencing a rule remains. The number and order of symbols, usually called tokens, on the right side is unlimited and arbitrary. It is possible to denote several alternatives of replacement tokens with the <span style="color: rgb(153,0,0);">|</span> symbol - the used alternative is chosen dependent on the input. To discriminate between tokens which occur only in rules and tokens which occur also in the input, a single quote is used as string delimiter (character escaping works like in Java). A basic example of this behaviour is exhibited by this grammar:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<div><div id="highlighter_670634" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">utterance : greeting | exclamation;</code></div><div class="line number2 index1 alt1"><code class="java plain">greeting : interjection subject;</code></div><div class="line number3 index2 alt2"><code class="java plain">exclamation : </code><code class="java string">'Hooray!'</code><code class="java plain">;</code></div><div class="line number4 index3 alt1"><code class="java plain">interjection : </code><code class="java string">'Hello'</code><code class="java plain">;</code></div><div class="line number5 index4 alt2"><code class="java plain">subject : </code><code class="java string">'World!'</code><code class="java plain">;</code></div></div></td></tr></tbody></table></div></div>
+</div></div>
+<p>This grammar matches the input "Hello World!" and "Hooray!". (Note the use of lowercase and uppercase letters. The importance of this is explained later.) Until now I have only described the basic BNF - the extended notations and their meanings are:</p>
+<ul>
+	<li>() - Parentheses. Used to group several elements, so they are treated as one single token</li>
+	<li>? - Any token followed by ? occurs 0 or 1 times</li>
+	<li>* - Any token followed by * can occur 0 or more times</li>
+	<li>+ - Any token followed by + can occur 1 or more times</li>
+	<li>. - Any character/token can occur one time</li>
+	<li>~ - Any character/token following the ~ may not occur at the current place</li>
+	<li>.. - Between two characters .. spans a range which accepts every character between both boundaries inclusive</li>
+</ul>
+
+
+<p>Examples are:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<div><div id="highlighter_591683" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">integer : (HEX_PREFIX | OCTAL_PREFIX)? DIGITS;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="java comments">// Matches HEX_PREFIX DIGITS or OCTAL_PREFIX DIGITS or simply DIGITS</code></div><div class="line number2 index1 alt1"><code class="java plain">DIGITS : </code><code class="java string">'1'</code><code class="java plain">..</code><code class="java string">'9'</code> <code class="java string">'0'</code><code class="java plain">..</code><code class="java string">'9'</code><code class="java plain">*;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="java comments">// Matches one digit between 1 and 9 and followed by an arbitrary</code></div><div class="line number3 index2 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java comments">// number of digits between 0 and 9</code></div><div class="line number4 index3 alt1"><code class="java plain">ML_COMMENT : </code><code class="java string">'/*'</code> <code class="java plain">( options {greedy=</code><code class="java keyword">false</code><code class="java plain">;} : . )* </code><code class="java string">'*/'</code> <code class="java plain">; </code><code class="java comments">// Matches multiline comments: Everything from "/*" to the next "*/".</code></div><div class="line number5 index4 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java comments">// (greedy=false prevents that the dot matches everything between the</code></div><div class="line number6 index5 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java comments">// first "/*" and the last "*/", not the next "*/" in case of several</code></div><div class="line number7 index6 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java comments">// multiline comments in a file.)</code></div><div class="line number8 index7 alt1"><code class="java plain">NO_LOWERCASE_LETTERS : (~(</code><code class="java string">'a'</code><code class="java plain">..</code><code class="java string">'z'</code><code class="java plain">))+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="java comments">// Matches all character strings excluding those with lowercase letters</code></div><div class="line number9 index8 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java comments">// and the empty string</code></div></div></td></tr></tbody></table></div></div>
+</div></div>
+
+<h1 id="QuickStarteronParserGrammars-NoPastExperienceRequired-Leftrecursion">Left recursion</h1>
+
+<p>A popular mistake is to use left recursion for LL-Parsers like ANTLR (LR-Parsers like yacc can handle this kind of construct). Recursion in general means that an alternative of rule <span style="color: rgb(153,0,0);">a</span> references the rule <span style="color: rgb(153,0,0);">a</span> again and is allowed, as otherwise the possible input is finite. Left recursion occurs, when the rule a is in one of the alternatives referenced directly at the beginning like so:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<div><div id="highlighter_803077" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">a : a B</code></div><div class="line number2 index1 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;</code><code class="java plain">| C</code></div><div class="line number3 index2 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;</code><code class="java plain">;</code></div></div></td></tr></tbody></table></div></div>
+</div></div>
+<p>The problem is that ANTLR enters an infinite loop as every invocation of rule <span style="color: rgb(153,0,0);">a</span> immediately invokes rule <span style="color: rgb(153,0,0);">a</span> again. (In reality, the parser generation aborts upon detecting a left-recursive rule, so nonetheless the grammar has to be changed.) The solution is a simple rewrite like:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<div><div id="highlighter_217327" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">a : C B*;</code></div></div></td></tr></tbody></table></div></div>
+</div></div>
+
+<h1 id="QuickStarteronParserGrammars-NoPastExperienceRequired-Grammarambiguities">Grammar ambiguities</h1>
+
+<p>Even if a grammar describes a certain language, it can still cause problems at the recognition. Ambiguities result if a certain input can be matched by two or more different rule invocations. The solution is either to rewrite the grammar, which may result in a less readable grammar, or to add syntactic predicates, which enforce the ordering of the possibilities. Both topics belong to the advanced category and are discussed in the ANTLR book in detail. They were mentioned only in this beginner tutorial as they can explain why a valid grammar doesn't work the way one would expect.</p>
+
+<p>Another problem related to grammar ambiguities is when ANTLR doesn't find a viable start rule. Viable start rules have no references to them in other rules, but when recursion is used ANTLR may still complain about unreachable alternatives. This can be solved two ways: The first one is to add a rule like "new_start : old_start;". The second and easier way is to add at the supposed start rule "EOF" aka End Of File at the end of the start rule. To prevent the problem from ever occurring the author recommends to always add EOF as there are no further side effects unless you are using the start rule recursively as in the following example:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<div><div id="highlighter_117961" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">propsHash</code></div><div class="line number2 index1 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">:&nbsp;&nbsp;&nbsp; </code><code class="java string">'{'</code> <code class="java plain">atom (COMMA atom)* </code><code class="java string">'}'</code> <code class="java plain">EOF</code></div><div class="line number3 index2 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">;</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="java plain">atom</code></div><div class="line number6 index5 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">:&nbsp;&nbsp;&nbsp; propsHash&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; other_alternatives</code></div><div class="line number7 index6 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">;</code></div></div></td></tr></tbody></table></div></div>
+</div></div>
+<p>In this case you have to create an extra start rule where you reference both the recursive rule and EOF:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<div><div id="highlighter_741612" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">input</code></div><div class="line number2 index1 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">:&nbsp;&nbsp; propsHash EOF</code></div><div class="line number3 index2 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">;</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="java plain">propsHash</code></div><div class="line number6 index5 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">:&nbsp;&nbsp;&nbsp; </code><code class="java string">'{'</code> <code class="java plain">atom (COMMA atom)* </code><code class="java string">'}'</code></div><div class="line number7 index6 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">;</code></div><div class="line number8 index7 alt1"><code class="java plain">atom</code></div><div class="line number9 index8 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">:&nbsp;&nbsp;&nbsp; propsHash&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; other_alternatives</code></div><div class="line number10 index9 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">;</code></div></div></td></tr></tbody></table></div></div>
+</div></div>
+
+<h1 id="QuickStarteronParserGrammars-NoPastExperienceRequired-Differencebetweenlexerandparserrules">Difference between lexer and parser rules</h1>
+
+<p>The use of EBNFs doesn't distiguish between lexer and parser - only between terminal and non-terminal symbols. Terminal symbols describe the input, while non-terminal symbols describe the tree structure behind the input. In practice, terminal symbols are recognized by a lexer and non-terminal symbols are recognized by a parser. ANTLR imposes the convention that lexer rules start with an uppercase letter and parser rules with a lowercase letter. Lexer rules contain only either literals (along the use of EBNF symbols; literals can be both single characters and longer strings) or references to other lexer rules. Parser rules may reference parser and lexer rules as they wish and even include literals, but never only literals. See following sample grammar:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<div><div id="highlighter_860101" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">decl : </code><code class="java string">'int'</code> <code class="java plain">ID </code><code class="java string">'='</code> <code class="java plain">INT </code><code class="java string">';'</code> <code class="java comments">// E.g., "int x = 3;"</code></div><div class="line number2 index1 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">| </code><code class="java string">'int'</code> <code class="java plain">ID </code><code class="java string">';'</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code class="java comments">// E.g., "int x;"</code></div><div class="line number3 index2 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">;</code></div><div class="line number4 index3 alt1"><code class="java plain">ID&nbsp;&nbsp; : (</code><code class="java string">'a'</code><code class="java plain">..</code><code class="java string">'z'</code> <code class="java plain">| </code><code class="java string">'A'</code><code class="java plain">..</code><code class="java string">'Z'</code><code class="java plain">)+;</code></div><div class="line number5 index4 alt2"><code class="java plain">INT&nbsp; : </code><code class="java string">'0'</code><code class="java plain">..</code><code class="java string">'9'</code><code class="java plain">+;</code></div></div></td></tr></tbody></table></div></div>
+</div></div>
+
+<h1 id="QuickStarteronParserGrammars-NoPastExperienceRequired-Howtodefinetokens">How to define tokens</h1>
+
+<p>The default behaviour of ANTLR is that the rule names are automatically elevated into token status. The literals are also available, but they have not been assigned a symbolic name. If you want to be able to use symbolic names instead of the literals in parser rules, you can create lexer rules which match only the literals. A second alternative is to use the special tokens command. The tokens command has two advantages: The first one is that the definitions of symbolic names are all collected in one place. The second one is that keywords defined that way are prioritized over the rule for normal variable names, which would also match keywords in general. For instance, the keyword "import" would also match the more general rule "('a'..'z')+".</p>
+
+<p>Additionally one can define imaginary tokens to be used in ASTs (Abstract Syntax Trees) for multipass grammars (another advanced topic not treated here). In such grammars it is also common to factor subrules out for increased readability, although no token for those rules is actually required. Then the keyword <em>fragment</em> is used before the rule's name, effectively inlining this rule. A few samples to showcase the possibilities:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<div><div id="highlighter_14702" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">tokens {</code></div><div class="line number2 index1 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;</code><code class="java plain">IMAGINERY_TOKEN;</code></div><div class="line number3 index2 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;</code><code class="java plain">EQUALS=</code><code class="java string">'='</code><code class="java plain">;</code></div><div class="line number4 index3 alt1"><code class="java plain">}</code></div><div class="line number5 index4 alt2"><code class="java plain">UNICODE_CHAR</code></div><div class="line number6 index5 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;</code><code class="java plain">:</code><code class="java string">'\\'</code><code class="java string">'u'</code> <code class="java plain">HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT</code></div><div class="line number7 index6 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;</code><code class="java plain">;</code></div><div class="line number8 index7 alt1"><code class="java plain">fragment</code></div><div class="line number9 index8 alt2"><code class="java plain">HEX_DIGIT</code></div><div class="line number10 index9 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;</code><code class="java plain">: </code><code class="java string">'0'</code><code class="java plain">..</code><code class="java string">'9'</code><code class="java plain">|</code><code class="java string">'a'</code><code class="java plain">..</code><code class="java string">'f'</code><code class="java plain">|</code><code class="java string">'A'</code><code class="java plain">..</code><code class="java string">'F'</code></div><div class="line number11 index10 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;</code><code class="java plain">;</code></div></div></td></tr></tbody></table></div></div>
+</div></div>
+<p>The author's recommendation is to use ordinary rules and the tokens command. Using literals and lexer rules for one and the same input sequence will result in giving the lexer rule the priority, thus generating a different token than expected by the parser rule. This error is not easy to see for inexperienced users. It is considered to be easier to use separate lexer and parser grammars, because then this kind of error cannot happen.</p>
+
+<p>Another point of interest is the order of the token declaration. The earlier a token is defined, the higher is the precedence if a certain input can be matched by two or more tokens. This means that using the tokens command to define keywords will match those keywords instead a more general <span style="color: rgb(153,0,0);">ID</span> rule. The following code snippet provides an example:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<div><div id="highlighter_538070" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">start</code></div><div class="line number2 index1 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;</code><code class="java plain">:&nbsp; (WS |&nbsp; FOO)* EOF</code></div><div class="line number3 index2 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;</code><code class="java plain">;</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="java plain">WS : (options {greedy=</code><code class="java keyword">false</code><code class="java plain">;} : </code><code class="java string">' '</code><code class="java plain">+) ;</code></div><div class="line number6 index5 alt1"><code class="java plain">FOO : ~(</code><code class="java string">'x'</code> <code class="java plain">| </code><code class="java string">'y'</code> <code class="java plain">| </code><code class="java string">'z'</code><code class="java plain">)+ ;</code></div></div></td></tr></tbody></table></div></div>
+</div></div>
+<p>If you give an input containing only spaces then <span style="color: rgb(153,0,0);">WS</span> will be chosen. Should one change the rules order that <span style="color: rgb(153,0,0);">FOO</span> comes before <span style="color: rgb(153,0,0);">WS</span> then <span style="color: rgb(153,0,0);">FOO</span> will be chosen. Any input containing other characters than spaces will match <span style="color: rgb(153,0,0);">FOO</span>, even if two or more <span style="color: rgb(153,0,0);">WS</span> and <span style="color: rgb(153,0,0);">FOO</span> tokens could be produced. The lexer rules will match greedily the maximum of applicable characters.</p>
+
+<h1 id="QuickStarteronParserGrammars-NoPastExperienceRequired-Howtobuildagrammarfromalanguagespecification">How to build a grammar from a language specification</h1>
+
+<p>Such language specifications often only showcase example inputs. The first step is to abstract the syntax from the input and then to think of suitable rules which validate the language correctly. Let's assume that a parser has to recognize the following set of commands:</p>
+<ul>
+	<li>get data from file</li>
+	<li>put data in file</li>
+	<li>change data in file</li>
+	<li>get metadata about file</li>
+	<li>change metadata about file</li>
+	<li>get dependencies of file</li>
+	<li>get dependents of file</li>
+	<li>get statistics of file</li>
+</ul>
+
+
+<p>The abstraction boils down to: verb object preposition target. A basic ANTLR3 grammar would be:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<div><div id="highlighter_390788" class="syntaxhighlighter nogutter  java"><div class="toolbar"><span><a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">grammar CommandLanguage;</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="java plain">tokens {</code></div><div class="line number4 index3 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">GET=</code><code class="java string">'get'</code><code class="java plain">;</code></div><div class="line number5 index4 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">PUT=</code><code class="java string">'put'</code><code class="java plain">;</code></div><div class="line number6 index5 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">CHANGE=</code><code class="java string">'change'</code><code class="java plain">;</code></div><div class="line number7 index6 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">DATA=</code><code class="java string">'data'</code><code class="java plain">;</code></div><div class="line number8 index7 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">METADATA=</code><code class="java string">'metadata'</code><code class="java plain">;</code></div><div class="line number9 index8 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">DEPENDENCIES=</code><code class="java string">'dependencies'</code><code class="java plain">;</code></div><div class="line number10 index9 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">DEPENDENTS=</code><code class="java string">'dependents'</code><code class="java plain">;</code></div><div class="line number11 index10 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">STATISTICS=</code><code class="java string">'statistics'</code><code class="java plain">;</code></div><div class="line number12 index11 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">FROM=</code><code class="java string">'from'</code><code class="java plain">;</code></div><div class="line number13 index12 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">IN=</code><code class="java string">'in'</code><code class="java plain">;</code></div><div class="line number14 index13 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">ABOUT=</code><code class="java string">'about'</code><code class="java plain">;</code></div><div class="line number15 index14 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">OF=</code><code class="java string">'of'</code><code class="java plain">;</code></div><div class="line number16 index15 alt1"><code class="java plain">}</code></div><div class="line number17 index16 alt2">&nbsp;</div><div class="line number18 index17 alt1"><code class="java plain">command</code></div><div class="line number19 index18 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">:&nbsp;&nbsp;&nbsp; sentence (NEWLINE sentence)* NEWLINE? EOF</code></div><div class="line number20 index19 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">|</code></div><div class="line number21 index20 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">;</code></div><div class="line number22 index21 alt1">&nbsp;</div><div class="line number23 index22 alt2"><code class="java plain">sentence</code></div><div class="line number24 index23 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">:&nbsp;&nbsp;&nbsp; WS? verb WS object WS preposition WS target WS?</code></div><div class="line number25 index24 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">;</code></div><div class="line number26 index25 alt1">&nbsp;</div><div class="line number27 index26 alt2"><code class="java plain">verb</code></div><div class="line number28 index27 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">:&nbsp;&nbsp;&nbsp; GET</code></div><div class="line number29 index28 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">|&nbsp;&nbsp;&nbsp; PUT</code></div><div class="line number30 index29 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">|&nbsp;&nbsp;&nbsp; CHANGE</code></div><div class="line number31 index30 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">;</code></div><div class="line number32 index31 alt1">&nbsp;</div><div class="line number33 index32 alt2"><code class="java plain">object</code></div><div class="line number34 index33 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">:&nbsp;&nbsp;&nbsp; DATA</code></div><div class="line number35 index34 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">|&nbsp;&nbsp;&nbsp; METADATA</code></div><div class="line number36 index35 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">|&nbsp;&nbsp;&nbsp; DEPENDENCIES</code></div><div class="line number37 index36 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">|&nbsp;&nbsp;&nbsp; DEPENDENTS</code></div><div class="line number38 index37 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">|&nbsp;&nbsp;&nbsp; STATISTICS</code></div><div class="line number39 index38 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">;</code></div><div class="line number40 index39 alt1">&nbsp;</div><div class="line number41 index40 alt2"><code class="java plain">preposition</code></div><div class="line number42 index41 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">:&nbsp;&nbsp;&nbsp; FROM</code></div><div class="line number43 index42 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">|&nbsp;&nbsp;&nbsp; IN</code></div><div class="line number44 index43 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">|&nbsp;&nbsp;&nbsp; ABOUT</code></div><div class="line number45 index44 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">|&nbsp;&nbsp;&nbsp; OF</code></div><div class="line number46 index45 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">;</code></div><div class="line number47 index46 alt2">&nbsp;</div><div class="line number48 index47 alt1"><code class="java plain">target</code></div><div class="line number49 index48 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">:&nbsp;&nbsp;&nbsp; FILE</code></div><div class="line number50 index49 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">;</code></div><div class="line number51 index50 alt2">&nbsp;</div><div class="line number52 index51 alt1"><code class="java plain">FILE</code></div><div class="line number53 index52 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">: (</code><code class="java string">'a'</code><code class="java plain">..</code><code class="java string">'z'</code><code class="java plain">|</code><code class="java string">'A'</code><code class="java plain">..</code><code class="java string">'Z'</code><code class="java plain">|</code><code class="java string">'0'</code><code class="java plain">..</code><code class="java string">'9'</code><code class="java plain">|</code><code class="java string">'.'</code><code class="java plain">)+</code></div><div class="line number54 index53 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">;</code></div><div class="line number55 index54 alt2">&nbsp;</div><div class="line number56 index55 alt1"><code class="java plain">NEWLINE</code></div><div class="line number57 index56 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">: </code><code class="java string">'\r'</code><code class="java plain">? </code><code class="java string">'\n'</code></div><div class="line number58 index57 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">;</code></div><div class="line number59 index58 alt2">&nbsp;</div><div class="line number60 index59 alt1"><code class="java plain">WS</code></div><div class="line number61 index60 alt2"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">: (</code><code class="java string">' '</code><code class="java plain">|</code><code class="java string">'\t'</code><code class="java plain">|</code><code class="java string">'\n'</code><code class="java plain">|</code><code class="java string">'\r'</code><code class="java plain">)+ {skip();}</code></div><div class="line number62 index61 alt1"><code class="java spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="java plain">;</code></div></div></td></tr></tbody></table></div></div>
+</div></div>
+<p>This grammar accepts some invalid sentences like "change dependencies in file". It is possible to accept only valid sentences by changing the grammar rules, but this would only make the grammar much less readable. Instead use semantic predicates which are described in the ANTLR book or somewhere on the wiki or mailing list. There are no actions in this simple example that would process the parsed data. Right now the above grammar only recognizes valid input by accepting or rejecting it. This <a href="http://www.antlr.org/wiki/display/ANTLR3/Expression+evaluator" rel="nofollow">Expression Evaluator</a> demonstrates how actions can be used.</p>
+
+<p>Todo:</p>
+<ul>
+	<li>Add Java test main() for example grammar</li>
+	<li>Add text how to generate Java files from grammar</li>
+	<li>Add text how to write keyword-less grammars</li>
+	<li>Add warning about too aggressive left recursion removal</li>
+	<li>Add warning about misuse of the dot operator (".+" in a grammar rule)</li>
+	<li>Look if other ANTLR tutorials can provide additional hints for missing pieces</li>
+	<li>Update index</li>
+</ul>
+    
+        </div>
+
+        <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required"
+    dc:identifier="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required"
+    dc:title="Quick Starter on Parser Grammars - No Past Experience Required"
+    trackback:ping="http://www.antlr.org/wiki/rpc/trackback/1846"/>
+</rdf:RDF>
+-->
+
+                    <script type="text/x-template" title="labels-dialog-div">
+
+    
+    <div id="labels-dialog">
+        <div class="labels-editor">
+            <span class="errorMessage error" id="errorSpan"></span>
+            <form method="GET" action="" id="add-labels-form">
+                <div id="labelOperationErrorContainer">
+                    <span class="error"><span class="errorMessage" id="labelOperationErrorMessage"></span></span>
+                </div>
+    
+                <div id="label-input-fields">
+                    <input autocomplete="off" id="labelsString" name="labelsString" value="">
+                    <input id="add-labels-editor-button" type="submit" class="add-labels" value="Add">
+                </div>
+                <div id="labelsAutocompleteList" class="aui-dd-parent resize-to-input" style="width: 417px"></div>
+                <div id="dialog-label-list">
+                    
+<span id="labels-section-title-none" class="no-labels-message" >
+None
+</span>
+<ul class="label-list">
+</ul>
+                </div>
+                <div id="waitImageAndStatus">
+                    <img class="waiting" alt="Please wait" src="/wiki/s/en_GB/3148/5/_/images/icons/wait.gif">&nbsp;
+                    <span id="labelOperationStatus" class="smalltext"></span>
+                </div>
+                <div class="labels-tip"></div>
+            </form>
+        </div>
+    </div>
+</script>
+                
+    
+
+
+<div id="labels-section" class="pageSection group">
+    <div class="labels-editor">
+        <span id="labels-section-title" class="label-title">Labels:</span>
+        <div id="labels-section-content" class="content-column">
+            
+<span id="labels-section-title-none" class="no-labels-message">
+None
+</span>
+<ul class="label-list">
+</ul>
+
+                            <a id="labels-edit" href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required#" class="show-labels-editor editor-icon" title="Edit Labels ( Type &#39;l&#39; )">
+                    <span class="icon icon-edit">Edit Labels</span>
+                </a>
+                    </div>
+    </div>
+</div>
+        
+            
+            
+
+
+
+
+            
+    
+
+
+
+
+
+
+
+<div id="comments-section" class="pageSection group">
+    
+    
+    
+    
+    </div>
+
+
+            
+</div>
+
+
+    
+
+
+
+    
+    
+
+    
+    
+    
+
+
+    
+
+
+
+    <br class="clear">
+</div><!-- \#main -->
+
+<div id="footer">
+                                                <p class="license license-opensource">
+                  Powered by a free <b>Atlassian Confluence Open Source Project License</b> granted to ANTLR. <a href="http://www.atlassian.com/c/conf/11461">Evaluate Confluence today</a>.<br>
+                </p>
+                        
+    <ul id="poweredby">
+        <li class="noprint">Powered by <a href="http://www.atlassian.com/software/confluence" class="hover-footer-link">Atlassian Confluence</a> <span id="footer-build-information">4.1.9</span>, the <a href="http://www.atlassian.com/software/confluence/tour/enterprise-wiki.jsp" class="hover-footer-link">Enterprise Wiki</a></li>
+        <li class="print-only">Printed by Atlassian Confluence 4.1.9, the Enterprise Wiki.</li>        
+        <li class="noprint"> &nbsp;·&nbsp; <a href="http://jira.atlassian.com/secure/BrowseProject.jspa?id=10470" class="hover-footer-link">Report a bug</a></li>
+        <li class="noprint"> &nbsp;·&nbsp; <a href="http://www.atlassian.com/about/connected.jsp?s_kwcid=Confluence-stayintouch" class="hover-footer-link">Atlassian News</a></li>
+    </ul>
+
+    
+
+            
+    </div></div><!-- \#full-height-container -->
+</div><!-- \#page -->
+
+<script src="./Quick Starter on Parser Grammars - No Past Experience Required - ANTLR 3 - ANTLR Project_files/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1024344-1";
+urchinTracker();
+</script>
+
+
+
+<div id="content-hover-0" class="ajs-content-hover" style="display: none; "><div class="contents" style="width: 300px; "></div></div><div id="content-hover-1" class="ajs-content-hover" style="display: none; "><div class="contents" style="width: 300px; "></div></div><div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><div id="content-hover-shadow" style="display: none; "><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div><div id="fileuploadShim" style="position: relative; z-index: 0; "></div><div id="p16u4p1pqc1r8od8117js1rfa1bb50_html5_container" style="position: absolute; background-color: transparent; width: 1263px; height: 0px; overflow: hidden; z-index: -1; opacity: 0; top: 685px; left: 0px; background-position: initial initial; background-repeat: initial initial; " class="plupload html5"><input id="p16u4p1pqc1r8od8117js1rfa1bb50_html5" style="font-size: 999px; position: absolute; width: 100%; height: 100%; " type="file" accept="" multiple="multiple"></div></body></html>

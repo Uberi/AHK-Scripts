@@ -1,0 +1,48 @@
+Compiler:
+
+Original code
+    - Lexing
+        - Avoid regex
+        - Possibly use a formal grammar, like EBNF (http://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form)
+Token array
+    - Parsing
+        - Pratt parser
+        - Implicit concatenation, combine unary minuses with the literal number
+        - Closures are stored in their functions, must store variable REFERENCES, not values
+Abstract syntax tree
+    - Optimisation
+        - Rule based system: patterns to match, combined with tree transformations required
+        - Need a custom format for specifying these rules
+Optimised abstract syntax tree
+    - Compilation
+        - Intermediate format, designed for interpreting; a form of bytecode
+        - Possibly an LLVM backend (http://www.llvm.org/docs/), with LLVM assembly (http://www.llvm.org/docs/LangRef.html)
+	- Alternatively, use GNU Assembler (http://en.wikipedia.org/wiki/GNU_Assembler), as it is portable across many architectures
+Output format
+
+
+Autonomy syntax:
+
+- Reference counting garbage collector
+- Null type; Example uses: When a string search has not found the substring, when an optional parameter is omitted. Identifier: Null
+- Comments use the /* and */ style: Some /* This is a comment */ code;
+- Numbers, strings, and arrays are mutable, while functions are not
+- Variable references can be passed by prefixing it with an apostrophe: [ SomeVar, 'SomeOtherVar ] /* First stores variable value, second stores a variable reference */
+- The apostrophe operator creates an alias of the variable: SomeVar := 'SomeOtherVar /* Changing SomeVar now changes SomeOtherVar */
+- Anonymous functions in the form: Var := {[ 'Param1, 'Param2 ]; Can use Param1 and Param2 here; Some code here; Some more code; }
+    - Return value is the last expression ;wip: rethink this to allow returning from inside the body of the function, when not at the end
+    - The function {; Some code; ; } would not return anything ;wip: see above remark
+    - Function references can be stored in variables, and used as values
+    - Dynamic function calls are possible with dynamic variables: Foo := {; Some code; }; Bar := "Foo"; %Bar%()
+    - Only function reference is stored in variable; is not by value
+    - Optional parameters: { [ Var1 : "DefaultValue" ]; Some Code; }
+    - Current scope is the scope that the function was created in, local scope is that function only (default), and global scope is the root scope
+    - Closures are avaiable: MakeAdder := { Number1; {Number2; Number1 @current; Number1 + Number2 } } /* Number1 is still available to the returned function, even after MakeAdder() has returned */
+- Arrays with the [ and ] symbols: [ An array element, And another ]
+    - Strings can be accessed as character arrays
+    - Can have indexed arrays: [ Item1, Item2 ]
+    - Mapped arrays are available as well, with a colon: [ Key1 : Value1, Key2 : Value2 ]
+    - Built in array called Internal, containing the following:
+        - a Locals array with variables from the current scope
+        - a Globals array with global variables
+        - All AHK builtins, without the prefix (vars prefixed by "A_")

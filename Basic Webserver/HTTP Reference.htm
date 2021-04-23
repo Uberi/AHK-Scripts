@@ -1,0 +1,1167 @@
+
+<!-- saved from url=(0035)http://www.jmarshall.com/easy/http/ -->
+<HTML><HEAD><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><STYLE type="text/css">#gview-cmenu {  position: absolute;  border: 1px solid #ccc;  background: #fff;  margin: 0;  padding: 0;  top: 0;  left: 0;  z-index: 10000;  list-style-type: none;  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .5);}#gview-cmenu:focus {  outline: none;}.gview-cmenu-item {  margin: 0;  padding: 5px 7px;  cursor: default;  font-size: 13px;  font-family: arial, san-serif;  color: #000;  -webkit-user-select: none;}.gview-cmenu-item:hover {  background-color: #F0F7F9;}.gview-cmenu-item:first-child {  border-bottom: 1px solid #ddd;}.gview-hidden {  display: none;}</STYLE>
+<TITLE>HTTP Made Really Easy</TITLE>
+
+<META name="description" content="Tutorial:  Quickly learn how to use HTTP in your network 
+        applications, if you know basic sockets programming.  Covers 
+        HTTP 1.0 and HTTP 1.1.  Includes sample clients in Perl.">
+        
+<META name="keywords" content="HTTP, programming, sockets, network,
+    learning, learn, tutorial, primer, guide, lesson, teach, quick, 
+    fast, brief, concise, simple, easy, clear, straightforward, examples, 
+    HTTP clients, HTTP servers, HTTP 1.0, HTTP 1.1, HTTP/1.0, HTTP/1.1">
+
+</HEAD><BODY bgcolor="#FFF8E8" link="#0000FF" vlink="#007090" alink="#00A0FF">
+
+<H1>
+<A href="http://www.eff.org/blueribbon.html"><IMG border="0" src="./HTTP Reference_files/blueribbon.gif" height="30" width="18" alt="Blue Ribbon Campaign for Free Speech"></A>
+HTTP Made Really Easy
+</H1>
+
+<H2>A Practical Guide to Writing Clients and Servers</H2>
+
+<P><A href="http://www.jmarshall.com/">Home</A> &gt;
+   <A href="http://www.jmarshall.com/easy/">Web Technology Made Really Easy</A> &gt;
+   HTTP Made Really Easy
+   </P><P><A href="http://www.jmarshall.com/donations/">Donate</A>
+
+</P><HR>
+
+<A href="http://www.jmarshall.com/easy/http/#toc">Table of Contents</A>
+<B>|</B>
+<A href="http://www.jmarshall.com/easy/http/http_footnotes.html">Footnotes</A>
+
+<HR>
+
+<P>HTTP is the network protocol of the Web.  It is both simple and powerful.  
+Knowing HTTP enables you to write Web browsers, Web servers, 
+automatic page downloaders, link-checkers, and other useful tools.
+
+</P><P>This tutorial explains the simple, English-based structure of HTTP 
+communication, and teaches you the practical details of writing HTTP clients
+and servers.  It assumes you know basic socket programming. 
+HTTP is simple enough for a beginning sockets programmer, so this 
+page might be a good followup to a 
+<A href="http://world.std.com/~jimf/papers/sockets/sockets.html">sockets 
+tutorial</A>.  This 
+<!-- a href="http://www.auroraonline.com/sock-faq/html/unix-socket-faq.html" -->
+<!-- a href="http://www.cis.ohio-state.edu/hypertext/faq/bngusenet/comp/unix/programmer/_unix-faq%3asocket.html" -->
+<!-- a href="http://www.lcg.org/sock-faq/" -->
+<A href="http://www.developerweb.net/sock-faq/">Sockets FAQ</A>
+(hint: see "Categorized Questions" section at bottom)
+focuses on C, but the underlying concepts are language-independent.
+
+</P><P>Since you're reading this, you probably already use CGI.
+If not, it makes sense to 
+<A href="http://www.jmarshall.com/easy/cgi/">learn that first</A>.
+
+</P><P>The whole tutorial is about 15 printed pages long, including
+examples. The first half explains basic HTTP&nbsp;1.0, and the second
+half explains the new requirements and features of HTTP&nbsp;1.1. This
+tutorial doesn't cover everything about HTTP; it explains the basic
+framework, how to comply with the requirements, and where to find out
+more when you need it.  If you plan to use HTTP extensively, you
+should read <A href="http://www.jmarshall.com/easy/http/#httpspec">the specification</A> as well-- see the
+end of this document for more details.
+
+</P><P>Before getting started, understand the following two 
+paragraphs:
+
+</P><P><TT>&lt;LECTURE&gt;</TT>
+</P><BLOCKQUOTE>
+
+<P><B><I>Writing HTTP or other network programs requires more care
+than programming for a single machine.</I></B>  Of course, you have to 
+follow standards, or no one will understand you.  But even more important
+is the burden you place on other machines.  Write a bad program for
+your own machine, and you waste your own resources (CPU time, bandwidth,
+memory).  Write a bad network program, and you waste other people's 
+resources.  Write a <I>really</I> bad network program, and you waste 
+many thousands of people's resources at the same time.  Sloppy and 
+malicious network programming forces network standards to be modified, 
+made safer but less efficient. So be careful, respectful, and cooperative, 
+for everyone's sake.
+
+</P><P><B><I>In particular, don't be tempted to write programs that automatically
+follow Web links</I></B> (called <I>robots</I> or <I>spiders</I>)
+before you really know what you're doing.  They can be useful, but a 
+badly-written robot is one of the worst kinds of programs on the Web,
+blindly following a rapidly increasing number of links and quickly draining
+server resources.  If you plan to write anything like a robot, please
+<A href="http://info.webcrawler.com/mak/projects/robots/robots.html">read 
+    more about them</A>.
+There may already be a working program to do what you want.  If you really 
+need to write your own, read these
+<A href="http://info.webcrawler.com/mak/projects/robots/guidelines.html">guidelines</A>.
+Definitely support the current
+<A href="http://info.webcrawler.com/mak/projects/robots/norobots.html">Standard
+    for Robot Exclusion</A>, and
+<A href="http://info.webcrawler.com/mak/projects/robots/exclusion.html">stay
+    tuned</A> for further developments.
+
+</P></BLOCKQUOTE>
+<P><TT>&lt;/LECTURE&gt;</TT>
+
+</P><P>OK, enough of that.  Let's get started.
+
+</P><P></P><HR><P>
+
+<A name="toc"></A>
+</P><H1>Table of Contents</H1>
+
+<P><A href="http://www.jmarshall.com/easy/http/#">Top of Page</A>
+
+</P><H3>Using HTTP&nbsp;1.0</H3>
+
+<OL>
+<LI><A href="http://www.jmarshall.com/easy/http/#whatis">What is HTTP?</A>
+    <OL>
+    <LI><A href="http://www.jmarshall.com/easy/http/#resources">What are "Resources"?</A>
+    </LI></OL>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/#structure">Structure of HTTP Transactions</A>
+    <OL>
+    <LI><A href="http://www.jmarshall.com/easy/http/#requestline">Initial Request Line</A>
+    </LI><LI><A href="http://www.jmarshall.com/easy/http/#responseline">Initial Response Line (Status Line)</A>
+    </LI><LI><A href="http://www.jmarshall.com/easy/http/#headerlines">Header Lines</A>
+    </LI><LI><A href="http://www.jmarshall.com/easy/http/#messagebody">The Message Body</A>
+    </LI></OL>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/#sample">Sample HTTP Exchange</A>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/#othermethods">Other HTTP Methods, Like HEAD and POST</A>
+    <OL>
+    <LI><A href="http://www.jmarshall.com/easy/http/#headmethod">The HEAD Method</A>
+    </LI><LI><A href="http://www.jmarshall.com/easy/http/#postmethod">The POST Method</A>
+    </LI></OL>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/#proxies">HTTP Proxies</A>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/#tolerant">Being Tolerant of Others</A>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/#conclusion">Conclusion</A>
+</LI></OL>
+
+<H3>Upgrading to HTTP&nbsp;1.1</H3>
+
+<OL>
+<LI><A href="http://www.jmarshall.com/easy/http/#http1.1">HTTP&nbsp;1.1</A>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1clients">HTTP&nbsp;1.1 Clients</A>
+    <OL>
+    <LI><A href="http://www.jmarshall.com/easy/http/#http1.1c1">Host: Header</A>
+    </LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1c2">Chunked Transfer-Encoding</A>
+    </LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1c3">Persistent Connections and the 
+        "Connection:&nbsp;close" Header</A>
+    </LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1c4">The "100&nbsp;Continue" Response</A>
+    </LI></OL>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1servers">HTTP&nbsp;1.1 Servers</A>
+    <OL>
+    <LI><A href="http://www.jmarshall.com/easy/http/#http1.1s1">Requiring the Host: Header</A>
+    </LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1s2">Accepting Absolute URL's</A>
+    </LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1s3">Chunked Transfer-Encoding</A>
+    </LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1s4">Persistent Connections and the 
+        "Connection:&nbsp;close" Header</A>
+    </LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1s5">Using the "100&nbsp;Continue" Response</A>
+    </LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1s6">The Date: Header</A>
+    </LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1s7">Handling Requests with If-Modified-Since: or 
+        If-Unmodified-Since: Headers</A>
+    </LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1s8">Supporting the GET and HEAD methods</A>
+    </LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1s9">Supporting HTTP&nbsp;1.0 Requests</A>
+    </LI></OL>
+</LI></OL>
+
+<H3>Appendix</H3>
+<OL>
+<LI><A href="http://www.jmarshall.com/easy/http/#httpspec">The HTTP Specification</A>
+</LI></OL>
+
+
+<P>Several related topics are discussed on a 
+<A href="http://www.jmarshall.com/easy/http/http_footnotes.html">"footnotes" page</A>:
+</P><OL>
+<LI><A href="http://www.jmarshall.com/easy/http/http_footnotes.html#sample">Sample HTTP Client</A>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/http_footnotes.html#getsubmit">Using GET to Submit Query or 
+        Form Data</A>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/http_footnotes.html#urlencoding">URL-encoding</A>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/http_footnotes.html#manually">Manually Experimenting with HTTP</A>
+</LI></OL>
+
+    
+
+<P></P><HR><P>
+
+<A name="whatis"></A>
+</P><H2>What is HTTP?</H2>
+
+<P>HTTP stands for <B>Hypertext Transfer Protocol</B>.  It's the network
+protocol used to deliver virtually all files and other data (collectively
+called <I>resources</I>) on the World Wide Web, whether they're HTML files, 
+image files, query results, or anything else.  Usually, HTTP takes place 
+through TCP/IP sockets (and this tutorial ignores other possibilities).  
+
+</P><P>A browser is an <I>HTTP client</I> because it sends requests to an 
+<I>HTTP server</I> (Web server), which then sends responses back to 
+the client.  The standard (and default) port for HTTP servers 
+to listen on is 80, though they can use any port.
+
+<A name="resources"></A>
+</P><H3>What are "Resources"?</H3>
+
+<P>HTTP is used to transmit <I>resources</I>, not just files.  A
+resource is some chunk of information that can be identified by a URL
+(it's the <B>R</B> in <B>URL</B>).  The most common kind of resource
+is a file, but a resource may also be a dynamically-generated query
+result, the output of a CGI script, a document that is available in 
+several languages, or something else.
+
+</P><P>While learning HTTP, it may help to think of a resource as similar to
+a file, but more general.  As a practical matter, almost all HTTP resources 
+are currently either files or server-side script output.
+
+</P><P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+</P><P></P><HR><P>
+
+<A name="structure"></A>
+</P><H2>Structure of HTTP Transactions</H2>
+
+<P>Like most network protocols, HTTP uses the client-server model:
+An <I>HTTP client</I> opens a connection and sends a <I>request message</I> 
+to an <I>HTTP server</I>; the server then returns a <I>response message</I>,
+usually containing the resource that was requested.  After delivering
+the response, the server closes the connection (making HTTP a 
+<I>stateless</I> protocol, i.e. not maintaining any connection information
+between transactions).
+
+</P><P>The format of the request and response messages are similar, and
+English-oriented.  Both kinds of messages consist of: 
+</P><UL>
+<LI>an initial line, 
+</LI><LI>zero or more header lines, 
+</LI><LI>a blank line (i.e. a CRLF by itself), and 
+</LI><LI>an optional message body (e.g. a file, or query data, or query output).  
+</LI></UL>
+
+<P>Put another way, the format of an HTTP message is:
+
+</P><BLOCKQUOTE><PRE>&lt;initial line, different for request vs. response&gt;
+Header1: value1
+Header2: value2
+Header3: value3
+
+&lt;optional message body goes here, like file contents or query data;
+ it can be many lines long, or even binary data $&amp;*%@!^$@&gt;
+</PRE></BLOCKQUOTE>
+
+<P>Initial lines and headers should end in CRLF, though you should
+gracefully handle lines ending in just LF.  (More exactly, CR and LF
+here mean ASCII values 13 and 10, even though some platforms may use
+different characters.)
+
+</P><P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+<A name="requestline"></A>
+</P><H3>Initial Request Line</H3>
+
+<P>The initial line is different for the request than for the response.
+A request line has three parts, separated by spaces: a <I>method</I> name, 
+the local path of the requested resource, and the version of HTTP being used.
+A typical request line is:
+
+</P><BLOCKQUOTE><PRE>GET /path/to/file/index.html HTTP/1.0
+</PRE></BLOCKQUOTE>
+
+<P>Notes:
+</P><UL>
+<LI><B>GET</B> is the most common HTTP method; it says "give me this resource".  
+    Other methods include <B>POST</B> and <B>HEAD</B>-- more on those 
+    <A href="http://www.jmarshall.com/easy/http/#othermethods">later</A>.
+    Method names are always uppercase.
+</LI><LI>The path is the part of the URL after the host name, also called the
+    <I>request URI</I> (a URI is like a URL, but more general).
+</LI><LI>The HTTP version always takes the form "<B>HTTP/x.x</B>", 
+    uppercase.
+</LI></UL>
+
+<P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+<A name="responseline"></A>
+</P><H3>Initial Response Line (Status Line)</H3>
+
+<P>The initial response line, called the <I>status line</I>, also has 
+three parts separated by spaces: the HTTP version, a
+<I>response status code</I> that gives the result of the request, 
+and an English <I>reason phrase</I> describing the status code.  
+Typical status lines are:
+
+</P><BLOCKQUOTE><PRE>HTTP/1.0 200 OK
+</PRE></BLOCKQUOTE>
+
+<P>or
+
+</P><BLOCKQUOTE><PRE>HTTP/1.0 404 Not Found
+</PRE></BLOCKQUOTE>
+
+<P>Notes:
+</P><UL>
+<LI>The HTTP version is in the same format as in the request line,
+    "<B>HTTP/x.x</B>".
+</LI><LI>The status code is meant to be computer-readable; the reason
+    phrase is meant to be human-readable, and may vary.
+</LI><LI>The status code is a three-digit integer, and the first digit identifies
+    the general category of response:
+    <UL>
+    <LI><B>1xx</B> indicates an informational message only
+    </LI><LI><B>2xx</B> indicates success of some kind
+    </LI><LI><B>3xx</B> redirects the client to another URL
+    </LI><LI><B>4xx</B> indicates an error on the client's part
+    </LI><LI><B>5xx</B> indicates an error on the server's part
+    </LI></UL>
+</LI></UL>
+
+The most common status codes are:
+<DL>
+<DT><B><TT>200 OK</TT></B>
+</DT><DD>The request succeeded, and the resulting resource (e.g. file or script 
+    output) is returned in the message body.
+</DD><DT><B><TT>404 Not Found</TT></B>
+</DT><DD>The requested resource doesn't exist.
+</DD><DT><B><TT>301 Moved Permanently
+    <BR>302 Moved Temporarily
+    <BR>303 See Other</TT></B> <I>(HTTP&nbsp;1.1 only)</I>
+</DT><DD>The resource has moved to another URL (given by the 
+    <B><TT>Location:</TT></B> response header), and should be automatically 
+    retrieved by the client.  This is often used by a CGI script to redirect 
+    the browser to an existing file.
+</DD><DT><B><TT>500 Server Error</TT></B>
+</DT><DD>An unexpected server error.  The most common cause is a server-side 
+    script that has bad syntax, fails, or otherwise can't run correctly.
+</DD></DL>
+
+<P>A complete list of status codes is in
+<A href="http://www.jmarshall.com/easy/http/#httpspec">the HTTP specification</A>
+(section 9 for HTTP&nbsp;1.0, and section 10 for HTTP&nbsp;1.1).
+
+
+</P><P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+<A name="headerlines"></A>
+</P><H3>Header Lines</H3>
+
+<P>Header lines provide information about the request or response, or 
+about the object sent in the message body.
+
+</P><P>The header lines are in the usual text header format, which is:  one line
+per header, of the form "<B><TT>Header-Name:&nbsp;value</TT></B>", ending
+with CRLF.  It's the same format used for email and news postings, defined in 
+<A href="http://www.cis.ohio-state.edu/htbin/rfc/rfc822.html">RFC&nbsp;822</A>,
+section 3.  Details about RFC&nbsp;822 header lines:
+</P><UL>
+<LI>As noted above, they should end in CRLF, but you should handle LF
+    correctly.
+</LI><LI>The header name is not case-sensitive (though the value may be).
+</LI><LI>Any number of spaces or tabs may be between the ":" and the value.
+</LI><LI>Header lines beginning with space or tab are actually part of the
+    previous header line, folded into multiple lines for easy reading.
+</LI></UL>
+
+<P>Thus, the following two headers are equivalent:
+
+</P><BLOCKQUOTE><PRE>Header1: some-long-value-1a, some-long-value-1b
+</PRE></BLOCKQUOTE>
+
+<BLOCKQUOTE><PRE>HEADER1:    some-long-value-1a,
+            some-long-value-1b
+</PRE></BLOCKQUOTE>
+
+<P>HTTP&nbsp;1.0 defines 16 headers, though none are required. 
+HTTP&nbsp;1.1 defines 46 headers, and one (<B><TT>Host:</TT></B>) is required in
+requests.
+For Net-politeness, consider including these headers in your requests:
+</P><UL>
+<LI>The <B><TT>From:</TT></B> header gives the email address of
+    whoever's making the request, or running the program doing so.
+    (This <I>must</I> be user-configurable, for privacy concerns.)
+</LI><LI>The <B><TT>User-Agent:</TT></B> header identifies the program that's
+    making the request, in the form "<B>Program-name/x.xx</B>", where 
+    <B>x.xx</B> is the (mostly) alphanumeric version of the program.
+    For example, Netscape 3.0 sends the header 
+    "<B><TT>User-agent:&nbsp;Mozilla/3.0Gold</TT></B>".
+</LI></UL>
+
+<P>These headers help webmasters troubleshoot problems.  They also 
+reveal information about the user.  When you decide which headers to 
+include, you must balance the webmasters' logging needs against your users'
+needs for privacy.
+
+</P><P>If you're writing servers, consider including these headers in your 
+responses:
+</P><UL>
+<LI>The <B><TT>Server:</TT></B> header is analogous to the 
+    <B><TT>User-Agent:</TT></B> header:  it identifies the server software
+    in the form "<B>Program-name/x.xx</B>".  For example, one beta version
+    of <A href="http://www.apache.org/">Apache's</A> server returns 
+    "<B><TT>Server:&nbsp;Apache/1.2b3-dev</TT></B>".
+</LI><LI>The <B><TT>Last-Modified:</TT></B> header gives the modification date
+    of the resource that's being returned.  It's used in caching and
+    other bandwidth-saving activities.  Use Greenwich Mean Time, in the format
+    <BLOCKQUOTE><PRE>    Last-Modified: Fri, 31 Dec 1999 23:59:59 GMT
+    </PRE></BLOCKQUOTE>
+    <!-- section 14.29 of HTTP 1.1 -->
+</LI></UL>
+
+<P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+<A name="messagebody"></A>
+</P><H3>The Message Body</H3>
+
+<P>An HTTP message may have a body of data sent after the header
+lines.  In a response, this is where the requested resource is returned
+to the client (the most common use of the message body), or perhaps
+explanatory text if there's an error.  In a request, this is where
+user-entered data or uploaded files are sent to the server.
+
+</P><P>If an HTTP message includes a body, there are usually header lines in the
+message that describe the body.  In particular, 
+</P><UL>
+<LI>The <B><TT>Content-Type:</TT></B> header gives the MIME-type of the data in
+    the body, such as <B><TT>text/html</TT></B> or <B><TT>image/gif</TT></B>.
+</LI><LI>The <B><TT>Content-Length:</TT></B> header gives the number of bytes 
+    in the body.
+</LI></UL>
+
+<P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+</P><P></P><HR><P>
+
+<A name="sample"></A>
+</P><H2>Sample HTTP Exchange</H2>
+
+<P>To retrieve the file at the URL
+</P><BLOCKQUOTE><PRE>http://www.somehost.com/path/file.html
+</PRE></BLOCKQUOTE>
+
+<P>first open a socket to the host <B>www.somehost.com</B>, port 80
+(use the default port of 80 because none is specified in the URL).
+Then, send something like the following through the socket:
+
+</P><BLOCKQUOTE><PRE>GET /path/file.html HTTP/1.0
+From: someuser@jmarshall.com
+User-Agent: HTTPTool/1.0
+[blank line here]
+</PRE></BLOCKQUOTE>
+
+<P>The server should respond with something like the following, sent
+back through the same socket:
+
+</P><BLOCKQUOTE><PRE>HTTP/1.0 200 OK
+Date: Fri, 31 Dec 1999 23:59:59 GMT
+Content-Type: text/html
+Content-Length: 1354
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;h1&gt;Happy New Millennium!&lt;/h1&gt;
+(more file contents)
+  .
+  .
+  .
+&lt;/body&gt;
+&lt;/html&gt;
+</PRE></BLOCKQUOTE>
+
+After sending the response, the server closes the socket.
+
+<P>To familiarize yourself with requests and responses,
+<A href="http://www.jmarshall.com/easy/http/http_footnotes.html#manually">manually experiment</A> with HTTP 
+using telnet.
+
+</P><P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+</P><P></P><HR><P>
+
+<A name="othermethods"></A>
+</P><H2>Other HTTP Methods, Like HEAD and POST</H2>
+
+<P>Besides GET, the two most commonly used methods are HEAD and POST.
+
+
+<A name="headmethod"></A>
+</P><H3>The HEAD Method</H3>
+
+<P>A HEAD request is just like a GET request, except it asks the server
+to return the response headers only, and not the actual resource (i.e. no
+message body).  This is useful to check characteristics of a resource 
+without actually downloading it, thus saving bandwidth.  Use HEAD when 
+you don't actually need a file's contents.
+
+</P><P>The response to a HEAD request must <I>never</I> contain a message body,
+just the status line and headers.
+
+</P><P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+<A name="postmethod"></A>
+</P><H3>The POST Method</H3>
+
+<P>A POST request is used to send data to the server to be processed
+in some way, like by a CGI script.  A POST request is different from a 
+GET request in the following ways:
+</P><UL>
+<LI>There's a block of data sent with the request, in the message body.
+    There are usually extra headers to describe this message body, like
+    <B><TT>Content-Type:</TT></B> and <B><TT>Content-Length:</TT></B>.
+</LI><LI>The <I>request URI</I> is not a resource to retrieve; it's usually a 
+    program to handle the data you're sending.
+</LI><LI>The HTTP response is normally program output, not a static file.
+</LI></UL>
+
+<P>The most common use of POST, by far, is to submit HTML form data to CGI
+scripts.  In this case, the <B><TT>Content-Type:</TT></B> header is usually
+<B><TT>application/x-www-form-urlencoded</TT></B>, and the 
+<B><TT>Content-Length:</TT></B> header gives the length of the URL-encoded 
+form data (here's a
+<A href="http://www.jmarshall.com/easy/http/http_footnotes.html#urlencoding">note on URL-encoding</A>).  
+The CGI script receives the message body through STDIN, and decodes it.
+Here's a typical form submission, using POST:
+</P><BLOCKQUOTE><PRE>POST /path/script.cgi HTTP/1.0
+From: frog@jmarshall.com
+User-Agent: HTTPTool/1.0
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 32
+
+home=Cosby&amp;favorite+flavor=flies
+</PRE></BLOCKQUOTE>
+
+<P>You can use a POST request to send whatever data you want, not just 
+form submissions.  Just make sure the sender and the receiving program
+agree on the format.
+
+</P><P>The GET method can also be used to submit forms.  The form data is
+<A href="http://www.jmarshall.com/easy/http/http_footnotes.html#urlencoding">URL-encoded</A>
+and appended to the request URI.  Here are
+<A href="http://www.jmarshall.com/easy/http/http_footnotes.html#getsubmit">more details</A>.
+
+</P><P>If you're writing HTTP servers that support CGI scripts, you should
+read the 
+<A href="http://hoohoo.ncsa.uiuc.edu/cgi/">NCSA's CGI definition</A>
+if you haven't already, especially which
+<A href="http://hoohoo.ncsa.uiuc.edu/cgi/env.html">environment variables</A>
+you need to pass to the scripts.
+
+</P><P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+</P><P></P><HR><P>
+
+<A name="proxies"></A>
+</P><H2>HTTP Proxies</H2>
+
+<P>An <I>HTTP proxy</I> is a program that acts as an intermediary between
+a client and a server.  It receives requests from clients, and forwards 
+those requests to the intended servers.  The responses pass back through it
+in the same way.  Thus, a proxy has functions of both a client and a server.
+
+</P><P>Proxies are commonly used in firewalls, for LAN-wide caches, or in other
+situations.  If you're writing proxies, read the 
+<A href="http://www.jmarshall.com/easy/http/#httpspec">HTTP specification</A>;
+it contains details about proxies not covered in this tutorial.
+
+</P><P>When a client uses a proxy, it typically sends all requests to 
+that proxy, instead of to the servers in the URLs.  Requests to a proxy 
+differ from normal requests in one way:  in the first line, they use the 
+complete URL of the resource being requested, instead of just the path.  
+For example,
+</P><BLOCKQUOTE><PRE>GET http://www.somehost.com/path/file.html HTTP/1.0
+</PRE></BLOCKQUOTE>
+
+<P>That way, the proxy knows which server to forward the request to (though
+the proxy itself may use another proxy).
+
+</P><P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+</P><P></P><HR><P>
+
+<A name="tolerant"></A>
+</P><H2>Being Tolerant of Others</H2>
+<!-- section 19.3 -->
+
+<P>As the saying goes (in network programming, anyway), "Be strict in what 
+you send and tolerant in what you receive."  Other clients and servers you
+interact with may have minor flaws in their messages, but you should try to
+work gracefully with them.  In particular, the 
+<A href="http://www.jmarshall.com/easy/http/#httpspec">HTTP specification</A> suggests the 
+following:
+</P><UL>
+<LI>Even though header lines should end with CRLF, someone might use a 
+    single LF instead.  Accept either CRLF or LF.
+</LI><LI>The three fields in the initial message line should be separated by
+    a single space, but might instead use several spaces, or tabs.  Accept 
+    any number of spaces or tabs between these fields.
+</LI></UL>
+
+<P>The specification has other suggestions too, like how to handle varying
+date formats.  If your program interprets dates from other programs, read
+the "Tolerant Applications" section of the specification.
+
+</P><P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+</P><P></P><HR><P>
+
+<A name="conclusion"></A>
+</P><H2>Conclusion</H2>
+
+<P>That's the basic structure of HTTP.  If you understand everything so far,
+you have a good overview of HTTP communication, and should be able to write 
+simple HTTP&nbsp;1.0 programs.  See this
+<A href="http://www.jmarshall.com/easy/http/http_footnotes.html#sample">example</A> to get started.
+Again, before you do anything heavy-duty, read 
+<A href="http://www.jmarshall.com/easy/http/#httpspec">the specification</A>.
+
+</P><P>The rest of this document tells how to upgrade your clients and servers 
+to use HTTP&nbsp;1.1.  There is a list of new client requirements, and a 
+list of new server requirements.  You can stop here if HTTP&nbsp;1.0
+satisfies your current needs (though you'll probably need HTTP&nbsp;1.1 in 
+the future).
+
+</P><P><I>Note:  As of early 1997, the Web is moving from HTTP&nbsp;1.0 to 
+HTTP&nbsp;1.1.  Whenever practical, use HTTP&nbsp;1.1.  It's more efficient 
+overall, and by using it, you'll help the Web perform better for everyone.</I>
+
+
+
+</P><P></P><HR><P>
+
+<A name="http1.1"></A>
+</P><H1>HTTP&nbsp;1.1</H1>
+
+<P>Like many protocols, HTTP is constantly evolving.  HTTP&nbsp;1.1 has 
+recently been defined, to address new needs and overcome shortcomings 
+of HTTP&nbsp;1.0.  Generally speaking, it is a superset of HTTP&nbsp;1.0.
+Improvements include:
+</P><UL>
+<LI>Faster response, by allowing multiple transactions to take place
+    over a single <I>persistent connection</I>.
+</LI><LI>Faster response and great bandwidth savings, by adding cache support.
+</LI><LI>Faster response for dynamically-generated pages, by supporting
+    <I>chunked encoding</I>, which allows a response to be sent before
+    its total length is known.
+</LI><LI>Efficient use of IP addresses, by allowing multiple domains to be 
+    served from a single IP address.
+</LI></UL>
+
+<P>HTTP&nbsp;1.1 requires a few extra things from both clients and servers.
+The next two sections detail how to make <A href="http://www.jmarshall.com/easy/http/#http1.1clients">clients</A> 
+and <A href="http://www.jmarshall.com/easy/http/#http1.1servers">servers</A> comply with HTTP&nbsp;1.1.  If 
+you're only writing clients, you can skip the section on servers.  If you're 
+writing servers, read both sections.
+
+</P><P>Only <I>requirements</I> for HTTP&nbsp;1.1 compliance are described here.  
+HTTP&nbsp;1.1 has many optional features you may find useful; read
+<A href="http://www.jmarshall.com/easy/http/#httpspec">the specification</A> to learn more.
+
+</P><P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+</P><P></P><HR><P>
+
+<A name="http1.1clients"></A>
+</P><H2>HTTP&nbsp;1.1 Clients</H2>
+
+<P>To comply with HTTP&nbsp;1.1, clients must
+</P><UL>
+<LI><A href="http://www.jmarshall.com/easy/http/#http1.1c1">include the <B><TT>Host:</TT></B> header with each 
+    request</A>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1c2">accept responses with <I>chunked</I> data</A>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1c3">either support <I>persistent connections</I>, or include the
+    "<B><TT>Connection:&nbsp;close</TT></B>" header with each request</A>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1c4">handle the "<B><TT>100&nbsp;Continue</TT></B>" 
+    response</A>
+</LI></UL>
+
+<P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+<A name="http1.1c1"></A>
+</P><H3>Host: Header</H3>
+
+<P>Starting with HTTP&nbsp;1.1, one server at one IP address can be 
+<I>multi-homed</I>, i.e. the home of several Web domains.  For example, 
+"www.host1.com" and "www.host2.com" can live on the same server.  
+
+</P><P>Several domains living on the same server is like several people 
+sharing one phone:  a caller knows who they're calling for, but whoever 
+answers the phone doesn't.  Thus, every HTTP request must specify which 
+host name (and possibly port) the request is intended for, with the 
+<B><TT>Host:</TT></B> header.  A complete HTTP&nbsp;1.1 request might be
+</P><BLOCKQUOTE><PRE>GET /path/file.html HTTP/1.1
+Host: www.host1.com:80
+[blank line here]
+</PRE></BLOCKQUOTE>
+
+except the "<TT>:80</TT>" isn't required, since that's the default HTTP port.
+
+<P><B><TT>Host:</TT></B> is the only required header in an HTTP&nbsp;1.1 request.
+<I>It's also the most urgently needed new feature in HTTP&nbsp;1.1.</I>  Without it,
+each host name requires a unique IP address, and we're
+quickly running out of IP addresses with the explosion of new domains.
+
+</P><P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+<A name="http1.1c2"></A>
+</P><H3>Chunked Transfer-Encoding</H3>
+
+<P>If a server wants to start sending a response before knowing its total
+length (like with long script output), it might use the simple
+<I>chunked transfer-encoding</I>, which breaks the complete response into
+smaller chunks and sends them in series.  You can identify such a response 
+because it contains the "<B><TT>Transfer-Encoding:&nbsp;chunked</TT></B>" header.
+All HTTP&nbsp;1.1 clients must be able to receive chunked messages.
+
+</P><P>A chunked message body contains a series of <I>chunks</I>, followed by a 
+line with "0" (zero), followed by optional footers (just like headers), and a 
+blank line.  Each chunk consists of two parts: 
+</P><UL>
+<LI>a line with the size of the chunk data, in hex, possibly followed
+    by a semicolon and extra parameters you can ignore (none are currently
+    standard), and ending with CRLF.
+</LI><LI>the data itself, followed by CRLF.
+</LI></UL>
+
+<P>So a chunked response might look like the following:
+</P><BLOCKQUOTE><PRE>HTTP/1.1 200 OK
+Date: Fri, 31 Dec 1999 23:59:59 GMT
+Content-Type: text/plain
+Transfer-Encoding: chunked
+
+1a; ignore-stuff-here
+abcdefghijklmnopqrstuvwxyz
+10
+1234567890abcdef
+0
+some-footer: some-value
+another-footer: another-value
+[blank line here]
+</PRE></BLOCKQUOTE>
+
+<P>Note the blank line after the last footer.  The length of the
+text data is 42 bytes (1a&nbsp;+&nbsp;10, in hex), and the data itself is
+<B>abcdefghijklmnopqrstuvwxyz1234567890abcdef</B>.  The footers should be
+treated like headers, as if they were at the top of the response.
+
+</P><P>The chunks can contain any binary data, and may be much larger than the 
+examples here.  The size-line parameters are rarely used, but you 
+should at least ignore them correctly.  Footers are also rare, but might
+be appropriate for things like checksums or digital signatures.
+
+</P><P>For comparison, here's the equivalent to the above response, without 
+using chunked encoding:
+</P><BLOCKQUOTE><PRE>HTTP/1.1 200 OK
+Date: Fri, 31 Dec 1999 23:59:59 GMT
+Content-Type: text/plain
+Content-Length: 42
+some-footer: some-value
+another-footer: another-value
+
+abcdefghijklmnopqrstuvwxyz1234567890abcdef
+</PRE></BLOCKQUOTE>
+
+<P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+<A name="http1.1c3"></A>
+</P><H3>Persistent Connections and the "Connection:&nbsp;close" Header</H3>
+<!-- sections 8.1, 14.10 -->
+
+<P>In HTTP&nbsp;1.0 and before, TCP connections are closed after each request 
+and response, so each resource to be retrieved requires its own connection.  
+Opening and closing TCP connections takes a substantial amount of CPU time, 
+bandwidth, and memory.  In practice, most Web pages consist of several 
+files on the same server, so much can be saved by allowing several requests 
+and responses to be sent through a single <I>persistent connection</I>.
+
+</P><P>Persistent connections are the default in HTTP&nbsp;1.1, so nothing special
+is required to use them.  Just open a connection and send several requests 
+in series (called <I>pipelining</I>), and read the responses in the same 
+order as the requests were sent.  If you do this, be very careful to read 
+the correct length of each response, to separate them correctly.
+
+</P><P>If a client includes the "<B><TT>Connection:&nbsp;close</TT></B>" header 
+in the request, then the connection will be closed after the corresponding 
+response.  <B>Use this if you don't support persistent connections</B>, 
+or if you know a request will be the last on its connection.  Similarly, 
+if a response contains this header, then the server will close the 
+connection following that response, and the client shouldn't send any 
+more requests through that connection.
+
+</P><P>A server might close the connection before all responses are sent, so
+a client must keep track of requests and resend them as needed.  When 
+resending, don't pipeline the requests until you know the connection is 
+persistent.  Don't pipeline at all if you know the server won't support 
+persistent connections (like if it uses HTTP&nbsp;1.0, based on a previous 
+response).
+
+</P><P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+<A name="http1.1c4"></A>
+</P><H3>The "100&nbsp;Continue" Response</H3>
+
+<P>During the course of an HTTP&nbsp;1.1 client sending a request to a server,
+the server might respond with an interim "<B><TT>100&nbsp;Continue</TT></B>"
+response.  This means the server has received the first part of the request,
+and can be used to aid communication over slow links.  In any case, all
+HTTP&nbsp;1.1 clients must handle the 100 response correctly (perhaps 
+by just ignoring it).
+
+</P><P>The "<B><TT>100&nbsp;Continue</TT></B>" response is structured like 
+any HTTP response, i.e. consists of a status line, optional headers, 
+and a blank line.  Unlike other responses, it is always followed by 
+another complete, final response.
+
+</P><P>So, further extending the last example, the full data that comes
+back from the server might consist of two responses in series, like
+
+</P><BLOCKQUOTE><PRE>HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Date: Fri, 31 Dec 1999 23:59:59 GMT
+Content-Type: text/plain
+Content-Length: 42
+some-footer: some-value
+another-footer: another-value
+
+abcdefghijklmnoprstuvwxyz1234567890abcdef
+</PRE></BLOCKQUOTE>
+
+<P>To handle this, a simple HTTP&nbsp;1.1 client might read one response from the 
+socket; if the status code is 100, discard the first response and read the 
+next one instead.
+
+</P><P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+</P><P></P><HR><P>
+
+<A name="http1.1servers"></A>
+</P><H2>HTTP&nbsp;1.1 Servers</H2>
+
+<P>To comply with HTTP&nbsp;1.1, servers must:
+</P><UL>
+<LI><A href="http://www.jmarshall.com/easy/http/#http1.1s1">require the <B><TT>Host:</TT></B> header from 
+    HTTP&nbsp;1.1 clients</A>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1s2">accept absolute URL's in a request</A>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1s3">accept requests with <I>chunked</I> data</A>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1s4">either support <I>persistent connections</I>, or 
+    include the "<B><TT>Connection:&nbsp;close</TT></B>" header with each 
+    response</A>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1s5">use the "<B><TT>100&nbsp;Continue</TT></B>" response 
+    appropriately</A>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1s6">include the <B><TT>Date:</TT></B> header in each 
+    response</A>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1s7">handle requests with <B><TT>If-Modified-Since:</TT></B>
+    or <B><TT>If-Unmodified-Since:</TT></B> headers</A>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1s8">support at least the GET and HEAD methods</A>
+</LI><LI><A href="http://www.jmarshall.com/easy/http/#http1.1s9">support HTTP&nbsp;1.0 requests</A>
+</LI></UL>
+
+<P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+<A name="http1.1s1"></A>
+</P><H3>Requiring the Host: Header</H3>
+<!-- section 14.23 -->
+
+<P>Because of the urgency of implementing the new <B><TT>Host:</TT></B> 
+header, servers are not allowed to tolerate HTTP&nbsp;1.1 requests without it.  
+If a server receives such a request, it must return a
+"<B><TT>400&nbsp;Bad&nbsp;Request</TT></B>" response, like
+
+</P><BLOCKQUOTE><PRE>HTTP/1.1 400 Bad Request
+Content-Type: text/html
+Content-Length: 111
+
+&lt;html&gt;&lt;body&gt;
+&lt;h2&gt;No Host: header received&lt;/h2&gt;
+HTTP&nbsp;1.1 requests must include the Host: header.
+&lt;/body&gt;&lt;/html&gt;
+</PRE></BLOCKQUOTE>
+
+<P>This requirement applies <I>only</I> to clients using HTTP&nbsp;1.1, not
+any future version of HTTP.
+If the request uses an HTTP version later than 1.1, the server can
+accept an absolute URL instead of a <B><TT>Host:</TT></B> header (see 
+next section).  
+If the request uses HTTP&nbsp;1.0, the server may accept the request without
+any host identification.
+
+</P><P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+<A name="http1.1s2"></A>
+</P><H3>Accepting Absolute URL's</H3>
+<!-- section 5.1.2 -->
+
+<P>The <B><TT>Host:</TT></B> header is actually an interim solution to
+the problem of host identification.  In future versions of HTTP, 
+requests will use an absolute URL instead of a pathname, like
+</P><BLOCKQUOTE><PRE>GET http://www.somehost.com/path/file.html HTTP/1.2
+</PRE></BLOCKQUOTE>
+
+<P>To enable this protocol transition, HTTP&nbsp;1.1 servers must accept this 
+form of request, even though HTTP&nbsp;1.1 clients won't send them.  The server 
+must still report an error if an HTTP&nbsp;1.1 client leaves out
+the <B><TT>Host:</TT></B> header, as described in the 
+<A href="http://www.jmarshall.com/easy/http/#http1.1s1">previous section</A>.
+
+</P><P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+<A name="http1.1s3"></A>
+</P><H3>Chunked Transfer-Encoding</H3>
+<!-- section 3.6 -->
+
+<P>Just as HTTP&nbsp;1.1 clients must accept chunked responses, servers must
+accept chunked requests (an unlikely scenario, but possible).  See the 
+earlier section on 
+<A href="http://www.jmarshall.com/easy/http/#http1.1c2">HTTP&nbsp;1.1 Clients</A> 
+for details of the chunked data format.
+
+</P><P>Servers aren't required to generate chunked messages; they just have to
+be able to receive them.
+
+</P><P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+<A name="http1.1s4"></A>
+</P><H3>Persistent Connections and the "Connection:&nbsp;close" Header</H3>
+<!-- sections 8.1, 14.10 -->
+
+<P>If an HTTP&nbsp;1.1 client sends multiple requests through a single connection, 
+the server should send responses back in the same order as the requests--
+this is all it takes for a server to support persistent connections.
+
+</P><P>If a request includes the "<B><TT>Connection:&nbsp;close</TT></B>" header, 
+that request is the final one for the connection and the server should 
+close the connection after sending the response.  Also, the server should
+close an idle connection after some timeout period (can be anything;
+10 seconds is fine).
+
+</P><P>If you don't want to support persistent connections, include the 
+"<B><TT>Connection:&nbsp;close</TT></B>" header in the response.  Use this 
+header whenever you want to close the connection, even if not all requests 
+have been fulfilled.  The header says that the connection will be closed 
+after the current response, and a valid HTTP&nbsp;1.1 client will handle it
+correctly.
+
+</P><P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+<A name="http1.1s5"></A>
+</P><H3>Using the "100&nbsp;Continue" Response</H3>
+
+<P>As described in the section on 
+<A href="http://www.jmarshall.com/easy/http/#http1.1c4">HTTP&nbsp;1.1 Clients</A>, 
+this response exists to help deal with slow links.
+
+</P><P>When an HTTP&nbsp;1.1 server receives the first line of an HTTP&nbsp;1.1
+(or later) request, it must respond with either 
+"<B><TT>100&nbsp;Continue</TT></B>" or an error.  If it sends the 
+"<B><TT>100&nbsp;Continue</TT></B>" response, it must also send another, 
+final response, once the request has been processed.  The 
+"<B><TT>100&nbsp;Continue</TT></B>" response requires no headers, but must 
+be followed by the usual blank line, like:
+
+</P><BLOCKQUOTE><PRE>HTTP/1.1 100 Continue
+[blank line here]
+[another HTTP response will go here]
+</PRE></BLOCKQUOTE>
+
+<P>Don't send "<B><TT>100&nbsp;Continue</TT></B>" to HTTP&nbsp;1.0 clients,
+since they don't know how to handle it.
+
+</P><P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+<A name="http1.1s6"></A>
+</P><H3>The Date: Header</H3>
+<!-- section 14.19 -->
+
+<P>Caching is an important improvement in HTTP&nbsp;1.1, and can't work
+without timestamped responses.  So, servers must timestamp every response
+with a <B><TT>Date:</TT></B> header containing the current time, in the form
+</P><BLOCKQUOTE><PRE>Date: Fri, 31 Dec 1999 23:59:59 GMT
+</PRE></BLOCKQUOTE>
+
+<P>All responses except those with 100-level status (but including error 
+responses) must include the <B><TT>Date:</TT></B> header.
+
+</P><P>All time values in HTTP use Greenwich Mean Time.
+
+</P><P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+<A name="http1.1s7"></A>
+</P><H3>Handling Requests with If-Modified-Since: or If-Unmodified-Since: 
+    Headers</H3>
+<!-- sections 14.24 and 14.28 -->
+    
+<P>To avoid sending resources that don't need to be sent, thus saving 
+bandwidth, HTTP&nbsp;1.1 defines the <B><TT>If-Modified-Since:</TT></B><TT></TT> and 
+<B><TT>If-Unmodified-Since:</TT></B><TT></TT> request headers.  
+The former says "only send the resource if it has changed since this date"; 
+the latter says the opposite.  Clients aren't required to use them, but 
+HTTP&nbsp;1.1 servers are required to honor requests that do use them.
+
+</P><P>Unfortunately, due to earlier HTTP versions, 
+the date value may be in any of three possible formats:
+</P><BLOCKQUOTE><PRE>If-Modified-Since:  Fri, 31 Dec 1999 23:59:59 GMT
+If-Modified-Since:  Friday, 31-Dec-99 23:59:59 GMT
+If-Modified-Since:  Fri Dec 31 23:59:59 1999
+</PRE></BLOCKQUOTE>
+
+<P>Again, all time values in HTTP use Greenwich Mean Time (though try to be 
+tolerant of non-GMT times).  If a date with a two-digit year seems to be more
+than 50 years in the future, treat it as being in the past-- this
+helps with the millennium bug.  In fact, do this with any date handling in
+HTTP&nbsp;1.1.
+
+</P><P><I>Although servers must accept all three date formats, HTTP&nbsp;1.1 
+clients and servers must only generate the first kind.</I>
+
+</P><P>If the date in either of these headers is invalid, or is in the future, 
+ignore the header.
+
+</P><P>If, without the header, the request would result in an unsuccessful
+(non-200-level) status code, ignore the header and send the non-200-level 
+response.  In other words, only apply these headers when you know the 
+resource would otherwise be sent.
+
+</P><P>The <B><TT>If-Modified-Since:</TT></B><TT></TT> header is used with a GET
+request.  If the requested resource has been modified since the given date, 
+ignore the header and return the resource as you normally would.  
+Otherwise, return a "<B><TT>304&nbsp;Not&nbsp;Modified</TT></B>" response, 
+including the <B><TT>Date:</TT></B> header and no message body, like
+</P><BLOCKQUOTE><PRE>HTTP/1.1 304 Not Modified
+Date: Fri, 31 Dec 1999 23:59:59 GMT
+[blank line here]
+</PRE></BLOCKQUOTE>
+
+<P>The <B><TT>If-Unmodified-Since:</TT></B><TT></TT> header is similar, but can be
+used with any method.  If the requested resource has <I>not</I> been
+modified since the given date, ignore the header and return the resource as 
+you normally would.  Otherwise, return a 
+"<B><TT>412&nbsp;Precondition&nbsp;Failed</TT></B>" response, like
+</P><BLOCKQUOTE><PRE>HTTP/1.1 412 Precondition Failed
+[blank line here]
+</PRE></BLOCKQUOTE>
+
+<P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+<A name="http1.1s8"></A>
+</P><H3>Supporting the GET and HEAD methods</H3>
+<!-- section 5.1.1 -->
+
+<P>To comply with HTTP&nbsp;1.1, a server must support at least the GET and HEAD
+methods.  If you're handling CGI scripts, you should probably support the
+POST method too.  
+
+</P><P>Four other methods (PUT, DELETE, OPTIONS, and TRACE) are defined in 
+HTTP&nbsp;1.1, but are rarely used.  If a client requests a method you don't
+support, respond with "<B><TT>501&nbsp;Not&nbsp;Implemented</TT></B>", like
+</P><BLOCKQUOTE><PRE>HTTP/1.1 501 Not Implemented
+[blank line here]
+</PRE></BLOCKQUOTE>
+
+<P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+<A name="http1.1s9"></A>
+</P><H3>Supporting HTTP&nbsp;1.0 Requests</H3>
+
+<P>To be compatible with older browsers, HTTP&nbsp;1.1 servers must support
+HTTP&nbsp;1.0 requests.  In particular, when a request uses HTTP&nbsp;1.0 
+(as identified in the initial request line),
+</P><UL>
+<LI>don't require the <B><TT>Host:</TT></B><TT></TT> header, and
+</LI><LI>don't send the "<B><TT>100&nbsp;Continue</TT></B>" response.
+</LI></UL>
+
+<P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+</P><P></P><HR><P>
+
+<A name="httpspec"></A>
+</P><H1>The HTTP Specification</H1>
+
+<P>If you plan to do anything elaborate in HTTP, read the
+official specification.  HTTP&nbsp;1.0 was never made an official 
+Internet standard, but the <I>de facto</I> standard is described in 
+<A href="http://www.ics.uci.edu/pub/ietf/http/rfc1945.html">RFC&nbsp;1945</A>.
+HTTP&nbsp;1.1 was developed by a 
+<A href="http://www.ics.uci.edu/pub/ietf/http/">working group</A> of the 
+<A href="http://www.ietf.org/">IETF</A>, openly gathering input from many 
+sources before reaching an approximate consensus.  The resulting specification
+is <A href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">RFC 2616</A>,
+released in June 1999.
+
+
+</P><P>These documents are available in various formats:
+</P><UL>
+<LI><B>HTTP&nbsp;1.0 (RFC&nbsp;1945)--</B>
+    <A href="http://www.ics.uci.edu/pub/ietf/http/rfc1945.html">HTML</A>,
+    <A href="http://www.ics.uci.edu/pub/ietf/http/rfc1945.txt">text</A>, and
+    <A href="http://www.ics.uci.edu/pub/ietf/http/rfc1945.ps.gz">gzip'd PostScript</A>
+</LI><LI><B>HTTP&nbsp;1.1 (RFC&nbsp;2616)--</B>
+    <A href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">HTML</A>,
+    <A href="http://www.w3.org/Protocols/rfc2616/rfc2616.txt">text</A>,
+    <A href="ftp://ftp.isi.edu/in-notes/rfc2616.ps">PostScript</A>, and
+    <A href="https://docs.google.com/viewer?url=http%3A%2F%2Fwww.w3.org%2FProtocols%2FHTTP%2F1.1%2Frfc2616.pdf">PDF</A>.
+</LI></UL>
+
+<P>Download and print the version you'll be using, for reference and
+bedtime reading.
+
+</P><P>The <A href="http://www.w3.org/">World Wide Web Consortium</A> 
+has a
+<A href="http://www.w3.org/Protocols/">page devoted to HTTP</A>
+including news and updates, and a page listing
+<A href="http://www.w3.org/Protocols/Specs.html">HTTP specifications,
+drafts, and reports</A>.
+
+</P><P>Other RFC's you might find useful:
+</P><UL>
+<LI><A href="http://www.cis.ohio-state.edu/htbin/rfc/rfc822.html">RFC 822</A>--
+        structure of Internet text messages, including header fields
+</LI><LI><A href="http://www.cis.ohio-state.edu/htbin/rfc/rfc2396.html">RFC 2396</A>--
+        definition of URL/URI syntax (replaces 
+        <A href="http://www.cis.ohio-state.edu/htbin/rfc/rfc1738.html">RFC 1738</A>
+        and
+        <A href="http://www.cis.ohio-state.edu/htbin/rfc/rfc1808.html">RFC 1808</A>)
+
+</LI><LI><A href="http://www.cis.ohio-state.edu/htbin/rfc/rfc1521.html">RFC 1521</A>--
+        definition of MIME and of MIME types
+</LI></UL>
+
+<P><A href="http://www.jmarshall.com/easy/http/#toc">Return to Table of Contents</A>
+
+
+</P><P></P><HR>
+
+© 1997 
+<A href="mailto:james@jmarshall.com?subject=HTTP%20Made%20Really%20Easy">James Marshall</A>
+(comments welcome)
+
+<P>
+<TABLE width="100%"><TBODY><TR>
+    <TD><I>Last (significantly) modified: August 15, 1997</I></TD>
+    <TD align="right"><I>http://www.jmarshall.com/easy/http/</I></TD>
+</TR></TBODY></TABLE>
+
+
+</P><P>
+
+
+</P><UL id="gview-cmenu" class="gview-hidden" tabindex="9999"><LI class="gview-cmenu-item">Open Link in New Tab</LI><LI class="gview-cmenu-item">Download</LI></UL></BODY><STYLE type="text/css">#AdContainer,#RadAd_Skyscraper,#ad-frame,#bbccom_leaderboard,#center_banner,#footer_adcode,#hbBHeaderSpon,#hiddenHeaderSpon,#navbar_adcode,#rightAds,#rightcolumn_adcode,#top-advertising,#topMPU,#tracker_advertorial,.ad-now,.dfpad,.prWrap,[id^="ad_block"],[id^="adbrite"],[id^="dclkAds"],[id^="ew"][id$="_bannerDiv"],[id^="konaLayer"],[src*="sixsigmatraffic.com"],a.kLink span[id^="preLoadWrap"].preLoadWrap,a[href^="http://ad."][href*=".doubleclick.net/"],a[href^="http://adserver.adpredictive.com"],div#FFN_Banner_Holder,div#FFN_imBox_Container,div#adxLeaderboard,div#p360-format-box,div#rm_container,div#tooltipbox[class^="itxt"],div.wnDVUtilityBlock,div[class^="dms_ad_IDS"],div[id^="adKontekst_"],div[id^="google_ads_div"],div[id^="kona_"][id$="_wrapper"],div[id^="sponsorads"],div[id^="y5_direct"],embed[flashvars*="AdID"],iframe.chitikaAdBlock,iframe[id^="dapIfM"],iframe[id^="etarget"][id$="banner"],iframe[name^="AdBrite"],iframe[name^="google_ads_"],iframe[src*="clicksor.com"],img[src*="clicksor.com"],img[src^="http://cdn.adnxs.com"],ispan#ab_pointer,object#flashad,object#ve_threesixty_swf[name="ve_threesixty_swf"],div#dir_ads_site,div#rhs div#rhs_block table#mbEnd,div#tads table[align="center"][width="100%"],table[cellpadding="0"][width="100%"][style] > * > * > * > div#tpa1,#A9AdsMiddleBoxTop,#A9AdsOutOfStockWidgetTop,#A9AdsServicesWidgetTop,#AD_CONTROL_22,#ADsmallWrapper,#Ad1,#Ad160x600,#Ad2,#Ad300x250,#Ad3Left,#Ad3Right,#Ad3TextAd,#AdBanner_F1,#AdBar,#AdBar1,#AdContainerTop,#AdDetails_GoogleLinksBottom,#AdDetails_InsureWith,#AdFrame4,#AdHeader,#AdMiddle,#AdMobileLink,#AdRectangle,#AdSenseDiv,#AdServer,#AdShowcase_F1,#AdSky23,#AdSkyscraper,#AdSponsor_SF,#AdTargetControl1_iframe,#AdText,#AdTop,#Ad_Block,#Ad_Center1,#Ad_Right1,#Ad_Top,#Adbanner,#Adrectangle,#AdsContent,#AdsRight,#AdsWrap,#Ads_BA_CAD,#Ads_BA_CAD2,#Ads_BA_CAD_box,#Ads_BA_SKY,#AdvertMPU23b,#AdvertPanel,#AdvertiseFrame,#Advertisement,#Advertisements,#Advertorial,#Advertorials,#BannerAdvert,#BigBoxAd,#BodyAd,#ButtonAd,#CompanyDetailsNarrowGoogleAdsPresentationControl,#CompanyDetailsWideGoogleAdsPresentationControl,#ContentAd,#ContentAd1,#ContentAd2,#ContentAdPlaceHolder1,#ContentAdPlaceHolder2,#ContentAdXXL,#ContentPolepositionAds_Result,#FooterAd,#FooterAdContainer,#GoogleAdsPresentationControl,#GoogleAdsense,#HEADERAD,#HOME_TOP_RIGHT_BOXAD,#HeaderAdsBlock,#HeaderAdsBlockFront,#HeaderBannerAdSpacer,#HeaderTextAd,#HeroAd,#HomeAd1,#HouseAd,#ID_Ad_Sky,#Journal_Ad_125,#Journal_Ad_300,#KH-contentAd,#LeftAd,#LeftAdF1,#LeftAdF2,#LoungeAdsDiv,#LowerContentAd,#MainSponsoredLinks,#Nightly_adContainer,#PREFOOTER_LEFT_BOXAD,#PREFOOTER_RIGHT_BOXAD,#PageLeaderAd,#RelevantAds,#RightAd,#RightSponsoredAd,#SectionAd300-250,#SectionSponsorAd,#SidebarAdContainer,#SkyAd,#SpecialAds,#SponsoredAd,#SponsoredLinks,#TOP_ADROW,#TOP_RIGHT_BOXAD,#Tadspacehead,#TopAd,#TopAdContainer,#TopAdDiv,#TopAdPos,#VM-MPU-adspace,#VM-footer-adspace,#VM-header-adspace,#VM-header-adwrap,#XEadLeaderboard,#XEadSkyscraper,#_ads,#ad-120x600-sidebar,#ad-120x60Div,#ad-160x600,#ad-160x600-sidebar,#ad-250x300,#ad-300,#ad-300x250,#ad-300x250-sidebar,#ad-300x250Div,#ad-728,#ad-728x90-leaderboard-top,#ad-article,#ad-banner,#ad-bottom,#ad-bottom-wrapper,#ad-bs,#ad-buttons,#ad-colB-1,#ad-column,#ad-container,#ad-content,#ad-contentad,#ad-footer,#ad-footprint-160x600,#ad-front-footer,#ad-front-sponsoredlinks,#ad-halfpage,#ad-header,#ad-inner,#ad-label,#ad-leaderboard,#ad-leaderboard-bottom,#ad-leaderboard-spot,#ad-leaderboard-top,#ad-left,#ad-list-row,#ad-lrec,#ad-medium-rectangle,#ad-middlethree,#ad-middletwo,#ad-module,#ad-mpu,#ad-mpu1-spot,#ad-mpu2-spot,#ad-one,#ad-placard,#ad-rectangle,#ad-right,#ad-righttop,#ad-side-text,#ad-sky,#ad-skyscraper,#ad-slug-wrapper,#ad-small-banner,#ad-space,#ad-splash,#ad-spot,#ad-target,#ad-target-Leaderbord,#ad-teaser,#ad-top,#ad-top-banner,#ad-top-text-low,#ad-tower,#ad-trailerboard-spot,#ad-typ1,#ad-west,#ad-wrap,#ad-wrap-right,#ad-wrapper,#ad-wrapper1,#ad-yahoo-simple,#ad1,#ad125BL,#ad125BR,#ad125TL,#ad125TR,#ad125x125,#ad160x600,#ad160x600right,#ad1Sp,#ad2,#ad2Sp,#ad3,#ad300,#ad300-250,#ad300X250,#ad300_x_250,#ad300x150,#ad300x250,#ad300x250Module,#ad300x60,#ad300x600,#ad300x600_callout,#ad336,#ad336x280,#ad375x85,#ad468,#ad468x60,#ad468x60_top,#ad526x250,#ad600,#ad7,#ad728,#ad728Mid,#ad728Top,#ad728Wrapper,#ad728x90,#adB,#adBadges,#adBanner,#adBanner120x600,#adBanner160x600,#adBanner336x280,#adBannerTable,#adBannerTop,#adBar,#adBlock125,#adBlocks,#adBox,#adBox350,#adBox390,#adComponentWrapper,#adContainer,#adContainer_1,#adContainer_2,#adContainer_3,#adDiv,#adFps,#adFtofrs,#adGallery,#adGroup1,#adHeader,#adIsland,#adL,#adLB,#adLayer,#adLeaderTop,#adLeaderboard,#adMPU,#adMiddle0Frontpage,#adMiniPremiere,#adP,#adPlaceHolderRight,#adPlacer,#adRight,#adSenseModule,#adSenseWrapper,#adServer_marginal,#adSidebar,#adSidebarSq,#adSky,#adSkyscraper,#adSlider,#adSpace3,#adSpace300_ifrMain,#adSpace4,#adSpace5,#adSpace6,#adSpace7,#adSpace_footer,#adSpace_right,#adSpace_top,#adSpacer,#adSpecial,#adSpot-Leader,#adSpot-banner,#adSpot-island,#adSpot-mrec1,#adSpot-sponsoredlinks,#adSpot-textbox1,#adSpot-widestrip,#adSpotAdvertorial,#adSpotIsland,#adSpotSponsoredLinks,#adSquare,#adStaticA,#adStrip,#adSuperPremiere,#adSuperbanner,#adTableCell,#adTag1,#adTag2,#adText,#adText_container,#adTile,#adTop,#adTopboxright,#adTower,#adUnit,#adWrapper,#adZoneTop,#ad_160x160,#ad_160x600,#ad_190x90,#ad_300,#ad_300_250,#ad_300_250_1,#ad_300x250,#ad_300x90,#ad_468_60,#ad_5,#ad_728_foot,#ad_728x90,#ad_940,#ad_984,#ad_A,#ad_B,#ad_Banner,#ad_C,#ad_C2,#ad_D,#ad_E,#ad_F,#ad_G,#ad_H,#ad_I,#ad_J,#ad_K,#ad_L,#ad_M,#ad_N,#ad_O,#ad_P,#ad_YieldManager-300x250,#ad_anchor,#ad_area,#ad_banner,#ad_banner_top,#ad_bar,#ad_block_1,#ad_block_2,#ad_bottom,#ad_box_colspan,#ad_branding,#ad_bs_area,#ad_center_monster,#ad_container,#ad_container_marginal,#ad_container_side,#ad_container_top,#ad_content_top,#ad_content_wrap,#ad_feature,#ad_firstpost,#ad_footer,#ad_front_three,#ad_fullbanner,#ad_global_below_navbar,#ad_haha_1,#ad_haha_4,#ad_halfpage,#ad_head,#ad_header,#ad_horizontal,#ad_horseshoe_left,#ad_horseshoe_right,#ad_horseshoe_spacer,#ad_horseshoe_top,#ad_hotpots,#ad_island,#ad_label,#ad_lastpost,#ad_layer2,#ad_leader,#ad_leaderBoard,#ad_leaderboard,#ad_leaderboard_top,#ad_lrec,#ad_lwr_square,#ad_medium_rectangle,#ad_medium_rectangular,#ad_mediumrectangle,#ad_middle,#ad_mpu,#ad_mrcontent,#ad_overlay,#ad_play_300,#ad_rect,#ad_rect_body,#ad_rect_bottom,#ad_rectangle,#ad_rectangle_medium,#ad_related_links_div,#ad_related_links_div_program,#ad_replace_div_0,#ad_replace_div_1,#ad_report_leaderboard,#ad_report_rectangle,#ad_right,#ad_right_main,#ad_ros_tower,#ad_rr_1,#ad_sec,#ad_sec_div,#ad_sidebar,#ad_sidebar1,#ad_sidebar2,#ad_sidebar3,#ad_skyscraper,#ad_skyscraper_text,#ad_slot_leaderboard,#ad_slot_livesky,#ad_slot_sky_top,#ad_space,#ad_square,#ad_ss,#ad_table,#ad_term_bottom_place,#ad_top,#ad_top_holder,#ad_tp_banner_1,#ad_tp_banner_2,#ad_unit,#ad_vertical,#ad_window,#ad_wrapper,#adbanner,#adbig,#adbnr,#adboard,#adbody,#adbottom,#adbox,#adbox1,#adbox2,#adclear,#adcode,#adcode1,#adcode2,#adcode3,#adcode4,#adcolumnwrapper,#adcontainer,#adcontainerRight,#adcontainsm,#adcontent,#adcontrolPushSite,#add_ciao2,#addbottomleft,#addiv-bottom,#addiv-top,#adfooter_728x90,#adframe:not(frameset),#adhead,#adhead_g,#adheader,#adhome,#adiframe1_iframe,#adiframe2_iframe,#adiframe3_iframe,#adimg,#adition_content_ad,#adlabel,#adlabelFooter,#adlayerad,#adleaderboard,#adlinks,#adlinkws,#adlrec,#admid,#admiddle3center,#admiddle3left,#adposition,#adposition-C,#adposition-FPMM,#adposition2,#adposition3,#adposition4,#adrectangle,#adrectanglea,#adrectangleb,#adrig,#adright,#adright2,#adrighthome,#ads,#ads-468,#ads-area,#ads-block,#ads-bot,#ads-bottom,#ads-col,#ads-dell,#ads-horizontal,#ads-indextext,#ads-leaderboard1,#ads-lrec,#ads-menu,#ads-middle,#ads-prices,#ads-rhs,#ads-top,#ads-vers7,#ads160left,#ads2,#ads300,#ads300Bottom,#ads300Top,#ads336x280,#ads7,#ads728bottom,#ads728top,#ads790,#adsDisplay,#adsID,#ads_160,#ads_300,#ads_728,#ads_banner,#ads_belowforumlist,#ads_belownav,#ads_bottom_inner,#ads_bottom_outer,#ads_catDiv,#ads_footer,#ads_html1,#ads_html2,#ads_right,#ads_right_sidebar,#ads_sidebar_roadblock,#ads_top,#ads_watch_top_square,#ads_zone27,#adsbottom,#adsbox,#adscolumn,#adsense,#adsense-text,#adsenseOne,#adsenseWrap,#adsense_inline,#adsense_leaderboard,#adsense_overlay,#adsense_placeholder_2,#adsensetopplay,#adserv,#adsky,#adskyscraper,#adslot,#adsonar,#adspace,#adspace-300x250,#adspace300x250,#adspaceBox,#adspaceBox300,#adspace_header,#adspot-149x170,#adspot-1x4,#adspot-295x60,#adspot-300x250-pos-1,#adspot-300x250-pos-2,#adspot-468x60-pos-2,#adspot-a,#adsright,#adstop,#adt,#adtab,#adtag_right_side,#adtech_googleslot_03c,#adtech_takeover,#adtop,#adtxt,#adv-masthead,#adv_google_300,#adv_google_728,#adv_top_banner_wrapper,#adver1,#adver2,#adver3,#adver4,#adver5,#adver6,#adver7,#advert,#advert-1,#advert-120,#advert-boomer,#advert-display,#advert-header,#advert-leaderboard,#advert-links-bottom,#advert-skyscraper,#advert-top,#advert1,#advertBanner,#advertRight,#advert_250x250,#advert_box,#advert_leaderboard,#advert_lrec_format,#advert_mpu,#advert_right_skyscraper,#advertbox,#advertbox2,#advertbox3,#advertbox4,#adverthome,#advertise,#advertise-now,#advertise1,#advertiseHere,#advertisement,#advertisement160x600,#advertisement728x90,#advertisementLigatus,#advertisementPrio2,#advertiser-container,#advertiserLinks,#advertising,#advertising-caption,#advertising-container,#advertising-control,#advertising-skyscraper,#advertisingModule160x600,#advertisingModule728x90,#advertisment,#advertorial,#adverts,#advt,#adwhitepaperwidget,#adwin_rec,#adwith,#adwords-4-container,#adwrapper,#adxBigAd,#adxMiddle5,#adxSponLink,#adxSponLinkA,#adxtop,#adzbanner,#adzerk,#adzoneBANNER,#affiliates,#affinityBannerAd,#agi-ad300x250,#agi-ad300x250overlay,#agi-sponsored,#alert_ads,#anchorAd,#annoying_ad,#ap_adframe,#araHealthSponsorAd,#article-ad-container,#article-box-ad,#articleAdReplacement,#articleLeftAdColumn,#articleSideAd,#article_ad,#article_box_ad,#asinglead,#atlasAdDivGame,#banner-300x250,#banner-ad,#banner-ad-container,#banner-ads,#banner250x250,#banner468x60,#banner728x90,#bannerAd,#bannerAdTop,#bannerAd_ctr,#banner_ad,#banner_ad_footer,#banner_admicro,#banner_ads,#banner_content_ad,#banner_topad,#bannerad,#bannerad2,#bbccom_mpu,#bbccom_storyprintsponsorship,#bbo_ad1,#bg_YieldManager-300x250,#bigAd,#bigBoxAd,#bigad300outer,#bigadbox,#bigadspot,#billboard_ad,#block-ad_cube-1,#block-openads-1,#block-openads-3,#block-openads-4,#block-openads-5,#block-thewrap_ads_250x300-0,#block_advert,#blog_ad_content,#blog_ad_opa,#blox-big-ad,#blox-halfpage-ad,#blox-tile-ad,#botad,#bott_ad2,#bott_ad2_300,#bottom-ad,#bottom-ad-container,#bottom-ads,#bottomAd,#bottomAdCCBucket,#bottomAdContainer,#bottomAdSense,#bottomAdSenseDiv,#bottomAds,#bottomRightAd,#bottomRightAdSpace,#bottom_ad,#bottom_ad_area,#bottom_ads,#bottom_banner_ad,#bottom_overture,#bottom_sponsor_ads,#bottom_sponsored_links,#bottom_text_ad,#bottomad,#bottomads,#bottomadsense,#bottomadwrapper,#box-googleadsense-1,#box-googleadsense-r,#box1ad,#boxAd300,#boxAdContainer,#box_ad,#box_mod_googleadsense,#boxad1,#boxad2,#boxad3,#boxad4,#boxad5,#bpAd,#bps-header-ad-container,#btr_horiz_ad,#burn_header_ad,#button-ads-horizontal,#button-ads-vertical,#buttonAds,#buttonAdsContainer,#button_ad_container,#button_ad_wrap,#buttonad,#buy-sell-ads,#caAdLarger,#cellAd,#channel_ad,#channel_ads,#ciHomeRHSAdslot,#circ_ad,#cnnRR336ad,#cnnTopAd,#colRightAd,#collapseobj_adsection,#column4-google-ads,#commercial_ads,#common_right_ad_wrapper,#common_right_lower_ad_wrapper,#common_right_lower_adspace,#common_right_lower_player_ad_wrapper,#common_right_lower_player_adspace,#common_right_player_ad_wrapper,#common_right_player_adspace,#common_right_right_adspace,#common_top_adspace,#companionAdDiv,#containerLocalAds,#containerMrecAd,#content-ad-header,#content-header-ad,#contentAd,#contentTopAds2,#content_ad,#content_ad_square,#content_ad_top,#content_ads_content,#content_box_300body_sponsoredoffers,#content_box_adright300_google,#content_mpu,#contentad,#contentad_imtext,#contentad_right,#contentads,#contentinlineAd,#contextad,#contextual-ads,#contextual-ads-block,#contextualad,#coverads,#ctl00_Adspace_Top_Height,#ctl00_BottomAd,#ctl00_LHTowerAd,#ctl00_LeftHandAd,#ctl00_MasterHolder_IBanner_adHolder,#ctl00_TopAd,#ctl00_TowerAd,#ctl00_VBanner_adHolder,#ctl00_abot_bb,#ctl00_adFooter,#ctl00_atop_bt,#ctl00_cphMain_hlAd1,#ctl00_cphMain_hlAd2,#ctl00_cphMain_hlAd3,#ctl00_ctl00_MainPlaceHolder_itvAdSkyscraper,#ctl00_ctl00_ctl00_Main_Main_PlaceHolderGoogleTopBanner_MPTopBannerAd,#ctl00_ctl00_ctl00_Main_Main_SideBar_MPSideAd,#ctl00_ctl00_ctl00_tableAdsTop,#ctl00_dlTilesAds,#ctl00_m_skinTracker_m_adLBL,#ctl00_phCrackerMain_ucAffiliateAdvertDisplayMiddle_pnlAffiliateAdvert,#ctl00_phCrackerMain_ucAffiliateAdvertDisplayRight_pnlAffiliateAdvert,#ctrlsponsored,#cubeAd,#cube_ads,#cube_ads_inner,#cubead,#cubead-2,#dart_160x600,#dc-display-right-ad-1,#dcol-sponsored,#defer-adright,#detail_page_vid_topads,#divAd,#divAdBox,#divWNAdHeader,#divWrapper_Ad,#div_video_ads,#dlads,#dni-header-ad,#download_ads,#ds-mpu,#editorsmpu,#evotopTen_advert,#ex-ligatus,#exads,#featuread,#featured-advertisements,#featuredAdContainer2,#featuredAds,#feed_links_ad_container,#first-300-ad,#first-adlayer,#first_ad_unit,#firstad,#fl_hdrAd,#flexiad,#footer-ad,#footer-advert,#footer-adverts,#footer-sponsored,#footerAd,#footerAdDiv,#footerAds,#footerAdvertisement,#footerAdverts,#footer_ad,#footer_ad_01,#footer_ad_block,#footer_ad_container,#footer_ads,#footer_adspace,#footer_text_ad,#footerad,#fr_ad_center,#frnAdSky,#frnBannerAd,#frnContentAd,#from_our_sponsors,#front_advert,#front_mpu,#ft-ad,#ft-ad-1,#ft-ad-container,#ft_mpu,#fusionad,#fw-advertisement,#g_ad,#g_adsense,#ga_300x250,#gad,#gallery-ad-m0,#gallery_ads,#game-info-ad,#global_header_ad_area,#gmi-ResourcePageAd,#gmi-ResourcePageLowerAd,#google-ad,#google-ad-art,#google-ad-table-right,#google-ad-tower,#google-ads,#google-ads-bottom,#google-ads-header,#google-ads-left-side,#google-adsense-mpusize,#googleAd,#googleAds,#googleAdsSml,#googleAdsense,#googleAdsenseBanner,#googleAdsenseBannerBlog,#googleAdwordsModule,#googleAfcContainer,#googleShoppingAdsRight,#googleShoppingAdsTop,#googleSubAds,#google_ad,#google_ad_container,#google_ad_inline,#google_ad_test,#google_ads,#google_ads_frame1,#google_ads_test,#google_ads_top,#google_adsense_home_468x60_1,#googlead,#googleadbox,#googleads,#googlesponsor,#grid_ad,#gsyadrectangleload,#gsyadrightload,#gsyadtop,#gsyadtopload,#gtopadvts,#half-page-ad,#halfPageAd,#halfe-page-ad-box,#hdtv_ad_ss,#head-ad,#head_advert,#headad,#header-ad,#header-ads,#header-advert,#header-advertisement,#header-advertising,#headerAd,#headerAdBackground,#headerAdContainer,#headerAdWrap,#headerAds,#headerAdsWrapper,#headerTopAd,#header_ad,#header_ad_container,#header_adcode,#header_ads,#header_advertisement_top,#header_leaderboard_ad_container,#header_publicidad,#headerad,#headeradbox,#headerads,#headline_ad,#hiddenadAC,#hideads,#homeTopRightAd,#home_ad,#home_bottom_ad,#home_contentad,#home_mpu,#home_spensoredlinks,#homepage-ad,#homepageAdsTop,#homepage_right_ad,#homepage_right_ad_container,#hometop_234x60ad,#hor_ad,#horizontal-banner-ad,#horizontal_ad,#horizontal_ad_top,#horizontalads,#houseAd,#hp-store-ad,#hpV2_300x250Ad,#hpV2_googAds,#icePage_SearchLinks_AdRightDiv,#icePage_SearchLinks_DownloadToolbarAdRightDiv,#in_serp_ad,#indexad,#inlinead,#inlinegoogleads,#inlist-ad-block,#inner-advert-row,#insider_ad_wrapper,#instoryad,#int-ad,#interstitial_ad_wrapper,#islandAd,#j_ad,#ji_medShowAdBox,#jmp-ad-buttons,#joead,#joead2,#ka_adRightSkyscraperWide,#landing-adserver,#largead,#lateAd,#lb-sponsor-left,#lb-sponsor-right,#leader-board-ad,#leader-sponsor,#leaderAdContainer,#leader_board_ad,#leaderad,#leaderad_section,#leaderboard-ad,#leaderboard-bottom-ad,#leaderboard_ad,#left-ad-skin,#leftAdContainer,#leftAd_rdr,#leftAdvert,#leftSectionAd300-100,#left_ad,#left_adspace,#leftad,#leftads,#lg-banner-ad,#linkAds,#linkads,#live-ad,#longAdSpace,#lowerAdvertisementImg,#lowerads,#lowerthirdad,#lrecad,#mBannerAd,#main-ad,#main-ad160x600,#main-ad160x600-img,#main-ad728x90,#main-bottom-ad,#mainAd,#mainAdUnit,#mainAdvert,#main_ad,#main_rec_ad,#mastAdvert,#mastad,#mastercardAd,#masthead_ad,#masthead_topad,#medRecAd,#media_ad,#mediumAdvertisement,#menuAds,#mi_story_assets_ad,#mid-ad300x250,#mid-table-ad,#midRightTextAds,#mid_ad_title,#mid_mpu,#middle-ad,#middlead,#middleads,#midrect_ad,#midstrip_ad,#mini-ad,#module-google_ads,#module_ad,#module_box_ad,#module_sky_scraper,#moogleAd,#most_popular_ad,#mpu,#mpu-advert,#mpuAd,#mpuDiv,#mpuSlot,#mpuWrapper,#mpuWrapperAd,#mpu_banner,#mpu_holder,#mpu_text_ad,#mpuad,#mrecAdContainer,#ms_ad,#msad,#multiLinkAdContainer,#n_sponsor_ads,#namecom_ad_hosting_main,#narrow_ad_unit,#natadad300x250,#national_microlink_ads,#navi_banner_ad_780,#nba300Ad,#nbaMidAds,#nbaVid300Ad,#new_topad,#ng_rtcol_ad,#noresultsads,#northad,#oanda_ads,#onespot-ads,#online_ad,#p-googleadsense,#page-header-ad,#pageAds,#pageAdsDiv,#page_content_top_ad,#pagelet_adbox,#pb_report_ad,#pcworldAdBottom,#pcworldAdTop,#pinball_ad,#player-below-advert,#player_ad,#player_ads,#pod-ad-video-page,#portlet-advertisement-left,#portlet-advertisement-right,#post-promo-ad,#post5_adbox,#post_ad,#priceGrabberAd,#print_ads,#printads,#product-adsense,#promo-ad,#promoAds,#ps-vertical-ads,#pub468x60,#publicidad,#pushdown_ad,#qm-ad-big-box,#qm-ad-sky,#qm-dvdad,#r1SoftAd,#rail_ad1,#rail_ad2,#realEstateAds,#rect_ad,#rectangle-ad,#rectangle_ad,#refine-300-ad,#region-top-ad,#rh-ad-container,#rh_tower_ad,#rhs_ads,#rhsadvert,#right-ad,#right-ad-skin,#right-box-ad,#rightAd,#rightAd300x250,#rightAdColumn,#rightAd_rdr,#rightColAd,#rightColumnMpuAd,#rightColumnSkyAd,#right_ad,#right_ad_wrapper,#right_ads,#right_advertisement,#right_advertising,#right_column_ads,#rightad,#rightadContainer,#rightadvertbar-doubleclickads,#rightbar-ad,#rightside-ads,#rightside_ad,#rm_ad_text,#ros_ad,#rotatingads,#row2AdContainer,#rtMod_ad,#rtmod_ad,#sAdsBox,#sb-ad-sq,#sb_advert,#search-google-ads,#searchAdSenseBox,#searchAdSenseBoxAd,#searchAdSkyscraperBox,#search_ads,#search_result_ad,#second-adlayer,#secondBoxAdContainer,#section-container-ddc_ads,#section-sponsors,#section_advertorial_feature,#servfail-ads,#sew-ad1,#shoppingads,#show-ad,#showAd,#showad,#side-ad,#side-ad-container,#sideAd,#sideAdSub,#sideBarAd,#side_ad,#side_ad_wrapper,#side_ads_by_google,#side_sky_ad,#sidead,#sideads,#sidebar-125x125-ads,#sidebar-125x125-ads-below-index,#sidebar-ad,#sidebar-ad-boxes,#sidebar-ad-space,#sidebar-ad-wrap,#sidebar-ads,#sidebar2ads,#sidebar_ad_widget,#sidebar_ads,#sidebar_ads_180,#sidebar_sponsoredresult_body,#sidebarad,#sideline-ad,#single-mpu,#singlead,#site-leaderboard-ads,#site_top_ad,#sitead,#sky-ad,#skyAd,#skyAdContainer,#skyScrapperAd,#sky_ad,#sky_advert,#skyads,#skyscraper-ad,#skyscraperAd,#skyscraperAdContainer,#skyscraper_ad,#skyscraper_advert,#sliderAdHolder,#slideshow_ad_300x250,#sm-banner-ad,#small_ad,#smallerAd,#specials_ads,#speeds_ads,#speeds_ads_fstitem,#speedtest_mrec_ad,#sphereAd,#splinks,#sponLinkDiv_1,#sponlink,#sponsAds,#sponsLinks,#spons_left,#sponseredlinks,#sponsor-search,#sponsorAd1,#sponsorAd2,#sponsorAdDiv,#sponsorLinks,#sponsorTextLink,#sponsor_banderole,#sponsor_box,#sponsor_deals,#sponsor_panSponsor,#sponsor_recommendations,#sponsorbar,#sponsorbox,#sponsored,#sponsored-ads,#sponsored-features,#sponsored-links,#sponsored-resources,#sponsored1,#sponsoredBox1,#sponsoredBox2,#sponsoredLinks,#sponsoredList,#sponsoredResults,#sponsoredSiteMainline,#sponsoredSiteSidebar,#sponsored_ads_v4,#sponsored_content,#sponsored_game_row_listing,#sponsored_links,#sponsored_v12,#sponsoredlinks,#sponsoredlinks_cntr,#sponsoredresults_top,#sponsoredwellcontainerbottom,#sponsoredwellcontainertop,#sponsorlink,#sponsors,#spotlightAds,#spotlightad,#squareAd,#squareAdSpace,#squareAds,#square_ad,#start_middle_container_advertisment,#sticky-ad,#stickyBottomAd,#story-ad-a,#story-ad-b,#story-sponsoredlinks,#storyAd,#storyAdWrap,#subpage-ad-right,#subpage-ad-top,#swads,#synch-ad,#systemad_background,#tabAdvertising,#tblAd,#tbl_googlead,#template_ad_leaderboard,#tertiary_advertising,#text-ad,#text-ads,#textAd,#textAds,#text_ad,#text_ads,#text_advert,#textad,#textad3,#the-last-ad-standing,#thefooterad,#themis-ads,#tile-ad,#tmglBannerAd,#top-ad,#top-ad-container,#top-ad-menu,#top-ads,#top-ads-tabs,#top-advertisement,#top-banner-ad,#top-search-ad-wrapper,#topAd,#topAd728x90,#topAdBanner,#topAdContainer,#topAdSenseDiv,#topAds,#topAdsContainer,#topAdvert,#topBannerAd,#topNavLeaderboardAdHolder,#top_ad,#top_ad_area,#top_ad_game,#top_ad_wrapper,#top_ads,#top_advertise,#top_advertising,#top_right_ad,#top_wide_ad,#topad,#topad_left,#topad_right,#topadblock,#topaddwide,#topads,#topadsense,#topadzone,#topcustomad,#toprightAdvert,#toprightad,#topsponsored,#toptextad,#towerad,#ttp_ad_slot1,#ttp_ad_slot2,#twogamesAd,#txt_link_ads,#undergameAd,#upperAdvertisementImg,#upperMpu,#upperad,#urban_contentad_1,#urban_contentad_2,#urban_contentad_article,#v_ad,#vert_ad,#vertical_ad,#vertical_ads,#videoAd,#video_cnv_ad,#video_overlay_ad,#walltopad,#weblink_ads_container,#welcomeAdsContainer,#welcome_ad_mrec,#welcome_advertisement,#wgtAd,#whatsnews_top_ad,#whitepaper-ad,#whoisRightAdContainer,#wide_ad_unit_top,#widget_advertisement,#wrapAdRight,#wrapAdTop,#y708-ad-expedia,#y708-ad-lrec,#y708-ad-partners,#y708-ad-ysm,#y708-advertorial-marketplace,#yahoo-ads,#yahoo-sponsors,#yahooSponsored,#yahoo_ads,#yahoo_ads_2010,#yahooad-tbl,#yan-sponsored,#ybf-ads,#yfi_fp_ad_mort,#yfi_fp_ad_nns,#yfi_pf_ad_mort,#ygrp-sponsored-links,#ymap_adbanner,#yn-gmy-ad-lrec,#yreSponsoredLinks,#ysm_ad_iframe,#zoneAdserverMrec,#zoneAdserverSuper,.ADBAR,.ADPod,.AD_ALBUM_ITEMLIST,.AD_MOVIE_ITEM,.AD_MOVIE_ITEMLIST,.AD_MOVIE_ITEMROW,.Ad-MPU,.Ad120x600,.Ad160x600,.Ad160x600left,.Ad160x600right,.Ad247x90,.Ad300x250,.Ad300x250L,.Ad728x90,.AdBox,.AdBox7,.AdContainerBox308,.AdHere,.AdInfo,.AdMedium,.AdPlaceHolder,.AdRingtone,.AdSense,.AdSpace,.AdTextSmallFont,.AdTitle,.AdUnit,.AdUnit300,.Ad_C,.Ad_D_Wrapper,.Ad_E_Wrapper,.Ad_Right,.Ads,.AdsBoxBottom,.AdsBoxSection,.AdsBoxTop,.AdsLinks1,.AdsLinks2,.Advert,.AdvertMidPage,.AdvertiseWithUs,.AdvertisementTextTag,.ArticleAd,.ArticleInlineAd,.BannerAd,.BlockAd,.BottomAdContainer,.BottomAffiliate,.BoxAd,.CG_adkit_leaderboard,.CG_details_ad_dropzone,.ComAread,.CommentAd,.ContentAd,.ContentAds,.DeptAd,.DisplayAd,.FT_Ad,.FlatAds,.GoogleAd,.HPNewAdsBannerDiv,.HomeContentAd,.IABAdSpace,.LeftTowerAd,.M2Advertisement,.MD_adZone,.MOS-ad-hack,.MPU,.MPUHolder,.MPUTitleWrapperClass,.MiddleAdContainer,.OpenXad,.PU_DoubleClickAdsContent,.Post5ad,.RBboxAd,.RectangleAd,.RelatedAds,.RightGoogleAFC,.RightRailTop300x250Ad,.RightSponsoredAdTitle,.RightTowerAd,.SideAdCol,.SidebarAd,.SkyAdContainer,.SponsorCFrame,.SponsoredAdTitle,.SponsoredContent,.SponsoredLinks,.SponsoredLinksGrayBox,.SquareAd,.StandardAdLeft,.StandardAdRight,.TextAd,.TheEagleGoogleAdSense300x250,.TopAd,.TopAdContainer,.TopAdL,.TopAdR,.TopBannerAd,.UIStandardFrame_SidebarAds,.UIWashFrame_SidebarAds,.UnderAd,.VerticalAd,.VideoAd,.WidgetAdvertiser,.a160x600,.a728x90,.ad-120x600,.ad-160x600,.ad-250,.ad-300,.ad-300-block,.ad-300-blog,.ad-300x100,.ad-300x250,.ad-300x250-right0,.ad-355x75,.ad-600,.ad-728,.ad-728x90,.ad-728x90-1,.ad-above-header,.ad-adlink-bottom,.ad-adlink-side,.ad-background,.ad-banner,.ad-bigsize,.ad-block,.ad-blog2biz,.ad-bottom,.ad-box,.ad-break,.ad-btn,.ad-btn-heading,.ad-button,.ad-cell,.ad-container,.ad-div,.ad-enabled,.ad-feedback,.ad-filler,.ad-footer,.ad-footer-leaderboard,.ad-google,.ad-graphic-large,.ad-gray,.ad-hdr,.ad-head,.ad-holder,.ad-homeleaderboard,.ad-img,.ad-island,.ad-label,.ad-leaderboard,.ad-links,.ad-lrec,.ad-medium,.ad-medium-two,.ad-mpu,.ad-other,.ad-permalink,.ad-placeholder,.ad-postText,.ad-poster,.ad-priority,.ad-rect,.ad-rectangle,.ad-rectangle-text,.ad-related,.ad-rh,.ad-ri,.ad-right,.ad-right-header,.ad-right-txt,.ad-section,.ad-sidebar300,.ad-sky,.ad-slot,.ad-slot-234-60,.ad-slot-300-250,.ad-slot-728-90,.ad-space,.ad-space-mpu-box,.ad-spot,.ad-statement,.ad-tabs,.ad-text,.ad-tile,.ad-title,.ad-top,.ad-top-left,.ad-unit,.ad-unit-300,.ad-unit-300-wrapper,.ad-unit-anchor,.ad-vert,.ad-vtu,.ad-wrap,.ad-wrapper,.ad-zone-s-q-l,.ad.super,.ad0,.ad1,.ad10,.ad120,.ad125,.ad160,.ad160x600,.ad18,.ad19,.ad2,.ad21,.ad250,.ad250c,.ad3,.ad300,.ad300250,.ad300_250,.ad300x100,.ad300x250,.ad300x250Top,.ad300x250_container,.ad300x250box,.ad300x600,.ad310,.ad336x280,.ad343x290,.ad4,.ad450,.ad468,.ad468_60,.ad468x60,.ad6,.ad620x70,.ad626X35,.ad7,.ad728,.ad728_90,.ad728x90,.ad728x90_container,.ad8,.ad90x780,.adAgate,.adBanner,.adBanner300x250,.adBanner728x90,.adBannerTyp1,.adBannerTypSortableList,.adBannerTypW300,.adBar,.adBgBottom,.adBgMId,.adBgTop,.adBox,.adBoxBody,.adBoxContent,.adBoxSidebar,.adBoxSingle,.adCMRight,.adColumn,.adCont,.adContTop,.adContainer,.adContour,.adCreative,.adDiv,.adElement,.adFender3,.adFrame,.adFtr,.adFullWidthMiddle,.adGoogle,.adHeader,.adHeadline,.adHolder,.adHome300x250,.adInNews,.adLabel,.adLeader,.adLeaderForum,.adLeaderboard,.adLeft,.adLoaded,.adMastheadLeft,.adMastheadRight,.adMkt2Colw,.adModule,.adNewsChannel,.adNoOutline,.adNoticeOut,.adObj,.adPageBorderL,.adPageBorderR,.adPanel,.adRect,.adRight,.adSelfServiceAdvertiseLink,.adServer,.adSlot,.adSpBelow,.adSpace,.adSpacer,.adSponsor,.adSpot,.adSpot-searchAd,.adSpot-textBox,.adSpot-twin,.adSpotIsland,.adSquare,.adSummary,.adSuperboard,.adTD,.adTag,.adText,.adTileWrap,.adTiler,.adTitle,.adTout,.adTxt,.adWidget,.adWithTab,.adWrap,.adWrapper,.ad_0,.ad_1,.ad_120x90,.ad_125,.ad_130x90,.ad_160,.ad_160x600,.ad_2,.ad_200,.ad_250x250,.ad_250x250_w,.ad_3,.ad_300,.ad_300_250,.ad_300x250,.ad_336,.ad_336x280,.ad_350x100,.ad_350x250,.ad_468,.ad_468x60,.ad_600,.ad_728,.ad_728x90,.ad_amazon,.ad_banner_border,.ad_biz,.ad_block_338,.ad_border,.ad_bottom_leaderboard,.ad_box,.ad_box2,.ad_box_div,.ad_callout,.ad_caption,.ad_contain,.ad_container,.ad_content,.ad_content_wide,.ad_contents,.ad_descriptor,.ad_footer,.ad_framed,.ad_front_promo,.ad_head,.ad_header,.ad_hpm,.ad_info_block,.ad_inline,.ad_island,.ad_label,.ad_launchpad,.ad_leader,.ad_leaderboard,.ad_left,.ad_links,.ad_linkunit,.ad_loc,.ad_lrec,.ad_main,.ad_medrect,.ad_middle,.ad_mpu,.ad_mr,.ad_mrec,.ad_mrec_title_article,.ad_notice,.ad_one,.ad_p360,.ad_partner,.ad_partners,.ad_plus,.ad_post,.ad_power,.ad_rectangle,.ad_right,.ad_right_col,.ad_sidebar,.ad_skyscraper,.ad_slug,.ad_slug_table,.ad_space,.ad_space_300_250,.ad_sponsor,.ad_sponsoredsection,.ad_spot_b,.ad_spot_c,.ad_square_r,.ad_square_top,.ad_text,.ad_text_w,.ad_title,.ad_top,.ad_top_leaderboard,.ad_topright,.ad_tower,.ad_unit,.ad_unit_rail,.ad_warning,.ad_wid300,.ad_wide,.ad_wrap,.ad_wrapper,.ad_wrapper_fixed,.ad_wrapper_top,.ad_zone,.adarea,.adbanner,.adbannerbox,.adbannerright,.adbar,.adbg,.adborder,.adbot,.adbottom,.adbottomright,.adbox,.adbox-outer,.adbox_366x280,.adbox_468X60,.adbox_bottom,.adboxclass,.adbuttons,.adcode,.adcolumn,.adcolumn_wrapper,.adcont,.adcontainer,.adcopy,.addiv,.adfoot,.adfootbox,.adframe,.adhead,.adheader,.adheader100,.adhere,.adhint,.adholder,.adhoriz,.adi,.adiframe,.adinfo,.adinside,.adjlink,.adkit,.adkit-advert,.adkit-lb-footer,.adlabel,.adlabel-horz,.adlabel-vert,.adleft,.adline,.adlink,.adlinks,.adlist,.adlnklst,.admarker,.admedrec,.admessage,.admodule,.admpu,.adnation-banner,.adnotice,.adops,.adpadding,.adpane,.adpic,.adprice,.adright,.adrotate_widget,.adrow,.adrow-post,.adrule,.ads-banner,.ads-below-content,.ads-categories-bsa,.ads-favicon,.ads-links-general,.ads-mpu,.ads-profile,.ads-right,.ads-section,.ads-sidebar,.ads-sky,.ads-text,.ads2,.ads3,.ads300,.ads728,.ads:not(body),.adsArea,.adsBelowHeadingNormal,.adsBlock,.adsBox,.adsCont,.adsFull,.adsImages,.adsTextHouse,.adsTop,.adsTower2,.adsTowerWrap,.adsWithUs,.ads_125_square,.ads_180,.ads_300,.ads_300x250,.ads_337x280,.ads_728x90,.ads_big,.ads_big-half,.ads_brace,.ads_catDiv,.ads_container,.ads_disc_anchor,.ads_disc_leader,.ads_disc_lwr_square,.ads_disc_skyscraper,.ads_disc_square,.ads_div,.ads_header,.ads_leaderboard,.ads_mpu,.ads_outer,.ads_rectangle,.ads_right,.ads_sc_bl_i,.ads_sc_tl_i,.ads_show_if,.ads_side,.ads_sidebar,.ads_singlepost,.ads_spacer,.ads_takeover,.ads_tr,.ads_widesky,.ads_wrapperads_top,.adsblockvert,.adsborder,.adsbottom,.adsbyyahoo,.adsc,.adscaleAdvert,.adscontainer,.adscreen,.adsection_a2,.adsection_c2,.adsense,.adsense-ad,.adsense-category,.adsense-category-bottom,.adsense-heading,.adsense-right,.adsense-title,.adsense3,.adsenseAds,.adsenseBlock,.adsenseContainer,.adsenseGreenBox,.adsense_bdc_v2,.adsensebig,.adsenseblock,.adsenseblock_bottom,.adsenseblock_top,.adsenselr,.adsensem_widget,.adsensesq,.adsforums,.adside,.adsidebox,.adsider,.adsingle,.adsleft,.adslogan,.adsmalltext,.adsmessage,.adspace,.adspace-MR,.adspace180,.adspace_bottom,.adspace_buysell,.adspace_rotate,.adspace_skyscraper,.adspacer,.adspot,.adstop,.adstrip,.adtable,.adtag,.adtext,.adtext_gray,.adtext_horizontal,.adtext_onwhite,.adtext_vertical,.adtop,.adtravel,.adv-mpu,.adverTag,.adver_cont_below,.advert,.advert-article-bottom,.advert-bannerad,.advert-box,.advert-head,.advert-horizontal,.advert-mpu,.advert-skyscraper,.advert-text,.advert4,.advert5,.advert8,.advertCont,.advertContainer,.advertHeadline,.advertRight,.advertText,.advertTitleSky,.advert_468x60,.advert_box,.advert_cont,.advert_label,.advert_leaderboard,.advert_list,.advert_note,.advert_top,.advertise,.advertise-here,.advertise-homestrip,.advertise-horz,.advertise-leaderboard,.advertise-vert,.advertiseContainer,.advertiseText,.advertise_ads,.advertise_here,.advertise_link,.advertise_link_sidebar,.advertisement,.advertisement-728x90,.advertisement-block,.advertisement-top,.advertisement468,.advertisementColumnGroup,.advertisementContainer,.advertisementHeader,.advertisementLabel,.advertisementPanel,.advertisement_btm,.advertisement_caption,.advertisement_g,.advertisement_header,.advertisement_horizontal,.advertisement_top,.advertiser,.advertiser-links,.advertising,.advertising-header,.advertising2,.advertisingTable,.advertising_block,.advertising_images,.advertisment,.advertisment_two,.advertize,.advertorial,.advertorial-2,.advertorial-promo-box,.adverts,.advt,.advt-banner-3,.advt300,.advt720,.adwordListings,.adwordsHeader,.adwrap,.adwrapper,.adwrapper-lrec,.adwrapper948,.affiliate,.affiliate-link,.affiliate-sidebar,.affiliateAdvertText,.affinityAdHeader,.agi-adsaleslinks,.alb-content-ad,.alt_ad,.anchorAd,.another_text_ad,.answer_ad_content,.aolSponsoredLinks,.aopsadvert,.archive-ads,.art_ads,.article-ads,.articleAd,.articleAds,.articleAdsL,.articleEmbeddedAdBox,.article_ad,.article_adbox,.article_mpu_box,.articleads,.aseadn,.aux-ad-widget-2,.b-astro-sponsored-links_horizontal,.b-astro-sponsored-links_vertical,.banner-ad,.banner-ads,.banner-adverts,.banner300x100,.banner300x250,.banner468,.bannerAd,.bannerAdWrapper300x250,.bannerAdWrapper730x86,.bannerRightAd,.banner_300x250,.banner_728x90,.banner_ad,.banner_ad_footer,.banner_ad_leaderboard,.bannerad,.barkerAd,.base-ad-mpu,.base_ad,.bgnavad,.big-ads,.bigAd,.big_ad,.big_ads,.bigad,.bigad2,.bigboxad,.billboard_ad,.blk_advert,.block-ad,.block-ad300,.block-ads-bottom,.block-ads-top,.block-adsense,.block-openx,.block_ad,.block_ad_sb_text,.block_ad_sponsored_links,.block_ad_sponsored_links-wrapper,.blocked-ads,.blog-ad-leader-inner,.blog-ads-container,.blogAd,.blogAdvertisement,.blogBigAd,.blog_ad,.blogads,.blox3featuredAd,.body_ad,.body_sponsoredresults_bottom,.body_sponsoredresults_middle,.body_sponsoredresults_top,.bookseller-header-advt,.bottomAd,.bottomAds,.bottom_ad,.bottom_ad_block,.bottom_sponsor,.bottomad,.bottomrightrailAd,.bottomvidad,.box-ad,.box-ads,.box-adsense,.boxAd,.box_ad,.box_advertising,.box_advertisment_62_border,.box_content_ad,.box_content_ads,.boxad,.boxyads,.bps-ad-wrapper,.bps-advertisement,.bps-advertisement-inline-ads,.br-ad,.bsa_ads,.btm_ad,.bullet-sponsored-links,.bullet-sponsored-links-gray,.burstContentAdIndex,.buttonAd,.buttonAds,.buttonadbox,.bx_ad,.bx_ad_right,.cA-adStrap,.cColumn-TextAdsBox,.care2_adspace,.catalog_ads,.cb-ad-container,.cb_footer_sponsor,.cb_navigation_ad,.cbstv_ad_label,.cbzadvert,.cdAdTitle,.cdmainlineSearchAdParent,.cdsidebarSearchAdParent,.centerAd,.center_ad,.centerad,.centered-ad,.cinemabotad,.clearerad,.cm_ads,.cms-Advert,.cnbc_badge_banner_ad_area,.cnn160AdFooter,.cnnAd,.cnnMosaic160Container,.cnnSearchSponsorBox,.cnnStoreAd,.cnnStoryElementBoxAd,.cnnWCAdBox,.cnnWireAdLtgBox,.cnn_728adbin,.cnn_adcntr300x100,.cnn_adspc336cntr,.cnn_adtitle,.column2-ad,.com-ad-server,.common_advertisement_title,.communityAd,.conductor_ad,.confirm_ad_left,.confirm_ad_right,.confirm_leader_ad,.consoleAd,.container-adwords,.containerSqAd,.container_serendipity_plugin_google_adsense,.content-ad,.contentAd,.contentAdFoot,.contentAdsWrapper,.content_ad,.content_ad_728,.content_adsq,.contentad,.contentad300x250,.contentad_right_col,.contentadcontainer,.contentadleft,.contenttextad,.contest_ad,.cp_ad,.cpmstarHeadline,.cpmstarText,.cs-mpu,.cscTextAd,.cse_ads,.cspAd,.ct_ad,.cubeAd,.cube_ads,.currency_ad,.darla_ad,.dartAdImage,.dart_ad,.dart_tag,.dartadvert,.dartiframe,.dc-ad,.dcAdvertHeader,.deckAd,.deckads,.detail-ads,.detailMpu,.detail_top_advert,.divAd,.divad1,.divad2,.divad3,.divads,.divider_ad,.dmco_advert_iabrighttitle,.download_ad,.downloadad,.dynamic-ads,.dynamic_ad,.e-ad,.ec-ads,.em-ad,.entryad,.ez-clientAd,.f_Ads,.featuredAds,.featuredadvertising,.flagads,.flash-advertisement,.flash_ad,.flash_advert,.flashad,.flexiad,.flipbook_v2_sponsor_ad,.floatad,.footer-ad,.footerAd,.footerAdModule,.footerAdslot,.footerTextAd,.footer_ad,.footer_ads,.footer_block_ad,.footer_bottomad,.footer_line_ad,.footer_text_ad,.footerad,.forumtopad,.frn_adbox,.frn_cont_adbox,.ft-ad,.ftdContentAd,.full_ad_box,.fullbannerad,.g3rtn-ad-site,.gAdvertising,.g_ggl_ad,.ga-textads-bottom,.ga-textads-top,.gads,.gads_cb,.gads_container,.gglAds,.googad,.googads,.google-ad,.google-ad-container,.google-ads,.google-ads-boxout,.google-ads-slim,.google-right-ad,.google-sponsored-ads,.google-sponsored-link,.google468_60,.googleAd,.googleAd-content,.googleAd-list,.googleAdBox,.googleAdSense,.googleAdSenseModule,.googleAd_body,.googleAds,.googleAds_article_page_above_comments,.googleAdsense,.googleContentAds,.googleProfileAd,.googleSearchAd_content,.googleSearchAd_sidebar,.google_ad,.google_add_container,.google_ads,.google_ads_bom_title,.google_ads_content,.googlead,.googleaddiv,.googleaddiv2,.googleads,.googleads_300x250,.googleads_title,.gpAdBox,.gpAds,.gradientAd,.group_ad,.gsfAd,.gt_ad,.gt_ad_300x250,.gt_ad_728x90,.gt_adlabel,.gutter-ad-left,.gutter-ad-right,.h-ad-728x90-bottom,.h_Ads,.h_ad,.half-ad,.half_ad_box,.hd_advert,.header-ad,.header-advert,.headerAd,.headerAds,.headerAdvert,.header_ad,.header_ad_center,.header_advertisment,.headerad,.hi5-ad,.highlightsAd,.hm_advertisment,.home-ad-links,.homeAd,.homeMediumAdGroup,.home_ad_bottom,.home_mrec_ad,.homead,.homepage-ad,.homepageFlexAdOuter,.homepageMPU,.homepage_middle_right_ad,.hor_ad,.horiz_adspace,.horizontalAd,.horizontal_ad,.horizontal_ads,.horizontaltextadbox,.horizsponsoredlinks,.hortad,.houseAdsStyle,.housead,.hp2-adtag,.hp_ad_cont,.hp_ad_text,.hp_t_ad,.hp_w_ad,.ic-ads,.ico-adv,.idMultiAd,.image-advertisement,.imageads,.imgad,.in-page-ad,.in-story-text-ad,.indy_googleads,.inline-mpu-left,.inlineSideAd,.inline_ad,.inline_ad_title,.inlinead,.inlineadsense,.inlineadtitle,.inlist-ad,.inlistAd,.inner-advt-banner-3,.innerAds,.innerad,.inpostad,.insert_advertisement,.insertad,.is24-adplace,.islandAd,.islandAdvert,.islandad,.jimdoAdDisclaimer,.jp-advertisment-promotional,.js-advert,.kw_advert,.kw_advert_pair,.l_ad_sub,.l_banner.ads_show_if,.labelads,.largeRectangleAd,.lastRowAd,.lcontentbox_ad,.leaderAdTop,.leader_ad,.leaderboardAd,.leaderboardad,.leaderboardadtop,.left-ad,.leftAd,.leftAdColumn,.leftAds,.left_ads,.leftad,.leftbar_ad_160_600,.leftnavad,.lgRecAd,.lg_ad,.ligatus,.linead,.link_adslider,.link_advertise,.live-search-list-ad-container,.ljad,.log_ads,.longAd,.lowerAds,.m-ad-tvguide-box,.m4-adsbygoogle,.m_banner_ads,.macAd,.macad,.main-ad,.main-tabs-ad-block,.main_ad,.main_adbox,.main_intro_ad,.map_media_banner_ad,.marginadsthin,.marketing-ad,.masthead_topad,.mdl-ad,.media-advert,.mediaAd,.mediaAdContainer,.medium-rectangle-ad,.mediumRectangleAdvert,.menuItemBannerAd,.messageBoardAd,.micro_ad,.mid_ad,.midad,.middleads,.min_navi_ad,.miniad,.mobile-sponsoring,.mod-ad-lrec,.mod-ad-n,.mod-adopenx,.mod_admodule,.module-ad,.module-ad-small,.module-ads,.moduleAdvertContent,.module_ad,.modulegad,.moduletable-advert,.moduletablesquaread,.mpu,.mpu-ad,.mpu-advert,.mpu-footer,.mpu-fp,.mpu-title,.mpu-top-left,.mpu-top-left-banner,.mpu-top-right,.mpuAd,.mpuAdSlot,.mpuArea,.mpuBox,.mpuContainer,.mpuHolder,.mpuTextAd,.mpu_ad,.mpu_advert,.mpu_gold,.mpu_holder,.mpu_platinum,.mpu_text_ad,.mpuad,.mpuholderportalpage,.mrec_advert,.ms-ads-link,.msfg-shopping-mpu,.mwaads,.nSponsoredLcContent,.nSponsoredLcTopic,.nadvt300,.narrow_ad_unit,.narrow_ads,.navAdsBanner,.navi_ad300,.naviad,.nba300Ad,.nbaT3Ad160,.nbaTVPodAd,.nbaTwo130Ads,.nbc_ad_carousel_wrp,.newTopAdContainer,.newad,.nf-adbox,.nn-mpu,.noAdForLead,.normalAds,.nrAds,.nsAdRow,.oas-bottom-ads,.offer_sponsoredlinks,.oio-banner-zone,.oio-link-sidebar,.oio-zone-position,.onethirdadholder,.openads,.openadstext_after,.openx,.openx-ad,.other_adv2,.ovAdPromo,.ovAdSky,.ovAdartikel,.ov_spns,.pageGoogleAd,.pageGoogleAdFlat,.pageLeaderAd,.page_content_right_ad,.pagead,.pagenavindexcontentad,.partnersTextLinks,.pencil_ad,.player_ad_box,.player_page_ad_box,.pnp_ad,.pod-ad-300,.podSponsoredLink,.portalCenterContentAdBottom,.portalCenterContentAdMiddle,.portalCenterContentAdTop,.portalcontentad,.post-ad,.post_ad,.post_sponsor_unit,.postbit_adbit_register,.postbit_adcode,.postgroup-ads,.postgroup-ads-middle,.prebodyads,.premium_ad_container,.promoAd,.promoAds,.promo_ad,.publication-ad,.publicidad,.puff-advertorials,.qa_ad_left,.qm-ad-content,.qm-ad-content-news,.quigo-ad,.qzvAdDiv,.r_ad_box,.r_ads,.rad_container,.rect_ad_module,.rectad,.rectangleAd,.rectanglead,.redads_cont,.regularad,.relatedAds,.remads,.result_ad,.results_sponsor,.results_sponsor_right,.reviewMidAdvertAlign,.rght300x250,.rhads,.rhs-ad,.rhs-ads-panel,.right-ad,.right-ad-holder,.right-ad2,.right-ads,.right-ads2,.rightAd,.rightRailAd,.right_ad,.right_ad_text,.right_ad_top,.right_ads,.right_ads_column,.right_col_ad,.right_hand_advert_column,.rightad,.rightad_1,.rightad_2,.rightads,.rightadunit,.rightcol_boxad,.rightcoladvert,.rightcoltowerad,.rnav_ad,.rngtAd,.rt_ad1_300x90,.rt_ad_300x250,.rt_ad_call,.savvyad_unit,.sb-ad-sq-bg,.sbAd,.sbAdUnitContainer,.sb_adsN,.sb_adsNv2,.sb_adsW,.sb_adsWv2,.scanAd,.scc_advert,.sci-ad-main,.sci-ad-sub,.search-ad,.search-results-ad,.search-sponsor,.search-sponsored,.searchAd,.searchSponsoredResultsBox,.searchSponsoredResultsList,.search_column_results_sponsored,.search_results_sponsored_top,.section-sponsor,.section_mpu_wrapper,.section_mpu_wrapper_wrapper,.selfServeAds,.servsponserLinks,.shoppingGoogleAdSense,.sidbaread,.side-ad,.side-ads,.sideAd,.sideBoxAd,.side_ad,.side_ad2,.sidead,.sideadsbox,.sideadvert,.sidebar-ad,.sidebar-ads,.sidebar-text-ad,.sidebarAd,.sidebarAdUnit,.sidebarAdvert,.sidebar_ad,.sidebar_ad_300_250,.sidebar_ads,.sidebar_ads_336,.sidebar_adsense,.sidebar_box_ad,.sidebarad,.sidebarad_bottom,.sidebaradbox,.sidebarboxad,.sideheadnarrowad,.sideheadsponsorsad,.singleAd,.singleAdsContainer,.singlead,.sitesponsor,.skinAd,.skin_ad_638,.sky-ad,.skyAd,.skyAdd,.sky_ad,.sky_scraper_ad,.skyad,.skyscraper-ad,.skyscraper_ad,.skyscraper_bannerAdHome,.slideshow-ad,.slpBigSlimAdUnit,.slpSquareAdUnit,.sm_ad,.smallSkyAd1,.smallSkyAd2,.small_ad,.small_ads,.smallad-left,.smallsponsorad,.specialAd175x90,.speedyads,.sphereAdContainer,.spl-ads,.spl_ad,.spl_ad2,.spl_ad_plus,.splitAd,.sponlinkbox,.spons-link,.spons_links,.sponslink,.sponsor-ad,.sponsor-bottom,.sponsor-links,.sponsor-right,.sponsor-services,.sponsor-top,.sponsorArea,.sponsorBox,.sponsorPost,.sponsorPostWrap,.sponsor_ad_area,.sponsor_horizontal,.sponsor_line,.sponsor_links,.sponsor_top,.sponsor_units,.sponsoradtitle,.sponsorbox,.sponsored,.sponsored-chunk,.sponsored-editorial,.sponsored-features,.sponsored-links,.sponsored-links-alt-b,.sponsored-links-holder,.sponsored-links-right,.sponsored-post,.sponsored-post_ad,.sponsored-results,.sponsored-right-border,.sponsored-text,.sponsoredLinks,.sponsoredLinksHeader,.sponsoredProduct,.sponsored_ads,.sponsored_box,.sponsored_box_search,.sponsored_by,.sponsored_links,.sponsored_links_title_container,.sponsored_links_title_container_top,.sponsored_links_top,.sponsored_results,.sponsoredibbox,.sponsoredlink,.sponsoredlinks,.sponsoredlinkscontainer,.sponsoredresults,.sponsoredtextlink_container,.sponsoredtextlink_container_ovt,.sponsorlink,.sponsorlink2,.sponsors,.sponsors-box,.spotlightAd,.squareAd,.square_ad,.squared_ad,.ss-ad-mpu,.staticAd,.store-ads,.story_AD,.subad,.subcontent-ad,.super-ad,.supercommentad_left,.supercommentad_right,.supportAdItem,.surveyad,.t10ad,.tab_ad,.tab_ad_area,.tablebordersponsor,.tadsanzeige,.tadsbanner,.tadselement,.tallad,.tblTopAds,.tbl_ad,.tbox_ad,.teaser-sponsor,.teaserAdContainer,.teaser_adtiles,.text-ad-links,.text-g-advertisement,.text-g-group-short-rec-ad,.text-g-net-grp-google-ads-article-page,.textAd,.textAdBox,.textAds,.text_ad,.text_ads,.textad,.textadContainer,.textad_headline,.textadbox,.textads,.textadsfoot,.textlink-ads,.tf_page_ad_search,.thisIsAd,.thisIsAnAd,.ticket-ad,.tileAds,.title-ad,.title_adbig,.tncms-region-ads,.toolad,.toolbar-ad,.top-ad,.top-ad-space,.top-ads,.top-menu-ads,.topAd,.topAdWrap,.topAds,.topAdvertisement,.topBannerAd,.top_Ad,.top_ad,.top_ad_728,.top_ad_728_90,.top_ad_disclaimer,.top_ad_div,.top_ad_wrapper,.top_ads,.top_advert,.top_advertising_lb,.top_container_ad,.top_sponsor,.topad,.topad-bar,.topadbox,.topads,.topadspot,.topcontentadvertisement,.topic_inad,.topstoriesad,.towerAd,.towerAdLeft,.towerAds,.tower_ad,.tower_ad_disclaimer,.towerad,.ts-ad_unit_bigbox,.ts-banner_ad,.ttlAdsensel,.tto-sponsored-element,.twoColumnAd,.twoadcoll,.twoadcolr,.tx_smartadserver_pi1,.txt-ads,.txtAds,.txtadvertise,.type_adscontainer,.type_miniad,.type_promoads,.ukAds,.undertimyads,.usenext,.vertad,.videoAd,.videoBoxAd,.video_ad,.view-promo-mpu-right,.view_rig_ad,.wide-ad,.wide-skyscraper-ad,.wideAdTable,.wide_ad,.wide_ad_unit_top,.wide_ads,.wide_google_ads,.widget-ad,.widget-entry-ads-160,.widget_ad,.widget_ad_rotator,.wikia_ad_placeholder,.withAds,.wnMultiAd,.wp125ad,.wp125ad_2,.wpn_ad_content,.wrap-ads,.wsSponsoredLinksRight,.wsTopSposoredLinks,.x03-adunit,.x04-adunit,.y-ads,.y-ads-wide,.y7-advertisement,.yahoo-sponsored,.yahoo-sponsored-links,.yahooAds,.yahoo_ads,.yan-sponsored,.ygrp-ad,.yrail_ad_wrap,.yrail_ads,.ysmsponsor,.ysponsor,.yw-ad,[id^="MarketGid"],a[href^="http://adserving.liveuniversenetwork.com/"],a[href^="http://galleries.pinballpublishernetwork.com/"],a[href^="http://install.securewebsiteaccess.com/"],a[href^="http://latestdownloads.net/download.php?"],a[href^="http://secure.signup-page.com/"],a[href^="http://secure.signup-way.com/"],a[href^="http://www.FriendlyDuck.com/AF_"],a[href^="http://www.adbrite.com/mb/commerce/purchase_form.php?"],a[href^="http://www.friendlyduck.com/AF_"],a[href^="http://www.google.com/aclk?"],a[href^="http://www.liutilities.com/aff"],a[href^="http://www.liutilities.com/products/campaigns/adv/"],a[href^="http://www.my-dirty-hobby.com/?sub="],a[href^="http://www.ringtonematcher.com/"],div#mclip_container:first-child:last-child,div#tads.c,table.ra[align="left"][width="30%"],table.ra[align="right"][width="30%"] { visibility:hidden !important;    display:none !important; }</STYLE></HTML>

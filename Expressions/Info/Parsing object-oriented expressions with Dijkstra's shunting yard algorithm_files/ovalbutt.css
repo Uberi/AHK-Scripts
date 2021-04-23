@@ -1,0 +1,47 @@
+/* Dynamic drive css */
+a.ovalbutton{
+display: block;
+float: left;
+line-height: 16px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 24px) */
+height: 24px; /* Height of button background height */
+padding-left: 11px; /* Width of left menu image */
+text-decoration: none;
+}
+
+a:link.ovalbutton, a:visited.ovalbutton, a:active.ovalbutton{
+color: #494949; /*button text color*/
+text-decoration: none;
+}
+
+a.ovalbutton span{
+display: block;
+padding: 4px 11px 4px 0; /*Set 11px below to match value of 'padding-left' value above*/
+}
+
+a.ovalbutton:hover{ /* Hover state CSS */
+background-position: bottom left;
+}
+
+a.ovalbutton:hover span{ /* Hover state CSS */
+background-position: bottom right;
+color: black;
+}
+
+div.buttonwrapper,
+div.moduleS1 div div div.buttonwrapper,
+div.moduleS1 div div div div.buttonwrapper
+{ /* Container you can use to surround a CSS button to clear float */
+overflow: hidden; /*See: http://www.quirksmode.org/css/clearing.html */
+width: 100%;
+padding-left:40px;
+text-align:center;
+}
+
+a.orange{
+background: transparent url('oval-ora.gif') no-repeat top left
+}
+
+a.orange span{
+background: transparent url('oval-ora.gif') no-repeat top right;
+}
+

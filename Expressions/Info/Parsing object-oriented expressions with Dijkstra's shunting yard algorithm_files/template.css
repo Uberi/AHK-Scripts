@@ -1,0 +1,43 @@
+/*
+// JoomlaWorks "Disqus Comment System" Plugin for Joomla! 1.5.x - Version 2.2
+// Copyright (c) 2006 - 2009 JoomlaWorks Ltd. All rights reserved.
+// Released under the GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
+// More info at http://www.joomlaworks.gr
+// Designed and developed by the JoomlaWorks team
+// ***Last update: November 14th, 2009***
+*/
+
+/* Common */
+a:active,
+a:focus {outline:0;}
+hr {line-height:0;height:0;border:none;border-bottom:2px dotted #ccc;padding:0;margin:16px 0;clear:both;}
+span#startOfPage {display:none;}
+
+
+
+/* ----- LISTING VIEW STYLING ----- */
+
+/* Disqus comments counter and anchor link */
+a.jwDisqusListingCounterLink,
+a.jwDisqusListingCounterLink:hover {background:url(comment0.png) no-repeat 0 50%;padding:0 0 0 20px;margin:0;}
+
+
+
+/* ----- ARTICLE VIEW STYLING ----- */
+
+/* Disqus comments counter and anchor link */
+div.jwDisqusArticleCounter {padding:4px 8px;margin:4px 0;border-top:1px dotted #ccc;border-bottom:1px dotted #ccc;background:#f7fafe;text-align:right;}
+a.jwDisqusArticleCounterLink,
+a.jwDisqusArticleCounterLink:hover {float:right;background:url(comment0.png) no-repeat 0 50%;padding:0 0 0 20px;margin:0;}
+
+/* Disqus comments form */
+div.jwDisqusForm {clear:both;}
+#disqus_thread {padding:8px;margin:8px 0;background:#F2F6FC;border:1px solid #ccc;}
+a.dsq-brlink {display:block;margin:0;padding:0 8px 16px 8px;text-align:center;}
+
+/* Back to top link */
+div.jwDisqusBackToTop {text-align:right;}
+div.jwDisqusBackToTop a,
+div.jwDisqusBackToTop a:hover {float:right;text-decoration:underline;}
+
+/* END */

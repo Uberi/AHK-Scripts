@@ -1,0 +1,379 @@
+body {
+	background: #5e3f09 url(pagetop_.png) repeat-x 0px 152px;
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	color: #686362;
+	line-height: 129%;
+}
+
+/* @group Typography */
+
+/* Link Colors */
+
+a {
+	color: #b5761c;
+	text-decoration: underline;
+}
+
+a:hover {
+	color: #4a0000;
+	text-decoration: underline;
+}
+li {
+	background: url(bullet00.gif) no-repeat 0 5px;
+}
+
+/* $headerstyle(graphic) */
+
+#header_graphic a img {
+	padding-top: 15px; /* Header Text distance from top */
+
+}
+
+/* Total header height */
+
+#header-wrap,#header_text,#header_graphic {
+	height: 110px;
+}
+
+/* Header background color/image */
+
+#header-wrap {
+	background: #3c2806 url(header_b.png) repeat-x;
+}
+
+/* $headerstyle(text) */
+
+#header_text h1, #header_text h1 a {
+	color: #fff; /* Header Text Color */
+	padding-top:15px ; /* Header Text distance from top */
+	font: bold 40px/50px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif; /* Header Text Typograhy */
+	letter-spacing: -1px;
+}
+#header_text h2 {
+	color: #ffcc2f; /* Slogan Text Color */
+	font: italic bold 18px/18px Geneva, Verdana, sans-serif;/* Slogan Text Typograhy */
+}
+
+/* Heading Styles */
+
+h1 {
+	color: #3c2806;
+}
+
+h2 {
+	color: #b5761c;
+}
+
+h3 {
+	color: #312105;
+}
+
+h4 {
+	color: #727272;
+}
+
+blockquote {
+	border: 1px solid #e7b724;
+	background-color: #fdeaa9;
+}
+
+.footer {
+	color: #6f6f6f;
+}
+
+/* @end */
+
+/* @group Newsflash Module */
+
+#headermod {
+	height: 98px; /* Module Height */
+	width: 500px; /* Module Width */
+	top:10px; /* Distance from top */
+	color: #ffcc2f; /* Text Color */
+}
+#headermod .contentheading,#headermod a.contentpagetitle,#headermod a {
+	color: #b5761c;/* Heading/Link Color */
+}
+
+#headermod td.contentheading,#headermod .moduletable h3 {
+	border-bottom: 1px solid #513608;/* Content/Module Heading Border */
+}
+
+/* @end */
+
+/* @group Joomla! Styles */
+
+/* Category Tables */
+td.sectiontableheader {
+color: #fff;
+background-color: #3c2806;
+font: 14px/20px Arial, Helvetica, Geneva, sans-serif;
+}
+table tr.sectiontableentry1 td,
+table td.sectiontableentry1 {
+background: #fff;
+padding: 4px;
+border-bottom: 1px solid #efe5d4;
+line-height: 155%;
+}
+table tr.sectiontableentry2 td,
+table td.sectiontableentry2 {
+background: #fff;
+padding: 4px;
+border-bottom: 1px solid #efe5d4;
+line-height: 155%;
+}
+/* Polls */
+table.pollstableborder td.sectiontableentry1 {
+color: #3d2518;
+background: #fef9e0;
+padding: 2px;
+border-bottom: 1px solid #fff;
+}
+table.pollstableborder td.sectiontableentry2 {
+color: #3d2518;
+background: #fef9e0;
+padding: 2px;
+border-bottom: 1px solid #fff;
+}
+table.pollstableborder td.sectiontableheader {
+padding: 8px;
+color: #fff;
+border: none;
+}
+table.pollstableborder tr.sectiontableentry1 td {
+border: none;
+}
+table.pollstableborder tr.sectiontableentry2 td {
+border: none;
+}
+/* Article Overflow */
+
+div.blog_more {
+	border-top: 1px solid #fef9e0;
+}
+
+div.blog_more ul li a {
+	border-bottom: 1px solid #fef9e0;
+}
+div.blog_more ul li a:hover {
+	border-bottom: 1px solid #fef9e0;
+	background-color: #ede8d1;
+}
+
+/* Mosimages */
+div.mosimage {
+	border: 1px solid #e7dec6;
+	background: #f2f3ee;
+}
+div.mosimage_caption {
+	color: #a09a8a;
+}
+/* Content Headings */
+a.contentpagetitle {
+	color: #470705;
+}
+a.contentpagetitle:hover {
+	color: #000;	
+}
+td.contentheading {
+	border-bottom: 1px solid #fef9e0;
+	color: #764d12;
+}
+.contentheading {
+	color: #5e3f09;
+}
+.componentheading {
+	color: #d8b027;
+}
+a.readon {
+	background: url(readon00.png) no-repeat left center;
+}
+span.small,.createdate,.modifydate {
+	font: 10px/10px Tahoma, Lucida, Verdana, sans-serif;
+	color: #c0b578;
+}
+.pagenav_next a,.pagenav_prev a {
+	border: 1px solid #786115;
+	background-color: #997b1b;
+	color: #efbf2c;
+}
+div.back_button a {
+	border: 1px solid #786115;
+	background-color: #997b1b;
+	color: #efbf2c;
+}
+.pagenav_next a:hover,.pagenav_prev a:hover,div.back_button a:hover {
+	border: 1px solid #b4921f;
+	background-color: #d3aa25;
+	color: #3c300a;
+}
+table.contenttoc {
+	background-color: #f5f2e1;
+	border: 1px solid #e8e6d8;
+}
+table.contenttoc th {
+color: #fff;
+background-color: #3c2806;
+}
+/* @end */
+
+/* Conditional Styles - Advanced Edits Only Below This Line */
+
+/* @group Style 4 Modules */
+
+/* Default Style */
+
+div.module h3,div.moduletable h3 {
+	border-bottom: 1px solid #fef9e0;
+	color: #b5761c;
+	background: url(mod_head.png) no-repeat left center;
+}
+
+
+/* Module "S1" Text Style */
+.moduleS1 {position:relative;margin:0 0 1em;padding:0;background: #FFCC2F url(topright.png) top right no-repeat;color: #000000;}
+div.moduleS1 div {background: url(topleft_.png) top left no-repeat;}
+div.moduleS1 div div {background: url(botleft_.png) bottom left no-repeat; height:1%;}
+div.moduleS1 div div div {background: url(botright.png) bottom right no-repeat;padding:10px;}
+div.moduleS1 div div div div {background:none;}
+
+
+/* Module Heading "S1" Style */
+div.moduleS1 h3 {padding: 0;line-height: 100%;height: auto;margin: 0 0 5px 0;font-weight: normal;text-indent: 0px;font-size: 16px;letter-spacing: normal;border-bottom: 1px solid #E7BA2B;color: #3C2806;}
+
+
+/* Module "S1" Link Color */
+div.moduleS1 a {color: #3d3007;text-decoration:underline;}
+div.moduleS1 a:hover {color: #3d3007;text-decoration:none;}
+
+
+
+/* Module "S1" List Styles */
+div.moduleS1 ul,div.moduleS1 ul.latestnewsS1,div.moduleS1 ul.mostreadS1 {list-style: none;margin: 0px;padding:0px;}div.moduleS1 ul li,div.moduleS1 ul.latestnewsS1 li,div.moduleS1 ul.mostreadS1 li {padding: 0px 0px 0px 10px;margin: 0px;background: url(bullet_S.gif) no-repeat 0px 5px;white-space: normal;}
+
+
+
+/* Module "S2" Text Style */
+.moduleS2 {position:relative;margin:0 0 1em;padding:0;background: #B5761C url(toprighu.png) top right no-repeat;color: #ffffff;}
+div.moduleS2 div {background: url(topleft0.png) top left no-repeat;}
+div.moduleS2 div div {background: url(botleft0.png) bottom left no-repeat; height:1%;}
+div.moduleS2 div div div {background: url(botrighu.png) bottom right no-repeat;padding:10px;}
+div.moduleS2 div div div div {background:none;}
+
+
+/* Module Heading "S2" Style */
+div.moduleS2 h3 {padding: 0;line-height: 100%;height: auto;margin: 0 0 5px 0;font-weight: normal;text-indent: 0px;font-size: 16px;letter-spacing: normal;border-bottom: 1px solid #CD8522;color: #ffffff;}
+
+
+/* Module "S2" Link Color */
+div.moduleS2 a {color: #fff;text-decoration:underline;}
+div.moduleS2 a:hover {color: #4a2900;text-decoration:none;}
+
+
+/* Module "S2" List Styles */
+div.moduleS2 ul,div.moduleS2 ul.latestnewsS2,div.moduleS2 ul.mostreadS2 {list-style: none;margin: 0px;padding:0px;}div.moduleS2 ul li,div.moduleS2 ul.latestnewsS2 li,div.moduleS2 ul.mostreadS2 li {padding: 0px 0px 0px 10px;margin: 0px;background: url(bullet_S.gif) no-repeat 0px 5px;white-space: normal;}
+
+
+/* Module "S3" Text Style */
+.moduleS3 {position:relative;margin:0 0 1em;padding:0;background: #3C2806 url(toprighv.png) top right no-repeat;color: #FFCC2F;}
+div.moduleS3 div {background: url(topleft1.png) top left no-repeat;}
+div.moduleS3 div div {background: url(botleft1.png) bottom left no-repeat; height:1%;}
+div.moduleS3 div div div {background: url(botrighv.png) bottom right no-repeat;padding:10px;}
+div.moduleS3 div div div div {background:none;}
+
+
+/* Module Heading "S3" Style */
+div.moduleS3 h3 {padding: 0;line-height: 100%;height: auto;margin: 0 0 5px 0;font-weight: normal;text-indent: 0px;font-size: 16px;letter-spacing: normal;border-bottom: 1px solid #583A09;color: #B5761C;}
+
+
+/* Module "S3" Link Color */
+div.moduleS3 a {color: #fcf5de;text-decoration:underline;}
+div.moduleS3 a:hover {color: #fcf5de;text-decoration:none;}
+
+
+
+/* Module "S3" List Styles */
+div.moduleS3 ul,div.moduleS3 ul.latestnewsS3,div.moduleS3 ul.mostreadS3 {list-style: none;margin: 0px;padding:0px;}div.moduleS3 ul li,div.moduleS3 ul.latestnewsS3 li,div.moduleS3 ul.mostreadS3 li {padding: 0px 0px 0px 10px;margin: 0px;background: url(bullet_S.gif) no-repeat 0px 5px;white-space: normal;}
+
+
+
+/* @end */
+
+/* @group Structural */
+
+.main-top-both,.main-top-left-only {background: url(top_has_.png) no-repeat center bottom;}
+.main-top-wide,.main-top-right-only {background: url(top_wide.png) no-repeat center bottom;}
+#mainbody-both	{background: url(mid_left.png) repeat-y center top;}
+#mainbody-left-only	{background: url(mid_left.png) repeat-y center top;}
+#mainbody-wide,.mainbody-wide,#mainbody-right-only	{background: url(mid_wide.png) repeat-y center top;}
+
+.bottom-both,.bottom-left-only	{background: url(bot_has_.png) no-repeat center top;}
+.bottom-wide,.bottom-right-only	{background: url(bot_wide.png) no-repeat center top;}
+.tplcright a {color: #fff;display: block;margin: 4px 0px 2px 5px;text-align: center;background: url(arrowl00.png) no-repeat left center;text-indent: -5000em;width: 75px;height: 12px;line-height: 12px;padding: 0px;}
+ul.checklist li {background: url(checklis.png) no-repeat left center;}
+
+/* @end */
+
+/* @group Top Menu */
+
+.menubar {
+	background: url(navconta.png) repeat-x center top;
+}
+#navmenu {
+	background: url(navconta.png) no-repeat left top;
+}
+#navmenu li {
+	background: url(nav_norm.png) no-repeat bottom left;
+}
+#navmenu li a {
+	background: url(nav_norn.png) no-repeat bottom right;
+	color: #fff;
+}
+div#navmenu li:hover, div#navmenu li.iehover {
+	background: url(nav_hove.png) no-repeat bottom left;
+}
+div#navmenu li:hover a, div#navmenu li.iehover a {
+	background: url(nav_hove.png) no-repeat bottom right;
+	color: #660000;
+}
+div#navmenu li.active {
+	background: url(nav_acti.png) no-repeat bottom left;
+}
+div#navmenu li.active a {
+	background: url(nav_actj.png) no-repeat bottom right;
+	color: #6f4a10;
+}
+
+/* @end */
+
+/* @group Left Nav */
+
+#leftcol ul#mainlevel,#rightcol ul#mainlevel,
+#leftcol ul#mainlevel-sidenav,#rightcol ul#mainlevel-sidenav {
+	list-style: none;
+}
+
+#leftcol a.mainlevel,#rightcol a.mainlevel,
+#leftcol a.mainlevel-sidenav,#rightcol a.mainlevel-sidenav {
+	background: url(leftnav_.png) no-repeat left center;
+	color: #540609;
+}
+#leftcol a.mainlevel:hover,#rightcol a.mainlevel:hover,
+#leftcol a.mainlevel-sidenav:hover,#rightcol a.mainlevel-sidenav:hover {
+	background: url(leftnav0.png) no-repeat left center;
+	color: #fff;
+}
+#leftcol a#active_menu.mainlevel,#leftcol a#active_menu.mainlevel:hover,
+#rightcol a#active_menu.mainlevel,#rightcol a#active_menu.mainlevel:hover,
+#leftcol a#active_menu-sidenav.mainlevel-sidenav,#leftcol a#active_menu-sidenav.mainlevel-sidenav:hover,
+#rightcol a#active_menu-sidenav.mainlevel-sidenav,#rightcol a#active_menu.mainlevel-sidenav:hover {
+	background: url(leftnav1.png) no-repeat left center;
+	color: #fff;
+}
+a.sublevel,a.sublevel-sidenav {
+	color: #fff;
+}
+/* @end */

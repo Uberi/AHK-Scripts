@@ -1,0 +1,649 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en" lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <!-- Skin = Monaco.php -->
+		<meta name="description" content="In the server settings you have an option to tell if hkml files being interpreted. when turnoed to on, and being requested from the webserver, it will load the whatvernameithas.hkml file and starts interpreting  its content." />
+		<meta name="generator" content="MediaWiki 1.15.5" />
+		<meta name="keywords" content="Sparrow Wiki,sparrow,HKML,HKML: HelloWorld" />
+		<link rel="canonical" href="/wiki/HKML" />
+		<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/index.php?title=HKML&amp;action=edit" />
+		<link rel="edit" title="Edit this page" href="/index.php?title=HKML&amp;action=edit" />
+		<link rel="apple-touch-icon" href="http://images.wikia.com/sparrow/images/b/bc/Wiki.png" />
+		<link rel="shortcut icon" href="http://images1.wikia.nocookie.net/sparrow/images/6/64/Favicon.ico" />
+		<link rel="search" type="application/opensearchdescription+xml" href="/opensearch_desc.php" title="Sparrow Wiki (en)" />
+		<link rel="copyright" href="http://community.wikia.com/wiki/Wikia:Licensing" />
+		<link rel="alternate" type="application/rss+xml" title="Sparrow Wiki RSS feed" href="/index.php?title=Special:RecentChanges&amp;feed=rss" />
+		<link rel="alternate" type="application/atom+xml" title="Sparrow Wiki Atom feed" href="/index.php?title=Special:RecentChanges&amp;feed=atom" />
+		<!--[if lt IE 7]><script type="text/javascript">var wgShowIE6PhaseOutMessage = true;</script><![endif]-->
+		<script type="text/javascript">/*<![CDATA[*/
+		var wgNow = new Date();
+		/*]]>*/</script>
+		<title>HKML - Sparrow Wiki</title>
+		<script type= "text/javascript">/*<![CDATA[*/
+		var skin = "monaco";
+		var stylepath = "http://images.wikia.com/common/releases_201009.5/skins";
+		var wgArticlePath = "/wiki/$1";
+		var wgScriptPath = "";
+		var wgScript = "/index.php";
+		var wgVariantArticlePath = false;
+		var wgActionPaths = {};
+		var wgServer = "http://sparrow.wikia.com";
+		var wgCanonicalNamespace = "";
+		var wgCanonicalSpecialPageName = false;
+		var wgNamespaceNumber = 0;
+		var wgPageName = "HKML";
+		var wgTitle = "HKML";
+		var wgAction = "view";
+		var wgArticleId = "2001";
+		var wgIsArticle = true;
+		var wgUserName = null;
+		var wgUserGroups = null;
+		var wgUserLanguage = "en";
+		var wgContentLanguage = "en";
+		var wgBreakFrames = false;
+		var wgCurRevisionId = 3762;
+		var wgVersion = "1.15.5";
+		var wgEnableAPI = true;
+		var wgEnableWriteAPI = true;
+		var wgEnableNewParser = true;
+		var wgSeparatorTransformTable = ["", ""];
+		var wgDigitTransformTable = ["", ""];
+		var wgMWSuggestTemplate = "http://sparrow.wikia.com/api.php?action=opensearch\x26search={searchTerms}\x26namespace={namespaces}\x26suggest";
+		var wgDBname = "sparrow";
+		var wgSearchNamespaces = [0, 500, 502];
+		var wgMWSuggestMessages = ["with suggestions", "no suggestions"];
+		var wgRestrictionEdit = [];
+		var wgRestrictionMove = [];
+		var wgEnableAdsInContent = 1;
+		var sassHash = "565f0ed047ac0a7976304c9862b8fbb701c904ff";
+		var wgCdnRootUrl = "http://images1.wikia.nocookie.net";
+		var sassParams = "color-body=%232B54B5/color-page=%23FFFFFF/color-buttons=%230038D8/color-links=%230148C2/color-header=%23103CA2/background-image=%2Fskins%2Foasis%2Fimages%2Fthemes%2Fsapphire.png/background-align=center/background-tiled=false";
+		var wgCatId = 12;
+		var wgParentCatId = 0;
+		var wgCurse = null;
+		var wgCityId = "24133";
+		var wgID = 24133;
+		var wgEnableAjaxLogin = true;
+		var wgDB = "sparrow";
+		var wgBlankImgUrl = "http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif";
+		var wgPrivateTracker = false;
+		var wgMainpage = "Sparrow Wiki";
+		var wgIsMainpage = false;
+		var wgStyleVersion = "27528";
+		var themename = "sapphire";
+		var wgExtensionsPath = "http://images.wikia.com/common/releases_201009.5/extensions";
+		var wgSitename = "Sparrow Wiki";
+		var wgMenuMore = "more...";
+		var wgAfterContentAndJS = [];
+		var wgMWrevId = null;
+		var wgYUIPackageURL = "http://sparrow.wikia.com/static/js/yui/cea01a9656ba4c19c7b24122cac4d3e5.js";
+		var wgRevisionId = 3762;
+		var wgWikiFactoryTagIds = [125];
+		var wgWikiFactoryTagNames = ["technology"];
+		var wgDisableAnonymousEditig = false;
+		var ls_template_ns = "Template";
+		var ls_file_ns = "File";
+		var wgCookieDomain = ".wikia.com";
+		var wgCookiePath = "/";
+		var wgAdsInterstitialsEnabled = null;
+		var wgAdsInterstitialsPagesBeforeFirstAd = 5;
+		var wgAdsInterstitialsPagesBetweenAds = 8;
+		var wgInterstitialPath = "http://sparrow.wikia.com/index.php?title=Special:Interstitial\x26u=";
+		var wgReturnTo = "Sparrow Wiki";
+		var wgReturnToQuery = "";
+		var wgEnableLoginAPI = true;
+		var wgPageQuery = "";
+		var wgComboAjaxLogin = true;
+		var wgIsLogin = false;
+		var wgEnableImageLightboxExt = true;
+		var wgEnableWikiaFollowedPages = true;
+		var wgFollowedPagesPagerLimit = 15;
+		var wgFollowedPagesPagerLimitAjax = 600;
+		var wgCollectQuantcastSegments = true;
+		var wgIntegrateQuantcastSegments = true;
+		var pr_msg_exceeded = "The maximum number of characters in the message field is 512.\nPlease rewrite your message.";
+		var pr_msg_exchead = "Message is too long";
+		var WikiaEnableNewCreatepage = true;
+		var WikiaDisableDynamicLinkCreatePagePopup = false;
+		var ContentNamespacesText = [""];
+		var CreatePageDialogWidth = 400;
+		var fbAppId = "91f24e0d4f81427add569e7f74d1a569";
+		var fbUseMarkup = true;
+		var fbLogo = true;
+		var fbLogoutURL = "/index.php?title=Special:UserLogout\x26returnto=HKML";
+		var csAddCategoryButtonText = "Add category";
+		var csInfoboxCaption = "Category options";
+		var csInfoboxCategoryText = "Provide the name of the category:";
+		var csInfoboxSortkeyText = "Alphabetize this article on the \"$1\" category page under the name:";
+		var csInfoboxSave = "Save";
+		var csEmptyName = "Provide category name (part before |)";
+		var csDefaultSort = "HKML";
+		var csCategoryNamespaces = "Category|Category";
+		var csDefaultNamespace = "Category";
+		var csCodeView = "Code view";
+		var csVisualView = "Visual view";
+		var TOCimprovementsEnabled = "1";
+		/*]]>*/</script>
+
+<!-- GetCoreCSS -->
+<!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=27528&amp;type=CoreCSS&amp;themename=sapphire&amp;rtl=&amp;StaticChute=&amp;browser=IElt7" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=27528&amp;type=CoreCSS&amp;themename=sapphire&amp;rtl=&amp;StaticChute=&amp;browser=IEeq7" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=27528&amp;type=CoreCSS&amp;themename=sapphire&amp;rtl=&amp;StaticChute=&amp;browser=IEeq8" /><![endif]-->
+<!--[if !IE]>--><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=27528&amp;type=CoreCSS&amp;themename=sapphire&amp;rtl=&amp;StaticChute=&amp;browser=notIE" /><!--<![endif]-->
+<!-- GetExtensionsCSS -->
+<!-- GetSiteCSS --><link rel="stylesheet" type="text/css" href="/__wikia_combined/cb=127528&amp;type=SiteCSS&amp;themename=sapphire&amp;rtl=" />
+<!-- GetUserCSS -->	</head>
+
+	<body class="mediawiki ltr ns-0 ns-subject page-HKML TOCimprovements loggedout color2 wikiaSkinMonaco action_view " id="body">
+	<form action="" method="post" name="userajaxloginform" id="userajaxloginformhide" style="display: none">
+			<input type="text" name="wpName" id="wpName1Ajax" tabindex="101" size="20" />
+			<input type="password" name="wpPassword" id="wpPassword1Ajax" tabindex="102" size="20" />
+			<input type="checkbox" name="wpRemember" id="wpRemember1Ajax" tabindex="104" value="1" />
+		</form>
+	<!-- HEADER -->
+		<div id="wikia_header" class="reset color2">
+			<div class="monaco_shrinkwrap">
+			<div id="wikiaBranding">
+			<div id="wikia_logo"><a rel="nofollow" href="http://www.wikia.com/Wikia">Wikia</a></div>						<button id="headerButtonHub" class="header-button color1">Technology<img src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif" /></button>
+
+			</div>
+<div id="requestWikiData"><a rel="nofollow" href="http://www.wikia.com/Special:CreateWiki" id="request_wiki" class="wikia-button">Create a new wiki</a>&nbsp;<span id="request_wiki_ad"></span></div>			<div id="userData">
+<span id="fbconnect"><a href="#" class="fb_button fb_button_small"><span class="fb_button_text">Connect</span></a></span>				<span id="userLogin">
+					<a rel="nofollow" class="ajaxLogin" id="login" href="/index.php?title=Special:Signup&amp;returnto=HKML&amp;type=login">Log in</a>
+				</span>
+
+					<a rel="nofollow" class="wikia-button ajaxRegister" id="register" href="/index.php?title=Special:Signup&amp;returnto=HKML&amp;type=signup">Create an account</a>
+
+		</div>
+		</div>
+	</div>
+
+	<div class="monaco_shrinkwrap"><div id="background_accent1"></div></div>
+	<div style="position: relative;"><div id="background_accent2"></div></div>
+
+		<div id="background_strip" class="reset">
+			<div class="monaco_shrinkwrap">
+
+			<div id="accent_graphic1"></div>
+			<div id="accent_graphic2"></div>
+			<div id="wiki_logo" style="background-image: url(http://images.wikia.com/sparrow/images/b/bc/Wiki.png);"><a href="/wiki/Sparrow_Wiki" accesskey="z">Sparrow Wiki</a></div>
+			<!--[if lt IE 7]>
+			<style type="text/css">
+				#wiki_logo {
+					background-image: none !important;
+					filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://images.wikia.com/sparrow/images/b/bc/Wiki.png', sizingMethod='image');
+				}
+			</style>
+			<![endif]-->
+			</div>
+		</div>
+		<!-- /HEADER -->
+
+		<!-- PAGE -->
+
+	<div class="monaco_shrinkwrap" id="monaco_shrinkwrap_main">
+		<div id="wikia_page">
+					<div id="page_bar" class="reset color1 clearfix">
+				<ul id="page_controls">
+		  							  <li id="control_edit" class=""><img src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif" class="sprite edit" alt="edit" /><a rel="nofollow" id="ca-edit" href="/index.php?title=HKML&amp;action=edit"  title="You can edit this page. Please use the preview button before saving. [e]" accesskey="e">Edit this page</a></li>
+		  							  <li id="control_history" class=""><img src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif" class="sprite history" alt="history" /><a rel="nofollow" id="ca-history" href="/index.php?title=HKML&amp;action=history"  title="Past versions of this page [h]" accesskey="h">History</a></li>
+		  							  <li id="control_watch" class=""><img src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif" class="sprite watch" alt="watch" /><a rel="nofollow" id="ca-watch" href="/index.php?title=HKML&amp;action=watch"  title="Follow this page [w]" accesskey="w">Follow</a></li>
+		  							  <li id="control_share_feature" class="disabled"><img src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif" class="sprite share" alt="share_feature" /><a rel="nofollow" id="ca-share_feature" href="#" >Share this article</a></li>
+		  						  </ul>
+						  <ul id="page_tabs">
+		  							  <li class="selected"><a href="/wiki/HKML" id="ca-nstab-main"  title="View the content page [c]" accesskey="c" class="selected">Article</a></li>
+		  							  <li class="new"><a href="/index.php?title=Talk:HKML&amp;action=edit&amp;redlink=1" id="ca-talk"  title="Discussion about the content page [t]" accesskey="t" class="new">Discussion</a></li>
+		  				</ul>
+			</div>
+		        	<!-- #### BEGIN AdEngine::AdEngine::getSetupHtml ####-->
+<!-- #### END AdEngine::AdEngine::getSetupHtml ####-->
+					<!-- ARTICLE -->
+
+			<div id="article" >
+				<a name="top" id="top"></a>
+								<h1 class="firstHeading">HKML<span class="editsection-upper noprint"><a href="/index.php?title=HKML&amp;action=edit" title="HKML" onclick="WET.byStr(&quot;articleAction/topedit&quot;)" rel="nofollow" id="te-editsection-noprompt" class="wikia-button">edit this page</a></span></h1>				<div id="bodyContent">
+					<h3 id="siteSub">From Sparrow Wiki</h3>
+					<div id="contentSub"></div>
+																				<!-- #### BEGIN AdEngine::AdEngine::getSetupHtml ####-->
+<!-- #### END AdEngine::AdEngine::getSetupHtml ####-->
+<div id="TOP_LEADERBOARD" class="wikia-ad noprint"><div id="Liftium_728x90_1_php"><iframe width="728" height="90" id="TOP_LEADERBOARD_iframe" class="" noresize="true" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" style="border:none" target="_blank"></iframe></div></div>					
+					<!-- start content -->
+					
+				<div id="fb-root"></div>
+				<script>
+					(function(){var e=document.createElement("script");e.type="text/javascript";e.src="http://images1.wikia.nocookie.net/__cb25182/common/extensions/FBConnect/fbsdk_core.js?27528";document.getElementById("fb-root").appendChild(e)})();
+				</script>
+<div class="thumb tright"><div class="thumbinner" style="width:252px;"><a href="/wiki/File:Sparrow-diagram.gif" class="image" title="Sparrow Core Operational Flow"><img alt="" src="http://images1.wikia.nocookie.net/__cb20090521230757/sparrow/images/thumb/3/33/Sparrow-diagram.gif/250px-Sparrow-diagram.gif" width="250" height="246" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Sparrow-diagram.gif" class="internal" title="View image details"><img src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif" class="sprite details" width="16" height="16" alt="" /></a></div>Sparrow Core Operational Flow</div><div class="picture-attribution"><img src="http://images4.wikia.nocookie.net/__cb20100107191647/messaging/images/thumb/1/19/Avatar.jpg/16px-Avatar.jpg" width="16" height="16" class="avatar" alt="DerRaphael" />Added by <a href="/wiki/User:DerRaphael">DerRaphael</a></div></div></div>
+<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a rel="nofollow" href="#How_does_it_work.3F"><span class="tocnumber">1</span> <span class="toctext">How does it work?</span></a></li>
+<li class="toclevel-1"><a rel="nofollow" href="#Server_Variables"><span class="tocnumber">2</span> <span class="toctext">Server Variables</span></a></li>
+<li class="toclevel-1"><a rel="nofollow" href="#Template_Style"><span class="tocnumber">3</span> <span class="toctext">Template Style</span></a></li>
+<li class="toclevel-1"><a rel="nofollow" href="#Other_languages"><span class="tocnumber">4</span> <span class="toctext">Other languages</span></a></li>
+<li class="toclevel-1"><a rel="nofollow" href="#GUI_elements"><span class="tocnumber">5</span> <span class="toctext">GUI elements</span></a></li>
+<li class="toclevel-1"><a rel="nofollow" href="#GDI_.28Serverside_Graphics.29"><span class="tocnumber">6</span> <span class="toctext">GDI (Serverside Graphics)</span></a></li>
+<li class="toclevel-1"><a rel="nofollow" href="#Examples"><span class="tocnumber">7</span> <span class="toctext">Examples</span></a></li>
+</ul>
+</td></tr></table><script type="text/javascript">wgAfterContentAndJS.push(function() { if (window.showTocToggle) {  window.tocShowText = "show";  window.tocHideText = "hide";  showTocToggle();}});</script>
+<a rel="nofollow" name="How_does_it_work.3F" id="How_does_it_work.3F"></a><h3><span class="editsection">[<a href="/index.php?title=HKML&amp;action=edit&amp;section=1" title="Edit section: How does it work?" rel="nofollow">edit</a>]</span> <span class="mw-headline"> How does it work? </span></h3>
+<p>In the server settings you have an option to tell if hkml files being interpreted. when turnoed to on, and being requested from the webserver, it will load the whatvernameithas.hkml file and starts interpreting  its content.  
+</p><p>Basically You may imagine this process as this
+</p><p>it looks for sections enclosed in <b>&lt;?ahk&nbsp;?&gt;</b> brackets.   
+</p><p>The content of such a tag is - you guess it a plain AHK script. so a basic HKML script would look like this: 
+</p>
+<pre>&lt;html&gt;&lt;head&gt;
+&lt;title&gt;HKML TestFile&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;?ahk echo("Hello World from AHK embedded in HTML")&nbsp;?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><br />
+</p><p>of course these sections may include more than just one command. you can even use include files - not directly, a particular include directory has to be specified, so a direct access to includefiles is not possible. atm the server is in a very early stage. 
+</p><p>the scripts are not checked. nor is its content. from what i can say a path traversal hack wont work, but is not fully exploited yet. each scriplet has a set of one-way global accessible variables.
+</p><p><br />
+</p>
+<a rel="nofollow" name="Server_Variables" id="Server_Variables"></a><h3><span class="editsection">[<a href="/index.php?title=HKML&amp;action=edit&amp;section=2" title="Edit section: Server Variables" rel="nofollow">edit</a>]</span> <span class="mw-headline"> Server Variables </span></h3>
+<p>each script gets a fresh copy of selected serverside variables but is not abled to change these back on server. these variables have a $_ prefix and come in different categories:  
+</p><p><b>$_GET</b> variables which include any passed variables sent with teh request  
+</p><p><b>$_POST</b> variables, from any forms uploaded  
+</p><p><b>$_FILES</b> (not fully working atm - therefor disabled in 0.1.3)  
+</p><p><b>$_SERVER</b> variables which have some vital information like referrer etc. 
+</p><p><br />
+the server accepts POST and GET requests. File transfers will be possible, but are disabled for now (the server crashes, thats why) if u ever done something in PHP, you will find, that requests posted (aswell as set via get) are stored flobally in $_GET[Varname] Variables  Same with $_POST[Varname] On my list i have things like header injection - so the servers header content can be changed from within a script, superglobals - variables, that will be accessible from different code segments on _ONE_ hkml file.  
+</p><p><br />
+</p>
+<a rel="nofollow" name="Template_Style" id="Template_Style"></a><h3><span class="editsection">[<a href="/index.php?title=HKML&amp;action=edit&amp;section=3" title="Edit section: Template Style" rel="nofollow">edit</a>]</span> <span class="mw-headline"> Template Style </span></h3>
+<p>Right now, doing some code like:
+</p>
+<pre>&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;HKML TestFile&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;?ahk a&nbsp;:= 5&nbsp;?&gt;
+&lt;p&gt;Some HTML content&lt;/p&gt;
+&lt;?ahk echo(a)&nbsp;?&gt;
+&lt;/body&gt;&lt;/html&gt;
+</pre>
+<p>will simply not work - technically these are two scripts and run in seperate adress spaces. i need to resetup my IPC so server works as a variable buffer for scripts. along with that, cookie-session management and header injection will become possible. 
+</p><p><br />
+</p><p><br />
+</p>
+<a rel="nofollow" name="Other_languages" id="Other_languages"></a><h3><span class="editsection">[<a href="/index.php?title=HKML&amp;action=edit&amp;section=4" title="Edit section: Other languages" rel="nofollow">edit</a>]</span> <span class="mw-headline"> Other languages </span></h3>
+<p>php or asp like vbs wont work, unless someone writes a wrapper for that.  <br />
+</p><p><br />
+</p><p><br />
+</p>
+<a rel="nofollow" name="GUI_elements" id="GUI_elements"></a><h3><span class="editsection">[<a href="/index.php?title=HKML&amp;action=edit&amp;section=5" title="Edit section: GUI elements" rel="nofollow">edit</a>]</span> <span class="mw-headline"> GUI elements </span></h3>
+<p>i have setup a technical demo, which is also seen from the screenshot above, showing environment variables in a hkml file which were accessed at runtime of the script - not at that from server. besides each script may do whatever AHK script can do. control applications, create GUIS (no these are not send back to client, 'd be cool though  ), whatever ... all GUI actions will physically happen on the server. the client only receives the html (content whatever) you sent back to it. 
+</p><p><br />
+</p>
+<a rel="nofollow" name="GDI_.28Serverside_Graphics.29" id="GDI_.28Serverside_Graphics.29"></a><h3><span class="editsection">[<a href="/index.php?title=HKML&amp;action=edit&amp;section=6" title="Edit section: GDI (Serverside Graphics)" rel="nofollow">edit</a>]</span> <span class="mw-headline"> <br />GDI (Serverside Graphics) </span></h3>
+<p>it is not working atm, but i have plans to include a demo showing how to use GDI+ libraries to dynamically create graphics on the fly and send these back to client. <br />there is a basic interface for a plugin structure but this needs more improvement, so plugins may be loaded at runtime (enabled or disabled)
+</p><p><br />
+</p><p><br />
+</p>
+<a rel="nofollow" name="Examples" id="Examples"></a><h3><span class="editsection">[<a href="/index.php?title=HKML&amp;action=edit&amp;section=7" title="Edit section: Examples" rel="nofollow">edit</a>]</span> <span class="mw-headline"> Examples </span></h3>
+<p>Have a look at the <a href="/wiki/HKML:_HelloWorld" title="HKML: HelloWorld">Hello World</a> Example
+</p><!-- 
+NewPP limit report
+Preprocessor node count: 11/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+--><!-- Saved in parser cache with key sparrow:pcache:idhash:2001-0!1!0!!en!2 and timestamp 20100930003522 --><div class="printfooter">
+Retrieved from "<a href="http://sparrow.wikia.com/wiki/HKML">http://sparrow.wikia.com/wiki/HKML</a>"</div>
+<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories" rel="nofollow">Categories</a>:&#32;<span dir='ltr'><a href="/wiki/Category:Sparrow" title="Category:Sparrow">Sparrow</a></span> | <span dir='ltr'><a href="/index.php?title=Category:HKML&amp;action=edit&amp;redlink=1" class="new" title="Category:HKML (page does not exist)">HKML</a></span></div> <div id="csAddCategorySwitch" class="noprint" style="background:#DDD;position:relative;float:left;border: 1px solid #BBB;-moz-border-radius:3px;-webkit-border-radius:3px;padding:0 5px;line-height: 16px;"><img src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif" class="sprite-small add" /><a href="#" onfocus="this.blur();" style="color:#000;font-size:0.85em;text-decoration:none;display:inline-block;" rel="nofollow">Add category</a></div></div>					<!-- end content -->
+										<div class="visualClear"></div>
+				</div>
+
+				<!--google_ad_section_end-->
+				<!--contextual_targeting_end-->
+
+			</div>
+			<!-- /ARTICLE -->
+			
+			<!-- ARTICLE FOOTER -->
+			<div id="articleFooter" class="reset">
+				<table cellspacing="0">
+					<tr>
+						<td class="col1">
+							<ul class="actions" id="articleFooterActions">
+								<li><a rel="nofollow" id="fe_edit_icon" href="/index.php?title=HKML&amp;action=edit"><img src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif" id="fe_edit_img" class="sprite edit" alt="Edit this page" /></a> <div>Improve Sparrow Wiki by <a id="fe_edit_link" rel="nofollow" href="/index.php?title=HKML&amp;action=edit">editing this page</a></div></li>
+								<li><a id="fe_user_icon" rel="nofollow" href="/wiki/User:DerRaphael"><img src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif" id="fe_user_img" class="sprite user" alt="View user page" /></a> <div><a id="fe_user_link" rel="nofollow" href="/wiki/User:DerRaphael">DerRaphael</a> made an edit on May 21, 2009</div></li>
+							</ul>
+							<ul id="articleFooterActions3" class="actions clearfix">
+								<li id="fe_history"><a rel="nofollow" id="fe_history_icon" href="/index.php?title=HKML&amp;action=history"><img src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif" id="fe_history_img" class="sprite history" alt="History" /></a> <div><a id="fe_history_link" rel="nofollow" href="/index.php?title=HKML&amp;action=history">History</a></div></li>
+								<li id="fe_recent"><a rel="nofollow" id="fe_recent_icon" href="/wiki/Special:RecentChangesLinked/HKML"><img src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif" id="fe_recent_img" class="sprite recent" alt="Related changes" /></a> <div><a id="fe_recent_link" rel="nofollow" href="/wiki/Special:RecentChangesLinked/HKML">Related changes</a></div></li></ul><ul id="articleFooterActions4" class="actions clearfix">
+								<li id="fe_permalink"><a rel="nofollow" id="fe_permalink_icon" href="/index.php?title=HKML&amp;oldid=3762"><img src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif" id="fe_permalink_img" class="sprite move" alt="Permanent link" /></a> <div><a id="fe_permalink_link" rel="nofollow" href="/index.php?title=HKML&amp;oldid=3762">Permanent link</a></div></li>
+								<li id="fe_whatlinkshere"><a rel="nofollow" id="fe_whatlinkshere_icon" href="/wiki/Special:WhatLinksHere/HKML"><img src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif" id="fe_whatlinkshere_img" class="sprite pagelink" alt="What links here" /></a> <div><a id="fe_whatlinkshere_link" rel="nofollow" href="/wiki/Special:WhatLinksHere/HKML">What links here</a></div></li></ul>						</td>
+						<td class="col2">
+							<ul class="actions" id="articleFooterActions2">
+								<li><a rel="nofollow" id="fe_random_icon" href="/wiki/Special:Random"><img src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif" id="fe_random_img" class="sprite random" alt="Random page" /></a> <div><a rel="nofollow" id="fe_random_link" href="/wiki/Special:Random">View random page</a></div></li>
+								<li><img src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif" id="fe_report_img" class="sprite error" alt="Report a problem with this page" /> <div><a style="cursor:pointer" id="fe_report_link">Report a problem with this page</a></div></li>
+
+								<li><img src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif" id="fe_sharefeature_img" class="sprite share" alt="Share this article" /> <div><a style="cursor:pointer" id="fe_sharefeature_link">Share this article</a></div></li>
+							</ul>
+		<div class="clearfix" id="star-rating-row">
+		  <strong>Rate this page:</strong>
+		  		  <div id="star-rating-wrapper">
+		    <ul id="star-rating" class="star-rating" rel="20">
+			<li style="width: 0px;" id="current-rating" class="current-rating"><span>0/5</span></li>
+			<li><a rel="nofollow" class="one-star" id="star1" title="1/5"><span>1</span></a></li>
+			<li><a rel="nofollow" class="two-stars" id="star2" title="2/5"><span>2</span></a></li>
+			<li><a rel="nofollow" class="three-stars" id="star3" title="3/5"><span>3</span></a></li>
+			<li><a rel="nofollow" class="four-stars" id="star4" title="4/5"><span>4</span></a></li>
+			<li><a rel="nofollow" class="five-stars" id="star5" title="5/5"><span>5</span></a></li>
+		    </ul>
+		    <span style="display: none;" id="unrateLink"><a rel="nofollow" id="unrate" href="#">Unrate it</a></span>
+		  </div>
+		</div>
+								</td>
+					</tr>
+				</table>
+			</div>
+			<!-- /ARTICLE FOOTER -->
+
+		</div>
+		<!-- /PAGE -->
+<!-- Begin Analytics -->
+<!-- Start for GA_Urchin, page_view -->
+<script type="text/javascript" src="http://www.google-analytics.com/urchin.js"></script>
+<script type="text/javascript">_uff=0;_uacct="UA-288915-1";urchinTracker();</script>
+<!-- Start for GA_Urchin, hub -->
+<script type="text/javascript">_uff=0;_uacct="UA-288915-2";urchinTracker("/Technology");</script>
+<!-- Start for GA_Urchin, onewiki -->
+<!-- No tracking for this wiki -->
+<!-- Start for GA_Urchin, pagetime -->
+<script type="text/javascript">
+			if (typeof window.wgNow == "object"){
+				var now = new Date();
+				var ms = (now.getTime() - window.wgNow.getTime()) / 1000;
+     			        var pageTime = Math.floor(ms * 10) / 10; // Round to 1 decimal
+				var slashtime = "/lean_monaco/" + pageTime.toString().replace(/\./, "/");
+				_uff=0;
+				_uacct="UA-288915-42";
+				urchinTracker(slashtime);
+			}
+			</script>
+<!-- Start for GA_Urchin, noads -->
+<script type="text/javascript">
+if(document.cookie.match(/wikia-test=selected/)) {
+_uff=0;
+_uacct="UA-288915-45";
+urchinTracker();
+} else if(document.cookie.match(/wikia-test=control/)) {
+_uff=0;
+_uacct="UA-288915-46";
+urchinTracker();
+}
+</script>
+<!-- Start for GA_Urchin, female -->
+<script type="text/javascript">
+if(document.cookie.match(/id%22%3A%222463/)) {
+_uff=0;
+_uacct="UA-288915-47";
+urchinTracker();
+}
+</script>
+<!-- End Analytics -->
+
+
+		<noscript><link rel="stylesheet" type="text/css" href="http://images.wikia.com/common/releases_201009.5/skins/monaco/css/noscript.css?27528" /></noscript>
+		<script type="text/javascript">/*<![CDATA[*/var WikiaScriptLoader=function(){var b=navigator.userAgent.toLowerCase();this.useDOMInjection=b.indexOf("opera")!=-1||b.indexOf("firefox")!=-1;this.isIE=b.indexOf("opera")==-1&&b.indexOf("msie")!=-1;this.headNode=document.getElementsByTagName("HEAD")[0]}; WikiaScriptLoader.prototype={loadScript:function(b,c){this.useDOMInjection?this.loadScriptDOMInjection(b,c):this.loadScriptDocumentWrite(b,c)},loadScriptDOMInjection:function(b,c){var a=document.createElement("script");a.type="text/javascript";a.src=b;var d=function(){a.onloadDone=true;typeof c=="function"&&c()};a.onloadDone=false;a.onload=d;a.onreadystatechange=function(){a.readyState=="loaded"&&!a.onloadDone&&d()};this.headNode.appendChild(a)},loadScriptDocumentWrite:function(b,c){document.write('<script src="'+ b+'" type="text/javascript"><\/script>');b=function(){typeof c=="function"&&c()};typeof c=="function"&&this.addHandler(window,"load",b)},loadScriptAjax:function(b,c){var a=this,d=this.getXHRObject();d.onreadystatechange=function(){if(d.readyState==4){var e=d.responseText;if(a.isIE)eval(e);else{var f=document.createElement("script");f.type="text/javascript";f.text=e;a.headNode.appendChild(f)}typeof c=="function"&&c()}};d.open("GET",b,true);d.send("")},loadCSS:function(b,c){var a=document.createElement("link"); a.rel="stylesheet";a.type="text/css";a.media=c||"";a.href=b;this.headNode.appendChild(a)},addHandler:function(b,c,a){if(window.addEventListener)window.addEventListener(c,a,false);else window.attachEvent&&window.attachEvent("on"+c,a)},getXHRObject:function(){var b=false;try{b=new XMLHttpRequest}catch(c){for(var a=["Msxml2.XMLHTTP.6.0","Msxml2.XMLHTTP.3.0","Msxml2.XMLHTTP","Microsoft.XMLHTTP"],d=a.length,e=0;e<d;e++){try{b=new ActiveXObject(a[e])}catch(f){continue}break}}return b}};window.wsl=new WikiaScriptLoader;/*]]>*/</script>
+		<script type="text/javascript">/*<![CDATA[*/
+			(function(){
+				var jsReferences = ["\/__wikia_combined\/cb=27528&type=CoreJS"];
+				var len = jsReferences.length;
+				for(var i=0; i<len; i++)
+					wsl.loadScript(jsReferences[i]);
+			})();
+		/*]]>*/</script>		<style type="text/css">		/* Add a pretty logo to Facebook links */
+		.mw-fblink {
+			background: url(http://static.ak.fbcdn.net/images/icons/favicon.gif) top left no-repeat !important;
+			padding-left: 17px !important;
+		}</style><script type="text/javascript">/*<![CDATA[*/
+/* CategorySelect */
+wgAfterContentAndJS.push(function() {
+	$(".catlinks-allhidden").css("display", "block");
+	$('#csAddCategorySwitch').children('a').click(function() {
+		WET.byStr('articleAction/addCategory');
+
+		$.getScript(wgServer + wgScriptPath + '?action=ajax&rs=CategorySelectGetCategories');
+
+		$.loadYUI( function() {
+			$.getScript(wgExtensionsPath+ '/wikia/CategorySelect/CategorySelect.js?' + wgStyleVersion, function(){showCSpanel();});
+		});
+
+		$('#catlinks').addClass('csLoading');
+		return false;
+	});
+});
+/*]]>*/</script><script type="text/javascript">/*<![CDATA[*/for(var i=0;i<wgAfterContentAndJS.length;i++){wgAfterContentAndJS[i]();}/*]]>*/</script>
+		<div id="monaco_footer" class="reset">
+
+
+		<div id="spotlight_footer">
+		<table>
+		<tr>
+			<td>
+				<div id="FOOTER_SPOTLIGHT_LEFT" class="wikia-ad noprint"><div id="Wikia_200x75_2"><iframe width="200" height="75" id="FOOTER_SPOTLIGHT_LEFT_iframe" class="LazyLoadAd" noresize="true" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" style="border:none" target="_blank"></iframe></div></div>			</td>
+			<td>
+				<div id="FOOTER_SPOTLIGHT_MIDDLE" class="wikia-ad noprint"><div id="Wikia_200x75_3"><iframe width="200" height="75" id="FOOTER_SPOTLIGHT_MIDDLE_iframe" class="LazyLoadAd" noresize="true" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" style="border:none" target="_blank"></iframe></div></div>			</td>
+			<td>
+				<div id="FOOTER_SPOTLIGHT_RIGHT" class="wikia-ad noprint"><div id="Wikia_200x75_4"><iframe width="200" height="75" id="FOOTER_SPOTLIGHT_RIGHT_iframe" class="LazyLoadAd" noresize="true" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" style="border:none" target="_blank"></iframe></div></div>			</td>
+		</tr>
+		</table>
+		</div>
+				  <table id="wikia_footer">
+	  			<tr>
+				<td colspan="2" id="wikia_corporate_footer">
+	  <a rel="nofollow" href="http://www.wikia.com/About_Us"><span>About</span></a> | <a rel="nofollow" href="http://www.wikia.com/Hiring">Jobs</a> | <a rel="nofollow" href="http://www.wikia.com/Terms_of_Use">Terms of Use</a> | <a rel="nofollow" href="http://www.wikia.com/Special:CreateWiki">Create a wiki</a> | <a rel="nofollow" href="http://www.wikia.com/Privacy_Policy">Privacy Policy</a> | <a rel="nofollow" href="http://community.wikia.com/wiki/Wikia:Licensing" title="w:Wikia:Licensing">CC-BY-SA</a> | <a rel="nofollow" href="http://community.wikia.com/wiki/Community_Guidelines">Community Guidelines</a> | <a rel="nofollow" href="/wiki/Special:Contact">Contact</a> | <a rel="nofollow" href="http://www.wikia.com/Advertising">Advertise</a> | <a rel="nofollow" href="http://www.wikia.com/Lifestyle">Lifestyle</a>				</td>
+			</tr>
+	  	  </table>
+			<script type="text/javascript">/*<![CDATA[*/
+if (skin == "monaco") {
+	$("h2 span.editsection").each(function(i) {
+		var link = $(this).children("a");
+		//remove nodes in the editsection that are not anchors
+		$(this).contents().not(link).remove();
+		//add elements and styling
+		link.addClass("wikia-button").end().parent().css("position", "relative").css("top", "-3px").css("margin-bottom", "-2px");
+	});
+}
+/*]]>*/</script>		</div>
+		<!-- WIDGETS -->
+		<div id="widget_sidebar" class="reset widget_sidebar">
+
+			<!-- SEARCH/NAVIGATION -->
+			<div class="widget" id="navigation_widget">
+				<div id="search_box" class="color1">
+					<form action="/wiki/Special:Search" id="searchform">
+						<input id="search_field" name="search" type="text" value="Search this wiki" maxlength="200" onfocus="sf_focus(event);" alt="Search this wiki" autocomplete="off" title="Search this wiki [f]" accesskey="f" />
+												<input type="hidden" name="go" value="1" />
+						<input type="image" src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif" id="search-button" class="sprite search" />
+					</form>
+				</div>
+<div id="navigation"><div id="menu-item_1" class="menu-item"><a id="a-menu-item_1" href="/wiki/Sparrow_Wiki" rel="nofollow">Sparrow Wiki</a></div><div id="menu-item_2" class="menu-item"><a id="a-menu-item_2" href="/wiki/Special:Random" rel="nofollow">Random page</a></div><div id="menu-item_3" class="menu-item"><a id="a-menu-item_3" href="/wiki/Sparrow_Wiki" rel="nofollow">Popular pages<em>&rsaquo;</em></a></div><div id="menu-item_6" class="menu-item"><a id="a-menu-item_6" href="/wiki/Special:NewFiles" rel="nofollow">New pictures</a></div><div id="menu-item_7" class="menu-item"><a id="a-menu-item_7" href="/wiki/Blog:Recent_posts" rel="nofollow">Recent blog posts</a></div><div id="menu-item_8" class="menu-item"><a id="a-menu-item_8" href="/wiki/Category:Sparrow" rel="nofollow">Sparrow<em>&rsaquo;</em></a></div><div id="menu-item_9" class="menu-item"><a id="a-menu-item_9" href="/wiki/Category:Who%27s_who" rel="nofollow">Who's who<em>&rsaquo;</em></a></div><div id="menu-item_10" class="menu-item"><a id="a-menu-item_10" href="/wiki/Sparrow_Wiki:Community_Portal" rel="nofollow">Community<em>&rsaquo;</em></a></div></div><script type="text/javascript">/*<![CDATA[*/wsl.loadScriptAjax("/index.php?action=ajax\x26v=0.06\x26rs=getMenu\x26id=0054f45f840378c270bbabe0f4819ee3");/*]]>*/</script><table cellspacing="0" id="link_box_table">		<tbody id="link_box_dynamic">
+			<tr>
+				<td colspan="2">
+					<ul>
+<li id="dynamic-links-write-article-row" class="link_box_dynamic_item"><a rel="nofollow" id="dynamic-links-write-article-icon" href="/wiki/Special:CreatePage" onclick="WET.byStr('toolbox/dynamic/CreatePage')"><img src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif" id="dynamic-links-write-article-img" class="sprite edit" alt="Create a new page" /></a> <a id="dynamic-links-write-article-link" rel="nofollow" href="/wiki/Special:CreatePage" onclick="WET.byStr('toolbox/dynamic/CreatePage')">Create a new page</a></li><li id="dynamic-links-add-image-row" class="link_box_dynamic_item"><a rel="nofollow" id="dynamic-links-add-image-icon" href="/index.php?title=Special:Signup&amp;returnto=Special:Upload" onclick="WET.byStr('toolbox/dynamic/Upload')"><img src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif" id="dynamic-links-add-image-img" class="sprite photo" alt="Upload a new photo" /></a> <a id="dynamic-links-add-image-link" rel="nofollow" href="/index.php?title=Special:Signup&amp;returnto=Special:Upload" onclick="WET.byStr('toolbox/dynamic/Upload')">Upload a new photo</a></li>					</ul>
+				</td>
+			</tr>
+		</tbody>
+		<tbody id="link_box" class="color2 linkbox_static">
+			<tr>
+				<td>
+					<ul>
+						<li><a rel="nofollow" href="/wiki/Special:RecentChanges" onclick="WET.byStr('toolbox/recentchanges')">Recent changes</a></li>
+						<li><a rel="nofollow" href="http://community.wikia.com/wiki/Blog%3AWikia_Staff_Blog" onclick="WET.byStr('toolbox/w_c_community_Blog_Wikia_Staff_Blog')">Staff blog</a></li>
+						<li><a rel="nofollow" href="/wiki/Help:Contents" onclick="WET.byStr('toolbox/helppage')">Help</a></li>
+					</ul>
+				</td>
+				<td>
+					<ul>
+						<li><a rel="nofollow" href="/wiki/Special:Random" onclick="WET.byStr('toolbox/randompage')">Random page</a></li>
+						<li><a rel="nofollow" href="/wiki/Special:SpecialPages" onclick="WET.byStr('toolbox/specialpages')">Special pages</a></li>
+						<li style="font-size: 1px; position: absolute; top: -10000px"><a href="/wiki/Special:Recentchanges" accesskey="r" rel="nofollow">Recent changes</a><a href="/wiki/Special:Random" accesskey="x" rel="nofollow">Random page</a></li>
+					</ul>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+			</div>
+			<!-- /SEARCH/NAVIGATION -->
+
+			<!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_NAVBOX_1 --><div style="text-align: center; margin-bottom: 10px;"><div id="LEFT_SKYSCRAPER_1" class="wikia-ad noprint"><div id="Liftium_160x600_5_php"><iframe width="160" height="600" id="LEFT_SKYSCRAPER_1_iframe" class="" noresize="true" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" style="border:none" target="_blank"></iframe></div></div></div>
+
+			<div id="sidebar_1" class="sidebar">
+			<dl class="widget WidgetCommunity" id="widget_303"><dt class="color1 widget_title" id="widget_303_header"><span class="widgetToolbox"></span>Latest activity</dt><dd class="shadow widget_contents" id="widget_303_content"><div class="community_header accent">
+	<span class="article_count dark_text_1">9</span> pages on this wiki<br /></div>
+<div class="community_body">
+		<ul class="activityfeed widgetfeed" id="widget_303-recently-edited">		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif"  alt="edit" title="edit" width="16" height="16" />			<strong><a href="/wiki/Sparrow_Wiki">Sparrow Wiki</a></strong><br />			<cite><span class="timeago" title="2009-05-22T20:15:27Z"></span> by <a href="/wiki/User:DerRaphael" rel="nofollow">DerRaphael</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif"  alt="edit" title="edit" width="16" height="16" />			<strong><a href="/wiki/SVN_Howto">SVN Howto</a></strong><br />			<cite><span class="timeago" title="2009-05-22T00:26:19Z"></span> by <a href="/wiki/User:DerRaphael" rel="nofollow">DerRaphael</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif"  alt="edit" title="edit" width="16" height="16" />			<strong><a href="/wiki/Sparrow_Caveats">Sparrow Caveats</a></strong><br />			<cite><span class="timeago" title="2009-05-21T23:32:32Z"></span> by <a href="/wiki/User:DerRaphael" rel="nofollow">DerRaphael</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif"  alt="edit" title="edit" width="16" height="16" />			<strong><a href="/wiki/HKML">HKML</a></strong><br />			<cite><span class="timeago" title="2009-05-21T23:23:54Z"></span> by <a href="/wiki/User:DerRaphael" rel="nofollow">DerRaphael</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="http://images1.wikia.nocookie.net/__cb25182/common/skins/common/blank.gif"  alt="edit" title="edit" width="16" height="16" />			<strong><a href="/wiki/HKML:_HelloWorld">HKML: HelloWorld</a></strong><br />			<cite><span class="timeago" title="2009-05-21T22:57:56Z"></span> by <a href="/wiki/User:DerRaphael" rel="nofollow">DerRaphael</a></cite>		</li>	</ul></div>
+<div class="toolbar neutral">
+	<a id="community-widget-action-button" href="/wiki/Special:ActivityFeed" class="wikia-button forward" rel="nofollow">Activity feed</a>
+</div>
+<script type="text/javascript">
+var timestamp_widget_303 = '20100930003522';
+</script>
+</dd></dl><div style='margin-bottom: 10px'><div id="LEFT_NAV_205x400" class="wikia-ad noprint"><div id="Wikia_205x400_6"><iframe width="205" height="400" id="LEFT_NAV_205x400_iframe" class="LazyLoadAd" noresize="true" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" style="border:none" target="_blank"></iframe></div></div></div>
+			<!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_SLIMBOX_1 --><!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_NAVBOX_2 --><div style="text-align: center; margin-bottom: 10px;"><div id="LEFT_SKYSCRAPER_2" class="wikia-ad noprint"><div id="Liftium_160x600_7_php"><iframe width="160" height="600" id="LEFT_SKYSCRAPER_2_iframe" class="" noresize="true" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" style="border:none" target="_blank"></iframe></div></div></div>
+			</div>
+		</div>
+		<!-- /WIDGETS -->
+	<!--/div-->
+
+<!-- Null Ad. Reason: Slot is disabled, slotname=INVISIBLE_1 --><!-- #### BEGIN AdEngine::AdEngine::getDelayedIframeLoadingCode ####-->
+<script type="text/javascript">
+ProviderValues = {};
+ProviderValues.list = [];
+ProviderValues.string = "";
+</script><script type="text/javascript">
+LiftiumOptions = {"pubid":999,"baseUrl":"\/__varnish_liftium\/","kv_wgDBname":"sparrow","kv_article_id":"2001","kv_Hub":"Technology","kv_skin":"monaco","kv_user_lang":"en","kv_cont_lang":"en","kv_isMainPage":false,"kv_page_type":"article","geoUrl":"http:\/\/geoiplookup.wikia.com\/"};</script><script type="text/javascript" src="/__varnish_liftium/js/Liftium.js"></script>
+<script type="text/javascript" src="/__varnish_liftium/js/Wikia.js"></script>
+<script type="text/javascript">function fillIframe_TOP_LEADERBOARD() { LiftiumOptions.placement = "TOP_LEADERBOARD";
+Liftium.callInjectedIframeAd("728x90", document.getElementById("TOP_LEADERBOARD_iframe")); }</script>
+<script type="text/javascript">fillIframe_TOP_LEADERBOARD();</script><script type="text/javascript">function fillIframe_LEFT_SKYSCRAPER_1() { LiftiumOptions.placement = "LEFT_SKYSCRAPER_1";
+Liftium.callInjectedIframeAd("160x600", document.getElementById("LEFT_SKYSCRAPER_1_iframe")); }</script>
+<script type="text/javascript">fillIframe_LEFT_SKYSCRAPER_1();</script><script type="text/javascript">function fillIframe_LEFT_SKYSCRAPER_2() { LiftiumOptions.placement = "LEFT_SKYSCRAPER_2";
+Liftium.callInjectedIframeAd("160x600", document.getElementById("LEFT_SKYSCRAPER_2_iframe")); }</script>
+<script type="text/javascript">fillIframe_LEFT_SKYSCRAPER_2();</script><script type="text/javascript">		var base_url = "/__spotlights/afr.php";
+	base_url += "?loc=" + escape(window.location);
+	if(typeof document.referrer != "undefined") base_url += "&referer=" + escape(document.referrer);
+	if(typeof document.context != "undefined") base_url += "&context=" + escape(document.context);
+	if(typeof document.mmm_fo != "undefined") base_url += "&mmm_fo=1";
+	base_url += "&target=_top";
+	if(typeof AdsCB != "undefined") { base_url += "&cb=" + AdsCB; } else { base_url += "&cb=" + Math.floor(Math.random()*99999999); }
+	if(typeof document.MAX_used != "undefined" && document.MAX_used != ",") base_url += "&exclude=" + document.MAX_used;
+	base_url += "&hub=tech";
+	base_url += "&skin_name=" + skin;
+	base_url += "&cont_lang=" + wgContentLanguage;
+	base_url += "&user_lang=" + wgUserLanguage;
+	base_url += "&dbname=" + wgDB;
+	base_url += "&tags=" + wgWikiFactoryTagNames.join(",");
+	base_url += "";	base_url += "&slotname=FOOTER_SPOTLIGHT_LEFT";	base_url += "&zoneid=3";	base_url += "&block=1";
+	var base_url_FOOTER_SPOTLIGHT_LEFT = base_url;fillIframe_FOOTER_SPOTLIGHT_LEFT = function() { var ad_iframeOld = document.getElementById("FOOTER_SPOTLIGHT_LEFT_iframe"); if (typeof ad_iframeOld == "undefined") { return; } var parent_node = ad_iframeOld.parentNode; ad_iframe = ad_iframeOld.cloneNode(true); ad_iframe.src=base_url_FOOTER_SPOTLIGHT_LEFT; parent_node.removeChild(ad_iframeOld); parent_node.appendChild(ad_iframe); if (ad_iframe.style.removeAttribute) {ad_iframe.style.removeAttribute("display");} else {ad_iframe.style.removeProperty("display");} }</script><script type="text/javascript">		var base_url = "/__spotlights/afr.php";
+	base_url += "?loc=" + escape(window.location);
+	if(typeof document.referrer != "undefined") base_url += "&referer=" + escape(document.referrer);
+	if(typeof document.context != "undefined") base_url += "&context=" + escape(document.context);
+	if(typeof document.mmm_fo != "undefined") base_url += "&mmm_fo=1";
+	base_url += "&target=_top";
+	if(typeof AdsCB != "undefined") { base_url += "&cb=" + AdsCB; } else { base_url += "&cb=" + Math.floor(Math.random()*99999999); }
+	if(typeof document.MAX_used != "undefined" && document.MAX_used != ",") base_url += "&exclude=" + document.MAX_used;
+	base_url += "&hub=tech";
+	base_url += "&skin_name=" + skin;
+	base_url += "&cont_lang=" + wgContentLanguage;
+	base_url += "&user_lang=" + wgUserLanguage;
+	base_url += "&dbname=" + wgDB;
+	base_url += "&tags=" + wgWikiFactoryTagNames.join(",");
+	base_url += "";	base_url += "&slotname=FOOTER_SPOTLIGHT_RIGHT";	base_url += "&zoneid=3";	base_url += "&block=1";
+	var base_url_FOOTER_SPOTLIGHT_RIGHT = base_url;fillIframe_FOOTER_SPOTLIGHT_RIGHT = function() { var ad_iframeOld = document.getElementById("FOOTER_SPOTLIGHT_RIGHT_iframe"); if (typeof ad_iframeOld == "undefined") { return; } var parent_node = ad_iframeOld.parentNode; ad_iframe = ad_iframeOld.cloneNode(true); ad_iframe.src=base_url_FOOTER_SPOTLIGHT_RIGHT; parent_node.removeChild(ad_iframeOld); parent_node.appendChild(ad_iframe); if (ad_iframe.style.removeAttribute) {ad_iframe.style.removeAttribute("display");} else {ad_iframe.style.removeProperty("display");} }</script><script type="text/javascript">		var base_url = "/__spotlights/afr.php";
+	base_url += "?loc=" + escape(window.location);
+	if(typeof document.referrer != "undefined") base_url += "&referer=" + escape(document.referrer);
+	if(typeof document.context != "undefined") base_url += "&context=" + escape(document.context);
+	if(typeof document.mmm_fo != "undefined") base_url += "&mmm_fo=1";
+	base_url += "&target=_top";
+	if(typeof AdsCB != "undefined") { base_url += "&cb=" + AdsCB; } else { base_url += "&cb=" + Math.floor(Math.random()*99999999); }
+	if(typeof document.MAX_used != "undefined" && document.MAX_used != ",") base_url += "&exclude=" + document.MAX_used;
+	base_url += "&hub=tech";
+	base_url += "&skin_name=" + skin;
+	base_url += "&cont_lang=" + wgContentLanguage;
+	base_url += "&user_lang=" + wgUserLanguage;
+	base_url += "&dbname=" + wgDB;
+	base_url += "&tags=" + wgWikiFactoryTagNames.join(",");
+	base_url += "";	base_url += "&slotname=FOOTER_SPOTLIGHT_MIDDLE";	base_url += "&zoneid=3";	base_url += "&block=1";
+	var base_url_FOOTER_SPOTLIGHT_MIDDLE = base_url;fillIframe_FOOTER_SPOTLIGHT_MIDDLE = function() { var ad_iframeOld = document.getElementById("FOOTER_SPOTLIGHT_MIDDLE_iframe"); if (typeof ad_iframeOld == "undefined") { return; } var parent_node = ad_iframeOld.parentNode; ad_iframe = ad_iframeOld.cloneNode(true); ad_iframe.src=base_url_FOOTER_SPOTLIGHT_MIDDLE; parent_node.removeChild(ad_iframeOld); parent_node.appendChild(ad_iframe); if (ad_iframe.style.removeAttribute) {ad_iframe.style.removeAttribute("display");} else {ad_iframe.style.removeProperty("display");} }</script><script type="text/javascript">		var base_url = "/__spotlights/afr.php";
+	base_url += "?loc=" + escape(window.location);
+	if(typeof document.referrer != "undefined") base_url += "&referer=" + escape(document.referrer);
+	if(typeof document.context != "undefined") base_url += "&context=" + escape(document.context);
+	if(typeof document.mmm_fo != "undefined") base_url += "&mmm_fo=1";
+	base_url += "&target=_top";
+	if(typeof AdsCB != "undefined") { base_url += "&cb=" + AdsCB; } else { base_url += "&cb=" + Math.floor(Math.random()*99999999); }
+	if(typeof document.MAX_used != "undefined" && document.MAX_used != ",") base_url += "&exclude=" + document.MAX_used;
+	base_url += "&hub=tech";
+	base_url += "&skin_name=" + skin;
+	base_url += "&cont_lang=" + wgContentLanguage;
+	base_url += "&user_lang=" + wgUserLanguage;
+	base_url += "&dbname=" + wgDB;
+	base_url += "&tags=" + wgWikiFactoryTagNames.join(",");
+	base_url += "";	base_url += "&slotname=LEFT_NAV_205x400";	base_url += "&zoneid=4";	base_url += "&block=1";
+	var base_url_LEFT_NAV_205x400 = base_url;fillIframe_LEFT_NAV_205x400 = function() { var ad_iframeOld = document.getElementById("LEFT_NAV_205x400_iframe"); if (typeof ad_iframeOld == "undefined") { return; } var parent_node = ad_iframeOld.parentNode; ad_iframe = ad_iframeOld.cloneNode(true); ad_iframe.src=base_url_LEFT_NAV_205x400; parent_node.removeChild(ad_iframeOld); parent_node.appendChild(ad_iframe); if (ad_iframe.style.removeAttribute) {ad_iframe.style.removeAttribute("display");} else {ad_iframe.style.removeProperty("display");} }</script><!-- #### END AdEngine::AdEngine::getDelayedIframeLoadingCode ####-->
+<script type="text/javascript">
+LiftiumOptions.placement = "INVISIBLE_2";
+LiftiumDART.placement = "INVISIBLE_2";
+Liftium.callAd("0x0");</script>
+</div><!-- Start for Comscore, page_view -->
+
+<!-- Begin comScore Tag -->
+<script type="text/javascript">
+document.write(unescape("%3Cscript src='" + (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js' %3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+COMSCORE.beacon({
+  c1:2,
+  c2:6177433,
+  c3:"",
+  c4:"",
+  c5:"",
+  c6:"",
+  c15:""
+});
+</script>
+<noscript>
+<img src="http://b.scorecardresearch.com/p?c1=2&amp;c2=6177433&amp;c3=&amp;c4=&amp;c5=&amp;c6=&amp;c15=&amp;cj=1" />
+</noscript>
+<!-- End comScore Tag -->
+<!-- Start for QuantServe, page_view -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">/*<![CDATA[*/
+			try {
+				_qoptions = { qacct: 'p-8bG6eLqkH6Avk' };
+					_qoptions.labels = Liftium.getPageVar('hub');
+					for (var i = 0; i < ProviderValues.list.length; i++){
+						_qoptions.labels += ',' + Liftium.getPageVar('hub') + '.' + ProviderValues.list[i].value;
+					}
+			} catch (e){
+				// Fall back to old way.
+				_qacct="p-8bG6eLqkH6Avk";
+			}
+			/*]]>*/</script><script type="text/javascript">quantserve();</script>
+<!-- Start for Exelate, page_view -->
+
+
+		<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+<script type="text/javascript">/*<![CDATA[*/document.write("<img src=\"/__onedot?c=24133&amp;lc=en&amp;x=sparrow&amp;y=&amp;u=0&amp;a=2001&amp;n=0"+((typeof document.referrer != "undefined") ? "&amp;r="+escape(document.referrer) : "")+"&amp;cb="+(new Date).valueOf()+"\" width=\"1\" height=\"1\" border=\"0\" alt=\"\" />");/*]]>*/</script><noscript><img src="/__onedot?c=24133&amp;lc=en&amp;x=sparrow&amp;y=&amp;u=0&amp;a=2001&amp;n=0" width="1" height="1" border="0" alt="" /></noscript>
+		<div id="positioned_elements" class="reset"></div>
+		<script type="text/javascript">/*<![CDATA[*/
+			(function(){
+				var cssReferences = ["\/index.php?title=MediaWiki:Print.css&usemsgcache=yes&ctype=text%2Fcss&smaxage=86400&action=raw&maxage=86400","http:\/\/sparrow.wikia.com\/static\/css\/monaco_css_print\/93b0588c11d34903bb3406eac01fa327.css"];
+				var len = cssReferences.length;
+				for(var i=0; i<len; i++)
+					setTimeout("wsl.loadCSS.call(wsl, '" + cssReferences[i] + "', 'print')", 100);
+			})();
+		/*]]>*/</script><!-- Served by ap-s20 in 0.148 secs. cpu: 0.120 -->
+	</body>
+</html>

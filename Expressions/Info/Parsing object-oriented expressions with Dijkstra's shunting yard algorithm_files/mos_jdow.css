@@ -1,0 +1,95 @@
+table.jdpf_placeholders{
+    background-color: #FFFFFF;
+    border-collapse: collapse;
+    border-color: #404040;
+    border-spacing: 0px;
+    border-style: solid solid solid solid;
+    border-width: 1px;
+    margin: 0px;
+    padding: 0px;
+    width: 700px;
+}
+
+td.jdpf_placeholders_title_l{
+    font-weight: bold;
+    background-color: #eaeaea;
+    border-bottom: 1px dotted #888888;
+    padding: 2px 2px 2px 8px;
+    width: 300px;
+}
+
+td.jdpf_placeholders_title_r{
+    font-weight: bold;
+    background-color: #eaeaea;
+    border-bottom: 1px dotted #888888;
+    border-left: 1px dotted #888888;
+    padding: 2px 2px 2px 8px;
+    width: 400px;
+}
+
+td.jdpf_placeholder_l{
+    background-color: #f8f8ff;
+    border-bottom: 1px dotted #888888;
+    padding: 2px 2px 2px 8px;
+    width: 300px;
+}
+
+td.jdpf_placeholder_r{
+    background-color: #f8f8ff;
+    border-bottom: 1px dotted #888888;
+    border-left: 1px dotted #888888;
+    padding: 2px 2px 2px 8px;
+    width: 400px;
+}
+
+table.jdpf_parameters{
+    background-color: #FFFFFF;
+    border-collapse: collapse;
+    border-color: #404040;
+    border-spacing: 0px;
+    border-style: solid solid solid solid;
+    border-width: 1px;
+    margin: 0px;
+    padding: 0px;
+    width: 600px;
+}
+
+td.jdpf_parameters_title_l{
+    font-weight: bold;
+    background-color: #eaeaea;
+    border-bottom: 1px dotted #888888;
+    padding: 2px 2px 2px 8px;
+    width: 200px;
+}
+
+td.jdpf_parameters_header{
+    font-weight: bold;
+    background-color: #eaeaea;
+    border-bottom: 1px dotted #888888;
+    padding: 2px 2px 2px 8px;
+    width: 600px;
+}
+
+td.jdpf_parameters_title_r{
+    font-weight: bold;
+    background-color: #eaeaea;
+    border-bottom: 1px dotted #888888;
+    border-left: 1px dotted #888888;
+    padding: 2px 2px 2px 8px;
+    width: 400px;
+}
+
+td.jdpf_parameters_l{
+    background-color: #f8f8ff;
+    border-bottom: 1px dotted #888888;
+    padding: 2px 2px 2px 8px;
+    width: 200px;
+}
+
+td.jdpf_parameters_r{
+    background-color: #f8f8ff;
+    border-bottom: 1px dotted #888888;
+    border-left: 1px dotted #888888;
+    padding: 2px 2px 2px 8px;
+    width: 400px;
+}

@@ -1,0 +1,20 @@
+Explosionstexturen:
+(http://www.saschawillems.de)
+   ExploTexGen 1.0 von Sascha Willems
+
+Symbolgrafiken (Crystal-Project):
+(http://www.everaldo.com)
+   Ingolfur Haraldsson
+   Luiz Claudio dos Santos
+   Edson Farias
+   Paulo André
+   Rhandros Dembiki
+   André Souza
+
+Sounds:
+(http://www.imphenzia.com)
+   Stefan Persson
+
+Programmcode und Texturen:
+(bentschi1337@yahoo.de)
+   Benjamin Gillhofer

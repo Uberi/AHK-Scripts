@@ -1,0 +1,126 @@
+/*Additional 1.5 Stuff */
+
+/*Added _menu and _text module suffix styles above for better cooperation of default content */
+
+div.banneritem a,
+div.banneritemS1 a,
+div.banneritemS2 a,
+div.banneritemS3 a,
+div.banneritemS4 a,
+div.banneritemS5 a,
+div.banneritem_text a {
+	font: 11px/16px Arial, Helvetica, Geneva, sans-serif;
+	font-weight: bold;
+}
+
+div.banneritem,
+div.banneritemS1,
+div.banneritemS2,
+div.banneritemS3,
+div.banneritemS4,
+div.banneritemS5,
+div.banneritem_text {
+	font: 11px/12px Arial, Helvetica, Geneva, sans-serif;
+}
+
+#form-login ul li {
+	list-style: none;
+}
+
+td.buttonheading {
+	vertical-align: top;
+	padding: 0;
+	margin: 0;
+	border-collapse: collapse;
+}
+
+td.buttonheading img {
+	padding: 0;
+	margin: 1px;
+}
+
+td.article_column {
+	padding: 4px;
+}
+
+ul#mainlevel {
+	list-style: none;
+}
+
+/* Frontend Editing*/
+
+fieldset {
+	margin-top: 5px;
+	padding: 5px;
+}
+
+legend {
+	margin: 0;
+	padding: 0 10px;
+}
+
+td.key {
+	border-bottom: 1px solid #eee;
+	color: #666;
+}
+
+/* Tooltips */
+
+.tool-tip {
+	float: left;
+	background: #ffc;
+	border: 1px solid #D4D5AA;
+	padding: 5px;
+	max-width: 200px;
+}
+
+.tool-title {
+	padding: 0;
+	margin: 0;
+	font-size: 100%;
+	font-weight: bold;
+	margin-top: -15px;
+	padding-top: 15px;
+	padding-bottom: 5px;
+	background: url(selector.png) no-repeat;
+}
+
+.tool-text {
+	font-size: 100%;
+	margin: 0;
+}
+
+/* System Standard Messages */
+
+#system-message {
+	margin-bottom: 20px;
+}
+
+#system-message dd.message ul {
+	background: #C3D2E5 url(notice-i.png) 4px center no-repeat;
+}
+
+/* System Error Messages */
+
+#system-message dd.error ul {
+	color: #c00;
+	background: #E6C0C0 url(notice-a.png) 4px center no-repeat;
+	border-top: 3px solid #DE7A7B;
+	border-bottom: 3px solid #DE7A7B;
+	margin: 0px;
+	padding-left: 40px;
+	text-indent: 0px;
+}
+
+/* System Notice Messages */
+
+#system-message dd.notice ul {
+	color: #c00;
+	background: #EFE7B8 url(notice-n.png) 4px center no-repeat;
+	border-top: 3px solid #F0DC7E;
+	border-bottom: 3px solid #F0DC7E;
+}
+td.sectiontableheader a {color: #fff;}
+div.main-left-only .contentpane,div.main-right-only .contentpane {width: 720px;}
+div.main-both .contentpane {width: 525px;}
+div.main-wide .contentpane {width: 940px;}

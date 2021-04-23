@@ -1,0 +1,839 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" >
+<head>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8;charset=utf-8" />
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="Sankuru, Joomla" />
+  <meta name="title" content="Parsing object-oriented expressions with Dijkstra's shunting yard algorithm" />
+  <meta name="author" content="erik" />
+  <meta name="description" content="Sankuru Joomla Virtuemart" />
+  <meta name="generator" content="Joomla! 1.5 - Open Source Content Management" />
+  <title>Parsing object-oriented expressions with Dijkstra's shunting yard algorithm</title>
+  <link rel="stylesheet" href="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/mod_jfla.css" type="text/css" />
+  <script type="text/javascript" src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/mootools.js"></script>
+  <script type="text/javascript" src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/caption0.js"></script>
+  <link type="text/css" rel="stylesheet" href="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/shCore00.css"/>
+<link type="text/css" rel="stylesheet" href="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/shThemeD.css"/>
+<script type="text/javascript" src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/shCore00.js"></script>
+  <script type="text/javascript" src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/shBrushP.js"></script>
+  <script type="text/javascript" src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/shBrushB.js"></script>
+  <link href="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/mos_jdow.css" rel="stylesheet" type="text/css"/>
+  <link href="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/lightbox.css" rel="stylesheet" type="text/css" media="screen"/>
+  <!-- JoomlaWorks "Disqus Comment System for Joomla!" Plugin (v2.2) starts here -->
+
+		<script type="text/javascript" src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/behaviou.js"></script>
+		<script type="text/javascript">
+			//<![CDATA[
+			var disqusSubDomain = 'sankurubiz';
+			var disqus_iframe_css = "http://sankuru.biz/plugins/content/jw_disqus/tmpl/css/disqus.css";
+			//]]>
+		</script>
+		<style type="text/css" media="all">
+			@import "Parsing\ object-oriented\ expressions\ with\ Dijkstra\'s\ shunting\ yard\ algorithm_files/template.css";
+		</style>
+		
+<!-- JoomlaWorks "Disqus Comment System for Joomla!" Plugin (v2.2) ends here -->
+
+
+<link rel="shortcut icon" href="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/favicon0.htm" />
+<link rel="stylesheet" href="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/system00.css" type="text/css" />
+<link rel="stylesheet" href="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/general0.css" type="text/css" />
+
+<link href="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/templatf.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/nav00000.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/style400.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/j1500000.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/ovalbutt.css" rel="stylesheet" type="text/css" media="screen" />
+
+<!--[if IE]>
+<link href="/templates/js_jamba/css/ie.css" rel="stylesheet" type="text/css" media="screen" />
+<![endif]-->
+
+</head>
+<body>
+<div id="header-wrap">
+	<div id="header_text">
+					<div id="headermod">		<div class="moduletable">
+					<p><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/img10000.jpg" border="0" alt="Rainforest" width="468" height="99" /></p>		</div>
+	</div>
+						<h1>
+												<a href="http://sankuru.biz/" title="Sankuru">Sankuru</a>
+								</h1>
+				<h2>Implementing, customizing, extending, and troubleshooting Joomla/Virtuemart</h2>	
+			</div>
+		</div>
+<div class="menubar">
+	<div id="navmenu">
+	<!--[if IE]>
+		<script type="text/javascript" src="/templates/js_jamba/js/barmenu.js"></script>
+	<![endif]-->
+		<div id="jflanguageselection"><div class="rawimages"><span id="active_language"><a href=""><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/en000000.gif" alt="English (United Kingdom)" title="English (United Kingdom)" /></a></span><span><a href="http://sankuru.biz/nl/blog/23-shell-scripting-and-the-occasional-c-program/152-parsing-object-oriented-expressions-with-dijkstras-shunting-yard-algorithm.html"><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/nl000000.gif" alt="Nederlands (NL)" title="Nederlands (NL)" /></a></span><span><a href="http://sankuru.biz/fr/blog/23-shell-scripting-and-the-occasional-c-program/152-parsing-object-oriented-expressions-with-dijkstras-shunting-yard-algorithm.html"><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/fr000000.gif" alt="French (Fr)" title="French (Fr)" /></a></span></div></div><!--JoomFish V2.1.3 (Twinkle)-->
+<!-- &copy; 2003-2010 Think Network, released under the GPL. -->
+<!-- More information: at http://www.joomfish.net -->
+<ul class="menu"><li class="item1"><a href="http://sankuru.biz/"><span>Home</span></a></li><li class="item2"><a href="http://sankuru.biz/en/joomla.html"><span>Joomla</span></a></li><li class="parent item4"><a href="http://sankuru.biz/en/downloads.html"><span>Downloads</span></a></li><li class="item5"><a href="http://sankuru.biz/en/portfolio.html"><span>Portfolio</span></a></li><li id="current" class="active item19"><a href="http://sankuru.biz/en/blog.html"><span>Blog</span></a></li><li class="item21"><a href="http://sankuru.biz/en/testimonials.html"><span>Testimonials</span></a></li><li class="item20"><a href="http://sankuru.biz/en/jobs.html"><span>Jobs</span></a></li><li class="item29"><a href="http://sankuru.biz/en/request-a-quote.html"><span>Request a quote</span></a></li><li class="item24"><a href="http://sankuru.biz/en/terms-and-conditions.html"><span>T&amp;C</span></a></li><li class="item17"><a href="http://sankuru.biz/en/sitemap.html"><span>Sitemap</span></a></li><li class="item30"><a href="http://sankuru.biz/en/analytics.html"><span>Analytics</span></a></li></ul>
+	</div>
+</div>
+	<div id="main-wrapper">		
+		<div class="main-top-left-only"></div>
+			<div id="mainbody-left-only">
+									<div id="leftcol">
+						<div class="left-inside">
+									<div class="module">
+			<div>
+				<div>
+					<div>
+											<b>Views</b>: 4686<br>
+					</div>
+				</div>
+			</div>
+		</div>
+			<div class="module">
+			<div>
+				<div>
+					<div>
+													<h3>Get help with ...</h3>
+											
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr ><td><a href="http://sankuru.biz/en/virtuemart.html" class="mainlevel-sidenav" >Virtuemart</a></td></tr>
+<tr ><td><a href="http://sankuru.biz/en/joomfish.html" class="mainlevel-sidenav" >Joomfish</a></td></tr>
+<tr ><td><a href="http://sankuru.biz/en/other-extensions.html" class="mainlevel-sidenav" >Other extensions</a></td></tr>
+</table>					</div>
+				</div>
+			</div>
+		</div>
+			<div class="module">
+			<div>
+				<div>
+					<div>
+											
+<div align="center">
+<div id="st0000000000" class="st-taf"> 
+<script type="text/javascript" src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/script00.js"></script><a class="st-taf" href="http://tellafriend.socialtwist.com/" onclick="return false;" style="border:0;padding:0;margin:0;"><img alt="SocialTwist Tell-a-Friend" style="border:0;padding:0;margin:0;" src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/tafdropd.png"onmouseout="STTAFFUNC.hideHoverMap(this)" onmouseover="STTAFFUNC.showHoverMap(this, '0000000000', window.location, document.title)" onclick="STTAFFUNC.cw(this, {id:'0000000000', link: window.location, title: document.title });"/></a>
+</div>
+</div>					</div>
+				</div>
+			</div>
+		</div>
+			<div class="module">
+			<div>
+				<div>
+					<div>
+																</div>
+				</div>
+			</div>
+		</div>
+			<div class="moduleS1">
+			<div>
+				<div>
+					<div>
+													<h3>Machine translation</h3>
+											<script type="text/javascript">
+//<![CDATA[
+        if(top.location!=self.location)top.location=self.location;
+    window['_tipoff']=function(){};window['_tipon']=function(a){};
+    function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(location.hostname=='sankuru.biz' && lang_pair=='en|en')return;else if(location.hostname!='sankuru.biz' && lang_pair=='en|en')location.href=unescape(gfg('u'));else if(location.hostname=='sankuru.biz' && lang_pair!='en|en')location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href);else location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u'));}
+    function gfg(name) {name=name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var regexS="[\\?&]"+name+"=([^&#]*)";var regex=new RegExp(regexS);var results=regex.exec(location.href);if(results==null)return '';return results[1];}
+    //]]>
+</script>
+<style type="text/css">
+<!--
+a.flag {background-image:url('Parsing\ object-oriented\ expressions\ with\ Dijkstra\'s\ shunting\ yard\ algorithm_files/16a00000.png');}
+a.flag:hover {background-image:url('Parsing\ object-oriented\ expressions\ with\ Dijkstra\'s\ shunting\ yard\ algorithm_files/16000000.png');}
+-->
+</style>
+<a href="javascript:doTranslate('en|en')" title="English" class="flag" style="font-size:16px;padding:1px 0;background-repeat:no-repeat;background-position:-0px -0px;"><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/blank000.png" height="16" width="16" style="border:0;vertical-align:top;" alt="English" /></a> <a href="javascript:doTranslate('en|ar')" title="Arabic" class="flag" style="font-size:16px;padding:1px 0;background-repeat:no-repeat;background-position:-100px -0px;"><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/blank000.png" height="16" width="16" style="border:0;vertical-align:top;" alt="Arabic" /></a> <a href="javascript:doTranslate('en|zh-CN')" title="Chinese (Simplified)" class="flag" style="font-size:16px;padding:1px 0;background-repeat:no-repeat;background-position:-300px -0px;"><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/blank000.png" height="16" width="16" style="border:0;vertical-align:top;" alt="Chinese (Simplified)" /></a> <a href="javascript:doTranslate('en|de')" title="German" class="flag" style="font-size:16px;padding:1px 0;background-repeat:no-repeat;background-position:-300px -100px;"><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/blank000.png" height="16" width="16" style="border:0;vertical-align:top;" alt="German" /></a> <a href="javascript:doTranslate('en|ja')" title="Japanese" class="flag" style="font-size:16px;padding:1px 0;background-repeat:no-repeat;background-position:-700px -100px;"><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/blank000.png" height="16" width="16" style="border:0;vertical-align:top;" alt="Japanese" /></a> <a href="javascript:doTranslate('en|ru')" title="Russian" class="flag" style="font-size:16px;padding:1px 0;background-repeat:no-repeat;background-position:-500px -200px;"><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/blank000.png" height="16" width="16" style="border:0;vertical-align:top;" alt="Russian" /></a> <a href="javascript:doTranslate('en|es')" title="Spanish" class="flag" style="font-size:16px;padding:1px 0;background-repeat:no-repeat;background-position:-600px -200px;"><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/blank000.png" height="16" width="16" style="border:0;vertical-align:top;" alt="Spanish" /></a> <br/><select onchange="doTranslate(this);"><option value="">Select Language</option><option value="en|en">English</option><option value="en|ar">Arabic</option><option value="en|bg">Bulgarian</option><option value="en|zh-CN">Chinese (Simplified)</option><option value="en|zh-TW">Chinese (Traditional)</option><option value="en|hr">Croatian</option><option value="en|cs">Czech</option><option value="en|da">Danish</option><option value="en|nl">Dutch</option><option value="en|fi">Finnish</option><option value="en|fr">French</option><option value="en|de">German</option><option value="en|el">Greek</option><option value="en|hi">Hindi</option><option value="en|it">Italian</option><option value="en|ja">Japanese</option><option value="en|ko">Korean</option><option value="en|no">Norwegian</option><option value="en|pl">Polish</option><option value="en|pt">Portuguese</option><option value="en|ro">Romanian</option><option value="en|ru">Russian</option><option value="en|es">Spanish</option><option value="en|sv">Swedish</option><option value="en|ca">Catalan</option><option value="en|tl">Filipino</option><option value="en|iw">Hebrew</option><option value="en|id">Indonesian</option><option value="en|lv">Latvian</option><option value="en|lt">Lithuanian</option><option value="en|sr">Serbian</option><option value="en|sk">Slovak</option><option value="en|sl">Slovenian</option><option value="en|uk">Ukrainian</option><option value="en|vi">Vietnamese</option><option value="en|sq">Albanian</option><option value="en|et">Estonian</option><option value="en|gl">Galician</option><option value="en|hu">Hungarian</option><option value="en|mt">Maltese</option><option value="en|th">Thai</option><option value="en|tr">Turkish</option></select>					</div>
+				</div>
+			</div>
+		</div>
+			<div class="moduleS3">
+			<div>
+				<div>
+					<div>
+												<form action="http://sankuru.biz/en/blog.html" method="post" name="login" id="form-login" >
+		<fieldset class="input">
+	<p id="form-login-username">
+		<label for="modlgn_username">Username</label><br />
+		<input id="modlgn_username" type="text" name="username" class="inputbox" alt="username" size="18" />
+	</p>
+	<p id="form-login-password">
+		<label for="modlgn_passwd">Password</label><br />
+		<input id="modlgn_passwd" type="password" name="passwd" class="inputbox" size="18" alt="password" />
+	</p>
+		<input type="submit" name="Submit" class="button" value="Login" />
+	</fieldset>
+<!--
+	<ul>
+		<li>
+			<a href="/en/component/user/reset.html">
+			Forgot your password?</a>
+		</li>
+		<li>
+			<a href="/en/component/user/remind.html">
+			Forgot your username?</a>
+		</li>
+			</ul>
+-->
+	
+	<input type="hidden" name="option" value="com_user" />
+	<input type="hidden" name="task" value="login" />
+	<input type="hidden" name="return" value="L2Jsb2cvMjMtc2hlbGwtc2NyaXB0aW5nLWFuZC10aGUtb2NjYXNpb25hbC1jLXByb2dyYW0vMTUyLXBhcnNpbmctb2JqZWN0LW9yaWVudGVkLWV4cHJlc3Npb25zLXdpdGgtZGlqa3N0cmFzLXNodW50aW5nLXlhcmQtYWxnb3JpdGhtLmh0bWw/Zm9ybWF0PWh0bWwmbGFuZz1lbg==" />
+	<input type="hidden" name="ab330a90b52b1e141ea0a8814bc19a68" value="1" /></form>
+					</div>
+				</div>
+			</div>
+		</div>
+			<div class="moduleS1">
+			<div>
+				<div>
+					<div>
+											<div id="reset-translation" style="cursor: pointer"><a onclick="document.location='http://sankuru.biz'">Reset translation</a></div>					</div>
+				</div>
+			</div>
+		</div>
+			<div class="moduleS3">
+			<div>
+				<div>
+					<div>
+											<form action="http://sankuru.biz/blog/23-shell-scripting-and-the-occasional-c-program/index.php" method="post">
+	<div class="searchS3">
+		<input name="searchword" id="mod_search_searchword" maxlength="20" alt="Search" class="inputboxS3" type="text" size="20" value="search..."  onblur="if(this.value=='') this.value='search...';" onfocus="if(this.value=='search...') this.value='';" />	</div>
+	<input type="hidden" name="task"   value="search" />
+	<input type="hidden" name="option" value="com_search" />
+	<input type="hidden" name="Itemid" value="19" />
+</form>					</div>
+				</div>
+			</div>
+		</div>
+			<div class="moduleS2">
+			<div>
+				<div>
+					<div>
+													<h3>Re-use open source</h3>
+											What you need, often exists already, and covers your requirements for 80%. We will add the remaining 20% for you.					</div>
+				</div>
+			</div>
+		</div>
+			<div class="module">
+			<div>
+				<div>
+					<div>
+											<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-5835697-1");
+pageTracker._setDomainName("sankuru.biz");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+						</div>
+					</div>
+												<div class="main-left-only">
+						<table border="0" cellspacing="0" cellpadding="0" width="100%">
+						  <tr>
+						    <td valign="top" width="100%">
+																		<div id="showcase">
+										<table border="0" cellpadding="0" cellspacing="0" align="center" width="100%">
+										<tr>
+																														<td style="width: 100%;padding:5px; vertical-align:top;">
+												<div class="module">
+			<div>
+				<div>
+					<div>
+											<div style="text-align: center; font-size: x-small; border-style: solid; border-width: 1px 1px 1px 1px; margin-left: auto; margin-right: auto;">
+<table style="width: 100%; text-align: left;" border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td><a href="https://service.burst.net/aff.php?aff=1357" target="_blank" title="burst.net"><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/burstnet.png" border="0" alt="burst.net" title="burst.net" width="116" height="31" /></a><br /></td>
+<td><span style="font-size: small;">Per month: </span><span style="font-size: x-small;"><a href="https://service.burst.net/aff2.php?aff=1357&amp;affurl=5" target="_blank"><span style="font-size: small;">VPS</span></a><span style="font-size: small;"> <span style="color: #000080;"><strong>$5.95+</strong></span> | </span><span style="font-size: x-small;"><a href="https://service.burst.net/aff2.php?aff=1357&amp;affurl=0" target="_blank"><span style="font-size: small;">Dedicated</span></a><span style="font-size: small;"> <span style="color: #000080;"><strong>$39.95+</strong></span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p> </p>					</div>
+				</div>
+			</div>
+		</div>
+	
+										</td>
+																				</tr>
+										</table>
+										</div>
+																		
+														
+														
+						
+						        <script type="text/javascript" src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/lightbox.js"></script> 
+        <table class="contentpaneopen">
+<tr>
+		<td class="contentheading" width="100%">
+					Parsing object-oriented expressions with Dijkstra's shunting yard algorithm			</td>
+						<td align="right" width="100%" class="buttonheading">
+		<a href="http://sankuru.biz/en/blog/23-shell-scripting-and-the-occasional-c-program/152-parsing-object-oriented-expressions-with-dijkstras-shunting-yard-algorithm.pdf" title="PDF" onclick="window.open(this.href,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no'); return false;" rel="nofollow"><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/pdf_butt.png" alt="PDF"  /></a>		</td>
+		
+				<td align="right" width="100%" class="buttonheading">
+		<a href="http://sankuru.biz/en/blog/23-shell-scripting-and-the-occasional-c-program/152-parsing-object-oriented-expressions-with-dijkstras-shunting-yard-algorithm.html?tmpl=component&amp;print=1&amp;page=" title="Print" onclick="window.open(this.href,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no'); return false;" rel="nofollow"><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/printBut.png" alt="Print"  /></a>		</td>
+		
+				<td align="right" width="100%" class="buttonheading">
+		<a href="http://sankuru.biz/en/component/mailto/?tmpl=component&amp;link=aHR0cDovL3Nhbmt1cnUuYml6L2VuL2Jsb2cvMjMtc2hlbGwtc2NyaXB0aW5nLWFuZC10aGUtb2NjYXNpb25hbC1jLXByb2dyYW0vMTUyLXBhcnNpbmctb2JqZWN0LW9yaWVudGVkLWV4cHJlc3Npb25zLXdpdGgtZGlqa3N0cmFzLXNodW50aW5nLXlhcmQtYWxnb3JpdGhtLmh0bWw%3D" title="E-mail" onclick="window.open(this.href,'win2','width=400,height=350,menubar=yes,resizable=yes'); return false;"><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/emailBut.png" alt="E-mail"  /></a>		</td>
+					</tr>
+</table>
+
+<form method="post" action="http://sankuru.biz/blog/23-shell-scripting-and-the-occasional-c-program/152-parsing-object-oriented-expressions-with-dijkstras-shunting-yard-algorithm.html?format=html&lang=en"><span class="content_rating">User Rating:<img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/rating_s.png" alt=""  /><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/rating_s.png" alt=""  /><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/rating_s.png" alt=""  /><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/rating_s.png" alt=""  /><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/rating_s.png" alt=""  />&nbsp;/&nbsp;0</span>
+<br />
+<span class="content_vote">Poor<input type="radio" alt="vote 1 star" name="user_rating" value="1" /><input type="radio" alt="vote 2 star" name="user_rating" value="2" /><input type="radio" alt="vote 3 star" name="user_rating" value="3" /><input type="radio" alt="vote 4 star" name="user_rating" value="4" /><input type="radio" alt="vote 5 star" name="user_rating" value="5" checked="checked" />Best&nbsp;<input class="button" type="submit" name="submit_vote" value="Rate" /><input type="hidden" name="task" value="vote" /><input type="hidden" name="option" value="com_content" /><input type="hidden" name="cid" value="152" /><input type="hidden" name="url" value="http://sankuru.biz/blog/23-shell-scripting-and-the-occasional-c-program/152-parsing-object-oriented-expressions-with-dijkstras-shunting-yard-algorithm.html?format=html&lang=en" /></span></form><table class="contentpaneopen">
+<tr>
+	<td valign="top">
+		<span class="small">
+			Written by erik		</span>
+		&nbsp;&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td valign="top" class="createdate">
+		Sunday, 03 October 2010 10:35	</td>
+</tr>
+
+
+<tr>
+<td valign="top">
+
+
+<!-- JoomlaWorks "Disqus Comment System for Joomla!" Plugin (v2.2) starts here -->
+
+<span id="startOfPage"></span>
+
+<!-- Disqus comments counter and anchor link -->
+<div class="jwDisqusArticleCounter">
+	<a class="jwDisqusArticleCounterLink" href="">View Comments</a>
+	<div class="clr"></div>
+</div>
+
+<p> </p>
+<h2>1. Download the extended shunting yard parser script</h2>
+<p>
+
+<table width="100%" border="0" cellpadding="5" cellspacing="5" style="background:#F8F8F8;border-bottom:1px solid #cccccc;">
+
+        <tr valign="top">
+            <td width="90%" valign="top"<img src="http://sankuru.biz/images/jdownloads/fileimages/zip.png" align="absmiddle" border="0" height="32" width="32" alt="" /> <b>Bash extended shunt</b>
+ Version:0.81 <img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/red00000.png" alt="" /></td>
+        </tr>
+        <tr valign="top">
+	    <td valign="top" class="jd_body" width"90%"></td>
+        </tr>
+        <tr>
+            <td valign="top" width="10%" align="center"></td>
+	</tr>
+        <tr>
+         <td style="background:#F5F5F5; padding:5px;" valign="top" width="90%"><small><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/license0.png" align="absmiddle" width="20" height="20" border="0" alt="" title="License" />&nbsp;<a href="http://www.gnu.org/licenses/gpl.html" target="_blank" title="License">GNU/GPL</a> <img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/link_ext.gif" /> <img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/contact0.png" align="absmiddle" width="20" height="20" border="0" alt="" title="Author" />&nbsp;  <img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/date0000.png" align="absmiddle" width="20" height="20" border="0" alt="" title="Date" />&nbsp;2010-10-03   <img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/stuff000.png" align="absmiddle" width="20" height="20" border="0" alt="" />&nbsp;12.45 KB <img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/download.png" align="absmiddle" width="20" height="20" border="0" alt="" title="Downloads" />&nbsp;218</small></td>
+ 	 <td valign="top" width="10%" align="center">
+             <a href="http://sankuru.biz/en/component/jdownloads/finish/1/2.html"><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/downloae.png" border="0" alt="" /></a>
+         </td>
+       </tr>
+</table></p>
+<p> </p>
+<h2>2. Dijkstra's standard shunting yard algorithm</h2>
+<p> </p>
+<p><a href="http://en.wikipedia.org/wiki/Edsger_W._Dijkstra" target="_blank">Dijkstra</a>'s standard <a href="http://en.wikipedia.org/wiki/Shunting-yard_algorithm" target="_blank">shunting yard algorithm</a> converts <a href="http://en.wikipedia.org/wiki/Infix_notation" target="_blank">infix</a> expressions to RPN (<a href="http://en.wikipedia.org/wiki/Reverse_Polish_notation" target="_blank">Reverse Polish Notation</a>).</p>
+<p> </p>
+<p style="text-align: center;"><img src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/300px-CN.jpg" border="0" alt="Shunting yard" title="Shunting yard" width="300" height="396" /></p>
+<p style="text-align: center;"><em><span style="font-family: 'times new roman', times;">Image: A shunting yard.</span></em></p>
+<p> </p>
+<p>For example:</p>
+<p><script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = "http://sankuru.biz/plugins/content/codecitation/scripts/clipboard.swf";
+	SyntaxHighlighter.defaults["auto-links"] = true;
+	SyntaxHighlighter.defaults["collapse"] = false;
+	SyntaxHighlighter.defaults["gutter"] = true;
+	SyntaxHighlighter.defaults["smart-tabs"] = true;
+	SyntaxHighlighter.defaults["tab-size"] = 4;
+	SyntaxHighlighter.defaults["toolbar"] = true;
+	SyntaxHighlighter.defaults["wrap-lines"] = true;	
+	SyntaxHighlighter.all();
+</script><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:text;">
+$ echo "a+b" | ./shunt2.sh
+ 
+a b +
+ 
+</pre></div></p>
+<p>The standard algorithm is able to handle operator precedence:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo "a+b*5" | ./shunt2.sh
+ 
+a b 5 * +
+ 
+</pre></div></p>
+<p>As you can see, the multiplication <strong><span style="color: #339966;">*</span></strong> will be evaluated before the sum <span style="color: #008000;"><strong><span style="color: #339966;">+</span></strong></span>. The standard algorithm is also able to distiguish between unary minus/plus (<strong><span style="color: #339966;">.-</span></strong>/<span style="color: #008000;"><strong><span style="color: #339966;">.+</span></strong></span>) and binary minus/plus (<strong><span style="color: #339966;">-</span></strong>/<span style="color: #008000;"><strong><span style="color: #339966;">+</span></strong></span>) in the input:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo '-a+b' | ./shunt2.sh
+ 
+a .- b +
+ 
+</pre></div></p>
+<p>The standard parser can also handle brackets <strong><span style="color: #339966;">( )</span></strong>. For example:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo "(a+b)*(5-x)/(-y-2)" | ./shunt2.sh
+ 
+a b + 5 x - * y .- 2 - /
+ 
+</pre></div></p>
+<p><span style="font-size: xx-small;"><span style="text-decoration: underline;">Note:</span> Error fixed. The minus following y must be a unary minus. (Thanks to DrSpotter)</span></p>
+<p>Assignments are also just expressions with the assignment operator <span style="color: #339966;"><strong>=</strong></span> having very low precedence. For example:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo 'a=x+1/(a+b)' | ./shunt2.sh
+ 
+a x 1 a b + / + =
+ 
+</pre></div></p>
+<p>The assignment operator assigns the top of the stack to the variable just below it.</p>
+<p>For the prototype, that you can download at the top of this blog post, I have implemented a simple lexer that can handle single -and double quoted strings:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo 'a="hello\" with an embedded quote using an escape sequence"' | ./shunt.sh
+ 
+OPRND·a
+STRNG·hello" with an embedded quote using an escape sequence
+OPER·=
+ 
+</pre></div></p>
+<p> </p>
+<h2>3. How does it work?</h2>
+<p>The infix-to-rpn algorithm was originally developed by Dijkstra. You can find a good description <a href="http://montcs.bloomu.edu/~bobmon/Information/RPN/infix2rpn.shtml" target="_blank" title="Description of Dijkstra's shunting yard algorithm">here</a>.</p>
+<p>In short, there are operands and operators. Take for example the expression: <strong><span style="color: #339966;">a+b*5</span></strong>:</p>
+<ul>
+<li>the operands are: <span style="color: #339966;"><strong>a b 5</strong></span></li>
+<li>the operators are: <strong><span style="color: #339966;">+ *</span></strong></li>
+</ul>
+<div><span style="color: #339966;"><strong><br /></strong></span></div>
+<div>The operands always go through to the output immediately. The operators always have to wait: Every operator must always first be shunted, until the next operator comes along.</div>
+<p> </p>
+<div>If the next operator has lower precedence, the operator can go through, otherwise, it must wait even longer. When the input has come to an end, the operators left in the shunting yard, can all finally go through.</div>
+<p> </p>
+<p>In the example, <strong><span style="color: #339966;">a+b*5</span></strong>, <span style="color: #339966;"><strong>a</strong></span> goes through immediately, while <strong><span style="color: #339966;">+</span></strong> is shunted. Then, <span style="color: #339966;"><strong>b</strong></span>, being an operand, goes through immediately. The next token is <span style="color: #339966;"><strong>*</strong></span>. Now we must choose, shall we let <strong><span style="color: #339966;">+</span></strong> go through first? The answer is no. The operator <span style="color: #339966;"><strong>*</strong></span> will have to be executed first, because the multiplication operator has precedence over the addition operator. Therefore, we shunt <strong><span style="color: #339966;">*</span></strong> without letting <span style="color: #339966;"><strong>+</strong></span> go through first. Next, we see <strong><span style="color: #339966;">5</span></strong>. It goes through immediately. Now that the input is empty, we can let the still-shunted <span style="color: #339966;"><strong>*</strong></span> and <strong><span style="color: #339966;">+</span></strong> operators go through as well.</p>
+<p>The example script that you can download, only handles a few example operators. If you want to test the script with more operators, you can add them to the <span style="color: #339966;"><strong>get_precedence()</strong></span> function in the <strong><span style="color: #339966;">rpn.sh</span></strong> script.</p>
+<p> </p>
+<h2>4. Stack-based evaluation of expressions and virtual machines</h2>
+<p>The RPN version of an expression is quite interesting, because it allows for <a href="http://en.wikipedia.org/wiki/Stack_(data_structure)" target="_blank" title="Stack">stack</a>-based <a href="http://en.wikipedia.org/wiki/Stack_machine" target="_blank" title="Stack machine">evaluation</a>, for which it is relatively simple to implement a <a href="http://en.wikipedia.org/wiki/Virtual_machine" target="_blank">virtual machine</a>. For example, for the expression: <strong><span style="color: #339966;">a b 5 * +</span></strong>, the stack-based instructions become:</p>
+<ul>
+<li>push operand <span style="color: #339966;"><strong>a</strong></span></li>
+<li>push operand <strong><span style="color: #339966;">b</span></strong></li>
+<li>push operand <span style="color: #339966;"><strong>5</strong></span></li>
+<li>multiply the last two operands and push the resulting operand</li>
+<li>sum the last two operands and push the resulting operand</li>
+</ul>
+<p> </p>
+<p>After the virtual machine has completed executing this series of instructions, you can find the final result for the expression on the stack.</p>
+<p> </p>
+<h2>5. Extending the parser to handle function calls</h2>
+<p>The standard shunting yard algorithm does not parse function calls. <a href="http://www.kallisti.net.nz/blog/2008/02/extension-to-the-shunting-yard-algorithm-to-allow-variable-numbers-of-arguments-to-functions" target="_blank">Here</a> you can find an example of how to extend a shunting yard parser by using additional stacks.</p>
+<p>My own solution does not use additional stacks. Whenever the lexer script <strong><span style="color: #339966;">lex.sh</span></strong> detects the presence of an identifier followed by a left bracket <strong><span style="color: #339966;">(</span></strong>, it flags the identifier as a function. For example, in the expression <strong><span style="color: #339966;">f(x)</span></strong>, <span style="color: #339966;"><strong>f</strong></span> is followed by a left bracket <strong><span style="color: #339966;">(</span></strong>, and therefore, represents a function call.</p>
+<p>For example:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo 'process(x,y,z)' | ./shunt2.sh
+ 
+x y z process FUNARG·3 INVOKE
+ 
+</pre></div></p>
+<p>The identifier <strong><span style="color: #339966;">process</span></strong> is followed by a left bracket <span style="color: #339966;"><strong>(</strong></span>, and is therefore a function call. The parser, therefore, treats it as an operator and not as an operand. Function operators have the highest precedence of all operators. When the virtual machine evaluates an expression in which a function token appears, the function token will simply be pushed onto the stack. It is only when the virtual machine encounters the instruction <strong><span style="color: #339966;">INVOKE</span></strong>, that the virtual machine will invoke the function symbol at the top of the stack. For the example, <span style="color: #339966;"><strong>x y z process FUNARG·3 INVOKE</strong></span>:</p>
+<ul>
+<li>push operand <strong><span style="color: #339966;">x</span></strong></li>
+<li>push operand <span style="color: #339966;"><strong>y</strong></span></li>
+<li>push operand <strong><span style="color: #339966;">z</span></strong></li>
+<li>push operand <span style="color: #339966;"><strong>process</strong></span></li>
+<li>assert that function signature has <strong><span style="color: #339966;">3</span></strong> arguments</li>
+<li>invoke top of stack and push the resulting operand</li>
+</ul>
+<p> </p>
+<p>The virtual machine's assert function signature functional will verify that the function truly has 3 operands. If not, it will fail with an error message.</p>
+<p>The parser can also handle embedded function calls:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo 'process(x,y,do_something(a,b,c))' | ./shunt2.sh
+ 
+x y a b c do_something FUNARG·3 INVOKE process FUNARG·3 INVOKE
+ 
+</pre></div></p>
+<p>The <span style="color: #339966;"><strong>shunt2.sh</strong></span> script simplifies the output and puts all tokens onto one line. With the <strong><span style="color: #339966;">shunt.sh</span></strong> script, you can see the full output of the parser, including token types:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo 'process(x,y,do_something(a,b,c))' | ./shunt.sh
+ 
+OPRND·x
+OPRND·y
+OPRND·a
+OPRND·b
+OPRND·c
+FUNCT·do_something
+FUNARG·3
+SYS·INVOKE
+FUNCT·process
+FUNARG·3
+SYS·INVOKE
+ 
+</pre></div></p>
+<p> </p>
+<h2>6. Extending the parser to handle object-oriented expressions</h2>
+<p>Another extension to the standard algorithm, is the ability to parse object-oriented expressions. For example:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo 'a-≻f()' | ./shunt2.sh
+ 
+a f OBJARG·0 DEREF INVOKE
+ 
+ 
+$ echo 'a-≻f(x)' | ./shunt2.sh
+ 
+a x f OBJARG·1 DEREF INVOKE
+ 
+</pre></div></p>
+<p>The stack-based instructions become:</p>
+<ul>
+<li>push operand <span style="color: #339966;"><strong>a</strong></span></li>
+<li>push operand <strong><span style="color: #339966;">x</span></strong></li>
+<li>push operand <span style="color: #339966;"><strong>f</strong></span></li>
+<li>dereference <strong><span style="color: #339966;">f</span></strong> with <span style="color: #339966;"><strong>1</strong></span> arg from the entry on position 1+1=2 below the top of the stack, and push the resulting operand on the stack</li>
+<li>invoke top of stack and push the resulting operand</li>
+</ul>
+<p> </p>
+<p>The essence of object-oriented expressions, is that the function to call must first be resolved from the variable being dereferenced. Next, the function found gets invoked with this variable and all other function arguments. It is a two-stage resolution process. You can chain and embed object-oriented expressions. For example:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo 'r=a-≻f(x)-≻g(y)-≻h(x1-≻resolve(m),x2+3)' | ./shunt2.sh
+ 
+r a x f OBJARG·1 DEREF INVOKE y g OBJARG·1 DEREF INVOKE x1 m resolve OBJARG·1 DEREF INVOKE x2 3 + h OBJARG·2 DEREF INVOKE =
+ 
+</pre></div></p>
+<p>In principle -- unless its implementation still contains bugs -- the extended shunting yard parser should be able to parse object-oriented expressions of arbitrary complexity. The algorithm also distiguishes between method (=function) calls and object-property dereferencing. For example:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo 'a-≻b+95' | ./shunt2.sh
+ 
+a b DEREFP 95 +
+ 
+ 
+$ echo 'a-≻b+95/g-≻draw()' | ./shunt2.sh
+ 
+a b DEREFP 95 g draw OBJARG·0 DEREF INVOKE / +
+ 
+</pre></div></p>
+<p>The <strong><span style="color: #339966;">DEREF</span></strong> instruction will dereference a function, while the <span style="color: #339966;"><strong>DEREFP</strong></span> instruction will dereference a property.</p>
+<p> </p>
+<h2>7. Extending the parser to handle more than one expression</h2>
+<p>Traditionally, we use semicolons <strong><span style="color: #339966;">;</span></strong> to separate one expression from the other. In terms of the extended shunting yard parser, we will simply force the parser to handle the remaining stack, before proceeding with the next expression. For the virtual machine, it means that it should drop all existing values on the current stack frame. For example:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo 'a=2;b=5;x=23+12;' | ./shunt2.sh
+ 
+a 2 = RESET b 5 = RESET x 23 12 + = RESET
+ 
+</pre></div></p>
+<p>The <strong><span style="color: #339966;">RESET</span></strong> instruction resets the stack to its lowest level. All values on the stack's current frame will be dropped. For example, the following expression is never assigned to any variable. Therefore, the virtual machine computes it and then simply drops it:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo 'a*b-2+3;' | ./shunt2.sh
+ 
+a b * 2 - 3 + RESET
+ 
+</pre></div></p>
+<p>In this example, computing the expression is meaningless. Its result is never assigned to a variable, and it does not cause any useful side-effects. Therefore, it is actually a waste of computer resources.</p>
+<p> </p>
+<h2>8. Extending the parser to handle 'if' statements</h2>
+<p>It is quite straightforward to extend the parser to handle statement blocks. For example:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo 'if(a==12) x=9;' | ./shunt2.sh
+ 
+a 12 == if x 9 = RESET
+ 
+</pre></div></p>
+<p>Internally, the parser will treat the <strong><span style="color: #339966;">if</span></strong> statement as if it has seen a function. Some later logic will rename the token type from <strong><span style="color: #339966;">FUNCT</span></strong> to <span style="color: #339966;"><strong>IF</strong></span>. The full output for the example above is:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo 'if(a==12) x=9;' | ./shunt.sh
+ 
+OPRND·a
+OPRND·12
+OPER·==
+IF·if
+OPRND·x
+OPRND·9
+OPER·=
+SYS·RESET
+ 
+</pre></div></p>
+<p>In the example above, if the condition is false, the virtual machine should jump till the next <strong><span style="color: #339966;">SYS·RESET</span></strong>. The parser can also handle statement blocks. For example:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo 'if(a==12) {x=9;y=b-1;}' | ./shunt2.sh
+ 
+a 12 == if { x 9 = RESET y b 1 - = RESET }
+ 
+</pre></div></p>
+<p>The full output is:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo 'if(a==12) {x=9;y=b-1;}' | ./shunt.sh
+ 
+OPRND·a
+OPRND·12
+OPER·==
+IF·if
+BLKST·{
+OPRND·x
+OPRND·9
+OPER·=
+SYS·RESET
+OPRND·y
+OPRND·b
+OPRND·1
+OPER·-
+OPER·=
+SYS·RESET
+BLKEND·}
+ 
+</pre></div></p>
+<p>When the condition is false, instead of skipping instructions until the next <span style="color: #339966;"><strong>SYS·RESET</strong></span> token, as for single statements, the virtual machine will skip instructions until the corresponding block end, <strong><span style="color: #339966;">BLKEND·}</span></strong> token.</p>
+<p> </p>
+<h2>9. Extending the parser to handle 'switch' statements</h2>
+<p>Using the following syntax, it is again not a big deal to extend the parser to handle switch/case:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo 'switch(a+1) \
+{ \
+case(4) dofirst(); \
+case(c*12/x) donext(); \
+case(default) doother(); \
+}' \
+| ./shunt.sh
+ 
+OPRND·a
+OPRND·1
+OPER·+
+SWITCH·switch
+BLKST·{
+SYS·CASEST
+OPRND·4
+CASE·case
+FUNCT·dofirst
+FUNARG·0
+SYS·INVOKE
+SYS·RESET
+SYS·CASEST
+OPRND·c
+OPRND·12
+OPER·*
+OPRND·x
+OPER·/
+CASE·case
+FUNCT·donext
+FUNARG·0
+SYS·INVOKE
+SYS·RESET
+SYS·CASEST
+OPRND·default
+CASE·case
+FUNCT·doother
+FUNARG·0
+SYS·INVOKE
+SYS·RESET
+BLKEND·}
+ 
+</pre></div></p>
+<p> </p>
+<h2>10. Extending the parser to handle 'while' and 'foreach' statements</h2>
+<p>Adding support for traditional <span style="color: #339966;"><strong>for(statement; statement; statement)</strong></span> instructions, is difficult in this extended shunting yard parser, because the parser uses the semicolon token to reset the operator stack. The parser would balk over the unhandled left bracket <strong><span style="color: #339966;">(</span></strong> left on the stack. It would, therefore, take some substantial fiddling to add support for a traditional <span style="color: #339966;"><strong>for</strong></span> loop. But then again, the <strong><span style="color: #339966;">while</span></strong> and <span style="color: #339966;"><strong>foreach</strong></span> statements are equally powerful looping constructs. For example:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo 'while(true) { a-≻eat(); b-≻drink(); if(a-≻done) break; }' | ./shunt.sh
+ 
+SYS·LOOPST
+OPRND·true
+WHILE·while
+BLKST·{
+OPRND·a
+FUNCT·eat
+OBJARG·0
+DEREF·DEREF
+SYS·INVOKE
+SYS·RESET
+OPRND·b
+FUNCT·drink
+OBJARG·0
+DEREF·DEREF
+SYS·INVOKE
+SYS·RESET
+OPRND·a
+OPRND·done
+DEREFP·DEREFP
+IF·if
+OPRND·break
+SYS·RESET
+BLKEND·}
+ 
+ 
+$ echo 'foreach(item in items) { item-≻pick(); item-≻pack(); if(item-≻done) item-≻ship(); }' | ./shunt.sh
+ 
+SYS·LOOPST
+OPRND·item
+OPRND·in
+OPRND·items
+FOREACH·foreach
+BLKST·{
+OPRND·item
+FUNCT·pick
+OBJARG·0
+DEREF·DEREF
+SYS·INVOKE
+SYS·RESET
+OPRND·item
+FUNCT·pack
+OBJARG·0
+DEREF·DEREF
+SYS·INVOKE
+SYS·RESET
+OPRND·item
+OPRND·done
+DEREFP·DEREFP
+IF·if
+OPRND·item
+FUNCT·ship
+OBJARG·0
+DEREF·DEREF
+SYS·INVOKE
+SYS·RESET
+BLKEND·}
+ 
+</pre></div></p>
+<p>Obviously, this output would need to be post-processed in order to add labels and conditional and unconditional jumps for the looping contructs. This can actually be effected with a simple script. We will probably also need to fiddle with the output to avoid the need to look ahead in the token stream.</p>
+<p> </p>
+<h2>11. Extending the parser to handle function definition statements</h2>
+<p>Support for function definitions can be added by applying special treatment to the <span style="color: #339966;"><strong>function</strong></span> keyword:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo 'function f(x1,x2,x3) { return x1+x2+x3; }' | ./shunt.sh
+ 
+FUNCDEF·FUNCDEF
+OPRND·f
+OPRND·x1
+OPRND·x2
+OPRND·x3
+BLKST·{
+OPRND·return
+OPRND·x1
+OPRND·x2
+OPER·+
+OPRND·x3
+OPER·+
+SYS·RESET
+BLKEND·}
+ 
+</pre></div></p>
+<p>For the parser, handling function definitions is relatively simple, but for the virtual machine less so. The virtual machine will need to create a function table to keep track of the function definitions. The parser does not need to be extended in order to support class definitions. It is again the virtual machine that would need to add specific support for them:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+$ echo 'class whatever inherits anything { function f(x1,x2,x3) { return x1+x2+x3; } }' | ./shunt.sh
+ 
+OPRND·class
+OPRND·whatever
+OPRND·inherits
+OPRND·anything
+BLKST·{
+FUNCDEF·FUNCDEF
+OPRND·f
+OPRND·x1
+OPRND·x2
+OPRND·x3
+BLKST·{
+OPRND·return
+OPRND·x1
+OPRND·x2
+OPER·+
+OPRND·x3
+OPER·+
+SYS·RESET
+BLKEND·}
+BLKEND·}
+ 
+</pre></div></p>
+<p>To facilitate the processing of the parser output, it would undoubtedly be useful to introduce specific token types for <strong><span style="color: #339966;">class</span></strong> and <span style="color: #339966;"><strong>inherits</strong></span>.</p>
+<p> </p>
+<h2>11. Validating input to the parser</h2>
+<p>Even though, it would be easy to add, it would also be rather time consuming, to add validation to the parser, and fail as early as possible for syntax and grammar errors. It can be done, but I only added little validation in this prototype. Furthermore, this is where traditional <a href="http://en.wikipedia.org/wiki/LALR_parser" target="_blank">LALR</a> and <a href="http://en.wikipedia.org/wiki/LL_parser" target="_blank">LL</a> parsers shine. Most of the validation can be implemented automatically from the grammar definition file. But then again, Dijkstra's shunting yard algorithm is so simple, that it is very attractive to use it for small embedded scripting engines.</p>
+<p> </p>
+<h2>12. The script</h2>
+<p>The <strong><span style="color: #339966;">shunt.sh</span></strong> script works by chaining a series of smaller scripts that accept input on <strong><span style="color: #339966;">stdin</span></strong> and write their results to <span style="color: #339966;"><strong>stdout</strong></span>:</p>
+<p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:bash">
+./line2char.sh \
+| ./lookahead_char.sh \
+| ./lex.sh \
+| ./lookahead_2tokens.sh \
+| ./fix_func0.sh \
+| ./lookahead_2tokens.sh \
+| ./fix_funcdef.sh \
+| ./rpn.sh \
+| ./lookahead_2tokens.sh \
+| ./fix_invoke.sh
+</pre></div></p>
+<ul>
+<li><strong>line2char.sh:</strong> puts every character in the input on one line.</li>
+<li><strong>lookahead_char.sh:</strong> juxtaposes each character with the next character; it allows the next script to lookahead, when needed.</li>
+<li><strong>lex.sh:</strong> simplistic manual lexer; groups characters into operands; identifies functions and unary operators, and outputs qualified tokens.</li>
+<li><strong>lookahead_2tokens.sh:</strong> juxtaposes each token with the next two tokens; it allows the next script to lookahead two tokens, when needed.</li>
+<li><strong>fix_func0.sh:</strong> the rpn.sh script determines the number of arguments in a function call by counting the number of commas. Therefore, it cannot distinguish between zero (e.g. f()) and one argument (e.g. f(x)). Therefore, we must mark functions without arguments distinctively.</li>
+<li><strong>rpn.sh:</strong> the extended shunting yard algorithm.</li>
+<li><strong>fix_invoke.sh:</strong> adds the INVOKE instruction where appropriate, and creates the distinction between between DEREF and DEREFP.</li>
+<li><strong>fix_funcdef.sh:</strong> makes sure the function keyword is followed by an identifier.</li>
+</ul>
+<p> </p>
+<h2>13. Conclusion</h2>
+<p>It is absolutely possible to extend Dijkstra's original shunting yard algorithm to translate object-oriented function definitions and expressions of arbitrary complexity from infix to RPN notation. Since the RPN version of an expression can be executed by a relatively simple virtual machine, it would be possible to write a fully-fledged bytecode compiler around such extended shunting yard algorithm, which could supply its output to an existing scripting engine, such as the Php, perl, javascript, .NET, java, <a href="http://nekovm.org/" target="_blank" title="neko">neko</a> or other virtual machine. It would also be possible to build a new scripting engine and a new bytecode format, but why re-invent the wheel?</p>
+<p>I have built the <strong><span style="color: #339966;">shunt.sh</span></strong> and <span style="color: #339966;"><strong>shunt2.sh</strong></span> scripts, in order to support my conjecture concerning extending Dijkstra's shunting yard algorithm, with a functioning prototype. Even though the scripts manage to parse numerous examples correctly, I do not guarantee that they will always work correctly. There is also a general need for more validation of the input. If you find errors, please, let me know.</p>
+<p> </p>
+<hr />
+
+<!-- Disqus Comments -->
+<div class="jwDisqusForm">
+	
+			<div id="disqus_thread"></div>
+			<script type="text/javascript">
+				//<![CDATA[
+			
+					var disqus_url= "http://sankuru.biz/en/blog/23-shell-scripting-and-the-occasional-c-program/152-parsing-object-oriented-expressions-with-dijkstras-shunting-yard-algorithm.html";
+					var disqus_identifier = "2c2d11bff4_id152";
+				//]]>
+			</script>
+			<script type="text/javascript" src="Parsing%20object-oriented%20expressions%20with%20Dijkstra%27s%20shunting%20yard%20algorithm_files/embed000.js"></script>
+			<noscript>
+				<a href="http://sankurubiz.disqus.com/?url=ref">View the discussion thread.</a>
+			</noscript>
+			<a href="http://disqus.com/" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+			</div>
+
+<div class="jwDisqusBackToTop">
+	<a href="">back to top</a>
+	<div class="clr"></div>
+</div>
+	
+<div class="clr"></div>
+
+<!-- JoomlaWorks "Disqus Comment System for Joomla!" Plugin (v2.2) ends here -->
+
+</td>
+</tr>
+
+</table>
+<span class="article_separator">&nbsp;</span>
+
+						</td>
+						  </tr>
+						</table>
+						
+								</div>
+				<div class="clear"></div><!--Updated in v1.6.1-->
+				</div>
+		<div class="bottom-left-only"></div>
+				<div class="main-top-wide"></div>
+		<div class="mainbody-wide">
+			<div class="footer">
+				<p><strong><span style="font-size: xx-small;">Copyright 2010, Sankuru.biz. The Joomla!® name an logo are used under a limited license from Open Source Matters. Sankuru.biz is an independent service provider, not affiliated with Open Source Matters. All other trademarks are the property of their respective owners. <br /></span></strong></p>
+			</div>
+			<div class="clear"></div>
+			</div>
+		<div class="bottom-wide">&nbsp;</div>
+				<div class="tplcright"><a href="http://www.joomlashack.com/" title="Joomla 1.5 Templates">Joomla 1.5 Templates by Joomlashack</a></div>	</div>
+</body>
+</html>
+<!-- This document saved from http://sankuru.biz/en/blog/23-shell-scripting-and-the-occasional-c-program/152-parsing-object-oriented-expressions-with-dijkstras-shunting-yard-algorithm.html -->

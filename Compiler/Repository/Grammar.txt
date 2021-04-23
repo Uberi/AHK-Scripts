@@ -1,0 +1,30 @@
+Program            = Statement , { LineEnd , Statement }
+Statement          = ( ObjectAccess , Assign , { "," , Assign } ) | Expression
+Expression         = Assign , { Whitespace } , { "," , Assign , { Whitespace } }
+Assign             = Ternary , { ( ":=" | "+=" | "-=" | "*=" | "/=" | "//=" | ".=" | "|=" | "&=" | "^=" | "<<=" | ">>=" | "||=" | "&&=" ) , Ternary }
+Ternary            = Or , [ "?" , Ternary , ":" , Ternary ]
+Or                 = And , { "||" , And }
+And                = Compare , { "&&" , Compare }
+Compare            = Concatenate , { ( "=" | "==" | "!=" | "!==" | ">" | "<" | ">=" | "<=" ) , Concatenate }
+Concatenate        = BitwiseLogic , { Whitespace , "." , Whitespace , BitwiseLogic }
+BitwiseLogic       = BitwiseShift , { ( "&" | "^" | "|" ) , BitwiseShift }
+BitwiseShift       = AddSubtract , { ( "<<" | ">>" ) , AddSubtract }
+AddSubtract        = MultiplyDivide , { ( "+" | "-" ) , MultiplyDivide }
+MultiplyDivide     = PrefixLogic , { ( "*" | "/" | "//" ) , PrefixLogic }
+PrefixLogic        = Exponentiate | ( ( "!" | "-" | "~" | "&" ) , PrefixLogic )
+Exponentiate       = IncrementDecrement , [ "**" , Exponentiate ]
+IncrementDecrement = ( Call , [ "++" ] ) | ( "++" , IncrementDecrement )
+Call               = ObjectAccess , [ ( "(" , ")" ) | ( "(" , Assign , { "," , Assign } , ")" ) ]
+ObjectAccess       = Atom , { ( "." , Dereference ) | ( "[" , Assign , "]" ) }
+Atom               = { Whitespace } , ( Number | String | Dereference | Array | Group | Block ) , { Whitespace }
+Dereference        = Identifier | ( "%" , Identifier , "%" )
+
+Array              = ( "[" , "]" ) | ( "[" , Assign , { "," , Assign } , "]" )
+Group              = "(" , Expression , ")"
+Block              = "{" , Expression , "}"
+
+Whitespace         = ? a sequence of tabs or spaces or newlines ?
+LineEnd            = ? a line end token ?
+Number             = ? a number token ?
+String             = ? a string token ?
+Identifier         = ? an identifier token ?

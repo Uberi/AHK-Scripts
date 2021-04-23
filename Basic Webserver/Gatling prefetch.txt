@@ -1,0 +1,39 @@
+gatling now has experimental prefetching support.
+The code is experimental and enabled per default, disable it with -P0.
+
+The code is only used for downloads larger than 1 MB.  What it does it
+mmap and read the next n MB in the file.  Set the value with -P 2M (for
+2 MB) or -P 1G (for 1 GB).  Useful range would be (depending on your
+RAM and hard disk speed) 1 MB until maybe 10 MB.  The idea is that
+modern disks are very fast (50 MB/sec) for linear reading (so
+downloading one file is very fast) but they are very slow for moving the
+read head (so two people downlading two ISO images is very slow because
+the read head is always moving from image A to image B and reading a few
+kilobytes).  Normally, the OS should do prefetching, in particular if we
+use sendfile (which we do), but I have yet to see an OS that does.  The
+solution would be to read larger parts of the file before sending it.
+gatling mmaps the files, reads two megabytes (or whatever you
+configured), which then stay in the OS buffer cache.  This ought to
+reduce head movement.
+
+
+Please note: since gatling is not threaded, no requests will be
+services while gatling is prefetching data.  So if you set the prefetch
+too big, gatling will stall during the prefetches.  If you set the
+prefetch too small, the OS internal prefetching will prefetch more than
+gatling does and thus there will be no effect.  If you serve data from
+many different disks of different speed, set the prefetch to a value
+that is good for the _slowest_ disk of the pack.
+
+
+NB: prefetching does not help AT ALL if your files are fragmented on
+disk.  This usually happens if you downloaded them with some P2P
+application or download manager (BitTorrent 3.3 has some counter
+measures here and should be safe).  I'll include the readfrag program
+which you can use to defragment files (it will output the file on
+stdout, if stdout is a terminal, it will just say how much head movement
+it could save compared to a naive OS; Linux 2.6's internal disk I/O
+scheduler is good enough so you can just use cp instead of readfrag).
+readfrag uses a little documented Linux specific ioctl that is used by
+LILO (the boot loader) normally; if you know how to port this to other
+OSes, please tell me.

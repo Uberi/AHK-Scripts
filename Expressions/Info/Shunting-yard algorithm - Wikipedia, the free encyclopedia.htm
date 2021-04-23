@@ -1,0 +1,956 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Shunting-yard algorithm - Wikipedia, the free encyclopedia</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8;charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="generator" content="MediaWiki 1.17wmf1" />
+<link rel="canonical" href="/wiki/Shunting-yard_algorithm" />
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=Shunting-yard_algorithm&amp;action=edit" />
+<link rel="edit" title="Edit this page" href="/w/index.php?title=Shunting-yard_algorithm&amp;action=edit" />
+<link rel="apple-touch-icon" href="http://en.wikipedia.org/apple-touch-icon.png" />
+<link rel="shortcut icon" href="Shunting-yard%20algorithm%20-%20Wikipedia%2C%20the%20free%20encyclopedia_files/favicon0.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (en)" />
+<link rel="EditURI" type="application/rsd+xml" href="http://en.wikipedia.org/w/api.php?action=rsd" />
+<link rel="copyright" href="http://creativecommons.org/licenses/by-sa/3.0/" />
+<link rel="alternate" type="application/atom+xml" title="Wikipedia Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="stylesheet" href="http://bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%7Cmediawiki.legacy.shared%7Cskins.vector&amp;only=styles&amp;skin=vector" type="text/css" media="all" />
+<style type="text/css" media="all">a.new,#quickbar a.new{color:#ba0000}
+
+/* cache key: enwiki:resourceloader:filter:minify-css:2:f2a9127573a22335c2a9102b208c73e7 */</style><meta name="ResourceLoaderDynamicStyles" content="" /><link rel="stylesheet" href="http://bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=styles&amp;skin=vector&amp;version=20110217T190952Z" type="text/css" media="all" />
+<link rel="stylesheet" href="http://bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&amp;lang=en&amp;modules=user&amp;only=styles&amp;skin=vector&amp;version=19700101T000001Z" type="text/css" media="all" />
+
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000ff;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #666666;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #000099; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #000099; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #660099; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #660099; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #660099; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #006699; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #FF0000;}
+.cpp.source-cpp .nu0 {color: #0000dd;}
+.cpp.source-cpp .nu6 {color: #208080;}
+.cpp.source-cpp .nu8 {color: #208080;}
+.cpp.source-cpp .nu12 {color: #208080;}
+.cpp.source-cpp .nu16 {color:#800080;}
+.cpp.source-cpp .nu17 {color:#800080;}
+.cpp.source-cpp .nu18 {color:#800080;}
+.cpp.source-cpp .nu19 {color:#800080;}
+.cpp.source-cpp .me1 {color: #007788;}
+.cpp.source-cpp .me2 {color: #007788;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style>
+<style type="text/css">/*<![CDATA[*/
+@import "Shunting-yard\ algorithm\ -\ Wikipedia\,\ the\ free\ encyclopedia_files/css00000.css";
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/w/skins-1.17/vector/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr ns-0 ns-subject page-Shunting-yard_algorithm skin-vector">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<!-- sitenotice -->
+			<div id="siteNotice"><!-- centralNotice loads here --><script type="text/javascript">
+/* <![CDATA[ */
+document.writeln("\x3cdiv id=\"localNotice\"\x3e\x3cp\x3e\x3c/p\x3e\n\x3c/div\x3e");
+/* ]]> */
+</script></div>
+			<!-- /sitenotice -->
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading">Shunting-yard algorithm</h1>
+			<!-- /firstHeading -->
+			<!-- bodyContent -->
+			<div id="bodyContent">
+				<!-- tagline -->
+				<div id="siteSub">From Wikipedia, the free encyclopedia</div>
+				<!-- /tagline -->
+				<!-- subtitle -->
+				<div id="contentSub">  (Redirected from <a href="http://en.wikipedia.org/w/index.php?title=Shunting_yard_algorithm&amp;redirect=no" title="Shunting yard algorithm">Shunting yard algorithm</a>)</div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav">
+					Jump to: <a href="">navigation</a>,
+					<a href="">search</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodytext -->
+				<p>The <b>shunting-yard algorithm</b> is a method for parsing mathematical expressions specified in <a href="http://en.wikipedia.org/wiki/Infix_notation">infix notation</a>. It can be used to produce output in <a href="http://en.wikipedia.org/wiki/Reverse_Polish_notation">Reverse Polish notation</a> (RPN) or as an <a href="http://en.wikipedia.org/wiki/Abstract_syntax_tree">abstract syntax tree</a> (AST). The <a href="http://en.wikipedia.org/wiki/Algorithm">algorithm</a> was invented by <a href="http://en.wikipedia.org/wiki/Edsger_Dijkstra" class="mw-redirect" title="Edsger Dijkstra">Edsger Dijkstra</a> and named the "shunting yard" algorithm because its operation resembles that of a <a href="http://en.wikipedia.org/wiki/Classification_yard" title="Classification yard">railroad shunting yard</a>.</p>
+<p>Like the evaluation of RPN, the shunting yard algorithm is <a href="http://en.wikipedia.org/wiki/Stack_(data_structure)" title="Stack (data structure)">stack</a>-based. Infix expressions are the form of mathematical notation most people are used to, for instance 3+4 or 3+4*(2−1). For the conversion there are two text <a href="http://en.wikipedia.org/wiki/Variable_(programming)" title="Variable (programming)">variables</a> (<a href="http://en.wikipedia.org/wiki/String_(computer_science)" title="String (computer science)">strings</a>), the input and the output. There is also a stack that holds operators not yet added to the output queue. To convert, the program reads each symbol in order and does something based on that symbol.</p>
+<table id="toc" class="toc">
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href=""><span class="tocnumber">1</span> <span class="toctext">A simple conversion</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href=""><span class="tocnumber">2</span> <span class="toctext">The algorithm in detail</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href=""><span class="tocnumber">3</span> <span class="toctext">Detailed example</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href=""><span class="tocnumber">4</span> <span class="toctext">C example</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href=""><span class="tocnumber">5</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href=""><span class="tocnumber">6</span> <span class="toctext">External links</span></a></li>
+</ul>
+</td>
+</tr>
+</table>
+<h2><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Shunting-yard_algorithm&amp;action=edit&amp;section=1" title="Edit section: A simple conversion">edit</a>]</span> <span class="mw-headline" id="A_simple_conversion">A simple conversion</span></h2>
+<div class="thumb tright">
+<div class="thumbinner" style="width:402px;"><a href="http://en.wikipedia.org/wiki/File:Shunting_yard.svg" class="image"><img alt="" src="Shunting-yard%20algorithm%20-%20Wikipedia%2C%20the%20free%20encyclopedia_files/400px-Sh.png" width="400" height="448" class="thumbimage" /></a>
+<div class="thumbcaption">
+<div class="magnify"><a href="http://en.wikipedia.org/wiki/File:Shunting_yard.svg" class="internal" title="Enlarge"><img src="Shunting-yard%20algorithm%20-%20Wikipedia%2C%20the%20free%20encyclopedia_files/magnify-.png" width="15" height="11" alt="" /></a></div>
+Graphical illustration of algorithm, using a three way railroad junction. The input is processed one symbol at a time, if a variable or number is found it is copied direct to the output b), d), f), h). If the symbol is an operator it is pushed onto the operator stack c), e), however, if its precedence is less than that of of the operator at the top of the stack or the precedences are equal and the operator is left associative then that operator is popped off the stack and added to the output g). Finally remaining operators are popped off the stack and added to the output.</div>
+</div>
+</div>
+<dl>
+<dd>Input: 3+4</dd>
+</dl>
+<ol>
+<li>Add 3 to the output <a href="http://en.wikipedia.org/wiki/Queue_(data_structure)" title="Queue (data structure)">queue</a> (whenever a number is read it is added to the output)</li>
+<li><a href="http://en.wikipedia.org/wiki/Stack_(data_structure)#Basic_architecture_of_a_stack" title="Stack (data structure)">Push</a> + (or its ID) onto the operator <a href="http://en.wikipedia.org/wiki/Stack_(data_structure)" title="Stack (data structure)">stack</a></li>
+<li>Add 4 to the output queue</li>
+<li>After reading the expression <a href="http://en.wikipedia.org/wiki/Stack_(data_structure)#Basic_architecture_of_a_stack" title="Stack (data structure)">pop</a> the operators off the stack and add them to the output.</li>
+<li>In this case there is only one, "+".</li>
+<li>Output 3 4 +</li>
+</ol>
+<p>This already shows a couple of rules:</p>
+<ul>
+<li>All numbers are added to the output when they are read.</li>
+<li>At the end of reading the expression, pop all operators off the stack and onto the output.</li>
+</ul>
+<h2><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Shunting-yard_algorithm&amp;action=edit&amp;section=2" title="Edit section: The algorithm in detail">edit</a>]</span> <span class="mw-headline" id="The_algorithm_in_detail">The algorithm in detail</span></h2>
+<ul>
+<li>While there are tokens to be read:</li>
+</ul>
+<dl>
+<dd>
+<ul>
+<li>Read a <a href="http://en.wikipedia.org/wiki/Token_(parser)" title="Token (parser)" class="mw-redirect">token</a>.</li>
+<li>If the token is a number, then add it to the output queue.</li>
+<li>If the token is a <a href="http://en.wikipedia.org/wiki/Function_(mathematics)" title="Function (mathematics)">function</a> token, then push it onto the stack.</li>
+<li>If the token is a function argument separator (e.g., a comma):</li>
+</ul>
+<dl>
+<dd>
+<ul>
+<li>Until the token at the top of the stack is a left parenthesis, pop operators off the stack onto the output queue. If no left parentheses are encountered, either the separator was misplaced or parentheses were mismatched.</li>
+</ul>
+</dd>
+</dl>
+<ul>
+<li>If the token is an operator, o<sub>1</sub>, then:</li>
+</ul>
+<dl>
+<dd>
+<ul>
+<li>while there is an operator token, o<sub>2</sub>, at the top of the stack, and</li>
+</ul>
+<dl>
+<dd>
+<dl>
+<dd>
+<dl>
+<dd>either o<sub>1</sub> is <a href="http://en.wikipedia.org/wiki/Operator_associativity" title="Operator associativity">left-associative</a> and its <a href="http://en.wikipedia.org/wiki/Order_of_operations" title="Order of operations">precedence</a> is less than or equal to that of o<sub>2</sub>,</dd>
+<dd>or o<sub>1</sub> is <a href="http://en.wikipedia.org/wiki/Operator_associativity" title="Operator associativity">right-associative</a> and its precedence is less than that of o<sub>2</sub>,</dd>
+</dl>
+</dd>
+<dd>pop o<sub>2</sub> off the stack, onto the output queue;</dd>
+</dl>
+</dd>
+</dl>
+<ul>
+<li>push o<sub>1</sub> onto the stack.</li>
+</ul>
+</dd>
+</dl>
+<ul>
+<li>If the token is a left parenthesis, then push it onto the stack.</li>
+<li>If the token is a right parenthesis:</li>
+</ul>
+<dl>
+<dd>
+<ul>
+<li>Until the token at the top of the stack is a left parenthesis, pop operators off the stack onto the output queue.</li>
+<li>Pop the left parenthesis from the stack, but not onto the output queue.</li>
+<li>If the token at the top of the stack is a function token, pop it onto the output queue.</li>
+<li>If the stack runs out without finding a left parenthesis, then there are mismatched parentheses.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<ul>
+<li>When there are no more tokens to read:</li>
+</ul>
+<dl>
+<dd>
+<ul>
+<li>While there are still operator tokens in the stack:</li>
+</ul>
+<dl>
+<dd>
+<ul>
+<li>If the operator token on the top of the stack is a parenthesis, then there are mismatched parentheses.</li>
+<li>Pop the operator onto the output queue.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<ul>
+<li>Exit.</li>
+</ul>
+<p>To analyze the running time complexity of this algorithm, one has only to note that each token will be read once, each number, function, or operator will be printed once, and each function, operator, or parenthesis will be pushed onto the stack and popped off the stack once – therefore, there are at most a constant number of operations executed per token, and the running time is thus O(<i>n</i>) – linear in the size of the input.</p>
+<h2><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Shunting-yard_algorithm&amp;action=edit&amp;section=3" title="Edit section: Detailed example">edit</a>]</span> <span class="mw-headline" id="Detailed_example">Detailed example</span></h2>
+<table class="wikitable">
+<caption>Input: 3 + 4 * 2 / ( 1 − 5 ) ^ 2 ^ 3</caption>
+<tr>
+<th>operator</th>
+<th>precedence</th>
+<th>associativity</th>
+</tr>
+<tr align="center">
+<td>^</td>
+<td>4</td>
+<td>Right</td>
+</tr>
+<tr align="center">
+<td>*</td>
+<td>3</td>
+<td>Left</td>
+</tr>
+<tr align="center">
+<td>/</td>
+<td>3</td>
+<td>Left</td>
+</tr>
+<tr align="center">
+<td>+</td>
+<td>2</td>
+<td>Left</td>
+</tr>
+<tr align="center">
+<td>-</td>
+<td>2</td>
+<td>Left</td>
+</tr>
+</table>
+<table class="wikitable">
+<tr>
+<th>Token</th>
+<th>Action</th>
+<th>Output (in <a href="http://en.wikipedia.org/wiki/Reverse_Polish_Notation" title="Reverse Polish Notation" class="mw-redirect">RPN</a>)</th>
+<th>Operator Stack</th>
+<th>Notes</th>
+</tr>
+<tr>
+<td>3</td>
+<td>Add token to output</td>
+<td>3</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>+</td>
+<td>Push token to stack</td>
+<td>3</td>
+<td align="right">+</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Add token to output</td>
+<td>3 4</td>
+<td align="right">+</td>
+<td></td>
+</tr>
+<tr>
+<td>*</td>
+<td>Push token to stack</td>
+<td>3 4</td>
+<td align="right">* +</td>
+<td>* has higher precedence than +</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Add token to output</td>
+<td>3 4 2</td>
+<td align="right">* +</td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="2">/</td>
+<td>Pop stack to output</td>
+<td>3 4 2 *</td>
+<td align="right">+</td>
+<td>/ and * have same precedence</td>
+</tr>
+<tr>
+<td>Push token to stack</td>
+<td>3 4 2 *</td>
+<td align="right">/ +</td>
+<td>/ has higher precedence than +</td>
+</tr>
+<tr>
+<td>(</td>
+<td>Push token to stack</td>
+<td>3 4 2 *</td>
+<td align="right">( / +</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>Add token to output</td>
+<td>3 4 2 * 1</td>
+<td align="right">( / +</td>
+<td></td>
+</tr>
+<tr>
+<td>−</td>
+<td>Push token to stack</td>
+<td>3 4 2 * 1</td>
+<td align="right">− ( / +</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Add token to output</td>
+<td>3 4 2 * 1 5</td>
+<td align="right">− ( / +</td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="2">)</td>
+<td>Pop stack to output</td>
+<td>3 4 2 * 1 5 −</td>
+<td align="right">( / +</td>
+<td>Repeated until "(" found</td>
+</tr>
+<tr>
+<td>Pop stack</td>
+<td>3 4 2 * 1 5 −</td>
+<td align="right">/ +</td>
+<td>Discard matching parenthesis</td>
+</tr>
+<tr>
+<td>^</td>
+<td>Push token to stack</td>
+<td>3 4 2 * 1 5 −</td>
+<td align="right">^ / +</td>
+<td>^ has higher precedence than /</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Add token to output</td>
+<td>3 4 2 * 1 5 − 2</td>
+<td align="right">^ / +</td>
+<td></td>
+</tr>
+<tr>
+<td>^</td>
+<td>Push token to stack</td>
+<td>3 4 2 * 1 5 − 2</td>
+<td align="right">^ ^ / +</td>
+<td>^ is evaluated right-to-left</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Add token to output</td>
+<td>3 4 2 * 1 5 − 2 3</td>
+<td align="right">^ ^ / +</td>
+<td></td>
+</tr>
+<tr>
+<td><i>end</i></td>
+<td>Pop entire stack to output</td>
+<td>3 4 2 * 1 5 − 2 3 ^ ^ / +</td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<p>If you were writing an <a href="http://en.wikipedia.org/wiki/Interpreter_(computing)" title="Interpreter (computing)">interpreter</a>, this output would be <a href="http://en.wikipedia.org/wiki/Tokenize" title="Tokenize" class="mw-redirect">tokenized</a> and written to a compiled file to be later <a href="http://en.wikipedia.org/wiki/Interpreter_(computing)" title="Interpreter (computing)">interpreted</a>. Conversion from infix to RPN can also allow for easier simplification of expressions. To do this, act like you are solving the RPN expression, however, whenever you come to a variable its value is null, and whenever an operator has a null value, it and its parameters are written to the output (this is a simplification, problems arise when the parameters are operators). When an operator has no null parameters its value can simply be written to the output. This method obviously doesn't include all the simplifications possible: It's more of a <a href="http://en.wikipedia.org/wiki/Constant_folding">constant folding</a> optimization.</p>
+<h2><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Shunting-yard_algorithm&amp;action=edit&amp;section=4" title="Edit section: C example">edit</a>]</span> <span class="mw-headline" id="C_example">C example</span></h2>
+<div dir="ltr" class="mw-geshi" style="text-align: left;">
+<div class="cpp source-cpp" style="font-family:monospace;">
+<pre class="de1">
+<span class="co2">#include &lt;string.h&gt;</span>
+<span class="co2">#include &lt;stdio.h&gt;</span>
+<span class="co2">#define bool int</span>
+<span class="co2">#define false 0</span>
+<span class="co2">#define true 1</span>
+ 
+<span class="co1">// operators</span>
+<span class="co1">// precedence   operators       associativity</span>
+<span class="co1">// 1            !               right to left</span>
+<span class="co1">// 2            * / %           left to right</span>
+<span class="co1">// 3            + -             left to right</span>
+<span class="co1">// 4            =                right to left</span>
+<span class="kw4">int</span> op_preced<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">char</span> c<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">switch</span><span class="br0">(</span>c<span class="br0">)</span>    <span class="br0">{</span>
+        <span class="kw1">case</span> <span class="st0">'!'</span><span class="sy4">:</span>
+            <span class="kw1">return</span> <span class="nu0">4</span><span class="sy4">;</span>
+        <span class="kw1">case</span> <span class="st0">'*'</span><span class="sy4">:</span>  <span class="kw1">case</span> <span class="st0">'/'</span><span class="sy4">:</span> <span class="kw1">case</span> <span class="st0">'%'</span><span class="sy4">:</span>
+            <span class="kw1">return</span> <span class="nu0">3</span><span class="sy4">;</span>
+        <span class="kw1">case</span> <span class="st0">'+'</span><span class="sy4">:</span> <span class="kw1">case</span> <span class="st0">'-'</span><span class="sy4">:</span>
+            <span class="kw1">return</span> <span class="nu0">2</span><span class="sy4">;</span>
+        <span class="kw1">case</span> <span class="st0">'='</span><span class="sy4">:</span>
+            <span class="kw1">return</span> <span class="nu0">1</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+    <span class="kw1">return</span> <span class="nu0">0</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">bool</span> op_left_assoc<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">char</span> c<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">switch</span><span class="br0">(</span>c<span class="br0">)</span>    <span class="br0">{</span>
+        <span class="co1">// left to right</span>
+        <span class="kw1">case</span> <span class="st0">'*'</span><span class="sy4">:</span> <span class="kw1">case</span> <span class="st0">'/'</span><span class="sy4">:</span> <span class="kw1">case</span> <span class="st0">'%'</span><span class="sy4">:</span> <span class="kw1">case</span> <span class="st0">'+'</span><span class="sy4">:</span> <span class="kw1">case</span> <span class="st0">'-'</span><span class="sy4">:</span>
+            <span class="kw1">return</span> <span class="kw2">true</span><span class="sy4">;</span>
+        <span class="co1">// right to left</span>
+        <span class="kw1">case</span> <span class="st0">'='</span><span class="sy4">:</span> <span class="kw1">case</span> <span class="st0">'!'</span><span class="sy4">:</span>
+            <span class="kw1">return</span> <span class="kw2">false</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+    <span class="kw1">return</span> <span class="kw2">false</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">unsigned</span> <span class="kw4">int</span> op_arg_count<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">char</span> c<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">switch</span><span class="br0">(</span>c<span class="br0">)</span>  <span class="br0">{</span>
+        <span class="kw1">case</span> <span class="st0">'*'</span><span class="sy4">:</span> <span class="kw1">case</span> <span class="st0">'/'</span><span class="sy4">:</span> <span class="kw1">case</span> <span class="st0">'%'</span><span class="sy4">:</span> <span class="kw1">case</span> <span class="st0">'+'</span><span class="sy4">:</span> <span class="kw1">case</span> <span class="st0">'-'</span><span class="sy4">:</span> <span class="kw1">case</span> <span class="st0">'='</span><span class="sy4">:</span>
+            <span class="kw1">return</span> <span class="nu0">2</span><span class="sy4">;</span>
+        <span class="kw1">case</span> <span class="st0">'!'</span><span class="sy4">:</span>
+            <span class="kw1">return</span> <span class="nu0">1</span><span class="sy4">;</span>
+        <span class="kw1">default</span><span class="sy4">:</span>
+            <span class="kw1">return</span> c <span class="sy2">-</span> <span class="st0">'A'</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+    <span class="kw1">return</span> <span class="nu0">0</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="co2">#define is_operator(c)  (c == '+' || c == '-' || c == '/' || c == '*' || c == '!' || c == '%' || c == '=')</span>
+<span class="co2">#define is_function(c)  (c &gt;= 'A' &amp;&amp; c &lt;= 'Z')</span>
+<span class="co2">#define is_ident(c)     ((c &gt;= '0' &amp;&amp; c &lt;= '9') || (c &gt;= 'a' &amp;&amp; c &lt;= 'z'))</span>
+ 
+<span class="kw4">bool</span> shunting_yard<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">char</span> <span class="sy2">*</span>input, <span class="kw4">char</span> <span class="sy2">*</span>output<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw4">const</span> <span class="kw4">char</span> <span class="sy2">*</span>strpos <span class="sy1">=</span> input, <span class="sy2">*</span>strend <span class="sy1">=</span> input <span class="sy2">+</span> <span class="kw3">strlen</span><span class="br0">(</span>input<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">char</span> c, <span class="sy2">*</span>outpos <span class="sy1">=</span> output<span class="sy4">;</span>
+ 
+    <span class="kw4">char</span> stack<span class="br0">[</span>32<span class="br0">]</span><span class="sy4">;</span>       <span class="co1">// operator stack</span>
+    <span class="kw4">unsigned</span> <span class="kw4">int</span> sl <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span>  <span class="co1">// stack length</span>
+    <span class="kw4">char</span>     sc<span class="sy4">;</span>          <span class="co1">// used for record stack element</span>
+ 
+    <span class="kw1">while</span><span class="br0">(</span>strpos <span class="sy1">&lt;</span> strend<span class="br0">)</span>   <span class="br0">{</span>
+        <span class="co1">// read one token from the input stream</span>
+        c <span class="sy1">=</span> <span class="sy2">*</span>strpos<span class="sy4">;</span>
+        <span class="kw1">if</span><span class="br0">(</span>c <span class="sy3">!</span><span class="sy1">=</span> <span class="st0">' '</span><span class="br0">)</span>    <span class="br0">{</span>
+            <span class="co1">// If the token is a number (identifier), then add it to the output queue.</span>
+            <span class="kw1">if</span><span class="br0">(</span>is_ident<span class="br0">(</span>c<span class="br0">)</span><span class="br0">)</span>  <span class="br0">{</span>
+                <span class="sy2">*</span>outpos <span class="sy1">=</span> c<span class="sy4">;</span> <span class="sy2">++</span>outpos<span class="sy4">;</span>
+            <span class="br0">}</span>
+            <span class="co1">// If the token is a function token, then push it onto the stack.</span>
+            <span class="kw1">else</span> <span class="kw1">if</span><span class="br0">(</span>is_function<span class="br0">(</span>c<span class="br0">)</span><span class="br0">)</span>   <span class="br0">{</span>
+                stack<span class="br0">[</span>sl<span class="br0">]</span> <span class="sy1">=</span> c<span class="sy4">;</span>
+                <span class="sy2">++</span>sl<span class="sy4">;</span>
+            <span class="br0">}</span>
+            <span class="co1">// If the token is a function argument separator (e.g., a comma):</span>
+            <span class="kw1">else</span> <span class="kw1">if</span><span class="br0">(</span>c <span class="sy1">==</span> <span class="st0">','</span><span class="br0">)</span>   <span class="br0">{</span>
+                <span class="kw4">bool</span> pe <span class="sy1">=</span> <span class="kw2">false</span><span class="sy4">;</span>
+                <span class="kw1">while</span><span class="br0">(</span>sl <span class="sy1">&gt;</span> 0<span class="br0">)</span>   <span class="br0">{</span>
+                    sc <span class="sy1">=</span> stack<span class="br0">[</span>sl <span class="sy2">-</span> 1<span class="br0">]</span><span class="sy4">;</span>
+                    <span class="kw1">if</span><span class="br0">(</span>sc <span class="sy1">==</span> <span class="st0">'('</span><span class="br0">)</span>  <span class="br0">{</span>
+                        pe <span class="sy1">=</span> <span class="kw2">true</span><span class="sy4">;</span>
+                        <span class="kw1">break</span><span class="sy4">;</span>
+                    <span class="br0">}</span>
+                    <span class="kw1">else</span>  <span class="br0">{</span>
+                        <span class="co1">// Until the token at the top of the stack is a left parenthesis,</span>
+                        <span class="co1">// pop operators off the stack onto the output queue.</span>
+                        <span class="sy2">*</span>outpos <span class="sy1">=</span> sc<span class="sy4">;</span> 
+                        <span class="sy2">++</span>outpos<span class="sy4">;</span>
+                        sl<span class="sy2">--</span><span class="sy4">;</span>
+                    <span class="br0">}</span>
+                <span class="br0">}</span>
+                <span class="co1">// If no left parentheses are encountered, either the separator was misplaced</span>
+                <span class="co1">// or parentheses were mismatched.</span>
+                <span class="kw1">if</span><span class="br0">(</span><span class="sy3">!</span>pe<span class="br0">)</span>   <span class="br0">{</span>
+                    <span class="kw3">printf</span><span class="br0">(</span><span class="st0">"Error: separator or parentheses mismatched<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy4">;</span>
+                    <span class="kw1">return</span> <span class="kw2">false</span><span class="sy4">;</span>
+                <span class="br0">}</span>
+            <span class="br0">}</span>
+            <span class="co1">// If the token is an operator, op1, then:</span>
+            <span class="kw1">else</span> <span class="kw1">if</span><span class="br0">(</span>is_operator<span class="br0">(</span>c<span class="br0">)</span><span class="br0">)</span>  <span class="br0">{</span>
+                <span class="kw1">while</span><span class="br0">(</span>sl <span class="sy1">&gt;</span> 0<span class="br0">)</span>    <span class="br0">{</span>
+                    sc <span class="sy1">=</span> stack<span class="br0">[</span>sl <span class="sy2">-</span> 1<span class="br0">]</span><span class="sy4">;</span>
+                    <span class="co1">// While there is an operator token, o2, at the top of the stack</span>
+                    <span class="co1">// op1 is left-associative and its precedence is less than or equal to that of op2,</span>
+                    <span class="co1">// or op1 is right-associative and its precedence is less than that of op2,</span>
+                    <span class="kw1">if</span><span class="br0">(</span>is_operator<span class="br0">(</span>sc<span class="br0">)</span> <span class="sy3">&amp;&amp;</span>
+                        <span class="br0">(</span><span class="br0">(</span>op_left_assoc<span class="br0">(</span>c<span class="br0">)</span> <span class="sy3">&amp;&amp;</span> <span class="br0">(</span>op_preced<span class="br0">(</span>c<span class="br0">)</span> <span class="sy1">&lt;=</span> op_preced<span class="br0">(</span>sc<span class="br0">)</span><span class="br0">)</span><span class="br0">)</span> <span class="sy3">||</span>
+                           <span class="br0">(</span><span class="sy3">!</span>op_left_assoc<span class="br0">(</span>c<span class="br0">)</span> <span class="sy3">&amp;&amp;</span> <span class="br0">(</span>op_preced<span class="br0">(</span>c<span class="br0">)</span> <span class="sy1">&lt;</span> op_preced<span class="br0">(</span>sc<span class="br0">)</span><span class="br0">)</span><span class="br0">)</span><span class="br0">)</span><span class="br0">)</span>   <span class="br0">{</span>
+                        <span class="co1">// Pop o2 off the stack, onto the output queue;</span>
+                        <span class="sy2">*</span>outpos <span class="sy1">=</span> sc<span class="sy4">;</span> 
+                        <span class="sy2">++</span>outpos<span class="sy4">;</span>
+                        sl<span class="sy2">--</span><span class="sy4">;</span>
+                    <span class="br0">}</span>
+                    <span class="kw1">else</span>   <span class="br0">{</span>
+                        <span class="kw1">break</span><span class="sy4">;</span>
+                    <span class="br0">}</span>
+                <span class="br0">}</span>
+                <span class="co1">// push op1 onto the stack.</span>
+                stack<span class="br0">[</span>sl<span class="br0">]</span> <span class="sy1">=</span> c<span class="sy4">;</span>
+                <span class="sy2">++</span>sl<span class="sy4">;</span>
+            <span class="br0">}</span>
+            <span class="co1">// If the token is a left parenthesis, then push it onto the stack.</span>
+            <span class="kw1">else</span> <span class="kw1">if</span><span class="br0">(</span>c <span class="sy1">==</span> <span class="st0">'('</span><span class="br0">)</span>   <span class="br0">{</span>
+                stack<span class="br0">[</span>sl<span class="br0">]</span> <span class="sy1">=</span> c<span class="sy4">;</span>
+                <span class="sy2">++</span>sl<span class="sy4">;</span>
+            <span class="br0">}</span>
+            <span class="co1">// If the token is a right parenthesis:</span>
+            <span class="kw1">else</span> <span class="kw1">if</span><span class="br0">(</span>c <span class="sy1">==</span> <span class="st0">')'</span><span class="br0">)</span>    <span class="br0">{</span>
+                <span class="kw4">bool</span> pe <span class="sy1">=</span> <span class="kw2">false</span><span class="sy4">;</span>
+                <span class="co1">// Until the token at the top of the stack is a left parenthesis,</span>
+                <span class="co1">// pop operators off the stack onto the output queue</span>
+                <span class="kw1">while</span><span class="br0">(</span>sl <span class="sy1">&gt;</span> 0<span class="br0">)</span>     <span class="br0">{</span>
+                    sc <span class="sy1">=</span> stack<span class="br0">[</span>sl <span class="sy2">-</span> 1<span class="br0">]</span><span class="sy4">;</span>
+                    <span class="kw1">if</span><span class="br0">(</span>sc <span class="sy1">==</span> <span class="st0">'('</span><span class="br0">)</span>    <span class="br0">{</span>
+                        pe <span class="sy1">=</span> <span class="kw2">true</span><span class="sy4">;</span>
+                        <span class="kw1">break</span><span class="sy4">;</span>
+                    <span class="br0">}</span>
+                    <span class="kw1">else</span>  <span class="br0">{</span>
+                        <span class="sy2">*</span>outpos <span class="sy1">=</span> sc<span class="sy4">;</span> 
+                        <span class="sy2">++</span>outpos<span class="sy4">;</span>
+                        sl<span class="sy2">--</span><span class="sy4">;</span>
+                    <span class="br0">}</span>
+                <span class="br0">}</span>
+                <span class="co1">// If the stack runs out without finding a left parenthesis, then there are mismatched parentheses.</span>
+                <span class="kw1">if</span><span class="br0">(</span><span class="sy3">!</span>pe<span class="br0">)</span>  <span class="br0">{</span>
+                    <span class="kw3">printf</span><span class="br0">(</span><span class="st0">"Error: parentheses mismatched<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy4">;</span>
+                    <span class="kw1">return</span> <span class="kw2">false</span><span class="sy4">;</span>
+                <span class="br0">}</span>
+                <span class="co1">// Pop the left parenthesis from the stack, but not onto the output queue.</span>
+                sl<span class="sy2">--</span><span class="sy4">;</span>
+                <span class="co1">// If the token at the top of the stack is a function token, pop it onto the output queue.</span>
+                <span class="kw1">if</span><span class="br0">(</span>sl <span class="sy1">&gt;</span> 0<span class="br0">)</span>   <span class="br0">{</span>
+                    sc <span class="sy1">=</span> stack<span class="br0">[</span>sl <span class="sy2">-</span> 1<span class="br0">]</span><span class="sy4">;</span>
+                    <span class="kw1">if</span><span class="br0">(</span>is_function<span class="br0">(</span>sc<span class="br0">)</span><span class="br0">)</span>   <span class="br0">{</span>
+                        <span class="sy2">*</span>outpos <span class="sy1">=</span> sc<span class="sy4">;</span> 
+                        <span class="sy2">++</span>outpos<span class="sy4">;</span>
+                        sl<span class="sy2">--</span><span class="sy4">;</span>
+                    <span class="br0">}</span>
+                <span class="br0">}</span>
+            <span class="br0">}</span>
+            <span class="kw1">else</span>  <span class="br0">{</span>
+                <span class="kw3">printf</span><span class="br0">(</span><span class="st0">"Unknown token %c<span class="es1">\n</span>"</span>, c<span class="br0">)</span><span class="sy4">;</span>
+                <span class="kw1">return</span> <span class="kw2">false</span><span class="sy4">;</span> <span class="co1">// Unknown token</span>
+            <span class="br0">}</span>
+        <span class="br0">}</span>
+        <span class="sy2">++</span>strpos<span class="sy4">;</span>
+    <span class="br0">}</span>
+    <span class="co1">// When there are no more tokens to read:</span>
+    <span class="co1">// While there are still operator tokens in the stack:</span>
+    <span class="kw1">while</span><span class="br0">(</span>sl <span class="sy1">&gt;</span> 0<span class="br0">)</span>  <span class="br0">{</span>
+        sc <span class="sy1">=</span> stack<span class="br0">[</span>sl <span class="sy2">-</span> 1<span class="br0">]</span><span class="sy4">;</span>
+        <span class="kw1">if</span><span class="br0">(</span>sc <span class="sy1">==</span> <span class="st0">'('</span> <span class="sy3">||</span> sc <span class="sy1">==</span> <span class="st0">')'</span><span class="br0">)</span>   <span class="br0">{</span>
+            <span class="kw3">printf</span><span class="br0">(</span><span class="st0">"Error: parentheses mismatched<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy4">;</span>
+            <span class="kw1">return</span> <span class="kw2">false</span><span class="sy4">;</span>
+        <span class="br0">}</span>
+        <span class="sy2">*</span>outpos <span class="sy1">=</span> sc<span class="sy4">;</span> 
+        <span class="sy2">++</span>outpos<span class="sy4">;</span>
+        <span class="sy2">--</span>sl<span class="sy4">;</span>
+    <span class="br0">}</span>
+    <span class="sy2">*</span>outpos <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span> <span class="co1">// Null terminator</span>
+    <span class="kw1">return</span> <span class="kw2">true</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">bool</span> execution_order<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">char</span> <span class="sy2">*</span>input<span class="br0">)</span> <span class="br0">{</span>
+    <span class="kw3">printf</span><span class="br0">(</span><span class="st0">"order: (arguments in reverse order)<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">const</span> <span class="kw4">char</span> <span class="sy2">*</span>strpos <span class="sy1">=</span> input, <span class="sy2">*</span>strend <span class="sy1">=</span> input <span class="sy2">+</span> <span class="kw3">strlen</span><span class="br0">(</span>input<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">char</span> c, res<span class="br0">[</span>4<span class="br0">]</span><span class="sy4">;</span>
+    <span class="kw4">unsigned</span> <span class="kw4">int</span> sl <span class="sy1">=</span> 0, sc, stack<span class="br0">[</span>32<span class="br0">]</span>, rn <span class="sy1">=</span> <span class="nu0">0</span><span class="sy4">;</span>
+        <span class="co1">// While there are input tokens left</span>
+    <span class="kw1">while</span><span class="br0">(</span>strpos <span class="sy1">&lt;</span> strend<span class="br0">)</span>  <span class="br0">{</span>
+                <span class="co1">// Read the next token from input.</span>
+        c <span class="sy1">=</span> <span class="sy2">*</span>strpos<span class="sy4">;</span>
+                <span class="co1">// If the token is a value or identifier</span>
+        <span class="kw1">if</span><span class="br0">(</span>is_ident<span class="br0">(</span>c<span class="br0">)</span><span class="br0">)</span>    <span class="br0">{</span>
+                        <span class="co1">// Push it onto the stack.</span>
+            stack<span class="br0">[</span>sl<span class="br0">]</span> <span class="sy1">=</span> c<span class="sy4">;</span>
+            <span class="sy2">++</span>sl<span class="sy4">;</span>
+        <span class="br0">}</span>
+                <span class="co1">// Otherwise, the token is an operator  (operator here includes both operators, and functions).</span>
+        <span class="kw1">else</span> <span class="kw1">if</span><span class="br0">(</span>is_operator<span class="br0">(</span>c<span class="br0">)</span> <span class="sy3">||</span> is_function<span class="br0">(</span>c<span class="br0">)</span><span class="br0">)</span>    <span class="br0">{</span>
+                        <span class="kw3">sprintf</span><span class="br0">(</span>res, <span class="st0">"_%02d"</span>, rn<span class="br0">)</span><span class="sy4">;</span>
+                        <span class="kw3">printf</span><span class="br0">(</span><span class="st0">"%s = "</span>, res<span class="br0">)</span><span class="sy4">;</span>
+                        <span class="sy2">++</span>rn<span class="sy4">;</span>
+                        <span class="co1">// It is known a priori that the operator takes n arguments.</span>
+                        <span class="kw4">unsigned</span> <span class="kw4">int</span> nargs <span class="sy1">=</span> op_arg_count<span class="br0">(</span>c<span class="br0">)</span><span class="sy4">;</span>
+                        <span class="co1">// If there are fewer than n values on the stack</span>
+                        <span class="kw1">if</span><span class="br0">(</span>sl <span class="sy1">&lt;</span> nargs<span class="br0">)</span> <span class="br0">{</span>
+                                <span class="co1">// (Error) The user has not input sufficient values in the expression.</span>
+                                <span class="kw1">return</span> <span class="kw2">false</span><span class="sy4">;</span>
+                        <span class="br0">}</span>
+                        <span class="co1">// Else, Pop the top n values from the stack.</span>
+                        <span class="co1">// Evaluate the operator, with the values as arguments.</span>
+                        <span class="kw1">if</span><span class="br0">(</span>is_function<span class="br0">(</span>c<span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span>
+                                <span class="kw3">printf</span><span class="br0">(</span><span class="st0">"%c("</span>, c<span class="br0">)</span><span class="sy4">;</span>
+                                <span class="kw1">while</span><span class="br0">(</span>nargs <span class="sy1">&gt;</span> 0<span class="br0">)</span> <span class="br0">{</span>
+                                        sc <span class="sy1">=</span> stack<span class="br0">[</span>sl <span class="sy2">-</span> 1<span class="br0">]</span><span class="sy4">;</span>
+                                        sl<span class="sy2">--</span><span class="sy4">;</span>
+                                        <span class="kw1">if</span><span class="br0">(</span>nargs <span class="sy1">&gt;</span> 1<span class="br0">)</span>    <span class="br0">{</span>
+                                                <span class="kw3">printf</span><span class="br0">(</span><span class="st0">"%s, "</span>, <span class="sy3">&amp;</span>sc<span class="br0">)</span><span class="sy4">;</span>
+                                        <span class="br0">}</span>
+                                        <span class="kw1">else</span> <span class="br0">{</span>
+                                                <span class="kw3">printf</span><span class="br0">(</span><span class="st0">"%s)<span class="es1">\n</span>"</span>, <span class="sy3">&amp;</span>sc<span class="br0">)</span><span class="sy4">;</span>
+                                        <span class="br0">}</span>
+                                        <span class="sy2">--</span>nargs<span class="sy4">;</span>
+                                <span class="br0">}</span>
+                        <span class="br0">}</span>
+                        <span class="kw1">else</span>   <span class="br0">{</span>
+                                <span class="kw1">if</span><span class="br0">(</span>nargs <span class="sy1">==</span> 1<span class="br0">)</span> <span class="br0">{</span>
+                                        sc <span class="sy1">=</span> stack<span class="br0">[</span>sl <span class="sy2">-</span> 1<span class="br0">]</span><span class="sy4">;</span>
+                                        sl<span class="sy2">--</span><span class="sy4">;</span>
+                                        <span class="kw3">printf</span><span class="br0">(</span><span class="st0">"%c %s;<span class="es1">\n</span>"</span>, c, <span class="sy3">&amp;</span>sc<span class="br0">)</span><span class="sy4">;</span>
+                                <span class="br0">}</span>
+                                <span class="kw1">else</span>   <span class="br0">{</span>
+                                        sc <span class="sy1">=</span> stack<span class="br0">[</span>sl <span class="sy2">-</span> 1<span class="br0">]</span><span class="sy4">;</span>
+                                        sl<span class="sy2">--</span><span class="sy4">;</span>
+                                        <span class="kw3">printf</span><span class="br0">(</span><span class="st0">"%s %c "</span>, <span class="sy3">&amp;</span>sc, c<span class="br0">)</span><span class="sy4">;</span>
+                                        sc <span class="sy1">=</span> stack<span class="br0">[</span>sl <span class="sy2">-</span> 1<span class="br0">]</span><span class="sy4">;</span>
+                                        sl<span class="sy2">--</span><span class="sy4">;</span>
+                                        <span class="kw3">printf</span><span class="br0">(</span><span class="st0">"%s;<span class="es1">\n</span>"</span>,<span class="sy3">&amp;</span>sc<span class="br0">)</span><span class="sy4">;</span>
+                                <span class="br0">}</span>
+                        <span class="br0">}</span>
+                        <span class="co1">// Push the returned results, if any, back onto the stack.</span>
+            stack<span class="br0">[</span>sl<span class="br0">]</span> <span class="sy1">=</span> <span class="sy2">*</span><span class="br0">(</span><span class="kw4">unsigned</span> <span class="kw4">int</span><span class="sy2">*</span><span class="br0">)</span>res<span class="sy4">;</span>
+            <span class="sy2">++</span>sl<span class="sy4">;</span>
+        <span class="br0">}</span>
+        <span class="sy2">++</span>strpos<span class="sy4">;</span>
+    <span class="br0">}</span>
+        <span class="co1">// If there is only one value in the stack</span>
+        <span class="co1">// That value is the result of the calculation.</span>
+        <span class="kw1">if</span><span class="br0">(</span>sl <span class="sy1">==</span> 1<span class="br0">)</span> <span class="br0">{</span>
+                sc <span class="sy1">=</span> stack<span class="br0">[</span>sl <span class="sy2">-</span> 1<span class="br0">]</span><span class="sy4">;</span>
+                sl<span class="sy2">--</span><span class="sy4">;</span>
+                <span class="kw3">printf</span><span class="br0">(</span><span class="st0">"%s is a result<span class="es1">\n</span>"</span>, <span class="sy3">&amp;</span>sc<span class="br0">)</span><span class="sy4">;</span>
+                <span class="kw1">return</span> <span class="kw2">true</span><span class="sy4">;</span>
+        <span class="br0">}</span>
+        <span class="co1">// If there are more values in the stack</span>
+        <span class="co1">// (Error) The user input has too many values.</span>
+        <span class="kw1">return</span> <span class="kw2">false</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+    <span class="co1">// functions: A() B(a) C(a, b), D(a, b, c) ...</span>
+    <span class="co1">// identifiers: 0 1 2 3 ... and a b c d e ...</span>
+    <span class="co1">// operators: = - + / * % !</span>
+    <span class="kw4">const</span> <span class="kw4">char</span> <span class="sy2">*</span>input <span class="sy1">=</span> <span class="st0">"a = D(f - b * c + d, !e, g)"</span><span class="sy4">;</span>
+    <span class="kw4">char</span> output<span class="br0">[</span>128<span class="br0">]</span><span class="sy4">;</span>
+    <span class="kw3">printf</span><span class="br0">(</span><span class="st0">"input: %s<span class="es1">\n</span>"</span>, input<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">if</span><span class="br0">(</span>shunting_yard<span class="br0">(</span>input, output<span class="br0">)</span><span class="br0">)</span>    <span class="br0">{</span>
+        <span class="kw3">printf</span><span class="br0">(</span><span class="st0">"output: %s<span class="es1">\n</span>"</span>, output<span class="br0">)</span><span class="sy4">;</span>
+        <span class="kw1">if</span><span class="br0">(</span><span class="sy3">!</span>execution_order<span class="br0">(</span>output<span class="br0">)</span><span class="br0">)</span>
+            <span class="kw3">printf</span><span class="br0">(</span><span class="st0">"<span class="es1">\n</span>Invalid input<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+    <span class="kw1">return</span> <span class="nu0">0</span><span class="sy4">;</span>
+<span class="br0">}</span>
+</pre></div>
+</div>
+<p>This code produces the following output:</p>
+<blockquote>
+<p>input: a = D(f - b * c + d,&#160;!e, g)<br />
+output: afbc*-d+e!gD=<br />
+order: (arguments in reverse order)<br />
+_00 = c * b;<br />
+_01 = _00 - f;<br />
+_02 = d + _01;<br />
+_03 =&#160;! e;<br />
+_04 = D(g, _03, _02)<br />
+_05 = _04 = a;<br />
+_05 is a result<br /></p>
+</blockquote>
+<h2><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Shunting-yard_algorithm&amp;action=edit&amp;section=5" title="Edit section: See also">edit</a>]</span> <span class="mw-headline" id="See_also">See also</span></h2>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Operator-precedence_parser">Operator-precedence parser</a></li>
+</ul>
+<h2><span class="editsection">[<a href="http://en.wikipedia.org/w/index.php?title=Shunting-yard_algorithm&amp;action=edit&amp;section=6" title="Edit section: External links">edit</a>]</span> <span class="mw-headline" id="External_links">External links</span></h2>
+<ul>
+<li><a href="http://www.chris-j.co.uk/parsing.php" class="external text" rel="nofollow">Java Applet demonstrating the Shunting yard algorithm</a></li>
+<li><a href="http://www.codeding.com/?article=11" class="external text" rel="nofollow">Silverlight widget demonstrating the Shunting yard algorithm and evaluation of arithmetic expressions</a></li>
+<li><a href="http://www.engr.mun.ca/~theo/Misc/exp_parsing.htm" class="external text" rel="nofollow">Parsing Expressions by Recursive Descent</a> Theodore Norvell © 1999–2001. Access date September 14, 2006.</li>
+<li><a href="http://www.cs.utexas.edu/~EWD/MCReps/MR35.PDF" class="external text" rel="nofollow">Original description of the Shunting yard algorithm</a></li>
+<li><a href="http://www.kallisti.net.nz/blog/2008/02/extension-to-the-shunting-yard-algorithm-to-allow-variable-numbers-of-arguments-to-functions/" class="external text" rel="nofollow">Extension to the ‘Shunting Yard’ algorithm to allow variable numbers of arguments to functions</a></li>
+<li><a href="http://github.com/ekg/shuntingyard/blob/master/shuntingyard.py" class="external text" rel="nofollow">A Python implementation of the Shunting yard algorithm</a></li>
+</ul>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 42/1000000
+Post-expand include size: 0/2048000 bytes
+Template argument size: 0/2048000 bytes
+Expensive parser function count: 0/500
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:idhash:2692773-0!*!0!!en!4 and timestamp 20110218134345 -->
+<div class="printfooter">
+Retrieved from "<a href="http://en.wikipedia.org/wiki/Shunting-yard_algorithm">http://en.wikipedia.org/wiki/Shunting-yard_algorithm</a>"</div>
+				<!-- /bodytext -->
+								<!-- catlinks -->
+				<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="http://en.wikipedia.org/wiki/Special:Categories" title="Special:Categories">Categories</a>: <span dir='ltr'><a href="http://en.wikipedia.org/wiki/Category:Parsing_algorithms" title="Category:Parsing algorithms">Parsing algorithms</a></span></div></div>				<!-- /catlinks -->
+												<div class="visualClear"></div>
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="mw-head" class="noprint">
+			
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>Personal tools</h5>
+	<ul>
+					<li  id="pt-login"><a href="http://en.wikipedia.org/w/index.php?title=Special:UserLogin&amp;returnto=Shunting-yard_algorithm" title="You are encouraged to log in; however, it is not mandatory. [o]" accesskey="o">Log in / create account</a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+			<div id="left-navigation">
+				
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>Namespaces</h5>
+	<ul>
+					<li  id="ca-nstab-main" class="selected"><span><a href="http://en.wikipedia.org/wiki/Shunting-yard_algorithm"  title="View the content page [c]" accesskey="c">Article</a></span></li>
+					<li  id="ca-talk"><span><a href="http://en.wikipedia.org/wiki/Talk:Shunting-yard_algorithm"  title="Discussion about the content page [t]" accesskey="t">Discussion</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+		<h5><span>Variants</span><a href=""></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+			</div>
+			<div id="right-navigation">
+				
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>Views</h5>
+	<ul>
+					<li id="ca-view" class="selected"><span><a href="http://en.wikipedia.org/wiki/Shunting-yard_algorithm" >Read</a></span></li>
+					<li id="ca-edit"><span><a href="http://en.wikipedia.org/w/index.php?title=Shunting-yard_algorithm&amp;action=edit"  title="You can edit this page. &#10;Please use the preview button before saving. [e]" accesskey="e">Edit</a></span></li>
+					<li id="ca-history" class="collapsible "><span><a href="http://en.wikipedia.org/w/index.php?title=Shunting-yard_algorithm&amp;action=history"  title="Past versions of this page [h]" accesskey="h">View history</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+	<h5><span>Actions</span><a href=""></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">Search</label></h5>
+	<form action="http://en.wikipedia.org/w/index.php" id="searchform">
+		<input type='hidden' name="title" value="Special:Search"/>
+				<div id="simpleSearch">
+						<input id="searchInput" name="search" type="text"  title="Search Wikipedia [f]" accesskey="f"  value="" />
+						<button id="searchButton" type='submit' name='button'  title="Search Wikipedia for this text"><img src="Shunting-yard%20algorithm%20-%20Wikipedia%2C%20the%20free%20encyclopedia_files/search-l.png" alt="Search" /></button>
+					</div>
+			</form>
+</div>
+
+<!-- /2 -->
+			</div>
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="mw-panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url(http://upload.wikimedia.org/wikipedia/en/b/bc/Wiki.png);" href="http://en.wikipedia.org/wiki/Main_Page"  title="Visit the main page"></a></div>
+				<!-- /logo -->
+				
+<!-- navigation -->
+<div class="portal" id='p-navigation'>
+	<h5>Navigation</h5>
+	<div class="body">
+				<ul>
+					<li id="n-mainpage-description"><a href="http://en.wikipedia.org/wiki/Main_Page" title="Visit the main page [z]" accesskey="z">Main page</a></li>
+					<li id="n-contents"><a href="http://en.wikipedia.org/wiki/Portal:Contents" title="Guides to browsing Wikipedia">Contents</a></li>
+					<li id="n-featuredcontent"><a href="http://en.wikipedia.org/wiki/Portal:Featured_content" title="Featured content – the best of Wikipedia">Featured content</a></li>
+					<li id="n-currentevents"><a href="http://en.wikipedia.org/wiki/Portal:Current_events" title="Find background information on current events">Current events</a></li>
+					<li id="n-randompage"><a href="http://en.wikipedia.org/wiki/Special:Random" title="Load a random article [x]" accesskey="x">Random article</a></li>
+					<li id="n-sitesupport"><a href="http://wikimediafoundation.org/wiki/Special:Landingcheck?landing_page=WMFJA085&amp;language=en&amp;utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=20101204SB002" title="Support us">Donate to Wikipedia</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /navigation -->
+
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- interaction -->
+<div class="portal" id='p-interaction'>
+	<h5>Interaction</h5>
+	<div class="body">
+				<ul>
+					<li id="n-help"><a href="http://en.wikipedia.org/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia">Help</a></li>
+					<li id="n-aboutsite"><a href="http://en.wikipedia.org/wiki/Wikipedia:About" title="Find out about Wikipedia">About Wikipedia</a></li>
+					<li id="n-portal"><a href="http://en.wikipedia.org/wiki/Wikipedia:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+					<li id="n-recentchanges"><a href="http://en.wikipedia.org/wiki/Special:RecentChanges" title="The list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+					<li id="n-contact"><a href="http://en.wikipedia.org/wiki/Wikipedia:Contact_us" title="How to contact Wikipedia">Contact Wikipedia</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /interaction -->
+
+<!-- TOOLBOX -->
+<div class="portal" id="p-tb">
+	<h5>Toolbox</h5>
+	<div class="body">
+		<ul>
+					<li id="t-whatlinkshere"><a href="http://en.wikipedia.org/wiki/Special:WhatLinksHere/Shunting-yard_algorithm" title="List of all English Wikipedia pages containing links to this page [j]" accesskey="j">What links here</a></li>
+						<li id="t-recentchangeslinked"><a href="http://en.wikipedia.org/wiki/Special:RecentChangesLinked/Shunting-yard_algorithm" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+																																					<li id="t-upload"><a href="http://en.wikipedia.org/wiki/Wikipedia:Upload" title="Upload files [u]" accesskey="u">Upload file</a></li>
+											<li id="t-specialpages"><a href="http://en.wikipedia.org/wiki/Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+											<li id="t-permalink"><a href="http://en.wikipedia.org/w/index.php?title=Shunting-yard_algorithm&amp;oldid=414609970" title="Permanent link to this revision of the page">Permanent link</a></li>
+				<li id="t-cite"><a href="http://en.wikipedia.org/w/index.php?title=Special:Cite&amp;page=Shunting-yard_algorithm&amp;id=414609970" title="Information on how to cite this page">Cite this page</a></li>		</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- coll-print_export -->
+<div class="portal" id='p-coll-print_export'>
+	<h5>Print/export</h5>
+	<div class="body">
+				<ul id="collectionPortletList"><li id="coll-create_a_book"><a href="http://en.wikipedia.org/w/index.php?title=Special:Book&amp;bookcmd=book_creator&amp;referer=Shunting-yard+algorithm" title="Create a book or page collection" rel="nofollow">Create a book</a></li><li id="coll-download-as-rl"><a href="http://en.wikipedia.org/w/index.php?title=Special:Book&amp;bookcmd=render_article&amp;arttitle=Shunting-yard+algorithm&amp;oldid=414609970&amp;writer=rl" title="Download a PDF version of this wiki page" rel="nofollow">Download as PDF</a></li><li id="t-print"><a href="http://en.wikipedia.org/w/index.php?title=Shunting-yard_algorithm&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li></ul>			</div>
+</div>
+
+<!-- /coll-print_export -->
+
+<!-- LANGUAGES -->
+<div class="portal" id="p-lang">
+	<h5>Languages</h5>
+	<div class="body">
+		<ul>
+					<li class="interwiki-cs"><a href="http://cs.wikipedia.org/wiki/Shunting-yard_(algoritmus)" title="Shunting-yard (algoritmus)">Česky</a></li>
+					<li class="interwiki-de"><a href="http://de.wikipedia.org/wiki/Shunting-yard-Algorithmus" title="Shunting-yard-Algorithmus">Deutsch</a></li>
+					<li class="interwiki-es"><a href="http://es.wikipedia.org/wiki/Algoritmo_shunting_yard" title="Algoritmo shunting yard">Español</a></li>
+					<li class="interwiki-ru"><a href="http://ru.wikipedia.org/wiki/Алгоритм_сортировочной_станции" title="Алгоритм сортировочной станции">Русский</a></li>
+					<li class="interwiki-sv"><a href="http://sv.wikipedia.org/wiki/Järnvägsalgoritmen" title="Järnvägsalgoritmen">Svenska</a></li>
+					<li class="interwiki-zh"><a href="http://zh.wikipedia.org/wiki/调度场算法" title="调度场算法">中文</a></li>
+				</ul>
+	</div>
+</div>
+
+<!-- /LANGUAGES -->
+			</div>
+		<!-- /panel -->
+		<!-- footer -->
+		<div id="footer">
+											<ul id="footer-info">
+																	<li id="footer-info-lastmod"> This page was last modified on 18 February 2011 at 12:43.<br /></li>
+																							<li id="footer-info-copyright">Text is available under the <a rel="license" href="http://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License</a><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;
+additional terms may apply.
+See <a href="http://wikimediafoundation.org/wiki/Terms_of_Use">Terms of Use</a> for details.<br/>
+Wikipedia&reg; is a registered trademark of the <a href="http://www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.<br /></li><li class="noprint"><a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact us</a></li>
+															</ul>
+															<ul id="footer-places">
+																	<li id="footer-places-privacy"><a href="http://wikimediafoundation.org/wiki/Privacy_policy" title="wikimedia:Privacy policy">Privacy policy</a></li>
+																							<li id="footer-places-about"><a href="http://en.wikipedia.org/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+																							<li id="footer-places-disclaimer"><a href="http://en.wikipedia.org/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+															</ul>
+											<ul id="footer-icons" class="noprint">
+					<li id="footer-copyrightico">
+						<a href="http://wikimediafoundation.org/"><img src="Shunting-yard%20algorithm%20-%20Wikipedia%2C%20the%20free%20encyclopedia_files/wikimedi.png" width="88" height="31" alt="Wikimedia Foundation"/></a>
+					</li>
+					<li id="footer-poweredbyico">
+						<a href="http://www.mediawiki.org/"><img src="Shunting-yard%20algorithm%20-%20Wikipedia%2C%20the%20free%20encyclopedia_files/poweredb.png" alt="Powered by MediaWiki" width="88" height="31" /></a>
+					</li>
+				</ul>
+						<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+		
+<script src="http://bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector" type="text/javascript"></script>
+<script type="text/javascript">if ( window.mediaWiki ) {
+	mediaWiki.config.set({"wgCanonicalNamespace": "", "wgCanonicalSpecialPageName": false, "wgNamespaceNumber": 0, "wgPageName": "Shunting-yard_algorithm", "wgTitle": "Shunting-yard algorithm", "wgAction": "view", "wgArticleId": 2692773, "wgIsArticle": true, "wgUserName": null, "wgUserGroups": ["*"], "wgCurRevisionId": 414609970, "wgCategories": ["Parsing algorithms"], "wgBreakFrames": false, "wgRestrictionEdit": [], "wgRestrictionMove": [], "wgSearchNamespaces": [0], "wgFlaggedRevsParams": {"tags": {"status": {"levels": 1, "quality": 2, "pristine": 3}}}, "wgStableRevisionId": null, "wgRevContents": {"error": "Unable to get content.", "waiting": "Waiting for content"}, "wgWikimediaMobileUrl": "http://en.m.wikipedia.org/wiki", "wgCollapsibleNavBucketTest": false, "wgCollapsibleNavForceNewVersion": false, "wgArticleAssessmentJUIPath": "http://bits.wikimedia.org/w/extensions-1.17/UsabilityInitiative/js/js2stopgap/jui.combined.min.js", "Geo": {"city": "", "country": ""}, "wgNoticeProject": "wikipedia"});
+}
+</script>
+<script type="text/javascript">if ( window.mediaWiki ) {
+	mediaWiki.loader.load(["mediawiki.legacy.wikibits", "mediawiki.util", "mediawiki.legacy.ajax", "mediawiki.legacy.mwsuggest", "ext.vector.collapsibleNav", "ext.vector.collapsibleTabs", "ext.vector.editWarning", "ext.vector.simpleSearch"]);
+	mediaWiki.loader.go();
+}
+</script>
+
+<script src="Shunting-yard%20algorithm%20-%20Wikipedia%2C%20the%20free%20encyclopedia_files/MobileRe.js" type="text/javascript"></script>
+<script src="/w/index.php?title=Special:BannerController&amp;cache=/cn.js&amp;301-2" type="text/javascript"></script>
+<script src="http://bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=scripts&amp;skin=vector&amp;version=20110217T190952Z" type="text/javascript"></script>
+<script type="text/javascript">if ( window.mediaWiki ) {
+	mediaWiki.user.options.set({"ccmeonemails":0,"cols":80,"contextchars":50,"contextlines":5,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"highlightbroken":1,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":1,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":4,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":1,"watchdefault":0,"watchdeletion":0,"watchlistdays":"3","watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"flaggedrevssimpleui":1,"flaggedrevsstable":false,"flaggedrevseditdiffs":true,"flaggedrevsviewdiffs":false,"vector-simplesearch":1,"useeditwarning":1,"vector-collapsiblenav":1,"usebetatoolbar":1,"usebetatoolbar-cgd":1,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"searchNs100":false,"searchNs101":false,"searchNs108":false,"searchNs109":false});
+	mediaWiki.loader.state({"user.options":"ready"});
+	
+	
+	/* cache key: enwiki:resourceloader:filter:minify-js:2:ae2156c08a06314b12473d37e57711e2 */
+}
+</script><script type="text/javascript" src="Shunting-yard%20algorithm%20-%20Wikipedia%2C%20the%20free%20encyclopedia_files/00000000.js"></script>		<!-- fixalpha -->
+		<script type="text/javascript"> if ( window.isMSIE55 ) fixalpha(); </script>
+		<!-- /fixalpha -->
+		<!-- Served by srv268 in 0.059 secs. -->			</body>
+</html>
+
+<!-- This document saved from http://en.wikipedia.org/wiki/Shunting_yard_algorithm -->

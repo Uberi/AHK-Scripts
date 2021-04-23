@@ -1,0 +1,10 @@
+<?ahk
+; The whole purpose of this file is to demonstrate how an Scriping error 'd look like
+; and here we go: our Error
+
+; Variant II
+; =========
+
+Run, "\path\to\unavailableSparrow.exe"
+
+?>

@@ -1,0 +1,11 @@
+newmtl Base_Window
+Kd 0.500021 0.972328 0.800473
+map_Kd Window.png
+
+newmtl Button1
+Kd 0.566592 0.530919 0.613108
+map_Kd Window.png
+
+newmtl Edit1
+Kd 0.938557 0.556504 0.906802
+map_Kd Window.png

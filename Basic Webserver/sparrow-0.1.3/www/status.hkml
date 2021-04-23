@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Status</title>
+	<style type="text/css">
+		body {
+			margin:0px;
+			padding:0px;
+			font-family:Tahoma;
+			font-size:10pt;
+			background-color:#e0e0e0;
+			background-image:url(img/sparrow-bg.gif);
+			background-position:bottom right;
+			background-repeat:no-repeat;
+			background-attachment:fixed;
+		}
+		a:link, a:active, a:visited {
+			text-decoration:none;
+		}
+		a:hover {
+			text-decoration:underline;
+		}
+		.block {
+			margin-left: 20px; 
+			margin-right:20px; 
+			border: 1px; 
+			border-style: solid; 
+			border-color: gray; 
+			padding:10px;
+			background-color: #ffffff;
+		}
+		ul li {
+			margin-left: 20px;
+		}
+		.comment {
+			color:#008000;
+			font-family: Courier New;
+			font-size:10pt
+		}
+	</style>
+</head>
+
+<body>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td width=140px><img src="img/ahk_sparrow.png" width="140" height="140" alt="" border="0"></td>
+		<td style="background-image: url(img/ahk_stick.png); background-repeat: repeat-x;">
+			<table width="600px" border="0" cellpadding="0" cellspacing="0">
+				<tr><td><div style="font-family:Comic Sans MS;font-weight:900;font-size:28pt;">Sparrow WebServer</div></td></tr>
+				<tr><td><div align="center" style="font-family:Comic Sans MS;font-size:12pt;">powered by AutoHotkey</div></td></tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<div Style="margin:12px;">
+<div class="block">
+<h3>Sparrow Server Internals</h3>
+<h4>Server ID</h4>
+<p>Server Name: <strong><?ahk echo(%Sparrow[ServerName]%) ?></strong></p>
+<p class="comment">The official Sparrow name (not to confuse with a domain)</p>
+<p>Show Server Modules: <strong><?ahk echo(%Sparrow[showMods]%) ?></strong></p>
+<p class="comment">Show a list of currently in Sparrow enabled modules</p>
+<p>Sparrow Signature: <strong><?ahk echo(%Sparrow[ServerSig]%) ?></strong></p>
+<p class="comment">The signature as it appears on Standard buildin Error Messages</p>
+<h4>Networking</h4>
+<p>Sparrow Bind to IP:<strong><?ahk echo(%Sparrow[BindToAddress]%) ?></strong></p>
+<p class="comment">The IP the server binds to. (0.0.0.0 should bind to all available IPs) </p>
+<p>Sparrow Port: <strong><?ahk echo(%Sparrow[ListenToPort]%) ?></strong></p>
+<p class="comment">The Port to listen to</p>
+<h4>Workflow</h4>
+<p>HKML enabled: <strong><?ahk echo(%Sparrow[hkmlEnabled]%) ?></strong></p>
+<p class="comment">Does HKML work? Disable it for having just a server with static files.</p>
+<p>Default Index Files: <strong><?ahk echo(%Sparrow[DftIndexFiles]%) ?></strong></p>
+<p class="comment">A list of default index Files, which Sparrow will look for before sending 403 Error</p>
+<p>Custom 404 Page: <strong><?ahk echo(%Sparrow[Custom_Err_404]%) ?></strong></p>
+<p class="comment">A Custom 404-Error Page. That is the one you'll see when the file is not found</p>
+<h4>Debugging</h4>
+<p>Show debugging Tooltips: <strong><?ahk echo(%Sparrow[debugToolTips]%) ?></strong></p>
+<p class="comment">This shows Header as tooltips made on each request<br>This also slows down the server!!!</p>
+<h4>Misc</h4>
+<p>Public Variables usage (ScriptSuperGlobals): <strong><?ahk echo(%Sparrow[PubLicVars]%) ?></strong></p>
+<p class="comment">This is intended for later use and has no effect if set</p>
+</div><br /><div class="block">
+<h3>Env Settings!</h3>
+<p><?ahk
+ENV_SET := StdoutToVar_CreateProcess("cmd.exe /c set")
+out := ""
+Loop,Parse,ENV_SET,`r,`n
+{
+	regExMatch(A_LoopField,"(?P<Name>^[^=]+)=",Var)
+	S_thisLine := RegExReplace(A_LoopField,"(.{72}|$)","$1<br>")
+	if (S_ThisLine!="<br>")
+		out .= RegExReplace(S_ThisLine,"\Q" VarName "\E","<span style=""font-weight:bold"">$0</span>")
+}
+Echo("<pre>" out "</pre>")
+
+#IncludeScript %Sparrow[IncludeDir]% "\StdOutToVar.ahk"
+
+?></p></div>
+<div align="center"><?ahk echo(%Sparrow[ServerSig]%) ?></div><br />
+</body>
+</html>

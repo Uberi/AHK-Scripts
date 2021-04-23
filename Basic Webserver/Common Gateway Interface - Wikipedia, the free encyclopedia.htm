@@ -1,0 +1,513 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
+<head>
+<title>Common Gateway Interface - Wikipedia, the free encyclopedia</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="generator" content="MediaWiki 1.16wmf4" />
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=Common_Gateway_Interface&amp;action=edit" />
+<link rel="edit" title="Edit this page" href="/w/index.php?title=Common_Gateway_Interface&amp;action=edit" />
+<link rel="apple-touch-icon" href="http://en.wikipedia.org/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (en)" />
+<link rel="copyright" href="http://creativecommons.org/licenses/by-sa/3.0/" />
+<link rel="alternate" type="application/atom+xml" title="Wikipedia Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="stylesheet" href="http://bits.wikimedia.org/skins-1.5/vector/main-ltr.css?283s" type="text/css" media="screen" />
+<link rel="stylesheet" href="http://bits.wikimedia.org/skins-1.5/common/shared.css?283s" type="text/css" media="screen" />
+<link rel="stylesheet" href="http://bits.wikimedia.org/skins-1.5/common/commonPrint.css?283s" type="text/css" media="print" />
+<link rel="stylesheet" href="http://bits.wikimedia.org/w/extensions/UsabilityInitiative/css/combined.min.css?117" type="text/css" media="all" />
+<link rel="stylesheet" href="http://bits.wikimedia.org/w/extensions/UsabilityInitiative/css/vector/jquery-ui-1.7.2.css?1.7.2y" type="text/css" media="all" />
+<link rel="stylesheet" href="/w/index.php?title=MediaWiki:Common.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=2678400&amp;action=raw&amp;maxage=2678400" type="text/css" media="all" />
+<link rel="stylesheet" href="/w/index.php?title=MediaWiki:Print.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=2678400&amp;action=raw&amp;maxage=2678400" type="text/css" media="print" />
+<link rel="stylesheet" href="/w/index.php?title=MediaWiki:Handheld.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=2678400&amp;action=raw&amp;maxage=2678400" type="text/css" media="handheld" />
+<link rel="stylesheet" href="/w/index.php?title=MediaWiki:Vector.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=2678400&amp;action=raw&amp;maxage=2678400" type="text/css" media="all" />
+<link rel="stylesheet" href="/w/index.php?title=-&amp;action=raw&amp;maxage=2678400&amp;gen=css" type="text/css" media="all" />
+<script type="text/javascript">
+var skin="vector",
+stylepath="http://bits.wikimedia.org/skins-1.5",
+wgUrlProtocols="http\\:\\/\\/|https\\:\\/\\/|ftp\\:\\/\\/|irc\\:\\/\\/|gopher\\:\\/\\/|telnet\\:\\/\\/|nntp\\:\\/\\/|worldwind\\:\\/\\/|mailto\\:|news\\:|svn\\:\\/\\/",
+wgArticlePath="/wiki/$1",
+wgScriptPath="/w",
+wgScriptExtension=".php",
+wgScript="/w/index.php",
+wgVariantArticlePath=false,
+wgActionPaths={},
+wgServer="http://en.wikipedia.org",
+wgCanonicalNamespace="",
+wgCanonicalSpecialPageName=false,
+wgNamespaceNumber=0,
+wgPageName="Common_Gateway_Interface",
+wgTitle="Common Gateway Interface",
+wgAction="view",
+wgArticleId=7220,
+wgIsArticle=true,
+wgUserName=null,
+wgUserGroups=null,
+wgUserLanguage="en",
+wgContentLanguage="en",
+wgBreakFrames=false,
+wgCurRevisionId=382206615,
+wgVersion="1.16wmf4",
+wgEnableAPI=true,
+wgEnableWriteAPI=true,
+wgSeparatorTransformTable=["", ""],
+wgDigitTransformTable=["", ""],
+wgMainPageTitle="Main Page",
+wgFormattedNamespaces={"-2": "Media", "-1": "Special", "0": "", "1": "Talk", "2": "User", "3": "User talk", "4": "Wikipedia", "5": "Wikipedia talk", "6": "File", "7": "File talk", "8": "MediaWiki", "9": "MediaWiki talk", "10": "Template", "11": "Template talk", "12": "Help", "13": "Help talk", "14": "Category", "15": "Category talk", "100": "Portal", "101": "Portal talk", "108": "Book", "109": "Book talk"},
+wgNamespaceIds={"media": -2, "special": -1, "": 0, "talk": 1, "user": 2, "user_talk": 3, "wikipedia": 4, "wikipedia_talk": 5, "file": 6, "file_talk": 7, "mediawiki": 8, "mediawiki_talk": 9, "template": 10, "template_talk": 11, "help": 12, "help_talk": 13, "category": 14, "category_talk": 15, "portal": 100, "portal_talk": 101, "book": 108, "book_talk": 109, "wp": 4, "wt": 5, "image": 6, "image_talk": 7},
+wgSiteName="Wikipedia",
+wgCategories=["All articles with dead external links", "Articles with dead external links from May 2010", "Servers", "Web technology", "World Wide Web"],
+wgMWSuggestTemplate="http://en.wikipedia.org/w/api.php?action=opensearch\x26search={searchTerms}\x26namespace={namespaces}\x26suggest",
+wgDBname="enwiki",
+wgSearchNamespaces=[0],
+wgMWSuggestMessages=["with suggestions", "no suggestions"],
+wgRestrictionEdit=[],
+wgRestrictionMove=[],
+wgFlaggedRevsParams={"tags": {"status": {"levels": 1, "quality": 2, "pristine": 3}}},
+wgStableRevisionId=0,
+wgWikimediaMobileUrl="http://en.m.wikipedia.org/wiki",
+wgCollapsibleNavBucketTest=false,
+wgCollapsibleNavForceNewVersion=false,
+wgVectorPreferences={"collapsiblenav": {"enable": 1}, "editwarning": {"enable": 1}, "simplesearch": {"enable": 1, "disablesuggest": 0}},
+wgVectorEnabledModules={"collapsiblenav": true, "collapsibletabs": true, "editwarning": true, "expandablesearch": false, "footercleanup": false, "simplesearch": true},
+wgNotice="";
+</script><script src="http://bits.wikimedia.org/skins-1.5/common/wikibits.js?283s" type="text/javascript"></script>
+<script type="text/javascript" src="http://bits.wikimedia.org/skins-1.5/common/jquery.min.js?283s"></script>
+<script src="http://bits.wikimedia.org/skins-1.5/common/ajax.js?283s" type="text/javascript"></script>
+<script src="http://bits.wikimedia.org/skins-1.5/common/mwsuggest.js?283s" type="text/javascript"></script>
+<script src="http://bits.wikimedia.org/w/extensions/WikimediaMobile/MobileRedirect.js?2.2" type="text/javascript"></script>
+<script src="http://bits.wikimedia.org/w/extensions/UsabilityInitiative/js/plugins.combined.min.js?283s" type="text/javascript"></script>
+<script src="http://bits.wikimedia.org/w/extensions/UsabilityInitiative/Vector/Vector.combined.min.js?283s" type="text/javascript"></script>
+<script type="text/javascript">mw.usability.addMessages({'vector-collapsiblenav-more':'More languages','vector-editwarning-warning':'Leaving this page may cause you to lose any changes you have made.\nIf you are logged in, you can disable this warning in the \"Editing\" section of your preferences.','vector-simplesearch-search':'Search','vector-simplesearch-containing':'containing...'});</script>
+<script src="http://upload.wikimedia.org/centralnotice/wikipedia/en/centralnotice.js?283s" type="text/javascript"></script>
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/w/skins-1.5/vector/csshover.htc")}</style><![endif]-->
+<script src="/w/index.php?title=-&amp;action=raw&amp;gen=js&amp;useskin=vector&amp;283s" type="text/javascript"></script>
+
+</head>
+<body class="mediawiki ltr ns-0 ns-subject page-Common_Gateway_Interface skin-vector">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<!-- sitenotice -->
+			<div id="siteNotice"><script type="text/javascript">if (wgNotice != '') document.writeln(wgNotice);</script></div>
+			<!-- /sitenotice -->
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading">Common Gateway Interface</h1>
+			<!-- /firstHeading -->
+			<!-- bodyContent -->
+			<div id="bodyContent">
+				<!-- tagline -->
+				<div id="siteSub">From Wikipedia, the free encyclopedia</div>
+				<!-- /tagline -->
+				<!-- subtitle -->
+				<div id="contentSub"></div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav">
+					Jump to: <a href="#mw-head">navigation</a>,
+					<a href="#p-search">search</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodytext -->
+				<p>The <b>Common Gateway Interface</b> (<b>CGI</b>) is a standard (see <a href="http://tools.ietf.org/html/rfc3875" class="external mw-magiclink-rfc">RFC 3875</a>: <em>CGI Version 1.1</em>) that defines how <a href="/wiki/Webserver" title="Webserver" class="mw-redirect">webserver</a> software can delegate the generation of <a href="/wiki/Webpage" title="Webpage" class="mw-redirect">webpages</a> to a <a href="/wiki/Text-based_(computing)" title="Text-based (computing)">text-based</a> application. Such applications are known as <i>CGI scripts</i>; they can be written in any programming language, although <a href="/wiki/Scripting_language" title="Scripting language">scripting languages</a> are often used.</p>
+<table id="toc" class="toc">
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Purpose"><span class="tocnumber">1</span> <span class="toctext">Purpose</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#More_details"><span class="tocnumber">2</span> <span class="toctext">More details</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#Input_data"><span class="tocnumber">2.1</span> <span class="toctext">Input data</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Output_format"><span class="tocnumber">2.2</span> <span class="toctext">Output format</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="#Example"><span class="tocnumber">3</span> <span class="toctext">Example</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#History"><span class="tocnumber">4</span> <span class="toctext">History</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Drawbacks"><span class="tocnumber">5</span> <span class="toctext">Drawbacks</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="#Alternatives"><span class="tocnumber">5.1</span> <span class="toctext">Alternatives</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="#See_also"><span class="tocnumber">6</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="#References"><span class="tocnumber">7</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="#External_links"><span class="tocnumber">8</span> <span class="toctext">External links</span></a></li>
+</ul>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+//<![CDATA[
+if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+//]]>
+</script>
+<h2><span class="editsection">[<a href="/w/index.php?title=Common_Gateway_Interface&amp;action=edit&amp;section=1" title="Edit section: Purpose">edit</a>]</span> <span class="mw-headline" id="Purpose">Purpose</span></h2>
+<p>The task of a webserver is to respond to requests for webpages issued by <a href="/wiki/Client_(computing)" title="Client (computing)">clients</a> (usually <a href="/wiki/Web_browser" title="Web browser">web browsers</a>) by analyzing the content of the request (including the <a href="/wiki/URL" title="URL" class="mw-redirect">URL</a>, the <a href="/wiki/Hypertext_Transfer_Protocol" title="Hypertext Transfer Protocol">HTTP</a> 'method', <a href="/wiki/List_of_HTTP_header_fields" title="List of HTTP header fields">request headers</a> and any message body), determining appropriate actions to take and creating an appropriate document to send in response, then returning that to the client.</p>
+<p>If the requested file exists on disk, the server can just return the file's contents. Alternatively, the document's content may need to be composed <a href="/wiki/Dynamic_web_page" title="Dynamic web page">on the fly</a>, and other actions such as updating a <a href="/wiki/Database" title="Database">database</a>, may be required. One way of achieving this is for a <a href="/wiki/Console_application" title="Console application">console application</a> to handle the request and compute the returned document's contents, and tell the web server to use that console application. CGI specifies which information is communicated between the webserver and such a console application, and how.</p>
+<p>The webserver software will invoke the console application as a <a href="/wiki/Command_(computing)" title="Command (computing)">command</a>. CGI defines how information about the request (such as the URL, request headers etc) is passed to the command in the form of arguments and <a href="/wiki/Environment_variable" title="Environment variable">environment variables</a>. The application then writes the output document to <a href="/wiki/Standard_output" title="Standard output" class="mw-redirect">standard output</a>. CGI also defines how the application should pass back extra information about the output (such as the <a href="/wiki/MIME_type" title="MIME type" class="mw-redirect">MIME type</a> and other response headers).</p>
+<h2><span class="editsection">[<a href="/w/index.php?title=Common_Gateway_Interface&amp;action=edit&amp;section=2" title="Edit section: More details">edit</a>]</span> <span class="mw-headline" id="More_details">More details</span></h2>
+<p>From the Web server's point of view, certain locators, e.g. http://www.example.com/wiki.cgi, are defined as corresponding to a program to execute via CGI. When a request for the <a href="/wiki/Uniform_Resource_Locator" title="Uniform Resource Locator">URL</a> is received, the corresponding program is executed.</p>
+<p>Web servers often have a cgi-bin/ <a href="/wiki/Folder_(computing)" title="Folder (computing)">directory</a> at the base of their directory tree to hold executable files called with CGI.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=Common_Gateway_Interface&amp;action=edit&amp;section=3" title="Edit section: Input data">edit</a>]</span> <span class="mw-headline" id="Input_data">Input data</span></h3>
+<p>Data is passed into the program using <a href="/wiki/Environment_variables" title="Environment variables" class="mw-redirect">environment variables</a>. This is in contrast to typical execution, where <a href="/wiki/Command-line_argument" title="Command-line argument">command-line arguments</a> are used. In the case of <a href="/wiki/HTTP#Request_methods" title="HTTP" class="mw-redirect">HTTP PUT or POSTs</a>, the user-submitted data is provided to the program via the <a href="/wiki/Standard_input" title="Standard input" class="mw-redirect">standard input</a>.<sup id="cite_ref-0" class="reference"><a href="#cite_note-0"><span>[</span>1<span>]</span></a></sup></p>
+<p>The following environment variables pass to a CGI program:</p>
+<dl>
+<dt>Server specific variables</dt>
+</dl>
+<p><tt>SERVER_SOFTWARE</tt> — <var>name</var>/<var>version</var> of <a href="/wiki/HTTP_server" title="HTTP server" class="mw-redirect">HTTP server</a>.<br />
+<tt>SERVER_NAME</tt> — <a href="/wiki/Host_name" title="Host name" class="mw-redirect">host name</a> of the server, may be <a href="/wiki/Dot-decimal_notation" title="Dot-decimal notation">dot-decimal</a> IP address.<br />
+<tt>GATEWAY_INTERFACE</tt> — CGI/<var>version</var>.<br /></p>
+<dl>
+<dt>Request specific variables</dt>
+</dl>
+<p><tt>SERVER_PROTOCOL</tt> — HTTP/<var>version</var>.<br />
+<tt>SERVER_PORT</tt> — <a href="/wiki/TCP_port" title="TCP port" class="mw-redirect">TCP port</a> (decimal).<br />
+<tt>REQUEST_METHOD</tt> — name of HTTP method (see above).<br />
+<tt>PATH_INFO</tt> — path suffix, if appended to URL after program name and a slash.<br />
+<tt>PATH_TRANSLATED</tt> — corresponding <a href="/wiki/Full_path" title="Full path" class="mw-redirect">full path</a> as supposed by server, if <tt>PATH_INFO</tt> is present.<br />
+<tt>SCRIPT_NAME</tt> — relative path to the program, like <tt>/cgi-bin/script.cgi</tt>.<br />
+<tt>QUERY_STRING</tt> — the part of URL after <a href="/wiki/Question_mark" title="Question mark"><span style="background-color:#FFFFCC; padding: 2px">?</span></a> character. Must be composed of <var>name</var>=<var>value</var> pairs separated with <a href="/wiki/Ampersand" title="Ampersand">ampersands</a> (such as <var>var1</var>=<var>val1</var><b>&amp;</b><var>var2</var>=<var>val2</var>…) and used when <a href="/wiki/Form_(web)" title="Form (web)">form</a> data are transferred via GET method.<br />
+<tt>REMOTE_HOST</tt> — host name of the client, unset if server did not perform such lookup.<br />
+<tt>REMOTE_ADDR</tt> — <a href="/wiki/IP_address" title="IP address">IP address</a> of the client (dot-decimal).<br />
+<tt>AUTH_TYPE</tt> — identification type, if applicable.<br />
+<tt>REMOTE_USER</tt> used for certain <tt>AUTH_TYPE</tt>s.<br />
+<tt>REMOTE_IDENT</tt> — see <a href="/wiki/Ident" title="Ident">ident</a>, only if server performed such lookup.<br />
+<tt>CONTENT_TYPE</tt> — <a href="/wiki/MIME_type" title="MIME type" class="mw-redirect">MIME type</a> of input data if PUT or POST method are used, as provided via HTTP header.<br />
+<tt>CONTENT_LENGTH</tt> — similarly, size of input data (decimal, in <a href="/wiki/Octet_(computing)" title="Octet (computing)">octets</a>) if provided via HTTP header.<br />
+Variables passed by user agent (<tt>HTTP_ACCEPT</tt>, <tt>HTTP_ACCEPT_LANGUAGE</tt>, <tt>HTTP_USER_AGENT</tt>, <tt>HTTP_COOKIE</tt> and possibly others) contain values of corresponding <a href="/wiki/HTTP_headers" title="HTTP headers" class="mw-redirect">HTTP headers</a> and therefore have the same sense.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=Common_Gateway_Interface&amp;action=edit&amp;section=4" title="Edit section: Output format">edit</a>]</span> <span class="mw-headline" id="Output_format">Output format</span></h3>
+<p>The program returns the result to the web server in the form of standard output, prefixed by a header and a <a href="/wiki/Blank_line" title="Blank line" class="mw-redirect">blank line</a>.</p>
+<p>The header is encoded in the same way as an <a href="/wiki/List_of_HTTP_headers" title="List of HTTP headers" class="mw-redirect">HTTP header</a> and must include the <a href="/wiki/MIME_type" title="MIME type" class="mw-redirect">MIME type</a> of the document returned.<sup id="cite_ref-1" class="reference"><a href="#cite_note-1"><span>[</span>2<span>]</span></a></sup> The headers are generally forwarded with the response back to the user, supplemented by the web server.</p>
+<h2><span class="editsection">[<a href="/w/index.php?title=Common_Gateway_Interface&amp;action=edit&amp;section=5" title="Edit section: Example">edit</a>]</span> <span class="mw-headline" id="Example">Example</span></h2>
+<p>An example of a CGI program is one implementing a <a href="/wiki/Wiki" title="Wiki">wiki</a>. The user agent requests the name of an entry; the server will retrieve the source of that entry's page (if one exists), transform it into <a href="/wiki/HTML" title="HTML">HTML</a>, and send the result.</p>
+<h2><span class="editsection">[<a href="/w/index.php?title=Common_Gateway_Interface&amp;action=edit&amp;section=6" title="Edit section: History">edit</a>]</span> <span class="mw-headline" id="History">History</span></h2>
+<p>In 1993, the <a href="/wiki/World_Wide_Web" title="World Wide Web">World Wide Web</a> (WWW) was small but booming. WWW software developers and web site developers kept in touch on the www-talk mailing list, so it was there that a standard for calling command line executables was agreed upon. Specifically mentioned in <a href="http://tools.ietf.org/html/rfc3875" class="external mw-magiclink-rfc">RFC 3875</a><sup id="cite_ref-2" class="reference"><a href="#cite_note-2"><span>[</span>3<span>]</span></a></sup> are the following contributors:</p>
+<ul>
+<li><a href="/w/index.php?title=Rob_McCool&amp;action=edit&amp;redlink=1" class="new" title="Rob McCool (page does not exist)">Rob McCool</a> (author of the <a href="/wiki/NCSA_httpd" title="NCSA httpd" class="mw-redirect">NCSA httpd</a> <a href="/wiki/HTTP_server" title="HTTP server" class="mw-redirect">web server</a>)</li>
+<li>John Franks (author of the GN web server)</li>
+<li>Ari Luotonen (the developer of the <a href="/wiki/CERN_httpd" title="CERN httpd">CERN httpd</a> web server)</li>
+<li>Tony Sanders (author of the Plexus web server)</li>
+<li>George Phillips (web server maintainer at the <a href="/wiki/University_of_British_Columbia" title="University of British Columbia">University of British Columbia</a>)</li>
+</ul>
+<p>The <a href="/wiki/National_Center_for_Supercomputing_Applications" title="National Center for Supercomputing Applications">NCSA</a> team wrote the specification,<sup id="cite_ref-3" class="reference"><a href="#cite_note-3"><span>[</span>4<span>]</span></a></sup> and NCSA still hosts it at its original location.<sup id="cite_ref-4" class="reference"><a href="#cite_note-4"><span>[</span>5<span>]</span></a></sup><sup id="cite_ref-5" class="reference"><a href="#cite_note-5"><span>[</span>6<span>]</span></a></sup> The other webserver developers adopted it, and it has been a standard for webservers ever since.</p>
+<h2><span class="editsection">[<a href="/w/index.php?title=Common_Gateway_Interface&amp;action=edit&amp;section=7" title="Edit section: Drawbacks">edit</a>]</span> <span class="mw-headline" id="Drawbacks">Drawbacks</span></h2>
+<p>Calling a command generally means the invocation of a newly created <a href="/wiki/Computer_process" title="Computer process" class="mw-redirect">process</a>. Starting up the process can take up much more time and memory than the actual work of generating the output, especially when the program still needs to be <a href="/wiki/Interpret" title="Interpret" class="mw-redirect">interpreted</a> or <a href="/wiki/Compiler" title="Compiler">compiled</a>. If the command is called often, the resulting workload can quickly overwhelm the web server.</p>
+<p>The <a href="/wiki/Computational_overhead" title="Computational overhead">overhead</a> involved in interpretation may be reduced by using compiled CGI programs, such as those in <a href="/wiki/C_(programming_language)" title="C (programming language)">C</a>/<a href="/wiki/C%2B%2B" title="C++">C++</a>, rather than using <a href="/wiki/Perl" title="Perl">Perl</a> or other scripting languages. The overhead involved in process creation can be reduced by solutions such as <a href="/wiki/FastCGI" title="FastCGI">FastCGI</a>, or by running the application code entirely within the webserver using special extension modules.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=Common_Gateway_Interface&amp;action=edit&amp;section=8" title="Edit section: Alternatives">edit</a>]</span> <span class="mw-headline" id="Alternatives">Alternatives</span></h3>
+<p>Several approaches can be adopted for remedying this:</p>
+<ul>
+<li>The popular Web servers developed their own extension mechanisms that allows third-party software to run inside the web server itself, e.g. <a href="/wiki/Apache_modules" title="Apache modules" class="mw-redirect">Apache modules</a>, Netscape <a href="/wiki/Netscape_Server_Application_Programming_Interface" title="Netscape Server Application Programming Interface">NSAPI</a> <a href="/wiki/Plug-in_(computing)" title="Plug-in (computing)">plug-ins</a>, <a href="/wiki/Internet_Information_Services" title="Internet Information Services">IIS</a> <a href="/wiki/Internet_Server_Application_Programming_Interface" title="Internet Server Application Programming Interface">ISAPI</a> plug-ins.</li>
+<li><a href="/wiki/Simple_Common_Gateway_Interface" title="Simple Common Gateway Interface">Simple Common Gateway Interface</a> or SCGI</li>
+<li><a href="/wiki/FastCGI" title="FastCGI">FastCGI</a> allows a single, long-running process to handle more than one user request while keeping close to the CGI programming model, retaining the simplicity while eliminating much of the overhead CGI incurs by creating a new process for each request. Unlike converting an application to a web server plug-in, FastCGI applications remain independent of the web server.</li>
+<li>Replacement of the architecture for dynamic websites can also be used. This is the approach taken by solutions including <a href="/wiki/Java_Platform,_Enterprise_Edition" title="Java Platform, Enterprise Edition">Java Platform, Enterprise Edition</a> (a.k.a. Java EE), which runs Java code in a Java servlet container in order to serve dynamic content and optionally static content. This approach replaces the overhead of generating and destroying processes with the much lower overhead of generating and destroying <a href="/wiki/Thread_(computer_science)" title="Thread (computer science)">threads</a>, and also exposes the programmer to the library that comes with <a href="/wiki/Java_Platform,_Standard_Edition" title="Java Platform, Standard Edition">Java Platform, Standard Edition</a> that the version of Java EE in use is based on.</li>
+</ul>
+<p>The optimal configuration for any web application depends on application-specific details, amount of traffic, and complexity of the transaction; these tradeoffs need to be analyzed to determine the best implementation for a given task and time budget.</p>
+<h2><span class="editsection">[<a href="/w/index.php?title=Common_Gateway_Interface&amp;action=edit&amp;section=9" title="Edit section: See also">edit</a>]</span> <span class="mw-headline" id="See_also">See also</span></h2>
+<ul>
+<li><a href="/wiki/Simple_Common_Gateway_Interface" title="Simple Common Gateway Interface">SCGI</a></li>
+<li><a href="/wiki/Web_Server_Gateway_Interface" title="Web Server Gateway Interface">Web Server Gateway Interface</a></li>
+<li><a href="/wiki/Perl_Web_Server_Gateway_Interface" title="Perl Web Server Gateway Interface" class="mw-redirect">PSGI</a></li>
+</ul>
+<h2><span class="editsection">[<a href="/w/index.php?title=Common_Gateway_Interface&amp;action=edit&amp;section=10" title="Edit section: References">edit</a>]</span> <span class="mw-headline" id="References">References</span></h2>
+<div class="references-small">
+<ol class="references">
+<li id="cite_note-0"><b><a href="#cite_ref-0">^</a></b> <a href="http://hoohoo.ncsa.uiuc.edu/cgi/in.html" class="external text" rel="nofollow">CGI Script input</a><sup class="noprint Inline-Template"><span title="&#160;since May 2010" style="white-space: nowrap;">[<i><a href="/wiki/Wikipedia:Link_rot" title="Wikipedia:Link rot">dead link</a></i>]</span></sup></li>
+<li id="cite_note-1"><b><a href="#cite_ref-1">^</a></b> <a href="http://hoohoo.ncsa.uiuc.edu/cgi/primer.html" class="external text" rel="nofollow">CGI Primer</a><sup class="noprint Inline-Template"><span title="&#160;since May 2010" style="white-space: nowrap;">[<i><a href="/wiki/Wikipedia:Link_rot" title="Wikipedia:Link rot">dead link</a></i>]</span></sup></li>
+<li id="cite_note-2"><b><a href="#cite_ref-2">^</a></b> <a href="http://www.ietf.org/rfc/rfc3875.txt" class="external text" rel="nofollow">RFC3875: The Common Gateway Interface (CGI) Version 1.1</a></li>
+<li id="cite_note-3"><b><a href="#cite_ref-3">^</a></b> See e.g. <a href="http://1997.webhistory.org/www.lists/www-talk.1993q4/0485.html" class="external text" rel="nofollow"><i>Server Scripts</i>, by Rob McCool, <i>www-talk</i> mailing list, Sun, 14 Nov 1993 19:24:47 -0600</a></li>
+<li id="cite_note-4"><b><a href="#cite_ref-4">^</a></b> <a href="http://hoohoo.ncsa.uiuc.edu/cgi/" class="external text" rel="nofollow"><i>The Common Gateway Interface</i></a><sup class="noprint Inline-Template"><span title="&#160;since May 2010" style="white-space: nowrap;">[<i><a href="/wiki/Wikipedia:Link_rot" title="Wikipedia:Link rot">dead link</a></i>]</span></sup>at NCSA</li>
+<li id="cite_note-5"><b><a href="#cite_ref-5">^</a></b> <a href="http://www.w3.org/CGI/" class="external text" rel="nofollow">CGI: Common Gateway Interface</a> at w3.org</li>
+</ol>
+</div>
+<h2><span class="editsection">[<a href="/w/index.php?title=Common_Gateway_Interface&amp;action=edit&amp;section=11" title="Edit section: External links">edit</a>]</span> <span class="mw-headline" id="External_links">External links</span></h2>
+<ul>
+<li><a href="http://www.gnu.org/software/cgicc/" class="external text" rel="nofollow">Cgicc</a>, FSF C++ library for CGI request parsing and HTML response generation</li>
+<li><a href="http://search.cpan.org/dist/CGI.pm/CGI.pm" class="external text" rel="nofollow">CGI</a>, a standard Perl module for CGI request parsing and HTML response generation</li>
+<li><a href="http://www.qdecoder.org/" class="external text" rel="nofollow">qDecoder</a> C/C++ web application interface</li>
+</ul>
+<table class="navbox" cellspacing="0" style=";">
+<tr>
+<td style="padding:2px;">
+<table cellspacing="0" class="nowraplinks collapsible autocollapse" style="width:100%;background:transparent;color:inherit;;">
+<tr>
+<th style=";" colspan="2" class="navbox-title">
+<div style="float:left; width:6em;text-align:left;">
+<div class="noprint plainlinks navbar" style="background:none; padding:0; font-weight:normal;;;border:none;; font-size:xx-small;"><a href="/wiki/Template:Web_server_interfaces" title="Template:Web server interfaces"><span title="View this template" style=";;border:none;">v</span></a>&#160;<span style="font-size:80%;">•</span>&#160;<a href="/w/index.php?title=Template_talk:Web_server_interfaces&amp;action=edit&amp;redlink=1" class="new" title="Template talk:Web server interfaces (page does not exist)"><span title="Discuss this template" style=";;border:none;">d</span></a>&#160;<span style="font-size:80%;">•</span>&#160;<a href="http://en.wikipedia.org/w/index.php?title=Template:Web_server_interfaces&amp;action=edit" class="external text" rel="nofollow"><span title="Edit this template" style=";;border:none;;">e</span></a></div>
+</div>
+<span class="" style="font-size:110%;">Web server interfaces</span></th>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;">General</td>
+<td style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;;;" class="navbox-list navbox-odd">
+<div style="padding:0em 0.25em"><strong class="selflink">Common Gateway Interface (CGI)</strong><span style="font-weight:bold;">&#160;·</span>  <a href="/wiki/Simple_Common_Gateway_Interface" title="Simple Common Gateway Interface">Simple CGI</a><span style="font-weight:bold;">&#160;·</span>  <a href="/wiki/FastCGI" title="FastCGI">FastCGI</a></div>
+</td>
+</tr>
+<tr style="height:2px">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;">Technology specific</td>
+<td style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;;;" class="navbox-list navbox-even">
+<div style="padding:0em 0.25em"><a href="/wiki/Internet_Server_Application_Programming_Interface" title="Internet Server Application Programming Interface">ISAPI</a><span style="font-weight:bold;">&#160;·</span>  <a href="/wiki/Java_Servlet" title="Java Servlet">Java Servlet</a><span style="font-weight:bold;">&#160;·</span>  <a href="/wiki/Netscape_Server_Application_Programming_Interface" title="Netscape Server Application Programming Interface">NSAPI</a><span style="font-weight:bold;">&#160;·</span>  <a href="/wiki/Apache_JServ_Protocol" title="Apache JServ Protocol">AJP</a><span style="font-weight:bold;">&#160;·</span>  <a href="/wiki/Web_Server_Gateway_Interface" title="Web Server Gateway Interface">Python WSGI</a><span style="font-weight:bold;">&#160;·</span>  <a href="/wiki/Rack_(web_server_interface)" title="Rack (web server interface)">Rack</a><span style="font-weight:bold;">&#160;·</span>  <a href="/wiki/JSGI" title="JSGI">JavaScript JSGI</a><span style="font-weight:bold;">&#160;·</span>  <a href="/wiki/PSGI" title="PSGI">Perl PSGI</a></div>
+</td>
+</tr>
+<tr style="height:2px">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;"><a href="/wiki/Apache_HTTP_Server" title="Apache HTTP Server">Apache</a> modules</td>
+<td style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;;;" class="navbox-list navbox-odd">
+<div style="padding:0em 0.25em"><a href="/wiki/Mod_jk" title="Mod jk">mod_jk</a><span style="font-weight:bold;">&#160;·</span>  <a href="/wiki/Mod_lisp" title="Mod lisp">mod_lisp</a><span style="font-weight:bold;">&#160;·</span>  <a href="/wiki/Mod_parrot" title="Mod parrot">mod_parrot</a><span style="font-weight:bold;">&#160;·</span>  <a href="/wiki/Mod_perl" title="Mod perl">mod_perl</a><span style="font-weight:bold;">&#160;·</span>  <a href="/wiki/PHP" title="PHP">mod_php</a><span style="font-weight:bold;">&#160;·</span>  <a href="/wiki/Mod_python" title="Mod python">mod_python</a><span style="font-weight:bold;">&#160;·</span>  <a href="/wiki/Mod_wsgi" title="Mod wsgi">mod_wsgi</a><span style="font-weight:bold;">&#160;·</span>  <a href="/wiki/Mod_ruby" title="Mod ruby">mod_ruby</a></div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 1286/1000000
+Post-expand include size: 19302/2048000 bytes
+Template argument size: 7328/2048000 bytes
+Expensive parser function count: 3/500
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:idhash:7220-0!1!0!default!!en!4 and timestamp 20100911002711 -->
+<div class="printfooter">
+Retrieved from "<a href="http://en.wikipedia.org/wiki/Common_Gateway_Interface">http://en.wikipedia.org/wiki/Common_Gateway_Interface</a>"</div>
+				<!-- /bodytext -->
+								<!-- catlinks -->
+				<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Categories</a>: <span dir='ltr'><a href="/wiki/Category:Servers" title="Category:Servers">Servers</a></span> | <span dir='ltr'><a href="/wiki/Category:Web_technology" title="Category:Web technology">Web technology</a></span> | <span dir='ltr'><a href="/wiki/Category:World_Wide_Web" title="Category:World Wide Web">World Wide Web</a></span></div><div id="mw-hidden-catlinks" class="mw-hidden-cats-hidden">Hidden categories: <span dir='ltr'><a href="/wiki/Category:All_articles_with_dead_external_links" title="Category:All articles with dead external links">All articles with dead external links</a></span> | <span dir='ltr'><a href="/wiki/Category:Articles_with_dead_external_links_from_May_2010" title="Category:Articles with dead external links from May 2010">Articles with dead external links from May 2010</a></span></div></div>				<!-- /catlinks -->
+												<div class="visualClear"></div>
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="mw-head" class="noprint">
+			
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>Personal tools</h5>
+	<ul>
+					<li  id="pt-prefswitch-link-anon"><a href="http://en.wikipedia.org/w/index.php?title=Special:UsabilityInitiativePrefSwitch&amp;from=Common_Gateway_Interface" title="Learn about new features" class="no-text-transform">New features</a></li>
+					<li  id="pt-login"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Common_Gateway_Interface" title="You are encouraged to log in; however, it is not mandatory. [o]" accesskey="o">Log in / create account</a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+			<div id="left-navigation">
+				
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>Namespaces</h5>
+	<ul>
+					<li  id="ca-nstab-main" class="selected"><a href="/wiki/Common_Gateway_Interface"  title="View the content page [c]" accesskey="c"><span>Article</span></a></li>
+					<li  id="ca-talk"><a href="/wiki/Talk:Common_Gateway_Interface"  title="Discussion about the content page [t]" accesskey="t"><span>Discussion</span></a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+		<h5><span>Variants</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+			</div>
+			<div id="right-navigation">
+				
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>Views</h5>
+	<ul>
+					<li id="ca-view" class="selected"><a href="/wiki/Common_Gateway_Interface" ><span>Read</span></a></li>
+					<li id="ca-edit"><a href="/w/index.php?title=Common_Gateway_Interface&amp;action=edit"  title="You can edit this page. &#10;Please use the preview button before saving. [e]" accesskey="e"><span>Edit</span></a></li>
+					<li id="ca-history" class="collapsible "><a href="/w/index.php?title=Common_Gateway_Interface&amp;action=history"  title="Past versions of this page [h]" accesskey="h"><span>View history</span></a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+	<h5><span>Actions</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">Search</label></h5>
+	<form action="/w/index.php" id="searchform">
+		<input type='hidden' name="title" value="Special:Search"/>
+				<div id="simpleSearch">
+			<input id="searchInput" name="search" type="text"  title="Search Wikipedia [f]" accesskey="f"  value="" />
+			<button id="searchButton" type='submit' name='button'  title="Search Wikipedia for this text"><img src="http://bits.wikimedia.org/skins-1.5/vector/images/search-ltr.png?283s" alt="Search" /></button>
+		</div>
+			</form>
+</div>
+
+<!-- /2 -->
+			</div>
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="mw-panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url(http://upload.wikimedia.org/wikipedia/commons/d/d6/Wikipedia-logo-v2-en.png);" href="/wiki/Main_Page"  title="Visit the main page"></a></div>
+				<!-- /logo -->
+				
+<!-- navigation -->
+<div class="portal" id='p-navigation'>
+	<h5>Navigation</h5>
+	<div class="body">
+				<ul>
+					<li id="n-mainpage-description"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z">Main page</a></li>
+					<li id="n-contents"><a href="/wiki/Portal:Contents" title="Guides to browsing Wikipedia">Contents</a></li>
+					<li id="n-featuredcontent"><a href="/wiki/Portal:Featured_content" title="Featured content — the best of Wikipedia">Featured content</a></li>
+					<li id="n-currentevents"><a href="/wiki/Portal:Current_events" title="Find background information on current events">Current events</a></li>
+					<li id="n-randompage"><a href="/wiki/Special:Random" title="Load a random article [x]" accesskey="x">Random article</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /navigation -->
+
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- interaction -->
+<div class="portal" id='p-interaction'>
+	<h5>Interaction</h5>
+	<div class="body">
+				<ul>
+					<li id="n-aboutsite"><a href="/wiki/Wikipedia:About" title="Find out about Wikipedia">About Wikipedia</a></li>
+					<li id="n-portal"><a href="/wiki/Wikipedia:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+					<li id="n-recentchanges"><a href="/wiki/Special:RecentChanges" title="The list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+					<li id="n-contact"><a href="/wiki/Wikipedia:Contact_us" title="How to contact Wikipedia">Contact Wikipedia</a></li>
+					<li id="n-Donate-to-Wikipedia"><a href="/wiki/Special:VariablePage">Donate to Wikipedia</a></li>
+					<li id="n-help"><a href="/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia">Help</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /interaction -->
+
+<!-- TOOLBOX -->
+<div class="portal" id="p-tb">
+	<h5>Toolbox</h5>
+	<div class="body">
+		<ul>
+					<li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/Common_Gateway_Interface" title="List of all English Wikipedia pages containing links to this page [j]" accesskey="j">What links here</a></li>
+						<li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/Common_Gateway_Interface" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+																																					<li id="t-upload"><a href="/wiki/Wikipedia:Upload" title="Upload files [u]" accesskey="u">Upload file</a></li>
+											<li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+											<li id="t-permalink"><a href="/w/index.php?title=Common_Gateway_Interface&amp;oldid=382206615" title="Permanent link to this revision of the page">Permanent link</a></li>
+				<li id="t-cite"><a href="/w/index.php?title=Special:Cite&amp;page=Common_Gateway_Interface&amp;id=382206615" title="Information on how to cite this page">Cite this page</a></li>		</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- coll-print_export -->
+<div class="portal" id='p-coll-print_export'>
+	<h5>Print/export</h5>
+	<div class="body">
+				<ul id="collectionPortletList"><li id="coll-create_a_book"><a href="/w/index.php?title=Special:Book&amp;bookcmd=book_creator&amp;referer=Common+Gateway+Interface" title="Create a book or page collection" rel="nofollow">Create a book</a></li><li id="coll-download-as-rl"><a href="/w/index.php?title=Special:Book&amp;bookcmd=render_article&amp;arttitle=Common+Gateway+Interface&amp;oldid=382206615&amp;writer=rl" title="Download a PDF version of this wiki page" rel="nofollow">Download as PDF</a></li><li id="t-print"><a href="/w/index.php?title=Common_Gateway_Interface&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li></ul>			</div>
+</div>
+
+<!-- /coll-print_export -->
+
+<!-- LANGUAGES -->
+<div class="portal" id="p-lang">
+	<h5>Languages</h5>
+	<div class="body">
+		<ul>
+					<li class="interwiki-ar"><a href="http://ar.wikipedia.org/wiki/%D9%88%D8%A7%D8%AC%D9%87%D8%A9_%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D8%A8%D8%B1_%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%A9" title="واجهة المعابر العامة">العربية</a></li>
+					<li class="interwiki-bar"><a href="http://bar.wikipedia.org/wiki/CGI" title="CGI">Boarisch</a></li>
+					<li class="interwiki-cs"><a href="http://cs.wikipedia.org/wiki/Common_Gateway_Interface" title="Common Gateway Interface">Česky</a></li>
+					<li class="interwiki-da"><a href="http://da.wikipedia.org/wiki/Common_Gateway_Interface" title="Common Gateway Interface">Dansk</a></li>
+					<li class="interwiki-de"><a href="http://de.wikipedia.org/wiki/Common_Gateway_Interface" title="Common Gateway Interface">Deutsch</a></li>
+					<li class="interwiki-et"><a href="http://et.wikipedia.org/wiki/CGI" title="CGI">Eesti</a></li>
+					<li class="interwiki-es"><a href="http://es.wikipedia.org/wiki/Interfaz_de_entrada_com%C3%BAn" title="Interfaz de entrada común">Español</a></li>
+					<li class="interwiki-eo"><a href="http://eo.wikipedia.org/wiki/CGI" title="CGI">Esperanto</a></li>
+					<li class="interwiki-eu"><a href="http://eu.wikipedia.org/wiki/Common_Gateway_Interface" title="Common Gateway Interface">Euskara</a></li>
+					<li class="interwiki-fr"><a href="http://fr.wikipedia.org/wiki/Common_Gateway_Interface" title="Common Gateway Interface">Français</a></li>
+					<li class="interwiki-ko"><a href="http://ko.wikipedia.org/wiki/%EA%B3%B5%EC%9A%A9_%EA%B2%8C%EC%9D%B4%ED%8A%B8%EC%9B%A8%EC%9D%B4_%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4" title="공용 게이트웨이 인터페이스">한국어</a></li>
+					<li class="interwiki-hi"><a href="http://hi.wikipedia.org/wiki/%E0%A4%95%E0%A5%89%E0%A4%AE%E0%A4%A8_%E0%A4%97%E0%A5%87%E0%A4%9F%E0%A4%B5%E0%A5%87_%E0%A4%87%E0%A4%82%E0%A4%9F%E0%A4%B0%E0%A4%AB%E0%A5%87%E0%A4%B8" title="कॉमन गेटवे इंटरफेस">हिन्दी</a></li>
+					<li class="interwiki-id"><a href="http://id.wikipedia.org/wiki/Common_Gateway_Interface" title="Common Gateway Interface">Bahasa Indonesia</a></li>
+					<li class="interwiki-is"><a href="http://is.wikipedia.org/wiki/Common_Gateway_Interface" title="Common Gateway Interface">Íslenska</a></li>
+					<li class="interwiki-it"><a href="http://it.wikipedia.org/wiki/Common_Gateway_Interface" title="Common Gateway Interface">Italiano</a></li>
+					<li class="interwiki-he"><a href="http://he.wikipedia.org/wiki/Common_Gateway_Interface" title="Common Gateway Interface">עברית</a></li>
+					<li class="interwiki-lt"><a href="http://lt.wikipedia.org/wiki/CGI" title="CGI">Lietuvių</a></li>
+					<li class="interwiki-hu"><a href="http://hu.wikipedia.org/wiki/CGI_(protokoll)" title="CGI (protokoll)">Magyar</a></li>
+					<li class="interwiki-nl"><a href="http://nl.wikipedia.org/wiki/Common_Gateway_Interface" title="Common Gateway Interface">Nederlands</a></li>
+					<li class="interwiki-ja"><a href="http://ja.wikipedia.org/wiki/Common_Gateway_Interface" title="Common Gateway Interface">日本語</a></li>
+					<li class="interwiki-no"><a href="http://no.wikipedia.org/wiki/Common_Gateway_Interface" title="Common Gateway Interface">‪Norsk (bokmål)‬</a></li>
+					<li class="interwiki-pl"><a href="http://pl.wikipedia.org/wiki/CGI" title="CGI">Polski</a></li>
+					<li class="interwiki-pt"><a href="http://pt.wikipedia.org/wiki/CGI" title="CGI">Português</a></li>
+					<li class="interwiki-ru"><a href="http://ru.wikipedia.org/wiki/CGI" title="CGI">Русский</a></li>
+					<li class="interwiki-sk"><a href="http://sk.wikipedia.org/wiki/Common_Gateway_Interface" title="Common Gateway Interface">Slovenčina</a></li>
+					<li class="interwiki-sl"><a href="http://sl.wikipedia.org/wiki/Common_Gateway_Interface" title="Common Gateway Interface">Slovenščina</a></li>
+					<li class="interwiki-fi"><a href="http://fi.wikipedia.org/wiki/CGI" title="CGI">Suomi</a></li>
+					<li class="interwiki-sv"><a href="http://sv.wikipedia.org/wiki/Common_Gateway_Interface" title="Common Gateway Interface">Svenska</a></li>
+					<li class="interwiki-ta"><a href="http://ta.wikipedia.org/wiki/%E0%AE%AA%E0%AF%8A%E0%AE%A4%E0%AF%81%E0%AE%B5%E0%AE%BE%E0%AE%A9_%E0%AE%95%E0%AF%87%E0%AE%9F%E0%AF%8D%E0%AE%B5%E0%AF%87_%E0%AE%87%E0%AE%9F%E0%AF%88%E0%AE%AE%E0%AF%81%E0%AE%95%E0%AE%AE%E0%AF%8D" title="பொதுவான கேட்வே இடைமுகம்">தமிழ்</a></li>
+					<li class="interwiki-te"><a href="http://te.wikipedia.org/wiki/%E0%B0%95%E0%B0%BE%E0%B0%AE%E0%B0%A8%E0%B1%8D_%E0%B0%97%E0%B1%87%E0%B0%9F%E0%B1%8D%E0%B0%B5%E0%B1%87_%E0%B0%87%E0%B0%82%E0%B0%9F%E0%B0%B0%E0%B1%8D%E0%B0%AB%E0%B1%87%E0%B0%B8%E0%B1%8D" title="కామన్ గేట్వే ఇంటర్ఫేస్">తెలుగు</a></li>
+					<li class="interwiki-uk"><a href="http://uk.wikipedia.org/wiki/CGI" title="CGI">Українська</a></li>
+					<li class="interwiki-zh"><a href="http://zh.wikipedia.org/wiki/%E9%80%9A%E7%94%A8%E7%BD%91%E5%85%B3%E6%8E%A5%E5%8F%A3" title="通用网关接口">中文</a></li>
+				</ul>
+	</div>
+</div>
+
+<!-- /LANGUAGES -->
+			</div>
+		<!-- /panel -->
+		<!-- footer -->
+		<div id="footer">
+											<ul id="footer-info">
+																	<li id="footer-info-lastmod"> This page was last modified on 1 September 2010 at 03:16.<br /></li>
+																							<li id="footer-info-copyright">Text is available under the <a rel="license" href="http://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License</a><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;
+additional terms may apply.
+See <a href="http://wikimediafoundation.org/wiki/Terms_of_Use">Terms of Use</a> for details.<br/>
+Wikipedia&reg; is a registered trademark of the <a href="http://www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.<br /></li><li class="noprint"><a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact us</a></li>
+															</ul>
+															<ul id="footer-places">
+																	<li id="footer-places-privacy"><a href="http://wikimediafoundation.org/wiki/Privacy_policy" title="wikimedia:Privacy policy">Privacy policy</a></li>
+																							<li id="footer-places-about"><a href="/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+																							<li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+															</ul>
+										<ul id="footer-icons" class="noprint">
+								<li id="footer-icon-poweredby"><a href="http://www.mediawiki.org/"><img src="http://bits.wikimedia.org/skins-1.5/common/images/poweredby_mediawiki_88x31.png" height="31" width="88" alt="Powered by MediaWiki" /></a></li>
+												<li id="footer-icon-copyright"><a href="http://wikimediafoundation.org/"><img src="/images/wikimedia-button.png" width="88" height="31" alt="Wikimedia Foundation"/></a></li>
+							</ul>
+			<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+		<!-- fixalpha -->
+		<script type="text/javascript"> if ( window.isMSIE55 ) fixalpha(); </script>
+		<!-- /fixalpha -->
+		
+<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+		<!-- Served by srv153 in 0.065 secs. -->			</body>
+</html>

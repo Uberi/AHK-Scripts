@@ -1,0 +1,18 @@
+gatling supports very basic .htaccess handling.
+
+If checks (in the current directory only!) for a .htaccess file, which
+is expected to have the following syntax:
+
+  Realm
+  username:password
+  username2:password2
+  [...]
+
+Realm is simply a string that is usually displayed by the browser when
+prompting for the password.  username is the user name in plain text,
+and password is the password in crypt(3) format (like in /etc/passwd).
+
+gatling only supports basic authentication.
+
+You can also password protect a whole server.  Just put a
+.htaccess_global file in the directory of the server, same syntax.

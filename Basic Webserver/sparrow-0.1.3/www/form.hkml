@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Sparrow POST Variable Testpage</title>
+</head>
+
+<body>
+<h2>Sparrow POST Variable Testpage</h2>
+Each Submit will send two variables to the server with different encoding types:<br>
+- there is a variable "t1" which holds the text "the test"<br>
+- and there is one, called "t2" which holds the text "the+test"<br>
+it has been setup to test encoding transmissions.
+
+<h2>Text/Plain</h2>
+<form action="<?ahk echo($_SERVER[REQUEST]) ?>" method="post" enctype="text/plain">
+	<input type="Hidden" value="das test" name="t1" />
+	<input type="Hidden" value="das+test" name="t2" />
+	<!-- <input type="file" name="t3"> -->
+	<input type="Submit" />
+</form>
+<h2>Standard (www-urlencoded)</h2>
+<form action="<?ahk echo($_SERVER[REQUEST]) ?>" method="post">
+	<input type="Hidden" value="das test" name="t1" />
+	<input type="Hidden" value="das+test" name="t2" />
+	<!-- <input type="file" name="t3"> -->
+	<input type="Submit" />
+</form>
+<h2>Standard (multipart/form-data)</h2>
+<form action="<?ahk echo($_SERVER[REQUEST]) ?>" method="post" enctype="multipart/form-data">
+	<input type="Hidden" value="das test" name="t1" />
+	<input type="Hidden" value="das+test" name="t2" />
+	<!-- <input type="file" name="t3"> -->
+	<input type="Submit" />
+</form>
+<?ahk
+	echo(nl2br("$_POST -> " $_POST "`n"))
+	echo(nl2br("$_POST[T1] -> " $_POST[T1] "`n"))
+	echo(nl2br("$_POST[T2] -> " $_POST[T2] "`n"))
+; The t3 includes a fileupload and the Core is to generate proper $_FILE Variables associated to it.
+; At current state this is NOT working, therefor its been disabled on this page.
+;	echo(nl2br("$_POST[T3] -> " $_POST[T3] "`n"))
+?>
+</body>
+</html>

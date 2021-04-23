@@ -1,0 +1,21 @@
+While there are tokens to be read:
+	Read a token.
+	If the token is a function token, then push it onto the stack.
+	If the token is a function argument separator (e.g., a comma):
+		While the stack is not empty, and the token at the top of the stack is not a left parenthesis:
+			Pop operators off the stack onto the output queue.
+	If the token is an operator, o1, then:
+		While there is an operator token, o2, at the top of the stack, and either o1 is left-associative and its precedence is less than or equal to that of o2, or o1 is right-associative and its precedence is less than that of o2:
+			Pop o2 off the stack, onto the output queue;
+		Push o1 onto the stack.
+	If the token is a left parenthesis, then push it onto the stack.
+	If the token is a right parenthesis:
+		While the token at the top of the stack is not a left parenthesis:
+			Pop operators off the stack onto the output queue.
+			If no left parentheses are encountered, either the separator was misplaced or parentheses were mismatched.
+		Pop the left parenthesis from the stack, but not onto the output queue.
+		If the token at the top of the stack is a function token, pop it onto the output queue.
+	Otherwise, push the token directly to the output.
+While there are still operator tokens in the stack:
+	If the operator token on the top of the stack is a parenthesis, then there are mismatched parentheses.
+	Pop the operator onto the output queue.
