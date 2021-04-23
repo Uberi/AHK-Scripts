@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0105)http://www.codeproject.com/Articles/4981/I-O-Ports-Uncensored-1-Controlling-LEDs-Light-Emit?display=Print -->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>I/O Ports Uncensored - 1 - Controlling LEDs (Light Emiting Diodes) with Parallel Port - CodeProject®</title> 
+	<link type="text/css" rel="stylesheet" href="./IO Ports Uncensored_files/CodeProject.min.css">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+
+	<base href="." target="_top">	
+</head>
+
+<body>
+<ul class="download">
+<li><a href="http://www.codeproject.com/KB/cs/csppleds/LED_Source.zip">Download source files - 17.4 Kb</a></li>
+<li><a href="http://www.codeproject.com/KB/cs/csppleds/LED_Demo.zip">Download demo project - 18.2 Kb</a></li>
+</ul>
+
+<img height="615" alt="Sample Image - article1_001.jpg" src="./IO Ports Uncensored_files/article1_001.jpg" width="600">
+
+<h2>Introduction</h2>
+
+<p>This article is on reaching ports, controlling external devices and electronics. Perhaps you are asking "why?" The idea is simple: It is to achieve something that is real, physical and emotional. As a freelancer I have been coding for about 4 years for my own interest. At first I started with C but now for the GUI, I use mostly C# . Therefore a lot of people participating in the codeproject can declare and assign a variable in more than one language:</p>
+
+<table border="1">
+<tbody>
+<tr>
+<td>C:</td><td>PHP:</td><td>VB: //I don't know VB so I looked at MSDN</td></tr>
+<tr><td><code>int variable = 5;</code></td><td><code>$variable = 5;</code></td><td><code>Dim variable As Integer = 5</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>We can do things, however we do same things using different methods. By working in different ways we improve our skills, but everyday something new comes and we need to look for the references. For eg: there are differences in .NET Framework 1.0 and 1.1, MSDN says "we have improved" blah blah blah... Who cares?!... As a result, you need to make some changes in your old program and this is a pain...</p>
+
+<p>Anyway, a friend of mine said: "You have to pass your electronic knowledge with everybody..." This is why I am writing this article. </p>
+
+<h2>PART 1 - Some basics of a parallel port</h2>
+
+<h3><strong>What is a port?</strong></h3>
+
+<p>A port contains a set of signal lines that the CPU sends or receives data with other components. We use ports to communicate via modem, printer, keyboard, mouse etc. In signaling, open signals are "1" and close signals are "0" so it is like binary system [See Part 3]. A parallel port sends 8 bits and receives 5 bits at a time. The serial port RS-232 sends only 1 bit at a time but it is multidirectional so it can send 1 bit and receive 1 bit at a time... </p>
+
+<img height="115" src="./IO Ports Uncensored_files/article1_002.gif" width="600">
+
+<h4>Parallel Port - Data Ports:</h4>
+
+<p>In my application, I used the data ports which can be seen in the picture from D0 to D7</p>
+
+<h4>Parallel Port - Status Ports:</h4>
+
+<p>These ports are made for reading signals. The range is like in data ports which are S0-S7. But S0, S1, S2 are invisible in the connector (See my picture in the article). I mentioned these are for reading signals but S0 is different, this bit is for timeout flag in EPP (Enhanced Parallel Port) compatible ports. The address of this status port is 0x379 . this will always be refer to "DATA+1" and it can send 5 numeric data from the 10 - 11 - 12 - 13 - 15 th pins. So how can we reach the data ports? It is simple: every parallel port has an address. In Windows 2000, you can see yours by Settings &gt; Control Panel &gt; System &gt; Hardware &gt; Device Manager &gt; Ports (COM &amp; LPT) &gt; Printer Port(LPT1) &gt; Properties = in Resources &gt; Resource Setting and you can see your address for your parallel port. For Ex: Mine is 0378-037F. This is hexadecimal like in math (mod 16). 0x378 belongs to 888 in decimal form. In this way you can look for your com port or game port addresses. Let's enlighten these bits with a printer example:</p>
+
+<ul>
+<li>S0: This bit becomes higher (1) if a timeout operation occurs in EPP mode.</li>
+<li>S1: Not used (Maybe for decoration :))</li>
+<li>S2: Mostly not used but sometime this bit shows the cut condition (PIRQ) of the port</li>
+<li>S3: If the printer determines an error it becomes lower (0). Which is called nError or nFault</li>
+<li>S4: It is high (1) when the data inputs are active. Which is called Select</li>
+<li>S5: It is high(1) when there is no paper in printer. Which is called PaperEnd, PaperEmpty or PError</li>
+<li>S6: It sends low impact signaling when the printer gets a one byte data. Which is called nAck or nAcknowledge</li>
+<li>S7: This is the only reversed pin on the connector (see my table in the article) . If the printer is busy and it cannot get any additional data this pin becomes lower. Which is called Busy</li>
+</ul>
+
+<h4>Parallel Port - Control Ports:</h4>
+
+<p>This port usually used for outputting but these can be used for inputting. The range is like in data ports C0-C7 but C4, C5, C6, C7 are invisible in connector. And the address for this is 0x37A</p>
+
+<ul>
+<li>C0: This pin is reversed. It sends a command to read D0-D7 on the port. When the computer starts it is high in the connector. Which is called nStrobe</li>
+<li>C1: This pin is reversed. It sends a command to the printer to feed the next line. It is high in the connector after the machine starts. Which is called Auto LF</li>
+<li>C2: This pin is for reset the printer and clear the buffer. Which is called nInit, nInitialize</li>
+<li>C3: This pin is reversed. Sends a high(1) for opening data inputs. It is low after the machine starts. Which is called nSelectIn</li>
+<li>C4: Opens the cut operation for the printer. Not visible in the connector...</li>
+<li>C5: Sets the direction control in multidirectional ports. Not visible in the connector...</li>
+<li>C6: Not used and also Not visible in the connector...</li>
+<li>C7: Mostly not used but it is used as a C5 in some ports. Not visible in the connector... </li>
+</ul>
+
+<h4>Parallel Port -Ground Pins:</h4>
+
+<p>These are (G0 - G7) the pins from 18 to 25 . These are mostly used for completing the circuit.</p>
+
+<p>After these I used data ports in my application because there are reversed pins in control and status ports. Here is an explanation for reversed pins: While you are not sending any signals to the data port it is in closed position like "00000000" so the 8 pins have no voltage on it (0 Volt) .If you send decimal "255" (binary "11111111") every pin (D0-D7) has a +5 Volt... On the other hand, if I used control ports, there are reversed pins which are C0, C1 and C3 so while we send nothing to the control port its behaviour is "0100" in binary (decimal "11")... If I receive e-mails from you I can make apps using control and status ports...</p>
+
+<table width="26%" border="1">
+<tbody>
+<tr><th width="33%">Signal</th><th width="12%">BIT</th><th width="19%">PIN</th><th width="36%">Direction</th></tr>
+<tr><td>-Strobe</td><td>¬C0</td><td>1</td><td>Output </td></tr>
+<tr><td>+Data Bit 0</td><td>D0</td><td>2</td><td>Output </td></tr>
+<tr><td>+Data Bit 1</td><td>D1</td><td>3</td><td>Output</td></tr>
+<tr><td>+Data Bit 2</td><td>D2</td><td>4</td><td>Output</td></tr>
+<tr><td>+Data Bit 3</td><td>D3</td><td>5</td><td>Output</td></tr>
+<tr><td>+Data Bit 4</td><td>D4</td><td>6</td><td>Output</td></tr>
+<tr><td>+Data Bit 5</td><td>D5</td><td>7</td><td>Output</td></tr>
+<tr><td>+Data Bit 6</td><td>D6</td><td>8</td><td>Output</td></tr>
+<tr><td>+Data Bit 7</td><td>D7</td><td>9</td><td>Output</td></tr>
+<tr><td>-Acknowledge</td><td>S6</td><td>10</td><td>Input</td></tr>
+<tr><td>+Busy</td><td>¬S7</td><td>11</td><td>Input</td></tr>
+<tr><td>+Paper End</td><td>S5</td><td>12</td><td>Input</td></tr>
+<tr><td>+Select In</td><td>S4</td><td>13</td><td>Input</td></tr>
+<tr><td>-Auto Feed</td><td>¬C1</td><td>14</td><td>Output</td></tr>
+<tr><td>-Error</td><td>S3</td><td>15</td><td>Input</td></tr>
+<tr><td height="26">-Initialize</td><td>C2</td><td>16</td><td>Output</td></tr>
+<tr><td>-Select</td><td>¬C3</td><td>17</td><td>Output</td></tr>
+<tr><td>Ground</td><td>-</td><td>18-25</td><td>Ground</td></tr>
+</tbody>
+</table>
+
+<h2>PART 2 - Electricity - Lets get some Zzzzzttt zzzzttt...</h2>
+
+<p>I made an electrical circuit to show you how our circuit work. It is shown in the picture...</p>
+
+<img height="473" src="./IO Ports Uncensored_files/article1_003.gif" width="600"> 
+<p>And also I get different angled pictures of my complete circuit. Click for the bigger ones.</p>
+
+<table width="18%" border="1">
+<tbody>
+<tr>
+<td width="19%"><a href="http://www.izdir.com/electronic_work/article1/110_1046.JPG"><img height="149" alt="Click to enlarge" src="./IO Ports Uncensored_files/article1_004s.jpg" width="199" border="0"></a></td>
+<td width="81%"><a href="http://www.izdir.com/electronic_work/article1/110_1038.JPG"><img height="149" alt="Click to enlarge" src="./IO Ports Uncensored_files/article1_005s.jpg" width="199" border="0"></a></td>
+<td width="81%"><a href="http://www.izdir.com/electronic_work/article1/110_1036.JPG"><img height="149" src="./IO Ports Uncensored_files/article1_010s.jpg" width="199" border="0"></a></td>
+</tr>
+</tbody>
+</table>
+
+<p>Ok then let's find out what we have to supply:</p>
+
+<ul>
+<li>1 or 2 meter parallel port cable (3 mt is acceptable but the voltage drops from 5 V to 4.7 V)</li>
+<li>9 assembling cables (8 go to resistance and 1 go to ground)</li>
+<li>A Breadboard (white one in the picture) or you can solder the cables but with a breadboard you don't have to...</li>
+<li>8 Leds (2,5 V)</li>
+<li>8 Resistances (470 ohm) (For not to make the leds garbage because of +5V)</li>
+<li>A Multimeter (Not needed but if something happens you can check the wiring with this...)</li>
+<li>My Program to make your circuit live :)</li>
+</ul>
+
+<p>Assemble the circuit as in the picture if it is not clear, e-mail me as ls@izdir.com and I will send you the bigger pictures of the circuits...</p>
+
+<h2>Part 3 - Hexadecimal / Decimal / Binary</h2>
+
+<p>People who have knowledge about the subject can easily pass this part...</p>
+
+<p>Binary = 0, 1 --&gt; 2 digit</p>
+
+<p>Decimal = 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 --&gt; 10 digit</p>
+
+<p>Hexadecimal = 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F --&gt; 16 digit</p>
+
+<table width="55%" border="1">
+<tbody>
+<tr>
+<td>Ex 1: We have a six digit binary number like "100111" and we want to make it decimal so what we have to do?</td>
+<td><img height="300" src="./IO Ports Uncensored_files/article1_006.gif" width="300"></td>
+</tr>
+<tr>
+<td>Ex 2: We have a two digit decimal number like "11" and we want to convert it to binary???</td>
+<td><img height="150" src="./IO Ports Uncensored_files/article1_007.gif" width="300"></td>
+</tr>
+<tr>
+<td>Ex 3: We have a three digit hexadecimal number like "21F" and we want it to convert to decimal???</td>
+<td><img height="200" src="./IO Ports Uncensored_files/article1_008.gif" width="300"></td>
+</tr>
+</tbody>
+</table>
+
+<p>The logic is in these three examples but nobody does the conversion like this. They use Windows operating system's scientific calculator. So if a conversion is needed I use Start &gt; Programs &gt; Accessories &gt; Calculator . or you can make your own conversion program. Also you can check my loop (enumerated checkboxes) func in my app for binary to decimal conversion. </p>
+
+<h2>Part 4 - Before coding</h2>
+
+<p>Before coding I want to give some info about reaching the ports by using a language and OS. When I was using Windows 98 I could reach the ports with a function which is "outportb". When I upgraded to Windows 2000 this failed because of its kernel. You can not reach the ports directly in NT, 2000 and XP because of their kernel and their printer drivers. Let me prove this: First make the circuit as in the pic and then shutdown your computer, start it, if you have multi boot menu select Windows 98, when it starts there is no light up in the circuit but in Win2000 and XP all the 8 lights are on so we know that the signal is coming and the pins are registered by their kernel with the printerdriver.</p>
+
+<h2>Part 5 - Lets make the code to do the rest</h2>
+
+<p>I used <i>inpout32.dll</i> in my app for interoping. You can check the workflow below for <i>inpout32.dll</i> and also you can get the source of the dll from <a href="http://www.izdir.com/electronic_work/article1/inpout32_source_and_bins.zip">here</a>.</p>
+
+<p><b>Note</b>: I am importing it with the reference of http://www.logix4u.net/ So for further info about the driver check out the site...</p>
+
+<p><img height="378" src="./IO Ports Uncensored_files/inp_th_flow.gif" width="440"></p>
+
+<p>In my<i> PortInterop.cs</i> I used the following:</p>
+
+<pre lang="cs"><span class="code-keyword">using</span> System;
+<span class="code-keyword">using</span> System.Runtime.InteropServices;
+
+<span class="code-keyword">public</span> <span class="code-keyword">class</span> PortAccess
+{
+    [DllImport(<span class="code-string">"</span><span class="code-string">inpout32.dll"</span>, EntryPoint=<span class="code-string">"</span><span class="code-string">Out32"</span>)]
+    <span class="code-keyword">public</span> <span class="code-keyword">static</span> <span class="code-keyword">extern</span> <span class="code-keyword">void</span> Output(<span class="code-keyword">int</span> adress, <span class="code-keyword">int</span> value);
+}</pre>
+
+<p>So you have to import <em>inpout32.dll</em> to your debug or release directory. By the way, the main thing in my <em>Form1.cs</em> is <code>PortAccess.Output</code>. It takes two variables which are address and value. If your data ports are set in "0x378" (see Part 1) you will have to write "888" because "378" Hexadecimal is equal to "888" in decimal. (Default LPT1 is set to "378") If you are using LPT2 which is "0x278" you have to write for the address "632" For ex: for full signaling to pins we have to call the <code>Output </code>method of <code>PortAccess </code>like:</p>
+
+<pre lang="cs">PortAccess.Output(<span class="code-digit">888</span>, <span class="code-digit">255</span>);</pre>
+
+<p>And for <code>null</code> data we have to send "0" to the <code>Output</code> method like:</p>
+
+<pre lang="cs">PortAccess.Output(<span class="code-digit">888</span>, <span class="code-digit">0</span>);</pre>
+
+<p>I wrote a func for reseting the LEDs which is:</p>
+
+<pre lang="cs"><span class="code-keyword">private</span> <span class="code-keyword">void</span> Reset_LEDs()
+{
+    PortAccess.Output(adress, <span class="code-digit">0</span>);
+}</pre>
+
+<p>I didn't use loops for checkboxes and pictureboxes you can also enumerate these for quick coding. First, I do like that but after I changed to several <code>if-else </code>statements because I had to change the GUI. But I left them on the code for performance issues anyone who want speed can use these.</p>
+
+<p>You can also reach your ports with Turbo C++ like:</p>
+
+<pre>#include &lt;conio.h&gt;
+#include &lt;dos.h&gt; <span class="code-comment">//</span><span class="code-comment"> For _out
+</span><span class="code-preprocessor">#define</span> port 0x378 <span class="code-comment">//</span><span class="code-comment"> Port Address
+</span><span class="code-preprocessor">#define</span> data port+0 <span class="code-comment">//</span><span class="code-comment"> Data Port of the parallel cable
+</span><span class="code-keyword">void</span> main (<span class="code-keyword">void</span>)
+{
+  _out(data, <span class="code-digit">255</span>); <span class="code-comment">//</span><span class="code-comment"> For all lights on
+</span>  _out(data, <span class="code-digit">0</span>); <span class="code-comment">//</span><span class="code-comment"> For all lights off
+</span>}</pre>
+
+<h2>Last Part - Conclusion</h2>
+
+<p>I think you will find this to be the most exciting part of this article... So what can you do besides powering small LEDs? You can... Search the net about relays for triggering higher voltages, search some electrical newsgroups and then make circuits and connect them to your parallel port, light up your room lights or turn on your TV etc etc... You can do a thousand things it is up to your imagination... I am planning to write more articles about relays, lcds, oscillators and things like that (of course with PC connection)... Below is a picture of my next article...</p>
+
+<img height="349" src="./IO Ports Uncensored_files/article1_009.jpg" width="600"> 
+
+<h2>Final Note</h2>
+
+<p>English is not my first language, so please excuse any mistakes. This is my first article for codeproject, so any suggestions and/or feedback will be appreciated. Thanks for reading till here.</p>
+
+<p>Article Copyright 2003 by Levent Saltuklaroglu<br>Everything else
+Copyright © <a href="mailto:webmaster@codeproject.com">CodeProject</a>, 1999-2012 <br>
+<a id="ctl00_TermsOfUseLink" href="http://www.codeproject.com/info/TermsOfUse.aspx">Terms of Use</a></p>
+
+</body>
+</html>
