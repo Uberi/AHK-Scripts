@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>The Obfuscation Process for Autohotkey Scripts</title>
+<meta name="Description" content="Observe some simple code format rules and insert obfuscator command comments into your script file.">
+
+<link rel="stylesheet" href="mycss/standtemp.css" type="text/css">
+
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+<table>
+<tr>
+<td class="logotd"><a href="index.htm"><img src="graphics/dynamicobfuscator.gif" border="0" width="547" height="130" alt="Dynamic Obfuscator for Autohotkey Scripts"></a></td>
+<td class="headerspacer">&nbsp;</td>
+<td class="authorinfo">
+Obfuscator for Autohotkey Scripts - Written in Autohotkey
+<br>Released under Open Source GPL License
+<br>Author: <a href="http://davidmalia.com">David Malia</a>, Augusta ME, USA
+<br><a href="http://dynamicobfuscator.org">http://dynamicobfuscator.org</a>
+</td>
+</tr>
+</table>
+
+<div id="wrapcols">
+
+<div id="mainconts">
+
+<div class="toplinks">
+<a href="index.htm">General Program Features</a>
+&nbsp; &nbsp;<a href="documentation.htm" class="selnav">User Manual</a>
+&nbsp; &nbsp;<a href="downloadobfuscator.htm">Download</a>
+</div>
+
+<h1>The Obfuscation Process for Autohotkey Scripts</h1>
+<div>
+The best way to approach the Autohotkey obfuscation process is to start simple by doing the least obfuscation of your code possible and then testing that output until it is bug free. You should start out with only <a href="#strsteps">straight obfuscation </a>and do not enter any commands to obfuscate global, local, or static variables, or to obfuscate autohotkey functions.
+
+<br>&nbsp;<br>On the obfuscator interface uncheck all the checkboxes and obfuscate. If the output code works correctly then check the first 2 checkboxes on the obfuscator user interface to strip all whitespace and to randomize the order of function and label sections. If errors are found, check out <a href="#debug">debugging</a> and <a href="knownproblems.htm">known problems</a>.
+
+<br>&nbsp;<br>If that works correctly then you can start learning the Dynamic Obfuscation process. First <a href="#dynsteps">implement Dynamic Obfuscation</a> with no secure classes and no custom scrambling pallette. You must come to understand the <a href="dumpcommands.htm">obfuscator DUMP commands</a> that are mandatory with Dynamic Obfuscation and how you must make your functions assume GLOBAL.
+
+<br>&nbsp;<br>Now start inserting comment commands to tell the obfuscator to obfuscate your <a href="globalvariables.htm#globnotobf">global</a>, <a href="localstatic.htm#losnotobf">local, and static variables</a>. Add commands to specify the obfuscation of <a href="autohotkeyfunctions.htm">autohotkey built in functions</a>.
+
+<br>&nbsp;<br>The last thing you want to do is to start <a href="addtoclass.htm">adding code sections to classes and secure classes</a>. Secure classes require their own sequence of <a href="dumpcommands.htm#initclassfrags">DUMP commands</a> so you will have to learn those.
+
+<br>&nbsp;<br>Secure classes and unsecured classes can be used to define a <a href="randomizeorder.htm">custom scrambling pallette</a>.
+
+<br>&nbsp;<br>If you have a sudden problem with the obfuscated output code, try turning off things in the obfuscator interface and rerunning. If you have a problem and want to look at the obfuscated source code directly, leave the code unscrambled and with the comments left in to make debugging easier. Check out <a href="#debug">debugging tips</a> and <a href="knownproblems.htm">known problems</a>.
+</div>
+
+<h2><a name="presource"></a>Prepare Your Autohotkey Source Code</h2>
+<div>
+You must <a href="functions.htm#prefuncs">format your function sections</a> and <a href="gosublabels.htm#prelabels">format your label sections</a> according to some simple rules.
+ 
+<br>&nbsp;<br>You put <a href="commandcomments.htm">obfuscator command comments</a> in your source code to signal various stuff to the obfuscator.
+
+<br>&nbsp;<br>There is only one mandatory obfuscator command comment that is required in your source code file, the <a href="commandcomments.htm#mantag">END AUTOEXECUTE</a> command:
+<br>;$OBFUSCATOR: $END_AUTOEXECUTE:
+
+<br>&nbsp;<br><a href="includefiles.htm">If you are using '#include file' statements</a> in your program, you must do a couple of special steps.
+
+<br>&nbsp;<br>Your functions, parameters, and labels are automatically found and obfuscated by this program. Variables including global, static, and local are not automatically obfuscated. Put obfuscator command comments in your source code in order to <a href="globalvariables.htm#globnotobf">define global variables to obfuscate</a> or to <a href="localstatic.htm#losnotobf">define local or static variables to obfuscate</a>.  
+
+<br>&nbsp;<br>In order to <a href="autohotkeyfunctions.htm">obfuscate autohotkey system functions</a> like dllcall(), put obfuscater command comments in your source code.
+
+<br>&nbsp;<br><a href="guicontrols.htm#guilabel">If you use the autohotkey 'gui, label?????' tag</a>, some special steps are necessary.
+
+<br>&nbsp;<br><a href="sensitivestrings.htm">Surround your sensitive literal stings with 'ihidestr()'</a> to obfuscate those strings.
+
+<br>&nbsp;<br>If you are using Dynamic Obfuscation instead of Straight Obfuscation then you will have to <a href="dumpcommands.htm">use the Obfuscator DUMP commands</a> to initialize the Dynamic Obfuscation Variable Fragments.
+
+</div>
+
+<h2><a name="strsteps"></a>Straight Obfuscation Steps</h2>
+<div>
+The in built defaults in this program are set to do dynamic obfuscation. In order to do straight obfuscation, you need to add some obfuscator command comments to the beginning of your program in order to set all the defaults to straight obfuscation. Use these statements:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $FUNCS_CHANGE_DEFAULTS: ,, -1
+<br>;$OBFUSCATOR: $PARAMS_CHANGE_DEFAULTS: ,, -1
+<br>;$OBFUSCATOR: $LABELS_CHANGE_DEFAULTS: ,, -1
+<br>;$OBFUSCATOR: $GLOBVARS_CHANGE_DEFAULTS: ,, -1
+<br>;$OBFUSCATOR: $LOSVARS_CHANGE_DEFAULTS: ,, -1
+
+<br>&nbsp;<br>The -1 in the 3rd parameter will set them to do straight obfuscation. In those statements, the built in defaults are used for the first 2 parameters. You can supply your own values for those if you want. To do that refer to the <a href="commandcomments.htm#standparams" class="indentindex">Understanding the Standard Parameter Set</a> section of this manual.
+
+<br>&nbsp;<br>Obfuscation of 
+<a href="autohotkeyfunctions.htm">Autohotkey built in functions</a> can not be done with straight obfuscation so do not use this command comment:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $DEFSYSFUNCS: (list of functions)
+
+<br>&nbsp;<br>Straight obfuscation does not allow you add stuff to <a href="dumpcommands.htm#dumppoisened">secure classes that can be broken</a> or to <a href="dumpcommands.htm#dumprewirefunc">rewire functions to go to other functions</a>. But that also means that you do not have to use any of the <a href="dumpcommands.htm">DUMP command comments</a> to initialize variable fragments because variable fragments are not used.
+
+<br>&nbsp;<br>All the other features work with straight obfuscation and you can still obfuscate functions, labels, global variables, local variables, and static variables.
+</div>
+
+<h2><a name="dynsteps"></a>Dynamic Obfuscation Steps</h2>
+<div>
+In order to use Dynamic Obfuscation which uses %'s in object names, you have to make all your functions assume GLOBAL. This is due to the fact that the DUMP commands for parameters and some other things can only DUMP all the object name fragment assignments for that object type all at once. So therefore, all the object name fragments for the parameters in the program will have to be DUMPed all in on place. If the functions are not assume GLOBAL, then the value of these fragments will not be accessable within your functions and all of them will return null and the object name will not be created correctly and will result in an invalid reference.
+
+<br>&nbsp;<br>You can still use local and static variables, but you will have to specify them in a LOCAL or STATIC statement within the function.
+
+<br>&nbsp;<br>Usage of the <a href="dumpcommands.htm#dumpman">obfuscator DUMP commands is mandatory</a> once you start using Dynamic Obfuscation. This set of commands will drop assignment statements in your program that create and assign values to object name fragments which will then be accessed in your object names by the usage of %'s. You do not have to code these %'s directly, they are automatically inserted by this program.
+
+<br>&nbsp;<br>You use DUMP commands for each of the <a href="dumpcommands.htm#initobtypefrags">object types</a>, for <a href="dumpcommands.htm#initcommfrags">common security fragments</a>, for <a href="dumpcommands.htm#initclassfrags">secure classes</a> you have created, and to <a href="dumpcommands.htm#dumprewirefunc">'rewire' functions</a> to go to other functions. For each secure class, you can use the <a href="dumpcommands.htm#dumppoisened">DUMP poisened security fragments</a> command that will break whole sections of code at once. 
+
+</div>
+
+<h2><a name="createmap"></a>Run the Create Translations Map Function</h2>
+<div>
+Choose 'Create Translations Map' from the main obfuscator window and then indicate your <a href="includefiles.htm#includemap">source code includes map file</a> and your output translations map file. In most cases you should run this function before you run the obfuscate function. The only exception is when you have not changed your source code but instead you are just going to alter some of the obfuscator run options, like 'remove all whitespace'.  
+</div>
+
+<h2><a name="doobf"></a>Run the Obfuscate Function</h2>
+<div>
+Select the 'Obfuscate Source Code' function on the main obfuscator window. Indicate your <a href="includefiles.htm#includemap">source code includes map file</a>, your translations map file path created from the step above this one, and your output obfuscated file name. Check or uncheck the obfuscion run options and submit. A box will pop up giving you various statistics regarding the source code it is obfuscating like the number of each object type found and classes found. Just before the new obfuscated code file is written, a dialog box will pop up telling you the size of that file. 
+</div>
+
+<h2><a name="debug"></a>Debugging</h2>
+<div>
+If the output obfuscated code shows a problem that was not there in the unobfuscated version of the program, there are some general debugging things you can try. 
+
+<br>&nbsp;<br>First check out the list of <a href="knownproblems.htm">known program problems</a>.
+
+<br>&nbsp;<br>Uncheck the remove comments checkbox in the obfuscator user interface. If it is now ok then you have a problem with comments of the type /* */ between functions. There is a bug when these types of comments are used between functions or label sections. Separate these types of comments from function or label sections with at least one blank line.
+
+<br>&nbsp;<br>If you are using a <a href="randomizeorder.htm">custom function and label scrambling pallette</a>, turn that off but leave generic scrambing on and re-obfuscate. If that now solves the problem then you are not specifying all the classes you need to in your custom scrambling pallette so check that carefully.
+
+<br>&nbsp;<br>Uncheck the generic scramble code checkbox in the obfuscator user interface and re-obfuscate. If that now fixes the problem then you probably have a comment between functions error.
+
+<br>&nbsp;<br>If the obfuscated progam compiled correctly but then gives autohotkey error boxes when running regarding undefined labels or functions then you probably did not do all the DUMPS you need to initialize your obfuscation variable fragments. If you are using dynamic obfuscation then you will always need to <a href="dumpcommands.htm#initcommfrags">initialize common fragments</a> first which includes DUMPing common security fragments and DUMPing common triple mess fragments. That's because they are used by the <a href="dumpcommands.htm#initobtypefrags">DUMP object type fragments</a> command to initialize global variables fragments, system functions fragments, local and static variables fragments, and by functions and label sections that are not part of a secure class. 
+
+<br>&nbsp;<br>Always DUMP unclassed and unsecclasses for <a href="functions.htm#funcdump">functions</a> and <a href="gosublabels.htm#labelsdump">labels</a>.
+
+<br>&nbsp;<br>For every secure class of functions and labels you define, you must <a href="dumpcommands.htm#initclassfrags">initialize its object name fragments</a> which includes DUMPing its SECURITY FRAGMENTS, DUMPing its TRIPLE MESS FRAGMENTS, and DUMPing its FRAGMENTS.
+
+<br>&nbsp;<br>Some of the first functions and variables that you use in your program may have to be specified as straight obfuscation for those objects. For functions surround them with the <a href="functions.htm#funcobf">CHANGE DEFAULTS command for functions</a> and use -1 as the 3rd parameter. For variables you can use the <a href="commandcomments.htm#standparams">standard parameter set</a> on the end of your <a href="globalvariables.htm#globobf">DEFGLOBVARS</a> or <a href="localstatic.htm#losobf">DEFLOSVARS</a> commands.
+
+<br>&nbsp;<br>If you are having difficulty figuring out what part of your code is the problem, use the CHANGE DEFAULTS and RESTORE DEFAULTS commands to surround large areas of suspect code and turn off obfuscation for objects within that code. Re-obfuscate afterwards and if that solves the problem, turn off obfuscation for a smaller section of code. You can also disable individual obfuscator command comments within your source code by just indenting the statement. If the ';' starting the comment is beyond the 1 character, the command will not be processed. 
+</div>
+
+</div>
+
+<div id="rightcol">
+
+</div>
+
+</div>
+
+</body>
+</html>

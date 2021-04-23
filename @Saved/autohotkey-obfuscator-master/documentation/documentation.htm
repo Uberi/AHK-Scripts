@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>User Manual for Free Autohotkey Script Obfuscator</title>
+<meta name="Description" content="Obfuscate Your Autohotkey scripts with this free and open source application written in Autohotkey. Output example: k%k#k#fkfkffk#f%@f@%#fkkff@kffkfkf%#f()">
+
+<link rel="stylesheet" href="mycss/standtemp.css" type="text/css">
+
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+<table>
+<tr>
+<td class="logotd"><a href="index.htm"><img src="graphics/dynamicobfuscator.gif" border="0" width="547" height="130" alt="Dynamic Obfuscator for Autohotkey Scripts"></a></td>
+<td class="headerspacer">&nbsp;</td>
+<td class="authorinfo">
+Obfuscator for Autohotkey Scripts - Written in Autohotkey
+<br>Released under Open Source GPL License
+<br>Author: <a href="http://davidmalia.com">David Malia</a>, Augusta ME, USA
+<br><a href="http://dynamicobfuscator.org">http://dynamicobfuscator.org</a>
+</td>
+</tr>
+</table>
+
+<div id="wrapcols">
+
+<div id="mainconts">
+
+<div class="toplinks">
+<a href="index.htm">General Program Features</a>
+&nbsp; &nbsp;<a href="documentation.htm" class="selnav">User Manual</a>
+&nbsp; &nbsp;<a href="downloadobfuscator.htm">Download</a>
+</div>
+
+<h1>User Manual for Free Autohotkey Script Obfuscator</h1>
+<div class="indexwrap">
+<a href="autohotkeyscript.htm">Example of an Autohotkey Script Obfuscated With this Program</a>
+
+<a href="obfuscationtypes.htm">Understanding the Two Different Obfuscation Types</a>
+<a class="indentindex">Straight Obfuscation is Simpler</a>
+<a class="indentindex">Dynamic Obfuscation is More Secure</a>
+<a class="dbindentindex">It's Nearly Impossible to Find Anything in Your Code</a>
+<a class="dbindentindex">You Can 'Break' Whole Sections of Code</a>
+<a class="dbindentindex">'Rewire' Functions to Go to Other Functions</a>
+
+<a href="obfuscationprocess.htm">The Obfuscation Process for Autohotkey Scripts</a>
+<a class="indentindex">Prepare Your Source Code</a>
+<a class="indentindex">Straight Obfuscation Steps</a>
+<a class="indentindex">Dynamic Obfuscation Steps</a>
+
+<a class="indentindex">Run the Create Translations Map Function</a>
+<a class="indentindex">Run the Obfuscate Function</a>
+<a class="indentindex">Debugging</a>
+
+<a href="commandcomments.htm">Put Obfuscator Command Comments in Your Script</a>
+<a class="indentindex">Understanding the Standard Parameter Set That is Used in Many Command Comments</a>
+<a class="indentindex">One mandatory obfuscator command comment tag, END AUTOEXECUTE</a>
+
+<a href="includefiles.htm">Preparing Your Include Files for Obfuscation</a>
+<a class="indentindex">Move Your '#include &lt;file&gt;' Statements to the Beginning or End of Your Script Files</a>
+<a class="indentindex">Prepare an Include Files Map</a>
+
+<a href="functions.htm">Functions and Function Calls</a>
+<a class="indentindex">Prepare Function Sections</a>
+<a class="indentindex">If Dynamic Obfuscation is Used, Use the DUMP Command for Functions</a>
+<a class="indentindex">Change Function Obfuscation Parameters</a>
+
+<a href="functionparameters.htm">Parameters in Function Headers and in the Body of the Function</a>
+<a class="indentindex">If Dynamic Obfuscation is Used, Use the DUMP Command for Parameters</a>
+<a class="indentindex">Change Parameter Obfuscation Parameters</a>
+
+<a href="localstatic.htm">Local and Static Variables</a>
+<a class="indentindex">Local and Static Variables Are NOT Automatically Obfuscated</a>
+<a class="indentindex">If Dynamic Obfuscation is Used, Use the DUMP Command for Local and Static Variables</a>
+<a class="indentindex">Change Local and Static Variable Obfuscation Parameters</a>
+
+<a href="gosublabels.htm">Label Sections and Calls to Labels</a>
+<a class="indentindex">Prepare Label sections</a>
+<a class="indentindex">Nested Label Headers Inside Other Label Sections and Functions</a>
+<a class="indentindex">If Dynamic Obfuscation is Used, Use the DUMP Command for Labels</a>
+<a class="indentindex">Special Rule For Labels Referred to in the GUI, +Label???? Statement</a>
+<a class="indentindex">Change Label Obfuscation Parameters</a>
+
+<a href="globalvariables.htm">Global Variables</a>
+<a class="indentindex">Global Variables Are NOT Automatically Obfuscated</a>
+<a class="indentindex">If Dynamic Obfuscation is Used, Use the DUMP Command for Global Variables</a>
+<a class="indentindex">Change Global Variable Obfuscation Parameters</a>
+
+<a href="autohotkeyfunctions.htm">Obfuscating Autohotkey System Function Calls Like dllcall()</a>
+
+<a href="guicontrols.htm">Gui Controls</a>
+<a class="indentindex">Gosub Labels in Gui Controls that Start with a 'G'</a>
+<a class="indentindex">Global Variables in GUI Controls that Start with a 'V'</a>
+<a class="indentindex">The GUI +label??? Clause</a>
+<a class="indentindex">Variables Surrounded by %'s</a>
+ 
+<a href="surroundedbypercents.htm">Use of Variables Surrounded With %'s: %varname%</a>
+
+<a href="sensitivestrings.htm">Use 'hidestr()' to Hide Sensitive Literal Strings in Your Script</a>
+
+<a href="addtoclass.htm">Add Sections of Code to an Obfuscation Class</a>
+<a class="indentindex">Create a Secured Obfuscation Class</a>
+
+<a href="randomizeorder.htm">Scrambling the Order of Your Functions</a>
+
+<a href="dumpcommands.htm">Using the Obfuscator DUMP commands</a>
+<a class="indentindex">They Are Manditory When Dynamic Obfuscation is Used</a>
+<a class="indentindex">Initializing 'Common' Object Name Fragments</a>
+<a class="indentindex">Initializing Object Name Fragments for Object Types</a>
+<a class="indentindex">Initializing Object Name Fragments for Secure Classes</a>
+<a class="dbindentindex">DUMP Poisened Variable Security Fragments</a>
+<a class="indentindex">DUMP to 'Rewire' Where Functions Go To</a>
+
+<a href="changedefaults.htm">Changing Your Obfuscation Encoding Defaults</a>
+<a class="indentindex">Change Function Defaults</a>
+<a class="indentindex">Change Parameter Defaults</a>
+<a class="indentindex">Change Local and Static Variables Defaults</a>
+<a class="indentindex">Change Label Defaults</a>
+<a class="indentindex">Change Global Varaiables Defaults</a>
+
+<a href="allcommandcomments.htm">List of All Obfuscator Command Comments for Autohotkey Scripts</a>
+
+<a href="knownproblems.htm">Known Issues with this Program</a>
+
+</div>
+
+</div>
+
+<div id="rightcol">
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="supportobfform">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="2YMDG3K6QNEGG">
+<table>
+<tr><td class="supportobfhead1"><input type="hidden" name="on0" value="Support Dynamic Obfuscator">Support<br>DynamicObfuscator.org</td></tr><tr><td><select name="os0">
+	<option value="d5">$5.00 USD</option>
+	<option value="d10" selected>$10.00 USD</option>
+	<option value="d15">$15.00 USD</option>
+	<option value="d20">$20.00 USD</option>
+	<option value="d30">$30.00 USD</option>
+	<option value="d50">$50.00 USD</option>
+	<option value="d70">$70.00 USD</option>
+	<option value="d100">$100.00 USD</option>
+	<option value="d200">$200.00 USD</option>
+</select> </td></tr>
+<tr><td><input type="hidden" name="on1" value="Send message to me:">Send message to me:</td></tr><tr><td><input type="text" name="os1" maxlength="200"></td></tr>
+<tr><td>
+<input type="hidden" name="currency_code" value="USD">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" name="submit" alt="PayPal - The safer way to pay!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+<br>Payment is by Paypal!
+</td></tr>
+</table>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>

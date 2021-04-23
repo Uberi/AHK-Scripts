@@ -1,0 +1,269 @@
+ELP_FileSetTime(_TimeStamp, _FilePattern, _WhichTime = "M", _OperateOnFolders = 0, _Recurse = 0, _IsPattern = 1)
+
+_TimeStamp will default to the current time for missing parameters
+
+ELP_FileSetTimes(_ModifedTime, _CreationTime, _AccessTime, _FilePattern, _OperateOnFolders = 0, _Recurse = 0, _IsPattern = 1)
+
+Pass "" to use the current time for any of the 3 options
+Pass 0 to not modify that time option
+Time stamps will default to the current time for missing parameters
+
+ELP_FileRead(_FileName, ByRef _Data = "010011100010111101000001")
+
+_Filename (Each prefix must be followed by a space)
+** | Binary mode - read the file into the variable and do no conversion
+*m | same as AHK
+*t | Same as AHK
+*P | Same as AHK
+*c | Not supported
+
+_Data
+If used it will be set to the read data, if not used the read data will be returned through the function
+
+ELP_FileMoveDirectory(_FromDirectory, _ToDirectory, _Flags = 0)
+
+_Flags
+0 | Fail if destination exists
+1 | Overwrite if exists (same as AHK flags "2")
+2 | Overwrite if exists (same as AHK flags "2")
+3 | Overwrite if exists always remove source during copy operations
+R | Rename operation (same as AHK flags "R")
+
+
+ELP_FileMove(_FromFile, _ToFile, _OverWrite = 0, _CreateDestination = 0, _IsPattern = 1)
+
+_IsPattern
+True | The move operation is not a single file move
+False | The move operation is a single file
+
+
+ELP_FileCopyDirectory(_FromDirectory, _ToDirectory, _Overwrite = 0)
+
+ELP_FileCopy(_FromFile, _ToFile, _OverWrite = 0, _CreateDestination = 0, _IsPattern = 1)
+
+_IsPattern
+True | The move operation is not a single file move
+False | The move operation is a single file
+
+
+ELP_FileGetVersion(_FileName, _Which = 1)
+
+_Which
+1 | File version
+2 | Product version
+
+
+ELP_FileRemoveDirectory(_Directory, _Recurse = 0)
+
+ELP_FileExists(_FileName, _IncludeFolders = 1, _Recurse = 0, _IsPattern = 1)
+
+_Recurse
+0 | Do not recurse into folders
+1 | Recurse into folders looking for the file name
+
+_IsPattern
+True | The move operation is not a single file move
+False | The move operation is a single file
+
+
+ELP_FileDelete(_FileName, _ForceDelete = 1, _IsPattern = 1)
+
+_ForceDelete
+True | Delete the file(s) even if they are marked read-only
+False | Fails on read-only files
+
+_IsPattern
+True | The move operation is not a single file move
+False | The move operation is a single file
+
+
+ELP_FileSetAttributes(_Attributes, _FileName, _IncludeFolders = 0, _Recurse = 0, _IsPattern = 1)
+
+_IsPattern
+True | The move operation is not a single file move
+False | The move operation is a single file
+
+
+ELP_ChangeRawAttributes(New_Attributes, _NewAttributes)
+
+
+
+
+ELP_FileSetRAWAttributes(_FileName, _Attributes)
+
+
+
+
+ELP_FileGetAttributes(_FileName, _Raw = 0)
+
+_Raw
+True | Return the attributes in decimal form
+False | Return the attributes in normal style
+
+One or more of the following attributes
+R = READONLY
+A = ARCHIVE
+S = SYSTEM
+H = HIDDEN
+N = NORMAL
+D = DIRECTORY
+O = OFFLINE
+C = COMPRESSED
+T = TEMPORARY
+1 = DEVICE
+E = ENCRYPTED
+2 = NOTINDEXED
+3 = REPARSEPOINT
+4 = SPAREFILE
+V = VIRTUAL
+
+
+ELP_FileGetSize(_FileName, _Units = "B", _Floor = 0)
+
+_Units
+B | Return the size in bytes
+K | Return the size in Kilobytes
+M | Return the size in Megabytes
+G | Return the size in Gigabytes
+
+_Floor
+True | Floor the result
+False | Do not floor the result
+
+
+ELP_GetFileSizeFromFI(ByRef _FileInfo, _Units = "B", _Floor = 0)
+
+_Units
+B | Return the size in bytes
+K | Return the size in Kilobytes
+M | Return the size in Megabytes
+G | Return the size in Gigabytes
+
+_Floor
+True | Floor the result
+False | Do not floor the result
+
+
+ELP_ConvertRAWAttributes(_RawAttributes)
+
+ELP_FileGetAttributesFromFI(ByRef _FileInfo, _Raw = 0)
+
+_Raw
+True | Return attributes in decimal form
+False | Return attributes in text form
+
+
+ELP_FileGetTimeFromFI(ByRef _FileInfo, _Which = "M", _Style = 1)
+
+_Style
+1 | Return the timestamp in YYYYMMDDHHMMSSMIS format
+2 | Return the timestmap in YYYYMMDDHHMMSS format
+
+
+ELP_FileGetTime(_FileName, _Which = "M", _Style = 1)
+
+_Style
+1 | Return the timestamp in YYYYMMDDHHMMSSMIS format
+2 | Return the timestmap in YYYYMMDDHHMMSS format
+
+
+ELP_FileAppend(_String, _FileName)
+
+_FileName
+Supports the * prefix
+Supports the AHK_L codepage postfix
+
+
+ELP_LoopFilePattern(_FileName, _IncludeFolders = 0, _DoRecurse = 0, ByRef FileInfo = "", Override_ID = "")
+
+_DoReceurse
+1 | Do recurse
+2 | Recurse into only folders that match the search pattern
+
+FileInfo
+The fileinfo data for the current file
+
+Override_ID
+An override value that the function will use to ensure overlaps don't happen between calls to "get next file"
+
+
+ELP_DeleteFileHandle(ByRef _StoredHandles, _FileName)
+
+ELP_FindFolders(_FileName, _DoRecurse)
+
+ELP_GetNameFromFI(ByRef _FileInfo)
+
+ELP_IsDirectoryFromFI(ByRef _FileInfo)
+
+ELP_FindClose(_Handle)
+
+ELP_SetEndOfFile(_Handle, _Size)
+
+ELP_WOW64FileRedirect(_NewState)
+
+_NewState
+0/"Disable" | Disable WOW64 redirect
+1/"Enable" | Enable WOW64 redirect
+
+The function will internally track the current state so multiple calls to enable/disable will do no harm
+
+
+ELP_OpenFileHandle(_FileName, _DesiredAccess, ByRef _FileSize = 0)
+
+_DesiredAccess
+"Read" | open the file for read access
+"Write" | open the file for write access
+
+_FileSize
+A byref value that will be set to the filesize (0 if it doesn't exist)
+
+
+ELP_SetFilePointer(_Handle, _DesiredValue)
+
+ELP_WriteData(ByRef _Handle, _DataAddress, _BytesToWrite, _AttemptV = 1)
+
+_AttemptV
+True | Attempt to verify the write operation
+False | Do not attempt to verify the write operation
+
+The verify attempt will only run if the setting was enabled in the master settings function
+If write verification fails ErrorLevel will be set to -100
+
+ELP_ReadData(_Handle, _DataAddress, _BytesToRead, _AttemptV = 1)
+
+_AttemptV
+True | Attempt to verify the read operation
+False | Do not attempt to verify the read operation
+
+The verify attempt will only run if the setting was enabled in the master settings function
+If read verification fails ErrorLevel will be set to -101
+
+Returns the number of bytes read
+
+ELP_CloseFileHandle(_Handle)
+
+ELP_GetFilePointer(_Handle)
+
+ELP_VerifyWrite(ByRef _Handle, _DataAddress, _BytesToWrite, Original_FilePointer, Current_FilePointer)
+
+ELP_VerifyRead(_Handle, _DataAddress, _BytesToRead, Original_FilePointer, Current_FilePointer)
+
+ELP_GetPathFromHandle(_Handle)
+
+ELP_GetPathRoot(_FileName)
+
+ELP_FileCreateDirectory(_Directory, _CreateParents = 1)
+
+ELP_CalcMD5(_VarAddress, _VarSize)
+
+ELP_ConvertPath(ByRef _String)
+
+ELP_StoreBytes(_Cmd, _V = 0)
+
+_Cmd
+See internals of the function for how it works
+
+ELP_MasterSettings(_Cmd, _Value, _NewValue = "")
+
+_Cmd
+See internals of the function for how it works

@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Obfuscation of Special Script Objects in Autohotkey Gui Controls</title>
+<meta name="Description" content="This program has the ability to obfuscate special objects in Autohotkey GUI controls including items starting with a V (variable) and a G (gosub on click).">
+
+<link rel="stylesheet" href="mycss/standtemp.css" type="text/css">
+
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+<table>
+<tr>
+<td class="logotd"><a href="index.htm"><img src="graphics/dynamicobfuscator.gif" border="0" width="547" height="130" alt="Dynamic Obfuscator for Autohotkey Scripts"></a></td>
+<td class="headerspacer">&nbsp;</td>
+<td class="authorinfo">
+Obfuscator for Autohotkey Scripts - Written in Autohotkey
+<br>Released under Open Source GPL License
+<br>Author: <a href="http://davidmalia.com">David Malia</a>, Augusta ME, USA
+<br><a href="http://dynamicobfuscator.org">http://dynamicobfuscator.org</a>
+</td>
+</tr>
+</table>
+
+<div id="wrapcols">
+
+<div id="mainconts">
+
+<div class="toplinks">
+<a href="index.htm">General Program Features</a>
+&nbsp; &nbsp;<a href="documentation.htm" class="selnav">User Manual</a>
+&nbsp; &nbsp;<a href="downloadobfuscator.htm">Download</a>
+</div>
+
+<h1>Obfuscation of Special Script Objects in Autohotkey Gui Controls</h1>
+<div>
+This program can replace special uses of objects used in gui controls.
+</div>
+
+<h2><a name="guigosub"></a>Gosub Labels in Gui Controls that Start with a 'G'</h2>
+<div>
+This program can find and replace occurances of labels found in gui controls that start with a 'G' to signify gosub on click: 
+
+<br>&nbsp;<br>gui, add, text, Gclickhandler, hello world
+
+<br>&nbsp;<br>No special steps are necessary by you for this. An invalid replacement could occur if you have 2 labels that are the same except one starts with a g: 
+
+<br>&nbsp;<br>lob:
+<br>glob:
+</div>
+
+<h2><a name="guiglob"></a>Global Variables in Gui Controls that Start with a 'V'</h2>
+<div>
+This obfuscator can replace global variables starting with a 'V' that are found in GUI controls :
+
+<br>&nbsp;<br>GUI, add, text, Vmyglobvar, hello world
+
+<br>&nbsp;<br>No extra work is necessary by you for this, just do the normal things required for <a href="globalvariables.htm">obfuscating global variables</a>. Only global variables found in gui controls will be replaced at this time, static and local variables starting with a 'V' are not supported.
+</div>
+
+<h2><a name="guilabel"></a>The GUI +label????? Clause</h2>
+<div>
+If you are using the GUI +Label???? clause to set a handler for the closing of a window, you will have to turn off normal label obfuscation encoding for that actual label section. You do this by surrounding that section of code with the change defaults command and the restore defaults command:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $LABELS_CHANGE_DEFAULTS: -1
+
+<br>&nbsp;<br>configwinClose:
+<br>configwinEscape:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;program statements here
+<br>RETURN
+
+<br>&nbsp;<br>;$OBFUSCATOR: $LABELS_RESTORE_DEFAULTS:
+
+<br>&nbsp;<br>The -1 in the CHANGE DEFAULTS command turns off obfuscation for label objects that follow and the restore defaults command restores the obfuscation defaults to whatever they previously were.
+
+<br>&nbsp;<br>You then use the DEFGUICLOSELAB command comment anywhere in your source code and both the label header and the GUI, +Label?????? statement will be obfuscated:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $DEFGUICLOSELAB: (list of close labels)
+
+<br>&nbsp;<br>The label headers will come out looking like this, with the CLOSE and the ESCAPE still present:
+
+<br>&nbsp;<br>f@kfk#fffffffkk#fkk#kffkClose:
+<br>f@kfk#fffffffkk#fkk#kffkEscape:
+
+<br>&nbsp;<br>The gui statement will come out looking like this:
+
+<br>&nbsp;<br>GUI, +Labelf@kfk#fffffffkk#fkk#kffk
+
+</div>
+
+<h2>Variables Surrounded with %'s in Autohotkey GUI Controls</h2>
+<div>
+Variables surrounded with %'s in controls will be replaced, nothing extra by you needs to be done.
+
+<br>&nbsp;<br>gui, add, text, %controlwidth%,
+<br>(join`s
+<br>bla bla bla....%saythis%
+<br>)
+</div>
+ 
+</div>
+
+<div id="rightcol">
+
+</div>
+
+</div>
+
+</body>
+</html>

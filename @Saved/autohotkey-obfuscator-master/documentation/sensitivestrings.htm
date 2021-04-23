@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Obfuscating Sensitive Strings in Your Autohotkey Scripts</title>
+<meta name="Description" content="This program allows you to obfuscate sensitive strings in your Autohotkey scripts by surrounding them with ihidestr()">
+
+<link rel="stylesheet" href="mycss/standtemp.css" type="text/css">
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+<table>
+<tr>
+<td class="logotd"><a href="index.htm"><img src="graphics/dynamicobfuscator.gif" border="0" width="547" height="130" alt="Dynamic Obfuscator for Autohotkey Scripts"></a></td>
+<td class="headerspacer">&nbsp;</td>
+<td class="authorinfo">
+Obfuscator for Autohotkey Scripts - Written in Autohotkey
+<br>Released under Open Source GPL License
+<br>Author: <a href="http://davidmalia.com">David Malia</a>, Augusta ME, USA
+<br><a href="http://dynamicobfuscator.org">http://dynamicobfuscator.org</a>
+</td>
+</tr>
+</table>
+
+<div id="wrapcols">
+
+<div id="mainconts">
+
+<div class="toplinks">
+<a href="index.htm">General Program Features</a>
+&nbsp; &nbsp;<a href="documentation.htm" class="selnav">User Manual</a>
+&nbsp; &nbsp;<a href="downloadobfuscator.htm">Download</a>
+</div>
+
+<h1>Obfuscating Sensitive Strings in Your Autohotkey Scripts</h1>
+<div>
+This program allows you to obfuscate any sensitive strings in your autohotkey scripts by surrounding them with the ihidestr() function. You can surround sensitive literal strings with 'ihidestr()'' any place you use them like in variable assignments, in function calls, in statement parameters, and in expressions. You can do stuff like this:
+<br>&nbsp;<br>var1:= ihidestr("some sensitive string") 
+<br>somefunc(ihidestr("some sensitive string"), parameter2) 
+</div>
+
+<h2>Place Dummy Functions in Your Source Autohotkey Script</h2>
+<div>
+To set up your program to obfuscate literal strings, place a dummy function like this somewhere in your source code:
+
+<br>&nbsp;<br>ihidestr(thisstr)
+<br>{
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return thisstr
+<br>}
+
+
+<br>&nbsp;<br>This dummy function will just return the parameter it was sent. This allows you to fully test your program before you obfuscate it. At obfuscation time, any literal string found passed as a parameter to ihidestr() will be replaced by an obfuscated literal string. The call to the ihidestr() function will then be replaced with a call to the decode_ihidestr() function which will then itself be obfuscated.
+</div>
+
+<h2>The Obfuscator Function Used to Encode Your Sensitive Literal Strings</h2>
+<div>The function used by the obfuscator to convert a literal string into a obfuscated literal string is named encode_ihidestr() and is located in the OBFhidestr.ahk include file.
+</div>
+
+<h2>Put the Function to Decode the Obfuscated Strings in Your Autohotkey Script</h2>
+<div>The function to decode obfuscated literal strings must be copied to the autohotkey script files you're looking to obfuscate. Copy the decode_ihidestr() function from the OBFhidestr.ahk file in the dynamicobfusctor.ahk project into your ahk project.
+
+<br>&nbsp;<br>This function is included in the obfuscator source code so you can easily copy it to your projects, but it is never actually called by the obfuscator.
+
+<br>&nbsp;<br>You should never call the decode_ihidestr() function directly in your source code, only use the ihidestr() function directly.
+</div>
+
+<h2>Create Your Own Versions of These Functions for Greater Security</h2>
+<div>It is recommended that you make these functions your own by creating your own versions of the encode_ihidestr() and decode_ihidestr() functions. This is a fairly easy personalization and in fact the versions of those supplied with the obfuscator are not the versions that I used to obfuscate my own programs.
+
+<br>&nbsp;<br>There is a folder in this project named 'custom-hidestr-encoders' that has more in dept information about this. It also contains a few scripts that you can use as a template to design and test your own encode_ihidestr() and decode_ihidestr() literal string obfuscators.
+</div>
+
+<h2>Increase the Security of Your decode_ Function by Fragmenting the Function</h2>
+<div>The security of the decode_ functions which will be found in your obfuscated code can be increased in several easy ways. The first is to break a long decode_ function into multiple small functions:
+
+<br>&nbsp;<br>decode_hidestr(startstr)
+{
+<br>global
+<br>;one part of the obfuscations process
+<br>return decode_hidestr_2(currentstr)
+<br>} 
+<br>decode_hidestr_2(startstr)
+<br>{
+<br>global
+<br>;another part of the obfuscations process
+<br>return decode_hidestr_3(currentstr)
+<br>}
+<br>decode_hidestr_3(startstr)
+<br>{
+<br>global
+<br>;another part of the obfuscations process
+<br>return decode_hidestr_4(currentstr)
+<br>}
+<br>decode_hidestr_4(startstr)
+<br>{
+<br>global
+<br>;another part of the obfuscations process
+<br>return currentstr
+<br>} 
+
+<br>&nbsp;<br>When you obfuscate your program and choose to randomize the order of functions and label sections, these separate parts of the decode_ function will be scattered throughout your script. Also, if Dynamic Obfuscation is being used it will not be possible for the hacker to directly search for the 'decode_hidestr_4(startstr)' function definition by just selecting that term in the statement 'return decode_hidestr_4(currentstr)'. That's because with Dynamic Obfuscation the 2 usages of that same function will look completely different!    
+</div>
+
+<h2>Increase Security Even More By Using the Use the 'Rewire Function' Feature of the Obfuscator</h2>
+<div>
+You can increase the security of your decode_ function even more by using the <a href="dumpcommands.htm#dumprewirefunc">rewire function path</a> capability of the obfuscator. Create a new function in your program named DECOY_decode_hidestr, and then use this command comment near the beginning of your program:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $DUMP_REWIREFUNCPATH: decode_hidestr, DECOY_decode_hidestr
+
+<br>&nbsp;<br>To create even more confusion, you might use it instead on one of the fragments of your decode_ function:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $DUMP_REWIREFUNCPATH: decode_hidestr_2, DECOY_decode_hidestr_2
+
+<br>&nbsp;<br>Once the program has passed your security tests, use these commands to wire the decode_ function up 'straight': 
+
+<br>&nbsp;<br>;$OBFUSCATOR: $DUMP_REWIRE_STRAIGHT: decode_hidestr
+<br>;$OBFUSCATOR: $DUMP_REWIRE_STRAIGHT: decode_hidestr_2
+ 
+</div>
+
+</div>
+
+<div id="rightcol">
+
+</div>
+
+</div>
+
+</body>
+</html>

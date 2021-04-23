@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+	<html lang="en"  xmlns:fb="http://www.facebook.com/2008/fbml">
+	<head>
+		<meta charset="UTF-8" />
+		<title>BinRun() - Run binary executable from Memory (e.g. Resource) - Scripts - AutoHotkey Community</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<link rel="shortcut icon" href='http://www.autohotkey.com/board/favicon.ico' />
+		<link rel="image_src" href='http://cdn.autohotkey.com/board//public/style_images/master/meta_image.png' />
+		<script type='text/javascript'>
+		//<![CDATA[
+			jsDebug			= 0; /* Must come before JS includes */
+			USE_RTE			= 1;
+			DISABLE_AJAX	= parseInt(0); /* Disables ajax requests where text is sent to the DB; helpful for charset issues */
+			inACP			= false;
+			var isRTL		= false;
+			var rtlIe		= '';
+			var rtlFull		= '';
+		//]]>
+		</script>
+		
+	
+				
+	
+
+				
+	
+
+				
+	
+
+				
+	
+	
+		<link rel="stylesheet" type="text/css" media='screen,print' href="http://cdn.autohotkey.com/board/public/min/index.php?ipbv=f0b3a0df5afe79a9e10e9053e8423741&amp;f=public/style_css/css_1/ipb_styles.css,public/style_css/css_1/calendar_select.css,public/style_css/css_1/ipb_common.css,public/style_css/prettify.css" />
+	
+
+<!--[if lte IE 7]>
+	<link rel="stylesheet" type="text/css" title='Main' media="screen" href="http://cdn.autohotkey.com/board/public/style_css/css_1/ipb_ie.css" />
+<![endif]-->
+<!--[if lte IE 8]>
+	<style type='text/css'>
+		.ipb_table { table-layout: fixed; }
+		.ipsLayout_content { width: 99.5%; }
+	</style>
+<![endif]-->
+
+	<style type='text/css'>
+		img.bbc_img { max-width: 100% !important; }
+	</style>
+
+		<meta property="og:title" content="BinRun() - Run binary executable from Memory (e.g. Resource) - Scripts"/>
+		<meta property="og:site_name" content="AutoHotkey Community"/>
+		<meta property="og:image" content="http://cdn.autohotkey.com/board//public/style_images/master/meta_image.png"/>
+		<meta property="og:type" content="article" />
+		
+	
+		
+			<meta name="keywords" content="BinRun,Run,binary,executable,from,Memory,Resource,Download,BinRunahk,AHK,v11,v2-alpha,Requires,_Struct,sizeof,About,saidBinRun,used,run" />
+		
+		
+		
+	
+
+		
+			<meta name="description" content="BinRun() - Run binary executable from Memory (e.g. Resource) - posted in Scripts: Download BinRun.ahk (AHK v1.1) - or - BinRun.ahk (AHK v2-alpha).
+
+Requires _Struct and sizeof().
+
+About said:BinRun is used to run executable files from memory, for example from resource.It supports 32-bit and 64-bit as well as launching a 32-bit from 64-bit process (this is done automatically based on executable).It supports parameters for the executable as well as parameters for the script when launching Au..." />
+		
+		
+		
+			<meta property="og:description" content="BinRun() - Run binary executable from Memory (e.g. Resource) - posted in Scripts: Download BinRun.ahk (AHK v1.1) - or - BinRun.ahk (AHK v2-alpha).
+
+Requires _Struct and sizeof().
+
+About said:BinRun is used to run executable files from memory, for example from resource.It supports 32-bit and 64-bit as well as launching a 32-bit from 64-bit process (this is done automatically based on executable).It supports parameters for the executable as well as parameters for the script when launching Au..." />
+		
+	
+
+		
+			<meta name="identifier-url" content="http://www.autohotkey.com/board/topic/87068-binrun-run-binary-executable-from-memory-eg-resource/" />
+		
+		
+			<meta property="og:url" content="http://www.autohotkey.com/board/topic/87068-binrun-run-binary-executable-from-memory-eg-resource/" />
+		
+		
+	
+
+		
+		
+		<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/prototype/1.7/prototype.js'></script>
+		<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/scriptaculous/1.8/scriptaculous.js?load=effects,dragdrop,builder'></script>
+	<script type='text/javascript' src='http://cdn.autohotkey.com/board/public/min/index.php?ipbv=f0b3a0df5afe79a9e10e9053e8423741&amp;charset=UTF-8&amp;f=public/js/ipb.js,cache/lang_cache/1/ipb.lang.js,public/js/ips.hovercard.js,public/js/ips.quickpm.js,public/js/ips.topic.js,public/js/ips.like.js' charset='UTF-8'></script>
+
+
+	
+		
+			
+			
+			
+			
+				<link id="ipsCanonical" rel="canonical" href="http://www.autohotkey.com/board/topic/87068-binrun-run-binary-executable-from-memory-eg-resource/" />
+			
+		
+
+			
+			
+			
+			
+				<link rel='stylesheet' type='text/css' title='Main' media='print' href='http://cdn.autohotkey.com/board/public/style_css/css_1/ipb_print.css' />
+			
+		
+
+			
+			
+			
+			
+				<link rel='up' href='http://www.autohotkey.com/board/forum/49-scripts/' />
+			
+		
+
+			
+			
+			
+			
+				<link rel='author' href='http://www.autohotkey.com/board/user/6031-hotkeyit/' />
+			
+		
+	
+
+	
+
+
+	
+
+
+
+		
+		<script type='text/javascript'>
+	//<![CDATA[
+		/* ---- URLs ---- */
+		ipb.vars['base_url'] 			= 'http://www.autohotkey.com/board/index.php?s=f12d8b5f1eec9cb62bc1c1b4b17e440f&';
+		ipb.vars['board_url']			= 'http://www.autohotkey.com/board';
+		ipb.vars['img_url'] 			= "http://cdn.autohotkey.com/board//public/style_images/master";
+		ipb.vars['loading_img'] 		= 'http://cdn.autohotkey.com/board//public/style_images/master/loading.gif';
+		ipb.vars['active_app']			= 'forums';
+		ipb.vars['upload_url']			= 'http://cdn.autohotkey.com/board/uploads';
+		/* ---- Member ---- */
+		ipb.vars['member_id']			= parseInt( 0 );
+		ipb.vars['is_supmod']			= parseInt( 0 );
+		ipb.vars['is_admin']			= parseInt( 0 );
+		ipb.vars['secure_hash'] 		= '880ea6a14ea49e853634fbdc5015a024';
+		ipb.vars['session_id']			= 'f12d8b5f1eec9cb62bc1c1b4b17e440f';
+		ipb.vars['twitter_id']			= 0;
+		ipb.vars['fb_uid']				= 0;
+		ipb.vars['auto_dst']			= parseInt( 0 );
+		ipb.vars['dst_in_use']			= parseInt(  );
+		ipb.vars['is_touch']			= false;
+		ipb.vars['member_group']		= {"g_mem_info":"0"}
+		/* ---- cookies ----- */
+		ipb.vars['cookie_id'] 			= '';
+		ipb.vars['cookie_domain'] 		= '.autohotkey.com';
+		ipb.vars['cookie_path']			= '/';
+		/* ---- Rate imgs ---- */
+		ipb.vars['rate_img_on']			= 'http://cdn.autohotkey.com/board//public/style_images/master/star.png';
+		ipb.vars['rate_img_off']		= 'http://cdn.autohotkey.com/board//public/style_images/master/star_off.png';
+		ipb.vars['rate_img_rated']		= 'http://cdn.autohotkey.com/board//public/style_images/master/star_rated.png';
+		/* ---- Uploads ---- */
+		ipb.vars['swfupload_swf']		= 'http://www.autohotkey.com/board/public/js/3rd_party/swfupload/swfupload.swf';
+		ipb.vars['swfupload_enabled']	= false;
+		ipb.vars['use_swf_upload']		= ( '' == 'flash' ) ? true : false;
+		ipb.vars['swfupload_debug']		= false;
+		/* ---- other ---- */
+		ipb.vars['highlight_color']     = "#ade57a";
+		ipb.vars['charset']				= "UTF-8";
+		ipb.vars['seo_enabled']			= 1;
+		
+		ipb.vars['seo_params']			= {"start":"-","end":"\/","varBlock":"\/page__","varSep":"__"};
+		
+		/* Templates/Language */
+		ipb.templates['inlineMsg']		= "";
+		ipb.templates['ajax_loading'] 	= "<div id='ajax_loading'><img src='http://cdn.autohotkey.com/board//public/style_images/master/ajax_loading.gif' alt='" + ipb.lang['loading'] + "' /></div>";
+		ipb.templates['close_popup']	= "<img src='http://cdn.autohotkey.com/board//public/style_images/master/close_popup.png' alt='x' />";
+		ipb.templates['rss_shell']		= new Template("<ul id='rss_menu' class='ipbmenu_content'>#{items}</ul>");
+		ipb.templates['rss_item']		= new Template("<li><a href='#{url}' title='#{title}'>#{title}</a></li>");
+		
+		ipb.templates['autocomplete_wrap'] = new Template("<ul id='#{id}' class='ipb_autocomplete' style='width: 250px;'></ul>");
+		ipb.templates['autocomplete_item'] = new Template("<li id='#{id}' data-url='#{url}'><img src='#{img}' alt='' class='ipsUserPhoto ipsUserPhoto_mini' />&nbsp;&nbsp;#{itemvalue}</li>");
+		ipb.templates['page_jump']		= new Template("<div id='#{id}_wrap' class='ipbmenu_content'><h3 class='bar'>Jump to page</h3><p class='ipsPad'><input type='text' class='input_text' id='#{id}_input' size='8' /> <input type='submit' value='Go' class='input_submit add_folder' id='#{id}_submit' /></p></div>");
+		ipb.templates['global_notify'] 	= new Template("<div class='popupWrapper'><div class='popupInner'><div class='ipsPad'>#{message} #{close}</div></div></div>");
+		
+		
+		ipb.templates['header_menu'] 	= new Template("<div id='#{id}' class='ipsHeaderMenu boxShadow'></div>");
+		
+		Loader.boot();
+	//]]>
+	</script>
+	</head>
+	<body id='ipboard_body'>
+		<p id='content_jump' class='hide'><a id='top'></a><a href='#j_content' title='Jump to content' accesskey='m'>Jump to content</a></p>
+		<div id='ipbwrapper'>
+			<!-- ::: TOP BAR: Sign in / register or user drop down and notification alerts ::: -->
+			<div id='header_bar' class='clearfix'>
+				<div class='main_width'>
+					
+					<div id='user_navigation' class='not_logged_in'>
+							
+							<ul class='ipsList_inline right'>
+								<li>
+									<span class='services'>
+										
+											<a href='http://www.autohotkey.com/board/index.php?app=core&amp;module=global&amp;section=login&amp;serviceClick=facebook'><img src='http://cdn.autohotkey.com/board//public/style_images/master/loginmethods/facebook.png' alt='Log in with Facebook' /></a>
+										
+										
+											<a href='http://www.autohotkey.com/board/index.php?app=core&amp;module=global&amp;section=login&amp;serviceClick=twitter'><img src='http://cdn.autohotkey.com/board//public/style_images/master/loginmethods/twitter.png' alt='Log in with Twitter' /></a>
+										
+										
+									</span>
+									&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href='http://www.autohotkey.com/board/index.php?app=core&amp;module=global&amp;section=login' title='Sign In' id='sign_in'>Sign In</a>&nbsp;&nbsp;&nbsp;
+								</li>
+								<li>
+									<a href="http://www.autohotkey.com/board/index.php?app=core&amp;module=global&amp;section=register" title='Create Account' id='register_link'>Create Account</a>
+								</li>
+							</ul>
+						</div>
+				</div>
+			</div>
+			<!-- ::: BRANDING STRIP: Logo and search box ::: -->
+			<div id='branding'>
+				<div class='main_width'>
+					<div id='logo'>
+						
+							<a href='http://www.autohotkey.com/board' title='Go to community index' rel="home" accesskey='1'><img src='http://cdn.autohotkey.com/static/ahk_logo_ipb.png' alt='Logo' /></a>
+						
+					</div>
+					
+						<div id='search' class='right'>
+	<form action="http://www.autohotkey.com/board/index.php?app=core&amp;module=search&amp;do=search&amp;fromMainBar=1" method="post" id='search-box' >
+		<fieldset>
+			<label for='main_search' class='hide'>Search</label>
+			<a href='http://www.autohotkey.com/board/index.php?app=core&amp;module=search&amp;search_in=forums' title='Advanced Search' accesskey='4' rel="search" id='adv_search' class='right'>Advanced</a>
+			<span id='search_wrap' class='right'>
+				<input type='text' id='main_search' name='search_term' class='inactive' size='17' tabindex='6' />
+				<span class='choice ipbmenu clickable' id='search_options' style='display: none'></span>
+				<ul id='search_options_menucontent' class='ipbmenu_content ipsPad' style='display: none'>
+					<li class='title'><strong>Search section:</strong></li>
+					<li class='special'>
+							<label for='s_topic' title='This topic'>
+								
+									<input type='radio' name='search_app' value="forums:topic:87068" class='input_radio' id='s_topic' checked="checked" /> 
+								
+								<strong>This topic</strong>
+							</label>
+						</li>
+					
+					
+					<li class='app'><label for='s_forums' title='Forums'><input type='radio' name='search_app' class='input_radio' id='s_forums' value="forums"  />Forums</label></li><li class='app'><label for='s_members' title='Members'><input type='radio' name='search_app' class='input_radio' id='s_members' value="members"  />Members</label></li><li class='app'><label for='s_core' title='Help Files'><input type='radio' name='search_app' class='input_radio' id='s_core' value="core"  />Help Files</label></li>
+						
+					
+
+						
+					
+
+						
+					
+
+						
+					
+				</ul>
+				<input type='submit' class='submit_input clickable' value='Search' />
+			</span>
+			
+		</fieldset>
+	</form>
+</div>
+					
+				</div>
+			</div>
+			<!-- ::: APPLICATION TABS ::: -->
+			<div id='primary_nav' class='clearfix'>
+				<div class='main_width'>
+					<ul class='ipsList_inline' id='community_app_menu'>
+						
+							<li class='right'>
+								<a href="http://www.autohotkey.com/board/index.php?app=core&amp;module=global&amp;section=navigation&amp;inapp=forums" rel="quickNavigation" accesskey='9' id='quickNavLaunch' title='Open Quick Navigation'><span>&nbsp;</span></a>
+							</li>
+						
+						<li id='nav_explore' class='right'>
+							<a href='http://www.autohotkey.com/board/index.php?app=core&amp;module=search&amp;do=viewNewContent&amp;search_app=forums' accesskey='2'>View New Content</a>
+						</li>
+						
+							<li id='nav_home' class='left'><a href='http://www.autohotkey.com/' title='Homepage' rel="home">AutoHotkey</a></li>
+						
+						
+								
+									
+								
+
+									
+																				<li id='nav_app_forums' class="left active"><a href='http://www.autohotkey.com/board/' title='Go to Forums'>Forums</a></li>
+									
+								
+
+									
+																				<li id='nav_app_members' class="left "><a href='http://www.autohotkey.com/board/members/' title='Go to Members'>Members</a></li>
+									
+								
+
+									
+								
+							
+						<li id='nav_other_apps' style='display: none'>
+							<a href='#' class='ipbmenu' id='more_apps'>More <img src='http://cdn.autohotkey.com/board//public/style_images/master/useropts_arrow.png' /></a>
+						</li>
+					</ul>
+				</div>
+				<script type='text/javascript'>
+					if( $('primary_nav') ){	ipb.global.activateMainMenu(); }
+				</script>
+			</div>	
+			
+			<!-- ::: MAIN CONTENT AREA ::: -->
+			<div id='content' class='clearfix'>
+				<!-- ::: NAVIGATION BREADCRUMBS ::: -->
+				<div id='secondary_navigation' class='clearfix'>
+						<ol class='breadcrumb top ipsList_inline left'>
+														<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+									<a href='http://www.autohotkey.com/board/' itemprop="url">
+										<span itemprop="title">AutoHotkey Community</span>
+									</a>
+								</li>
+								
+							
+								<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+									<span class='nav_sep'>&rarr;</span>
+									 <a href='http://www.autohotkey.com/board/forum/56-autohotkey/' title='Return to AutoHotkey' itemprop="url"><span itemprop="title">AutoHotkey</span></a>
+								</li>
+								
+							
+
+								<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+									<span class='nav_sep'>&rarr;</span>
+									 <a href='http://www.autohotkey.com/board/forum/49-scripts/' title='Return to Scripts' itemprop="url"><span itemprop="title">Scripts</span></a>
+								</li>
+								
+							
+						</ol>
+					</div>
+					<br />
+				<noscript>
+					<div class='message error'>
+						<strong>Javascript Disabled Detected</strong>
+						<p>You currently have javascript disabled. Several functions may not work. Please re-enable javascript to access full functionality.</p>
+					</div>
+					<br />
+				</noscript>
+				<!-- ::: CONTENT ::: -->
+				
+				
+
+<script type="text/javascript">
+//<![CDATA[
+	ipb.topic.inSection = 'topicview';
+	ipb.topic.topic_id  = 87068;
+	ipb.topic.forum_id  = 49;
+	ipb.topic.start_id  = 0;
+	ipb.topic.topPid    = 0;
+	ipb.topic.counts    = { postTotal: 2,
+							curStart:  ipb.topic.start_id,
+							perPage:   15 };
+	//Search Setup
+	ipb.vars['search_type']			= 'forum';
+	ipb.vars['search_type_id']		= 49;
+	ipb.vars['search_type_2']		= 'topic';
+	ipb.vars['search_type_id_2']	= 87068;
+	
+	
+	// Delete stuff set up
+	ipb.topic.deleteUrls['hardDelete'] = new Template( ipb.vars['base_url'] + "app=forums&module=moderate&section=moderate&do=04&f=49&t=87068&st=&auth_key=880ea6a14ea49e853634fbdc5015a024&p=#{pid}" );
+	ipb.topic.deleteUrls['softDelete'] = new Template( ipb.vars['base_url'] + "app=forums&module=moderate&section=moderate&do=postchoice&tact=sdelete&t=87068&f=49&auth_key=880ea6a14ea49e853634fbdc5015a024&selectedpids[#{pid}]=#{pid}&pid=#{pid}" );
+	
+	
+	ipb.templates['post_moderation'] = new Template("<div id='comment_moderate_box' class='ipsFloatingAction' style='display: none'><span class='desc'>With <span id='comment_count'>#{count}</span> checked posts: </span><select id='tactInPopup' class='input_select'><option value='approve'>Approve</option><option value='delete'>Hide</option><option value='sundelete'>Unhide</option><option value='deletedo'>Delete</option><option value='merge'>Merge</option><option value='split'>Split</option><option value='move'>Move</option></select>&nbsp;&nbsp;<input type='button' class='input_submit' id='submitModAction' value='Go' /></div>");
+	
+//]]>
+</script>
+
+
+
+
+<div class='__like right' data-app="forums" data-area="topics" data-relid="87068" data-isfave="">
+	<span class='ipsButton_extra right ' title='0 member(s) follow this topic' data-tooltip="0 member(s) follow this topic"><img src='http://cdn.autohotkey.com/board//public/style_images/master/icon_users.png' /> <strong>0</strong></span>
+
+</div>
+<script type="text/javascript">
+	var FAVE_TEMPLATE = new Template( "<h3>Unfollow this topic</h3><div class='ipsPad'><span class='desc'>If you unfollow this topic you will no longer receive any notifications</span><br /><p class='ipsForm_center'><input type='button' value='Unfollow this topic' class='input_submit _funset' /></p></div>");
+</script>
+
+	<img src='http://www.gravatar.com/avatar/795cd062b2f3c822041b5a6e075c1deb?s=100&amp;d=http%3A%2F%2Fcdn.autohotkey.com%2Fboard%2F%2Fpublic%2Fstyle_images%2Fmaster%2Fprofile%2Fdefault_large.png' class='ipsUserPhoto ipsUserPhoto_medium left' />
+
+<div itemscope itemtype="http://schema.org/Article" class='ipsBox_withphoto'>
+	
+	<h1 itemprop="name" class='ipsType_pagetitle'>BinRun() - Run binary executable from Memory (e.g. Resource)</h1>
+	<div class='desc lighter blend_links'>
+		 Started by <span itemprop="creator">
+	HotKeyIt
+</span>, <span itemprop="dateCreated">Nov 16 2012 03:53 PM</span>
+	</div>
+	
+	<meta itemprop="interactionCount" content="UserComments:2" />
+</div>
+
+
+<br />
+<div class='topic_controls'>
+	
+	<ul class='topic_buttons'>
+			<li class='disabled'><span>Please log in to reply</span></li>
+			
+			
+		</ul>
+</div>
+
+<div class='maintitle clear clearfix'>
+	<span class='ipsType_small'>
+		1 reply to this topic
+	</span>
+		
+</div>
+
+<div class='topic hfeed clear clearfix'>
+	
+	
+
+	<div class='ipsBox'>
+		<div class='ipsBox_container' id='ips_Posts'>
+			
+				<!--post:553684-->
+
+<div class='post_block hentry clear clearfix ' id='post_id_553684'>
+		<a id='entry553684'></a>
+		
+	
+		
+		<div class='post_wrap' >
+			
+				<h3 class='row2'>
+			
+				
+				<span class='post_id right ipsType_small desc blend_links'>
+					
+						<a itemprop="replyToUrl" href='http://www.autohotkey.com/board/topic/87068-binrun-run-binary-executable-from-memory-eg-resource/#entry553684' rel='bookmark' title='BinRun() - Run binary executable from Memory (e.g. Resource): post #1'>
+					
+					#1
+					</a>
+				</span>
+				
+					<span itemprop="creator name" class="author vcard">
+	HotKeyIt
+</span>
+				
+			
+				
+			</h3>
+			<div class='author_info'>
+				<div itemscope itemtype="http://schema.org/Person" class='user_details'>
+	<span class='hide' itemprop="name">HotKeyIt</span>
+	<ul class='basic_info'>
+		
+		<li class='avatar'>
+				
+				
+					<img itemprop="image" src='http://www.gravatar.com/avatar/795cd062b2f3c822041b5a6e075c1deb?s=100&amp;d=http%3A%2F%2Fcdn.autohotkey.com%2Fboard%2F%2Fpublic%2Fstyle_images%2Fmaster%2Fprofile%2Fdefault_large.png' class='ipsUserPhoto ipsUserPhoto_large' />
+				
+				
+			</li>
+		<li class='group_title'>
+			Members
+		</li>
+		
+		
+		<li class='post_count desc lighter'>
+			5612 posts
+		</li>
+		
+		
+	</ul>
+	
+	
+		<ul class='custom_fields'>
+			
+				
+					
+				
+			
+		</ul>
+	
+	
+</div>
+			</div>
+			<div class='post_body'>
+				<p class='posted_info desc lighter ipsType_small'>
+					Posted <abbr class="published" itemprop="commentTime" title="2012-11-16T15:53:32+00:00">16 November 2012 - 03:53 PM</abbr>
+				</p>
+				
+				<div itemprop="commentText" class='post entry-content '>
+					<!--cached-Fri, 16 Nov 2012 16:37:33 +0000--><span style='font-size: 18px;'><a href='http://www.autohotkey.net/~HotKeyIt/LibV1/BinRun.ahk' class='bbc_url' title='External link' rel='nofollow external'>Download BinRun.ahk (AHK v1.1)</a> - or - <a href='http://www.autohotkey.net/~HotKeyIt/LibV2/BinRun.ahk' class='bbc_url' title='External link' rel='nofollow external'>BinRun.ahk (AHK v2-alpha)</a>.</span><br />
+<br />
+Requires <a href='http://www.autohotkey.com/community/viewtopic.php?t=59581&amp;highlight=' class='bbc_url' title=''>_Struct and sizeof()</a>.<br />
+<br />
+<p class='citation'>About said:</p><div class="blockquote"><div class='quote'><ul class='bbc'><li>BinRun is used to run executable files from memory, for example from resource.<br /></li><li>It supports 32-bit and 64-bit as well as launching a 32-bit from 64-bit process (this is done automatically based on executable).<br /></li><li>It supports parameters for the executable as well as parameters for the script when launching AutoHotkey for example.<br /></li><li>Launching a script trough pipe is also supported<br />
+<ul class='bbc'><li>To do so you will need to have a new line character in cmdLine parameter, even if you have no parameters. The syntax is<pre class='prettyprint'>BinRun(PointerOrPath,&quot;/ErrorStdOut`nMsgBox %0%`n%1%`%2%&quot;,&quot;Script parameters&quot;)</pre></li></ul></li><li>Also it automatically extracts the executable from Resources if a resource with that name exists.<br />
+<ul class='bbc'><li>It does also automatically uncompress resources if those were compressed using <a href='http://www.autohotkey.com/board/topic/41953-varz-nt-native-data-compression/page__hl__var' class='bbc_url' title=''>VarZ</a>.</li></ul></li></ul></div></div>
+<p class='citation'>BinRun said:</p><div class="blockquote"><div class='quote'><ul class='bbc'><li><strong class='bbc'><span style='font-size: 18px;'>BinRun(PoiterOrPath,cmdLine,cmdLineScript,ExeToUse)</span></strong><br />
+<ul class='bbc'><li><strong class='bbc'>PointerOrPath </strong>- can be a pointer to memory where executable is saved or path on local disk or in resource (resource takes precedence)<br /></li><li><strong class='bbc'>cmdLine </strong>- command line parameters for executable<br />
+<ul class='bbc'><li>when launching script trough pipe this will be the script but first line will be parameters for executable</li></ul></li><li><strong class='bbc'>cmdLineScript </strong>- command line parameters for script<br /></li><li><strong class='bbc'>ExeToUse </strong>- by default the executable of current process is taken and <strong class='bbc'>A_WinDir &quot;&#092;Microsoft.NET&#092;Framework&#092;v2.0.50727&#092;vbc.exe&quot;</strong> to launch 32-bit exe from 64-bit process</li></ul></li></ul></div></div>
+<br />
+<pre class='prettyprint'>
+FileRead,file,*c %A_AhkPath%
+BinRun(&amp;file,&quot;`nMsgBox %0%`n%1%`n%2%&quot;,&quot;Hello World&#33;&quot;)
+</pre>
+<br />
+Compiled script:<pre class='prettyprint'>
+If 0
+FileInstall,C:&#092;Program Files&#092;AutoHotkey&#092;AutoHotkey.exe,-
+BinRun(&quot;C:&#092;Program Files&#092;AutoHotkey&#092;AutoHotkey.exe&quot;,&quot;`nMsgBox %0%`n%1%`n%2%&quot;,&quot;Hello World&#33;&quot;)
+</pre>
+					
+					<br />
+					
+				</div>
+				
+				
+				
+<script type='text/javascript'>
+	ipb.global.registerReputation( 'rep_post_553684', { domLikeStripId: 'like_post_553684', app: 'forums', type: 'pid', typeid: '553684' }, parseInt('') );
+</script>
+				
+								
+				
+					<!--signature.hidden.553684-->
+				
+				
+				
+			
+				<ul id='postControlsNormal_553684' class='post_controls clear clearfix' >
+					<li class='top hide'><a href='#ipboard_body' class='top' title='Back to top'>Back to top</a></li>
+					
+					
+					
+					
+					
+					
+				</ul>
+					
+			</div>
+		</div>
+	</div>
+		
+		
+		<hr />
+		
+		
+<script type="text/javascript">
+var pid = parseInt(553684);
+if ( pid > ipb.topic.topPid ){
+	ipb.topic.topPid = pid;
+}
+
+	// Show multiquote for JS browsers
+	if ( $('multiq_553684') )
+	{
+		$('multiq_553684').show();
+	}
+	
+	if( $('toggle_post_553684') )
+	{
+		$('toggle_post_553684').show();
+	}
+	
+	// Add perm data
+	ipb.topic.deletePerms[553684] = { 'canDelete' : 0, 'canSoftDelete' : 0 };
+
+</script>
+			
+
+				<!--post:553687-->
+
+<div class='post_block hentry clear clearfix ' id='post_id_553687'>
+		<a id='entry553687'></a>
+		
+	
+		
+		<div class='post_wrap' >
+			
+				<h3 class='row2'>
+			
+				
+				<span class='post_id right ipsType_small desc blend_links'>
+					
+						<a itemprop="replyToUrl" href='http://www.autohotkey.com/board/topic/87068-binrun-run-binary-executable-from-memory-eg-resource/#entry553687' rel='bookmark' title='BinRun() - Run binary executable from Memory (e.g. Resource): post #2'>
+					
+					#2
+					</a>
+				</span>
+				
+					<span itemprop="creator name" class="author vcard">
+	adrianh
+</span>
+				
+			
+				
+			</h3>
+			<div class='author_info'>
+				<div itemscope itemtype="http://schema.org/Person" class='user_details'>
+	<span class='hide' itemprop="name">adrianh</span>
+	<ul class='basic_info'>
+		
+		<li class='avatar'>
+				
+				
+					<img itemprop="image" src='http://cdn.autohotkey.com/board/uploads/profile/photo-thumb-21901.png?_r=1351717767' class='ipsUserPhoto ipsUserPhoto_large' />
+				
+				
+			</li>
+		<li class='group_title'>
+			Members
+		</li>
+		
+		
+		<li class='post_count desc lighter'>
+			184 posts
+		</li>
+		
+		
+	</ul>
+	
+	
+		<ul class='custom_fields'>
+			
+				
+					
+				
+			
+		</ul>
+	
+	
+</div>
+			</div>
+			<div class='post_body'>
+				<p class='posted_info desc lighter ipsType_small'>
+					Posted <abbr class="published" itemprop="commentTime" title="2012-11-16T15:57:22+00:00">16 November 2012 - 03:57 PM</abbr>
+				</p>
+				
+				<div itemprop="commentText" class='post entry-content '>
+					<!--cached-Fri, 16 Nov 2012 15:57:22 +0000-->Interesting... <img src='http://cdn.autohotkey.com/board//public/style_emoticons/default/smile.png' class='bbc_emoticon' alt=':)' />
+					
+					<br />
+					
+				</div>
+				
+				
+				
+<script type='text/javascript'>
+	ipb.global.registerReputation( 'rep_post_553687', { domLikeStripId: 'like_post_553687', app: 'forums', type: 'pid', typeid: '553687' }, parseInt('') );
+</script>
+				
+								
+				
+				
+				
+			
+				<ul id='postControlsNormal_553687' class='post_controls clear clearfix' >
+					<li class='top hide'><a href='#ipboard_body' class='top' title='Back to top'>Back to top</a></li>
+					
+					
+					
+					
+					
+					
+				</ul>
+					
+			</div>
+		</div>
+	</div>
+		
+		
+		<hr />
+		
+		
+<script type="text/javascript">
+var pid = parseInt(553687);
+if ( pid > ipb.topic.topPid ){
+	ipb.topic.topPid = pid;
+}
+
+	// Show multiquote for JS browsers
+	if ( $('multiq_553687') )
+	{
+		$('multiq_553687').show();
+	}
+	
+	if( $('toggle_post_553687') )
+	{
+		$('toggle_post_553687').show();
+	}
+	
+	// Add perm data
+	ipb.topic.deletePerms[553687] = { 'canDelete' : 0, 'canSoftDelete' : 0 };
+
+</script>
+			
+		</div>
+	</div>
+
+<hr />
+<div class='topic_controls clear ipsPad_top_bottom_half'>
+	
+	<div class='ipsPad_top_slimmer right'>
+		
+		<a href='http://www.autohotkey.com/board/forum/49-scripts/' class="ipsType_small desc">Back to Scripts</a>
+		
+	</div>	
+</div>
+
+<!-- Close topic -->
+</div>
+<!-- BOTTOM BUTTONS -->
+
+<!-- SAME TAGGED -->
+
+<!-- ACTIVE USERS -->
+
+
+
+	<script type="text/javascript" src="http://cdn.autohotkey.com/board/public/js/3rd_party/prettify/prettify.js"></script>
+	<script type='text/javascript' src='http://cdn.autohotkey.com/board/public/js/3rd_party/prettify/lang-sql.js'></script>
+	<!-- By default we load generic code, php, css, sql and xml/html; load others here if desired -->
+	<script type="text/javascript">
+	//<![CDATA[
+		Event.observe( window, 'load', function(e){ prettyPrint() });
+	//]]>
+	</script>
+<div id='multiQuoteInsert' style='display: none;' class='ipsFloatingAction'>
+	<span class='ipsButton no_width' id='mqbutton'>Reply to quoted posts</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='#' id='multiQuoteClear' class='ipsType_smaller desc' title='Clear the posts you have selected with MultiQuote'>Clear</a> &nbsp;&nbsp;&nbsp;
+</div>
+<form id="modform" method="post" action="http://www.autohotkey.com/board/index.php?">
+	<input type="hidden" name="app" value="forums" />
+	<input type="hidden" name="module" value="moderate" />
+	<input type="hidden" name="section" value="moderate" />
+	<input type="hidden" name="do" value="postchoice" />
+	<input type="hidden" name="f" value="49" />
+	<input type="hidden" name="t" value="87068" />
+	<input type="hidden" name="auth_key" value="880ea6a14ea49e853634fbdc5015a024" />
+	<input type="hidden" name="st" value="" />
+	<input type="hidden" value="" name="selectedpidsJS" id='selectedpidsJS' />
+	<input type="hidden" name="tact" id="tact" value="" />
+</form>
+				
+				<ol class='breadcrumb bottom ipsList_inline left clearfix clear'>
+											<li><a href='http://www.autohotkey.com/board/'>AutoHotkey Community</a></li>
+							
+						
+							<li><span class='nav_sep'>&rarr;</span> <a href='http://www.autohotkey.com/board/forum/56-autohotkey/' title='Return to AutoHotkey'>AutoHotkey</a></li>
+							
+						
+
+							<li><span class='nav_sep'>&rarr;</span> <a href='http://www.autohotkey.com/board/forum/49-scripts/' title='Return to Scripts'>Scripts</a></li>
+							
+						
+
+					
+					<li class='right ipsType_smaller'>
+						<a rel="nofollow" href='http://www.autohotkey.com/board/privacypolicy/'>Privacy Policy</a>
+					</li>
+					
+						
+				</ol>
+			</div>
+			<!-- ::: FOOTER (Change skin, language, mark as read, etc) ::: -->
+			<div id='footer_utilities' class='main_width clearfix clear'>
+				<a rel="nofollow" href='#top' id='backtotop' title='Go to top'><img src='http://cdn.autohotkey.com/board//public/style_images/master/top.png' alt='' /></a>
+				<ul class='ipsList_inline left'>
+					<li>
+						<img src='http://cdn.autohotkey.com/board//public/style_images/master/feed.png' alt='RSS Feed' id='rss_feed' class='clickable' />
+					</li>
+					
+							
+								<li>
+									<a rel="nofollow" id='new_skin' href='#'>Change Theme</a>			
+									<ul id='new_skin_menucontent' class='ipbmenu_content with_checks' style='display: none'>
+										
+											<li class='selected'>
+												<a href='#' data-clicklaunch='changeSkin' data-skinid='1'>IP.Board</a>
+											</li>
+										
+
+											<li >
+												<a href='#' data-clicklaunch='changeSkin' data-skinid='2'>IP.Board Mobile</a>
+											</li>
+										
+									</ul>
+								</li>
+							
+					
+						<li>
+							<a rel="nofollow" href='#' id='new_language'>English (USA)</a>							
+							<ul id='new_language_menucontent' class='ipbmenu_content with_checks' style='display: none'>
+								
+									<li class='selected'>
+										<a href="http://www.autohotkey.com/board/index.php?showtopic=87068&amp;k=880ea6a14ea49e853634fbdc5015a024&amp;setlanguage=1&amp;langurlbits=showtopic=87068&amp;cal_id=&amp;langid=1">English (USA)</a>
+									</li>
+								
+
+									<li >
+										<a href="http://www.autohotkey.com/board/index.php?showtopic=87068&amp;k=880ea6a14ea49e853634fbdc5015a024&amp;setlanguage=1&amp;langurlbits=showtopic=87068&amp;cal_id=&amp;langid=2">Deutsch</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+					
+						<li>
+							<a rel="nofollow" id='mark_all_read' href="http://www.autohotkey.com/board/index.php?app=forums&amp;module=forums&amp;section=markasread&amp;marktype=all&amp;k=880ea6a14ea49e853634fbdc5015a024" title='Mark all as read'>Mark Community Read</a>
+							<ul id='mark_all_read_menucontent' class='ipbmenu_content' style='display: none'>
+								
+									<li>
+										
+									</li>
+								
+
+									<li>
+										<a href="http://www.autohotkey.com/board/index.php?app=forums&amp;module=forums&amp;section=markasread&amp;marktype=app&amp;markApp=forums&amp;k=880ea6a14ea49e853634fbdc5015a024">Forums</a>
+									</li>
+								
+
+									<li>
+										<a href="http://www.autohotkey.com/board/index.php?app=forums&amp;module=forums&amp;section=markasread&amp;marktype=app&amp;markApp=members&amp;k=880ea6a14ea49e853634fbdc5015a024">Members</a>
+									</li>
+								
+								<li>
+									<a href="http://www.autohotkey.com/board/index.php?app=forums&amp;module=forums&amp;section=markasread&amp;marktype=all&amp;k=880ea6a14ea49e853634fbdc5015a024"><strong>Mark all as read</strong></a>
+								</li>
+							</ul>
+						</li>
+					
+					<li>
+						<a href="http://www.autohotkey.com/board/index.php?app=core&amp;module=help" title='View help' rel="help" accesskey='6'>Help</a>
+					</li>				
+				</ul>
+				<!-- Copyright Information -->
+        				  <p id='copyright'>
+        				  	<a href='http://www.invisionpower.com/products/board/' title='Community Forum Software by Invision Power Services'>Community Forum Software by IP.Board</a></p>
+		<!-- / Copyright -->
+			</div>
+			<script src="http://cdn.autohotkey.com/static/ga.js" type="text/javascript" defer="defer"></script>
+			
+			
+				<script type='text/javascript' src='http://www.autohotkey.com/board/public/js/3rd_party/lightbox.js'></script>
+<script type='text/javascript'>
+//<![CDATA[
+	// Lightbox Configuration
+	LightboxOptions = Object.extend({
+	    fileLoadingImage:        'http://cdn.autohotkey.com/board//public/style_images/master/lightbox/loading.gif',     
+	    fileBottomNavCloseImage: 'http://cdn.autohotkey.com/board//public/style_images/master/lightbox/closelabel.gif',
+	    overlayOpacity: 0.8,   // controls transparency of shadow overlay
+	    animate: true,         // toggles resizing animations
+	    resizeSpeed: 7,        // controls the speed of the image resizing animations (1=slowest and 10=fastest)
+	    borderSize: 10,         //if you adjust the padding in the CSS, you will need to update this variable
+		// When grouping images this is used to write: Image # of #.
+		// Change it for non-english localization
+		labelImage: "Image",
+		labelOf: "of"
+	}, window.LightboxOptions || {});
+/* Watch for a lightbox image and set up our downloadbutton watcher */
+document.observe('click', (function(event){
+    var target = event.findElement('a[rel*="lightbox"]') || event.findElement('area[rel*="lightbox"]') || event.findElement('span[rel*="lightbox"]');
+    if (target) {
+        event.stop();
+        gbl_addDownloadButton();
+    }
+}).bind(this));
+var _to    = '';
+var _last  = '';
+function gbl_addDownloadButton()
+{
+	if ( typeof( ipsLightbox.lightboxImage ) != 'undefined' && ipsLightbox.lightboxImage.src )
+	{
+		if ( _last != ipsLightbox.lightboxImage.src )
+		{
+			if ( ! $('gbl_d') )
+			{
+				$('bottomNav').insert( { top: "<div id='gbl_d' style='text-align:right;padding-bottom:4px;'></div>" } );
+			}
+			
+			$('gbl_d').update( "<a href='"+ ipsLightbox.lightboxImage.src + "' target='_blank'><img src='http://cdn.autohotkey.com/board//public/style_images/master/lightbox/download-icon.png' /></a>" );
+			
+			_last = ipsLightbox.lightboxImage.src;
+		}
+	}
+	
+	/* Check for init and then keep checking for new image */
+	_to = setTimeout( "gbl_addDownloadButton()", 1000 );
+}
+//]]>
+</script>
+			
+			<div id='inline_login_form' style='display: none'>
+		<form action="http://www.autohotkey.com/board/index.php?app=core&amp;module=global&amp;section=login&amp;do=process" method="post" id='login'>
+			<input type='hidden' name='auth_key' value='880ea6a14ea49e853634fbdc5015a024' />
+			<input type="hidden" name="referer" value="http://www.autohotkey.com/board/topic/87068-binrun-run-binary-executable-from-memory-eg-resource/" />
+			<h3>Sign In</h3>
+			<div class='ipsBox_notice'>
+					<ul class='ipsList_inline'>
+						
+							<li><a href="http://www.autohotkey.com/board/index.php?app=core&amp;module=global&amp;section=login&amp;serviceClick=facebook" class='ipsButton_secondary'><img src="http://cdn.autohotkey.com/board//public/style_images/master/loginmethods/facebook.png" alt="Facebook" /> &nbsp; Use Facebook</a></li>
+						
+						
+							<li><a href="http://www.autohotkey.com/board/index.php?app=core&amp;module=global&amp;section=login&amp;serviceClick=twitter" class='ipsButton_secondary'><img src="http://cdn.autohotkey.com/board//public/style_images/master/loginmethods/twitter.png" alt="Twitter" /> &nbsp; Use Twitter</a></li>
+						
+						
+					</ul>
+				</div>
+			<br />
+			<div class='ipsForm ipsForm_horizontal'>
+				<fieldset>
+					<ul>
+						<li class='ipsField'>
+							<div class='ipsField_content'>
+								Need an account? <a href="http://www.autohotkey.com/board/index.php?app=core&amp;module=global&amp;section=register" title='Register now!'>Register now!</a>
+							</div>
+						</li>
+						<li class='ipsField ipsField_primary'>
+							<label for='ips_username' class='ipsField_title'>Username or email:</label>
+							<div class='ipsField_content'>
+								<input id='ips_username' type='text' class='input_text' name='ips_username' size='30' />
+							</div>
+						</li>
+						<li class='ipsField ipsField_primary'>
+							<label for='ips_password' class='ipsField_title'>Forum Password</label>
+							<div class='ipsField_content'>
+								<input id='ips_password' type='password' class='input_text' name='ips_password' size='30' /><br />
+								<a href='http://www.autohotkey.com/board/index.php?app=core&amp;module=global&amp;section=lostpass' title='Retrieve password'>I've forgotten my password</a>
+							</div>
+						</li>
+						<li class='ipsField ipsField_checkbox'>
+							<input type='checkbox' id='inline_remember' checked='checked' name='rememberMe' value='1' class='input_check' />
+							<div class='ipsField_content'>
+								<label for='inline_remember'>
+									<strong>Remember me</strong><br />
+									<span class='desc lighter'>This is not recommended for shared computers</span>
+								</label>
+							</div>
+						</li>
+						
+							<li class='ipsField ipsField_checkbox'>
+								<input type='checkbox' id='inline_invisible' name='anonymous' value='1' class='input_check' />
+								<div class='ipsField_content'>
+									<label for='inline_invisible'>
+										<strong>Sign in anonymously</strong><br />
+										<span class='desc lighter'>Don't add me to the active users list</span>
+									</label>
+								</div>
+							</li>
+						
+						
+						<li class='ipsPad_top ipsForm_center desc ipsType_smaller'>
+							<a rel="nofollow" href='http://www.autohotkey.com/board/privacypolicy/'>Privacy Policy</a>
+						</li>
+						
+					</ul>
+				</fieldset>
+				
+				<div class='ipsForm_submit ipsForm_center'>
+					<input type='submit' class='ipsButton' value='Sign In' />
+				</div>
+			</div>
+		</form>
+	</div>
+		</div>
+		
+		
+	</body>
+</html>

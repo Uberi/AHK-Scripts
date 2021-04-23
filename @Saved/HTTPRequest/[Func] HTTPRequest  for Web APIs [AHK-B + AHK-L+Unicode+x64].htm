@@ -1,0 +1,902 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0086)http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=0 -->
+<html dir="ltr"><script id="abine.stub.Google Analytics">var abPrm={};var abNoOp=function(i,a){return (a&&a.length?a[0]:null)||true;},abSC=function(n,v){document.cookie=n+'='+v+';path=/;expires='+(new Date((new Date()).getTime()+(30000*60*60*24))).toGMTString();},abGC=function(n){return document.cookie.indexOf(n+'=')!=-1;},abAddNoOpMethods=function(o,m){m=m.split(',');for(var i=0;i<m.length;i++){if(m[i].match(/^#/)){o['get'+m[i].substr(1)]=o['set'+m[i].substr(1)]=abNoOp;}else{o[m[i]]=abNoOp;}}};var abClickEvent=function(n){if(n.click){n.click();}else{var e=n.ownerDocument.createEvent('MouseEvents');e.initMouseEvent('click',true, true, n.ownerDocument.defaultView, 1,0,0,0,0,false,false,false,false,0,null);n.dispatchEvent(e);}};var abTrkr={},abGT=function(){return abTrkr},_gat={_getTracker:abGT,_createTracker:abGT,_getTrackerByName:abGT,_anonymizeIp:abNoOp},urchinTracker=__utmSetTrans=__utmLinkerUrl=__utmLinkPost=__utmSetVar=__utmVisitorCode=abNoOp,_gaq={_createAsyncTracker:abTrkr,_getAsyncTracker:abTrkr,push:function(a){for (var b = arguments, c = 0, d = 0; d < b.length; d++) {try {if (typeof b[d] === 'function') b[d]();else {var e = '', f = b[d][0], k = f.lastIndexOf('.');k > 0 && (e = f[z](0, k), f = f[z](k + 1));var p = e == '_gat' ? _gat : e == '_gaq' ? _gaq : _gat._getTracker(e);p[f].apply(p, b[d].slice(1))}} catch (r) {c++}}return c;}};abAddNoOpMethods(abTrkr,'_deleteCustomVar,_getName,_getAccount,_getVersion,_getVisitorCustomVar,_initData,_setAccount,_setCookiePersistence,_setCustomVar,_setSampleRate,_setSessionTimeout,_setSessionCookieTimeout,_setVar,_setVisitorCookieTimeout,_trackPageview,_setAllowAnchor,_setCampContentKey,_setCampMediumKey,_setCampNameKey,_setCampNOKey,_setCampSourceKey,_setCampTermKey,_setCampaignTrack,_setCampaignCookieTimeout,_setCookieTimeout,_setReferrerOverride,_cookiePathCopy,_getLinkerUrl,_linkByPost,_setAllowHash,_setAllowLinker,_setCookiePath,_setDomainName,_addItem,_addTrans,_trackTrans,_trackEvent,_addIgnoredOrganic,_addIgnoredRef,_addOrganic,_clearIgnoredOrganic,_clearIgnoredRef,_clearOrganic,_trackSocial,_getClientInfo,_getDetectFlash,_getDetectTitle,_setClientInfo,_setDetectFlash,_setDetectTitle,_getLocalGifPath,_getServiceMode,_setLocalGifPath,_setLocalRemoteServerMode,_setLocalServerMode,_setRemoteServerMode,_trackPageLoadTime');abTrkr._link=__utmLinker=function(l){if(l)location.href=l;};</script><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+
+<link rel="prev" href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&view=previous" title="View previous topic">
+<link rel="next" href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&view=next" title="View next topic">
+<link rel="up" href="http://www.autohotkey.com/forum/viewforum.php?f=2" title="Scripts &amp; Functions">
+<link rel="chapter forum" href="http://www.autohotkey.com/forum/viewforum.php?f=1" title="Ask for Help">
+<link rel="chapter forum" href="http://www.autohotkey.com/forum/viewforum.php?f=2" title="Scripts &amp; Functions">
+<link rel="chapter forum" href="http://www.autohotkey.com/forum/viewforum.php?f=3" title="Bug Reports">
+<link rel="chapter forum" href="http://www.autohotkey.com/forum/viewforum.php?f=4" title="Wish List">
+<link rel="chapter forum" href="http://www.autohotkey.com/forum/viewforum.php?f=8" title="Developers">
+<link rel="chapter forum" href="http://www.autohotkey.com/forum/viewforum.php?f=6" title="Announcements">
+<link rel="chapter forum" href="http://www.autohotkey.com/forum/viewforum.php?f=7" title="Utilities &amp; Resources">
+<link rel="chapter forum" href="http://www.autohotkey.com/forum/viewforum.php?f=5" title="General Chat">
+
+<title>[Func] HTTPRequest: for Web APIs [AHK-B + AHK-L+Unicode+x64]</title>
+<link rel="stylesheet" href="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/subSilver.css" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="AutoHotkey Forum RSS" href="http://www.autohotkey.com/forum/rss.php">
+
+<script type="text/javascript" async="" src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/ga.js"></script><script language="Javascript" type="text/javascript">
+<!--
+	if ( 0 )
+	{
+		window.open('privmsg.php?mode=newpm', '_phpbbprivmsg', 'HEIGHT=225,resizable=yes,WIDTH=400');;
+	}
+//-->
+</script>
+<script type="text/javascript" src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/ga(1).js"></script>
+</head>
+<body bgcolor="#E5E5E5" text="#000000" link="#006699" vlink="#5493B4">
+
+<a name="top"></a>
+
+<table width="100%" cellspacing="0" cellpadding="10" border="0" align="center">
+	<tbody><tr>
+		<td class="bodyline"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+			<tbody><tr>
+				<td><a href="http://www.autohotkey.com/"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/AutoHotkey_logo.gif" border="0" alt="AutoHotkey Homepage" vspace="1"></a></td>
+				<td align="center" width="100%" valign="middle"><span class="maintitle">AutoHotkey Community</span><br><span class="gen">Let's help each other out<br>&nbsp; </span>
+				<table cellspacing="0" cellpadding="2" border="0">
+					<tbody><tr>
+						<td align="center" valign="top" nowrap="nowrap"><span class="mainmenu">&nbsp;<a href="http://www.autohotkey.com/forum/faq.php" class="mainmenu"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_mini_faq.gif" width="12" height="13" border="0" alt="FAQ" hspace="3">FAQ</a>&nbsp; &nbsp;<a href="http://www.autohotkey.com/forum/search.php" class="mainmenu"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_mini_search.gif" width="12" height="13" border="0" alt="Search" hspace="3">Search</a>&nbsp; &nbsp;<a href="http://www.autohotkey.com/forum/memberlist.php" class="mainmenu"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_mini_members.gif" width="12" height="13" border="0" alt="Memberlist" hspace="3">Memberlist</a>&nbsp;
+						</span></td>
+					</tr>
+					<tr>
+						<td height="25" align="center" valign="top" nowrap="nowrap"><span class="mainmenu">&nbsp;<a href="http://www.autohotkey.com/forum/profile.php?mode=editprofile" class="mainmenu"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_mini_profile.gif" width="12" height="13" border="0" alt="Profile" hspace="3">Profile</a>&nbsp; &nbsp;<a href="http://www.autohotkey.com/forum/privmsg.php?folder=inbox" class="mainmenu"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_mini_message.gif" width="12" height="13" border="0" alt="You have no new messages" hspace="3">You have no new messages</a>&nbsp; &nbsp;<a href="http://www.autohotkey.com/forum/login.php?logout=true&sid=74e95435fcbf07933ddf5e4f3deba2b0" class="mainmenu"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_mini_login.gif" width="12" height="13" border="0" alt="Log out [ Uberi ]" hspace="3">Log out [ Uberi ]</a>&nbsp;</span></td>
+					</tr>
+				</tbody></table></td>
+			</tr>
+		</tbody></table>
+
+		<br>
+
+<script type="text/javascript" src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/code.js" defer="defer"></script>
+
+<table width="100%" cellspacing="2" cellpadding="2" border="0">
+  <tbody><tr>
+	<td align="left" valign="bottom" colspan="2"><a class="maintitle" href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&start=0&postdays=0&postorder=asc&highlight=">[Func] HTTPRequest: for Web APIs [AHK-B + AHK-L+Unicode+x64]</a><br>
+	  <span class="gensmall"><b>Goto page <b>1</b>, <a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=15">2</a>, <a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=30">3</a> ... <a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=180">13</a>, <a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=195">14</a>, <a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=210">15</a>&nbsp;&nbsp;<a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=15">Next</a></b><br>
+	  &nbsp; </span></td>
+  </tr>
+</tbody></table>
+
+<table width="100%" cellspacing="2" cellpadding="2" border="0">
+  <tbody><tr>
+	<td align="left" valign="bottom" nowrap="nowrap"><span class="nav"><a href="http://www.autohotkey.com/forum/posting.php?mode=reply&t=73040"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/reply.gif" border="0" alt="Reply to topic" align="middle"></a></span></td>
+	<td align="left" valign="middle" width="100%"><span class="nav">&nbsp;&nbsp;&nbsp;<a href="http://www.autohotkey.com/forum/" class="nav">AutoHotkey Community Forum Index</a>
+	  -&gt; <a href="http://www.autohotkey.com/forum/viewforum.php?f=2" class="nav">Scripts &amp; Functions</a></span></td>
+  </tr>
+</tbody></table>
+
+<table class="forumline" width="100%" cellspacing="1" cellpadding="3" border="0">
+	<tbody><tr align="right">
+		<td class="catHead" colspan="2" height="28"><span class="nav"><a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&view=previous" class="nav">View previous topic</a> :: <a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&view=next" class="nav">View next topic</a> &nbsp;</span></td>
+	</tr>
+	
+	<tr>
+		<th class="thLeft" width="150" height="26" nowrap="nowrap">Author</th>
+		<th class="thRight" nowrap="nowrap">Message</th>
+	</tr>
+	<tr>
+		<td width="150" align="left" valign="top" class="row1"><span class="name"><a name="451739"></a><b>[VxE]</b></span><br><span class="postdetails"><br><br><br>Joined: 07 Oct 2006<br><a href="http://www.autohotkey.com/forum/author-%5BVxE%5D.html" class="postdetails">Posts: 3295</a><br>Location: Simi Valley, CA</span><br></td>
+		<td class="row1" width="100%" height="28" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tbody><tr>
+				<td width="100%"><a href="http://www.autohotkey.com/forum/viewtopic.php?p=451739#451739"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_minipost.gif" width="12" height="9" alt="Post" title="Post" border="0"></a><span class="postdetails">Posted: Tue Jun 14, 2011 1:19 am<span class="gen">&nbsp;</span>&nbsp; &nbsp;Post subject: [Func] HTTPRequest: for Web APIs [AHK-B + AHK-L+Unicode+x64]</span></td>
+				<td valign="top" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/posting.php?mode=quote&p=451739"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_quote.gif" alt="Reply with quote" title="Reply with quote" border="0"></a>   </td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="postbody">&nbsp; 
+<br>
+<span style="font-size: 16px; line-height: normal"><span style="font-weight: bold">HTTPRequest</span></span> - A function for submitting http(s) requests to the web and handling the responses.
+<br>
+  
+<br>
+<span style="font-size: 16px; line-height: normal"><span style="font-weight: bold">Version: 2.46</span></span> - Tested compatible with AHK v1.0.48.05 and AHK v1.1.00.00 (Unicode); Presumed compatible with later versions, ANSI, and x64.
+<br>
+
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="font-size: 20px; line-height: normal"><a href="http://dl.dropbox.com/u/13873642/HTTPRequest.ahk" target="_blank" class="postlink">Download HTTPRequest.ahk</a>&nbsp; &nbsp; &nbsp; or&nbsp; &nbsp; &nbsp; <a href="http://dl.dropbox.com/u/13873642/HTTPRequest.zip" target="_blank" class="postlink">Download HTTPRequest.zip</a></span>
+<br>
+
+<br>
+Overview: I wrote HTTPRequest specifically to service client-authenticated web APIs (like Amazon and eBay), which it does to my satisfaction. It can also upload data and download resources (e.g: HTML, images, etc...) from the internet, optionally saving them as a file on disk. The core of HTTPRequest is <a href="http://msdn.microsoft.com/en-us/library/aa385331%28v=vs.85%29.aspx" target="_blank" class="postlink">WinINet.dll</a>, which comes with Internet Explorer.
+<br>
+
+<br>
+<span style="font-size: 14px; line-height: normal"><span style="font-weight: bold">The Basics:</span></span> HTTPRequest has 4 parameters, the second and third are <a href="http://www.autohotkey.com/docs/Functions.htm#param" target="_blank" class="postlink">BYREF</a> and used for both input and output. HTTPRequest returns either the number of bytes downloaded OR the length of the text downloaded, depending on how it treats the downloaded data.</span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tbody><tr> 	  <td><span class="genmed"><b>Code:</b></span></td>	</tr>	<tr>	  <td class="code"><div><span style="color: #008000">; This is the order of HTTPRequest's parameters</span><br>BytesDownloaded := HTTPRequest( URL, In_POST__Out_Data, In_Out_HEADERS, Options )</div></td>	</tr></tbody></table><span class="postbody"><ul><li>1). <span style="font-size: 14px; line-height: normal">URL</span> (required) - The URL of the internet resource you wish to access.
+<br>
+
+<br>
+</li><li>2). <span style="font-size: 14px; line-height: normal">In_POST__Out_Data</span> (optional) - A <span style="font-weight: bold">variable</span>. Before the function is called, this variable should hold any data you wish to upload. If you don't wish to upload data, make this variable blank (empty). A simple way to do this is to assign an empty string to it. After the function completes successfully, this variable holds the response data.
+<br>
+<span style="font-weight: bold"><span style="color: #F00000">HTTPRequest does not convert uploaded text to utf-8 automatically. If you use unicode AHK, see the "charset" option below</span></span>.
+<br>
+
+<br>
+</li><li>3). <span style="font-size: 14px; line-height: normal">In_Out_HEADERS</span> (recommended) - A <span style="font-weight: bold">variable</span>. Prior to calling the function, put a (`n) newline delimited list of custom request headers into this variable (or make it blank, if you don't need to supply any extra headers). After the function completes, this variable holds the HTTP response headers <span style="font-weight: bold">and/or messages about any errors the function encountered</span>. Do not ignore this parameter, it often contains very useful debugging info.
+<br>
+
+<br>
+</li><li>4). <span style="font-size: 14px; line-height: normal">Options</span> (optional) - A newline delimited list of keywords that modify how HTTPRequest works.</li></ul>
+<br>
+
+<br>
+<span style="font-size: 14px; line-height: normal"><span style="font-weight: bold">Headers</span>:</span> are a collection of information about the client/server, the request/response, and about the data being transferred. Even if parameter 3 is empty, HTTPRequest still submits request headers. There are a few request headers you should take special note of:<ul><li><span style="font-size: 14px; line-height: normal">Content-Length<span style="color: #808080">: 12345</span></span> - HTTPRequest will add the "Content-Length" header to the request headers <span style="font-weight: bold">if</span> it detects data to upload. If HTTPRequest can't determine the content length automatically (e.g: you are uploading non-text data), you <span style="font-weight: bold">must</span> provide the "Content-Length" header <span style="font-weight: bold">with</span> the total number of <span style="font-weight: bold">bytes</span> you wish to upload. <span style="font-weight: bold">NOTE for UNICODE AHK</span>: if you are uploading text, the number of <span style="font-weight: bold">bytes</span> in <span style="font-weight: bold">text</span> is twice the length of the text.
+<br>
+
+<br>
+</li><li><span style="font-size: 14px; line-height: normal">Content-Type<span style="color: #808080">: application/x-www-form-urlencoded</span></span> - If the "Content-Length" is greater than zero, HTTPRequest will add the "Content-Type" header unless you already provided it. The default values for this header are "application/octet-stream" when uploading from a file and the file's extension is neither "txt" nor "xml"; "text/xml" when the string "&lt;?xml" appears near the beginning of the data; or "application/x-www-form-urlencoded" in all other cases.
+<br>
+
+<br>
+</li><li><span style="font-size: 14px; line-height: normal">Content-MD5<span style="color: #808080">:</span></span> - Some web APIs require this header because they need to verify the integrity of the uploaded data. HTTPRequest can fill in the value automatically if you leave it blank (i.e: "Content-MD5:"). Also, if this appears in the <span style="font-style: italic">response</span> headers, HTTPRequest will <span style="font-weight: bold">add</span> a "Computed-MD5" pseudo-header for your convenience.
+<br>
+
+<br>
+</li><li><span style="font-size: 14px; line-height: normal">User-Agent<span style="color: #808080">: MyScriptName/1.0 (Language=AutoHotkey/1.0.48.05; Platform=WIN_XP)</span></span> - HTTPRequest will add the "User-Agent" header to every request. By default, <span style="font-style: italic">your</span> script name, AHK version, and OS are used. If this is unacceptable to you, provide your own "User-Agent" header.</li></ul>
+<br>
+
+<br>
+<span style="font-size: 14px; line-height: normal"><span style="font-weight: bold">Options</span>:</span> modify how HTTPRequest behaves. Text in <span style="font-weight: bold"><span style="color: #808080">gray</span></span> is only a syntax example.<ul><li><span style="font-size: 14px; line-height: normal">AutoProxy</span> - This option tells HTTPRequest to use Internet Exlporer's proxy configuration. If your Internet Explorer is not configured to use a proxy, this option has no effect.
+<br>
+
+<br>
+</li><li><span style="font-size: 14px; line-height: normal">Binary</span> - Normally, after downloading text, HTTPRequest will try to convert its codepage to the script's codepage, which is essential if you're using unicode AHK. The "binary" option tells HTTPRequest NOT to do the conversion (i.e: HTTPRequest will treat the downloaded data as raw binary data).
+<br>
+
+<br>
+</li><li><span style="font-size: 14px; line-height: normal">Callback<span style="color: #808080">: MyFunctionName [, Third Parameter Value]</span></span> - Tells HTTPRequest to call "MyFunctionName" at regular intervals during the data transfer. "MyFunctionName" must NOT require more than 3 parameters. When HTTPRequest calls the function, the first parameter's value ranges from -1 to +1, where values less than 0 indicate an upload in progress and values greater than 0 indicate a download. The second parameter's value is the number of bytes anticipated in the transfer (i.e: the value of the "Content-Length" header). The third parameter's value is whatever you put as "Third Parameter Value". The callback function may return the word "CANCEL" to tell HTTPRequest to cancel the transaction.
+<br>
+
+<br>
+</li><li><span style="font-size: 14px; line-height: normal">Charset<span style="color: #808080">: utf-8</span></span> - Tells HTTPRequest to convert the text in "In_POST__Out_Data" from the script's codepage to the character set specified. HTTPRequest contains a lookup table with the supported charset names, which was copied from <a href="http://msdn.microsoft.com/en-us/library/dd317756%28v=vs.85%29.aspx" target="_blank" class="postlink">http://msdn.microsoft.com/en-us/library/dd317756%28v=vs.85%29.aspx</a>.
+<br>
+
+<br>
+</li><li><span style="font-size: 14px; line-height: normal">Codepage<span style="color: #808080">: 65001</span></span> - The more 'technical' counterpart to the "charset" option, where the number on the right indicates the desired codepage number.
+<br>
+
+<br>
+</li><li><span style="font-size: 14px; line-height: normal">+NO_COOKIES</span> - Tells WinINet to NOT automatically handle cookies (by default, WinINet uses Internet Explorer's cookie pool). This is required if you want your script to manage cookies with HTTPRequest. If your request headers contain any "Cookie" headers, this option is applied automatically.
+<br>
+
+<br>
+</li><li><span style="font-size: 14px; line-height: normal">+<span style="color: #808080">NO_AUTO_REDIRECT</span></span> - <a href="http://msdn.microsoft.com/en-us/library/aa383661%28v=vs.85%29.aspx" target="_blank" class="postlink">Internet flags</a> may be added or removed from a partiular request by putting a plus (+) or minus (-) sign in front of the flag's name, respectively (with or without the preceding "INTERNET_FLAG_"). Some flags are added automatically, depending on whether the connection uses SSL.
+<br>
+
+<br>
+</li><li><span style="font-size: 14px; line-height: normal">+<span style="color: #808080">IGNORE_UNKNOWN_CA</span></span> - <a href="http://msdn.microsoft.com/en-us/library/aa385328%28v=VS.85%29.aspx" target="_blank" class="postlink">Security flags</a> may be added or removed from a partiular request by putting a plus (+) or minus (-) sign in front of the flag's name, respectively (use the full name with "SECURITY_FLAG_" in front when the flag name would otherwise be ambiguous).
+<br>
+
+<br>
+</li><li><span style="font-size: 14px; line-height: normal">Method<span style="color: #808080">: POST</span></span> - Tells HTTPRequest to use the indicated verb for the request. Typically, HTTPRequest uses "POST" if it is uploading data or "GET" otherwise. Use this option for web API functions that require a different verb. Supported verbs are GET, HEAD, POST, PUT, DELETE, OPTIONS, TRACE.
+<br>
+
+<br>
+</li><li><span style="font-size: 14px; line-height: normal">Proxy<span style="color: #808080">: http<span style="font-weight: bold"></span>://www<span style="font-weight: bold"></span>.exampleproxy<span style="font-weight: bold"></span>.com:1234</span></span> - Tells HTTPRequest to use a proxy for the request
+<br>
+
+<br>
+</li><li><span style="font-size: 14px; line-height: normal">ProxyBypass<span style="color: #808080">: http<span style="font-weight: bold"></span>://www<span style="font-weight: bold"></span>.autohotkey<span style="font-weight: bold"></span>.com</span></span> - Tells HTTPRequest NOT to use a proxy to access [www<span style="font-weight: bold"></span>.autohotkey<span style="font-weight: bold"></span>.com]. This has no effect unless HTTPRequest has been told to use a proxy via the "proxy" option.
+<br>
+
+<br>
+</li><li><span style="font-size: 14px; line-height: normal">Resume<span style="color: #808080">: C:\My Partially Downloaded File.jpg</span></span> - Tells HTTPRequest to continue downloading the specified file. It is up to you to make sure that the URL points to the same resource as the one used to download the file in the first place. When the download succeeds, "In_POST__Out_Data" is made blank.
+<br>
+
+<br>
+</li><li><span style="font-size: 14px; line-height: normal">SaveAs<span style="color: #808080">: C:\Some File.htm</span></span> - Tells HTTPRequest to save the data downloaded to your hard disk. This option simulates <a href="http://www.autohotkey.com/docs/commands/UrlDownloadToFile.htm" target="_blank" class="postlink">UrlDownloadToFile</a>. When the download succeeds, "In_POST__Out_Data" is made blank. You may use <a href="http://www.autohotkey.com/docs/commands/FileRead.htm" target="_blank" class="postlink">FileRead</a> to read the data into memory later.
+<br>
+
+<br>
+</li><li><span style="font-size: 14px; line-height: normal">Upload<span style="color: #808080">: C:\My Awesome Pic.png</span></span> - Tells HTTPRequest to use "C:\My Awesome Pic.png" as the source of data to upload. Depending on the web service, this may not be the same as 'uploading' a file. The devil may be in the details, which is why I phrased this description the way I did. When using this option, I highly recommend supplying the appropriate "Content-Type" header.</li></ul>
+<br>
+
+<br>
+Finally, this is a work in progress and features may be added/removed. Old versions will not remain available and I don't keep a change log. If you have questions, comments, bug reports, or requests for features, post them in this thread.
+<br>
+
+<br>
+Special thanks to all the guineapi... er, contributors who helped spot bugs and suggested new features. Extra special thanks to <span style="font-weight: bold">derRaphael</span>, whose work on httpQuery inspired me to start this project.<br>_________________<br><a href="http://bit.ly/kcOJKx" target="_blank" class="postlink">Ternary (a ? b : c) guide</a> &nbsp; &nbsp; <a href="http://bit.ly/jhu4YD" target="_blank" class="postlink">TSV Table Manipulation Library</a>
+<br>
+<span style="font-weight: bold">Post code inside [code][/code] tags!</span></span><span class="gensmall"><br><br>Last edited by [VxE] on Tue Mar 06, 2012 10:42 pm; edited 18 times in total</span></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="row1" width="150" align="left" valign="middle"><span class="nav"><a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=0#top" class="nav">Back to top</a></span></td>
+		<td class="row1" width="100%" height="28" valign="bottom" nowrap="nowrap"><table cellspacing="0" cellpadding="0" border="0" height="18" width="18">
+			<tbody><tr>
+				<td valign="middle" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/profile.php?mode=viewprofile&u=3670"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_profile.gif" alt="View user&#39;s profile" title="View user&#39;s profile" border="0"></a> <a href="http://www.autohotkey.com/forum/privmsg.php?mode=post&u=3670"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_pm.gif" alt="Send private message" title="Send private message" border="0"></a>     <script language="JavaScript" type="text/javascript"><!--
+
+	if ( navigator.userAgent.toLowerCase().indexOf('mozilla') != -1 && navigator.userAgent.indexOf('5.') == -1 && navigator.userAgent.indexOf('6.') == -1 )
+		document.write(' ');
+	else
+		document.write('</td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div>');
+
+				//--></script></td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div><noscript></noscript></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="spaceRow" colspan="2" height="1"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	<tr>
+		<td width="150" align="left" valign="top" class="row2"><span class="name"><a name="451740"></a><b>[VxE]</b></span><br><span class="postdetails"><br><br><br>Joined: 07 Oct 2006<br><a href="http://www.autohotkey.com/forum/author-%5BVxE%5D.html" class="postdetails">Posts: 3295</a><br>Location: Simi Valley, CA</span><br></td>
+		<td class="row2" width="100%" height="28" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tbody><tr>
+				<td width="100%"><a href="http://www.autohotkey.com/forum/viewtopic.php?p=451740#451740"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_minipost.gif" width="12" height="9" alt="Post" title="Post" border="0"></a><span class="postdetails">Posted: Tue Jun 14, 2011 1:19 am<span class="gen">&nbsp;</span>&nbsp; &nbsp;Post subject: </span></td>
+				<td valign="top" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/posting.php?mode=quote&p=451740"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_quote.gif" alt="Reply with quote" title="Reply with quote" border="0"></a>   </td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="postbody"><span style="color: Blue"><span style="font-size: 18px; line-height: normal">Example: binary POST data. Upload Images to Imgur.com</span></span>
+<br>
+
+<br>
+This script requires HTTPRequest (7-1-2011) and your <a href="http://api.imgur.com/resources_anon" target="_blank" class="postlink">Imgur Anonymous API</a> key. Running this script will prompt you to select an image file, upload the file to Imgur.com, and return the URL of the image.
+<br>
+The response XML is saved to a file in the same folder as the chosen image, so you can delete the image if you wish.
+<br>
+</span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tbody><tr> 	  <td><span class="genmed"><b>Code (<a href="javascript:;" onclick="javascript:expand(this);">Expand</a>):</b></span></td>	</tr>	<tr>	  <td class="code"><div style="height: 200px; overflow-x: auto; overflow-y: auto; "><span style="color: #008000">; Select an image and upload it to Imgur.com via the anonymous API.</span><br>Anonymous_API_Key := "&lt; Your Imgur Anonymous API Key&gt;"<br>FileSelectFile, image_file, 2, ::{450d8fba-ad25-11d0-98a8-0800361b1103}<br>, Upload Image To Imgur, Image Files (*.jpg; *.jpeg; *.gif; *.png; *.bmp)<br>If !( ErrorLevel )<br>{<br>&nbsp; &nbsp;image_url := Imgur_Upload( image_file, Anonymous_API_Key, xml )<br>&nbsp; &nbsp;FileAppend, % XML_MakePretty( xml ), % info_file := RegexReplace( image_file, ".*\K\..*", "-Imgur Info.txt" )<br>&nbsp; &nbsp;If ( image_url )<br>&nbsp; &nbsp;&nbsp; &nbsp;MsgBox, 0, Upload Successful!, % ( Clipboard := image_url ) "`n`nHas been put on the clipboard."<br>&nbsp; &nbsp;Else<br>&nbsp; &nbsp;&nbsp; &nbsp;MsgBox, 0, Upload Failed!, Something went wrong. For details, please see %info_file%<br>}<br>Exitapp<br><br>Imgur_Upload( image_file, Anonymous_API_Key, byref output_XML="" ) { <span style="color: #008000">; -----------------------------</span><br><span style="color: #008000">; Uploads one image file to Imgur via the anonymous API and returns the URL to the image.</span><br><span style="color: #008000">; To acquire an anonymous API key, please register at http://imgur.com/register/api_anon.</span><br><span style="color: #008000">; This function was written by [VxE] and relies on the HTTPRequest function, also by [VxE].</span><br><span style="color: #008000">; HTTPRequest can be found at http://www.autohotkey.com/forum/viewtopic.php?t=73040</span><br>&nbsp; &nbsp;Static Imgur_Upload_Endpoint := "http://api.imgur.com/2/upload.xml"<br>&nbsp; &nbsp;FileGetSize, size, % image_file<br>&nbsp; &nbsp;FileRead, output_XML, % "*c " image_file<br>&nbsp; &nbsp;If HTTPRequest( Imgur_Upload_Endpoint "?key=" Anonymous_API_Key, output_XML<br>&nbsp; &nbsp;&nbsp; &nbsp;, Response_Headers := "Content-Type: application/octet-stream`nContent-Length: " size<br>&nbsp; &nbsp;&nbsp; &nbsp;, "Callback: CustomProgress" )<br>&nbsp; &nbsp;&amp;&amp; ( pos := InStr( output_XML, "&lt;original&gt;" ) )<br>&nbsp; &nbsp;&nbsp; &nbsp;Return SubStr( output_XML, pos + 10, Instr( output_XML, "&lt;/original&gt;", 0, pos ) - pos - 10 )<br>&nbsp; &nbsp;Else Return "" <span style="color: #008000">; error: see response</span><br>} <span style="color: #008000">; Imgur_Upload( image_path, Anonymous_API_Key, byref output_XML="" ) -----------------------------</span><br><br>CustomProgress( pct, total ) {<br>If ( pct = "" )<br>&nbsp; &nbsp;Tooltip<br>Else If ( pct &lt; 0 )<br>&nbsp; &nbsp;Tooltip, % "Uploading " Round( 100 * ( pct + 1 ), 1 ) "%. "<br>&nbsp; &nbsp;. Round( ( pct + 1 ) * total, 0 ) " of " total " bytes."<br>Else If ( 0 &lt;= pct )<br>&nbsp; &nbsp;Tooltip, % "Downloading " Round( 100 * pct, 1 ) "%. "<br>&nbsp; &nbsp;. Round( pct * total, 0 ) " of " total " bytes."<br>}<br><br>XML_MakePretty( XML, Tab="`t" ) { <span style="color: #008000">; ----------------------------------------------------------------</span><br><span style="color: #008000">; Function by [VxE]. Adds newlines and tabs between XML tags to give human-friendly arrangement to</span><br><span style="color: #008000">; an XML stream. 'Tab' contains the string to use as an indentation unit (it may be more readable to</span><br><span style="color: #008000">; use 2 or 3 spaces instead of a full tab... so it's up to you!).</span><br>&nbsp; &nbsp;oel := ErrorLevel, PrevCloseTag := 0, tabs := "", tablen := StrLen( tab )<br>&nbsp; &nbsp;StringLen, pos, XML<br>&nbsp; &nbsp;Loop, Parse, XML, &lt;, % "`t`r`n "<br>&nbsp; &nbsp;&nbsp; &nbsp;If ( A_Index = 1 )<br>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;VarSetCapacity( XML, pos, 0 )<br>&nbsp; &nbsp;&nbsp; &nbsp;Else<br>&nbsp; &nbsp;&nbsp; &nbsp;{<br>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;StringGetPos, pos, A_LoopField, &gt;<br>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;StringMid, b, A_LoopField, pos, 1<br>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;StringLeft, a, A_LoopField, 1<br>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;If !( OpenTag := a != "/" ) * ( CloseTag := a = "/" || a = "!" || a = "?" || b = "/" )<br>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;StringTrimRight, tabs, tabs, tablen<br>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;XML .= ( OpenTag || PrevCloseTag ? tabs : "" ) "&lt;" A_LoopField<br>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;If !( PrevCloseTag := CloseTag ) * OpenTag<br>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;tabs := ( tabs = "" ? "`n" : tabs ) tab<br>&nbsp; &nbsp;&nbsp; &nbsp;}<br>&nbsp; &nbsp;Return XML, ErrorLevel := oel<br>} <span style="color: #008000">; XML_MakePretty( XML, Tab="`t" ) ----------------------------------------------------------------</span></div></td>	</tr></tbody></table><span class="postbody">
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/yI8ly.png" border="0"><br>_________________<br><a href="http://bit.ly/kcOJKx" target="_blank" class="postlink">Ternary (a ? b : c) guide</a> &nbsp; &nbsp; <a href="http://bit.ly/jhu4YD" target="_blank" class="postlink">TSV Table Manipulation Library</a>
+<br>
+<span style="font-weight: bold">Post code inside [code][/code] tags!</span></span><span class="gensmall"><br><br>Last edited by [VxE] on Fri Jul 01, 2011 11:09 pm; edited 5 times in total</span></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="row2" width="150" align="left" valign="middle"><span class="nav"><a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=0#top" class="nav">Back to top</a></span></td>
+		<td class="row2" width="100%" height="28" valign="bottom" nowrap="nowrap"><table cellspacing="0" cellpadding="0" border="0" height="18" width="18">
+			<tbody><tr>
+				<td valign="middle" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/profile.php?mode=viewprofile&u=3670"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_profile.gif" alt="View user&#39;s profile" title="View user&#39;s profile" border="0"></a> <a href="http://www.autohotkey.com/forum/privmsg.php?mode=post&u=3670"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_pm.gif" alt="Send private message" title="Send private message" border="0"></a>     <script language="JavaScript" type="text/javascript"><!--
+
+	if ( navigator.userAgent.toLowerCase().indexOf('mozilla') != -1 && navigator.userAgent.indexOf('5.') == -1 && navigator.userAgent.indexOf('6.') == -1 )
+		document.write(' ');
+	else
+		document.write('</td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div>');
+
+				//--></script></td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div><noscript></noscript></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="spaceRow" colspan="2" height="1"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	<tr>
+		<td width="150" align="left" valign="top" class="row1"><span class="name"><a name="451743"></a><b>sumon</b></span><br><span class="postdetails"><br><br><br>Joined: 18 May 2010<br><a href="http://www.autohotkey.com/forum/author-sumon.html" class="postdetails">Posts: 1062</a><br>Location: Sweden</span><br></td>
+		<td class="row1" width="100%" height="28" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tbody><tr>
+				<td width="100%"><a href="http://www.autohotkey.com/forum/viewtopic.php?p=451743#451743"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_minipost.gif" width="12" height="9" alt="Post" title="Post" border="0"></a><span class="postdetails">Posted: Tue Jun 14, 2011 1:39 am<span class="gen">&nbsp;</span>&nbsp; &nbsp;Post subject: </span></td>
+				<td valign="top" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/posting.php?mode=quote&p=451743"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_quote.gif" alt="Reply with quote" title="Reply with quote" border="0"></a>   </td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="postbody">Let me be the first to be impressed. It seems well structured and functioning, and I can't wait to try it out. I also like your way of handling input -&gt; output, as for me I'll make it easy and name the variables "POST" in the case of a post. 
+<br>
+
+<br>
+I have two requests/questions:
+<br>
+
+<br>
+1) An example of transferring raw binary data, since that's something that I know <span style="font-style: italic">I</span> will find useful, and probably others too. For example for <a href="http://i.imgur.com/498Rq.jpg" target="_blank" class="postlink">[img]</a> <a href="http://api.imgur.com/resources_anon" target="_blank" class="postlink">imgur's API</a> (see "upload"), or later, to upload apps to <a href="http://www.appifyer.com/" target="_blank" class="postlink">Appifyer.com</a>.
+<br>
+
+<br>
+2) The main differences between this and <a href="http://www.autohotkey.com/forum/topic33506.html" target="_blank" class="postlink">httpQuery</a>. Their main functionality is the same, if I am not majorly mistaken?</span><span class="gensmall"></span></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="row1" width="150" align="left" valign="middle"><span class="nav"><a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=0#top" class="nav">Back to top</a></span></td>
+		<td class="row1" width="100%" height="28" valign="bottom" nowrap="nowrap"><table cellspacing="0" cellpadding="0" border="0" height="18" width="18">
+			<tbody><tr>
+				<td valign="middle" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/profile.php?mode=viewprofile&u=45140"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_profile.gif" alt="View user&#39;s profile" title="View user&#39;s profile" border="0"></a> <a href="http://www.autohotkey.com/forum/privmsg.php?mode=post&u=45140"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_pm.gif" alt="Send private message" title="Send private message" border="0"></a>  <a href="http://www.autohotkey.net/~sumon" target="_userwww"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_www.gif" alt="Visit poster&#39;s website" title="Visit poster&#39;s website" border="0"></a>   <script language="JavaScript" type="text/javascript"><!--
+
+	if ( navigator.userAgent.toLowerCase().indexOf('mozilla') != -1 && navigator.userAgent.indexOf('5.') == -1 && navigator.userAgent.indexOf('6.') == -1 )
+		document.write(' ');
+	else
+		document.write('</td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div>');
+
+				//--></script></td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div><noscript></noscript></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="spaceRow" colspan="2" height="1"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	<tr>
+		<td width="150" align="left" valign="top" class="row2"><span class="name"><a name="451748"></a><b>[VxE]</b></span><br><span class="postdetails"><br><br><br>Joined: 07 Oct 2006<br><a href="http://www.autohotkey.com/forum/author-%5BVxE%5D.html" class="postdetails">Posts: 3295</a><br>Location: Simi Valley, CA</span><br></td>
+		<td class="row2" width="100%" height="28" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tbody><tr>
+				<td width="100%"><a href="http://www.autohotkey.com/forum/viewtopic.php?p=451748#451748"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_minipost.gif" width="12" height="9" alt="Post" title="Post" border="0"></a><span class="postdetails">Posted: Tue Jun 14, 2011 2:53 am<span class="gen">&nbsp;</span>&nbsp; &nbsp;Post subject: </span></td>
+				<td valign="top" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/posting.php?mode=quote&p=451748"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_quote.gif" alt="Reply with quote" title="Reply with quote" border="0"></a>   </td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="postbody"></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tbody><tr> 	  <td><span class="genmed"><b>sumon wrote:</b></span></td>	</tr>	<tr>	  <td class="quote">2) The main differences between this and <span style="color: #336699">httpQuery</span>. Their main functionality is the same, if I am not majorly mistaken?</td>	</tr></tbody></table><span class="postbody">
+<br>
+Indeed, though my function dares to differ in several ways. I don't want to enumerate the points (out of respect for derRaphael), but I wrote HTTPRequest because httpQuery did not satisfy some of my requirements.
+<br>
+
+<br>
+
+<br>
+The Imgur anonymous API looks very useful (and it looks like a good demo for OAuth). I'll look into it in the next few weeks.<br>_________________<br><a href="http://bit.ly/kcOJKx" target="_blank" class="postlink">Ternary (a ? b : c) guide</a> &nbsp; &nbsp; <a href="http://bit.ly/jhu4YD" target="_blank" class="postlink">TSV Table Manipulation Library</a>
+<br>
+<span style="font-weight: bold">Post code inside [code][/code] tags!</span></span><span class="gensmall"></span></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="row2" width="150" align="left" valign="middle"><span class="nav"><a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=0#top" class="nav">Back to top</a></span></td>
+		<td class="row2" width="100%" height="28" valign="bottom" nowrap="nowrap"><table cellspacing="0" cellpadding="0" border="0" height="18" width="18">
+			<tbody><tr>
+				<td valign="middle" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/profile.php?mode=viewprofile&u=3670"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_profile.gif" alt="View user&#39;s profile" title="View user&#39;s profile" border="0"></a> <a href="http://www.autohotkey.com/forum/privmsg.php?mode=post&u=3670"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_pm.gif" alt="Send private message" title="Send private message" border="0"></a>     <script language="JavaScript" type="text/javascript"><!--
+
+	if ( navigator.userAgent.toLowerCase().indexOf('mozilla') != -1 && navigator.userAgent.indexOf('5.') == -1 && navigator.userAgent.indexOf('6.') == -1 )
+		document.write(' ');
+	else
+		document.write('</td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div>');
+
+				//--></script></td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div><noscript></noscript></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="spaceRow" colspan="2" height="1"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	<tr>
+		<td width="150" align="left" valign="top" class="row1"><span class="name"><a name="451759"></a><b>sumon</b></span><br><span class="postdetails"><br><br><br>Joined: 18 May 2010<br><a href="http://www.autohotkey.com/forum/author-sumon.html" class="postdetails">Posts: 1062</a><br>Location: Sweden</span><br></td>
+		<td class="row1" width="100%" height="28" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tbody><tr>
+				<td width="100%"><a href="http://www.autohotkey.com/forum/viewtopic.php?p=451759#451759"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_minipost.gif" width="12" height="9" alt="Post" title="Post" border="0"></a><span class="postdetails">Posted: Tue Jun 14, 2011 4:52 am<span class="gen">&nbsp;</span>&nbsp; &nbsp;Post subject: </span></td>
+				<td valign="top" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/posting.php?mode=quote&p=451759"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_quote.gif" alt="Reply with quote" title="Reply with quote" border="0"></a>   </td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="postbody"></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tbody><tr> 	  <td><span class="genmed"><b>[VxE] wrote:</b></span></td>	</tr>	<tr>	  <td class="quote"><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tbody><tr> 	  <td><span class="genmed"><b>sumon wrote:</b></span></td>	</tr>	<tr>	  <td class="quote">2) The main differences between this and <span style="color: #336699">httpQuery</span>. Their main functionality is the same, if I am not majorly mistaken?</td>	</tr></tbody></table><span class="postbody">
+<br>
+Indeed, though my function dares to differ in several ways. I don't want to enumerate the points (out of respect for derRaphael), but I wrote HTTPRequest because httpQuery did not satisfy some of my requirements.
+<br>
+
+<br>
+
+<br>
+The Imgur anonymous API looks very useful (and it looks like a good demo for OAuth). I'll look into it in the next few weeks.</span></td>	</tr></tbody></table><span class="postbody">
+<br>
+
+<br>
+Oh, indeed, but I was referring to the anonymous/open API (where you just need an API key and a binary image file - getting an API key is easy), in general a guide purely on how to post raw binary data, since it's (like you said) a bit more advanced. 
+<br>
+
+<br>
+On the topic of oAuth, I think you would be a hero if you managed to (using your slightly more "convenient" HTTPRequest function) provide an example for authenticating with oAuth, since that authentication is becoming more and more common. Read more about it, and Octal's start, <a href="http://www.autohotkey.com/forum/viewtopic.php?t=71738" target="_blank" class="postlink">here</a>.</span><span class="gensmall"></span></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="row1" width="150" align="left" valign="middle"><span class="nav"><a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=0#top" class="nav">Back to top</a></span></td>
+		<td class="row1" width="100%" height="28" valign="bottom" nowrap="nowrap"><table cellspacing="0" cellpadding="0" border="0" height="18" width="18">
+			<tbody><tr>
+				<td valign="middle" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/profile.php?mode=viewprofile&u=45140"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_profile.gif" alt="View user&#39;s profile" title="View user&#39;s profile" border="0"></a> <a href="http://www.autohotkey.com/forum/privmsg.php?mode=post&u=45140"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_pm.gif" alt="Send private message" title="Send private message" border="0"></a>  <a href="http://www.autohotkey.net/~sumon" target="_userwww"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_www.gif" alt="Visit poster&#39;s website" title="Visit poster&#39;s website" border="0"></a>   <script language="JavaScript" type="text/javascript"><!--
+
+	if ( navigator.userAgent.toLowerCase().indexOf('mozilla') != -1 && navigator.userAgent.indexOf('5.') == -1 && navigator.userAgent.indexOf('6.') == -1 )
+		document.write(' ');
+	else
+		document.write('</td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div>');
+
+				//--></script></td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div><noscript></noscript></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="spaceRow" colspan="2" height="1"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	<tr>
+		<td width="150" align="left" valign="top" class="row2"><span class="name"><a name="451834"></a><b>derRaphael</b></span><br><span class="postdetails"><br><br><br>Joined: 23 Nov 2007<br><a href="http://www.autohotkey.com/forum/author-derRaphael.html" class="postdetails">Posts: 841</a><br>Location: ~/.</span><br></td>
+		<td class="row2" width="100%" height="28" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tbody><tr>
+				<td width="100%"><a href="http://www.autohotkey.com/forum/viewtopic.php?p=451834#451834"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_minipost.gif" width="12" height="9" alt="Post" title="Post" border="0"></a><span class="postdetails">Posted: Tue Jun 14, 2011 1:48 pm<span class="gen">&nbsp;</span>&nbsp; &nbsp;Post subject: </span></td>
+				<td valign="top" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/posting.php?mode=quote&p=451834"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_quote.gif" alt="Reply with quote" title="Reply with quote" border="0"></a>   </td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="postbody">nice one <img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_wink.gif" alt="Wink" border="0">
+<br>
+
+<br>
+good to know that httpQuery has now a worthy successor.
+<br>
+
+<br>
+when talking of OAuth, it might be worth an idea to have build in cookie support (ideally with keeping session cookie data while following request relocations). some services (OAuth2, OpenSocial) have tendencies to move tokens and auhtorization information into cookie parts - so it will ease using these services (like facebook)
+<br>
+
+<br>
+<img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_cool.gif" alt="Cool" border="0">
+<br>
+dR<br>_________________<br><a href="http://nub.net.tc/" target="_blank" class="postlink"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/nubsig.png" border="0"></a>
+<br>
+<ul><span style="font-size: 9px; line-height: normal">All scripts, unless otherwise noted, are hereby released under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank" class="postlink">CC-BY</a></span></ul></span><span class="gensmall"></span></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="row2" width="150" align="left" valign="middle"><span class="nav"><a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=0#top" class="nav">Back to top</a></span></td>
+		<td class="row2" width="100%" height="28" valign="bottom" nowrap="nowrap"><table cellspacing="0" cellpadding="0" border="0" height="18" width="18">
+			<tbody><tr>
+				<td valign="middle" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/profile.php?mode=viewprofile&u=7122"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_profile.gif" alt="View user&#39;s profile" title="View user&#39;s profile" border="0"></a> <a href="http://www.autohotkey.com/forum/privmsg.php?mode=post&u=7122"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_pm.gif" alt="Send private message" title="Send private message" border="0"></a>     <script language="JavaScript" type="text/javascript"><!--
+
+	if ( navigator.userAgent.toLowerCase().indexOf('mozilla') != -1 && navigator.userAgent.indexOf('5.') == -1 && navigator.userAgent.indexOf('6.') == -1 )
+		document.write(' ');
+	else
+		document.write('</td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div>');
+
+				//--></script></td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div><noscript></noscript></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="spaceRow" colspan="2" height="1"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	<tr>
+		<td width="150" align="left" valign="top" class="row1"><span class="name"><a name="451960"></a><b>guest3456</b></span><br><span class="postdetails"><br><br><br>Joined: 10 Mar 2011<br><a href="http://www.autohotkey.com/forum/author-guest3456.html" class="postdetails">Posts: 309</a><br></span><br></td>
+		<td class="row1" width="100%" height="28" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tbody><tr>
+				<td width="100%"><a href="http://www.autohotkey.com/forum/viewtopic.php?p=451960#451960"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_minipost.gif" width="12" height="9" alt="Post" title="Post" border="0"></a><span class="postdetails">Posted: Tue Jun 14, 2011 11:40 pm<span class="gen">&nbsp;</span>&nbsp; &nbsp;Post subject: </span></td>
+				<td valign="top" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/posting.php?mode=quote&p=451960"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_quote.gif" alt="Reply with quote" title="Reply with quote" border="0"></a>   </td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="postbody">whats the difference between this (and httpquery) compared to InternetFileRead?
+<br>
+<a href="http://www.autohotkey.com/forum/viewtopic.php?t=45718" target="_blank">http://www.autohotkey.com/forum/viewtopic.php?t=45718</a></span><span class="gensmall"></span></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="row1" width="150" align="left" valign="middle"><span class="nav"><a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=0#top" class="nav">Back to top</a></span></td>
+		<td class="row1" width="100%" height="28" valign="bottom" nowrap="nowrap"><table cellspacing="0" cellpadding="0" border="0" height="18" width="18">
+			<tbody><tr>
+				<td valign="middle" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/profile.php?mode=viewprofile&u=49570"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_profile.gif" alt="View user&#39;s profile" title="View user&#39;s profile" border="0"></a> <a href="http://www.autohotkey.com/forum/privmsg.php?mode=post&u=49570"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_pm.gif" alt="Send private message" title="Send private message" border="0"></a>     <script language="JavaScript" type="text/javascript"><!--
+
+	if ( navigator.userAgent.toLowerCase().indexOf('mozilla') != -1 && navigator.userAgent.indexOf('5.') == -1 && navigator.userAgent.indexOf('6.') == -1 )
+		document.write(' ');
+	else
+		document.write('</td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div>');
+
+				//--></script></td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div><noscript></noscript></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="spaceRow" colspan="2" height="1"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	<tr>
+		<td width="150" align="left" valign="top" class="row2"><span class="name"><a name="451962"></a><b>tank</b></span><br><span class="postdetails"><br><br><br>Joined: 21 Dec 2007<br><a href="http://www.autohotkey.com/forum/author-tank.html" class="postdetails">Posts: 3702</a><br>Location: Louisville KY USA</span><br></td>
+		<td class="row2" width="100%" height="28" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tbody><tr>
+				<td width="100%"><a href="http://www.autohotkey.com/forum/viewtopic.php?p=451962#451962"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_minipost.gif" width="12" height="9" alt="Post" title="Post" border="0"></a><span class="postdetails">Posted: Tue Jun 14, 2011 11:55 pm<span class="gen">&nbsp;</span>&nbsp; &nbsp;Post subject: </span></td>
+				<td valign="top" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/posting.php?mode=quote&p=451962"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_quote.gif" alt="Reply with quote" title="Reply with quote" border="0"></a>   </td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="postbody">support for AHK_l and unicode for one<br>_________________<br><a href="http://sphotos.xx.fbcdn.net/hphotos-ash4/396593_10150512891750942_175868780941_9261025_722453771_n.jpg" target="_blank" class="postlink"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/shhhhh common sense.jpg" border="0"></a></span><span class="gensmall"></span></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="row2" width="150" align="left" valign="middle"><span class="nav"><a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=0#top" class="nav">Back to top</a></span></td>
+		<td class="row2" width="100%" height="28" valign="bottom" nowrap="nowrap"><table cellspacing="0" cellpadding="0" border="0" height="18" width="18">
+			<tbody><tr>
+				<td valign="middle" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/profile.php?mode=viewprofile&u=7397"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_profile.gif" alt="View user&#39;s profile" title="View user&#39;s profile" border="0"></a> <a href="http://www.autohotkey.com/forum/privmsg.php?mode=post&u=7397"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_pm.gif" alt="Send private message" title="Send private message" border="0"></a>     <script language="JavaScript" type="text/javascript"><!--
+
+	if ( navigator.userAgent.toLowerCase().indexOf('mozilla') != -1 && navigator.userAgent.indexOf('5.') == -1 && navigator.userAgent.indexOf('6.') == -1 )
+		document.write(' ');
+	else
+		document.write('</td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div>');
+
+				//--></script></td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div><noscript></noscript></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="spaceRow" colspan="2" height="1"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	<tr>
+		<td width="150" align="left" valign="top" class="row1"><span class="name"><a name="451999"></a><b>[VxE]</b></span><br><span class="postdetails"><br><br><br>Joined: 07 Oct 2006<br><a href="http://www.autohotkey.com/forum/author-%5BVxE%5D.html" class="postdetails">Posts: 3295</a><br>Location: Simi Valley, CA</span><br></td>
+		<td class="row1" width="100%" height="28" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tbody><tr>
+				<td width="100%"><a href="http://www.autohotkey.com/forum/viewtopic.php?p=451999#451999"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_minipost.gif" width="12" height="9" alt="Post" title="Post" border="0"></a><span class="postdetails">Posted: Wed Jun 15, 2011 5:54 am<span class="gen">&nbsp;</span>&nbsp; &nbsp;Post subject: </span></td>
+				<td valign="top" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/posting.php?mode=quote&p=451999"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_quote.gif" alt="Reply with quote" title="Reply with quote" border="0"></a>   </td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="postbody">@guest3456: I hadn't looked at InternetFileRead before, but from a cursory inspection, it seems that the main difference is in the function premises. InternetFileRead is meant to download files from the internet (with special attention to large files) whereas HTTPRequest is meant to handle requests to, and responses from, web APIs. I think httpQuery's premise is closest to 'mimic a browser's ability to submit POST data and retrieve results from those transactions'.
+<br>
+
+<br>
+I don't think it's constructive for me to enumerate which functions have the shiniest bells and whistles.... Every user should select the appropriate tool for their needs (or write their own).
+<br>
+
+<br>
+
+<br>
+@dR: Thank you for your blessing on this project, I truly appreciate it.
+<br>
+
+<br>
+Cookie support was part of some of the earlier iterations of this project. I didn't include it in this release because i hadn't thought of a graceful and intuitive way to integrate the feature.
+<br>
+
+<br>
+As it stands, cookies should appear in the response as 'Set-Cookie' headers, and the user can submit cookies using the 'Cookie' header (see <a href="http://tools.ietf.org/html/rfc2965" target="_blank" class="postlink">RFC 2965</a>). It's possible for the user to manage cookies if needed.
+<br>
+
+<br>
+I took a similar approach to redirects and response codes other than 2xx, leaving it up to the user to decide what to do based on the response headers.<br>_________________<br><a href="http://bit.ly/kcOJKx" target="_blank" class="postlink">Ternary (a ? b : c) guide</a> &nbsp; &nbsp; <a href="http://bit.ly/jhu4YD" target="_blank" class="postlink">TSV Table Manipulation Library</a>
+<br>
+<span style="font-weight: bold">Post code inside [code][/code] tags!</span></span><span class="gensmall"></span></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="row1" width="150" align="left" valign="middle"><span class="nav"><a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=0#top" class="nav">Back to top</a></span></td>
+		<td class="row1" width="100%" height="28" valign="bottom" nowrap="nowrap"><table cellspacing="0" cellpadding="0" border="0" height="18" width="18">
+			<tbody><tr>
+				<td valign="middle" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/profile.php?mode=viewprofile&u=3670"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_profile.gif" alt="View user&#39;s profile" title="View user&#39;s profile" border="0"></a> <a href="http://www.autohotkey.com/forum/privmsg.php?mode=post&u=3670"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_pm.gif" alt="Send private message" title="Send private message" border="0"></a>     <script language="JavaScript" type="text/javascript"><!--
+
+	if ( navigator.userAgent.toLowerCase().indexOf('mozilla') != -1 && navigator.userAgent.indexOf('5.') == -1 && navigator.userAgent.indexOf('6.') == -1 )
+		document.write(' ');
+	else
+		document.write('</td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div>');
+
+				//--></script></td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div><noscript></noscript></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="spaceRow" colspan="2" height="1"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	<tr>
+		<td width="150" align="left" valign="top" class="row2"><span class="name"><a name="453013"></a><b>SKAN</b></span><br><span class="postdetails"><br><br><br>Joined: 26 Dec 2005<br><a href="http://www.autohotkey.com/forum/author-SKAN.html" class="postdetails">Posts: 8713</a><br></span><br></td>
+		<td class="row2" width="100%" height="28" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tbody><tr>
+				<td width="100%"><a href="http://www.autohotkey.com/forum/viewtopic.php?p=453013#453013"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_minipost.gif" width="12" height="9" alt="Post" title="Post" border="0"></a><span class="postdetails">Posted: Sun Jun 19, 2011 1:07 am<span class="gen">&nbsp;</span>&nbsp; &nbsp;Post subject: </span></td>
+				<td valign="top" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/posting.php?mode=quote&p=453013"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_quote.gif" alt="Reply with quote" title="Reply with quote" border="0"></a>   </td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="postbody"></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tbody><tr> 	  <td><span class="genmed"><b>[VxE] wrote:</b></span></td>	</tr>	<tr>	  <td class="quote">The Imgur anonymous API looks very useful (and it looks like a good demo for OAuth). I'll look into it in the next few weeks.</td>	</tr></tbody></table><span class="postbody">
+<br>
+
+<br>
+It will be very helpful <span style="font-weight: bold">[VxE]</span>.
+<br>
+I currently use <a href="http://imguruploader.codeplex.com/releases/view/40965" target="_blank">http://imguruploader.codeplex.com/releases/view/40965</a> but it is <span style="font-weight: bold">.net</span> and requires installation.</span><span class="gensmall"></span></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="row2" width="150" align="left" valign="middle"><span class="nav"><a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=0#top" class="nav">Back to top</a></span></td>
+		<td class="row2" width="100%" height="28" valign="bottom" nowrap="nowrap"><table cellspacing="0" cellpadding="0" border="0" height="18" width="18">
+			<tbody><tr>
+				<td valign="middle" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/profile.php?mode=viewprofile&u=1820"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_profile.gif" alt="View user&#39;s profile" title="View user&#39;s profile" border="0"></a> <a href="http://www.autohotkey.com/forum/privmsg.php?mode=post&u=1820"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_pm.gif" alt="Send private message" title="Send private message" border="0"></a> <a href="http://www.autohotkey.com/forum/profile.php?mode=email&u=1820"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_email.gif" alt="Send e-mail" title="Send e-mail" border="0"></a>    <script language="JavaScript" type="text/javascript"><!--
+
+	if ( navigator.userAgent.toLowerCase().indexOf('mozilla') != -1 && navigator.userAgent.indexOf('5.') == -1 && navigator.userAgent.indexOf('6.') == -1 )
+		document.write(' ');
+	else
+		document.write('</td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div>');
+
+				//--></script></td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div><noscript></noscript></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="spaceRow" colspan="2" height="1"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	<tr>
+		<td width="150" align="left" valign="top" class="row1"><span class="name"><a name="453392"></a><b>Uberi</b></span><br><span class="postdetails"><br><br><br>Joined: 23 Aug 2010<br><a href="http://www.autohotkey.com/forum/author-Uberi.html" class="postdetails">Posts: 719</a><br>Location: Ontario, Canada</span><br></td>
+		<td class="row1" width="100%" height="28" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tbody><tr>
+				<td width="100%"><a href="http://www.autohotkey.com/forum/viewtopic.php?p=453392#453392"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_minipost.gif" width="12" height="9" alt="Post" title="Post" border="0"></a><span class="postdetails">Posted: Mon Jun 20, 2011 5:39 pm<span class="gen">&nbsp;</span>&nbsp; &nbsp;Post subject: </span></td>
+				<td valign="top" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/posting.php?mode=quote&p=453392"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_quote.gif" alt="Reply with quote" title="Reply with quote" border="0"></a> <a href="http://www.autohotkey.com/forum/posting.php?mode=editpost&p=453392"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_edit.gif" alt="Edit/Delete this post" title="Edit/Delete this post" border="0"></a>  </td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="postbody">Nice work! I'm glad that there's finally a valid alternative to <a href="http://www.autohotkey.com/forum/viewtopic.php?p=422164#422164" target="_blank" class="postlink">my HTTPQuery version</a>, as I don't have to maintain it any more <img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_biggrin.gif" alt="Very Happy" border="0">. Also, HTTPS support is awesome, couldn't get it to work with any other methods.<br>_________________<br><span style="font-size: 16px; line-height: normal"><a href="http://goo.gl/owP8M" target="_blank" class="postlink">AutoHotkey.net</a> | <a href="http://goo.gl/FQF8Z" target="_blank" class="postlink">GitHub</a></span>
+<br>
+
+<br>
+<span style="font-size: 14px; line-height: normal"><a href="http://goo.gl/jyR5x" target="_blank" class="postlink">Donate to social justice!</a></span>
+<br>
+
+<br>
+<span style="font-size: 10px; line-height: normal">My <a href="http://goo.gl/3DM26" target="_blank" class="postlink">default license</a>.</span></span><span class="gensmall"></span></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="row1" width="150" align="left" valign="middle"><span class="nav"><a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=0#top" class="nav">Back to top</a></span></td>
+		<td class="row1" width="100%" height="28" valign="bottom" nowrap="nowrap"><table cellspacing="0" cellpadding="0" border="0" height="18" width="18">
+			<tbody><tr>
+				<td valign="middle" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/profile.php?mode=viewprofile&u=46533"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_profile.gif" alt="View user&#39;s profile" title="View user&#39;s profile" border="0"></a> <a href="http://www.autohotkey.com/forum/privmsg.php?mode=post&u=46533"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_pm.gif" alt="Send private message" title="Send private message" border="0"></a> <a href="http://www.autohotkey.com/forum/profile.php?mode=email&u=46533"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_email.gif" alt="Send e-mail" title="Send e-mail" border="0"></a> <a href="http://github.com/Uberi" target="_userwww"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_www.gif" alt="Visit poster&#39;s website" title="Visit poster&#39;s website" border="0"></a>   <script language="JavaScript" type="text/javascript"><!--
+
+	if ( navigator.userAgent.toLowerCase().indexOf('mozilla') != -1 && navigator.userAgent.indexOf('5.') == -1 && navigator.userAgent.indexOf('6.') == -1 )
+		document.write(' ');
+	else
+		document.write('</td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div>');
+
+				//--></script></td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div><noscript></noscript></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="spaceRow" colspan="2" height="1"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	<tr>
+		<td width="150" align="left" valign="top" class="row2"><span class="name"><a name="455603"></a><b>[VxE]</b></span><br><span class="postdetails"><br><br><br>Joined: 07 Oct 2006<br><a href="http://www.autohotkey.com/forum/author-%5BVxE%5D.html" class="postdetails">Posts: 3295</a><br>Location: Simi Valley, CA</span><br></td>
+		<td class="row2" width="100%" height="28" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tbody><tr>
+				<td width="100%"><a href="http://www.autohotkey.com/forum/viewtopic.php?p=455603#455603"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_minipost.gif" width="12" height="9" alt="Post" title="Post" border="0"></a><span class="postdetails">Posted: Thu Jun 30, 2011 12:13 am<span class="gen">&nbsp;</span>&nbsp; &nbsp;Post subject: </span></td>
+				<td valign="top" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/posting.php?mode=quote&p=455603"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_quote.gif" alt="Reply with quote" title="Reply with quote" border="0"></a>   </td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="postbody">Thanks, SKAN and Uberi.
+<br>
+
+<br>
+<span style="color: red"><span style="font-size: 18px; line-height: normal">BUGFIX: 6-20-2011</span></span>. If you have an older version, please re-download from the link in the OP. The bug was in the call to HttpOpenRequest with the verb parameter for 'POST' operations. Also, there were typos in some of the auto-headers.
+<br>
+
+<br>
+I'll keep a running commentary on bugfixes as I find/fix them. The function date (version?) can be found on the first comment line within the function.
+<br>
+
+<br>
+[Edit: 6-29-2011] Well, it turns out that Imgur's API has two different modes and the anonymous API does not require OAuth. So, instead of demonstrating OAuth, I posted a demo of uploading binary data via POST (the demo script is just below the top post).
+<br>
+
+<br>
+<span style="color: red"><span style="font-size: 18px; line-height: normal">TWEAK: 6-29-2011</span></span>: I expanded the automatic recognition of text-based 'Content-Type' responses. This version is required for the Imgur upload example to work correctly. If you don't trust the auto text recognition, and you know your API responses will be some sort of text, then by all means use VarSetCapacity( output_var, -1 ) after calling HTTPRequest.<br>_________________<br><a href="http://bit.ly/kcOJKx" target="_blank" class="postlink">Ternary (a ? b : c) guide</a> &nbsp; &nbsp; <a href="http://bit.ly/jhu4YD" target="_blank" class="postlink">TSV Table Manipulation Library</a>
+<br>
+<span style="font-weight: bold">Post code inside [code][/code] tags!</span></span><span class="gensmall"></span></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="row2" width="150" align="left" valign="middle"><span class="nav"><a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=0#top" class="nav">Back to top</a></span></td>
+		<td class="row2" width="100%" height="28" valign="bottom" nowrap="nowrap"><table cellspacing="0" cellpadding="0" border="0" height="18" width="18">
+			<tbody><tr>
+				<td valign="middle" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/profile.php?mode=viewprofile&u=3670"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_profile.gif" alt="View user&#39;s profile" title="View user&#39;s profile" border="0"></a> <a href="http://www.autohotkey.com/forum/privmsg.php?mode=post&u=3670"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_pm.gif" alt="Send private message" title="Send private message" border="0"></a>     <script language="JavaScript" type="text/javascript"><!--
+
+	if ( navigator.userAgent.toLowerCase().indexOf('mozilla') != -1 && navigator.userAgent.indexOf('5.') == -1 && navigator.userAgent.indexOf('6.') == -1 )
+		document.write(' ');
+	else
+		document.write('</td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div>');
+
+				//--></script></td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div><noscript></noscript></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="spaceRow" colspan="2" height="1"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	<tr>
+		<td width="150" align="left" valign="top" class="row1"><span class="name"><a name="455655"></a><b>sumon</b></span><br><span class="postdetails"><br><br><br>Joined: 18 May 2010<br><a href="http://www.autohotkey.com/forum/author-sumon.html" class="postdetails">Posts: 1062</a><br>Location: Sweden</span><br></td>
+		<td class="row1" width="100%" height="28" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tbody><tr>
+				<td width="100%"><a href="http://www.autohotkey.com/forum/viewtopic.php?p=455655#455655"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_minipost.gif" width="12" height="9" alt="Post" title="Post" border="0"></a><span class="postdetails">Posted: Thu Jun 30, 2011 5:05 am<span class="gen">&nbsp;</span>&nbsp; &nbsp;Post subject: </span></td>
+				<td valign="top" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/posting.php?mode=quote&p=455655"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_quote.gif" alt="Reply with quote" title="Reply with quote" border="0"></a>   </td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="postbody">Yeah, imgur has two modes, but oAuth is something that in general is a widely used method, so that's why I requested that. imgur is just a decent example of oAuth.
+<br>
+
+<br>
+Anyway, thanks for sharing the imgur upload example. Basically you just supply the binary data as POST data I take it from the FileRead as I understand it. For some reason, I get this error message all the time:
+<br>
+
+<br>
+</span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tbody><tr> 	  <td><span class="genmed"><b>Quote:</b></span></td>	</tr>	<tr>	  <td class="quote">&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;error&gt;
+<br>
+	&lt;message&gt;Image format not supported, or image is corrupt.&lt;/message&gt;
+<br>
+	&lt;request&gt;/2/upload.xml&lt;/request&gt;
+<br>
+	&lt;method&gt;post&lt;/method&gt;
+<br>
+	&lt;format&gt;xml&lt;/format&gt;
+<br>
+	&lt;parameters&gt;&lt;/parameters&gt;
+<br>
+&lt;/error&gt;</td>	</tr></tbody></table><span class="postbody">
+<br>
+
+<br>
+AHK_L x32 Unicode, my API key is not the problem afaik.</span><span class="gensmall"></span></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="row1" width="150" align="left" valign="middle"><span class="nav"><a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=0#top" class="nav">Back to top</a></span></td>
+		<td class="row1" width="100%" height="28" valign="bottom" nowrap="nowrap"><table cellspacing="0" cellpadding="0" border="0" height="18" width="18">
+			<tbody><tr>
+				<td valign="middle" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/profile.php?mode=viewprofile&u=45140"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_profile.gif" alt="View user&#39;s profile" title="View user&#39;s profile" border="0"></a> <a href="http://www.autohotkey.com/forum/privmsg.php?mode=post&u=45140"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_pm.gif" alt="Send private message" title="Send private message" border="0"></a>  <a href="http://www.autohotkey.net/~sumon" target="_userwww"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_www.gif" alt="Visit poster&#39;s website" title="Visit poster&#39;s website" border="0"></a>   <script language="JavaScript" type="text/javascript"><!--
+
+	if ( navigator.userAgent.toLowerCase().indexOf('mozilla') != -1 && navigator.userAgent.indexOf('5.') == -1 && navigator.userAgent.indexOf('6.') == -1 )
+		document.write(' ');
+	else
+		document.write('</td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div>');
+
+				//--></script></td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div><noscript></noscript></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="spaceRow" colspan="2" height="1"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	<tr>
+		<td width="150" align="left" valign="top" class="row2"><span class="name"><a name="455752"></a><b>[VxE]</b></span><br><span class="postdetails"><br><br><br>Joined: 07 Oct 2006<br><a href="http://www.autohotkey.com/forum/author-%5BVxE%5D.html" class="postdetails">Posts: 3295</a><br>Location: Simi Valley, CA</span><br></td>
+		<td class="row2" width="100%" height="28" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tbody><tr>
+				<td width="100%"><a href="http://www.autohotkey.com/forum/viewtopic.php?p=455752#455752"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_minipost.gif" width="12" height="9" alt="Post" title="Post" border="0"></a><span class="postdetails">Posted: Thu Jun 30, 2011 12:44 pm<span class="gen">&nbsp;</span>&nbsp; &nbsp;Post subject: </span></td>
+				<td valign="top" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/posting.php?mode=quote&p=455752"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_quote.gif" alt="Reply with quote" title="Reply with quote" border="0"></a>   </td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="postbody"></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tbody><tr> 	  <td><span class="genmed"><b>sumon wrote:</b></span></td>	</tr>	<tr>	  <td class="quote">Yeah, imgur has two modes, but oAuth is something that in general is a widely used method, so that's why I requested that. imgur is just a decent example of oAuth.</td>	</tr></tbody></table><span class="postbody">
+<br>
+Lol, I'm still working on OAuth.. just the different Imgur modes had me a bit confused at first. It will take a little while longer though. (OAuth is for accessing an account through the Imgur API... but I had started coding for the anonymous mode...).
+<br>
+
+<br>
+Anyways, that error happens because I didn't test the Imgur example with AHK-L and forgot to add the '*c' option to <a href="http://www.autohotkey.com/docs/commands/FileRead.htm" target="_blank" class="postlink">FileRead</a>. I have edited the example (after testing it with AHK-L U 32b) and it should work now.<br>_________________<br><a href="http://bit.ly/kcOJKx" target="_blank" class="postlink">Ternary (a ? b : c) guide</a> &nbsp; &nbsp; <a href="http://bit.ly/jhu4YD" target="_blank" class="postlink">TSV Table Manipulation Library</a>
+<br>
+<span style="font-weight: bold">Post code inside [code][/code] tags!</span></span><span class="gensmall"></span></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="row2" width="150" align="left" valign="middle"><span class="nav"><a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=0#top" class="nav">Back to top</a></span></td>
+		<td class="row2" width="100%" height="28" valign="bottom" nowrap="nowrap"><table cellspacing="0" cellpadding="0" border="0" height="18" width="18">
+			<tbody><tr>
+				<td valign="middle" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/profile.php?mode=viewprofile&u=3670"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_profile.gif" alt="View user&#39;s profile" title="View user&#39;s profile" border="0"></a> <a href="http://www.autohotkey.com/forum/privmsg.php?mode=post&u=3670"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_pm.gif" alt="Send private message" title="Send private message" border="0"></a>     <script language="JavaScript" type="text/javascript"><!--
+
+	if ( navigator.userAgent.toLowerCase().indexOf('mozilla') != -1 && navigator.userAgent.indexOf('5.') == -1 && navigator.userAgent.indexOf('6.') == -1 )
+		document.write(' ');
+	else
+		document.write('</td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div>');
+
+				//--></script></td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div><noscript></noscript></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="spaceRow" colspan="2" height="1"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	<tr>
+		<td width="150" align="left" valign="top" class="row1"><span class="name"><a name="455754"></a><b>sumon</b></span><br><span class="postdetails"><br><br><br>Joined: 18 May 2010<br><a href="http://www.autohotkey.com/forum/author-sumon.html" class="postdetails">Posts: 1062</a><br>Location: Sweden</span><br></td>
+		<td class="row1" width="100%" height="28" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tbody><tr>
+				<td width="100%"><a href="http://www.autohotkey.com/forum/viewtopic.php?p=455754#455754"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_minipost.gif" width="12" height="9" alt="Post" title="Post" border="0"></a><span class="postdetails">Posted: Thu Jun 30, 2011 12:50 pm<span class="gen">&nbsp;</span>&nbsp; &nbsp;Post subject: </span></td>
+				<td valign="top" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/posting.php?mode=quote&p=455754"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_quote.gif" alt="Reply with quote" title="Reply with quote" border="0"></a>   </td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="postbody">Oh you are, nice to hear. Want contact with another who is? Contact octalmage. Sorry about the confusion!
+<br>
+
+<br>
+Also, thanks alot for the bug fix, will be great. Gonna improve Zizorz alot soon...</span><span class="gensmall"></span></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="row1" width="150" align="left" valign="middle"><span class="nav"><a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=0#top" class="nav">Back to top</a></span></td>
+		<td class="row1" width="100%" height="28" valign="bottom" nowrap="nowrap"><table cellspacing="0" cellpadding="0" border="0" height="18" width="18">
+			<tbody><tr>
+				<td valign="middle" nowrap="nowrap"><a href="http://www.autohotkey.com/forum/profile.php?mode=viewprofile&u=45140"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_profile.gif" alt="View user&#39;s profile" title="View user&#39;s profile" border="0"></a> <a href="http://www.autohotkey.com/forum/privmsg.php?mode=post&u=45140"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_pm.gif" alt="Send private message" title="Send private message" border="0"></a>  <a href="http://www.autohotkey.net/~sumon" target="_userwww"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/icon_www.gif" alt="Visit poster&#39;s website" title="Visit poster&#39;s website" border="0"></a>   <script language="JavaScript" type="text/javascript"><!--
+
+	if ( navigator.userAgent.toLowerCase().indexOf('mozilla') != -1 && navigator.userAgent.indexOf('5.') == -1 && navigator.userAgent.indexOf('6.') == -1 )
+		document.write(' ');
+	else
+		document.write('</td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div>');
+
+				//--></script></td><td>&nbsp;</td><td valign="top" nowrap="nowrap"><div style="position:relative"><div style="position:absolute"></div><div style="position:absolute;left:3px;top:-1px"></div></div><noscript></noscript></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	<tr>
+		<td class="spaceRow" colspan="2" height="1"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	<tr align="center">
+		<td class="catBottom" colspan="2" height="28"><table cellspacing="0" cellpadding="0" border="0">
+			<tbody><tr><form method="post" action="http://www.autohotkey.com/forum/viewtopic.php?t=73040&start=0"></form>
+				<td align="center"><span class="gensmall">Display posts from previous: <select name="postdays"><option value="0" selected="selected">All Posts</option><option value="1">1 Day</option><option value="7">7 Days</option><option value="14">2 Weeks</option><option value="30">1 Month</option><option value="90">3 Months</option><option value="180">6 Months</option><option value="364">1 Year</option></select>&nbsp;<select name="postorder"><option value="asc" selected="selected">Oldest First</option><option value="desc">Newest First</option></select>&nbsp;<input type="submit" value="Go" class="liteoption" name="submit"></span></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+</tbody></table>
+
+<table width="100%" cellspacing="2" cellpadding="2" border="0" align="center">
+  <tbody><tr>
+	<td align="left" valign="middle" nowrap="nowrap"><span class="nav"><a href="http://www.autohotkey.com/forum/posting.php?mode=reply&t=73040"><img src="./[Func] HTTPRequest  for Web APIs [AHK-B + AHK-L+Unicode+x64]_files/reply.gif" border="0" alt="Reply to topic" align="middle"></a></span></td>
+	<td align="left" valign="middle" width="100%"><span class="nav">&nbsp;&nbsp;&nbsp;<a href="http://www.autohotkey.com/forum/" class="nav">AutoHotkey Community Forum Index</a>
+	  -&gt; <a href="http://www.autohotkey.com/forum/viewforum.php?f=2" class="nav">Scripts &amp; Functions</a></span></td>
+	<td align="right" valign="top" nowrap="nowrap"><span class="gensmall">All times are GMT - 5 Hours</span><br><span class="nav">Goto page <b>1</b>, <a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=15">2</a>, <a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=30">3</a> ... <a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=180">13</a>, <a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=195">14</a>, <a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=210">15</a>&nbsp;&nbsp;<a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&postdays=0&postorder=asc&start=15">Next</a></span>
+	  </td>
+  </tr>
+  <tr>
+	<td align="left" colspan="3"><span class="nav">Page <b>1</b> of <b>15</b></span></td>
+  </tr>
+</tbody></table>
+
+<table width="100%" cellspacing="2" border="0" align="center">
+  <tbody><tr>
+	<td width="40%" valign="top" nowrap="nowrap" align="left"><span class="gensmall"><a href="http://www.autohotkey.com/forum/viewtopic.php?t=73040&unwatch=topic&start=0&sid=74e95435fcbf07933ddf5e4f3deba2b0">Stop watching this topic</a></span><br>
+	  &nbsp;<br>
+	  </td>
+	<td align="right" valign="top" nowrap="nowrap">
+<form method="get" name="jumpbox" action="http://www.autohotkey.com/forum/viewforum.php" onsubmit="if(document.jumpbox.f.value == -1){return false;}"><table cellspacing="0" cellpadding="0" border="0">
+	<tbody><tr>
+		<td nowrap="nowrap"><span class="gensmall">Jump to:&nbsp;<select name="f" onchange="if(this.options[this.selectedIndex].value != -1){ forms[&#39;jumpbox&#39;].submit() }"><option value="-1">Select a forum</option><option value="-1">&nbsp;</option><option value="-1">AutoHotkey</option><option value="-1">----------------</option><option value="1">Ask for Help</option><option value="2" selected="selected">Scripts &amp; Functions</option><option value="3">Bug Reports</option><option value="4">Wish List</option><option value="8">Developers</option><option value="6">Announcements</option><option value="-1">&nbsp;</option><option value="-1">General</option><option value="-1">----------------</option><option value="7">Utilities &amp; Resources</option><option value="5">General Chat</option></select><input type="hidden" name="sid" value="74e95435fcbf07933ddf5e4f3deba2b0">&nbsp;<input type="submit" value="Go" class="liteoption"></span></td>
+	</tr>
+</tbody></table></form>
+
+<span class="gensmall"></span></td>
+  </tr>
+</tbody></table>
+
+
+<div align="center"><span class="copyright"><br><br>
+Powered by <a href="http://www.phpbb.com/" target="_phpbb" class="copyright">phpBB</a> © 2001, 2005 phpBB Group<br></span></div>
+		</td>
+	</tr>
+</tbody></table>
+
+
+
+
+</body><link rel="stylesheet" type="text/css" href="data:text/css,"></html>

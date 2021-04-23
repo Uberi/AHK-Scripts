@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Autohotkey Script Obfuscator is Free and Open Source</title>
+<meta name="Description" content="Obfuscate Your Autohotkey scripts with this free and open source application written in Autohotkey. Output example: k%k#k#fkfkffk#f%@f@%#fkkff@kffkfkf%#f()">
+<link rel="stylesheet" href="mycss/standtemp.css" type="text/css">
+
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+<table>
+<tr>
+<td class="logotd"><a href="index.htm"><img src="graphics/dynamicobfuscator.gif" border="0" width="547" height="130" alt="Dynamic Obfuscator for Autohotkey Scripts"></a></td>
+<td class="headerspacer">&nbsp;</td>
+<td class="authorinfo">
+Obfuscator for Autohotkey Scripts - Written in Autohotkey
+<br>Released under Open Source GPL License
+<br>Author: <a href="http://davidmalia.com">David Malia</a>, Augusta ME, USA
+<br><a href="http://dynamicobfuscator.org">http://dynamicobfuscator.org</a>
+</td>
+</tr>
+</table>
+
+<div id="wrapcols">
+
+<div id="mainconts">
+
+<div class="toplinks">
+<a href="index.htm" class="selnav">General Program Features</a>
+&nbsp; &nbsp;<a href="documentation.htm">User Manual</a>
+&nbsp; &nbsp;<a href="downloadobfuscator.htm">Download</a>
+</div>
+
+<h1>Autohotkey Script Obfuscator is Free and Open Source</h1>
+<div>
+Use this free open source program written in Autohotkey to obfuscate your Autohotkey scripts. <a href="downloadobfuscator.htm">Download</a> includes all script files for the program. Check out this example of an <a href="autohotkeyscript.htm">Autohotkey program that is obfuscated with this program</a>.
+<br>&nbsp;
+</div>
+<div class="indexwrap">
+
+<a href="#whatis">What Is Dynamic Object Name Obfuscation</a>
+<a href="#noisyobf">This Program Creates Noisy Overinformation Obfuscation Instead of Clean Room Obfuscation</a>
+<a href="#reducedset">Object Names Are Made Out Of A Reduced Character Set To Increase Noise</a>
+<a href="#multipleobf">An Entire Pallette of Dynamic Object Name Obfuscations for Each Object</a>
+<a href="#breakcode">Dynamic Obfuscation Makes Your Sensitive Code Sections Automatically Breakable</a>
+<a href="#hardtofind">Dynamic Security Fragments Make Autohotkey Variables, Functions, and Labels All Hard To Find!</a>
+<a href="#explainmultiple">Attempt at Explaining Multiple Dynamic Obfuscations in a Simple Way</a>
+<a href="#rewirefunc">Rewire Function Calls to Go to Other Functions for Security</a>
+<a href="#initfrags">How to Initialize Your Obfuscated Object Name Fragments</a>
+<a href="#straightobf">Straight Obfuscation vs Dynamic Obfuscation for Autohotkey Scripts</a>
+<a href="#doesntdo">What This Program Doesn't Do</a>
+<a href="#hidestr">Hide Sensitive Strings With hidestr()</a>
+<a href="#scramble">Scramble the Order of Functions and Label Sections</a>
+<a href="#fast">This Autohotkey Obfuscator is Blazing Fast!</a>
+</div>
+
+<h2><a name="whatis"></a>What Is Dynamic Object Name Obfuscation</h2>
+<div>
+I use this term to refer to an obfuscated object name that is dynamically constructed out of object name fragments at run time and these fragments are themselves obfuscated. This utilizes the dynamic variable name creation feature of autohotkey and the obfuscator can start out with a function call that looks this: 'catnap()' and translate it into looking something like this:
+<br>&nbsp;<br>k%k#k#fkfkffffk#f@f@%ff%k#ffffkfk#fkkff@kfffkfkf%#f%fkf@kfkfffkff@%k%f@kfk#fffffffkk#fkk#kffk%kfffff()
+
+<br>&nbsp;<br>That is actual code lifted from my program <a href="http://speedy-orange-pc-shortcuts.com">Speedy Orange PC Shortcuts</a>! Download and load in Resource Hacker to see all the obfuscated code! But how does that work? The value of each variable name between each pair of %'s above will be looked up at run time and inserted into the function name it is building. All the dynamic references will finally all be resolved and a function name without %'s will be produced and then that function will be called.
+</div>
+
+<h2><a name="noisyobf"></a>This Program Creates Noisy Overinformation Obfuscation Instead of Clean Room Obfuscation</h2>
+<div>
+Instead of the 'clean room' object name approach taken by other obfuscators, this obfuscator creates object name overinformation and strives to make that overinformation all noise. This obfuscator automatically employs the dynamic variable name creation features of autohotkey to create dynamic object name obfuscation of functions and all other objects that will end up looking like this:
+
+<br>&nbsp;<br>k%k#k#fkfkffffk#f@f@%ff%k#ffffkfk#fkkff@kfffkfkf%#f%fkf@kfkfffkff@%k%f@kfk#fffffffkk#fkk#kffk%kfffff()
+</div>
+
+<h2><a name="reducedset"></a>Object Names Are Made Out of a Reduced Character Set to Increase Noise</h2>
+<div>The program is currently set to create obfuscated variable, function, and label names out of just 4 characters, 'fk#@'. I reasoned that if I could reduce the character pallette that obfuscated strings are made out of, then they begin to look like nothing but 'noise'. The reason I used the 4 characters I did is that I did tests to determine which ones are the hardest to look at in obfuscated code, and I came up with those. I believe the reason I ended up with the f and the k is that they create more visual interference than other letters because they have more points. For instance, the f has a point at the very top of the letter, 2 more points on the cross, and 2 on the bottom, for a total of 5 points.<br>
+
+&nbsp;<br>Only a very small section of the code of this program controls the creation of all obfuscation object names so just change that code section if you want names made out of a different character set.
+</div>
+
+<h2><a name="multipleobf"></a>An Entire Pallette of Dynamic Object Name Obfuscations for Each Object</h2>
+<div>This program has the ability to create more than one dynamic obfuscation string for the same object. Say for instance you have a function in your program called 'dogbark()', that is called at 20 different places in your source code. After obfuscation, those 20 different calls can look completely different because you can have an entire random obfuscation pallette for each object and security fragments are added randomly to the object encoding as well. The upshot of this is that it would be very difficult for someone to find just one place where the function 'dogbark()' is called, let alone all 20.
+
+<br>
+&nbsp;
+<br>You can have up to 2 columns and unlimited rows of dynamic obfuscation per object. 1 column means that a new obfuscated variable name will be created and set equal to the whole 'straight' obfuscated name. 2 columns means that the 'straight' obfuscated name will be randomly broken into 2 parts and each part will be set as the value of 2 newly created obfuscated names. If you have multiple rows than this process is repeated for each row. This gives you a dynamic obfuscation pallette for each object name. Each time an object is called in the source code, a random row from the obfuscation pallette is chosen to encode the call to the object and the call to the object will look totally different from the last time it was called. You can have a statement below that will end up with the 3 uses of var1 looking completely different when obfuscated!
+<br>var1:=var1 + var1
+
+<br>&nbsp;<br>In order to control the number of rows and columns of obfuscation that your objects names have, just use the <a href="changedefaults.htm">CHANGE_DEFAULTS series of obfuscator command comments</a>. You can change the defaults for all object types including functions, labels, parameters, and individual variable types. Once you change the defaults, any new objects of that type that are found will be obfuscated with those new defaults until a new CHANGE_DEFAULTS(or RESTORE_DEFAULTS) command is found by the obfuscator. This allows you to easily surround sections of sensitive code with high obfuscation encoding parameters.<br>
+
+&nbsp;<br>;$OBFUSCATOR: $FUNCS_CHANGE_DEFAULTS: &lt;minsize&gt;, &lt;maxsize&gt;, &lt;makefragsets&gt;, &lt;fragsperset&gt;, &lt;fragvarsizemin&gt;, &lt;fragvarsizemax&gt;
+</div>
+
+<h2><a name="breakcode"></a>Dynamic Obfuscation Makes Your Sensitive Code Sections Breakable</h2>
+<div>
+Dynamically obfuscated object calls can also contain 'security fragments' that you can use to automatically break large areas of your most sensitive code. Just use these <a href="addtoclass.htm">2 obfuscator command comments before the functions and label sections</a> you want to protect. 
+
+<br>&nbsp;<br>;$OBFUSCATOR: $CREATEOBJCLASS: &lt;classname&gt;
+<br>;$OBFUSCATOR: $ADDFOLLOWING_TOCLASS: &lt;classname&gt;
+
+<br>&nbsp;<br>To end adding functions and label sections to your 'secure' class, just use the second command with no classname parameter:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $ADDFOLLOWING_TOCLASS:
+
+<br>&nbsp;<br>You can use the two obfuscator command comments below to correctly initialize the object security fragments or to POISEN those fragments. 
+
+<br>&nbsp;<br>;$OBFUSCATOR: $DUMP_SECFRAGS_FORCLASSES: &lt;classname&gt;
+<br>;$OBFUSCATOR: $DUMPPOISENED_SECFRAGS_FORCLASSES: &lt;classname&gt;
+</div>
+
+<h2><a name="hardtofind"></a>Security Fragments Make Everthing Hard To Find!</h2>
+<div>
+These security fragments also break up the 'profile' of objects making it extremely difficult to search for and find all the places they are used in your autohotkey script. The hacker will have great trouble finding all the places a function is called in a script, or even all the usages of a parameter within the same function it is used in. In the following statement, the 5 usages of param1 in the function can come out all looking completely different:
+
+<br>&nbsp;<br>myfunc(param1)
+<br>{
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global
+<br>&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;param1:=param1 + param1
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return param1
+<br>}
+  
+<br>&nbsp;<br>This methodology extends the general obfuscation idea of making strings in the program hard to find to making everything in the program hard to find!
+</div>
+
+<h2><a name="explainmultiple"></a>Attempt at Explaining Multiple Dynamic Obfuscations in a Simple Way</h2>
+<div> 
+The code below will be used to simulate how my obfuscator implements multiple dynamic obfuscation. Lets assume for this exercise that the original function was named 'dogrun' and 'catnap' is already the obfuscated name.
+
+<br>&nbsp;<br>catnap()
+<br>{
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return
+<br>}
+<br>null_1=
+<br>null_2=
+<br>a=c%null_1%at
+<br>b=na%null_2%p
+<br>c:=a
+<br>d:=b
+<br>;all 4 statements below call catnap()!
+<br>%a%%b%() 
+<br>%a%n%null_2%ap() 
+<br>%null_1%ca%null_2%t%b%%null_1%() 
+<br>%c%%d%() 
+
+<br>&nbsp;<br>The first thing to understand about the code above is that the function definition cannot have %'s in it so none are there(autohotkey rule). But the thing is that if I search the program for the string 'catnap' I will only find the function definition and the comment (which would be stripped out on compiling). None of the 4 places where the function is called can be found by searching for 'catnap'! Not only that but I have also broken up the 'profile' of the assignment statements for a and b so that you can't even find those by searching for a substring of the function name like 'cat'. I mix null variable fragments and replacement fragments in with the actual variable fragments so that you can't tell the difference between them and you would be forced to resolve everything by hand. Slowing the hacker down like wading knee deep in molasses.  
+
+
+<br>&nbsp;<br>Because of the way this system works, it can be nearly impossible to find the place in the code where functions or label sections are actually called. A function might be called 20 times in the source code but all the calls look different and none of them look like the original function definition. Any attempt to search for where the function is actually called will result in 'false' matches where it matches a subpart of something else.
+
+<br>&nbsp;<br>More random things are done to the encoding of object calls including the insertion of security replacement fragments and security null fragments which help to break up the 'profile' of object names making things hard to find in the source code. These security fragments can also be used to break whole sections of your most sensitive code until muster is passed.
+</div>
+
+<h2><a name="rewirefunc"></a>Rewire Function Paths For Security</h2>
+<div>
+You can <a href="dumpcommands.htm#dumprewirefunc">'rewire' function calls to go to a different decoy function</a> until your security is passed. It's as easy as using these 2 obfuscator command comments:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $DUMP_REWIREFUNCPATH: &lt;funcname&gt;, &lt;DECOY_funcname&gt;
+<br>;$OBFUSCATOR: $DUMP_REWIRE_STRAIGHT: &lt;funcname&gt;
+</div>
+
+<h2><a name="initfrags"></a>Initializing Obfuscated Object Name Fragments</h2>
+<div>
+In order to initialize object name fragments, you use the <a href="dumpcommands.htm">DUMP series of obfuscator command comments</a>. These commands will 'dump' the assignment statements that will wire up the dynamic obfuscation. You can dump by object types and class names(for functions and label sections). The dumps themselves are secured through code scrambling and variable name security fragments. Obfuscator command comments are available to dump good security fragments or poisened security fragments at any point in the code you want. 
+
+<br>&nbsp;<br>All these complicated things are done for you and you just add simple obfuscator command comments to your source code:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $GLOBVARFRAGS_DUMPALL:
+<br>;$OBFUSCATOR: $DUMP_SECFRAGS_FORCLASSES: (list of classes)
+<br>;$OBFUSCATOR: $DUMPPOISENED_SECFRAGS_FORCLASSES: (list of classes)
+<br>;$OBFUSCATOR: $DUMP_TMESSFRAGS_FORCLASSES: (list of classes)
+<br>;$OBFUSCATOR: $DUMPFRAGS_FORCLASSES: (list of classes)
+
+</div>
+
+<h2><a name="straightobf"></a>Straight Obfuscation vs Dynamic Obfuscation for Autohotkey Scripts</h2>
+<div>
+Straight Obfuscation means that obfuscated calls to variables or functions will not have %'s in them. They will not use the dynamic variable name creation feature of autohotkey to create the object names out of variables fragments on the fly. <a href="obfuscationtypes.htm">You can do 'straight' obfuscation or 'dynamic' obfuscation with this program</a>. Dynamic obfuscation is much more secure code, and in fact the best features of this obfuscator like 'breakable' code sections, rely on dynamic obfuscation being used.
+
+<br>&nbsp;<br>So why would you use straight obfuscation? To implement full dynamic obfuscation you will have to reverse what is probably your normal way of doing business, you will have to make all your functions assume GLOBAL instead of assume LOCAL. You can still have LOCAL or STATIC variables, but the function has to be assume GLOBAL. Because this will take more conversion work by you, you probably will want to start out obfuscating your program by doing straight obfuscation only at first. Once you have gotten the obfuscation working good that way, start experimenting with dynamic obfuscation. To set the program to use straight obfuscation only, just put these command comments at the beginning of your source code:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $FUNCS_CHANGE_DEFAULTS:  , , -1
+<br>;$OBFUSCATOR: $PARAMS_CHANGE_DEFAULTS:  , , -1
+<br>;$OBFUSCATOR: $LABELS_CHANGE_DEFAULTS:  , , -1
+<br>;$OBFUSCATOR: $GLOBVARS_CHANGE_DEFAULTS:  , , -1
+<br>;$OBFUSCATOR: $LOSVARS_CHANGE_DEFAULTS:  , , -1
+</div>
+
+<h2><a name="doesntdo"></a>What This Program Doesn't Do</h2>
+<div>
+This program does not automatically parse out and prepare obfuscations for global variables or static or local variables. It does parse out functions, parameters, and labels, but no variables. You must add obfuscator command comments to your source code so that variables will be obfuscated. You can list as many variables as you want in each command comment. The 2 command comments you will use are:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $DEFGLOBVARS: (list of global variables separated by commas)
+<br>;$OBFUSCATOR: $DEFLOSVARS: (list of local or static variables separated by commas)
+<br>&nbsp;<br>I did it this way to save time building this program, I believe doing it this way saved me a year!
+</div>
+
+<h2><a name="hidestr"></a>Hide Sensitive Strings With hidestr()</h2>
+<div>
+This program allows you to <a href="sensitivestrings.htm">obfuscate any sensitive strings in your autohotkey scripts</a> by surrounding them with the ihidestr() function. You can surround sensitive literal strings with 'ihidestr()' any place you use them like in variable assignments, in function calls, in statement parameters, and in expressions. You can do stuff like this:
+<br>&nbsp;<br>var1:= ihidestr("some sensitive string") 
+<br>somefunc(ihidestr("some sensitive string"), parameter2) 
+
+<br>&nbsp;<br>When this program obfuscates your program it will replace any literal strings passed as parameters to the ihidestr() function with an obfuscated literal string. It will then replace the ihidestr() function call itself with a call to the decode_ihidestr() function and then it will obfuscate that.
+</div>
+
+<h2><a name="scramble"></a>Scramble the Order of Functions and Label Sections</h2>
+<div>
+This is a function that you can check or uncheck on the obfuscator interface. It will <a href="randomizeorder.htm">randonize the order that your function and label sections will appear</a> in the obfuscated code. 
+
+<br>&nbsp;<br> You can choose to randomize all your function and label sections together or you can choose to apply a custom scrambling template.
+
+<br>&nbsp;<br>The custom scrambling template allows you to organize scramblings into groups of classes. All the functions and label sections of all the classes you assign to a specific group will be randomized together and dumped into the obfuscated source code file together. You can also control the order that the groups will be dumped allowing you to create layered scrambled sandwiches of functions and label sections.
+
+<br>&nbsp;<br>If you have some errors with your obfuscated code, turning this function off may make debugging your obfuscated code easier.
+</div>
+
+<h2><a name="fast"></a>This Autohotkey Obfuscator is Blazing Fast!</h2>
+<div>
+Approximate time required to Obfuscate an 8,000 line Autohotkey program
+<br>-------------------------------------------------------------
+<br>1 second: Run the 'Create Translations Map'  function
+<br>20 seconds: Run the 'Obfuscate' function
+<br>-------------------------------------------------------------
+<br>21 seconds: Total time!
+
+</div>
+
+</div>
+
+<div id="rightcol">
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="supportobfform">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="2YMDG3K6QNEGG">
+<table>
+<tr><td class="supportobfhead1"><input type="hidden" name="on0" value="Support Dynamic Obfuscator">Support<br>DynamicObfuscator.org</td></tr><tr><td><select name="os0">
+	<option value="d5">$5.00 USD</option>
+	<option value="d10" selected>$10.00 USD</option>
+	<option value="d15">$15.00 USD</option>
+	<option value="d20">$20.00 USD</option>
+	<option value="d30">$30.00 USD</option>
+	<option value="d50">$50.00 USD</option>
+	<option value="d70">$70.00 USD</option>
+	<option value="d100">$100.00 USD</option>
+	<option value="d200">$200.00 USD</option>
+</select> </td></tr>
+<tr><td><input type="hidden" name="on1" value="Send message to me:">Send message to me:</td></tr><tr><td><input type="text" name="os1" maxlength="200"></td></tr>
+<tr><td>
+<input type="hidden" name="currency_code" value="USD">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" name="submit" alt="PayPal - The safer way to pay!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+<br>Payment is by Paypal!
+</td></tr>
+</table>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>

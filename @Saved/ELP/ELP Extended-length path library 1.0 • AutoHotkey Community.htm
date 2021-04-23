@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105&p=558661#p558661 -->
+<html dir="ltr" lang="en-gb"><script id="abine.stub.Google Analytics">var abPrm={};var abNoOp=function(i,a){return (a&&a.length?a[0]:null)||true;},abSC=function(n,v){document.cookie=n+'='+v+';path=/;expires='+(new Date((new Date()).getTime()+(30000*60*60*24))).toGMTString();},abGC=function(n){return document.cookie.indexOf(n+'=')!=-1;},abAddNoOpMethods=function(o,m){m=m.split(',');for(var i=0;i<m.length;i++){if(m[i].match(/^#/)){o['get'+m[i].substr(1)]=o['set'+m[i].substr(1)]=abNoOp;}else{o[m[i]]=abNoOp;}}};var abClickEvent=function(n){if(n.click){n.click();}else{var e=n.ownerDocument.createEvent('MouseEvents');e.initMouseEvent('click',true, true, n.ownerDocument.defaultView, 1,0,0,0,0,false,false,false,false,0,null);n.dispatchEvent(e);}};var abTrkr={},abGT=function(){return abTrkr},_gat={_getTracker:abGT,_createTracker:abGT,_getTrackerByName:abGT,_anonymizeIp:abNoOp},urchinTracker=__utmSetTrans=__utmLinkerUrl=__utmLinkPost=__utmSetVar=__utmVisitorCode=abNoOp,_gaq={_createAsyncTracker:abTrkr,_getAsyncTracker:abTrkr,push:function(a){for (var b = arguments, c = 0, d = 0; d < b.length; d++) {try {if (typeof b[d] === 'function') b[d]();else {var e = '', f = b[d][0], k = f.lastIndexOf('.');k > 0 && (e = f[z](0, k), f = f[z](k + 1));var p = e == '_gat' ? _gat : e == '_gaq' ? _gaq : _gat._getTracker(e);p[f].apply(p, b[d].slice(1))}} catch (r) {c++}}return c;}};abAddNoOpMethods(abTrkr,'_deleteCustomVar,_getName,_getAccount,_getVersion,_getVisitorCustomVar,_initData,_setAccount,_setCookiePersistence,_setCustomVar,_setSampleRate,_setSessionTimeout,_setSessionCookieTimeout,_setVar,_setVisitorCookieTimeout,_trackPageview,_setAllowAnchor,_setCampContentKey,_setCampMediumKey,_setCampNameKey,_setCampNOKey,_setCampSourceKey,_setCampTermKey,_setCampaignTrack,_setCampaignCookieTimeout,_setCookieTimeout,_setReferrerOverride,_cookiePathCopy,_getLinkerUrl,_linkByPost,_setAllowHash,_setAllowLinker,_setCookiePath,_setDomainName,_addItem,_addTrans,_trackTrans,_trackEvent,_addIgnoredOrganic,_addIgnoredRef,_addOrganic,_clearIgnoredOrganic,_clearIgnoredRef,_clearOrganic,_trackSocial,_getClientInfo,_getDetectFlash,_getDetectTitle,_setClientInfo,_setDetectFlash,_setDetectTitle,_getLocalGifPath,_getServiceMode,_setLocalGifPath,_setLocalRemoteServerMode,_setLocalServerMode,_setRemoteServerMode,_trackPageLoadTime');abTrkr._link=__utmLinker=function(l){if(l)location.href=l;};</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="utf-8">
+
+<meta http-equiv="content-language" content="en-gb">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<title>ELP Extended-length path library 1.0 • AutoHotkey Community</title>
+
+<link rel="alternate" type="application/atom+xml" title="Feed - AutoHotkey Community" href="http://www.autohotkey.com/community/feed.php"><link rel="alternate" type="application/atom+xml" title="Feed - All forums" href="http://www.autohotkey.com/community/feed.php?mode=forums"><link rel="alternate" type="application/atom+xml" title="Feed - New Topics" href="http://www.autohotkey.com/community/feed.php?mode=topics"><link rel="alternate" type="application/atom+xml" title="Feed - Forum - Scripts" href="http://www.autohotkey.com/community/feed.php?f=2"><link rel="alternate" type="application/atom+xml" title="Feed - Topic - ELP Extended-length path library 1.0" href="http://www.autohotkey.com/community/feed.php?f=2&t=83105">
+
+<link rel="stylesheet" href="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/style.php" type="text/css">
+
+<script type="text/javascript" async="" src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/ga.js"></script><script type="text/javascript">
+// <![CDATA[
+
+
+function popup(url, width, height, name)
+{
+	if (!name)
+	{
+		name = '_popup';
+	}
+
+	window.open(url.replace(/&amp;/g, '&'), name, 'height=' + height + ',resizable=yes,scrollbars=yes,width=' + width);
+	return false;
+}
+
+function jumpto()
+{
+	var page = prompt('Enter the page number you wish to go to:', '1');
+	var per_page = '';
+	var base_url = '';
+
+	if (page !== null && !isNaN(page) && page == Math.floor(page) && page > 0)
+	{
+		if (base_url.indexOf('?') == -1)
+		{
+			document.location.href = base_url + '?start=' + ((page - 1) * per_page);
+		}
+		else
+		{
+			document.location.href = base_url.replace(/&amp;/g, '&') + '&start=' + ((page - 1) * per_page);
+		}
+	}
+}
+
+/**
+* Find a member
+*/
+function find_username(url)
+{
+	popup(url, 760, 570, '_usersearch');
+	return false;
+}
+
+/**
+* Mark/unmark checklist
+* id = ID of parent container, name = name prefix, state = state [true/false]
+*/
+function marklist(id, name, state)
+{
+	var parent = document.getElementById(id);
+	if (!parent)
+	{
+		eval('parent = document.' + id);
+	}
+
+	if (!parent)
+	{
+		return;
+	}
+
+	var rb = parent.getElementsByTagName('input');
+	
+	for (var r = 0; r < rb.length; r++)
+	{
+		if (rb[r].name.substr(0, name.length) == name)
+		{
+			rb[r].checked = state;
+		}
+	}
+}
+
+
+
+// ]]>
+</script>
+</head>
+<body class="ltr">
+
+<a name="top"></a>
+
+<div id="wrapheader">
+
+	<div id="logodesc">
+		<table width="100%" cellspacing="0">
+		<tbody><tr>
+			<td><a href="http://www.autohotkey.com/"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/ahk.png" width="240" height="78" alt="" title=""></a></td>
+			<td width="100%" align="center"><h1>AutoHotkey Community</h1><span class="gen"></span></td>
+		</tr>
+		</tbody></table>
+	</div>
+
+	<div id="menubar">
+		<table width="100%" cellspacing="0">
+		<tbody><tr>
+			<td class="genmed">
+				<a href="http://www.autohotkey.com/community/ucp.php?mode=logout&sid=a3119f6106a8b450043da612d4d0e761"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_mini_login.gif" width="12" height="13" alt="*"> Logout [ Uberi ]</a>&nbsp; &nbsp;<a href="http://www.autohotkey.com/community/ucp.php?i=pm&folder=inbox"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_mini_message.gif" width="12" height="13" alt="*"> <strong>0</strong> new messages</a>
+			</td>
+			<td class="genmed" align="right">
+				<a href="http://www.autohotkey.com/community/faq.php"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_mini_faq.gif" width="12" height="13" alt="*"> FAQ</a>
+				&nbsp; &nbsp;<a href="http://www.google.com/cse/home?cx=008894931886257774458:qsymwz_o1tq"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_mini_search.gif" width="12" height="13" alt="*"> Search</a>&nbsp; &nbsp;<a href="http://www.autohotkey.com/community/memberlist.php"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_mini_members.gif" width="12" height="13" alt="*"> Members</a>&nbsp; &nbsp;<a href="http://www.autohotkey.com/community/ucp.php"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_mini_profile.gif" width="12" height="13" alt="*"> User Control Panel</a>
+			</td>
+		</tr>
+		</tbody></table>
+	</div>
+
+	<div id="datebar">
+		<table width="100%" cellspacing="0">
+		<tbody><tr>
+			<td class="gensmall">Last visit was: Sat Aug 11, 2012 4:55 pm</td>
+			<td class="gensmall" align="right">It is currently Mon Aug 13, 2012 12:23 pm<br></td>
+		</tr>
+		</tbody></table>
+	</div>
+
+</div>
+
+<div id="wrapcentre">
+
+	
+	<p class="searchbar">
+		<span style="float: left;"><a href="http://www.autohotkey.com/community/search.php?search_id=unanswered">View unanswered posts</a> | <a href="http://www.autohotkey.com/community/search.php?search_id=active_topics">View active topics</a></span>
+		
+		<span style="float: right;"><a href="http://www.autohotkey.com/community/search.php?search_id=unreadposts">View unread posts</a> | <a href="http://www.autohotkey.com/community/search.php?search_id=newposts">View new posts</a> | <a href="http://www.autohotkey.com/community/search.php?search_id=egosearch">View your posts</a></span>
+		
+	</p>
+	
+
+	<br style="clear: both;">
+
+	<table class="tablebg" width="100%" cellspacing="1" cellpadding="0" style="margin-top: 5px;">
+	<tbody><tr>
+		<td class="row1">
+			<p class="breadcrumbs"><a href="http://www.autohotkey.com/community/index.php">Board index</a> » <a href="http://www.autohotkey.com/community/viewforum.php?f=10">AutoHotkey</a> » <a href="http://www.autohotkey.com/community/viewforum.php?f=2">Scripts</a></p>
+			<!--<p class="datetime">All times are UTC - 4 hours </p>-->
+		</td>
+	</tr>
+	</tbody></table>
+
+	<br>
+
+<div id="pageheader">
+	<h2><a class="titles" href="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105">ELP Extended-length path library 1.0</a></h2>
+
+
+</div>
+
+<br clear="all"><br>
+
+<div id="pagecontent">
+
+	<table width="100%" cellspacing="1">
+	<tbody><tr>
+		<td align="left" valign="middle" nowrap="nowrap">
+		<a href="http://www.autohotkey.com/community/posting.php?mode=post&f=2"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/button_topic_new.gif" alt="Post new topic" title="Post new topic"></a>&nbsp;<a href="http://www.autohotkey.com/community/posting.php?mode=reply&f=2&t=83105"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/button_topic_reply.gif" alt="Reply to topic" title="Reply to topic"></a>
+		</td>
+		
+			<td class="nav" valign="middle" nowrap="nowrap">&nbsp;Page <strong>1</strong> of <strong>1</strong><br></td>
+			<td class="gensmall" nowrap="nowrap">&nbsp;[ 8 posts ]&nbsp;</td>
+			<td class="gensmall" width="100%" align="right" nowrap="nowrap"></td>
+		
+	</tr>
+	</tbody></table>
+
+	<table class="tablebg" width="100%" cellspacing="1">
+	<tbody><tr>
+		<td class="cat">
+			<table width="100%" cellspacing="0">
+			<tbody><tr>
+				<td class="nav" nowrap="nowrap">&nbsp;
+				<a href="http://www.autohotkey.com/community/viewtopic.php?uid=46533&f=2&t=83105&unwatch=topic&start=0&hash=375d426d" title="Unsubscribe topic">Unsubscribe topic</a> | <a href="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105&view=print" title="Print view">Print view</a> | <a href="http://www.autohotkey.com/community/memberlist.php?mode=email&t=83105" title="E-mail friend">E-mail friend</a>
+				</td>
+				<td class="nav" align="right" nowrap="nowrap"><a href="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105&view=previous">Previous topic</a> | <a href="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105&view=next">Next topic</a>&nbsp;</td>
+			</tr>
+			</tbody></table>
+		</td>
+	</tr>
+
+	</tbody></table>
+
+
+	<table class="tablebg" width="100%" cellspacing="1">
+	
+		<tbody><tr>
+			<th>Author</th>
+			<th>Message</th>
+		</tr>
+	<tr class="row1">
+
+			<td align="center" valign="middle">
+				<a name="p516979"></a>
+				<b class="postauthor"><a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=45411">Rseding91</a></b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0">
+				<tbody><tr>
+				
+					<td class="gensmall" width="100%"><div style="float: left;">&nbsp;<b>Post subject:</b> <a href="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105&p=558661#p516979">ELP Extended-length path library 1.0</a></div><div style="float: right;"><a href="http://www.autohotkey.com/community/viewtopic.php?p=516979#p516979"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_target.gif" width="12" height="9" alt="Post" title="Post"></a><b>Posted:</b> Mon Feb 27, 2012 2:30 am&nbsp;</div></td>
+				</tr>
+				</tbody></table>
+			</td>
+		</tr>
+
+		<tr class="row1">
+
+			<td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150">
+			
+				<tbody><tr>
+					<td></td>
+				</tr>
+			
+				</tbody></table>
+
+				<span class="postdetails">
+					<br><b>Joined:</b> Mon Jun 07, 2010 10:40 am<br><b>Posts:</b> 580
+				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5">
+				<tbody><tr>
+					<td>
+					
+
+						<div class="postbody"><span style="font-size: 150%; line-height: normal"><strong>Download: </strong><a href="http://www.autohotkey.net/~Rseding91/Extended-Length%20Path/ELP.ahk" class="postlink">ELP.ahk</a></span><br><br>This is a reproduction of almost every AutoHotKey file related command for the purpose of adding support for Extended-length paths.<br><span style="font-size: 75%; line-height: normal">Supports: AHK Basic, AHK_L ANSI, AHK_L Unicode x86, AHK_L  Unicode x64</span><br><br>Extended-length paths are any file or folder paths who's total length exceeds 260 characters. <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/aa365247#maxpath" class="postlink">More information on Extended-length paths</a><br><br>I tried to reproduce the exact function of every AutoHotKey command and with a few exceptions (see below) I was able to do that.<br><br><strong>Note:</strong> you <span style="text-decoration: underline">MUST</span> have the following declared as a global variable before you use any of these functions:<br><div class="codetitle"><b>Code:</b></div><div class="codecontent">Ptr := A_PtrSize ? "Ptr" : "UInt"</div><br>Also, relative paths are <strong><span style="text-decoration: underline">NOT</span></strong> supported by any of these functions and if used may generate unknown results.<br><br><br><strong>Some of the special features added over the normal AutoHotKey commands:</strong><br><br><ul><strong>*</strong> Extended-length path support (up to 32,000~ characters)<br><strong>*</strong> FileAppend supports code page identifiers in both AHK Basic and AHK_L<br><strong>*</strong> FileRead supports code page identifiers in both AHK Basic and AHK_L and can read into a byref variable or as a return value from the function, it also supports reading raw files with no text conversion<br><strong>*</strong> Loop,File (the library function) has a 2nd option for "Recurse" to only recurse into folders that match the file pattern<br><strong>*</strong> FileGetSize has 2 extra options: "get the size in Gigabytes" and "return the size in decimal form"<br><strong>*</strong> Has the ability to verify read and write operations (write verify is Vista &gt; only)<br><strong>*</strong> Has functions for doing binary read/write<br><strong>*</strong> Can truncate a file without doing read -&gt; delete -&gt; write<br><strong>*</strong> Can write to the middle of a file overwriting what was already there</ul><br><br><strong>Exceptions:</strong><br><br>The following commands do not exist in this library and I do not have plans to add them:<br><br><ul>FileRecycle<br>FileRecycleEmpty<br>FileInstall<br>FileReadLine<br>FileSelectFile<br>FileSelectFolder</ul><br>The following commands do not exist in this library and if I can I will add them:<br><br><ul>FileGetShortcut<br>FileCreateShortcut</ul><br><br>A list of the available functions in this library can be found <a href="http://www.autohotkey.net/~Rseding91/Extended-Length%20Path/ELP%20Functions.txt" class="postlink">&gt;&gt;here&lt;&lt;</a><br><br>(limited) Documentation on any new options can be found <a href="http://www.autohotkey.net/~Rseding91/Extended-Length%20Path/ELP%20Documentation.txt" class="postlink">&gt;&gt;here&lt;&lt;</a><br><br><br><strong>Examples:</strong><br><br><a href="http://www.autohotkey.net/~Rseding91/Extended-Length%20Path/Example%201%20-%20LoopFilePattern%20%28standard%29.ahk" class="postlink">Example 1 - LoopFilePattern (standard)</a><br><br><a href="http://www.autohotkey.net/~Rseding91/Extended-Length%20Path/Example%202%20-%20Binary%20read.ahk" class="postlink">Example 2 - Binary read</a><br><br><a href="http://www.autohotkey.net/~Rseding91/Extended-Length%20Path/Example%203%20-%20Truncate%20a%20file.ahk" class="postlink">Example 3 - Truncate a file</a><br><br><a href="http://www.autohotkey.net/~Rseding91/Extended-Length%20Path/Example%204%20-%20FileAppend.ahk" class="postlink">Example 4 - FileAppend</a><br><br><a href="http://www.autohotkey.net/~Rseding91/Extended-Length%20Path/Example%205%20-%20Change%20library%20settings.ahk" class="postlink">Example 5 - Change library settings</a><br><br><a href="http://www.autohotkey.net/~Rseding91/Extended-Length%20Path/Example%206%20-%20Using%20the%20Store%20function.ahk" class="postlink">Example 6 - Using the Store function</a><br><br><a href="http://www.autohotkey.net/~Rseding91/Extended-Length%20Path/Example%207%20-%20LoopFilePattern%20%28advanced%29.ahk" class="postlink">Example 7 - LoopFilePattern (advanced)</a></div>
+
+					
+						<div class="postbody usersig"><br>_________________<br><a href="http://www.autohotkey.com/forum/topic75825.html" class="postlink">(Statistics script) M&amp;K Counter 2.0</a>
+<br><a href="http://www.autohotkey.com/forum/viewtopic.php?t=67730" class="postlink">My FAST ini Lib</a>
+<br><a href="http://www.autohotkey.com/forum/topic72262.html" class="postlink">Minecraft NBT Lib</a></div>
+					
+							<br><br>
+							<span class="gensmall">Last edited by <a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=45411">Rseding91</a> on Mon Aug 13, 2012 9:05 am, edited 3 times in total.</span>
+						<br clear="all"><br>
+
+						<table width="100%" cellspacing="0">
+						<tbody><tr valign="middle">
+							<td class="gensmall" align="right">
+							<a href="http://www.autohotkey.com/community/report.php?f=2&p=516979"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_report.gif" alt="Report this post" title="Report this post"></a> 
+							</td>
+						</tr>
+						</tbody></table>
+					</td>
+				</tr>
+				</tbody></table>
+			</td>
+		</tr>
+
+		<tr class="row1">
+
+			<td class="profile"><strong><a href="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105&p=558661#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;">&nbsp;<a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=45411"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_user_profile.gif" alt="Profile" title="Profile"></a> <a href="http://www.autohotkey.com/community/ucp.php?i=pm&mode=compose&action=quotepost&p=516979"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_contact_pm.gif" alt="Send private message" title="Send private message"></a> &nbsp;</div> <div class="gensmall" style="float: right;"><a href="http://www.autohotkey.com/community/posting.php?mode=quote&f=2&p=516979"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_quote.gif" alt="Reply with quote" title="Reply with quote"></a> &nbsp;</div></td>
+	
+		</tr>
+
+	<tr>
+		<td class="spacer" colspan="2" height="1"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	</tbody></table>
+
+	<table class="tablebg" width="100%" cellspacing="1">
+	<tbody><tr class="row2">
+
+			<td align="center" valign="middle">
+				<a name="p517424"></a>
+				<b class="postauthor"><a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=45411">Rseding91</a></b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0">
+				<tbody><tr>
+				
+					<td class="gensmall" width="100%"><div style="float: left;">&nbsp;<b>Post subject:</b> <a href="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105&p=558661#p517424"></a></div><div style="float: right;"><a href="http://www.autohotkey.com/community/viewtopic.php?p=517424#p517424"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_target.gif" width="12" height="9" alt="Post" title="Post"></a><b>Posted:</b> Tue Feb 28, 2012 4:08 pm&nbsp;</div></td>
+				</tr>
+				</tbody></table>
+			</td>
+		</tr>
+
+		<tr class="row2">
+
+			<td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150">
+			
+				<tbody><tr>
+					<td></td>
+				</tr>
+			
+				</tbody></table>
+
+				<span class="postdetails">
+					<br><b>Joined:</b> Mon Jun 07, 2010 10:40 am<br><b>Posts:</b> 580
+				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5">
+				<tbody><tr>
+					<td>
+					
+
+						<div class="postbody"><strong>Updated to 0.92</strong>
+<br>
+<br>Changed a section of code to use StrGet for both Basic and _L
+<br>Changed the FileAppend function to use the correct code page for Unicode ANSI write operations
+<br>Updated the documentation on read/write verification
+<br>Changed ELP_GetFileSizeFromFI to have the standard options of FileGetSize
+<br>Changed ELP_FileGetAttributesFromFI to have the standard options of FileGetAttributes
+<br>Added ELP_FileGetTimeFromFI with the standard options of FileGetTime
+<br>
+<br>Added examples on how to use some of the more advanced functions</div>
+
+					
+						<div class="postbody usersig"><br>_________________<br><a href="http://www.autohotkey.com/forum/topic75825.html" class="postlink">(Statistics script) M&amp;K Counter 2.0</a>
+<br><a href="http://www.autohotkey.com/forum/viewtopic.php?t=67730" class="postlink">My FAST ini Lib</a>
+<br><a href="http://www.autohotkey.com/forum/topic72262.html" class="postlink">Minecraft NBT Lib</a></div>
+					<br clear="all"><br>
+
+						<table width="100%" cellspacing="0">
+						<tbody><tr valign="middle">
+							<td class="gensmall" align="right">
+							<a href="http://www.autohotkey.com/community/report.php?f=2&p=517424"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_report.gif" alt="Report this post" title="Report this post"></a> 
+							</td>
+						</tr>
+						</tbody></table>
+					</td>
+				</tr>
+				</tbody></table>
+			</td>
+		</tr>
+
+		<tr class="row2">
+
+			<td class="profile"><strong><a href="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105&p=558661#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;">&nbsp;<a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=45411"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_user_profile.gif" alt="Profile" title="Profile"></a> <a href="http://www.autohotkey.com/community/ucp.php?i=pm&mode=compose&action=quotepost&p=517424"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_contact_pm.gif" alt="Send private message" title="Send private message"></a> &nbsp;</div> <div class="gensmall" style="float: right;"><a href="http://www.autohotkey.com/community/posting.php?mode=quote&f=2&p=517424"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_quote.gif" alt="Reply with quote" title="Reply with quote"></a> &nbsp;</div></td>
+	
+		</tr>
+
+	<tr>
+		<td class="spacer" colspan="2" height="1"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	</tbody></table>
+
+	<table class="tablebg" width="100%" cellspacing="1">
+	<tbody><tr class="row1">
+
+			<td align="center" valign="middle">
+				<a name="p518005"></a>
+				<b class="postauthor"><a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=46533">Uberi</a></b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0">
+				<tbody><tr>
+				
+					<td class="gensmall" width="100%"><div style="float: left;">&nbsp;<b>Post subject:</b> <a href="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105&p=558661#p518005"></a></div><div style="float: right;"><a href="http://www.autohotkey.com/community/viewtopic.php?p=518005#p518005"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_target.gif" width="12" height="9" alt="Post" title="Post"></a><b>Posted:</b> Thu Mar 01, 2012 7:27 pm&nbsp;</div></td>
+				</tr>
+				</tbody></table>
+			</td>
+		</tr>
+
+		<tr class="row1">
+
+			<td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150">
+			
+				<tbody><tr>
+					<td><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/file.php" width="100" height="100" alt="User avatar"></td>
+				</tr>
+			
+				</tbody></table>
+
+				<span class="postdetails">
+					<br><b>Joined:</b> Mon Aug 23, 2010 1:22 pm<br><b>Posts:</b> 891<br><b>Location:</b> Ontario, Canada
+				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5">
+				<tbody><tr>
+					<td>
+					
+
+						<div class="postbody">One of those libraries you think you'd never need, but then you do need it and it's an absolute lifesaver. I would love to see native long file path support, but this is the next best thing. Well done!</div>
+
+					
+						<div class="postbody usersig"><br>_________________<br><span style="font-size: 100%; line-height: normal"><a href="http://goo.gl/owP8M" class="postlink">AutoHotkey.net</a> | <a href="http://goo.gl/FQF8Z" class="postlink">GitHub</a></span><br><br><span style="font-size: 75%; line-height: normal">My <a href="http://goo.gl/3DM26" class="postlink">default license</a>.</span></div>
+					<br clear="all"><br>
+
+						<table width="100%" cellspacing="0">
+						<tbody><tr valign="middle">
+							<td class="gensmall" align="right">
+							<a href="http://www.autohotkey.com/community/report.php?f=2&p=518005"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_report.gif" alt="Report this post" title="Report this post"></a> 
+							</td>
+						</tr>
+						</tbody></table>
+					</td>
+				</tr>
+				</tbody></table>
+			</td>
+		</tr>
+
+		<tr class="row1">
+
+			<td class="profile"><strong><a href="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105&p=558661#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;">&nbsp;<a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=46533"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_user_profile.gif" alt="Profile" title="Profile"></a> <a href="http://www.autohotkey.com/community/ucp.php?i=pm&mode=compose&action=quotepost&p=518005"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_contact_pm.gif" alt="Send private message" title="Send private message"></a> <a href="http://www.autohotkey.com/community/memberlist.php?mode=email&u=46533"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_contact_email.gif" alt="E-mail" title="E-mail"></a> &nbsp;</div> <div class="gensmall" style="float: right;"><a href="http://www.autohotkey.com/community/posting.php?mode=edit&f=2&p=518005"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_edit.gif" alt="Edit post" title="Edit post"></a> <a href="http://www.autohotkey.com/community/posting.php?mode=quote&f=2&p=518005"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_quote.gif" alt="Reply with quote" title="Reply with quote"></a> &nbsp;</div></td>
+	
+		</tr>
+
+	<tr>
+		<td class="spacer" colspan="2" height="1"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	</tbody></table>
+
+	<table class="tablebg" width="100%" cellspacing="1">
+	<tbody><tr class="row2">
+
+			<td align="center" valign="middle">
+				<a name="p519932"></a>
+				<b class="postauthor"><a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=45411">Rseding91</a></b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0">
+				<tbody><tr>
+				
+					<td class="gensmall" width="100%"><div style="float: left;">&nbsp;<b>Post subject:</b> <a href="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105&p=558661#p519932"></a></div><div style="float: right;"><a href="http://www.autohotkey.com/community/viewtopic.php?p=519932#p519932"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_target.gif" width="12" height="9" alt="Post" title="Post"></a><b>Posted:</b> Fri Mar 09, 2012 11:31 am&nbsp;</div></td>
+				</tr>
+				</tbody></table>
+			</td>
+		</tr>
+
+		<tr class="row2">
+
+			<td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150">
+			
+				<tbody><tr>
+					<td></td>
+				</tr>
+			
+				</tbody></table>
+
+				<span class="postdetails">
+					<br><b>Joined:</b> Mon Jun 07, 2010 10:40 am<br><b>Posts:</b> 580
+				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5">
+				<tbody><tr>
+					<td>
+					
+
+						<div class="postbody"><strong>Updated to 0.93</strong>
+<br>
+<br>Changed ELP_FileDelete() to not throw errors on non-existant file deletes
+<br>Fixed the ELP_FileMove() function to correctly use the copy method vs move method when needed
+<br>Changed ELP_FileExists() to use a faster method of looking for files</div>
+
+					
+						<div class="postbody usersig"><br>_________________<br><a href="http://www.autohotkey.com/forum/topic75825.html" class="postlink">(Statistics script) M&amp;K Counter 2.0</a>
+<br><a href="http://www.autohotkey.com/forum/viewtopic.php?t=67730" class="postlink">My FAST ini Lib</a>
+<br><a href="http://www.autohotkey.com/forum/topic72262.html" class="postlink">Minecraft NBT Lib</a></div>
+					<br clear="all"><br>
+
+						<table width="100%" cellspacing="0">
+						<tbody><tr valign="middle">
+							<td class="gensmall" align="right">
+							<a href="http://www.autohotkey.com/community/report.php?f=2&p=519932"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_report.gif" alt="Report this post" title="Report this post"></a> 
+							</td>
+						</tr>
+						</tbody></table>
+					</td>
+				</tr>
+				</tbody></table>
+			</td>
+		</tr>
+
+		<tr class="row2">
+
+			<td class="profile"><strong><a href="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105&p=558661#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;">&nbsp;<a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=45411"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_user_profile.gif" alt="Profile" title="Profile"></a> <a href="http://www.autohotkey.com/community/ucp.php?i=pm&mode=compose&action=quotepost&p=519932"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_contact_pm.gif" alt="Send private message" title="Send private message"></a> &nbsp;</div> <div class="gensmall" style="float: right;"><a href="http://www.autohotkey.com/community/posting.php?mode=quote&f=2&p=519932"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_quote.gif" alt="Reply with quote" title="Reply with quote"></a> &nbsp;</div></td>
+	
+		</tr>
+
+	<tr>
+		<td class="spacer" colspan="2" height="1"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	</tbody></table>
+
+	<table class="tablebg" width="100%" cellspacing="1">
+	<tbody><tr class="row1">
+
+			<td align="center" valign="middle">
+				<a name="p531132"></a>
+				<b class="postauthor"><a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=45411">Rseding91</a></b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0">
+				<tbody><tr>
+				
+					<td class="gensmall" width="100%"><div style="float: left;">&nbsp;<b>Post subject:</b> <a href="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105&p=558661#p531132">Re: ELP Extended-length path library 0.94</a></div><div style="float: right;"><a href="http://www.autohotkey.com/community/viewtopic.php?p=531132#p531132"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_target.gif" width="12" height="9" alt="Post" title="Post"></a><b>Posted:</b> Tue Apr 24, 2012 8:51 pm&nbsp;</div></td>
+				</tr>
+				</tbody></table>
+			</td>
+		</tr>
+
+		<tr class="row1">
+
+			<td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150">
+			
+				<tbody><tr>
+					<td></td>
+				</tr>
+			
+				</tbody></table>
+
+				<span class="postdetails">
+					<br><b>Joined:</b> Mon Jun 07, 2010 10:40 am<br><b>Posts:</b> 580
+				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5">
+				<tbody><tr>
+					<td>
+					
+
+						<div class="postbody"><strong>Updated to 0.94</strong><br><br>Removed a debug message from the ELP_FileMoveDirectory() function - oops :\</div>
+
+					
+						<div class="postbody usersig"><br>_________________<br><a href="http://www.autohotkey.com/forum/topic75825.html" class="postlink">(Statistics script) M&amp;K Counter 2.0</a>
+<br><a href="http://www.autohotkey.com/forum/viewtopic.php?t=67730" class="postlink">My FAST ini Lib</a>
+<br><a href="http://www.autohotkey.com/forum/topic72262.html" class="postlink">Minecraft NBT Lib</a></div>
+					<br clear="all"><br>
+
+						<table width="100%" cellspacing="0">
+						<tbody><tr valign="middle">
+							<td class="gensmall" align="right">
+							<a href="http://www.autohotkey.com/community/report.php?f=2&p=531132"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_report.gif" alt="Report this post" title="Report this post"></a> 
+							</td>
+						</tr>
+						</tbody></table>
+					</td>
+				</tr>
+				</tbody></table>
+			</td>
+		</tr>
+
+		<tr class="row1">
+
+			<td class="profile"><strong><a href="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105&p=558661#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;">&nbsp;<a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=45411"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_user_profile.gif" alt="Profile" title="Profile"></a> <a href="http://www.autohotkey.com/community/ucp.php?i=pm&mode=compose&action=quotepost&p=531132"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_contact_pm.gif" alt="Send private message" title="Send private message"></a> &nbsp;</div> <div class="gensmall" style="float: right;"><a href="http://www.autohotkey.com/community/posting.php?mode=quote&f=2&p=531132"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_quote.gif" alt="Reply with quote" title="Reply with quote"></a> &nbsp;</div></td>
+	
+		</tr>
+
+	<tr>
+		<td class="spacer" colspan="2" height="1"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	</tbody></table>
+
+	<table class="tablebg" width="100%" cellspacing="1">
+	<tbody><tr class="row2">
+
+			<td align="center" valign="middle">
+				<a name="p535805"></a>
+				<b class="postauthor"><a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=8024">sharethewisdom</a></b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0">
+				<tbody><tr>
+				
+					<td class="gensmall" width="100%"><div style="float: left;">&nbsp;<b>Post subject:</b> <a href="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105&p=558661#p535805">Re: ELP Extended-length path library 0.94</a></div><div style="float: right;"><a href="http://www.autohotkey.com/community/viewtopic.php?p=535805#p535805"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_target.gif" width="12" height="9" alt="Post" title="Post"></a><b>Posted:</b> Fri May 11, 2012 6:07 pm&nbsp;</div></td>
+				</tr>
+				</tbody></table>
+			</td>
+		</tr>
+
+		<tr class="row2">
+
+			<td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150">
+			
+				<tbody><tr>
+					<td></td>
+				</tr>
+			
+				</tbody></table>
+
+				<span class="postdetails">
+					<br><b>Joined:</b> Sun Feb 24, 2008 8:04 am<br><b>Posts:</b> 46
+				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5">
+				<tbody><tr>
+					<td>
+					
+
+						<div class="postbody">I'll be using this, thanks!</div>
+
+					<br clear="all"><br>
+
+						<table width="100%" cellspacing="0">
+						<tbody><tr valign="middle">
+							<td class="gensmall" align="right">
+							<a href="http://www.autohotkey.com/community/report.php?f=2&p=535805"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_report.gif" alt="Report this post" title="Report this post"></a> 
+							</td>
+						</tr>
+						</tbody></table>
+					</td>
+				</tr>
+				</tbody></table>
+			</td>
+		</tr>
+
+		<tr class="row2">
+
+			<td class="profile"><strong><a href="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105&p=558661#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;">&nbsp;<a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=8024"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_user_profile.gif" alt="Profile" title="Profile"></a> <a href="http://www.autohotkey.com/community/ucp.php?i=pm&mode=compose&action=quotepost&p=535805"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_contact_pm.gif" alt="Send private message" title="Send private message"></a> &nbsp;</div> <div class="gensmall" style="float: right;"><a href="http://www.autohotkey.com/community/posting.php?mode=quote&f=2&p=535805"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_quote.gif" alt="Reply with quote" title="Reply with quote"></a> &nbsp;</div></td>
+	
+		</tr>
+
+	<tr>
+		<td class="spacer" colspan="2" height="1"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	</tbody></table>
+
+	<table class="tablebg" width="100%" cellspacing="1">
+	<tbody><tr class="row1">
+
+			<td align="center" valign="middle">
+				<a name="p558661"></a>
+				<b class="postauthor"><a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=45411">Rseding91</a></b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0">
+				<tbody><tr>
+				
+					<td class="gensmall" width="100%"><div style="float: left;">&nbsp;<b>Post subject:</b> <a href="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/ELP Extended-length path library 1.0 • AutoHotkey Community.htm">Re: ELP Extended-length path library 1.0</a></div><div style="float: right;"><a href="http://www.autohotkey.com/community/viewtopic.php?p=558661#p558661"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_target.gif" width="12" height="9" alt="Post" title="Post"></a><b>Posted:</b> Mon Aug 13, 2012 9:10 am&nbsp;</div></td>
+				</tr>
+				</tbody></table>
+			</td>
+		</tr>
+
+		<tr class="row1">
+
+			<td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150">
+			
+				<tbody><tr>
+					<td></td>
+				</tr>
+			
+				</tbody></table>
+
+				<span class="postdetails">
+					<br><b>Joined:</b> Mon Jun 07, 2010 10:40 am<br><b>Posts:</b> 580
+				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5">
+				<tbody><tr>
+					<td>
+					
+
+						<div class="postbody"><strong>Updated to 1.0</strong><br><br>Added ELP_FileRead() - supports all of the codepages AHK_L does in basic + L, supports raw file reading, supports returning text instead of using the byref variable<br>Added ELP_FileSetTime() - same as the AHK command<br>Added ELP_FileSetTimes() - same as the AHK command except you can set multiple times at once<br>Changed ELP_ReadData() to return the number of bytes read<br>Changed ELP_ReadData() to support &gt; 4 GB file reads<br>Changed ELP_WriteData() to return the number of bytes written<br>Changed ELP_WriteData() to support &gt; 4 GB file writes</div>
+
+					
+						<div class="postbody usersig"><br>_________________<br><a href="http://www.autohotkey.com/forum/topic75825.html" class="postlink">(Statistics script) M&amp;K Counter 2.0</a>
+<br><a href="http://www.autohotkey.com/forum/viewtopic.php?t=67730" class="postlink">My FAST ini Lib</a>
+<br><a href="http://www.autohotkey.com/forum/topic72262.html" class="postlink">Minecraft NBT Lib</a></div>
+					<br clear="all"><br>
+
+						<table width="100%" cellspacing="0">
+						<tbody><tr valign="middle">
+							<td class="gensmall" align="right">
+							<a href="http://www.autohotkey.com/community/report.php?f=2&p=558661"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_report.gif" alt="Report this post" title="Report this post"></a> 
+							</td>
+						</tr>
+						</tbody></table>
+					</td>
+				</tr>
+				</tbody></table>
+			</td>
+		</tr>
+
+		<tr class="row1">
+
+			<td class="profile"><strong><a href="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105&p=558661#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;">&nbsp;<a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=45411"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_user_profile.gif" alt="Profile" title="Profile"></a> <a href="http://www.autohotkey.com/community/ucp.php?i=pm&mode=compose&action=quotepost&p=558661"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_contact_pm.gif" alt="Send private message" title="Send private message"></a> &nbsp;</div> <div class="gensmall" style="float: right;"><a href="http://www.autohotkey.com/community/posting.php?mode=quote&f=2&p=558661"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_quote.gif" alt="Reply with quote" title="Reply with quote"></a> &nbsp;</div></td>
+	
+		</tr>
+
+	<tr>
+		<td class="spacer" colspan="2" height="1"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	</tbody></table>
+
+	<table class="tablebg" width="100%" cellspacing="1">
+	<tbody><tr class="row2">
+
+			<td align="center" valign="middle">
+				<a name="p558693"></a>
+				<b class="postauthor"><a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=46533">Uberi</a></b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0">
+				<tbody><tr>
+				
+					<td class="gensmall" width="100%"><div style="float: left;">&nbsp;<b>Post subject:</b> <a href="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105&p=558661#p558693">Re: ELP Extended-length path library 1.0</a></div><div style="float: right;"><a href="http://www.autohotkey.com/community/viewtopic.php?p=558693#p558693"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_target.gif" width="12" height="9" alt="Post" title="Post"></a><b>Posted:</b> Mon Aug 13, 2012 11:34 am&nbsp;</div></td>
+				</tr>
+				</tbody></table>
+			</td>
+		</tr>
+
+		<tr class="row2">
+
+			<td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150">
+			
+				<tbody><tr>
+					<td><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/file.php" width="100" height="100" alt="User avatar"></td>
+				</tr>
+			
+				</tbody></table>
+
+				<span class="postdetails">
+					<br><b>Joined:</b> Mon Aug 23, 2010 1:22 pm<br><b>Posts:</b> 891<br><b>Location:</b> Ontario, Canada
+				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5">
+				<tbody><tr>
+					<td>
+					
+
+						<div class="postbody">Does this mean that the built in AHK commands don't support reads/writes greater than 4gb in size?<br><br>This library seems pretty complete now.</div>
+
+					
+						<div class="postbody usersig"><br>_________________<br><span style="font-size: 100%; line-height: normal"><a href="http://goo.gl/owP8M" class="postlink">AutoHotkey.net</a> | <a href="http://goo.gl/FQF8Z" class="postlink">GitHub</a></span><br><br><span style="font-size: 75%; line-height: normal">My <a href="http://goo.gl/3DM26" class="postlink">default license</a>.</span></div>
+					<br clear="all"><br>
+
+						<table width="100%" cellspacing="0">
+						<tbody><tr valign="middle">
+							<td class="gensmall" align="right">
+							<a href="http://www.autohotkey.com/community/report.php?f=2&p=558693"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_report.gif" alt="Report this post" title="Report this post"></a> <a href="http://www.autohotkey.com/community/posting.php?mode=delete&f=2&p=558693"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_delete.gif" alt="Delete post" title="Delete post"></a> 
+							</td>
+						</tr>
+						</tbody></table>
+					</td>
+				</tr>
+				</tbody></table>
+			</td>
+		</tr>
+
+		<tr class="row2">
+
+			<td class="profile"><strong><a href="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105&p=558661#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;">&nbsp;<a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=46533"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_user_profile.gif" alt="Profile" title="Profile"></a> <a href="http://www.autohotkey.com/community/ucp.php?i=pm&mode=compose&action=quotepost&p=558693"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_contact_pm.gif" alt="Send private message" title="Send private message"></a> <a href="http://www.autohotkey.com/community/memberlist.php?mode=email&u=46533"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_contact_email.gif" alt="E-mail" title="E-mail"></a> &nbsp;</div> <div class="gensmall" style="float: right;"><a href="http://www.autohotkey.com/community/posting.php?mode=edit&f=2&p=558693"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_edit.gif" alt="Edit post" title="Edit post"></a> <a href="http://www.autohotkey.com/community/posting.php?mode=quote&f=2&p=558693"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/icon_post_quote.gif" alt="Reply with quote" title="Reply with quote"></a> &nbsp;</div></td>
+	
+		</tr>
+
+	<tr>
+		<td class="spacer" colspan="2" height="1"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/spacer.gif" alt="" width="1" height="1"></td>
+	</tr>
+	</tbody></table>
+
+	<table width="100%" cellspacing="1" class="tablebg">
+	<tbody><tr align="center">
+		<td class="cat"><form name="viewtopic" method="post" action="http://www.autohotkey.com/community/viewtopic.php?f=2&t=83105"><span class="gensmall">Display posts from previous:</span> <select name="st" id="st"><option value="0" selected="selected">All posts</option><option value="1">1 day</option><option value="7">7 days</option><option value="14">2 weeks</option><option value="30">1 month</option><option value="90">3 months</option><option value="180">6 months</option><option value="365">1 year</option></select>&nbsp;<span class="gensmall">Sort by</span> <select name="sk" id="sk"><option value="a">Author</option><option value="t" selected="selected">Post time</option><option value="s">Subject</option></select> <select name="sd" id="sd"><option value="a" selected="selected">Ascending</option><option value="d">Descending</option></select>&nbsp;<input class="btnlite" type="submit" value="Go" name="sort"></form></td>
+	</tr>
+	</tbody></table>
+	
+
+	<table width="100%" cellspacing="1">
+	<tbody><tr>
+		<td align="left" valign="middle" nowrap="nowrap">
+		<a href="http://www.autohotkey.com/community/posting.php?mode=post&f=2"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/button_topic_new.gif" alt="Post new topic" title="Post new topic"></a>&nbsp;<a href="http://www.autohotkey.com/community/posting.php?mode=reply&f=2&t=83105"><img src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/button_topic_reply.gif" alt="Reply to topic" title="Reply to topic"></a>
+		</td>
+		
+			<td class="nav" valign="middle" nowrap="nowrap">&nbsp;Page <strong>1</strong> of <strong>1</strong><br></td>
+			<td class="gensmall" nowrap="nowrap">&nbsp;[ 8 posts ]&nbsp;</td>
+			<td class="gensmall" width="100%" align="right" nowrap="nowrap"></td>
+		
+	</tr>
+	</tbody></table>
+
+</div>
+
+<div id="pagefooter"></div>
+
+<br clear="all">
+<form method="post" action="http://www.autohotkey.com/community/posting.php?mode=reply&f=2&t=83105">
+
+	<table class="tablebg" width="100%" cellspacing="1">
+		<tbody><tr>
+			<th align="center" colspan="2">Quick Reply</th>
+		</tr>
+		<tr>
+			<td class="row1" width="22%"><b class="genmed">Subject:</b></td>
+			<td class="row2" width="78%"><input class="post" style="width:450px" type="text" name="subject" size="45" maxlength="64" tabindex="2" value="Re: ELP Extended-length path library 1.0"></td>
+		</tr>
+		<tr>
+			<td class="row1" width="22%"><b class="genmed">Message:</b></td>
+			<td class="row2" valign="top" align="left" width="78%"><textarea name="message" rows="7" cols="76" tabindex="3" style="width: 700px; height: 130px; min-width: 98%; max-width: 98%;"></textarea> </td>
+		</tr>
+		<tr>
+			<td class="cat" colspan="2" align="center">
+				<input class="btnmain" type="submit" accesskey="s" tabindex="6" name="post" value="Submit">&nbsp;
+				<input class="btnlite" type="submit" accesskey="f" tabindex="7" name="full_editor" value="Full Editor">
+
+				<input type="hidden" name="creation_time" value="1344874980">
+<input type="hidden" name="form_token" value="e35d9a40071d0773c9ff164e87e3960812ee06a0">
+<input type="hidden" name="jasx" value="51">
+
+				<input type="hidden" name="topic_cur_post_id" value="558693">
+<input type="hidden" name="lastclick" value="1344874980">
+<input type="hidden" name="topic_id" value="83105">
+<input type="hidden" name="forum_id" value="2">
+<input type="hidden" name="attach_sig" value="1">
+<input type="hidden" name="notify" value="1">
+
+			</td>
+		</tr>
+	</tbody></table>
+	
+</form>
+<br clear="all"><table class="tablebg" width="100%" cellspacing="1" cellpadding="0" style="margin-top: 5px;">
+	<tbody><tr>
+		<td class="row1">
+			<p class="breadcrumbs"><a href="http://www.autohotkey.com/community/index.php">Board index</a> » <a href="http://www.autohotkey.com/community/viewforum.php?f=10">AutoHotkey</a> » <a href="http://www.autohotkey.com/community/viewforum.php?f=2">Scripts</a></p>
+			<!--<p class="datetime">All times are UTC - 4 hours </p>-->
+		</td>
+	</tr>
+	</tbody></table>
+	<br clear="all">
+
+	<table class="tablebg" width="100%" cellspacing="1" id="onlinelist">
+	<tbody><tr>
+		<td class="cat"><h4>Who is online</h4></td>
+	</tr>
+	<tr>
+		<td class="row1"><p class="gensmall">Users browsing this forum: <a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=46945">djvj</a>, <span style="color: #9E8DA7;" class="username-coloured">Google Feedfetcher</span>, <a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=1948">hoppfrosch</a>, <a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=54965">Klark92</a>, <a href="http://www.autohotkey.com/community/memberlist.php?mode=viewprofile&u=46533">Uberi</a> and 14 guests</p></td>
+	</tr>
+	</tbody></table>
+
+
+<br clear="all">
+
+<table width="100%" cellspacing="1" id="perms">
+<tbody><tr>
+	<td width="40%" valign="top" nowrap="nowrap" align="left"></td>
+	<td align="right" valign="top" nowrap="nowrap"><span class="gensmall">You <strong>can</strong> post new topics in this forum<br>You <strong>can</strong> reply to topics in this forum<br>You <strong>can</strong> edit your posts in this forum<br>You <strong>can</strong> delete your posts in this forum<br>You <strong>can</strong> post attachments in this forum<br></span></td>
+</tr>
+</tbody></table>
+
+<br clear="all">
+
+<table width="100%" cellspacing="0">
+<tbody><tr>
+	<td><form method="get" name="search" action="http://www.autohotkey.com/community/search.php"><span class="gensmall">Search for:</span> <input class="post" type="text" name="keywords" size="20"> <input class="btnlite" type="submit" value="Go"><input type="hidden" name="t" value="83105">
+<input type="hidden" name="sf" value="msgonly">
+</form></td>
+	<td align="right"></td>
+</tr>
+</tbody></table>
+
+
+</div>
+
+<div id="wrapfooter">
+	
+	<span class="copyright">Powered by <a href="http://www.phpbb.com/">phpBB</a>® Forum Software © phpBB Group
+	</span>
+</div>
+
+<div>&nbsp;</div>
+
+<script type="text/javascript">
+var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-5170375-17']);_gaq.push(['_trackPageview']);_gaq.push(['_trackPageLoadTime']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+<script type="text/javascript" src="./ELP Extended-length path library 1.0 • AutoHotkey Community_files/codeblocks.min.js"></script>
+
+<script type="text/javascript"><!--
+!function(a,b){var c,d=a.getElementsByTagName('input');for(c=0;c<d.length;c++){if(d[c].name===b){d[c].value=Math.floor(Math.random()*100)+7}}}(document,'jasx');
+//--></script>
+
+
+</body><link rel="stylesheet" type="text/css" href="data:text/css,"></html>

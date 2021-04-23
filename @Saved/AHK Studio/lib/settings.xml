@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<settings>
+	<autoadd>
+		<key add="34" trigger="34"></key>
+		<key add="39" trigger="39"></key>
+		<key add="41" trigger="40"></key>
+		<key add="62" trigger="60"></key>
+		<key add="93" trigger="91"></key>
+		<key add="125" trigger="123"></key>
+	</autoadd>
+	<fonts>
+		<font background="0" bold="1" color="16777215" font="Tahoma" size="10" style="5"></font>
+		<font background="16711680" style="33"></font>
+		<font code="2069" color="16777215"></font>
+		<font color="11184810" style="1"></font>
+		<font color="65280" style="2"></font>
+		<font color="16711680" style="3"></font>
+		<font color="16744448" style="4"></font>
+		<font color="65535" style="7"></font>
+		<font color="8388736" style="9"></font>
+		<font color="8421568" style="10"></font>
+		<font color="255" style="11"></font>
+		<font color="16744576" style="12"></font>
+	</fonts>
+	<options>
+		<Auto_Indent>1</Auto_Indent>
+		<Line_Highlight>1</Line_Highlight>
+		<Show_End_Of_Line>1</Show_End_Of_Line>
+		<Show_Selected_Duplicates>1</Show_Selected_Duplicates>
+	</options>
+	<open>
+		<file>C:\Users\Anthony\Dropbox\AHK Scripts\@Saved\AHK Studio\projects\Untitled(1).ahk</file>
+	</open>
+	<hotkeys>
+		<About>
+		</About>
+		<Help>
+		</Help>
+		<Theme>^M</Theme>
+		<Settings>F8</Settings>
+		<Edit_Version_Info>
+		</Edit_Version_Info>
+		<Undo>^Z</Undo>
+		<Copy>^C</Copy>
+		<Cut>^X</Cut>
+		<Paste>^V</Paste>
+		<Restore_Current_File>
+		</Restore_Current_File>
+		<Find>^F</Find>
+		<Quick_Find>!Q</Quick_Find>
+		<Insert_Function>!U</Insert_Function>
+		<Fix_Indent>!X</Fix_Indent>
+		<Jump_to_Segment>!J</Jump_to_Segment>
+		<Jump_to_Script>!S</Jump_to_Script>
+		<Edit_Replacements>!^I</Edit_Replacements>
+		<Google_Search_Selected>!G</Google_Search_Selected>
+		<Custom_Highlight_Text>!^H</Custom_Highlight_Text>
+		<Auto_Insert>!+A</Auto_Insert>
+		<New_Project>^N</New_Project>
+		<New_Segment>^G</New_Segment>
+		<Remove_Current_Segment>
+		</Remove_Current_Segment>
+		<Compile>!M</Compile>
+		<Upload>!^U</Upload>
+		<Check_For_New_Version>!^V</Check_For_New_Version>
+		<Open>^O</Open>
+		<Open_In_New_Window>!^O</Open_In_New_Window>
+		<Close>!^C</Close>
+		<Save>^S</Save>
+		<Open_Folder>^D</Open_Folder>
+		<Show_File>
+		</Show_File>
+		<Run>^R</Run>
+		<Run_Selected_Text>
+		</Run_Selected_Text>
+		<Export>
+		</Export>
+		<Run_x64>!4</Run_x64>
+		<Full_Backup>^F1</Full_Backup>
+		<Clean_Position_Data>!P</Clean_Position_Data>
+		<Publish>!^P</Publish>
+		<Exit>!^X</Exit>
+		<Auto_Indent>
+		</Auto_Indent>
+		<Virtual_Space>
+		</Virtual_Space>
+		<Line_Highlight>
+		</Line_Highlight>
+		<Show_End_Of_Line>
+		</Show_End_Of_Line>
+		<Show_Selected_Duplicates>
+		</Show_Selected_Duplicates>
+		<Word_Wrap>
+		</Word_Wrap>
+		<Linked_Scroll_Down>^Down</Linked_Scroll_Down>
+		<Linked_Scroll_Up>^Up</Linked_Scroll_Up>
+		<Move_Selected_Lines_Down>+^Down</Move_Selected_Lines_Down>
+		<Move_Selected_Lines_Up>+^Up</Move_Selected_Lines_Up>
+		<Duplicate_Line>F3</Duplicate_Line>
+		<Toggle_Comment_Line>^J</Toggle_Comment_Line>
+		<Create_Comment_Block>+F1</Create_Comment_Block>
+		<Character_Count>!+C</Character_Count>
+		<Remove_Spaces_From_Selected>!^R</Remove_Spaces_From_Selected>
+		<Scintilla_Code_Lookup>F6</Scintilla_Code_Lookup>
+		<Show_Scintilla_Code_in_Line>F5</Show_Scintilla_Code_in_Line>
+		<Post_All_In_One_Gist>^H</Post_All_In_One_Gist>
+		<Post_Multiple_Segment_Gist>!^M</Post_Multiple_Segment_Gist>
+		<Gist_Post_Version>
+		</Gist_Post_Version>
+		<Msgbox_Creator>
+		</Msgbox_Creator>
+		<Personal_Variable_List>F4</Personal_Variable_List>
+		<Refresh_Code_Explorer>
+		</Refresh_Code_Explorer>
+		<Ideas>
+		</Ideas>
+		<Widths>
+		</Widths>
+		<Clipboard_Viewer>
+		</Clipboard_Viewer>
+	</hotkeys>
+	<gui>
+		<position max="0" number="" window="1"></position>
+	</gui>
+	<last>
+		<file>C:\Users\Anthony\Dropbox\AHK Scripts\@Saved\AHK Studio\projects\Untitled(1).ahk</file>
+	</last>
+</settings>

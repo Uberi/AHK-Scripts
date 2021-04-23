@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Obfuscating Autohotkey Functions and Function Calls</title>
+<meta name="Description" content="This program has the ability to obfuscate all usage of functions in your Autohotkey program and to make multiple function calls look completely different.">
+
+<link rel="stylesheet" href="mycss/standtemp.css" type="text/css">
+
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+<table>
+<tr>
+<td class="logotd"><a href="index.htm"><img src="graphics/dynamicobfuscator.gif" border="0" width="547" height="130" alt="Dynamic Obfuscator for Autohotkey Scripts"></a></td>
+<td class="headerspacer">&nbsp;</td>
+<td class="authorinfo">
+Obfuscator for Autohotkey Scripts - Written in Autohotkey
+<br>Released under Open Source GPL License
+<br>Author: <a href="http://davidmalia.com">David Malia</a>, Augusta ME, USA
+<br><a href="http://dynamicobfuscator.org">http://dynamicobfuscator.org</a>
+</td>
+</tr>
+</table>
+
+<div id="wrapcols">
+
+<div id="mainconts">
+
+<div class="toplinks">
+<a href="index.htm">General Program Features</a>
+&nbsp; &nbsp;<a href="documentation.htm" class="selnav">User Manual</a>
+&nbsp; &nbsp;<a href="downloadobfuscator.htm">Download</a>
+</div>
+
+<h1>Obfuscating Autohotkey Functions and Function Calls</h1>
+<div>
+This program has the ability to obfuscate your function headers in function sections, and to obfuscate all the usage of functions in your program. The obfuscator will replace the function name in the function header with obfuscation strings that contain no %'s because autohotkey does not allow them in this position. If Dynamic Obfuscation is being used then the function calls found in the code will be replaced with obfuscated strings that contain %'s, otherwise their replacements will have no %'s.
+</div>
+
+<h2><a name="prefuncs"></a>Prepare function sections</h2>
+<div>
+In order to correctly find and parse off functions, the obfuscator needs a few simple format rules to be followed. The first is that the function definition must start in column 1. The second is that the ending '}' for the function must be in column 1 and there cannot be any other '}' in column 1 within the function. You can still use the ending curly brace within the function for instance to terminate the truth block of an if, but that curly brace would always have to be indented, it can not be in column 1. Also, function names can only be made out of letters, numbers, and the underscore. I did not code the program to recognize more characters for function names because I never use them.
+</div>
+
+<h2><a name="funcdump"></a>If Dynamic Obfuscation is Used, Use the DUMP Command for Functions</h2>
+<div>
+If you use Dynamic Obfuscation, you must use the DUMP commands for functions.
+
+<br>&nbsp;<br>For unclassed functions and unsecured function classes you use DUMP statements with the special class names unclassed and unsecclasses:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $FUNCFRAGS_DUMPCLASS: unclassed
+<br>;$OBFUSCATOR: $FUNCFRAGS_DUMPCLASS: unsecclasses
+
+<br>&nbsp;<br>You must use the <a href="dumpcommands.htm#initcommfrags">DUMP statements for common object name fragments</a> before you use the statements above because common object fragments will be inserted into the DUMPed code.
+
+<br>&nbsp;<br>For every secured class you use this series of statements below. These statements will dump both the function fragments and the label fragments for secured classes.
+
+<br>&nbsp;<br>;$OBFUSCATOR: $DUMP_SECFRAGS_FORCLASSES: (class or class list)
+<br>;$OBFUSCATOR: $DUMPPOISENED_SECFRAGS_FORCLASSES: (class or class list)
+<br>;$OBFUSCATOR: $DUMP_TMESSFRAGS_FORCLASSES: (class or class list)
+<br>;$OBFUSCATOR: $DUMPFRAGS_FORCLASSES: (class or class list)
+
+<br>&nbsp;<br>The security fragments must be dumped first, followed by the tmess fragments, followed by the fragments. To use the dump poisened fragments, use it before you dump the tmess fragments and the fragments. These statements can be used as many times in your code as you want including dumping the same fragments more than once. You can also nest them inside other things like if's:
+
+<br>&nbsp;<br>if (securityfailed) {
+<br>;$OBFUSCATOR: $DUMPPOISENED_SECFRAGS_FORCLASSES: myclass
+<br>}
+
+<br>&nbsp;<br>;Or do this
+<br>if (securityfailed) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;poisenmyfrags()
+<br>}
+<br>poisenmyfrags() {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global
+<br>;$OBFUSCATOR: $DUMPPOISENED_SECFRAGS_FORCLASSES: myclass
+<br>}
+</div>
+
+<h2><a name="funcobf"></a>Change Function Obfuscation Defaults</h2>
+<div>
+In order to change the obfuscation encoding defaults for functions, you use the change defaults command for functions.
+
+<br>&nbsp;<br>;$OBFUSCATOR: $FUNCS_CHANGE_DEFAULTS: {minobfstr}, {maxobfstr}, {obfrows}, {fragsperrow}, {minfragstr}, {maxfragstr} 
+
+<br>&nbsp;<br>For an explanation of the meaning of each individual obfuscation parameter, refer to <a href="commandcomments.htm#standparams">Understanding the Standard Parameter Set</a>.
+
+<br>&nbsp;<br>You can also use the restore defaults command to restore what they were before the change. Only one restore step back is allowed. 
+
+<br>&nbsp;<br>;$OBFUSCATOR: $FUNCS_RESTORE_DEFAULTS: 
+</div>
+
+</div>
+
+<div id="rightcol">
+
+</div>
+
+</div>
+
+</body>
+</html>

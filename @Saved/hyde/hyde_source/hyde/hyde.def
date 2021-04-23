@@ -1,0 +1,3 @@
+LIBRARY hyde.dll
+EXPORTS
+	CBProc

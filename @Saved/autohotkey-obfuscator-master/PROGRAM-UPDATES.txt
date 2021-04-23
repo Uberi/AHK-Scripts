@@ -1,0 +1,16 @@
+3/19/2013 - fixed problem with hotkeys defined with the '::' in programs. if the hotkey contained special hotkey characters or spaces the code would not obfuscate correctly.
+
+3/19/2013 - fixed problem with hotkeys defined with the '::' in programs. calls to functions and usage of variable names within hotkey sections would not obfuscate correctly.
+
+3/19/2013 - NOTE: hotkeys defined with the '::' in programs can not be followed by a statement on the same line. the obfuscator requires that the statements be on following lines and that the hotkey section be terminated with a 'return' statement that starts in column 1.
+
+3/19/2013 - fixed problem with the use of a variable named mytrue in program source code include file: 'OBFhidestr.ahk'. changed variable usage from 'mytrue' to 'true'. this could cause an error when the 'decode_ihidestr()' function found in that source code was moved to a users program to be obfuscated and there was no creation of a global variable in the users program by the name of 'mytrue' and with the value 1. the 'ihidestr()' and  'decode_ihidestr()' functions would then fail and the obfuscated programs would not work correctly
+
+3/19/2013 - fixed problem with the use of a variable named mytrue in files under the example-obfuscated-programs folder. files fixed were: in mindynobf.ahk, rewirefunction.ahk, straightobf.ahk, and obfclasses.ahk.
+
+3/19/2013 - fixed problem with the use of a variable named mytrue in files under the custom-hidestr-encoders folder.
+
+3/19/2013 - fixed problems with the output obfuscated file size balloning when reobfuscating the same file multiple times. functions in th output file would be duplicated and the output file would not work correctly. most of the problems were fixed but sometimes it can still occur. the problem can always be reset by restarting the obfuscator.
+
+3/23/2013 - added new window to program that will show when the 'obfuscation' function is running
+

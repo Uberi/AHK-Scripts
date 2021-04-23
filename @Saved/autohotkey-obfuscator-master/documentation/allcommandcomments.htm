@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>List of All Obfuscator Command Comments for Autohotkey Scripts</title>
+<meta name="Description" content="Place obfuscator command comments in your Autohotkey scripts to send messages to the obfuscator like to break sections of code or to 'rewire' functions.">
+
+<link rel="stylesheet" href="mycss/standtemp.css" type="text/css">
+
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+<table>
+<tr>
+<td class="logotd"><a href="index.htm"><img src="graphics/dynamicobfuscator.gif" border="0" width="547" height="130" alt="Dynamic Obfuscator for Autohotkey Scripts"></a></td>
+<td class="headerspacer">&nbsp;</td>
+<td class="authorinfo">
+Obfuscator for Autohotkey Scripts - Written in Autohotkey
+<br>Released under Open Source GPL License
+<br>Author: <a href="http://davidmalia.com">David Malia</a>, Augusta ME, USA
+<br><a href="http://dynamicobfuscator.org">http://dynamicobfuscator.org</a>
+</td>
+</tr>
+</table>
+
+<div id="wrapcols">
+
+<div id="mainconts">
+
+<div class="toplinks">
+<a href="index.htm">General Program Features</a>
+&nbsp; &nbsp;<a href="documentation.htm" class="selnav">User Manual</a>
+&nbsp; &nbsp;<a href="downloadobfuscator.htm">Download</a>
+</div>
+
+<h1>List of All Obfuscator Command Comments for Autohotkey Scripts</h1>
+
+<h2><a href="commandcomments.htm#mantag" class="titlelink">Use to Signal the End of Your Autoexecute Section</a></h2>
+<div>
+;$OBFUSCATOR: $END_AUTOEXECUTE:
+</div>
+
+<h2><a href="includefiles.htm" class="titlelink">Prepare Your Include Files</a></h2>
+<div>
+;$OBFUSCATOR: $IGNORE_BEFORE_THIS:
+<br>;$OBFUSCATOR: $IGNORE_AFTER_THIS:
+</div>
+
+<h2><a href="functions.htm" class="titlelink">Functions</a></h2>
+<div>
+;$OBFUSCATOR: $FUNCS_CHANGE_DEFAULTS: <a href="commandcomments.htm#standparams">Standard Parameter Set</a>
+<br>;$OBFUSCATOR: $FUNCS_RESTORE_DEFAULTS:
+<br>;$OBFUSCATOR: $FUNCFRAGS_DUMPCLASS: unclassed
+<br>;$OBFUSCATOR: $FUNCFRAGS_DUMPCLASS: unsecclasses
+</div>
+
+<h2><a href="functionparameters.htm" class="titlelink">Parameters</a></h2>
+<div>
+;$OBFUSCATOR: $PARAMS_CHANGE_DEFAULTS: <a href="commandcomments.htm#standparams">Standard Parameter Set</a>
+<br>;$OBFUSCATOR: $PARAMS_RESTORE_DEFAULTS:
+<br>;$OBFUSCATOR: $PARAMFRAGS_DUMPALL:
+</div>
+
+<h2><a href="localstatic.htm" class="titlelink">Local and Static Variables</a></h2>
+<div>
+;$OBFUSCATOR: $LOSVARS_CHANGE_DEFAULTS: <a href="commandcomments.htm#standparams">Standard Parameter Set</a>
+<br>;$OBFUSCATOR: $LOSVARS_RESTORE_DEFAULTS: 
+<br>;$OBFUSCATOR: $DEFLOSVARS: (variable names) { / <a href="commandcomments.htm#standparams">Standard Parameter Set</a> }
+<br>;$OBFUSCATOR: $LOSVARFRAGS_DUMPALL:
+</div>
+
+<h2><a href="globalvariables.htm" class="titlelink">Global Variables</a></h2>
+<div>
+;$OBFUSCATOR: $GLOBVARS_CHANGE_DEFAULTS: <a href="commandcomments.htm#standparams">Standard Parameter Set</a>
+<br>;$OBFUSCATOR: $GLOBVARS_RESTORE_DEFAULTS: 
+<br>;$OBFUSCATOR: $DEFGLOBVARS: (variable names) { / <a href="commandcomments.htm#standparams">Standard Parameter Set</a> }
+<br>;$OBFUSCATOR: $GLOBVARFRAGS_DUMPALL:
+</div>
+
+<h2><a href="gosublabels.htm" class="titlelink">Labels</a></h2>
+<div>
+;$OBFUSCATOR: $LABELS_CHANGE_DEFAULTS: <a href="commandcomments.htm#standparams">Standard Parameter Set</a>
+<br>;$OBFUSCATOR: $LABELS_RESTORE_DEFAULTS:
+<br>;$OBFUSCATOR: $LABELFRAGS_DUMPCLASS: unclassed
+<br>;$OBFUSCATOR: $LABELFRAGS_DUMPCLASS: unsecclasses
+</div>
+
+<h2><a href="autohotkeyfunctions.htm" class="titlelink">Built in Autohotkey Functions</a></h2>
+<div>
+;$OBFUSCATOR: $DEFSYSFUNCS: (functions) { / <a href="commandcomments.htm#standparams">Standard Parameter Set</a> }
+<br>;$OBFUSCATOR: $SYSFUNCFRAGS_DUMPALL:
+</div>
+
+<h2><a href="addtoclass.htm" class="titlelink">Functions and Labels That are Members of a Class</a></h2>
+<div>
+;$OBFUSCATOR: $ADDFOLLOWING_TOCLASS: (classname)
+<br>;$OBFUSCATOR: $ADDFOLLOWING_TOCLASS:
+<br>;$OBFUSCATOR: $CREATEOBJCLASS: (classname)
+<br>;$OBFUSCATOR: $DUMP_SECFRAGS_FORCLASSES: (list of classes)
+<br>;$OBFUSCATOR: $DUMPPOISENED_SECFRAGS_FORCLASSES: (list of classes)
+<br>;$OBFUSCATOR: $DUMP_TMESSFRAGS_FORCLASSES: (list of classes)
+<br>;$OBFUSCATOR: $DUMPFRAGS_FORCLASSES: (list of classes)
+</div>
+
+
+<h2><a href="guicontrols.htm#guilabel" class="titlelink">Special for GUI controls</a></h2>
+<div>
+SPECIAL CASE when the gui, +label????? is used with a gui 
+<br>&nbsp;<br>;$OBFUSCATOR: $DEFGUICLOSELAB: (list of labels)
+<br>&nbsp;
+</div>
+
+<h2><a href="dumpcommands.htm#dumprewirefunc" class="titlelink">'Rewire' a Function to Go to a Different Function</a></h2>
+<div>
+;$OBFUSCATOR: $DUMP_REWIREFUNCPATH: funcname, DECOY_funcname
+<br>;$OBFUSCATOR: $DUMP_REWIRE_STRAIGHT: funcname
+</div>
+
+<h2><a href="randomizeorder.htm" class="titlelink">Custom Function and Label Scrambling Pallette</a></h2>
+<div>
+;$OBFUSCATOR: $DUMP_FUNCandLABEL_CODE: fandl:(classname){, ...} 
+</div>
+
+</div>
+
+<div id="rightcol">
+
+</div>
+
+</div>
+
+</body>
+</html>

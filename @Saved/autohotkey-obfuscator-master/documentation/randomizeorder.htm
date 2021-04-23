@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Scramble the Order of Functions in Your Obfuscated Autohotkey Scripts</title>
+<meta name="Description" content="This allows you to create a layered scrambled Sandwich out of the functions and label sections of your obfuscated Autohotkey program.">
+
+<link rel="stylesheet" href="mycss/standtemp.css" type="text/css">
+
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+<table>
+<tr>
+<td class="logotd"><a href="index.htm"><img src="graphics/dynamicobfuscator.gif" border="0" width="547" height="130" alt="Dynamic Obfuscator for Autohotkey Scripts"></a></td>
+<td class="headerspacer">&nbsp;</td>
+<td class="authorinfo">
+Obfuscator for Autohotkey Scripts - Written in Autohotkey
+<br>Released under Open Source GPL License
+<br>Author: <a href="http://davidmalia.com">David Malia</a>, Augusta ME, USA
+<br><a href="http://dynamicobfuscator.org">http://dynamicobfuscator.org</a>
+</td>
+</tr>
+</table>
+
+<div id="wrapcols">
+
+<div id="mainconts">
+
+<div class="toplinks">
+<a href="index.htm">General Program Features</a>
+&nbsp; &nbsp;<a href="documentation.htm" class="selnav">User Manual</a>
+&nbsp; &nbsp;<a href="downloadobfuscator.htm">Download</a>
+</div>
+
+<h1>Scramble the Order of Functions in Your Obfuscated Autohotkey Scripts</h1>
+<div>
+You can have the order of your functions and label sections scrambled by checking a box on the obfuscate run window. This has an unresolved problem with /* */ type comments that are placed in between functions. Comments like this can still be used if at least one blank line is placed before and after the comment.
+</div>
+
+<h2>Create a Custom Layered Scrambled Sandwich</h2>
+<div>
+You can create a custom scrambling pallette that will randomize the order of your functions and label sections in your source code according to a format set by you. You specify individual layers of scrambling with each layer listing classes to scramble all together. For each layer you use the DUMP_FUNCandLABEL_CODE obfuscator command comment and you can put them anywhere in your script. You use a series of these statements to specify the individual layers you want: 
+</div>
+
+<div style="width:70em;">
+&nbsp;<br>;$OBFUSCATOR: $DUMP_FUNCandLABEL_CODE: fandl:configsyspages, fandl:buythisprogram 
+<br>;$OBFUSCATOR: $DUMP_FUNCandLABEL_CODE: fandl:unclassed, fandl:initprogram, fandl:onClipboardChange, fandl:expressmenu, fandl:lightninglaunchers, fandl:configsys, fandl:helpsys, fandl:hidestr, fandl:validscriptorcomp, fandl:dumpfrags, fandl:modcustomshorts
+<br>;$OBFUSCATOR: $DUMP_FUNCandLABEL_CODE: fandl:helpsyspages
+</div>
+
+<div>
+&nbsp;<br>You can use as many of these statements as you want, there is no limit. 
+The 'fandl:' stands for 'functions and labels'. Each one of these should be followed by a class name or the special tag 'unclassed' which stands for all the functions or label sections which you have not made part of a class. Each class can be a <a href="addtoclass.htm">'secured' class or an unsecured class</a>. If you use this function and the obfuscated program fails to compile correctly or starts to malfunction afterwards, it will usually mean that you have not specified in these statements all the obfuscation classes that you have defined in your program.
+</div>
+
+</div>
+
+<div id="rightcol">
+
+</div>
+
+</div>
+
+</body>
+</html>

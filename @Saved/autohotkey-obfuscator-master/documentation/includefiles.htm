@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Preparing Your Autohotkey Include Files for Obfuscation</title>
+<meta name="Description" content="A couple of simple steps are necessary to prepare your Autohotkey include files for this Autohotkey Obfuscator.">
+
+<link rel="stylesheet" href="mycss/standtemp.css" type="text/css">
+
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+<table>
+<tr>
+<td class="logotd"><a href="index.htm"><img src="graphics/dynamicobfuscator.gif" border="0" width="547" height="130" alt="Dynamic Obfuscator for Autohotkey Scripts"></a></td>
+<td class="headerspacer">&nbsp;</td>
+<td class="authorinfo">
+Obfuscator for Autohotkey Scripts - Written in Autohotkey
+<br>Released under Open Source GPL License
+<br>Author: <a href="http://davidmalia.com">David Malia</a>, Augusta ME, USA
+<br><a href="http://dynamicobfuscator.org">http://dynamicobfuscator.org</a>
+</td>
+</tr>
+</table>
+
+<div id="wrapcols">
+
+<div id="mainconts">
+
+<div class="toplinks">
+<a href="index.htm">General Program Features</a>
+&nbsp; &nbsp;<a href="documentation.htm" class="selnav">User Manual</a>
+&nbsp; &nbsp;<a href="downloadobfuscator.htm">Download</a>
+</div>
+
+<h1><a name="incfile"></a>Preparing Your Autohotkey Include Files for Obfuscation</h1>
+<div>
+This obfuscator does not automatically find and parse your Autohotkey include files and make them part of the obfuscation. First you must move your <a href="#ignoretags">'#include &lt;file&gt;' statements in your source code</a> to the beginning or end of your source code files and use the 'ignore before this' and 'ignore after this' obfuscator command comments. Then to signify to the obfuscator what files are to be included, you prepare an <a href="#includemap">includes map file</a>. 
+</div>
+
+<h2><a name="ignoretags"></a>Move Your '#include &lt;file&gt;' Statements to the Beginning or End of Your Source Code Files</h2>
+<div>
+Move your '#include &lt;file&gt;' statements to the beginning of your source code file and put this obfuscator command comment after them:
+<br>;$OBFUSCATOR: $IGNORE_BEFORE_THIS:
+
+<br>&nbsp;<br>Or you can move them to the end of your source code file and put this command comment before them:
+<br>;$OBFUSCATOR: $IGNORE_AFTER_THIS:
+
+<br>&nbsp;<br>The obfuscator will not try to process anything before or after those tags in the current source code file. No obfuscation of those areas will be done and in fact none of the code there will be transferred to the final obfuscated code. This must be done with all your '#include &lt;file&gt;' statements.
+
+<br>&nbsp;<br>If your include statements only bring in whole functions or label sections then moving them around  should not pose a problem. If you are, however, using includes to drop code fragments inline into other stuff and cannot move them around, then that feature is not supported by this obfuscator.
+</div>
+
+<h2><a name="includemap"></a>Prepare an Includes Map File</h2>
+<div>
+You tell the obfuscator what files to obfuscate together by preparing an includes map file. Just prepare a pure text file with the file path for each file on a separate line. You will be asked for this file when you run the obfuscator. The file that has your autoexecute section on it should be listed first. The order that the remaining files are listed can make a difference because if there is an obfuscator command comment to change obfuscation defaults for functions, then that change will remain in effect across any new source code files until a new command comment changing function defaults is found.
+</div>
+
+</div>
+
+<div id="rightcol">
+
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Difference Between Dynamic and Straight Obfuscation for Autohotkey Scripts</title>
+<meta name="Description" content="Dynamic Obfuscation uses the dynamic variable name feature of Autohotkey to build object names out of name fragments and insert random 'security' fragments.">
+
+<link rel="stylesheet" href="mycss/standtemp.css" type="text/css">
+
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+<table>
+<tr>
+<td class="logotd"><a href="index.htm"><img src="graphics/dynamicobfuscator.gif" border="0" width="547" height="130" alt="Dynamic Obfuscator for Autohotkey Scripts"></a></td>
+<td class="headerspacer">&nbsp;</td>
+<td class="authorinfo">
+Obfuscator for Autohotkey Scripts - Written in Autohotkey
+<br>Released under Open Source GPL License
+<br>Author: <a href="http://davidmalia.com">David Malia</a>, Augusta ME, USA
+<br><a href="http://dynamicobfuscator.org">http://dynamicobfuscator.org</a>
+</td>
+</tr>
+</table>
+
+<div id="wrapcols">
+
+<div id="mainconts">
+
+<div class="toplinks">
+<a href="index.htm">General Program Features</a>
+&nbsp; &nbsp;<a href="documentation.htm" class="selnav">User Manual</a>
+&nbsp; &nbsp;<a href="downloadobfuscator.htm">Download</a>
+</div>
+
+<h1>Understanding the Difference Between Dynamic and Straight Obfuscation for Autohotkey Scripts</h1>
+<div>
+Dynamic Obfuscation uses the Autohotkey feature of dynamic variable name creation and straight obfuscation does not. In Dynamic Obfuscation, object names are full of %'s and each pair of %'s represents a variable whose value will be returned to become part of the object name being built. These references are resolved at program run time when the actual statement in question is being executed. 
+
+<br>&nbsp;<br>You can use straight obfuscation that does not use dynamic variable name obfuscation. In this method, the object names are obfuscated but no percents are used in the calling of objects. This method is the easiest to implement because it requires less program preparation, however it is much less secure than dynamic variable obfuscation.
+</div>
+
+
+<h2><a name="strissimple"></a>Straight Obfuscation is Simpler</h2>
+<div>
+Straight obfuscation is simpler because Dynamic Obfuscation takes more source code preparation. Namely all your functions will have to be made assume GLOBAL instead of assume LOCAL. Also Dynamic Obfuscation will require you to start using the <a href="dumpcommands.htm">obfuscator DUMP command comments</a>. Because this will take more conversion work by you, you probably will want to start out obfuscating your program by doing straight obfuscation only at first. Once that is working good, you can make the changes to start using Dynamic Obfuscation. See <a href="obfuscationprocess.htm#strsteps">straight obfuscation steps</a>.
+</div>
+
+<h2><a name="dynissec"></a>Dynamic Obfuscation is More Secure</h2>
+<div>
+Dynamic Obfuscation has more security features to protect your source code than straight obfuscation. It makes everything in your program <a href="#nofindstuff">hard to find</a>, it allows you to <a href="#breakclasses">break whole sections of your code</a> all at once, and it allows you to <a href="#rewirefunc">'rewire' your most sensitive functions</a> to go to 'decoy' functions.
+
+<br>&nbsp;<br>When you use Dynamic Obfuscation you can also obfuscate Autohotkey built in functions.
+
+<br>&nbsp;<br>Object names will be made up of variable name 'fragments' that will be represented by the use of multiple %'s in object names. At run time these fragments will all be resolved and the actual object name will be built. Some of the fragments will be part of the actual obfuscated object name and other ones will be 'security' fragments. See <a href="obfuscationprocess.htm#dynsteps">Dynamic Obfuscation steps</a>.
+</div>
+
+<h2><a name="nofindstuff"></a>Dynamic Obfuscation Makes it Nearly Impossible to Find Anything in Your Code</h2>
+<div>
+Because Dynamic Obfuscation can create multiple obfuscations per object and add object name 'security fragments', multiple calls to the same object can all look different. 
+
+<br>&nbsp;<br>You could have 20 calls to the same function in your source code and all look completely different. In the statement below, the 3 uses of var1 can look completely different when obfuscated:
+<br>var1:= var1 + var1
+
+<br>&nbsp;<br>The upshot to this is that it will be almost impossible for the hacker to find all your uses of objects within your code. It will be extremely difficult to find the usages of variables, parameters, functions, and labels. 
+
+<br>&nbsp;<br>This methodology extends the general obfuscation idea of making strings in the program hard to find to making everything in the program hard to find!
+</div>
+
+<h2><a name="breakclasses"></a>Dynamic Obfuscation Can 'Break' Whole Classes of Functions and Labels at Once</h2>
+<div>
+Dynamic Obfuscation allows you to add functions and label sections to <a href="dumpcommands.htm#dumppoisened">'secure' classes that you can then 'break'</a> all at once if you want. Start your program with all your most sensitive stuff 'broken'.
+</div>
+
+<h2><a name="rewirefunc"></a>Dynamic Obfuscation Allows You to 'Rewire' Functions to Go to Other Functions</h2>
+<div>
+You can also <a href="dumpcommands.htm#dumprewirefunc">'rewire' your most sensitive function references</a> to go to other functions as an extra security measure. All usages of that function within your code will go to the wrong place! When the user passes your security, you can then 'rewire them straight' so they now will go to the actual function.
+</div>
+
+</div>
+
+<div id="rightcol">
+
+</div>
+
+</div>
+
+</body>
+</html>

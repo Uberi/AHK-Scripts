@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{86D5E2B7-27D2-4EC2-B788-17D5EEBA6194}</ProjectGuid>
+    <RootNamespace>SciTELua</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/D "UNICODE" /D "_UNICODE" %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\Lua\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeaderOutputFile>.\Debug/SciTELua.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
+      <ObjectFileName>.\Debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>Debug\Lua.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug/SciTELua.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/D "UNICODE" /D "_UNICODE" %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>..\Lua\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <PrecompiledHeaderOutputFile>.\Release/SciTELua.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <CompileAs>CompileAsC</CompileAs>
+      <DisableSpecificWarnings>4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>Release\Lua.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release/SciTELua.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\lua\src\lapi.c" />
+    <ClCompile Include="..\lua\src\lcode.c" />
+    <ClCompile Include="..\lua\src\ldebug.c" />
+    <ClCompile Include="..\lua\src\ldo.c" />
+    <ClCompile Include="..\lua\src\ldump.c" />
+    <ClCompile Include="..\lua\src\lfunc.c" />
+    <ClCompile Include="..\lua\src\lgc.c" />
+    <ClCompile Include="..\lua\src\llex.c" />
+    <ClCompile Include="..\lua\src\lmem.c" />
+    <ClCompile Include="..\lua\src\lobject.c" />
+    <ClCompile Include="..\lua\src\lopcodes.c" />
+    <ClCompile Include="..\lua\src\lparser.c" />
+    <ClCompile Include="..\lua\src\lstate.c" />
+    <ClCompile Include="..\lua\src\lstring.c" />
+    <ClCompile Include="..\lua\src\ltable.c" />
+    <ClCompile Include="..\lua\src\ltm.c" />
+    <ClCompile Include="..\lua\src\lundump.c" />
+    <ClCompile Include="..\lua\src\lvm.c" />
+    <ClCompile Include="..\lua\src\lzio.c" />
+    <ClCompile Include="..\lua\src\lib\lauxlib.c" />
+    <ClCompile Include="..\lua\src\lib\lbaselib.c" />
+    <ClCompile Include="..\lua\src\lib\ldblib.c" />
+    <ClCompile Include="..\lua\src\lib\linit.c" />
+    <ClCompile Include="..\lua\src\lib\liolib.c" />
+    <ClCompile Include="..\lua\src\lib\lmathlib.c" />
+    <ClCompile Include="..\lua\src\lib\loadlib.c" />
+    <ClCompile Include="..\lua\src\lib\loslib.c" />
+    <ClCompile Include="..\lua\src\lib\lstrlib.c" />
+    <ClCompile Include="..\lua\src\lib\ltablib.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\lua\src\lapi.h" />
+    <ClInclude Include="..\lua\src\lcode.h" />
+    <ClInclude Include="..\lua\src\ldebug.h" />
+    <ClInclude Include="..\lua\src\ldo.h" />
+    <ClInclude Include="..\lua\src\lfunc.h" />
+    <ClInclude Include="..\lua\src\lgc.h" />
+    <ClInclude Include="..\lua\src\llex.h" />
+    <ClInclude Include="..\lua\src\llimits.h" />
+    <ClInclude Include="..\lua\src\lmem.h" />
+    <ClInclude Include="..\lua\src\lobject.h" />
+    <ClInclude Include="..\lua\src\lopcodes.h" />
+    <ClInclude Include="..\lua\src\lparser.h" />
+    <ClInclude Include="..\lua\src\lstate.h" />
+    <ClInclude Include="..\lua\src\lstring.h" />
+    <ClInclude Include="..\lua\src\ltable.h" />
+    <ClInclude Include="..\lua\src\ltm.h" />
+    <ClInclude Include="..\lua\src\lundump.h" />
+    <ClInclude Include="..\lua\src\lvm.h" />
+    <ClInclude Include="..\lua\src\lzio.h" />
+    <ClInclude Include="..\lua\include\lauxlib.h" />
+    <ClInclude Include="..\lua\include\lua.h" />
+    <ClInclude Include="..\lua\include\luaconf.h" />
+    <ClInclude Include="..\lua\include\lualib.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

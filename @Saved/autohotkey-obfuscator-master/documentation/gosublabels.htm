@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Obfuscating Autohotkey Label Sections and Calls to Labels</title>
+<meta name="Description" content="This program has the ability to obfuscate all usage of labels in your Autohotkey program and to make the same labels look completely different.">
+
+<link rel="stylesheet" href="mycss/standtemp.css" type="text/css">
+
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+<table>
+<tr>
+<td class="logotd"><a href="index.htm"><img src="graphics/dynamicobfuscator.gif" border="0" width="547" height="130" alt="Dynamic Obfuscator for Autohotkey Scripts"></a></td>
+<td class="headerspacer">&nbsp;</td>
+<td class="authorinfo">
+Obfuscator for Autohotkey Scripts - Written in Autohotkey
+<br>Released under Open Source GPL License
+<br>Author: <a href="http://davidmalia.com">David Malia</a>, Augusta ME, USA
+<br><a href="http://dynamicobfuscator.org">http://dynamicobfuscator.org</a>
+</td>
+</tr>
+</table>
+
+<div id="wrapcols">
+
+<div id="mainconts">
+
+<div class="toplinks">
+<a href="index.htm">General Program Features</a>
+&nbsp; &nbsp;<a href="documentation.htm" class="selnav">User Manual</a>
+&nbsp; &nbsp;<a href="downloadobfuscator.htm">Download</a>
+</div>
+
+<h1><a name="labels"></a>Obfuscating Autohotkey Label Sections and Calls to Labels</h1>
+<div>
+This program has the ability to obfuscate your label headers in label sections, and to obfuscate all the usage of labels in your program. It can obfuscate labels used in gosub statements, goto statements, in menu statements, and proceeded with a 'G' in GUI statements. The obfuscator will replace the label in the label header with obfuscation strings that contain no %'s because autohotkey does not allow them in this position. If Dynamic Obfuscation is being used then the label calls found in the code will be replaced with obfuscated strings that contain %'s, otherwise their replacements will have no %'s.
+</div>
+
+<h2><a name="prelabels"></a>Prepare Label Sections</h2>
+<div>
+A few simple format rules need to be followed in order for the obfuscator to find and parse off label sections. The first is that the label section header has to start in column 1 and be followed by ':'. The second rule is that the ending RETURN for the label section has to start in column 1. The RETURN statement can still be used within the section for instance as part of an if statement, but it would always have to be indented.  Label names can made out of only letters, numbers, and the underscore, similiar to function names.
+</div>
+
+<h2><a name="nestedlabels"></a>Nested Label Headers Inside Other Label Sections and Functions</h2>
+<div>
+Labels that are nested inside other label sections are ok, no special handling is necessary. Nested labels must follow normal label format rules like starting in column 1 and being followed by a ':'. They do not need an ending RETURN of their own if they are nested. There should be only one final RETURN for them all make sure it is in column 1. Label sections within functions are also ok, but in that case no need to worry about special positioning of the RETURN statements.
+</div>
+
+<h2><a name="labelsdump"></a>If Dynamic Obfuscation is Used, Use the DUMP Command for Labels</h2>
+<div>
+If you use Dynamic Obfuscation, you must use the DUMP commands for labels.
+
+<br>&nbsp;<br>For unclassed labels and unsecured label classes you use DUMP statements with the special class names unclassed and unsecclasses:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $LABELFRAGS_DUMPCLASS: unclassed
+<br>;$OBFUSCATOR: $LABELFRAGS_DUMPCLASS: unsecclasses
+
+<br>&nbsp;<br>You must use the <a href="dumpcommands.htm#initcommfrags">DUMP statements for common object name fragments</a> before you use the statements above because common object fragments will be inserted into the DUMPed code.
+
+<br>&nbsp;<br>For every secured class you use this series of statements below. These statements will dump both the function fragments and the label fragments for secured classes. 
+
+<br>&nbsp;<br>;$OBFUSCATOR: $DUMP_SECFRAGS_FORCLASSES: (class or class list)
+<br>;$OBFUSCATOR: $DUMPPOISENED_SECFRAGS_FORCLASSES: (class or class list)
+<br>;$OBFUSCATOR: $DUMP_TMESSFRAGS_FORCLASSES: (class or class list)
+<br>;$OBFUSCATOR: $DUMPFRAGS_FORCLASSES: (class or class list)
+
+<br>&nbsp;<br>The security fragments must be dumped first, followed by the tmess fragments, followed by the fragments. To use the dump poisened fragments, use it before you dump the tmess fragments and the fragments. These statements can be used as many times in your code as you want including dumping the same fragments more than once. You can also nest them inside other things like if's:
+
+<br>&nbsp;<br>if (securityfailed) {
+<br>;$OBFUSCATOR: $DUMPPOISENED_SECFRAGS_FORCLASSES: myclass
+<br>}
+
+<br>&nbsp;<br>;Or do this
+<br>if (securityfailed) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;poisenmyfrags()
+<br>}
+<br>poisenmyfrags() {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global
+<br>;$OBFUSCATOR: $DUMPPOISENED_SECFRAGS_FORCLASSES: myclass
+<br>}
+</div>
+
+<h2><a name="guilabelstate"></a>Special Rule For Labels Referred to in a GUI +Label???? Statement</h2>
+<div>
+If you are using the gui, +Label???? statement to set a handler for the closing of a window, you will have to turn off normal label obfuscation encoding for that actual label section. You do this by surrounding that section of code with the change defaults command and the restore defaults command:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $LABELS_CHANGE_DEFAULTS: -1
+
+<br>&nbsp;<br>configwinClose:
+<br>configwinEscape:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;program statements here
+<br>RETURN
+
+<br>&nbsp;<br>;$OBFUSCATOR: $LABELS_RESTORE_DEFAULTS:
+
+<br>&nbsp;<br>The -1 in the CHANGE DEFAULTS command turns off obfuscation for label objects that follow and the restore defaults command restores the obfuscation defaults to whatever they previously were.
+
+<br>&nbsp;<br>You then use the DEFGUICLOSELAB command comment anywhere in your source code and both the label header and the GUI, +Label?????? statement will be obfuscated:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $DEFGUICLOSELAB: configwin {, more close labels}
+
+<br>&nbsp;<br>The label headers will come out looking like this, with the CLOSE and the ESCAPE still present:
+<br>f@kfk#fffffffkk#fkk#kffkClose:
+<br>f@kfk#fffffffkk#fkk#kffkEscape:
+
+<br>&nbsp;<br>The gui statement will come out looking like this:
+<br>GUI, +Labelf@kfk#fffffffkk#fkk#kffk
+</div>
+
+<h2><a name="labelobf"></a>Change Label Obfuscation Defaults</h2>
+<div>
+In order to change the obfuscation encoding defaults for labels, you use the change defaults command for labels.
+
+<br>&nbsp;<br>;$OBFUSCATOR: $LABELS_CHANGE_DEFAULTS: {minobfstr}, {maxobfstr}, {obfrows}, {fragsperrow}, {minfragstr}, {maxfragstr} 
+
+<br>&nbsp;<br>For an explanation of the meaning of each individual obfuscation parameter, refer to <a href="commandcomments.htm#standparams">Understanding the Standard Parameter Set</a>.
+
+<br>&nbsp;<br>You can also use the restore defaults command to restore what they were before the change. Only one restore step back is allowed. 
+
+<br>&nbsp;<br>;$OBFUSCATOR: $LABELS_RESTORE_DEFAULTS: 
+</div>
+
+</div>
+
+<div id="rightcol">
+
+</div>
+
+</div>
+
+</body>
+</html>

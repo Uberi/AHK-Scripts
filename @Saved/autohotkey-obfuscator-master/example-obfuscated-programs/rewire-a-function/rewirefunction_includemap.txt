@@ -1,0 +1,1 @@
+c:\dynamicobfuscator\example-obfuscated-programs\rewire-a-function\rewirefunction.ahk

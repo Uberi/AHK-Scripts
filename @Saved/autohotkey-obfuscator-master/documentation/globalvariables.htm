@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Obfuscating Global Variables in Your Autohotkey Script</title>
+<meta name="Description" content="This program has the ability to obfuscate all usage of global variables in your Autohotkey program and to make the same variables look completely different.">
+
+<link rel="stylesheet" href="mycss/standtemp.css" type="text/css">
+
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+<table>
+<tr>
+<td class="logotd"><a href="index.htm"><img src="graphics/dynamicobfuscator.gif" border="0" width="547" height="130" alt="Dynamic Obfuscator for Autohotkey Scripts"></a></td>
+<td class="headerspacer">&nbsp;</td>
+<td class="authorinfo">
+Obfuscator for Autohotkey Scripts - Written in Autohotkey
+<br>Released under Open Source GPL License
+<br>Author: <a href="http://davidmalia.com">David Malia</a>, Augusta ME, USA
+<br><a href="http://dynamicobfuscator.org">http://dynamicobfuscator.org</a>
+</td>
+</tr>
+</table>
+
+<div id="wrapcols">
+
+<div id="mainconts">
+
+<div class="toplinks">
+<a href="index.htm">General Program Features</a>
+&nbsp; &nbsp;<a href="documentation.htm" class="selnav">User Manual</a>
+&nbsp; &nbsp;<a href="downloadobfuscator.htm">Download</a>
+</div>
+
+<h1>Obfuscating Global Variables in Your Autohotkey Script</h1>
+This program has the ability to obfuscate your global variables anywhere they are used. If Dynamic Obfuscation is being used then all the usages of global variables found will be replaced with obfuscated strings that contain %'s, otherwise their replacements will have no %'s. 
+
+<h2><a name="globnotobf"></a>Global Variables Are NOT Automatically Obfuscated</h2>
+<div>
+An obfuscation is not automatically created for global variables. In order to have them obfuscated, you specify their names in the define global variables command comment:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $DEFGLOBVARS: (list of global variable names) { / {minobfstr}, {maxobfstr}, {obfrows}, {fragsperrow}, {minfragstr}, {maxfragstr} }
+
+<br>&nbsp;<br>It does not matter where you put these statements in the source code. They do not need to be put before your usage of the global variables or in the section that the variables are used in.
+
+<br>&nbsp;<br>If you want, you can change the obfuscation encoding parameters for the variables by using the second optional part of the statement. If the optional parameters part of the statement is used, it is preceeded with a '/'. If used, they will change the defaults for only the variables listed in the statement. For more information on usage of the individual parameters, refer to the <a href="commandcomments.htm">obfuscation command comments section</a>
+</div>
+
+<h2><a name="globvarsdump"></a>If Dynamic Obfuscation is Used, Use the DUMP Command for Global Variables</h2>
+<div>
+If you use Dynamic Obfuscation, you must use the DUMP command for global variables. Since global variables can not be added to a secure class, there is one dump command for them that dumps all the fragments for all the global variables in the program and it doesn't allow any parameters:
+ 
+<br>&nbsp;<br>;$OBFUSCATOR: $GLOBVARFRAGS_DUMPALL:
+ 
+<br>&nbsp;<br>You must use the <a href="dumpcommands.htm#initcommfrags">DUMP statements for common object name fragments</a> before you use the statement above because common object fragments will be inserted into the DUMPed code.
+</div>
+
+<h2><a name="globobf"></a>Change Global Variable Obfuscation Defaults</h2>
+<div>
+In order to change the obfuscation encoding defaults for global variables, you use the change defaults command for them.
+
+<br>&nbsp;<br>;$OBFUSCATOR: $GLOBVARS_CHANGE_DEFAULTS: {minobfstr}, {maxobfstr}, {obfrows}, {fragsperrow}, {minfragstr}, {maxfragstr} 
+
+<br>&nbsp;<br>For an explanation of the meaning of each individual obfuscation parameter, refer to <a href="commandcomments.htm#standparams">Understanding the Standard Parameter Set</a>.
+
+<br>&nbsp;<br>You can also use the restore defaults command to restore what they were before the change. Only one restore step back is allowed. 
+
+<br>&nbsp;<br>;$OBFUSCATOR: $GLOBVARS_RESTORE_DEFAULTS: 
+</div>
+
+</div>
+
+<div id="rightcol">
+
+</div>
+
+</div>
+
+</body>
+</html>

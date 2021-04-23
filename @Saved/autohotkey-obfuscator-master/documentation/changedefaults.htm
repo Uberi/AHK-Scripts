@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Change Obfuscation Encoding Defaults for Autohotkey Object Types</title>
+<meta name="Description" content="Change the obfuscation encoding defaults for sections of your Autohotkey program by inserting simple obfuscator command comments into your script.">
+
+<link rel="stylesheet" href="mycss/standtemp.css" type="text/css">
+
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+<table>
+<tr>
+<td class="logotd"><a href="index.htm"><img src="graphics/dynamicobfuscator.gif" border="0" width="547" height="130" alt="Dynamic Obfuscator for Autohotkey Scripts"></a></td>
+<td class="headerspacer">&nbsp;</td>
+<td class="authorinfo">
+Obfuscator for Autohotkey Scripts - Written in Autohotkey
+<br>Released under Open Source GPL License
+<br>Author: <a href="http://davidmalia.com">David Malia</a>, Augusta ME, USA
+<br><a href="http://dynamicobfuscator.org">http://dynamicobfuscator.org</a>
+</td>
+</tr>
+</table>
+
+<div id="wrapcols">
+
+<div id="mainconts">
+
+<div class="toplinks">
+<a href="index.htm">General Program Features</a>
+&nbsp; &nbsp;<a href="documentation.htm" class="selnav">User Manual</a>
+&nbsp; &nbsp;<a href="downloadobfuscator.htm">Download</a>
+</div>
+
+<h1>Change Obfuscation Encoding Defaults for Autohotkey Object Types</h1>
+
+<h2>Change Function Defaults</h2>
+<div>
+In order to change the obfuscation encoding defaults for functions, you use the change defaults command for functions.
+
+<br>&nbsp;<br>;$OBFUSCATOR: $FUNCS_CHANGE_DEFAULTS: {minobfstr}, {maxobfstr}, {obfrows}, {fragsperrow}, {minfragstr}, {maxfragstr} 
+
+<br>&nbsp;<br>For an explanation of the meaning of each individual obfuscation parameter, refer to <a href="commandcomments.htm#standparams">Understanding the Standard Parameter Set</a>.
+
+<br>&nbsp;<br>You can also use the restore defaults command to restore what they were before the change. Only one restore step back is allowed. 
+
+<br>&nbsp;<br>;$OBFUSCATOR: $FUNCS_RESTORE_DEFAULTS: 
+</div>
+
+<h2>Change Parameter Defaults</h2>
+<div>
+In order to change the obfuscation encoding defaults for parameters, you use the change defaults command for parameters.
+
+<br>&nbsp;<br>;$OBFUSCATOR: $PARAMS_CHANGE_DEFAULTS: {minobfstr}, {maxobfstr}, {obfrows}, {fragsperrow}, {minfragstr}, {maxfragstr} 
+
+<br>&nbsp;<br>For an explanation of the meaning of each individual obfuscation parameter, refer to <a href="commandcomments.htm#standparams">Understanding the Standard Parameter Set</a>.
+
+<br>&nbsp;<br>You can also use the restore defaults command to restore what they were before the change. Only one restore step back is allowed. 
+
+<br>&nbsp;<br>;$OBFUSCATOR: $PARAMS_RESTORE_DEFAULTS: 
+</div>
+
+<h2>Change Local and Static Variables Defaults</h2>
+<div>
+In order to change the obfuscation encoding defaults for local or static variables, you use the change defaults command for them:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $LOSVARS_CHANGE_DEFAULTS: {minobfstr}, {maxobfstr}, {obfrows}, {fragsperrow}, {minfragstr}, {maxfragstr} 
+
+<br>&nbsp;<br>For an explanation of the meaning of each individual obfuscation parameter, refer to <a href="commandcomments.htm#standparams">Understanding the Standard Parameter Set</a>.
+
+<br>&nbsp;<br>You can also use the restore defaults command to restore what they were before the change. Only one restore step back is allowed. 
+
+<br>&nbsp;<br>;$OBFUSCATOR: $LOSVARS_RESTORE_DEFAULTS: 
+</div>
+
+<h2>Change Label Defaults</h2>
+<div>
+In order to change the obfuscation encoding defaults for labels, you use the change defaults command for labels.
+
+<br>&nbsp;<br>;$OBFUSCATOR: $LABELS_CHANGE_DEFAULTS: {minobfstr}, {maxobfstr}, {obfrows}, {fragsperrow}, {minfragstr}, {maxfragstr} 
+
+<br>&nbsp;<br>For an explanation of the meaning of each individual obfuscation parameter, refer to <a href="commandcomments.htm#standparams">Understanding the Standard Parameter Set</a>.
+
+<br>&nbsp;<br>You can also use the restore defaults command to restore what they were before the change. Only one restore step back is allowed. 
+
+<br>&nbsp;<br>;$OBFUSCATOR: $LABELS_RESTORE_DEFAULTS: 
+</div>
+
+<h2>Change Global Varaiables Defaults</h2>
+<div>
+In order to change the obfuscation encoding defaults for global variables, you use the change defaults command for them.
+
+<br>&nbsp;<br>;$OBFUSCATOR: $GLOBVARS_CHANGE_DEFAULTS: {minobfstr}, {maxobfstr}, {obfrows}, {fragsperrow}, {minfragstr}, {maxfragstr} 
+
+<br>&nbsp;<br>For an explanation of the meaning of each individual obfuscation parameter, refer to <a href="commandcomments.htm#standparams">Understanding the Standard Parameter Set</a>.
+
+<br>&nbsp;<br>You can also use the restore defaults command to restore what they were before the change. Only one restore step back is allowed. 
+
+<br>&nbsp;<br>;$OBFUSCATOR: $GLOBVARS_RESTORE_DEFAULTS: 
+</div>
+
+</div>
+
+<div id="rightcol">
+
+</div>
+
+</div>
+
+</body>
+</html>

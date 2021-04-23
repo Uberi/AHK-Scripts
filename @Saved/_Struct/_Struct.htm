@@ -1,0 +1,402 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0058)http://www.autohotkey.net/~HotKeyIt/AutoHotkey/_Struct.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>_Struct</title>
+
+<link href="./_Struct_files/commands.css" rel="stylesheet" type="text/css">
+<link href="./_Struct_files/print.css" rel="stylesheet" type="text/css" media="print">
+</head>
+<body>
+
+<h1>_Struct</h1>
+<hr size="2">
+<p>_Struct is based on AHK_L objects and supports both, ANSI and UNICODE version. To use it you will require <a href="http://www.autohotkey.com/forum/viewtopic.php?t=43049">Lexikos AutoHotkey_L.exe</a> or other versions based on it.<br><br>new _Struct is used to create new structure. A structure must be defined as a global variable or an item of global class (e.g. "MyClass.Struct").<br>_Struct can handle structure in structure as well as Arrays of structures and Vectors.<br>Visit <a href="http://www.autohotkey.com/forum/viewtopic.php?t=43049">_Struct on AutoHotkey</a> forum, any feedback is welcome.</p>
+
+<p class="CommandSyntax">MyStruct:= new _Struct(Structure_Definition,Address,initialization)</p>
+<h4>Parameters</h4>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+<tbody><tr>
+<td width="15%">General Design</td>
+<td width="85%"><p>Class _Struct will create Object(s) that will manage fields of structure(s), for example<br>left,top,right,bottom<br>RC := new _Struct("RECT")<br>will create a RECT structure with fields left,top,right,bottom of type UInt. To pass the structure its pointer to a function, DllCall or SendMessage use RC[""].<br><br>To access fields you can use usual Object syntax: RC.left, RC.right ...<br>To set a field of the structure use RC.top := 100.</p></td>
+</tr>
+<tr>
+<td width="15%">Field types</td>
+<td width="85%"><p>Following AutoHotkey and Windows Data Types are supported:<br><br>AutoHotkey Data Types:<br>Int, Uint, Int64, UInt64, Char, UChar, Short, UShort, Fload and Double.<br><br>Windows Data Types:<br>ATOM,BOOL,BOOLEAN,BYTE,CHAR,COLORREF,DWORD,DWORDLONG,DWORD_PTR,<br>DWORD32,DWORD64,FLOAT,HACCEL,HALF_PTR,HANDLE,HBITMAP,HBRUSH,HCOLORSPACE,HCONV,HCONVLIST,HCURSOR,HDC,<br>HDDEDATA,HDESK,HDROP,HDWP,HENHMETAFILE,HFILE,HFONT,HGDIOBJ,HGLOBAL,HHOOK,HICON,HINSTANCE,HKEY,HKL,<br>HLOCAL,HMENU,HMETAFILE,HMODULE,HMONITOR,HPALETTE,HPEN,HRESULT,HRGN,HRSRC,HSZ,HWINSTA,HWND,INT,<br>INT_PTR,INT32,INT64,LANGID,LCID,LCTYPE,LGRPID,LONG,LONGLONG,LONG_PTR,LONG32,LONG64,LPARAM,LPBOOL,<br>LPBYTE,LPCOLORREF,LPCSTR,LPCTSTR,LPCVOID,LPCWSTR,LPDWORD,LPHANDLE,LPINT,LPLONG,LPSTR,LPTSTR,LPVOID,<br>LPWORD,LPWSTR,LRESULT,PBOOL,PBOOLEAN,PBYTE,PCHAR,PCSTR,PCTSTR,PCWSTR,PDWORD,PDWORDLONG,PDWORD_PTR,<br>PDWORD32,PDWORD64,PFLOAT,PHALF_PTR,PHANDLE,PHKEY,PINT,PINT_PTR,PINT32,PINT64,PLCID,PLONG,PLONGLONG,<br>PLONG_PTR,PLONG32,PLONG64,POINTER_32,POINTER_64,POINTER_SIGNED,POINTER_UNSIGNED,PSHORT,PSIZE_T,<br>PSSIZE_T,PSTR,PTBYTE,PTCHAR,PTSTR,PUCHAR,PUHALF_PTR,PUINT,PUINT_PTR,PUINT32,PUINT64,PULONG,PULONGLONG,<br>PULONG_PTR,PULONG32,PULONG64,PUSHORT,PVOID,PWCHAR,PWORD,PWSTR,SC_HANDLE,SC_LOCK,SERVICE_STATUS_HANDLE,<br>SHORT,SIZE_T,SSIZE_T,TBYTE,TCHAR,UCHAR,UHALF_PTR,UINT,UINT_PTR,UINT32,UINT64,ULONG,ULONGLONG,<br>ULONG_PTR,ULONG32,ULONG64,USHORT,USN,WCHAR,WORD,WPARAM</p></td>
+</tr>
+<tr>
+<td width="15%"><b>Structure Definition</b></td>
+<td width="85%"><p><b>Description</b></p></td>
+</tr>
+<tr>
+<td width="15%">User defined</td>
+<td width="85%"><p>To create a user defined structure you will need to pass a string of predefined types and field names.<br>Default type is UInt, so for example for a RECT structure type can be omited: <b>"left,top,right,left"</b>, which is the same as <b>"Uint left,Uint top,Uint right,Uint bottom"</b><br><br>You can also use structures very similar to C#/C++ syntax, see example.</p></td>
+</tr>
+<tr>
+<td width="15%">Global</td>
+<td width="85%"><p>Global variables can be used to save structures, easily pass name of that variable as first parameter, e.g. new _Struct("MyStruct") where MyStruct must be a global variable with structure definition. Also new _Struct(MyStruct) can be used if variable is accessible.</p></td>
+</tr>
+<tr>
+<td width="15%">Array</td>
+<td width="85%"><p>To create an array of structures include a digit in the end of your string enclosed in squared brackets.<br>For example "RECT[2]" would create an array of 2 structures.<br>This feature can also be used for user defined arrays, for example "Int age,TCHAR name[10]".</p></td>
+</tr>
+<tr>
+<td width="15%">Union</td>
+<td width="85%"><p>Using {} you can create union, for example: <br>AHKVar:="{Int64 ContentsInt64,Double ContentsDouble,object},...</p></td>
+</tr>
+<tr>
+<td width="15%">Struct</td>
+<td width="85%"><p>Using struct{} you can create structures in union.</p></td>
+</tr>
+<tr>
+<td width="15%">Pointer</td>
+<td width="85%"><p>To create a pointer you can use *, for example: CHR:="char *str" will hold a pointer to a character. Same way you can have a structure in structure so you can call for example Label.NextLabel.NextLabel.JumpToLine</p></td>
+</tr>
+<tr>
+<td width="15%"><b>Parameters</b></td>
+<td width="85%"><p><b>Description</b></p></td>
+</tr>
+<tr>
+<td width="15%">MyStruct</td>
+<td width="85%"><p>This will become a class object representing the strucuture</p></td>
+</tr>
+<tr>
+<td width="15%">Structure_Definition</td>
+<td width="85%"><p>C/C++ syntax or usual definition (must not be multiline) e.g. "Int x,Int y", C/C++ definitions must be multiline.</p></td>
+</tr>
+<tr>
+<td width="15%">pointer</td>
+<td width="85%"><p>Pass a pointer as second parameter to occupy existing strucure.</p></td>
+</tr>
+<tr>
+<td width="15%">Initialization</td>
+<td width="85%"><p>Pass an object to initialize structure, e.g. {left:100,top:20}. If pointer is not used initialization can be specified in second parameter.</p></td>
+</tr>
+<tr>
+<td width="15%"><b>Methods</b></td>
+<td width="85%"><p><b>Description</b></p></td>
+</tr>
+<tr>
+<td width="15%">Strct.Type(itm)</td>
+<td width="85%"><p>Returns type of item or structure</p></td>
+</tr>
+<tr>
+<td width="15%">Strct.AhkType(itm)</td>
+<td width="85%"><p>Returns AHK type of item or structure to be used with NumGet and NumPut as well as DllCall</p></td>
+</tr>
+<tr>
+<td width="15%">Strct.Size()</td>
+<td width="85%"><p>Returns size of structure, same as sizeof(MyStruct)</p></td>
+</tr>
+<tr>
+<td width="15%">Strct.SizeT(itm)</td>
+<td width="85%"><p>Returns size of an item</p></td>
+</tr>
+<tr>
+<td width="15%">Strct.Offset(itm)</td>
+<td width="85%"><p>Returns offset for items</p></td>
+</tr>
+<tr>
+<td width="15%">Strct.Encoding(itm)</td>
+<td width="85%"><p>Returns encoding for items, to be used with StrGet and StrPut</p></td>
+</tr>
+<tr>
+<td width="15%">Strct.Alloc(itm,size[,ptrsize])</td>
+<td width="85%"><p>Allocates memory in bytes, ptrsize is used to create pointers</p></td>
+</tr>
+<tr>
+<td width="15%">Strct.Capacity(itm)</td>
+<td width="85%"><p>Returns memory capacity for items.</p></td>
+</tr>
+<tr>
+<td width="15%">Strct.IsPointer(itm)</td>
+<td width="85%"><p>Returns whether the item is a pointer (defined using *).</p></td>
+</tr>
+</tbody></table>
+<h4>Return Value</h4>
+A class object representing your structure
+<h4>Remarks</h4>
+<p><b>NOTE!!! accessing a field that does not exist will cause recrusive calls and will crash your script, these errors are not catched for performance reasons.<br>TCHAR, UCHAR and CHAR return actual character rather than the value, use Asc() function to find out the value/code.</b></p><b>
+<h4>Related</h4>
+<p>None.</p>
+<h4>Example</h4>
+<pre class="NoIndent">#include &lt;_Struct&gt;
+
+<span class="CodeCom">;Simple user defined structure (Use number for characters, so StrGet/StrSet will be used)</span>
+<span class="CodeCom">;typedef struct {</span>
+    <span class="CodeCom">;  TCHAR    char[2];</span>
+    <span class="CodeCom">;  int      code[2];</span>
+    <span class="CodeCom">;} ASCIICharacter;</span>
+    
+    MyChar := new _Struct("TCHAR char[2],int code[2]") <span class="CodeCom">;create structure, type for code could be omited</span>
+    MyChar.char.1:="A"
+    MyChar.char.2:="a"
+    MyChar.code.1 :=Asc(MyChar.char.1)
+    MyChar.code.2 :=Asc(MyChar.char.2)
+    MsgBox % MyChar.char.1 " = " MyChar.code.1 "`n" MyChar.char.2 " = " MyChar.code.2
+    
+    <span class="CodeCom">;_______________________________________________</span>
+    <span class="CodeCom">;Simple array of 26 characters</span>
+    String:=new _Struct("TCHAR char[26]")
+    Loop 26
+    string.char[A_Index]:=Chr(A_Index+64)
+    Loop 3
+    MsgBox % String.char[A_Index*2] <span class="CodeCom">;show some characters</span>
+    
+    MsgBox % StrGet(string[]) <span class="CodeCom">;get complete string</span>
+    
+    <span class="CodeCom">;_______________________________________________</span>
+    <span class="CodeCom">;Array of structures</span>
+    user:="LPTSTR Id, LPTSTR Name"
+    users := new _Struct("user[2]") <span class="CodeCom">; array of structs</span>
+    users.Alloc(4*A_PtrSize,400)
+    <span class="CodeCom">;~ users.Alloc("Name",2*A_PtrSize,80)</span>
+    users.1.Id := "Id1",   users.1.Name := "Name 1"
+    users.2.Id := "Id2",   users.2.Name := "Name 2"
+    MsgBox % users.1.Id " " users.1.Name "`n" users.2.Id " " users.2.Name
+    <span class="CodeCom">;~ ExitApp</span>
+    <span class="CodeCom">;_______________________________________________</span>
+    <span class="CodeCom">;Vector example</span>
+    Vector:="a,b,c,d"
+    v:=new _Struct("Vector[2]") <span class="CodeCom">;create an array of Vertors</span>
+    v.1.a:=1 <span class="CodeCom">;set some keys</span>
+    v.2.c:=10 <span class="CodeCom">;set some keys</span>
+    MsgBox % v.1.a "`n" v.2.c <span class="CodeCom">;show values</span>
+    
+    VarSetCapacity(newmem,sizeof(v)) <span class="CodeCom">;resevere some memory for new structure</span>
+    v[]:=&amp;newmem <span class="CodeCom">;set new memory address</span>
+    MsgBox % v.1.a "`n" v.2.c <span class="CodeCom">;show new structure</span>
+    v.1.a:=1
+    v.2.c:=10
+    MsgBox % v.1.a "`n" v.2.c <span class="CodeCom">;now values are filled</span>
+    
+    <span class="CodeCom">;_______________________________________________</span>
+    <span class="CodeCom">;RECT example</span>
+    <span class="CodeCom">;Example using RECT structure to move a window</span>
+    Gui,+LastFound
+    hwnd:=WinExist()                         <span class="CodeCom">;get window handle</span>
+    _RECT:="left,top,right,bottom"
+    RC:=new _Struct(_RECT)                      <span class="CodeCom">;create structure</span>
+    Gui,Show,w100 h100                      <span class="CodeCom">;show window</span>
+    DllCall("GetWindowRect","Uint",hwnd,"Uint",rc[]) <span class="CodeCom">;get window position</span>
+    rc.right  := rc.right - rc.left         <span class="CodeCom">;Set rc.right to be the width</span>
+    rc.bottom := rc.bottom - rc.top         <span class="CodeCom">;Set rc.bottom to be the height</span>
+    While DllCall("GetCursorPos","Uint",rc[])
+    &amp;&amp; DllCall("MoveWindow","Uint",hwnd
+    ,"int",rc.left,"int",rc.top,"int",rc.right,"int",rc.bottom,"Int",1)
+    Sleep, 10
+    GuiClose:
+    Escape::
+    Gui,Destroy
+    rc:=""
+    <span class="CodeCom">;~ ExitApp</span>
+    
+    <span class="CodeCom">;_______________________________________________</span>
+    <span class="CodeCom">;FindFirstFile &amp;&amp; FindNextFile &amp;&amp; FileTimeToSystemTime</span>
+    _FILETIME := "dwLowDateTime,dwHighDateTime"
+    _SYSTEMTIME := "WORD wYear,WORD wMonth,WORD wDayOfWeek,WORD wDay,WORD wHour,WORD wMinute,WORD wSecond,WORD Milliseconds"
+    _WIN32_FIND_DATA := "dwFileAttributes,_FILETIME ftCreationTime,_FILETIME ftLastAccessTime,_FILETIME ftLastWriteTime,nFileSizeHigh,nFileSizeLow,dwReserved0,dwReserved1,TCHAR cFileName[260],TCHAR cAlternateFileName[14]"
+    
+    file:=new _Struct("_WIN32_FIND_DATA[2]")
+    time:=new _Struct("_SYSTEMTIME")
+    
+    DllCall("FindFirstFile","Str",A_ScriptFullPath,"Uint",file.1[""])
+    DllCall("FindFirstFile","Str",A_AhkPath,"UInt",file.2[""])
+    MsgBox % StrGet(file.1.cFileName[])
+    MsgBox % "A_ScriptFullPath:`t" StrGet(file.1.cFileName[""]) "`t" StrGet(file.1.cAlternateFileName[""]) "`nA_AhkPath:`t" StrGet(file.2.cFileName[""]) "`t" StrGet(file.2.cAlternateFileName[""])
+    
+    handle:=DllCall("FindFirstFile","Str","C:\*","Uint",file.2[""])
+    Loop {
+        If !DllCall("FindNextFile","Uint",handle,"Uint",file.2[""])
+        break
+        DllCall("FileTimeToSystemTime","Uint",file.2.ftLastWriteTime[""],"Uint",time[""])
+        ToolTip % StrGet(file.2.cFileName[""]) "`n" StrGet(file.2.cAlternateFileName[""]) "`n" file.2.nFileSizeHigh " - " file.2.nFileSizeLow
+        . "`n" time.wYear . "-" time.wMonth . "-" time.wDay
+        . "`n" time.wDayOfWeek
+        . "`n" time.wHour . ":" time.wMinute   . ":" time.wSecond . ":" time.Milliseconds
+        Sleep, 200
+    }
+    DllCall("CloseHandle","Uint",handle)
+    
+    <span class="CodeCom">;_______________________________________________</span>
+    <span class="CodeCom">;Predefinition of structures</span>
+    MyStruct:=new _Struct("a,b,c,d")
+    MyStruct.a:=1
+    MsgBox % MyStruct.a
+    
+    <span class="CodeCom">;C/C++ like syntax</span>
+    NewStruct:="
+    (
+    TCHAR char[11];   // Array of 11 characters
+    TCHAR char2[11];   // Another array of 11 characters
+    LPTSTR string;    // String pointer
+    Int integer;      // Integer
+    PTR pointer;      // Pointer
+    )"
+    
+    MyStruct:=new _Struct(NewStruct)
+    MyStruct.Alloc("string",A_PtrSize,100)
+    MyStruct.char.1:="A" <span class="CodeCom">;set first char</span>
+    MyStruct.char2.1:="ABC" <span class="CodeCom">;here all 3 characters will be writter to the array char2</span>
+    MyStruct.string := "New String"
+    MyStruct.integer := 100
+    MyStruct.pointer := &amp;MyStruct
+    
+    MsgBox % MyStruct.char.1 "`n"
+    . StrGet(MyStruct.char2[""]) "`n"
+    . MyStruct.String "`n"
+    . MyStruct.integer "`n"
+    . MyStruct.pointer "`n"
+    
+    <span class="CodeCom">;_______________________________________________</span>
+    <span class="CodeCom">;Pointer example</span>
+    <span class="CodeCom">;Create a variable containing a string</span>
+    var:="AutoHotKey"
+    <span class="CodeCom">;Create a pointer that will point to the variable/string</span>
+    VarSetCapacity(v,4),NumPut(&amp;var,v)
+    
+    s:=new _Struct("*Uint p",&amp;v)
+    MsgBox % StrGet(s.p[])
+    
+    <span class="CodeCom">;assign another pointer</span>
+    anothervar:="AutoHotkey_L"
+    s.p[""]:=&amp;anothervar
+    MsgBox % StrGet(s.p[])
+    
+    <span class="CodeCom">;Using LPTSTR you can assign a string directly</span>
+    s:=new _Struct("LPTSTR p"),s.Alloc("p",A_PtrSize,100)
+    s.p:="String"
+    MsgBox % s.p
+    NumPut(&amp;var,s.p[""],0,"PTR") <span class="CodeCom">; change address in p</span>
+    MsgBox % s.p
+    
+    <span class="CodeCom">;_______________________________________________</span>
+    <span class="CodeCom">;AHK Structures Example, requires AutoHotkey_H</span>
+&amp;#include &lt;AHKStructures&gt;
+    func(a,b=""){
+    }
+    variable:="1"
+    var:=new _Struct(_AHKVAR,getVar(variable))
+    MsgBox % "Name:`t" var.name
+    . "`nContent:`t" var.CharContents
+    . "`nType:`t" Asc(var.type)
+    func:=new _Struct(_AHKFunc,FindFunc("func"))
+    MsgBox % "Is " func.name " BuildIn? " Asc(func.IsBuiltIn)
+    . "`nMinParams: " func.MinParams
+    . "`nParamCount: " func.ParamCount
+    
+    
+    <span class="CodeCom">;_______________________________________________</span>
+    <span class="CodeCom">;Show original name of variables in a function, requires LowLevel or AutoHotkey_H</span>
+    
+    a:=1
+    b:=2
+    c:=3
+    MsgBox % ShowVars(a,b,c)
+    
+    ShowVars(ByRef _1="",ByRef _2="",ByRef _3="",ByRef _4="",ByRef _5="",ByRef _6="",ByRef _7="",ByRef _8="",ByRef _9="",ByRef _10=""){
+        func:=new _Struct("_AHKFunc",FindFunc(A_ThisFunc))
+        param:=new _Struct("_AHKFuncparam[10]",func.param[""])
+        Loop 10
+        if param[A_Index].var.type=0 &amp;&amp; var:=new _Struct("_AHKVar",param[A_Index].var.AliasFor[""]) <span class="CodeCom">;alias</span>
+        str .= "`n" var.name "=" _%A_Index%
+        Return SubStr(str, 2)
+    }
+    
+    <span class="CodeCom">;_______________________________________________</span>
+    <span class="CodeCom">;PROCESSENTRY32</span>
+    MAX_PATH:=260
+    _PROCESSENTRY32:="
+    (
+    DWORD     dwSize;
+    DWORD     cntUsage;
+    DWORD     th32ProcessID;
+    ULONG_PTR th32DefaultHeapID;
+    DWORD     th32ModuleID;
+    DWORD     cntThreads;
+    DWORD     th32ParentProcessID;
+    LONG      pcPriClassBase;
+    DWORD     dwFlags;
+    TCHAR     szExeFile[" MAX_PATH "];
+    )"
+    VarSetCapacity(string,260)
+    pEntry:= new _Struct(_PROCESSENTRY32)
+    pEntry.dwSize := sizeof(_PROCESSENTRY32)
+    hSnapshot:=DllCall("CreateToolhelp32Snapshot","UInt",TH32CS_SNAPALL:=0x0000001F,"PTR",0)
+    DllCall("Process32First" (A_IsUnicode?"W":""),"PTR",hSnapshot,"PTR",pEntry[""])
+    While % (A_Index=1 || DllCall("Process32Next" (A_IsUnicode?"W":""),"PTR",hSnapshot,"PTR",pEntry[""])) {
+        ToolTip % pEntry.cntUsage "`n" pEntry.th32ProcessID
+        . "`n" pEntry.th32DefaultHeapID "`n" pEntry.th32ModuleID
+        . "`n" pEntry.cntThreads "`n" pEntry.th32ParentProcessID
+        . "`n" pEntry.pcPriClassBase "`n" pEntry.dwFlags "`n" StrGet(pEntry.szExeFile[""])
+        Sleep, 200
+    }
+    
+    <span class="CodeCom">;_______________________________________________</span>
+    <span class="CodeCom">;MODULEENTRY32</span>
+    MAX_PATH:=260
+    MAX_MODULE_NAME32:=255
+    _MODULEENTRY32:="
+    (
+    DWORD   dwSize;
+    DWORD   th32ModuleID;
+    DWORD   th32ProcessID;
+    DWORD   GlblcntUsage;
+    DWORD   ProccntUsage;
+    BYTE    *modBaseAddr;
+    DWORD   modBaseSize;
+    HMODULE hModule;
+    TCHAR   szModule[" MAX_MODULE_NAME32 + 1 "];
+    TCHAR   szExePath[" MAX_PATH "];
+    )"
+    
+    ListProcessModules(DllCall("GetCurrentProcessId"))
+    ExitApp
+    ListProcessModules(dwPID)
+    {
+        global _Struct
+        static TH32CS_SNAPMODULE:=0x00000008,INVALID_HANDLE_VALUE:=-1
+        hModuleSnap := new _Struct("HANDLE")
+        me32 := new _Struct("_MODULEENTRY32")
+        
+        <span class="CodeCom">;  Take a snapshot of all modules in the specified process.</span>
+        hModuleSnap := DllCall("CreateToolhelp32Snapshot","UInt", TH32CS_SNAPMODULE,"PTR", dwPID )
+        if( hModuleSnap = INVALID_HANDLE_VALUE )
+        {
+            MsgBox % "CreateToolhelp32Snapshot (of modules)"
+            return FALSE
+        }
+        
+        <span class="CodeCom">; Set the size of the structure before using it.</span>
+        me32.dwSize := sizeof("_MODULEENTRY32")
+        
+        <span class="CodeCom">;  Retrieve information about the first module,</span>
+        <span class="CodeCom">;  and exit if unsuccessful</span>
+        
+        if( !DllCall("Module32First" (A_IsUnicode?"W":""),"PTR", hModuleSnap,"PTR", me32[""] ) )
+        {
+            MsgBox % "Module32First" <span class="CodeCom">;  // Show cause of failure</span>
+            DllCall("CloseHandle","PTR", hModuleSnap ) <span class="CodeCom">;     // Must clean up the snapshot object!</span>
+            return  FALSE
+        }
+        
+        <span class="CodeCom">;//  Now walk the module list of the process,</span>
+        <span class="CodeCom">;//  and display information about each module</span>
+        while(A_Index=1 || DllCall("Module32Next" (A_IsUnicode?"W":""),"PTR",hModuleSnap,"PTR", me32[""] ) )
+        {
+            ToolTip % "`tMODULE NAME`t=`t"       StrGet(me32.szModule[""])
+            . "`n`texecutable`t=`t"    StrGet(me32.szExePath[""])
+            . "`n`tprocess ID`t=`t"    me32.th32ProcessID
+            . "`n`tref count (g)`t=`t"   me32.GlblcntUsage
+            . "`n`tref count (p)`t=`t" me32.ProccntUsage
+            . "`n`tbase address`t=`t"    me32.modBaseAddr[""]
+            . "`n`tbase size`t=`t"     me32.modBaseSize
+            Sleep, 200
+        }
+        
+        <span class="CodeCom">;//  Do not forget to clean up the snapshot object.</span>
+        DllCall("CloseHandle","PTR",hModuleSnap)
+        return TRUE
+    }</pre>
+
+
+</b></body><style type="text/css"></style></html>

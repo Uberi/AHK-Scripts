@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Known Issues with this Autohotkey Script Obfuscator</title>
+<meta name="Description" content="Some gotchas to watch out for when you are obfuscating your Autohotkey program.">
+
+<link rel="stylesheet" href="mycss/standtemp.css" type="text/css">
+
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+<table>
+<tr>
+<td class="logotd"><a href="index.htm"><img src="graphics/dynamicobfuscator.gif" border="0" width="547" height="130" alt="Dynamic Obfuscator for Autohotkey Scripts"></a></td>
+<td class="headerspacer">&nbsp;</td>
+<td class="authorinfo">
+Obfuscator for Autohotkey Scripts - Written in Autohotkey
+<br>Released under Open Source GPL License
+<br>Author: <a href="http://davidmalia.com">David Malia</a>, Augusta ME, USA
+<br><a href="http://dynamicobfuscator.org">http://dynamicobfuscator.org</a>
+</td>
+</tr>
+</table>
+
+<div id="wrapcols">
+
+<div id="mainconts">
+
+<div class="toplinks">
+<a href="index.htm">General Program Features</a>
+&nbsp; &nbsp;<a href="documentation.htm" class="selnav">User Manual</a>
+&nbsp; &nbsp;<a href="downloadobfuscator.htm">Download</a>
+</div>
+
+<h1>Known Issues with this Autohotkey Script Obfuscator</h1>
+
+<div>
+I decided to open source this obfuscator with a few small problems still present. Mostly the program runs very well and is stable and fast. Of the problems below, the first one is the one that gave me the most frequent annoyance but I could not come up with an easy solution when the program was being developed. 
+</div>
+
+<h2>Words in GUI Text in Script Are Being Replaced by Obfuscations</h2>
+<div>
+You can sometimes have the shocking problem where some of the words on the interface of a GUI box are replaced by an obfuscated string. A word like 'total' found in the text of some GUI control might be replaced with a large string made up entirely of characters like fk@#%. When your user brings up that GUI window, it will show a very ugly obfuscated string on the interface! 
+
+<br>&nbsp;<br>This is an obfuscator invalid replacement problem. It can happen when the text in a control contains a word that is identical to some variable name that is being obfuscated in your program. For instance, you might use the word 'total' in your GUI text and it could be a variable name as well causing invalid replacements of that word in GUI text. This is most likely to happen in 'gui, add' statements and 'msgbox' statements but it can also happen anyplace strings can be found including assignment statements, expressions, and passing literal strings to functions.
+
+<br>&nbsp;<br>At the current time there is no command in the obfuscator to automatically fix this problem. Further below <a href="#invalidreplacements">I discuss how I think the obfuscator should be modified</a> in order to reduce this problem but first I will explain the workarounds to this problem you can use right now. 
+
+<br>&nbsp;<br>The first workaround you can use is to change the name of the variable that is being invalidly replaced. If a variable name is an actual whole word and that word just happens to also be used a lot on your gui interfaces, this option might require less work.
+
+
+<br>&nbsp;<br>The second workaround is to put a legal variable character before or after the word that is being invalidly replaced in your GUI text. This means that you add an extra character before or after the item that is being replaced in your text. It would have to be a character that is legal as an autohotkey variable including a-z, 0-9, or one of the legal special characters: #_@$?[]. So if the word total is being invalidly replaced, you could surround it with square brackets: [total], or start it with an @: @total. I know, kinda ugly, but it is what it is right now.
+
+<br>&nbsp;<br><a href="#invalidreplacements">How the obfuscator should be modified to fix this problem.</a>
+</div>
+
+<h2>Comment Tags Used to Comment Out Whole Function and Label Sections</h2>
+<div>
+/* */ style comment tags can cause a problem when they are used to comment out a whole function or label section and you choose to have the obfuscator randomize the order of the functions and labels. The randomize will cause the comment tags to get split up and end up commenting out the wrong part of the code. In this case your obfuscated script will complain with a parse error as soon as you try to run it. It might complain that a function or label referred to in your code is not found. But then if you reobfuscate your script with randomize function order turned off, the script will run correctly. 
+
+<br>&nbsp;<br>To diagnose this problem, search your obfuscated script for the beginning comment tags '/*'. Look for ones found outside functions and label sections. You will find one that is started but not terminated when it should be.
+
+<br>&nbsp;<br>There is no solution to this problem right now except to not include these comment tags used this way in your script to be obfuscated.
+
+<br>&nbsp;<br>Using the /* */ comment tags within function or label sections is handled ok and not affected by this bug. 
+</div>
+
+<h2>Using Single Letter Object Names Can Cause Invalid Obfuscator Replacements</h2>
+<div>
+If you use single letter object names for stuff like parameters or functions they can fool the obfuscator into producing invalid obfuscated code. The single letters most likely to bring trouble are the letters I use to obfuscate stuff, the f and the k. If a problem is caused then the compilation of the obfuscated program will fail. Check the line the error is reported on to see if you have any code around there that has a single character object name. If the error occurs, it will not re-occur every time you re-obfuscate the program because there is always a random element to the obfuscation.
+</div>
+
+<h2>The Obfuscator Creates an Object Name That is Too Big</h2>
+<div>
+Autohotkey limits variable names to 253 characters. Because Dynamic Obfuscator can insert multiple security fragments surrounded by percents into an obfuscated object name, the object name can sometimes exceed 253 characters. In most cases you will not even be aware that it happened because the obfuscator is set to automatically roll back the insertion of the last security fragment that made it go over.
+
+<br>&nbsp;<br>In some cases, however, an error of this type can still slip through to the code output by the obfuscator. When it does, the program will complain on start up that some line number does not contain a recognized action. Just try reobfuscating your script.
+
+<br>&nbsp;<br>If you are using dynamic obfuscation instead of straight obfuscation and you set the obfuscator to create large obfuscated object name strings, this will become more likely to happen. In dynamic obfuscation, you don't really want to go beyond 30 characters for obfuscation strings because security fragments will be inserted into them when calls to them are encoded, making them bigger.
+
+<br>&nbsp;<br>If you are using straight obfuscation then you need not be concerned about this at all and you can in fact use obfuscation strings right up to the 253 character limit imposed by autohotkey.
+</div>
+
+<h2>A Label Name Oddity Caused by GUI Statement Syntax</h2>
+<div>
+If you have a label and then another label is named the same thing except the second contains a 'G' in front of it, an invalid obfuscator replacement could occur. An example of this would be a label named 'lob' and another label named 'glob'. The reason this can cause a problem is because the format 'Glabelname' is used inside GUI statements to wire a gosub label to the click event for the control. So if I find a Glob tag inside the options of a GUI statement, it is a reference to the 'lob' label, not the 'glob' label. 
+
+<br>&nbsp;<br>This obfuscator can replace 'Glabelname' style tags found in GUI statements with 'Gobfuscatedlabelname' tags. The G will remain but the label name will be replaced by the obfuscated label name. Because of the special use of the letter 'G' with labels in controls, having 2 different labels named 'lob' and 'glob' might cause an invalid obfuscator replacement.
+</div>
+
+<h2>A Global Variable Name Oddity Caused by GUI Statement Syntax</h2>
+<div>
+If you have a global variable and then another global variable is named the same thing except the second contains a 'V' in front of it, an invalid obfuscator replacement could occur. An example of this would be a variable named 'lad' and another variable named 'vlad'. The reason this can cause a problem is because the format 'Vvarname' is used inside GUI statements to associate a variable with a control. So if I find a Vlad tag inside the options of a GUI statement, it is a reference to the 'lad' variable, not the 'vlad' variable. 
+
+<br>&nbsp;<br>This obfuscator can replace 'Vvarname' style tags found in GUI statements with 'Vobfuscatedvarname' tags. Only global variables found in this form are replaced. The 'V' will remain but the variable name will be replaced by an obfuscated variable name. Because of the special use of the letter 'V' with labels in controls, having 2 different labels named 'lad' and 'vlad' might cause an invalid obfuscator replacement.
+</div>
+
+<h2><a name="invalidreplacements"></a>Fix Invalid Replacements: Add Code to Dynamic Obfuscator to do Special Processing of Continuation Sections</h2>
+<div>
+A feature should be added to the obfuscator that would automatically scan for continuation sections in the code and mark them as 'replace %varname% only'. That would indicate to the obfuscator that only variables that are surrounded with %s should be replaced with obfuscated variable names in the continuation sections. Variable names that don't have percents around them would not be replaced so therefore a word like 'total' in the text would not be replaced. 
+
+<br>&nbsp;<br>I like this idea because the code place I most frequently have had an invalid replacements problem was in my continuation sections. Programmers start continuation sections because they have large amounts of text to present so that creates more opportunities for invalid replacements. By just fixing the invalid replacements problems that take place in continuation sections, the majority of the invalid replacement problems will be fixed. 
+
+<br>&nbsp;<br>Since autohotkey only looks in continuation sections for variable names surrounded by %s anyways, the obfuscator should only be doing that as well. And in fact the invalid replacements that occur in continuation sections are what the obfuscator sees as variable names NOT SURROUNDED by %s.
+
+<br>&nbsp;<br>Fixing invalid replacements in continuation sections should be relatively easy as well because they start with a '(' as the first character of a line and end with a ')' as the first character of a line. That syntax is not valid for any other autohotkey thing except inside multiline /* */ comments so it should be easy to find the continuation sections in the code and mark them as 'replace %varname% only'. This would work well no matter if the continuation section is associated with a gui control, or a msgbox, or even if you are using it in a variable assigment statement. 
+
+</div>
+
+<h2>Fix Invalid Replacements: Implement New Command Comment in Dynamic Obfuscator</h2>
+<div>
+Unfortunately, you can have controls and msgboxes that don't have continuation sections but an invalid replacement still occurs in the text. I suggest a new obfuscator command comment be created that can be put one line before the problem statement:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $REPLACE%VARNAME%ONLY: 
+
+<br>&nbsp;<br>This would indicate to the obfuscator that it is only to replace variables surrounded by %s in the statement on the following line. It would not interfere with the insertion of dynamic values into your control options:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $REPLACE%VARNAME%ONLY:
+<br>gui, add, text, xm y+10 C%mycolor% W%controlwidth%, Grand total:
+
+<br>&nbsp;<br>In the gui statement above, the obfuscator would still replace %mycolor% and %controlwidth% with obfuscated versions of those variable names, but it would not replace the word 'total' even if there was a variable named that in the program.
+
+<br>&nbsp;<br>The 'REPLACE%VARNAME%ONLY' command comment would need to be coded so that if a variable name found in the marked statement starts out with an extra 'V' in front of it, the repacement would still be done even though it has no %s surrounding it. A similar thing would also need to be done if a label name in the marked statement starts out with an extra 'G' in front of it. This is because that format is used to signify gosub labels and variables to attach to a gui control:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $REPLACE%VARNAME%ONLY:
+<br>gui, add, text, xm y+10 Vsomevarname Gsomelabel, Grand total:
+
+<br>&nbsp;<br>Because of the way the Dynamic Obfuscator program is already structured under the hood, I feel implementing the 'REPLACE%VARNAME%ONLY' obfuscator command comment would be relatively easy.
+</div>
+
+</div>
+
+<div id="rightcol">
+
+</div>
+
+</div>
+
+</body>
+</html>

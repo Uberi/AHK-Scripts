@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Put Obfuscator Command Comments in Your Autohotkey Scripts</title>
+<meta name="Description" content="Use obfuscator command comments to change obfuscation encoding defaults, to break whole sections of code, and to rewire a function to go to another function.">
+
+<link rel="stylesheet" href="mycss/standtemp.css" type="text/css">
+
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+<table>
+<tr>
+<td class="logotd"><a href="index.htm"><img src="graphics/dynamicobfuscator.gif" border="0" width="547" height="130" alt="Dynamic Obfuscator for Autohotkey Scripts"></a></td>
+<td class="headerspacer">&nbsp;</td>
+<td class="authorinfo">
+Obfuscator for Autohotkey Scripts - Written in Autohotkey
+<br>Released under Open Source GPL License
+<br>Author: <a href="http://davidmalia.com">David Malia</a>, Augusta ME, USA
+<br><a href="http://dynamicobfuscator.org">http://dynamicobfuscator.org</a>
+</td>
+</tr>
+</table>
+
+<div id="wrapcols">
+
+<div id="mainconts">
+
+<div class="toplinks">
+<a href="index.htm">General Program Features</a>
+&nbsp; &nbsp;<a href="documentation.htm" class="selnav">User Manual</a>
+&nbsp; &nbsp;<a href="downloadobfuscator.htm">Download</a>
+</div>
+
+<h1>Put Obfuscator Command Comments in Your Autohotkey Scripts</h1>
+<div>
+You place obfuscator command comments in your autohotkey script in order to send messages to the obfuscator.
+
+<br>&nbsp;<br>Each obfuscator command comment must start in column 1 with this string:
+<br>;$OBFUSTICATOR:
+
+<br>&nbsp;<br>Following that tag on the same line you would then supply the actual command to be sent to the obfuscator and it should be in the form: 
+<br>;$OBFUSTICATOR: $obfuscator_command: {parameters}
+
+<br>&nbsp;<br>Because of the requirement that obfuscator command comments start in column 1, if you just indent the comment it will turn it off and cause the obfuscator to ignore it which can be useful in debugging problems with your obfuscation.
+
+<br>&nbsp;<br>Some obfuscator command comments require no parameters, some allow a list of stuff like individual object names or classes, some allow the <a href="#standparams">standard parameter set</a>, and some allow a list optionally followed by the <a href="#standparams">standard parameter set</a>. If a list is followed by the standard parameter set then that is indicated by separating them with a '/'.
+</div>
+
+<h2><a name="standparams"></a>Understanding the Standard Parameter Set That is Used in Many Command Comments</h2>
+<div>
+The standard parameter set is used to set obfuscation encoding parameters for object types or for a specific list: 
+
+<br>&nbsp;<br>{minobfstr}, {maxobfstr}, {obfrows}, {fragsperrow}, {minfragstr}, {maxfragstr}
+
+<br>&nbsp;<br>Whenever these are allowed in a statement, each individual parameter is optional and you can just leave out the ones you do not want to change. Do however put commas in as placeholders up to the values you want to change.
+
+<br>&nbsp;<br>The first 2 parameters specify the minimum size and the maximum size of newly created obfuscated object names. At obfuscation time, a number within this range will be randomly chosen as the the length of each new name. If you do not change your program but just rerun the obfuscation function, the same objects will have different obfuscation strings with different lengths. Obfuscating the exact same program twice will result in a program that looks almost completely different!
+
+<br>&nbsp;<br>If you want to turn off obfuscation for something, use -1 as the first parameter and then leave off all the other parameters.
+
+<br>&nbsp;<br>The 3rd and 4th parameters specify how many rows and columns of dynamic obfuscation you want for each individual object. These will cause object names to be made out of fragments that will be represented by the presence of %'s in object names. You can specify as many rows as you want but you can only have up to 2 columns. 
+
+<br>&nbsp;<br>For each cell in the dynamic obfuscation table, a new obfuscated string will be created and set to part or all of the 'straight' obfuscated string for that object. At obfuscation time, a random row will be chosen in the table in order to obfuscate the current usage of the object that is found. This means that 20 usages of the same function within your program can come out all looking completely different! If you want to turn off dynamic obfuscation and use straight obfuscation only, use a -1 in the 3rd parameter and leave off the rest of the parameters after that.
+
+<br>&nbsp;<br>The 5th and 6th parameters are similar to the 1st and 2nd parameters in that they specify the minimum size and the maximum size for newly obfuscated strings that will be part of the dynamic obfuscation object name fragments table. A length within this range will be randomly chosen at obfuscation time.
+</div>
+
+<h2><a name="mantag"></a>One Mandatory Obfuscator Command Comment Tag, the END AUTOEXECUTE tag</h2>
+<div>
+This tag is required right after the last return in your auto-execute section of code.
+<br>&nbsp;<br>;this return ends the autoexecute section<br>return 
+<br>;$OBFUSCATOR: $END_AUTOEXECUTE:
+
+<br>&nbsp;<br>This command comment requires no parameters.
+</div>
+
+</div>
+
+<div id="rightcol">
+
+</div>
+
+</div>
+
+</body>
+</html>

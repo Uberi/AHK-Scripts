@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>For Autohotkey Dynamic Object Name Obfuscation, Use the DUMP Commands</title>
+<meta name="Description" content="The obfuscator DUMP commands will drop scrambled and secured assignment statements into your Autohotkey script that will 'wire up' the Dynamic Obfuscation.">
+
+<link rel="stylesheet" href="mycss/standtemp.css" type="text/css">
+
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+<table>
+<tr>
+<td class="logotd"><a href="index.htm"><img src="graphics/dynamicobfuscator.gif" border="0" width="547" height="130" alt="Dynamic Obfuscator for Autohotkey Scripts"></a></td>
+<td class="headerspacer">&nbsp;</td>
+<td class="authorinfo">
+Obfuscator for Autohotkey Scripts - Written in Autohotkey
+<br>Released under Open Source GPL License
+<br>Author: <a href="http://davidmalia.com">David Malia</a>, Augusta ME, USA
+<br><a href="http://dynamicobfuscator.org">http://dynamicobfuscator.org</a>
+</td>
+</tr>
+</table>
+
+<div id="wrapcols">
+
+<div id="mainconts">
+
+<div class="toplinks">
+<a href="index.htm">General Program Features</a>
+&nbsp; &nbsp;<a href="documentation.htm" class="selnav">User Manual</a>
+&nbsp; &nbsp;<a href="downloadobfuscator.htm">Download</a>
+</div>
+
+<h1>For Autohotkey Dynamic Object Name Obfuscation, Use the DUMP Commands</h1>
+<div>
+The DUMP command comments will drop a bunch of assignment statements into your code. These statements will initialize the values of object name fragments that will be used to create and secure object names. DUMP commands <a href="#dumpman">are mandatory when you use Dynamic Obfuscation</a> but are not necessary when using straight obfuscation. 
+
+<br>&nbsp;<br>The assignment statements themselves will have object name fragments inserted into them which will be represented by the presence of %'s. Both sides of the assignment statement will have these so that it will be difficult for the hacker to find the place where an object fragment used in the program is initialized.
+
+<br>&nbsp;<br>The fragments used in the assignment statements can be <a href="#initcommfrags">common security fragments</a> or they can <a href="#initclassfrags">fragments associated with a secure class</a>. Since common security fragments are used frequently even by secure classes for some things, they must be DUMPed before most other types of DUMPs are done.
+
+<br>&nbsp;<br>If you choose to randomize the order of functions and label sections on the obfuscation run screen, then the order of individual statements within the DUMPs will also be scrambled, making it more difficult to identify individual assignments.
+
+<br>&nbsp;<br>The DUMP commands will put comment headers into the code to identify individual object initializations which is useful for debugging. To have them show, uncheck the 'strip out all comments' box on the obfuscation run screen.
+</div>
+
+<h2><a name="dumpman"></a>DUMP Commands Are Mandatory When Dynamic Obfuscation is Used</h2>
+<div>
+Because Dynamic Obfuscation builds object names out of fragments represented by %'s, these fragments must be initialized somewhere in your program. The DUMP command comments allow you to do that at places of your choosing in your source code. When using Dynamic Obfuscation you must always <a href="#initcommfrags">DUMP common object fragments</a> and <a href="#initobtypefrags">DUMP fragments for object types</a>. If you create secure classes, you must use the <a href="#initclassfrags">DUMP commands for those</a> and you can also use the <a href="#dumppoisened">DUMP Poisened command</a> for those. If you want to change where your function calls go to, use the <a href="#dumprewirefunc">DUMP Rewire Function</a>.
+
+</div>
+
+<h2><a name="initcommfrags"></a>DUMP to Initialize 'Common' Object Name Fragments</h2>
+<div>
+Common object fragments are automatically inserted by the obfuscator into various low security objects in order to make them hard to find in the source code. Low security objects include global variables, local variables, static variables, and parameters. Functions and labels that have not been added to a secure class also make use of common object fragments.
+
+<br>&nbsp;<br>Common object fragments will be represented in object names by the use of pairs of %'s. One thing a % pair can represent is a 'replacement' fragment where one letter of the original obfusticated name is replaced by an %obfuscatedname% which will resolve to that letter at run time. Another thing it can represent is a null fragment that will resolve to the null string at run time. These will be interspersed in the object name along with other % pairs that will resolve to a larger part of the original obfuscated name.
+
+<br>&nbsp;<br>Common object fragments are also inserted by the DUMP commands themselves into the assignments statements that it creates. They will be inserted into DUMPs of global variables, local variables, static variables, and parameters. They will also be inserted into DUMPs of non secure functions and labels and in some parts of the DUMPs of secure functions and labels. They will be used on both sides of the assignment statements making it more difficult to determine what is being assigned and what it is being assigned to.
+
+<br>&nbsp;<br>When you DUMP common object fragments, a whole pallette of fragments will be DUMPed. Multiple replacement fragments will be DUMPed for each letter that object names can be made out of (fk@#), and multiple NULL fragments will be DUMPed. The actual number is internally set in the program at this time and you would have to change the source code in order to change this number.
+
+<br>&nbsp;<br>In order to DUMP your common object fragments, use these command comments:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $DUMP_SECFRAGS_FORCLASSES: common
+<br>;$OBFUSCATOR: $DUMP_TMESSFRAGS_FORCLASSES: common
+
+<br>&nbsp;<br>These statements should be used right at the beginning of your program in your autoexecute section because so many other things use them. You can also use them in a function, but you must specify that function as straight obfuscation. The first statement below will specify straight obfuscation for the function which follows it, commonobjfrags():
+
+<br>&nbsp;<br>;$OBFUSCATOR: $FUNCS_CHANGE_DEFAULTS: ,, -1
+
+<br>&nbsp;<br>commonobjfrags() {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global
+<br>;$OBFUSCATOR: $DUMP_SECFRAGS_FORCLASSES: common
+<br>;$OBFUSCATOR: $DUMP_TMESSFRAGS_FORCLASSES: common	
+<br>}
+
+<br>&nbsp;<br>;$OBFUSCATOR: $FUNCS_RESTORE_DEFAULTS:
+</div>
+
+<h2><a name="initobtypefrags"></a>DUMP to Initialize Object Name Fragments for Object Types</h2>
+<div>
+When you use Dynamic Obfuscation, you must do object name fragment DUMPs for object types. The statements below will DUMP fragments for global variables, local and static variables, and parameters. These statements are used as is and take no parameters. Make sure you do DUMPs for common object fragments before using the statements below.
+
+<br>&nbsp;<br>;$OBFUSCATOR: $GLOBVARFRAGS_DUMPALL:
+<br>;$OBFUSCATOR: $LOSVARFRAGS_DUMPALL:
+<br>;$OBFUSCATOR: $PARAMFRAGS_DUMPALL:
+
+<br>&nbsp;<br>For functions and labels that are either unclassed or assigned to an unsecured class, use the statements below to DUMP those fragments. Once again be sure you DUMP your common object fragments before you do the DUMPs below.
+
+<br>&nbsp;<br>;$OBFUSCATOR: $FUNCFRAGS_DUMPCLASS: unclassed
+<br>;$OBFUSCATOR: $FUNCFRAGS_DUMPCLASS: unsecclasses
+
+<br>&nbsp;<br>;$OBFUSCATOR: $LABELFRAGS_DUMPCLASS: unclassed
+<br>;$OBFUSCATOR: $LABELFRAGS_DUMPCLASS: unsecclasses
+</div>
+
+<h2>DUMP to Initialize Autohotkey Built in Function Name Fragments</h2>
+<div>
+Autohotkey built in functions can also be obfuscated if you are using Dynamic Obfuscation. Use the statement below to DUMP the object name fragments. It is used as is and has no parameters. Make sure you DUMP your common object fragments first.
+
+<br>&nbsp;<br>;$OBFUSCATOR: $SYSFUNCFRAGS_DUMPALL:
+</div>
+
+<h2><a name="initclassfrags"></a>DUMP to Initialize Object Name Fragments for Secure Classes</h2>
+<div>
+To create a class of functions and labels, you use the ADDFOLLOWING_TOCLASS command with a class name specified by you to start adding label and function sections to the class. To end adding stuff to the class, use the ADDFOLLOWING_TOCLASS command with no class name specified. To make it into a 'secure' class, use the CREATEOBJCLASS command and specify the same classname you used in the ADDFOLLOWING_TOCLASS command:
+
+<br>&nbsp;<br>;$OBFUSCATOR: $CREATEOBJCLASS: expressmenu 
+<br>;$OBFUSCATOR: $ADDFOLLOWING_TOCLASS: expressmenu
+
+<br>&nbsp;<br>;function and label sections would go here
+
+<br>&nbsp;<br>;$OBFUSCATOR: $ADDFOLLOWING_TOCLASS:
+
+<br>&nbsp;<br>Once you have created secure classes, you must use DUMP commands for each secure class. Three commands are required for each class and they must be executed in the order below. The second command uses the definitions DUMPed in the first command and the third command uses the definitions DUMPed in the second command.
+
+<br>&nbsp;<br>;$OBFUSCATOR: $DUMP_SECFRAGS_FORCLASSES: expressmenu
+<br>;$OBFUSCATOR: $DUMP_TMESSFRAGS_FORCLASSES: expressmenu
+<br>;$OBFUSCATOR: $DUMPFRAGS_FORCLASSES: expressmenu
+
+<br>&nbsp;<br>Generally you'll want to physically separate the first one from the last two in the code because the first one can be replaced with the DUMPPOISENED_SECFRAGS_FORCLASSES command which would then corrupt the execution of the DUMPs which follow. A good approach is to use an if to select between the 2 different first statements and put the last two statements in a function by themselves. See the section below on poisening variable security fragments.
+</div>
+
+<h2><a name="dumppoisened"></a>DUMP Poisened Variable Security Fragments for Classes</h2>
+<div>
+Once you have created a secure class of functions and labels, you can break or poisen them at any time you want. You can start out your program with them broken, and you can break them at any point during the normal running of your program when a security violation is detected. A template for doing this is shown below.
+
+<br>&nbsp;<br>;start out with your class poisened
+<br>;$OBFUSCATOR: $DUMPPOISENED_SECFRAGS_FORCLASSES: expressmenu
+
+<br>&nbsp;<br>;put this in your autoexecute section or in a function
+<br>if (securityPASSED) {
+<br>;this statement will override the poisened statement above
+<br>;$OBFUSCATOR: $DUMP_SECFRAGS_FORCLASSES: expressmenu
+<br>}
+<br>;execute the rest of the DUMPs for this class
+<br>dumpexpressmenu()
+
+<br>&nbsp;<br>;put these ones in a function by themselves
+<br>dumpexpressmenu() {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global
+<br>;$OBFUSCATOR: $DUMP_TMESSFRAGS_FORCLASSES: expressmenu
+<br>;$OBFUSCATOR: $DUMPFRAGS_FORCLASSES: expressmenu
+<br>}
+
+<br>&nbsp;<br>;can be placed anywhere in your code to break classes on the fly
+<br>if (securityFAILED) {
+<br>;$OBFUSCATOR: $DUMPPOISENED_SECFRAGS_FORCLASSES: expressmenu
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;this has to be done after the DUMP POISENED in order for it to 'take'
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dumpexpressmenu()
+<br>}
+</div>
+
+<h2><a name="dumprewirefunc"></a>DUMP to 'Rewire' Where Functions Go To</h2>
+<div>
+For greater security, you can 'rewire' your most sensitive functions to go to an alternate decoy function. You use these 2 commands and you can use them as much as you want in your code. As soon as your program executes one of these, all following calls to the original function will be affected. 
+
+<br>&nbsp;<br>;all following calls to originalname will go to decoyname
+<br>;$OBFUSCATOR: $DUMP_REWIREFUNCPATH: originalname, decoyname
+<br>&nbsp;<br>;this will make them start going back to the originalname
+<br>;$OBFUSCATOR: $DUMP_REWIRE_STRAIGHT: originalname
+
+<br>&nbsp;<br>The exact same function call in the exact same place in your code will go to the original function or the decoy function depending on which version of the rewire was run before it. To create a 'rewire' function, add a function to your code by the name of decoyname that has the same number of parameters as the originalname. This function should not be called whatsoever in the unobfuscated version of your program, only the obfuscator will use it. No other work is necessary to create a rewire function except to use the 2 commands above.
+
+<br>&nbsp;<br>You can use these commands during your program startup or 'inline' in your code to test for security violations in the main executable sections of your program. Just as soon as the REWIREFUNCPATH is used, all following calls to originalname will be transferred to decoyname. 
+
+<br>&nbsp;<br>;program start up, start broken!
+<br>;$OBFUSCATOR: $DUMP_REWIREFUNCPATH: originalname, decoyname
+<br>;somewhere within your startup section do this
+<br>if (securityPASSED) {
+<br>;$OBFUSCATOR: $DUMP_REWIRE_STRAIGHT: originalname
+<br>}
+
+<br>&nbsp;<br>;inline test done during the main execution of the program
+<br>if (securityFAILED) {
+<br>;$OBFUSCATOR: $DUMP_REWIREFUNCPATH: originalname, decoyname
+<br>}
+
+</div>
+
+</div>
+
+<div id="rightcol">
+
+</div>
+
+</div>
+
+</body>
+</html>
