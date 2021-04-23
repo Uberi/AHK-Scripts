@@ -1,0 +1,96 @@
+﻿# AutoHotkey syntax highlighting style for SciTE
+# GitHub Style by Joe DF
+# Revision: 1.0.0 - [13:15 2014/06/24]
+
+# START -> DO NOT CHANGE ANYTHING AFTER THIS LINE
+# ---------------------------------------------------------
+
+# Caret, Highlights, etc
+selection.fore=#FFFFFF
+selection.back=#3399FF
+highlight.current.word=1
+highlight.current.word.colour=#FFAA00
+highlight.current.word.by.style=1
+indicators.alpha=255
+indicators.under=1
+caret.fore=#333333
+edge.colour=#EEEEEC
+caret.line.back=#FFFFCC
+caret.width=2
+
+# Generic Error styling
+error.inline=1
+style.error.0=$(font.normal),bold,fore:#FF0000,back:#FFFFFF
+style.error.1=$(font.normal),bold,fore:#FFFFFF,back:#FF0000
+style.error.2=$(font.normal),bold,fore:#000000,back:#FFFF00
+style.error.3=$(font.normal),bold,fore:#F8F8F8,back:#FFAA00
+
+# Output
+output.horizontal.size=85
+output.initial.hide=1
+style.errorlist.32=$(font.normal),fore:#F8F8F2,back:#000000
+style.errorlist.4=fore:#F8F8F2
+style.errorlist.0=fore:#FFAA00
+style.errorlist.1=fore:#FFAA00
+style.errorlist.2=fore:#EF2929
+style.errorlist.3=fore:#FF0000
+
+# TillaGoto Colors
+tillagoto.gui.bgcolor=0xFFFFFF
+tillagoto.gui.controlbgcolor=0xFFFFFF
+tillagoto.gui.controlfgcolor=0x333333
+
+# Fold Margin
+fold.margin.colour=#DDDDDD
+fold.margin.highlight.colour=#FFFFFF
+fold.margin.width=16
+
+# Line Number Margin
+style.*.33=$(font.normal),fore:#B2B2B2,back:#FFFFFF
+line.margin.width=4
+
+# New SciTE4AutoHotkey style format
+s4ahk.style=1
+
+# Default text font
+default.text.font=Consolas
+
+# Base (background, base font)
+style.*.32=font:$(default.text.font),size:10,fore:#333333,back:#FFFFFFF
+
+# Default style
+s4ahk.style.default=fore:#333333
+# Line comment (; syntax)
+s4ahk.style.comment.line=fore:#999988,italics
+# Block comment (/*...*/ syntax)
+s4ahk.style.comment.block=fore:#999988,italics
+# Escaped characters (`x)
+s4ahk.style.escape=fore:#DD1144
+# Operator
+s4ahk.style.operator=
+# String
+s4ahk.style.string=fore:#DD1144
+# Number
+s4ahk.style.number=fore:#009999
+# Word operator/Reserved keyword
+s4ahk.style.wordop=
+# Variable/Identifier
+s4ahk.style.var=fore:#008080
+# (v2) Function / (v1.x) Built-in function
+s4ahk.style.func=fore:#990000,bold
+# Directive
+s4ahk.style.directive=fore:#0086B3
+# Label/Hotkey
+s4ahk.style.label=fore:#333333
+# Flow of control
+s4ahk.style.flow=fore:#0086B3
+# Built-in variable
+s4ahk.style.biv=fore:#008080
+# (v2) Built-in function / (v1.x) Command
+s4ahk.style.bif=fore:#0086B3
+# Syntax error
+s4ahk.style.error=fore:#DD1144,bold,underlined
+
+# Old styles for AutoHotkey v1.x code
+s4ahk.style.old.key=
+s4ahk.style.old.user=

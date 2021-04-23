@@ -1,0 +1,101 @@
+# SciTE session file
+
+position.left=0
+position.top=53
+position.width=768
+position.height=557
+position.maximize=1
+
+mru.1.path=C:\Users\Anthony\Dropbox\AHK Scripts\@Completed\Functions And Scriptlets\Download.ahk
+mru.2.path=C:\Users\Anthony\Dropbox\AHK Scripts\Parasol\Physics.ahk
+mru.3.path=C:\Users\Anthony\Dropbox\AHK Scripts\Parasol\Parasol\Parasol.ahk
+mru.4.path=C:\Users\Anthony\Dropbox\AHK Scripts\Parasol\Parasol\Contact.ahk
+mru.5.path=C:\Users\Anthony\Dropbox\AHK Scripts\@Completed\Functions And Scriptlets\Permutations.ahk
+mru.6.path=C:\Users\Anthony\Dropbox\AHK Scripts\@Completed\Functions And Scriptlets\Screen Capture.ahk
+mru.7.path=C:\Users\Anthony\Dropbox\AHK Scripts\Canvas-AHK\Canvas.ahk
+mru.8.path=C:\Users\Anthony\Dropbox\AHK Scripts\Canvas-AHK\Surface.ahk
+mru.9.path=C:\Users\Anthony\Dropbox\AHK Scripts\Sundance\Lib\Sundance.ahk
+mru.10.path=C:\Users\Anthony\Dropbox\AHK Scripts\@Completed\Programs\ProgressPlatformer\ProgressEngine.ahk
+
+search.1.findwhat=guard
+search.2.findwhat=SubStr(Code,Position,1)
+search.3.findwhat=drawellipse
+search.4.findwhat=prompt
+search.5.findwhat=.Red
+search.6.findwhat=.red
+search.7.findwhat=red
+search.8.findwhat=wip
+search.9.findwhat=translate
+search.10.findwhat=Infinity
+
+search.1.replacewith=CurrentChar
+search.2.replacewith=this.
+search.3.replacewith=Number
+search.4.replacewith=MouseY
+search.5.replacewith=MouseX
+search.6.replacewith=SendKeys
+search.7.replacewith=,"Int",
+search.8.replacewith=Sleep, WaitTime
+search.9.replacewith=WindowX
+search.10.replacewith=WinX
+
+buffer.1.path=C:\Users\Anthony\Dropbox\AHK Scripts\Compiler\Repository\Main.ahk
+buffer.1.position=919
+buffer.1.current=1
+
+buffer.2.path=C:\Users\Anthony\Dropbox\AHK Scripts\Compiler\Repository\Parser.ahk
+buffer.2.position=6073
+buffer.2.bookmarks=191
+buffer.2.folds=3,30,110,126,200,214,240,250,260,278,306,336,392,456,473,513,536,551,560,572
+
+buffer.3.path=C:\Users\Anthony\Dropbox\AHK Scripts\Linear System Solver.ahk
+buffer.3.position=4999
+
+buffer.4.path=C:\Users\Anthony\Dropbox\AHK Scripts\@Completed\Functions And Scriptlets\Pathfinder.ahk
+buffer.4.position=606
+
+buffer.5.path=C:\Users\Anthony\Dropbox\AHK Scripts\Forum Search.ahk
+buffer.5.position=1
+
+buffer.6.path=C:\Users\Anthony\Dropbox\AHK Scripts\Color.ahk
+buffer.6.position=10208
+
+buffer.7.path=C:\Users\Anthony\Dropbox\AHK Scripts\Chemical Equation Balancer.ahk
+buffer.7.position=389
+
+buffer.8.path=C:\Users\Anthony\Dropbox\AHK Scripts\YouTube Download.ahk
+buffer.8.position=849
+
+buffer.9.path=C:\Users\Anthony\Dropbox\AHK Scripts\@Completed\Functions And Scriptlets\Download.ahk
+buffer.9.position=2281
+buffer.9.folds=8
+
+buffer.10.path=C:\Users\Anthony\Dropbox\AHK Scripts\Parasol\Physics.ahk
+buffer.10.position=811
+buffer.10.folds=120
+
+buffer.11.path=C:\Users\Anthony\Dropbox\AHK Scripts\Parasol\Parasol\Parasol.ahk
+buffer.11.position=5917
+buffer.11.bookmarks=105
+
+buffer.12.path=C:\Users\Anthony\Dropbox\AHK Scripts\Parasol\Parasol\Contact.ahk
+buffer.12.position=2455
+
+buffer.13.path=C:\Users\Anthony\Dropbox\AHK Scripts\@Completed\Functions And Scriptlets\Permutations.ahk
+buffer.13.position=1461
+
+buffer.14.path=C:\Users\Anthony\Dropbox\AHK Scripts\@Completed\Functions And Scriptlets\Screen Capture.ahk
+buffer.14.position=127
+
+buffer.15.path=C:\Users\Anthony\Dropbox\AHK Scripts\Canvas-AHK\Canvas.ahk
+buffer.15.position=2993
+
+buffer.16.path=C:\Users\Anthony\Dropbox\AHK Scripts\Canvas-AHK\Surface.ahk
+buffer.16.position=5685
+
+buffer.17.path=C:\Users\Anthony\Dropbox\AHK Scripts\Sundance\Lib\Sundance.ahk
+buffer.17.position=1719
+buffer.17.folds=30,51,78,137,143,149,155,187,202
+
+buffer.18.path=C:\Users\Anthony\Dropbox\AHK Scripts\@Completed\Programs\ProgressPlatformer\ProgressEngine.ahk
+buffer.18.position=738

@@ -1,0 +1,37 @@
+Break
+Continue
+Else
+For key [,val] in obj \n[AutoHotkey_L]
+Gosub , Label\nJumps to the specified label and continues execution until Return is encountered.
+Goto , Label\nJumps to the specified label and continues execution.
+If Var = Value\n{\n	commands\n}else{\n	commands\n}\nSpecifies the command(s) to perform if Var = Value (can be for other operators).
+If (Expression){\n	commands\n}else{\n	commands\n}\nSpecifies the command(s) to perform if an expression evaluates to TRUE.
+If Var [not] between Low and High
+If Var [not] contains value1,value2,...
+If Var [not] in value1,value2,...
+If Var is [not] integer|float|number|digit|xdigit|alpha|upper|lower|alnum|space|time
+Return [, Expression]
+Until Expression \n[AutoHotkey_L]
+While Expression
+Between
+Contains
+In
+Number
+Digit
+XDigit
+Alpha
+Upper
+Lower
+Alnum
+Time
+Date
+Not
+Or
+And
+Bold
+Italic
+Strike
+Underline
+Norm
+True
+False

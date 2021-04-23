@@ -1,0 +1,10 @@
+user/Styles/MutedLight.style.properties
+user/Styles/GitHub.style.properties
+user/Styles/PlasticCodeWrap.style.properties
+user/Styles/Monokai.style.properties
+user/Tools/*
+user/_config.properties
+user/SciTE.session
+user/SciTEUser.properties
+user/user.ahk.api
+user/UserToolbar.properties

@@ -1,0 +1,7 @@
+Finish reminder script
+Make code more readable and modular
+Finalize features
+Fix bugs
+Add features
+Post to forum
+Integrate suggestions and bugfixes

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+	<Nag>1</Nag>
+	<Quick_Options>
+		<Grid>1</Grid>
+		<Snap_to_Grid>1</Snap_to_Grid>
+		<Add_Spaces_to_Output>1</Add_Spaces_to_Output>
+		<Control_Borders>1</Control_Borders>
+		<Disable_Lists>0</Disable_Lists>
+		<Warn_Overwrite>0</Warn_Overwrite>
+	</Quick_Options>
+	<lastopen file="C:\Users\Anthony\Desktop\GUI.xml"></lastopen>
+	<Offset x="0" y="0"></Offset>
+	<EditControl x="309" y="109"></EditControl>
+</settings>

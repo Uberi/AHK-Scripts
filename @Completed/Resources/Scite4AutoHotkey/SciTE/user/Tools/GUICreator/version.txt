@@ -1,0 +1,4 @@
+0.220.0
+Starting fresh on the version:
+Fixed: Thanks for the bug report FrostByte
+-When deleting controls, the remaining controls should retain thier labels
