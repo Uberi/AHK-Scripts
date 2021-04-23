@@ -1,0 +1,3 @@
+#NoEnv
+
+DllCall("LoadLibrary","Str","")

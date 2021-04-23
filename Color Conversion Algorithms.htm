@@ -1,0 +1,296 @@
+<html>
+
+<head>
+<title>Color Conversion Algorithms</title>
+</head>
+
+<body bgcolor="#FFFFFF" background="bkgr.gif">
+
+<p align="center"><big><strong><big><big>Color Conversion Algorithms</big></big></strong></big></p>
+
+<hr>
+
+<p><strong><big>Contents</big></strong> 
+
+<ul>
+  <li><a href="#RGB to HSV &amp; HSV to RGB">RGB to HSV &amp; HSV to RGB</a></li>
+  <li><a href="#RGB to YIQ &amp; YIQ to RGB">RGB to YIQ &amp; YIQ to RGB</a></li>
+  <li><a href="#RGB to XYZ &amp; XYZ to RGB">RGB to XYZ &amp; XYZ to RGB</a></li>
+  <li><a href="#XYZ to CIE L*a*b* (CIELAB) &amp; CIELAB to XYZ">XYZ to CIE L*a*b* (CIELAB)
+    &amp; CIELAB to XYZ</a></li>
+  <li><a href="#XYZ to CIELUV &amp; CIELUV to XYZ">XYZ to CIELUV &amp; CIELUV to XYZ</a></li>
+</ul>
+
+<hr>
+
+<p><a name="RGB to HSV &amp; HSV to RGB"><font color="#FF8000"><big><strong>RGB to HSV
+&amp; HSV to RGB</strong></big></font></a></p>
+
+<p>The Hue/Saturation/Value model was created by A. R. Smith in 1978. It is based on such
+intuitive color characteristics as tint, shade and tone (or family, purety and intensity).
+The coordinate system is cylindrical, and the colors are defined inside a hexcone. The hue
+value H runs from 0 to 360º. The saturation S is the degree of strength or purity and is
+from 0 to 1. Purity is how much white is added to the color, so S=1 makes the purest color
+(no white). Brightness V also ranges from 0 to 1, where 0 is the black.</p>
+
+<p>There is no transformation matrix for RGB/HSV conversion, but the algorithm follows:</p>
+
+<pre><strong><font color="#408080">// r,g,b values are from 0 to 1
+// h = [0,360], s = [0,1], v = [0,1]
+//		if s == 0, then h = -1 (undefined)</font></strong></pre>
+
+<pre><strong><font color="#408080">void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v )
+{
+	float min, max, delta;</font></strong></pre>
+
+<pre><strong><font color="#408080">	min = MIN( r, g, b );
+	max = MAX( r, g, b );
+	*v = max;				// v</font></strong></pre>
+
+<pre><strong><font color="#408080">	delta = max - min;</font></strong></pre>
+
+<pre><strong><font color="#408080">	if( max != 0 )
+		*s = delta / max;		// s
+	else {
+		// r = g = b = 0		// s = 0, v is undefined
+		*s = 0;
+		*h = -1;
+		return;
+	}</font></strong></pre>
+
+<pre><strong><font color="#408080">	if( r == max )
+		*h = ( g - b ) / delta;		// between yellow &amp; magenta
+	else if( g == max )
+		*h = 2 + ( b - r ) / delta;	// between cyan &amp; yellow
+	else
+		*h = 4 + ( r - g ) / delta;	// between magenta &amp; cyan</font></strong></pre>
+
+<pre><strong><font color="#408080">	*h *= 60;				// degrees
+	if( *h &lt; 0 )
+		*h += 360;</font></strong></pre>
+
+<pre><strong><font color="#408080">}</font></strong></pre>
+
+<pre><strong><font color="#408080">void HSVtoRGB( float *r, float *g, float *b, float h, float s, float v )
+{
+	int i;
+	float f, p, q, t;</font></strong></pre>
+
+<pre><strong><font color="#408080">	if( s == 0 ) {
+		// achromatic (grey)
+		*r = *g = *b = v;
+		return;
+	}</font></strong></pre>
+
+<pre><strong><font color="#408080">	h /= 60;			// sector 0 to 5
+	i = floor( h );
+	f = h - i;			// factorial part of h
+	p = v * ( 1 - s );
+	q = v * ( 1 - s * f );
+	t = v * ( 1 - s * ( 1 - f ) );</font></strong></pre>
+
+<pre><strong><font color="#408080">	switch( i ) {
+		case 0:
+			*r = v;
+			*g = t;
+			*b = p;
+			break;
+		case 1:
+			*r = q;
+			*g = v;
+			*b = p;
+			break;
+		case 2:
+			*r = p;
+			*g = v;
+			*b = t;
+			break;
+		case 3:
+			*r = p;
+			*g = q;
+			*b = v;
+			break;
+		case 4:
+			*r = t;
+			*g = p;
+			*b = v;
+			break;
+		default:		// case 5:
+			*r = v;
+			*g = p;
+			*b = q;
+			break;
+	}</font></strong></pre>
+
+<pre><big><strong>}</strong></big></pre>
+
+<p>When programming in Java, use the <font face="Courier">RGBtoHSB</font> and <font
+face="Courier">HSBtoRGB</font>&nbsp; functions from the <font face="Courier">java.awt.Color</font>
+class.</p>
+
+<hr>
+
+<p><a name="RGB to YIQ &amp; YIQ to RGB"><font color="#FF8000"><big><strong>RGB to YIQ
+&amp; YIQ to RGB</strong></big></font></a></p>
+
+<p>The YIQ system is the color primary system adopted by National Television System
+Committee (NTSC) for color TV broadcasting. The YIQ color solid is made by a linear
+transformation of the RGB cube. Its purpose is to exploit certain characteristics of the
+human eye to maximize the utilization of a fixed bandwidth. The human visual system is
+more sensitive to changes in luminance than to changes in hue or saturation, and thus a
+wider bandwidth should be dedicated to luminance than to color information. <strong>Y</strong>
+is similar to perceived luminance, <strong>I</strong> and <strong>Q</strong> carry color
+information and some luminance information. The <strong>Y</strong> signal usually has 4.2
+MHz bandwidth in a 525 line system. Originally, the <strong>I </strong>and <strong>Q</strong>
+had different bandwidths (1.5 and 0.6 MHz), but now they commonly have the same bandwidth
+of 1 MHz. </p>
+
+<p>Here is the RGB -&gt; YIQ conversion:</p>
+
+<p><strong><font face="Courier" color="#408080">&nbsp;&nbsp;&nbsp; [ Y
+]&nbsp;&nbsp;&nbsp;&nbsp; [ 0.299&nbsp;&nbsp; 0.587&nbsp;&nbsp; 0.114 ] [ R ]<br>
+&nbsp;&nbsp;&nbsp; [ I ]&nbsp; =&nbsp; [ 0.596&nbsp; -0.275&nbsp; -0.321 ] [ G ]<br>
+&nbsp;&nbsp;&nbsp; [ Q ]&nbsp;&nbsp;&nbsp;&nbsp; [ 0.212&nbsp; -0.523&nbsp;&nbsp; 0.311 ]
+[ B ]</font></strong></p>
+
+<p>Here is the YIQ -&gt; RGB conversion:</p>
+
+<p><strong><font face="Courier" color="#408080">&nbsp;&nbsp;&nbsp; [ R
+]&nbsp;&nbsp;&nbsp;&nbsp; [ 1&nbsp;&nbsp; 0.956&nbsp;&nbsp; 0.621 ] [ Y ]<br>
+&nbsp;&nbsp;&nbsp; [ G ]&nbsp; =&nbsp; [ 1&nbsp; -0.272&nbsp; -0.647 ] [ I ]<br>
+&nbsp;&nbsp;&nbsp; [ B ]&nbsp;&nbsp;&nbsp;&nbsp; [ 1&nbsp; -1.105&nbsp;&nbsp; 1.702 ] [ Q
+]</font></strong></p>
+
+<hr>
+
+<p><a name="RGB to XYZ &amp; XYZ to RGB"><font color="#FF8000"><big><strong>RGB to XYZ
+&amp; XYZ to RGB</strong></big></font></a></p>
+
+<p align="left">RGB values in a particular set of primaries can be transformed to and from
+CIE XYZ via a 3x3 matrix transform. These transforms involve <a href="glossary.htm">tristimulus
+values</a>, that is a set of three linear-light components that conform to the <a
+href="glossary.htm">CIE color-matching functions</a>. CIE XYZ is a special set of
+tristimulus values. In XYZ, any color is represented as a set of positive values.</p>
+
+<p align="left">To transform from <strong>XYZ</strong> to <strong>RGB</strong> (with <a
+href="glossary.htm">D65 white point</a>), the matrix transform used is <a
+href="glossary.htm">[3]</a>:</p>
+
+<p align="left"><font face="Courier">&nbsp;&nbsp; [ R ]&nbsp;&nbsp; [&nbsp; 3.240479
+-1.537150 -0.498535 ]&nbsp;&nbsp; [ X ]<br>
+&nbsp;&nbsp; [ G ] = [ -0.969256&nbsp; 1.875992&nbsp; 0.041556 ] * [ Y ]<br>
+&nbsp;&nbsp; [ B ]&nbsp;&nbsp; [&nbsp; 0.055648 -0.204043&nbsp; 1.057311 ]&nbsp;&nbsp; [ Z
+].</font></p>
+
+<p align="left">The range for valid R, G, B values is [0,1]. Note, this matrix has
+negative coefficients. Some XYZ color may be transformed to RGB values that are negative
+or greater than one. This means that not all visible colors can be produced using the RGB
+system.</p>
+
+<p>The inverse transformation matrix is as follows:</p>
+
+<p align="left"><font face="Courier">&nbsp;&nbsp; [ X ]&nbsp;&nbsp; [&nbsp; 0.412453&nbsp;
+0.357580&nbsp; 0.180423 ]&nbsp;&nbsp; [ R ] **<br>
+&nbsp;&nbsp; [ Y ] = [&nbsp; 0.212671&nbsp; 0.715160&nbsp; 0.072169 ] * [ G ]<br>
+&nbsp;&nbsp; [ Z ]&nbsp;&nbsp; [&nbsp; 0.019334&nbsp; 0.119193&nbsp; 0.950227
+]&nbsp;&nbsp; [ B ].</font></p>
+<hr>
+** February 20, 2000 - typo in this line of the matrix was corrected
+(0.189423 to 0.180423), thanks to Michal 
+Karczmarek, University of Toronto
+
+<hr>
+
+<p><a name="XYZ to CIE L*a*b* (CIELAB) &amp; CIELAB to XYZ"><font color="#FF8040"><big><strong>XYZ
+to CIE L*a*b* (CIELAB) &amp; CIELAB to XYZ</strong></big></font></a></p>
+
+<p>CIE 1976 L*a*b* is based directly on CIE XYZ and is an attampt to linearize the
+perceptibility of color differences. The non-linear relations for L*, a*, and b* are
+intended to mimic the logarithmic response of the eye. Coloring information is referred to
+the color of the white point of the system, subscript n.</p>
+
+<blockquote>
+  <blockquote>
+    <p><font color="#408080"><big>L<sup>*</sup> = 116 <strong>*</strong> (Y/Yn)</big><sup>1/3</sup><big>
+    - 16&nbsp;&nbsp;&nbsp; for Y/Yn &gt; 0.008856<br>
+    L<sup>*</sup> = 903.3 <strong>*</strong>
+    Y/Yn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; otherwise</font></big></p>
+    <p><font color="#408080"><big>a<sup>*</sup> = 500 <strong>*</strong> ( f(X/Xn) - f(Y/Yn) )<br>
+    b<sup>*</sup> = 200 <strong>*</strong> ( f(Y/Yn) - f(Z/Zn) )<br>
+    &nbsp;&nbsp;&nbsp; where f(t) = t</big><sup>1/3</sup><big>&nbsp;&nbsp; &nbsp;&nbsp; for t
+    &gt; 0.008856<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f(t) =
+    7.787 <strong>*</strong> t + 16/116&nbsp;&nbsp;&nbsp; otherwise</font></big></p>
+  </blockquote>
+</blockquote>
+
+<p>Here Xn, Yn and Zn are the tristimulus values of the reference white.<br>
+The reverse transformation (for Y/Yn &gt; 0.008856) is</p>
+
+<blockquote>
+  <blockquote>
+    <p><font color="#408080"><big>X = Xn <strong>*</strong> ( P + a<sup>*</sup> / 500 ) <sup>3</sup><br>
+    Y = Yn <strong>*</strong> P <sup>3</sup><br>
+    Z = Zn <strong>*</strong> ( P - b<sup>*</sup> / 200 ) <sup>3</sup><br>
+    &nbsp;&nbsp;&nbsp; where P = (L<sup>*</sup> + 16) / 116</big></font></p>
+  </blockquote>
+</blockquote>
+
+<hr>
+
+<p><a name="XYZ to CIELUV &amp; CIELUV to XYZ"><font color="#FF8040"><big><strong>XYZ to
+CIELUV &amp; CIELUV to XYZ</strong></big></font></a></p>
+
+<p>CIE 1976 L*u*u* (CIELUV) is based directly on CIE XYZ and is another attampt to
+linearize the perceptibility of color differences. The non-linear relations for L*, u*,
+and v* are given below:</p>
+
+<blockquote>
+  <blockquote>
+    <p><font color="#408080"><big>L<sup>*</sup> =&nbsp; <font color="#408080">1</font>16 <strong>*</strong>
+    (Y/Yn)</big><sup>1/3</sup><big> - 16</big><br>
+    <big>u<sup>*</sup> =&nbsp; 13L<sup>*</sup> <strong>*</strong> ( u' - u<sub>n</sub>' )<br>
+    v<sup>*</sup> =&nbsp; 13L<sup>*</sup><strong> *</strong> ( v' - v<sub>n</sub>' )</font></big></p>
+  </blockquote>
+</blockquote>
+
+<p>The quantities u<sub>n</sub>' and v<sub>n</sub>'&nbsp; refer to the reference white or
+the light source; for the 2° observer and illuminant C,&nbsp; u<sub>n</sub>' = 0.2009, v<sub>n</sub>'
+= 0.4610 [<a href="glossary.htm"> 1 </a>]. Equations for u' and v' are given below:</p>
+
+<p><font color="#408080"><big>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; u' = 4X / (X +
+15Y + 3Z) = 4x / ( -2x + 12y + 3 )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v' = 9Y / (X + 15Y + 3Z) = 9y / ( -2x + 12y + 3
+).</big></font></p>
+
+<p>The transformation from (u',v') to (x,y) is:</p>
+
+<p><font color="#408080"><big>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x = 27u' / ( 18u'
+- 48v' + 36 )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y = 12v' / ( 18u' - 48v' + 36 ).<br>
+</big></font><br>
+The transformation from CIELUV to XYZ is performed as following:</p>
+
+<blockquote>
+  <p><font color="#408080"><big>u' = u / ( 13L<sup>*</sup>) + u<sub>n</sub><br>
+  v' = v / ( 13L<sup>*</sup> ) + v<sub>n</sub><br>
+  Y = (( L* + 16 ) / 116 )<sup>3</sup><br>
+  X = - 9Yu' / (( u' - 4 ) v' - u'v' )<br>
+  Z = ( 9Y - 15v'Y - v'X ) / 3v'</big></font></p>
+</blockquote>
+<P>
+<b>Disclaimer:</b>  I (N. Schaller) received e-mail from  Alexandre 
+Campo (acampo@laas.fr) stating that he felt the last three lines 
+above should be 
+<P>
+Y = (( L* + 16 ) / 116 )^3 * Yn
+<P>
+and then simplify by noticing u'v' - u'v' -4v' = -4v'
+<P>
+X = 9Yu' / 4v'
+<P>
+I have not verified this, but have added it for your purusal.
+
+
+</body>
+</html>

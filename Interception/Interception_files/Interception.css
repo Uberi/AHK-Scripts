@@ -1,0 +1,285 @@
+.paragraph_style {
+    color: rgb(255, 255, 255);
+    font-family: 'Optima-Regular', 'Optima', 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 26px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    opacity: 1.00;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0px;
+    text-transform: none;
+}
+.paragraph_style_1 {
+    color: rgb(209, 209, 209);
+    font-family: 'Optima-Regular', 'Optima', 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 22px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    opacity: 1.00;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0px;
+    text-transform: none;
+}
+.paragraph_style_2 {
+    color: rgb(255, 255, 255);
+    font-family: 'Optima-Regular', 'Optima', 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 26px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    opacity: 1.00;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0px;
+    text-transform: none;
+}
+.style {
+    font-family: 'Optima-Italic', 'Optima';
+    font-size: 15px;
+    font-stretch: normal;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 22px;
+}
+.style_1 {
+    font-family: 'Optima-Italic', 'Optima';
+    font-size: 15px;
+    font-stretch: normal;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 22px;
+}
+.style_2 {
+    color: rgb(255, 255, 255);
+    line-height: 22px;
+    opacity: 1.00;
+}
+.paragraph_style_3 {
+    color: rgb(255, 41, 0);
+    font-family: 'GillSans', 'Gill Sans', 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 23px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    opacity: 1.00;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0px;
+    text-transform: none;
+}
+.style_SkipStroke {
+    background: transparent;
+    opacity: 1.00;
+}
+.Body {
+    color: rgb(255, 255, 255);
+    font-family: 'ArialMT', 'Arial', sans-serif;
+    font-size: 15px;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 20px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    opacity: 1.00;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0px;
+    text-transform: none;
+}
+.graphic_textbox_layout_style_default {
+    padding: 4px;
+}
+.graphic_textbox_layout_style_default_External_905_352 {
+    position: relative;
+}
+.graphic_textbox_layout_style_default_External_905_32 {
+    position: relative;
+}
+.graphic_textbox_layout_style_default_External_333_123 {
+    position: relative;
+}
+.graphic_textbox_layout_style_default_External_905_136 {
+    position: relative;
+}
+.graphic_textbox_layout_style_default_External_905_838 {
+    position: relative;
+}
+.graphic_textbox_style_default_SkipStroke {
+    background: transparent;
+    opacity: 1.00;
+}
+a {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+a:visited {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+a:hover {
+    color: rgb(221, 221, 221);
+    text-decoration: underline;
+}
+#widget5 a {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+#widget0 a {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+#widget1 a {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+#widget2 a {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+#widget3 a {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+#widget4 a {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+#widget4 a:visited {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+#widget2 a:hover {
+    color: rgb(221, 221, 221);
+    text-decoration: underline;
+}
+#widget2 a:visited {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+.bumper {
+    font-size: 1px;
+    line-height: 1px;
+}
+#widget0 a:visited {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+#widget5 a:hover {
+    color: rgb(221, 221, 221);
+    text-decoration: underline;
+}
+.spacer {
+    font-size: 1px;
+    line-height: 1px;
+}
+#widget1 a:hover {
+    color: rgb(221, 221, 221);
+    text-decoration: underline;
+}
+#widget4 a:hover {
+    color: rgb(221, 221, 221);
+    text-decoration: underline;
+}
+#widget5 a:visited {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+#widget3 a:visited {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+#widget1 a:visited {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+#widget0 a:hover {
+    color: rgb(221, 221, 221);
+    text-decoration: underline;
+}
+#widget3 a:hover {
+    color: rgb(221, 221, 221);
+    text-decoration: underline;
+}
+body { 
+    -webkit-text-size-adjust: none;
+}
+div { 
+    overflow: visible; 
+}
+img { 
+    border: none; 
+}
+.InlineBlock { 
+    display: inline; 
+}
+.InlineBlock { 
+    display: inline-block; 
+}
+.inline-block {
+    display: inline-block;
+    vertical-align: baseline;
+    margin-bottom:0.3em;
+}
+.inline-block.shape-with-text {
+    vertical-align: bottom;
+}
+.vertical-align-middle-middlebox {
+    display: table;
+}
+.vertical-align-middle-innerbox {
+    display: table-cell;
+    vertical-align: middle;
+}
+div.paragraph {
+    position: relative;
+}
+li.full-width {
+    width: 100;
+}

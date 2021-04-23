@@ -1,0 +1,129 @@
+---
+title: Working with external functionality
+layout: post
+permalink: /en/DllCalls.html
+---
+
+# Accessing Windows API
+## API
+**API** is an abbreviation for <cite>application programming interface</cite>. This means it is a way to access another app, a web service, an OS, a library etc. from your code. It does not specify *how* to do this: APIs can be based on HTTPRequests \(e.g. web services\), exchanging text files, window messages, DLLs \(dynamic link libraries\), which will be covered in this chapter, or COM \(which will be covered later\). So the way we're looking at here does of course not work for all APIs.
+
+### Accessing DLLs
+The way we look at here does not only work for Windows, but for a lot of other code packaged in a DLL. Custom Gui controls often use this. But it is important to know you can't even cover all of them: the DLLs must be native code (e.g. not a .NET library), and it must be organized in *functions* (not *classes*).
+
+## Using the Windows built-in `MessageBox` function
+As you know, AutoHotkey has the `MsgBox` command. So actually theres no **need** for calling the Windows API function most of the time. But we're doing so because it's a good example.
+
+**Note:** This is, of course, Windows-only code. So it will not work for IronAHK users on other systems.
+
+### The function
+First, we look on the msdn page for the [MessageBox function](http://msdn.microsoft.com/en-us/library/windows/desktop/ms645505.aspx) we're going to call. It tells us what it is supposed to do:
+
+> Displays a modal dialog box that contains a system icon, a set of buttons, and a brief application-specific message, such as status or error information. The message box returns an integer value that indicates which button the user clicked.
+
+Then we see a <cite>Syntax</cite> box:
+
+    int WINAPI MessageBox(
+      __in_opt  HWND hWnd,
+      __in_opt  LPCTSTR lpText,
+      __in_opt  LPCTSTR lpCaption,
+      __in      UINT uType
+    );
+
+We can't use this as it's not AutoHotkey code. In AutoHotkey, to call a function in a DLL, we use the built-in `DllCall()` function. As the manual tells us, it's first parameter is the DLL file and the function to call.
+
+In case of the MessageBox function, we needn't specify the DLL file:
+> DllFile may be omitted when calling a function that resides in User32.dll, Kernel32.dll, ComCtl32.dll, or Gdi32.dll.
+And happily MessageBox is in User32.dll as msdn tells us.
+
+So we have the following code:
+{% highlight ahk linenos %}
+DllCall("MessageBox", ...) ; yet to be done
+{% endhighlight %}
+
+### The parameters
+The rest of the parameters is a list of *parameter types* and values to be passed to the function.
+We look at the parameter descriptions on msdn now:
+> hWnd \[in, optional]
+>
+> **Type:** HWND
+>
+>    A handle to the owner window of the message box to be created. If this parameter is NULL, the message box has no owner window.
+
+Now we need to take the parameter type from this. **This is not "HWND"**, as AutoHotkey does not "support" this type. We'll later take a closer look on [type mappings](), for now believe me the AutoHotkey type is `UPtr` (or `UInt` for AutoHotkey classic / IronAHK users). As in our example, we don't need any parent window, we'll just pass 0 to this.
+
+The next two parameters are as easy: their type `LPCTSTR` maps to the AutoHotkey `str` type. As values, we pass the text we want the box to show:
+
+> lpText \[in, optional]
+> 
+> **Type:** LPCTSTR
+> 
+> The message to be displayed. If the string consists of more than one line, you can separate the lines using a carriage return and/or linefeed character between each line.
+
+> lpCaption \[in, optional]
+> 
+> **Type:** LPCTSTR
+> 
+> The dialog box title. If this parameter is NULL, the default title is Error.
+
+Now our code is as follows:
+{% highlight ahk linenos %}; AutoHotkey classic and IronAHK
+DllCall("MessageBox", "UInt", 0, "Str", "This is my first DllCall()!", "Str", "The caption", "UInt", 0)
+{% endhighlight %}
+{% highlight ahk linenos %}; AutoHotkey_L and similarly newer versions
+DllCall("MessageBox", "UPtr", 0, "Str", "This is my first DllCall()!", "Str", "The caption", "UInt", 0)
+{% endhighlight %}
+
+#### flag parameters
+For the last parameter, we just passed 0, but now we will have a closer look at it:
+
+> uType \[in]
+>
+> **Type:** UINT
+>
+> The contents and behavior of the dialog box. This parameter can be a combination of flags from the following groups of flags.
+
+This is followed by a bunch of flag lists including explanations. We will add "OK" and "Cancel" buttons to our box, an error icon, and we'll make it topmost:
+{% highlight ahk linenos %}; any AutoHotkey version
+
+; the constants need to be defined in AutoHotkey first:
+MB_OKCANCEL := 0x00000001 ; remove the trailing L from the value
+MB_ICONERROR := 0x00000010
+MB_TOPMOST := 0x00040000
+
+flags := MB_OKCANCEL | MB_ICONERROR | MB_TOPMOST ; combine the flags.
+; This will be explained in detail in the chapter "Working with bits".
+
+ptr := A_PtrSize ? "UPtr" : "UInt" ; if AHK_L or similar: use "UPtr", else "UInt"
+result := DllCall("MessageBox", ptr, 0, "Str", "This is my first DllCall()!", "Str", "The caption", "UInt", flags)
+{% endhighlight %}
+
+### Return value
+One thing we didn't yet look at is the *return value*. In the example above, we saved it in the variable "result". Msdn tells us that we receive an integer and what each integer means. For example, we could check if the user cancelled:
+{% highlight ahk linenos %}; any AutoHotkey version
+IDCANCEL := 2 ; define the constant as pointed out on msdn
+if (result == IDCANCEL)
+	MsgBox You canceled.
+{% endhighlight %}
+
+### Exported data
+Rarely, DLLs may export variables in addition to functions; for example, the Raydium Game Engine DLL. Although it is not possible to retrieve or store values to this variable directly using DllCall(), it is possible to use the [GetProcAddress()](http://msdn.microsoft.com/en-us/library/windows/desktop/ms683212.aspx) WinAPI function to do so:
+{% highlight ahk linenos %}; any AutoHotkey version
+
+;compatibility types
+UPtr := A_PtrSize ? "UPtr" : "UInt"
+AStr := A_IsUnicode ? "AStr" : "Str"
+
+;load the library that contains the exported variable
+hModule := DllCall("LoadLibrary","Str","Raydium.dll",UPtr)
+
+;obtain the address of the variable "raydium_joy_x"
+pJoystickX := DllCall("GetProcAddress",UPtr,hModule,AStr,"raydium_joy_x",UPtr)
+
+;retrieve a float value from the address
+JoyStickX := NumGet(pJoystickX + 0,0,"Float")
+MsgBox, The joystick position in the x-axis is currently %JoystickX%.
+
+;store a float value in the memory location pointed to by the address
+NumPut(0.8,pJoystickX + 0,0,"Float") ;store 0.8 as the value
+{% endhighlight %}

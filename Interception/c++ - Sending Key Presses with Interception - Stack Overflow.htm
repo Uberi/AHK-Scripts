@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <script>window.serq=[];StackExchange={ready:function(f){serq.push(f)}}</script>
+    <script type='text/javascript'>mPt=function(){var t=[];return{t:t,probe:function(n){t.push({d:new Date(),n:n})}}}()</script>
+    
+    <title>c++ - Sending Key Presses with Interception - Stack Overflow</title>
+    <link rel="shortcut icon" href="http://cdn.sstatic.net/stackoverflow/img/favicon.ico">
+    <link rel="apple-touch-icon" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+
+    
+    
+    
+    <script type='text/javascript'>mPt.probe(2)</script><link rel="stylesheet" type="text/css" href="http://cdn.sstatic.net/stackoverflow/all.css?v=0e9727311da1"><script type='text/javascript'>mPt.probe(2)</script>
+    
+    <link rel="canonical" href="http://stackoverflow.com/questions/8821895/sending-key-presses-with-interception">
+    <link rel="alternate" type="application/atom+xml" title="Feed for question 'Sending Key Presses with Interception'" href="/feeds/question/8821895">
+    <meta name="title" content="c++ - Sending Key Presses with Interception - Stack Overflow">
+    <link rel="image_src" href="http://sstatic.net/stackoverflow/img/apple-touch-icon.png">
+
+
+
+    
+
+</head>
+<body class="question-page">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+    <div class="container">
+        <div id="header">
+            <div id="portalLink">
+                <a class="genu" href="http://stackexchange.com" onclick="StackExchange.ready(function(){genuwine.click();});return false;">Stack Exchange</a>
+            </div>
+            <div id="topbar">
+                <div id="hlinks">
+                    <span id="hlinks-user">
+                  
+                  </span>
+                  <span id="hlinks-nav">
+                  <a href="/users/login?returnurl=%2fquestions%2f8821895%2fsending-key-presses-with-interception">log in</a>
+ <span class="lsep">|</span>
+<a href="http://careers.stackoverflow.com">careers</a>
+ <span class="lsep">|</span>
+
+                  </span>
+                  <span id="hlinks-custom">
+                  <a href="http://chat.stackoverflow.com">chat</a>
+ <span class="lsep">|</span>
+<a href="http://meta.stackoverflow.com">meta</a>
+ <span class="lsep">|</span>
+<a href="/about">about</a>
+ <span class="lsep">|</span>
+<a href="/faq">faq</a>
+                  </span>
+                </div>
+                <div id="hsearch">
+                    <form id="search" action="/search" method="get" autocomplete="off">
+                    <div>
+                        <input autocomplete="off" name="q" class="textbox" placeholder="search" tabindex="1" type="text" maxlength="140" size="28" value="">
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/" >Stack Overflow</a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        
+
+
+        <div id="content">
+            <script type='text/javascript'>mPt.probe(3)</script>
+            
+
+
+<div itemscope itemtype="http://schema.org/Article">
+<link itemprop="image" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+<div id="question-header">
+    <h1 itemprop="name"><a href="/questions/8821895/sending-key-presses-with-interception" class="question-hyperlink">Sending Key Presses with Interception</a></h1>
+</div>
+<div id="mainbar">
+
+
+<div class="question" id="question" data-questionid="8821895" >
+
+    <div class="everyonelovesstackoverflow" id="adzerk1">
+    </div>
+
+    
+    <table>
+    <tr>
+    <td class="votecell">
+        
+
+<div class="vote">
+    <input type="hidden" value="8821895">
+    <a class="vote-up-off" title="This question shows research effort; it is useful and clear (click again to undo)">up vote</a>
+    <span class="vote-count-post">0</span>
+    <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful (click again to undo)">down vote</a>
+    <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+    <div class="favoritecount"><b></b></div>   
+ 
+    <a id="gp-share-8821895" class="gp-share" title="share link to this question on Google+">share [g+]</a>
+    <a id="fb-share-8821895" class="fb-share" title="share link to this question on Facebook">share [fb]</a>
+    <a id="twitter-share-8821895" class="twitter-share" title="share link to this question on Twitter">share [tw]</a>    
+</div>
+
+    </td>
+<td class="postcell">
+<div>          
+    <div class="post-text" itemprop="description">
+        <p>I have tried all the normal methods of faking keyboard actions (SendInput/SendKeys/etc) but none of them seemed to work for games that used DirectInput. After a lot of reading and searching I stumbled across <a href="http://oblita.com/Interception" rel="nofollow">Interception</a>, which is a C++ Library that allows you to hook into your devices.</p>
+
+<p>It has been a very long time since I worked with C++ (Nothing existed for C#) so I am having some trouble with this. I have pasted in the sample code below.</p>
+
+<p>Does it look like there would be anyway to initiate key actions from the code using this? The samples all just hook into the devices and rewrite actions (x key prints y, inverts mouse axis, etc).</p>
+
+<pre><code>enum ScanCode
+{
+    SCANCODE_X   = 0x2D,
+    SCANCODE_Y   = 0x15,
+    SCANCODE_ESC = 0x01
+};
+
+int main()
+{
+    InterceptionContext context;
+    InterceptionDevice device;
+    InterceptionKeyStroke stroke;
+
+    raise_process_priority();
+
+    context = interception_create_context();
+
+    interception_set_filter(context, interception_is_keyboard, INTERCEPTION_FILTER_KEY_DOWN | INTERCEPTION_FILTER_KEY_UP);
+
+    /*
+    for (int i = 0; i &lt; 10; i++)
+    {
+        Sleep(1000);
+        stroke.code = SCANCODE_Y;
+        interception_send(context, device, (const InterceptionStroke *)&amp;stroke, 1);
+    }
+    */
+
+    while(interception_receive(context, device = interception_wait(context), (InterceptionStroke *)&amp;stroke, 1) &gt; 0)
+    {
+        if(stroke.code == SCANCODE_X) stroke.code = SCANCODE_Y;
+
+        interception_send(context, device, (const InterceptionStroke *)&amp;stroke, 1);
+
+        if(stroke.code == SCANCODE_ESC) break;
+    }
+</code></pre>
+
+<p>The code I commented out was something I tried that didn't work.</p>
+
+    </div>            
+    <div class="post-taglist">
+        <a href="/questions/tagged/c%2b%2b" class="post-tag" title="show questions tagged 'c++'" rel="tag">c++</a> <a href="/questions/tagged/keyboard-events" class="post-tag" title="show questions tagged 'keyboard-events'" rel="tag">keyboard-events</a> <a href="/questions/tagged/hid" class="post-tag" title="show questions tagged 'hid'" rel="tag">hid</a> <a href="/questions/tagged/keyboard-hook" class="post-tag" title="show questions tagged 'keyboard-hook'" rel="tag">keyboard-hook</a> <a href="/questions/tagged/interception" class="post-tag" title="show questions tagged 'interception'" rel="tag">interception</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+        <div class="post-menu"><a href="/q/8821895" title="short permalink to this question" id="link-post-8821895">link</a><span class="lsep">|</span><a href="/posts/8821895/edit" >improve this question</a></div>
+    </td>
+    <td class="post-signature owner">
+    <div class="user-info"><div class="user-action-time">asked <span title="2012-01-11 15:29:00Z" class="relativetime">Jan 11 at 15:29</span></div><div class="user-gravatar32"><a href="/users/470760/brett-powell"><div class=""><img src="http://www.gravatar.com/avatar/7d09ebdab8ced235148723703c04cc48?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a></div><div class="user-details"><a href="/users/470760/brett-powell">Brett Powell</a><br><span class="reputation-score" title="reputation score" dir="ltr">1,033</span><span title="3 silver badges"><span class="badge2"></span><span class="badgecount">3</span></span><span title="14 bronze badges"><span class="badge3"></span><span class="badgecount">14</span></span></div></div>
+        <br class="cbt">
+        <div class="accept-rate accept-answer-link" title="this user has accepted an answer for 109 of 134 eligible questions">81% accept rate</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>    </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-8821895" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>    </table>    
+</div>
+
+
+
+<div id="answers">
+
+    <a name="tab-top"></a>
+    <div id="answers-header">
+        <div class="subheader answers-subheader">
+            <h2>1 Answer</h2>
+            <div id="tabs">
+                <a href="/questions/8821895/sending-key-presses-with-interception?answertab=active#tab-top" title="Answers with the latest activity first">active</a>
+<a href="/questions/8821895/sending-key-presses-with-interception?answertab=oldest#tab-top" title="Answers in the order they were provided">oldest</a>
+<a class="youarehere" href="/questions/8821895/sending-key-presses-with-interception?answertab=votes#tab-top" title="Answers with the highest score first">votes</a>
+
+            </div>
+        </div>    
+    </div>    
+
+
+  
+    <a name="8829673"></a>
+    <div id="answer-8829673" class="answer"  data-answerid="8829673">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="8829673">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post">2</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+<span class="vote-accepted-on" title="The question owner accepted this as the best answer Jan 13 at 0:15">accepted</span> 
+</div>
+
+        </td>
+
+
+<td class="answercell">
+    <div class="post-text"><p>You need to tweak key states for UP and DOWN states to get key presses. Pay attention at the while loop that the variable <em>device</em> is returned by interception_wait, your commented out code would send events to what?? <em>device</em> is not initialized! Forget your code and try some more basic. Look at the line inside the loop with the interception_send call, make more two calls after it, but don't forget to change stroke.state before each call using INTERCEPTION_KEY_DOWN and INTERCEPTION_KEY_UP so that you fake down and up events. You'll get extra keys at each keyboard event.</p>
+
+<p>Also, you may try use INTERCEPTION_FILTER_KEY_ALL instead of INTERCEPTION_FILTER_KEY_DOWN | INTERCEPTION_FILTER_KEY_UP. The arrow keys may be special ones as mentioned at the website.</p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/8829673" title="short permalink to this answer" id="link-post-8829673">link</a><span class="lsep">|</span><a href="/posts/8829673/edit" >improve this answer</a></div>    </td>
+    <td align="right" class="post-signature">
+<div class="user-info"><div class="user-action-time">edited <a href="/posts/8829673/revisions" title="show all edits to this post"><span title="2012-01-12 18:03:22Z" class="relativetime">Jan 12 at 18:03</span></a></div><div class="user-gravatar32"></div><div class="user-details"><br></div></div>    </td>
+            
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info"><div class="user-action-time">answered <span title="2012-01-12 03:15:56Z" class="relativetime">Jan 12 at 3:15</span></div><div class="user-gravatar32"><a href="/users/1000282/chico"><div class=""><img src="http://www.gravatar.com/avatar/371832f83b79a41443fa50d3793b0cfd?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a></div><div class="user-details"><a href="/users/1000282/chico">Chico</a><br><span class="reputation-score" title="reputation score" dir="ltr">146</span><span title="9 bronze badges"><span class="badge3"></span><span class="badgecount">9</span></span></div></div>
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-8829673" class="comments">
+        <table>
+        <tbody>
+                    
+    <tr id="comment-11040808" class="comment">
+        <td></td>
+        <td class="comment-text"><div><span class="comment-copy">Just to clarify, the way your explaining it, that is just to get more keypresses from when I press one key correct? I am looking for a way to actually make key presses without ever pushing a key. For example, if I click a button in my application, I could make it send a keypress for &quot;control+a&quot;.</span> &ndash;&nbsp;<a href="/users/470760/brett-powell" title="1033 reputation" class="comment-user owner">Brett Powell</a> <span class="comment-date" dir="ltr"><span title="2012-01-12 19:37:58Z">Jan 12 at 19:37</span></span></div></td>
+    </tr>
+            
+    <tr id="comment-11045289" class="comment">
+        <td></td>
+        <td class="comment-text"><div><span class="comment-copy">You can do it normally, you just need to identify the keyboard id you want to fake input, and save it in some variable, in this case the device id is being saved at the variable device. After knowing the id associated with a given device, you can send events anyway you want. Commonly, PS/2 devices get id equals to INTERCEPTION_KEYBOARD(0), USB devices get INTERCEPTION_KEYBOARD(1) or higher.</span> &ndash;&nbsp;<a href="/users/1000282/chico" title="146 reputation" class="comment-user">Chico</a> <span class="comment-date" dir="ltr"><span title="2012-01-12 23:46:15Z">Jan 12 at 23:46</span></span><span class="edited-yes" title="this comment was edited"></span></div></td>
+    </tr>
+
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>    </table>
+</div>
+    <a name='new-answer'></a>
+    <form id="post-form" action="/questions/8821895/answer/submit" method="post"  class="post-form">
+        <h2 class="space">Your Answer</h2>
+
+
+
+
+<div id="post-editor" class="post-editor">  
+
+    
+    <div class="wmd-container">
+        <div id="wmd-button-bar" class="wmd-button-bar"></div>
+        <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101"></textarea>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="f48856a2d2da12a2e201c7e0a54cedc4">
+        <input id="author" name="author" type="text">
+    </div>
+</div>   
+    <div class="form-item">
+        <table>
+        <tr>
+        <td class="vm open-id-login">
+            <a id="login-link" style="font-size: 200%; margin-left: 30px;" href="/users/login?returnurl=%2fquestions%2f8821895%2fsending-key-presses-with-interception">log in</a>
+            <script type="text/javascript">
+                StackExchange.ready(function () {
+                    StackExchange.helpers.onClickDraftSave('#login-link');
+                });
+            </script>
+        </td>
+
+    
+        <td class="orcell">
+            <div class="orword">or</div>
+            <div class="orline"></div>
+        </td>
+        <td class="vm">
+            <div>
+                <label for="display-name">Name</label>
+                <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+            </div>
+            <div>
+                <label for="m-address">Email</label>
+                <input id="m-address" name="m-address" type="text" size="40" maxlength="100" value="" tabindex="106">
+                <span class="edit-field-overlay">required, but never shown</span>
+            </div>
+            <div>
+                <label for="home-page">Home Page</label>
+                <input id="home-page" name="home-page" type="text" size="40" maxlength="200" value="" tabindex="107">
+            </div>
+        </td>
+    
+        </tr>
+        </table>
+    </div>
+               
+        <div class="form-submit cbt">
+            <input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+            <a href="#" class="discard-answer dno">discard</a>
+        </div>
+    </form>
+
+
+
+
+        <h2 class="bottom-notice">
+                Not the answer you're looking for? 
+            Browse other questions tagged <a href="/questions/tagged/c%2b%2b" class="post-tag" title="show questions tagged 'c++'" rel="tag">c++</a> <a href="/questions/tagged/keyboard-events" class="post-tag" title="show questions tagged 'keyboard-events'" rel="tag">keyboard-events</a> <a href="/questions/tagged/hid" class="post-tag" title="show questions tagged 'hid'" rel="tag">hid</a> <a href="/questions/tagged/keyboard-hook" class="post-tag" title="show questions tagged 'keyboard-hook'" rel="tag">keyboard-hook</a> <a href="/questions/tagged/interception" class="post-tag" title="show questions tagged 'interception'" rel="tag">interception</a> 
+                or <a href="/questions/ask">ask your own question</a>.
+        </h2>
+</div>
+</div>
+<div id="sidebar">
+
+
+
+     <script type="text/javascript">
+        window.showNewUser = true;
+            
+                (function(){
+                    var cs = window.sessionStorage && window.sessionStorage['tNewsletter'];
+                    var m = /:\/\/([^\/]*)/.exec(document.referrer);
+                    var h = {'www.reddit.com':1,'news.ycombinator.com':1};
+                    if(window.sessionStorage && (cs || (m && m.length == 2 && h[m[1]]))){
+                        showNewUser = false;
+                        StackExchange.ready(function(){
+                            StackExchange.newsletterAd.loader(m[1], cs);
+                        });
+                    }
+                    if (window.localStorage && showNewUser){
+                        var c = parseInt(localStorage['nuCounter'],10); 
+                        c = isNaN(c) ? 1 : c+1;
+                        window.localStorage['nuCounter'] = c; 
+                        showNewUser = c < 10;
+                    }
+                })()
+            
+     </script>
+    <div class="module newuser newuser-greeting" id="newuser-box" style="display:none;">
+        <h4>Hello World!</h4>
+        <div>
+            <p><p>This is a collaboratively edited question and answer site for <b>professional and enthusiast programmers</b>. It's 100% free, no registration required.</p></p>
+            <p class="ar"><a href="/about?mnu=1">about &raquo;</a>&nbsp;&nbsp;&nbsp;<a href="/faq?mnu=1">faq &raquo;</a>
+            </p>
+        </div>
+    </div>
+     <script type="text/javascript">
+        if (showNewUser) {
+            document.getElementById('newuser-box').style.display = '';
+        }
+     </script>
+    <div class="module question-stats">
+        <p class="label-key">tagged</p>
+        <div class="tagged"><a href="/questions/tagged/c%2b%2b" class="post-tag" title="show questions tagged 'c++'" rel="tag">c++</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">127313</span></span><br>
+<a href="/questions/tagged/keyboard-events" class="post-tag" title="show questions tagged 'keyboard-events'" rel="tag">keyboard-events</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">325</span></span><br>
+<a href="/questions/tagged/hid" class="post-tag" title="show questions tagged 'hid'" rel="tag">hid</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">223</span></span><br>
+<a href="/questions/tagged/keyboard-hook" class="post-tag" title="show questions tagged 'keyboard-hook'" rel="tag">keyboard-hook</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">121</span></span><br>
+<a href="/questions/tagged/interception" class="post-tag" title="show questions tagged 'interception'" rel="tag">interception</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">37</span></span><br>
+</div>
+        <table id="qinfo">
+            <tr>
+                <td><p class="label-key">asked</p></td>
+                <td style="padding-left:10px"><p class="label-key" title="2012-01-11 15:29:00Z"><b>4 months ago</b></p></td>
+            </tr>
+            <tr>
+                <td><p class="label-key">viewed</p></td>
+
+                <td style="padding-left:10px"><p class="label-key"><b>202 times</b></p></td>
+            </tr>
+            <tr>
+                <td><p class="label-key">active</p></td>
+                <td style="padding-left:10px"><p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2012-01-12 18:03:22Z">4 months ago</a></b></p></td>
+            </tr>
+        </table>
+    </div>
+
+    
+        <script type="text/javascript">
+            var scriptSrc = "http://engine2.adzerk.net/z/8277/adzerk1_2_4_43,adzerk2_2_17_45?keywords=c%2b%2b,keyboard-events,hid,keyboard-hook,interception";
+            if (document.referrer) {
+                if (/\?/.test(scriptSrc))
+                    scriptSrc += "&";
+                else
+                    scriptSrc += "?";
+                scriptSrc += "xReferrer=" + document.referrer;
+            }
+            StackExchange.ready(function(){var z = document.createElement("script"); z.type = "text/javascript"; z.async = "true"; z.src = scriptSrc; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);});
+        </script>
+    
+    <div class="everyonelovesstackoverflow" id="adzerk2">
+    </div>
+
+    
+    <div id="hireme">
+        <script type="text/javascript">
+            var careers_adurl="http://careers.stackoverflow.com/gethired/js",careers_cssurl="http://cdn.sstatic.net/careers/gethired/sidebar.chirp.min.css?36d34b",careers_leaderboardcssurl="http://cdn.sstatic.net/careers/gethired/ninja.min.css?36d34b",careers_companycssurl="http://cdn.sstatic.net/careers/gethired/company",careers_adselector="div.hireme, div#hireme";StackExchange.ready(function(){$.ajax({url:"http://cdn.sstatic.net/careers/gethired/loader.min.js?36d34b",dataType:"script",cache:true})});
+        </script>
+    </div>
+
+      
+
+    <div class="module sidebar-related">
+    <h4 id="h-related">Related</h4>
+    <div class="related">
+    <div class="spacer">
+<a href="/questions/433254/as3-detect-long-key-presses" class="question-hyperlink">AS3: Detect long key presses</a>
+</div>
+<div class="spacer">
+<a href="/questions/497720/how-can-i-simulate-key-presses-to-any-currently-focused-window" class="question-hyperlink">How can I simulate key presses to any currently focused window?</a>
+</div>
+<div class="spacer">
+<a href="/questions/1360772/applying-a-modifier-key-from-one-keyboard-to-a-keypress-on-another-in-os-x" class="question-hyperlink">Applying a modifier key from one keyboard to a keypress on another in OS X</a>
+</div>
+<div class="spacer">
+<a href="/questions/2259430/how-to-get-keyboard-input-while-running-in-vmware-virtual-machine" class="question-hyperlink">How to get keyboard input while running in vmware virtual machine?</a>
+</div>
+<div class="spacer">
+<a href="/questions/3185794/initiate-key-presses-in-cocoa" class="question-hyperlink">Initiate key presses in Cocoa</a>
+</div>
+<div class="spacer">
+<a href="/questions/3270434/how-do-i-intercept-windows-key-under-windows-7" class="question-hyperlink">How do I intercept Windows key under Windows 7?</a>
+</div>
+<div class="spacer">
+<a href="/questions/4157292/get-unity-intercepted-method-information-unity-interception-imethodreturn" class="question-hyperlink">Get Unity intercepted method information (Unity Interception, IMethodReturn)</a>
+</div>
+<div class="spacer">
+<a href="/questions/5548462/configure-unity-interception-after-container-initialization" class="question-hyperlink">Configure unity interception after container initialization</a>
+</div>
+<div class="spacer">
+<a href="/questions/6064707/how-do-i-replace-a-keystroke-with-jquery" class="question-hyperlink">How do I replace a keystroke with jQuery?</a>
+</div>
+<div class="spacer">
+<a href="/questions/6161169/php-email-interception-not-sending-email-with-attachments" class="question-hyperlink">PHP email interception not sending email with attachments</a>
+</div>
+<div class="spacer">
+<a href="/questions/6204777/problem-with-detecting-usb-device-using-pid-and-vid-functions-in-vc" class="question-hyperlink">Problem with detecting USB device using PID and VID functions in VC++</a>
+</div>
+<div class="spacer">
+<a href="/questions/6730498/unity-interception-how-to-pass-parameter-into-icallhandler-implementation" class="question-hyperlink">Unity Interception: How to pass parameter into ICallHandler implementation?</a>
+</div>
+<div class="spacer">
+<a href="/questions/7163291/unity-interception-interceptor-is-called-several-times-with-partial-classes-map" class="question-hyperlink">Unity Interception, Interceptor is called several times with partial classes mapping</a>
+</div>
+<div class="spacer">
+<a href="/questions/7668872/need-to-intercept-hid-keyboard-events-and-then-block-them" class="question-hyperlink">Need to intercept HID Keyboard events (and then block them)</a>
+</div>
+<div class="spacer">
+<a href="/questions/7977652/hid-keyboard-on-android-2-2" class="question-hyperlink">HID Keyboard on Android 2.2</a>
+</div>
+<div class="spacer">
+<a href="/questions/8087852/hid-vs-usbxpress-timing-on-silabs-c8051f320" class="question-hyperlink">HID vs USBXpress timing on SiLabs C8051F320</a>
+</div>
+<div class="spacer">
+<a href="/questions/8101824/hid-vs-usbxpress-sof-time-silabs-c8051f320" class="question-hyperlink">HID vs USBXpress SOF time SiLabs C8051F320</a>
+</div>
+<div class="spacer">
+<a href="/questions/8144996/multiple-hid-output-reports" class="question-hyperlink">multiple HID output reports</a>
+</div>
+<div class="spacer">
+<a href="/questions/8818354/interfacing-with-an-hid-device-from-c-c" class="question-hyperlink">Interfacing with an HID Device from C#/C++?</a>
+</div>
+<div class="spacer">
+<a href="/questions/9188738/interception-in-mef-composition-and-import-selection" class="question-hyperlink">Interception in MEF composition and import selection</a>
+</div>
+<div class="spacer">
+<a href="/questions/10079825/does-hid-support-two-way-data-communication" class="question-hyperlink">Does HID support two way data communication?</a>
+</div>
+<div class="spacer">
+<a href="/questions/10251165/unity-interception-custom-interception-behaviour" class="question-hyperlink">Unity Interception - Custom Interception Behaviour</a>
+</div>
+<div class="spacer">
+<a href="/questions/10314653/autofac-2-6-1-aop-interception" class="question-hyperlink">Autofac 2.6.1 AOP Interception</a>
+</div>
+<div class="spacer">
+<a href="/questions/10321967/if-a-key-is-pressed-do-something-cpp" class="question-hyperlink">if a key is pressed do something, cpp</a>
+</div>
+<div class="spacer">
+<a href="/questions/10509686/autofac-using-dynamicproxy2-interception-with-wcfintegration" class="question-hyperlink">Autofac using DynamicProxy2 Interception with WcfIntegration</a>
+</div>
+
+    </div>
+    </div>
+</div>
+
+<div id="feed-link">
+    <div id="feed-link-text"><a href="/feeds/question/8821895" title="feed of this question and its answers"><span class="feed-icon"></span>question feed</a></div>
+</div>
+
+<noscript>
+    <div><img src="/posts/8821895/ivc/1b41" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-c</div></div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <a href="/about">about</a> |
+                <a href="/faq">faq</a> |
+                
+                    <span onclick="if(window.localStorage){localStorage.setItem('blog-new',1337713505000); $('.new-blog-post').fadeOut();}">
+                        <script type="text/javascript">if(!window.localStorage || new Date(+localStorage.getItem('blog-new'))<new Date())document.write('<span title="Revamped Notifications, by Kevin Montrose - 4 hours ago" class="new-blog-post">new<\/span>');</script>
+                        <a href="http://blog.stackexchange.com?blt=1">blog</a>
+                    </span> |
+                    <a href="http://chat.stackoverflow.com">chat</a> |
+                <a href="http://data.stackexchange.com">data</a> |
+                <a href="http://blog.stackoverflow.com/category/podcasts/">podcast</a> |
+                <a href="http://shop.stackexchange.com/">shop</a> |
+                <a href="http://stackexchange.com/legal">legal</a> |
+                <a href="http://engine.adzerk.net/redirect/0/2776/2751/0/4de3c60f719c4dfcb1a57531c7050090/0">advertising info</a> |
+
+                <a onclick="StackExchange.switchMobile('on', '/questions/8821895/sending-key-presses-with-interception')">mobile</a> |
+
+                <b><a href="mailto:team@stackoverflow.com">contact us</a></b>
+                  | <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                <div id="footer-sites">
+                    
+                        <span style="color:#FE7A15;font-size:140%">&#9632;</span>&nbsp;<a href="http://stackoverflow.com">stackoverflow.com</a>&nbsp; 
+                        <span style="color:#FE7A15;font-size:140%">&#9632;</span>&nbsp;<a href="http://stackapps.com">api/apps</a>&nbsp; 
+                        <span style="color:#FE7A15;font-size:140%">&#9632;</span>&nbsp;<a href="http://careers.stackoverflow.com">careers</a>&nbsp; 
+                        <span style="color:#E8272C;font-size:140%">&#9632;</span>&nbsp;<a href="http://serverfault.com">serverfault.com</a>&nbsp; 
+                        <span style="color:#00AFEF;font-size:140%">&#9632;</span>&nbsp;<a href="http://superuser.com">superuser.com</a>&nbsp; 
+                        <span style="color:#969696;font-size:140%">&#9632;</span>&nbsp;<a href="http://meta.stackoverflow.com">meta</a>&nbsp; 
+                        <span style="color:#46937D;font-size:140%">&#9632;</span>&nbsp;<a href="http://area51.stackexchange.com">area&nbsp;51</a>&nbsp; 
+                        <span style="color:#C0D0DC;font-size:140%">&#9632;</span>&nbsp;<a href="http://webapps.stackexchange.com">webapps</a>&nbsp; 
+                        <span style="color:#000000;font-size:140%">&#9632;</span>&nbsp;<a href="http://gaming.stackexchange.com">gaming</a>&nbsp; 
+                        <span style="color:#dd4814;font-size:140%">&#9632;</span>&nbsp;<a href="http://askubuntu.com">ubuntu</a>&nbsp; 
+                        <span style="color:#9ce4fe;font-size:140%">&#9632;</span>&nbsp;<a href="http://webmasters.stackexchange.com">webmasters</a>&nbsp; 
+                        <span style="color:#cf4d3f;font-size:140%">&#9632;</span>&nbsp;<a href="http://cooking.stackexchange.com">cooking</a>&nbsp; 
+                        <span style="color:#f4f28d;font-size:140%">&#9632;</span>&nbsp;<a href="http://gamedev.stackexchange.com">game development</a>&nbsp; 
+                        <span style="color:#0f3559;font-size:140%">&#9632;</span>&nbsp;<a href="http://math.stackexchange.com">math</a>&nbsp; 
+                        <span style="color:#f2f2f2;font-size:140%">&#9632;</span>&nbsp;<a href="http://photo.stackexchange.com">photography</a>&nbsp; 
+                        <span style="color:#037187;font-size:140%">&#9632;</span>&nbsp;<a href="http://stats.stackexchange.com">stats</a>&nbsp; 
+                        <span style="color:#f1e7cc;font-size:140%">&#9632;</span>&nbsp;<a href="http://tex.stackexchange.com">tex</a>&nbsp; 
+                        <span style="color:#e1cdae;font-size:140%">&#9632;</span>&nbsp;<a href="http://english.stackexchange.com">english</a>&nbsp; 
+                        <span style="color:#a2d9f6;font-size:140%">&#9632;</span>&nbsp;<a href="http://cstheory.stackexchange.com">theoretical cs</a>&nbsp; 
+                        <span style="color:#1b3e6c;font-size:140%">&#9632;</span>&nbsp;<a href="http://programmers.stackexchange.com">programmers</a>&nbsp; 
+                        <span style="color:#293a5d;font-size:140%">&#9632;</span>&nbsp;<a href="http://unix.stackexchange.com">unix</a>&nbsp;
+                        <span style="color:#bec0cb;font-size:140%">&#9632;</span>&nbsp;<a href="http://apple.stackexchange.com">apple</a>&nbsp;
+                        <span style="color:#939185;font-size:140%">&#9632;</span>&nbsp;<a href="http://wordpress.stackexchange.com">wordpress</a>&nbsp;
+                        <span style="color:#ebf5f5;font-size:140%">&#9632;</span>&nbsp;<a href="http://physics.stackexchange.com">physics</a>&nbsp;
+                        <span style="color:#4176ab;font-size:140%">&#9632;</span>&nbsp;<a href="http://diy.stackexchange.com">home&nbsp;improvement</a>&nbsp;
+                        <span style="color:#d1d8d7;font-size:140%">&#9632;</span>&nbsp;<a href="http://gis.stackexchange.com">gis</a>&nbsp;
+                        <span style="color:#e5e2d3;font-size:140%">&#9632;</span>&nbsp;<a href="http://electronics.stackexchange.com">electronics</a>&nbsp;
+                        <span style="color:#a4c639;font-size:140%">&#9632;</span>&nbsp;<a href="http://android.stackexchange.com">android</a>&nbsp;
+                        <span style="color:#2e4e60;font-size:140%">&#9632;</span>&nbsp;<a href="http://security.stackexchange.com">security</a>&nbsp;
+                        <span style="color:#45bcb5;font-size:140%">&#9632;</span>&nbsp;<a href="http://bicycles.stackexchange.com">bicycles</a>&nbsp;
+                        <span style="color:#00adee;font-size:140%">&#9632;</span>&nbsp;<a href="http://dba.stackexchange.com">dba</a>&nbsp;
+                        <span style="color:#2edaf0;font-size:140%">&#9632;</span>&nbsp;<a href="http://drupal.stackexchange.com">drupal</a>&nbsp;
+                        <span style="color:#213951;font-size:140%">&#9632;</span>&nbsp;<a href="http://sharepoint.stackexchange.com">sharepoint</a>&nbsp;
+                        <span style="color:#73abb3;font-size:140%">&#9632;</span>&nbsp;<a href="http://scifi.stackexchange.com">scifi &amp; fantasy</a>&nbsp;
+                        <span style="color:#23629F;font-size:140%">&#9632;</span>&nbsp;<a href="http://ux.stackexchange.com">user experience</a>&nbsp;
+                        <span style="color:#faff72;font-size:140%">&#9632;</span>&nbsp;<a href="http://skeptics.stackexchange.com">skeptics</a>&nbsp;
+                        <span style="color:#623121;font-size:140%">&#9632;</span>&nbsp;<a href="http://rpg.stackexchange.com">rpg</a>&nbsp;
+                        <span style="color:#e4be88;font-size:140%">&#9632;</span>&nbsp;<a href="http://judaism.stackexchange.com">judaism</a>&nbsp;
+                </div>
+            </div>
+            <div id="footer-flair">
+                <a class="peer1" href="http://www.peer1.com/stackoverflow"></a>  
+	            <a href="http://creativecommons.org/licenses/by-sa/3.0/" class="cc-wiki-link"></a>
+                <div id="svnrev">rev 2012.5.21.2626</div>
+            </div>
+            <div id="copyright">
+                site design / logo &copy; 2012 stack exchange inc; 
+                user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc-wiki</a> with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            
+
+        </div>
+    </div>
+    
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+    <script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-5620270-1']);
+        _gaq.push(['_setCustomVar', 1, 'tags', '|c++|keyboard-events|hid|keyboard-hook|interception|']); 
+_gaq.push(['_trackPageview']);
+    var _qevents = _qevents || [];
+    (function(){
+        var s=document.getElementsByTagName('script')[0];
+        var ga=document.createElement('script');
+        ga.type='text/javascript';
+        ga.async=true;
+        ga.src='http://www.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(ga,s);
+        var sc=document.createElement('script');
+        sc.type='text/javascript';
+        sc.async=true;
+        sc.src='http://edge.quantserve.com/quant.js'; 
+        s.parentNode.insertBefore(sc,s);
+    })();
+    </script>
+    <script type="text/javascript">
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>    
+    
+    <script type='text/javascript'>mPt.probe(1)</script><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script><script type='text/javascript'>mPt.probe(1)</script><script type='text/javascript'>mPt.probe(4)</script><script type="text/javascript" src="http://cdn.sstatic.net/js/stub.js?v=b1412a85d724"></script><script type='text/javascript'>mPt.probe(4)</script>    <script type="text/javascript">
+        
+        StackExchange.ready(function () {
+
+            StackExchange.question.init({showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:8821895});
+
+            styleCode();
+
+                StackExchange.realtime.subscribeToQuestion('1', '8821895');
+        });
+    </script>    <script type="text/javascript">
+        StackExchange.init({"stackAuthUrl":"https://stackauth.com","serverTime":1337645062,"styleCode":true,"enableUserHovercards":true,"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true},"user":{"isAnonymous":true,"fkey":"f48856a2d2da12a2e201c7e0a54cedc4","notificationsUnviewedCount":0,"inboxUnviewedCount":-1}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.js":"4ed9aa4b8d0e","js/moderator.js":"8c49fc268737","js/full-anon.js":"c443ec6a97d5","js/full.js":"e8294710b308","js/wmd.js":"a198cc87d4a1","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/mobile.js":"fa08cb48d513","js/help.js":"fc9fb0517db2","js/tageditor.js":"c1ba807b32aa","js/tageditornew.js":"bd66fabe1c71","js/inline-tag-editing.js":"be882e188985","js/revisions.js":"8c6bcd93b7fe","js/suggested-edits.js":"d8960487bb7f","js/probes.js":"beb933322ff0"});
+        
+    </script>    <script type="text/javascript">
+        StackExchange.ready(function () {
+            var shareUrl = 'http%3a%2f%2fstackoverflow.com%2fq%2f8821895';
+            var shareMsg = 'Sending+Key+Presses+with+Interception';
+            
+            StackExchange.share.gplus($('#gp-share-8821895'), shareUrl, shareMsg) ;
+            StackExchange.share.facebook($('#fb-share-8821895'), shareUrl, shareMsg);
+            StackExchange.share.twitter($('#twitter-share-8821895'), shareUrl, shareMsg);
+        });
+    </script><script type="text/javascript">
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+         
+        prepareEditor({
+            heartbeatType: 'answer',
+            bindNavPrevention: true,
+            postfix: "",
+            onDemand: true,
+            discardSelector: ".discard-answer"
+            ,immediatelyShowMarkdownHelp:true
+        });
+        
+    });  
+</script><script type="text/javascript">
+StackExchange.ready(function(){$.get('/posts/8821895/ivc/1b41');});
+</script>
+ <script type="text/javascript">
+window.mPtt = mPt.t;
+window.mPttRG = '64d87923-28d5-41cc-bf1e-25870d358c5d';
+(function(){
+        var f=document.getElementsByTagName('script')[0];
+        var s=document.createElement('script');
+        s.type='text/javascript';
+        s.async=true;
+        s.src = 'http://cdn.sstatic.net/js/probes.js?v=beb933322ff0';
+        f.parentNode.insertBefore(s, f);
+})();
+</script>    
+</body>
+</html>

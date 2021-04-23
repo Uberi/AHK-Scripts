@@ -1,0 +1,243 @@
+/* -------------------------------------------------- 
+ *  Style sheet for ahkbook
+ *  Visit the ahkbook repo on  http://github.com
+ *  Loosely based on Jekyll's default style sheet
+ *  Modified by Frankie Bagnardi (http://aboutscript.com)
+ */
+ 
+
+
+
+/* -------------------------------------------------- 
+   Global and Top Level -------------------------- */
+* {
+	margin: 0;
+	padding: 0;
+
+	/* src: http://css-tricks.com/7323-box-sizing/   */
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+
+	letter-spacing: 1.5px;
+	line-height: 175%;
+}
+
+body {
+	padding: 0px;
+	font-family: Tahoma,
+             "DejaVu Sans",
+             sans-serif;
+    background-color: #DDD;
+	text-align: left
+}
+
+.content {
+	background-color: white;
+	color: #1F1F1F;
+	width: 1024px;
+	max-width: 90%;
+	margin: 15px auto 3px auto;
+	padding: 3% 1.5%;
+	-moz-box-shadow: 0px 0px 60px #888;
+	-webkit-box-shadow: 0px 0px 60px #888;
+	box-shadow: 0px 0px 60px #888;
+}
+
+.content > p , li {
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+.content > p {
+	margin-top: 20px;
+}
+
+/* -------------------------------------------------- 
+   Headings  --------------------------------------- */
+h1 {
+	color: #070707;
+	page-break-after:avoid;
+}
+
+h2,h3,h4,h5,h6,h7 {
+	color: #222;
+	margin-top: 15px;
+	page-break-after:avoid;
+}
+
+h2 {
+	border-bottom: solid 1px black;
+	width: 40%;
+	font-weight: 400;
+}
+
+h3 {
+	font-style: oblique;
+	font-weight: 700;
+}
+
+
+/* -------------------------------------------------- 
+   Links ----------------------------------------- */
+
+a:link, a:visited {
+	color: #1F647F;
+	text-decoration: none;
+}
+
+a:hover, a:focus {
+	text-decoration: underline;
+	color: #2B89AF;
+}
+
+
+/* The three icons are made by Yusuke Kamiyamane
+   http://p.yusukekamiyamane.com/
+   License: http://creativecommons.org/licenses/by/3.0/  */
+
+
+a[href*="://"] {
+	padding-right: 20px;
+	background-repeat: no-repeat;
+	background-position: right center;
+	background-image: url(external.png);
+}
+
+a[href^="http://www.autohotkey.com"],
+a[href^="http://de.autohotkey.com"],
+a[href^="http://autohotkey.free.fr"],
+a[href^="http://cn.autohotkey.com"]
+{
+	background-image: url(docs.png);
+}
+
+a[href^="http://www.autohotkey.net"],
+a[href^="http://www.autohotkey.com/forum"],
+a[href^="http://de.autohotkey.com/forum"] 
+{
+	padding-right: 16px;
+	background-image: url(forum.png);
+}
+
+a[href=''] {
+	color: darkred
+}
+
+a[href^="https://github"],  /* Repos and homepage */
+a[href*=".github.com"] /* gh-pages, help, etc. */
+{
+    background-image: url(github.png);
+}
+
+/* -------------------------------------------------- 
+   References ------------------------------------ */
+
+cite {
+	font-style: italic
+}
+
+cite:before, cite:after {
+	content: '"'
+}
+
+blockquote {
+	padding: 10px;
+	background-color: white;
+	margin: 8px 0 8px 5%;
+	width: 90%;
+	-moz-box-shadow:inset 0 0 10px #aaa;
+	-webkit-box-shadow:inset 0 0 10px #aaa;
+	box-shadow:inset 0 0 10px #aaa;
+
+}
+
+blockquote:first-letter {
+	font-size: 120%
+}
+
+img {
+	padding: 5px;
+	margin: 5px;
+	border: solid gray 2px;
+	text-align: center;
+	display: block;
+	max-width: 90%
+}
+
+
+pre {
+	padding: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	-ie-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	box-shadow: inset 0 0 10px #999;
+	background-color: #FCFCFC;
+	font-family: Arial;
+
+
+	/* src: http://www.longren.org/wrapping-text-inside-pre-tags/ */
+	overflow-x: auto;
+	white-space: pre-wrap; /* css-3 */
+	white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+pre * {
+	font-family: "Droid Sans Mono", Courier, monospace;
+	letter-spacing: 1.1px;
+	line-height: 125%;
+}
+
+
+/* -------------------------------------------------- 
+   Lists  --------------------------------------- */
+
+ul, ol {
+	margin-left: 3%;
+}
+
+ol {
+	font-style: italic;
+	font-weight: bold;
+	list-style-type: decimal;
+}
+
+ul {
+	list-style-type: disc;
+}
+
+ol li {
+	font-style: normal;
+	font-weight: normal;
+}
+
+/* -------------------------------------------------- 
+   Tables  --------------------------------------- */
+
+table {
+    width: 100%;
+    
+}
+
+td, th {
+    
+    border-radius: 7px;
+    padding: 4px;
+}
+
+td { 
+    border: 1px solid #BBB; 
+}
+
+th {
+    border: 2px solid #CCD;
+}
+
+
+/* END OF STYLE SHEET
+-------------------*/

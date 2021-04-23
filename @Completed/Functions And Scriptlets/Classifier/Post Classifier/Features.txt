@@ -1,0 +1,8045 @@
+255: 
+	B: 9
+65535: 
+	B: 1
+	L: 1
+04EB42FE8048E54AA1C414A1780D896D: 
+	L: 1
+0x: 
+	B: 6
+	L: 3
+100px: 
+	B: 1
+10x10: 
+	L: 1
+12th: 
+	L: 2
+16th: 
+	B: 1
+1st: 
+	L: 4
+2000ms: 
+	L: 2
+2000px: 
+	L: 2
+20basic: 
+	B: 1
+20Script: 
+	L: 3
+20Updater: 
+	L: 3
+20v1: 
+	B: 2
+28VS: 
+	L: 3
+2nd: 
+	L: 1
+32bit: 
+	B: 1
+	L: 2
+3D: 
+	B: 6
+4a: 
+	B: 1
+4th: 
+	L: 2
+50ms: 
+	L: 2
+64bit: 
+	L: 3
+7N7jbQDcR: 
+	L: 1
+9A: 
+	L: 1
+_: 
+	B: 3
+___________________: 
+	L: 1
+__AddTemplate: 
+	L: 2
+__Anchor: 
+	L: 2
+__base: 
+	L: 8
+__CheckInvalidVarName: 
+	L: 2
+__class: 
+	L: 36
+__ErrorMsg: 
+	L: 11
+__Get: 
+	L: 18
+__GetNextVarOffset: 
+	L: 4
+__Initialize: 
+	L: 2
+__MakeClass: 
+	L: 4
+__MakeThisClassFromTemplate: 
+	L: 2
+__New: 
+	L: 23
+__Set: 
+	L: 2
+__SetFormat_End: 
+	L: 7
+__SetFormat_Start: 
+	L: 7
+_CallbackFunction: 
+	L: 1
+_Cmd: 
+	B: 4
+_def: 
+	L: 1
+_DWORD: 
+	L: 5
+_Include: 
+	B: 1
+_Information: 
+	L: 1
+_L: 
+	L: 2
+_NewEnum: 
+	L: 1
+_ReplaceCurrentScript: 
+	L: 1
+_SuppressMsgBox: 
+	L: 1
+_SYSTEMTIME: 
+	L: 1
+_TIME_ZONE_INFORMATION: 
+	L: 1
+_transaction: 
+	B: 2
+_ver: 
+	L: 3
+a: 
+	B: 133
+	L: 219
+A_AhkPath: 
+	L: 1
+A_ControlDelay: 
+	L: 1
+A_DD: 
+	B: 2
+a_def: 
+	L: 2
+A_Desktop: 
+	L: 2
+A_DetectHiddenWindows: 
+	L: 1
+A_FormatInteger: 
+	B: 2
+	L: 2
+A_Gui: 
+	L: 2
+A_GuiControl: 
+	B: 1
+A_Index: 
+	B: 20
+	L: 33
+A_IPAddress1: 
+	B: 2
+A_IsCompiled: 
+	B: 3
+A_IsUnicode: 
+	L: 5
+A_LoopField: 
+	B: 4
+	L: 42
+A_LoopReadLine: 
+	B: 3
+A_MM: 
+	B: 2
+A_MouseDelay: 
+	L: 1
+A_PtrSize: 
+	L: 12
+A_ScreenHeight: 
+	B: 2
+	L: 2
+A_ScreenWidth: 
+	B: 2
+	L: 2
+A_ScriptDir: 
+	B: 2
+	L: 5
+A_ScriptFullPath: 
+	B: 2
+A_ScriptName: 
+	L: 7
+A_Space: 
+	B: 6
+	L: 2
+A_ThisFunc: 
+	L: 15
+A_ThisMenuItemPos: 
+	B: 1
+A_TickCount: 
+	L: 2
+a_ver: 
+	L: 1
+A_YYYY: 
+	B: 2
+aa373931: 
+	L: 1
+aa383751: 
+	L: 1
+aa932285: 
+	L: 1
+able: 
+	B: 2
+	L: 4
+aborted: 
+	B: 1
+about: 
+	B: 2
+	L: 14
+above: 
+	B: 4
+	L: 8
+abs: 
+	B: 6
+absent: 
+	L: 2
+acceleration: 
+	B: 3
+accept: 
+	B: 2
+Accepts: 
+	B: 2
+access: 
+	B: 1
+	L: 7
+accesses: 
+	L: 1
+accessing: 
+	L: 2
+according: 
+	L: 1
+account: 
+	B: 7
+	L: 2
+ACCOUNTS: 
+	B: 1
+Ace: 
+	L: 3
+across: 
+	B: 3
+act: 
+	L: 1
+action: 
+	B: 2
+	L: 1
+actions: 
+	B: 4
+	L: 1
+activate: 
+	B: 1
+activated: 
+	B: 2
+activating: 
+	B: 1
+activation: 
+	B: 2
+active: 
+	B: 10
+	L: 14
+acts: 
+	B: 1
+actual: 
+	L: 3
+actually: 
+	B: 3
+Add: 
+	B: 46
+	L: 24
+added: 
+	B: 12
+	L: 6
+AddictiveTips: 
+	L: 1
+adding: 
+	B: 1
+additional: 
+	B: 1
+	L: 3
+addon: 
+	B: 1
+addons: 
+	B: 1
+addr: 
+	B: 5
+Address: 
+	B: 9
+	L: 11
+addresses: 
+	B: 6
+	L: 1
+adds: 
+	B: 4
+AddStructVar: 
+	L: 167
+adjust: 
+	B: 2
+adjustable: 
+	L: 1
+adjusts: 
+	B: 1
+admin: 
+	B: 1
+ADMINISTRATOR: 
+	B: 1
+ado: 
+	B: 1
+Adobe: 
+	B: 3
+ads: 
+	L: 1
+AF_INET: 
+	B: 4
+affected: 
+	B: 1
+affraid: 
+	B: 1
+after: 
+	B: 7
+	L: 7
+again: 
+	B: 1
+	L: 1
+ago: 
+	B: 1
+AHK: 
+	B: 30
+	L: 47
+ahk_class: 
+	B: 3
+	L: 4
+ahk_id: 
+	L: 10
+Ahk_L: 
+	L: 12
+ahk_pid: 
+	B: 2
+AHKsock: 
+	L: 4
+AHKsock_Close: 
+	L: 1
+AHKsock_Connect: 
+	L: 1
+AHKsock_GetAddrInfo: 
+	L: 1
+AHKsock_GetNameInfo: 
+	L: 1
+AHKsock_Listen: 
+	L: 1
+AHKsock_Send: 
+	L: 1
+aim: 
+	L: 1
+alert: 
+	L: 9
+align: 
+	B: 1
+aligning: 
+	B: 1
+all: 
+	B: 22
+	L: 39
+allocate: 
+	L: 1
+allocated: 
+	L: 1
+allow: 
+	B: 6
+	L: 2
+allows: 
+	B: 6
+	L: 6
+allSize: 
+	L: 5
+almost: 
+	L: 6
+along: 
+	B: 1
+	L: 1
+alot: 
+	L: 1
+already: 
+	B: 2
+	L: 7
+also: 
+	B: 13
+	L: 18
+Alt: 
+	B: 1
+	L: 5
+alternative: 
+	B: 2
+AlternativeWay: 
+	B: 1
+although: 
+	L: 1
+altogether: 
+	L: 2
+Always: 
+	B: 5
+	L: 7
+AlwaysOnTop: 
+	L: 1
+am: 
+	B: 2
+amazon: 
+	B: 3
+amount: 
+	B: 3
+	L: 1
+amp: 
+	B: 1
+Amt: 
+	B: 1
+an: 
+	B: 13
+	L: 37
+analysis: 
+	B: 1
+analyzing: 
+	L: 1
+Anchor: 
+	L: 1
+anchored: 
+	B: 4
+and: 
+	B: 127
+	L: 169
+Android: 
+	B: 1
+annotations: 
+	L: 1
+announced: 
+	L: 1
+annoying: 
+	L: 2
+another: 
+	B: 4
+	L: 1
+Ansi: 
+	L: 4
+answer: 
+	L: 1
+any: 
+	B: 14
+	L: 10
+Anybody: 
+	B: 1
+anyone: 
+	B: 2
+anything: 
+	B: 5
+	L: 3
+anyway: 
+	B: 1
+anywhere: 
+	B: 2
+api: 
+	L: 2
+APIs: 
+	L: 1
+app: 
+	B: 8
+	L: 1
+app1: 
+	L: 2
+app2: 
+	L: 2
+apparently: 
+	L: 1
+appear: 
+	L: 4
+appears: 
+	B: 1
+	L: 1
+append: 
+	B: 1
+appending: 
+	L: 1
+Appifyer: 
+	L: 3
+applauncher: 
+	L: 1
+Application: 
+	B: 3
+	L: 7
+Applications: 
+	B: 3
+	L: 3
+applied: 
+	B: 2
+Applies: 
+	B: 1
+apply: 
+	B: 1
+	L: 2
+approach: 
+	B: 1
+apps: 
+	B: 3
+Apr: 
+	B: 1
+April: 
+	B: 3
+apropiate: 
+	B: 1
+archive: 
+	L: 4
+ARCOMLIST: 
+	B: 2
+ARCOMMAND: 
+	B: 2
+are: 
+	B: 32
+	L: 36
+area: 
+	B: 1
+	L: 2
+ARESPONSE: 
+	B: 8
+ARGETINFO: 
+	B: 2
+ARInput: 
+	B: 4
+ARMenu: 
+	B: 3
+ARMESSAGE: 
+	B: 7
+around: 
+	B: 2
+	L: 3
+ARPassword: 
+	B: 4
+ARPASWORD: 
+	B: 2
+ARPOPMENU: 
+	B: 2
+array: 
+	L: 7
+arround: 
+	B: 1
+arrows: 
+	B: 1
+arryCount: 
+	L: 17
+arryCountInvalid: 
+	L: 3
+arryNum: 
+	L: 27
+ARShowText: 
+	B: 3
+ARSHOWTXT: 
+	B: 2
+ARYesNo: 
+	B: 3
+ARYESORNO: 
+	B: 2
+as: 
+	B: 36
+	L: 47
+ASC: 
+	B: 4
+	L: 1
+Ascending: 
+	L: 2
+ascii: 
+	L: 1
+asd: 
+	B: 2
+ask: 
+	L: 1
+Asked: 
+	L: 1
+asking: 
+	L: 1
+Asks: 
+	B: 1
+aspx: 
+	L: 18
+assign: 
+	B: 1
+	L: 1
+assistant: 
+	B: 1
+associative: 
+	L: 1
+assume: 
+	B: 1
+	L: 2
+assumed: 
+	L: 2
+assuming: 
+	B: 1
+asterisk: 
+	L: 2
+AStr: 
+	L: 5
+at: 
+	B: 13
+	L: 13
+atempts: 
+	B: 1
+ATOM: 
+	L: 2
+atomWindowType: 
+	L: 2
+attempt: 
+	B: 1
+	L: 2
+Attribute: 
+	L: 1
+audience: 
+	L: 1
+August: 
+	B: 1
+authenticate: 
+	L: 1
+Author: 
+	B: 1
+	L: 4
+authorship: 
+	L: 1
+Auto: 
+	B: 1
+	L: 3
+autoclicker: 
+	B: 1
+autohotkey: 
+	B: 32
+	L: 31
+AutoHotkey_L: 
+	L: 16
+automate: 
+	B: 1
+Automatic: 
+	B: 2
+automatically: 
+	B: 3
+	L: 2
+automation: 
+	B: 1
+	L: 2
+Autoscript: 
+	B: 2
+AutoScriptWriter: 
+	L: 1
+av: 
+	L: 3
+available: 
+	B: 1
+	L: 4
+avoid: 
+	B: 1
+	L: 3
+avoided: 
+	B: 1
+aware: 
+	B: 1
+away: 
+	B: 1
+axis: 
+	L: 2
+b: 
+	B: 20
+	L: 1
+B001K3IXW8: 
+	B: 1
+b1: 
+	B: 3
+b2: 
+	B: 2
+back: 
+	B: 4
+	L: 1
+backdoor: 
+	B: 1
+background: 
+	B: 1
+backslash: 
+	B: 2
+BackSpace: 
+	B: 6
+	L: 3
+backspaces: 
+	B: 1
+backup: 
+	L: 5
+backwards: 
+	B: 1
+badName: 
+	L: 3
+bar: 
+	B: 8
+	L: 4
+bare: 
+	B: 1
+barely: 
+	B: 1
+Based: 
+	B: 7
+	L: 3
+Basic: 
+	B: 8
+	L: 18
+Basically: 
+	B: 1
+basics: 
+	L: 1
+Bayesian: 
+	L: 1
+bb773352: 
+	L: 1
+BbErSeRkK: 
+	B: 1
+BBottomY: 
+	B: 2
+be: 
+	B: 40
+	L: 67
+because: 
+	B: 4
+	L: 14
+becomes: 
+	L: 1
+becoming: 
+	B: 1
+been: 
+	B: 3
+	L: 7
+Before: 
+	B: 11
+	L: 11
+beforehand: 
+	B: 1
+begin: 
+	B: 3
+	L: 2
+beginner: 
+	L: 1
+beginning: 
+	L: 2
+behavior: 
+	B: 5
+	L: 2
+behaviour: 
+	B: 2
+behind: 
+	B: 1
+being: 
+	B: 7
+	L: 2
+believe: 
+	B: 2
+below: 
+	B: 8
+	L: 7
+bemaniso: 
+	B: 2
+benefits: 
+	B: 1
+berban: 
+	L: 2
+best: 
+	B: 1
+beta: 
+	B: 1
+	L: 1
+better: 
+	B: 6
+	L: 3
+between: 
+	B: 3
+	L: 4
+Bg: 
+	B: 2
+Bias: 
+	L: 3
+Bilgi: 
+	L: 4
+billed: 
+	B: 1
+billg: 
+	B: 1
+Bin2Hex: 
+	L: 1
+binary: 
+	B: 4
+	L: 5
+bind: 
+	B: 2
+binding: 
+	B: 1
+binread: 
+	B: 1
+bit: 
+	B: 2
+	L: 4
+bits: 
+	B: 1
+Bkid: 
+	B: 4
+Black: 
+	L: 5
+blank: 
+	B: 5
+	L: 11
+block: 
+	B: 2
+BlockInput: 
+	B: 2
+BlockinputMode: 
+	L: 1
+blocks: 
+	B: 1
+blue: 
+	B: 1
+	L: 1
+BMG: 
+	B: 1
+BMiddleY: 
+	B: 5
+bmp: 
+	B: 3
+	L: 4
+body: 
+	L: 1
+bold: 
+	B: 1
+Boldly: 
+	B: 2
+BOOL: 
+	L: 4
+BOOLEAN: 
+	L: 1
+Border: 
+	L: 1
+bored: 
+	B: 1
+Boris: 
+	L: 1
+borrowed: 
+	B: 2
+BossKey: 
+	B: 1
+Bot: 
+	B: 1
+both: 
+	B: 7
+	L: 4
+bottom: 
+	B: 4
+	L: 14
+BottomX: 
+	B: 2
+BottomY: 
+	B: 2
+boundaries: 
+	L: 1
+box: 
+	B: 6
+	L: 6
+BR: 
+	L: 1
+break: 
+	B: 5
+	L: 15
+breakwall: 
+	B: 2
+briefly: 
+	L: 2
+bring: 
+	B: 2
+brings: 
+	B: 1
+browse: 
+	B: 5
+Browser: 
+	B: 2
+	L: 3
+browsers: 
+	B: 1
+	L: 2
+brush: 
+	B: 1
+BTopY: 
+	B: 2
+bug: 
+	B: 5
+	L: 3
+Bugfix: 
+	B: 2
+Bugfixes: 
+	B: 2
+bugs: 
+	B: 2
+building: 
+	L: 1
+buildings: 
+	B: 1
+builds: 
+	L: 1
+built: 
+	B: 3
+	L: 2
+Busy: 
+	L: 2
+but: 
+	B: 27
+	L: 14
+Button: 
+	B: 9
+	L: 6
+ButtonName: 
+	B: 2
+ButtonOK: 
+	L: 1
+buttons: 
+	B: 2
+ButtonSize: 
+	B: 6
+bx: 
+	L: 2
+by: 
+	B: 38
+	L: 24
+ByRef: 
+	B: 2
+	L: 4
+byte: 
+	B: 2
+	L: 11
+c: 
+	B: 15
+	L: 19
+c1: 
+	B: 4
+c2: 
+	B: 4
+cache: 
+	L: 1
+cached: 
+	L: 1
+Calculate: 
+	B: 3
+calibrated: 
+	B: 1
+call: 
+	B: 2
+	L: 6
+called: 
+	B: 2
+calling: 
+	L: 2
+calls: 
+	L: 1
+cam: 
+	B: 1
+came: 
+	B: 1
+can: 
+	B: 43
+	L: 43
+Cancel: 
+	B: 5
+	L: 1
+canceled: 
+	B: 3
+candidates: 
+	L: 1
+cannot: 
+	B: 1
+	L: 1
+Capslock: 
+	B: 5
+	L: 3
+CapsState: 
+	B: 2
+Caption: 
+	L: 1
+Captures: 
+	L: 2
+car: 
+	L: 1
+cards: 
+	B: 1
+	L: 1
+careful: 
+	L: 1
+carret: 
+	B: 1
+Carry: 
+	L: 1
+case: 
+	B: 4
+	L: 3
+CaseSensitive: 
+	B: 1
+catch: 
+	B: 1
+catching: 
+	B: 1
+cause: 
+	B: 1
+CB: 
+	B: 1
+	L: 17
+cbClsExtra: 
+	L: 2
+CBProc: 
+	L: 1
+cbSize: 
+	L: 6
+CBT: 
+	L: 1
+CBTProc: 
+	L: 1
+cbWndExtra: 
+	L: 2
+cc: 
+	B: 2
+CDisplayDevice: 
+	L: 1
+cell: 
+	B: 4
+center: 
+	B: 1
+	L: 8
+centered: 
+	L: 3
+certain: 
+	B: 2
+cf: 
+	L: 3
+CGuid: 
+	L: 3
+ch: 
+	L: 2
+Challenge: 
+	B: 3
+change: 
+	B: 15
+	L: 10
+changed: 
+	B: 12
+	L: 18
+Changelog: 
+	B: 1
+	L: 1
+changes: 
+	B: 3
+	L: 2
+changing: 
+	B: 7
+	L: 2
+channel: 
+	L: 1
+char: 
+	L: 4
+character: 
+	L: 3
+characters: 
+	B: 2
+	L: 1
+charset: 
+	L: 1
+chat: 
+	B: 1
+chat_active: 
+	L: 1
+chat_inactive: 
+	L: 2
+Chatting: 
+	L: 2
+check: 
+	B: 8
+	L: 9
+check_forupdate: 
+	L: 7
+Checkbox: 
+	L: 1
+checked: 
+	L: 6
+Checking: 
+	B: 1
+Checks: 
+	L: 1
+CheckTolerance: 
+	B: 6
+child: 
+	L: 1
+children: 
+	B: 2
+choice: 
+	B: 1
+choices: 
+	B: 1
+Choose: 
+	B: 5
+	L: 6
+choosed: 
+	B: 1
+choosing: 
+	L: 1
+chosen: 
+	L: 1
+chr: 
+	B: 1
+	L: 4
+Chris: 
+	L: 2
+chrNum: 
+	L: 3
+Chrome: 
+	B: 1
+	L: 2
+Chrome_WidgetWin_0: 
+	B: 1
+chs1: 
+	L: 14
+chs2: 
+	L: 14
+chunking: 
+	B: 1
+circle: 
+	L: 1
+circular: 
+	L: 1
+cl: 
+	L: 4
+class: 
+	B: 1
+	L: 52
+classes: 
+	B: 1
+Classifier: 
+	L: 2
+classNN: 
+	B: 1
+Clean: 
+	B: 2
+cleaner: 
+	B: 1
+cleanup: 
+	B: 4
+	L: 1
+clear: 
+	L: 1
+click: 
+	B: 12
+	L: 29
+clickable: 
+	L: 1
+clicked: 
+	L: 1
+clicker: 
+	B: 2
+clicking: 
+	B: 4
+	L: 8
+Clicks: 
+	B: 1
+	L: 10
+ClickX: 
+	L: 2
+ClickY: 
+	L: 2
+Client: 
+	B: 14
+	L: 9
+ClientResponse: 
+	B: 20
+clients: 
+	L: 1
+Clipboard: 
+	B: 18
+	L: 4
+ClipCursor: 
+	B: 2
+Clipping: 
+	B: 1
+clippings: 
+	L: 1
+ClipWait: 
+	B: 7
+close: 
+	B: 2
+Close_Server: 
+	B: 1
+closed: 
+	B: 4
+Closes: 
+	L: 1
+closesocket: 
+	B: 2
+cls: 
+	L: 13
+clsName: 
+	L: 14
+cluttered: 
+	B: 1
+CModuleEntry32: 
+	L: 1
+CMoniterInfo: 
+	L: 1
+CNotifyIconData: 
+	L: 1
+cntThreads: 
+	L: 1
+cntUsage: 
+	L: 1
+Code: 
+	B: 29
+	L: 52
+coded: 
+	B: 1
+coders: 
+	L: 1
+coding: 
+	L: 1
+Coils: 
+	B: 1
+Col: 
+	B: 1
+collection: 
+	L: 3
+collegues: 
+	L: 1
+collide: 
+	B: 1
+color: 
+	B: 4
+	L: 2
+Color1: 
+	B: 9
+Color11: 
+	B: 2
+Color2: 
+	B: 10
+COLORREF: 
+	L: 1
+column: 
+	B: 1
+columns: 
+	B: 3
+com: 
+	B: 25
+	L: 64
+COM_ConnectObject: 
+	L: 2
+COM_CreateObject: 
+	L: 3
+COM_DisconnectObject: 
+	L: 1
+COM_Init: 
+	L: 2
+COM_Invoke: 
+	L: 23
+COM_Release: 
+	L: 4
+COM_Term: 
+	L: 2
+combination: 
+	B: 1
+combinations: 
+	B: 1
+combined: 
+	B: 1
+comboboxes: 
+	B: 1
+comfortable: 
+	L: 2
+comma: 
+	L: 6
+command: 
+	B: 18
+	L: 2
+CommandList: 
+	B: 8
+CommandName: 
+	B: 2
+Commands: 
+	B: 6
+	L: 7
+comment: 
+	B: 3
+commented: 
+	B: 1
+Comments: 
+	B: 5
+	L: 1
+CommitLimit: 
+	L: 1
+CommitPeak: 
+	L: 1
+CommitTotal: 
+	L: 1
+common: 
+	B: 1
+commonly: 
+	B: 1
+communicate: 
+	B: 1
+	L: 1
+community: 
+	B: 2
+	L: 2
+ComObjConnect: 
+	L: 2
+ComObjCreate: 
+	L: 3
+comparable: 
+	L: 1
+compare: 
+	B: 1
+compatibility: 
+	B: 6
+	L: 1
+compatible: 
+	L: 4
+compile: 
+	L: 1
+Compiled: 
+	B: 4
+	L: 7
+complete: 
+	B: 2
+	L: 1
+compliance: 
+	B: 1
+complicated: 
+	B: 1
+Component: 
+	L: 2
+components: 
+	L: 1
+computer: 
+	B: 3
+	L: 9
+computers: 
+	B: 1
+	L: 3
+ComSpec: 
+	B: 1
+concepts: 
+	L: 2
+concerned: 
+	L: 1
+Configurable: 
+	B: 1
+CONFIGURATION: 
+	B: 2
+configurations: 
+	B: 1
+configure: 
+	B: 1
+	L: 1
+configured: 
+	B: 1
+Confine: 
+	B: 1
+confirm: 
+	B: 4
+confusing: 
+	L: 1
+Connect: 
+	B: 4
+	L: 2
+connected: 
+	L: 6
+connection: 
+	B: 10
+	L: 1
+Connects: 
+	L: 1
+consecutive: 
+	L: 2
+consider: 
+	B: 2
+considered: 
+	L: 1
+consist: 
+	L: 1
+consistent: 
+	B: 1
+	L: 1
+Console: 
+	L: 1
+constructed: 
+	L: 1
+Contact: 
+	L: 2
+contain: 
+	B: 1
+contained: 
+	B: 2
+	L: 2
+containing: 
+	B: 1
+contains: 
+	L: 2
+content: 
+	L: 1
+Contents: 
+	B: 1
+	L: 2
+context: 
+	L: 1
+continue: 
+	B: 5
+continuously: 
+	L: 1
+contributed: 
+	B: 1
+contribution: 
+	B: 1
+contributions: 
+	B: 1
+contributors: 
+	B: 1
+control: 
+	B: 24
+	L: 8
+ControlClick: 
+	B: 1
+	L: 15
+ControlDelay: 
+	L: 2
+ControlGet: 
+	L: 1
+ControlGetPos: 
+	L: 2
+controlling: 
+	L: 5
+Controls: 
+	B: 10
+	L: 3
+convenience: 
+	L: 1
+Convert: 
+	B: 1
+cool: 
+	B: 1
+coordinate: 
+	L: 9
+coordinates: 
+	L: 9
+CoordMode: 
+	B: 2
+	L: 3
+Coords: 
+	L: 5
+copied: 
+	B: 1
+	L: 2
+copies: 
+	B: 3
+	L: 1
+Copy: 
+	B: 7
+	L: 5
+copyable: 
+	B: 2
+copying: 
+	B: 1
+CopyToClipboard: 
+	B: 2
+cord: 
+	B: 1
+coresponding: 
+	B: 1
+corner: 
+	L: 4
+corners: 
+	L: 2
+correct: 
+	B: 2
+	L: 2
+correctly: 
+	B: 2
+corresponds: 
+	L: 2
+corrupt: 
+	B: 3
+could: 
+	B: 5
+	L: 2
+couldn: 
+	B: 1
+Count: 
+	B: 2
+	L: 29
+counter: 
+	B: 7
+counting: 
+	B: 1
+course: 
+	L: 1
+cover: 
+	L: 1
+covering: 
+	L: 2
+cp1200: 
+	L: 1
+CPaintStruct: 
+	L: 1
+CPerformanceInfo: 
+	L: 1
+CPoint: 
+	L: 16
+CProcessEntry32: 
+	L: 1
+CPU: 
+	B: 2
+crazy: 
+	B: 1
+create: 
+	B: 10
+	L: 7
+created: 
+	B: 3
+	L: 5
+CreatePen: 
+	B: 1
+creating: 
+	L: 3
+creation: 
+	B: 1
+creativity: 
+	L: 1
+creator: 
+	L: 1
+CRect: 
+	L: 20
+Credits: 
+	B: 3
+Cristi: 
+	L: 1
+criteria: 
+	L: 1
+Critical: 
+	B: 1
+cs: 
+	L: 4
+CSize: 
+	L: 4
+css: 
+	B: 1
+CStruct: 
+	L: 4
+CStruct_Base: 
+	L: 52
+CStruct_Base__Flag_ExitAppAfterErrorMsg: 
+	L: 3
+CStruct_Base_hTreeView: 
+	L: 7
+CStruct_Base_TreeViewClose: 
+	L: 1
+CStruct_Base_TreeViewEscape: 
+	L: 1
+CStruct_Base_TreeViewSize: 
+	L: 1
+CSV: 
+	B: 1
+CSystemTime: 
+	L: 9
+CT: 
+	B: 1
+CTimeZoneInformation: 
+	L: 3
+Ctrl: 
+	B: 3
+	L: 4
+Curently: 
+	B: 3
+current: 
+	L: 2
+currently: 
+	B: 2
+curser: 
+	L: 1
+cursor: 
+	B: 2
+	L: 3
+Cust: 
+	B: 1
+Custom: 
+	B: 3
+	L: 2
+Customizable: 
+	B: 1
+	L: 1
+customizations: 
+	B: 1
+customize: 
+	B: 2
+cut: 
+	B: 1
+CW: 
+	B: 1
+	L: 2
+CWindowInfo: 
+	L: 3
+CWindowPlacement: 
+	L: 2
+CWndClass: 
+	L: 2
+CWndClassEx: 
+	L: 1
+cx: 
+	L: 2
+cxWindowBorders: 
+	L: 2
+cycle: 
+	L: 1
+cyWindowBorders: 
+	L: 2
+d: 
+	B: 11
+	L: 30
+d_def: 
+	L: 1
+d_ver: 
+	L: 1
+daonlyfreez: 
+	L: 1
+dark: 
+	L: 1
+Data: 
+	B: 23
+	L: 15
+Data1: 
+	L: 7
+Data2: 
+	L: 1
+Data3: 
+	L: 1
+Data4: 
+	L: 1
+date: 
+	B: 5
+	L: 1
+DateTime: 
+	B: 2
+day: 
+	L: 2
+DaylightBias: 
+	L: 3
+DaylightDate: 
+	L: 3
+DaylightName: 
+	L: 4
+days: 
+	B: 2
+dd: 
+	B: 2
+dd145065: 
+	L: 1
+dd145106: 
+	L: 1
+dd162805: 
+	L: 1
+dd162897: 
+	L: 1
+dd183569: 
+	L: 1
+deal: 
+	L: 1
+DebugView: 
+	L: 1
+decide: 
+	B: 1
+decided: 
+	B: 1
+	L: 1
+decision: 
+	L: 1
+dedicated: 
+	L: 1
+deeper: 
+	L: 1
+Default: 
+	B: 18
+	L: 19
+DefaultDirs: 
+	L: 7
+DefaultExts: 
+	L: 5
+defaults: 
+	B: 2
+define: 
+	L: 1
+defined: 
+	B: 1
+	L: 3
+Delay: 
+	L: 6
+delete: 
+	B: 4
+	L: 6
+DeleteAll: 
+	B: 1
+deleted: 
+	B: 1
+	L: 1
+Deleteline: 
+	B: 1
+delimited: 
+	B: 1
+	L: 9
+Dell: 
+	B: 1
+demonstrated: 
+	B: 1
+demonstration: 
+	L: 1
+Denied: 
+	B: 1
+dependent: 
+	L: 1
+depending: 
+	L: 4
+depends: 
+	L: 1
+Deprecate: 
+	B: 1
+Deprecated: 
+	B: 1
+depth: 
+	L: 2
+DESC: 
+	L: 1
+Descending: 
+	L: 1
+described: 
+	B: 1
+	L: 2
+describes: 
+	L: 1
+description: 
+	B: 3
+	L: 2
+designed: 
+	L: 3
+designer: 
+	L: 1
+desired: 
+	B: 3
+desktop: 
+	L: 13
+Destination: 
+	B: 1
+Destroy: 
+	B: 5
+	L: 3
+details: 
+	B: 1
+	L: 1
+Detect: 
+	B: 1
+	L: 1
+detectable: 
+	B: 1
+DetectHiddenWindows: 
+	B: 4
+	L: 4
+detection: 
+	B: 1
+detects: 
+	B: 1
+determine: 
+	B: 1
+developed: 
+	B: 2
+development: 
+	B: 1
+device: 
+	L: 14
+DeviceID: 
+	L: 2
+DeviceKey: 
+	L: 2
+DeviceName: 
+	L: 2
+devices: 
+	L: 1
+DeviceString: 
+	L: 2
+dh: 
+	L: 6
+dialog: 
+	B: 1
+	L: 3
+dialogs: 
+	L: 1
+dialogue: 
+	L: 1
+did: 
+	B: 2
+	L: 1
+didn: 
+	B: 4
+diff: 
+	B: 3
+difference: 
+	B: 1
+different: 
+	B: 6
+	L: 3
+dig: 
+	L: 1
+direction: 
+	B: 3
+directions: 
+	L: 1
+directly: 
+	B: 1
+	L: 1
+directories: 
+	L: 2
+directory: 
+	B: 3
+	L: 8
+DirectUIHWND: 
+	B: 2
+disable: 
+	B: 6
+	L: 1
+Disclaimers: 
+	L: 1
+Disconnect: 
+	B: 8
+	L: 2
+discover: 
+	B: 1
+discovered: 
+	B: 1
+Display: 
+	B: 2
+	L: 3
+DisplayCount: 
+	B: 7
+displaying: 
+	B: 1
+	L: 1
+DisplayMouseMovementCalculate: 
+	B: 1
+DisplayMouseMovementClose: 
+	B: 1
+DisplayMouseMovementCopy: 
+	B: 1
+DisplayMouseMovementEscape: 
+	B: 1
+displays: 
+	B: 5
+dissable: 
+	B: 1
+distinguish: 
+	L: 1
+distribution: 
+	L: 2
+dll: 
+	B: 2
+	L: 19
+DllCall: 
+	B: 49
+	L: 25
+DllPath: 
+	L: 2
+dlls: 
+	L: 1
+do: 
+	B: 8
+	L: 11
+doc_docu: 
+	B: 1
+doc_keywords: 
+	B: 1
+docks: 
+	L: 1
+docs: 
+	B: 5
+	L: 1
+docu_e: 
+	B: 3
+Document: 
+	B: 1
+	L: 37
+documentation: 
+	B: 5
+	L: 8
+DocumentComplete: 
+	L: 1
+documented: 
+	L: 1
+documentElement: 
+	L: 2
+documents: 
+	B: 1
+Documetation: 
+	B: 1
+does: 
+	B: 6
+	L: 7
+doesn: 
+	B: 6
+	L: 2
+DoExit: 
+	B: 4
+doing: 
+	B: 1
+DOM: 
+	L: 9
+domain: 
+	B: 3
+don: 
+	B: 6
+	L: 8
+done: 
+	B: 6
+	L: 4
+dont: 
+	L: 1
+double: 
+	B: 2
+	L: 3
+down: 
+	B: 9
+	L: 5
+download: 
+	B: 4
+	L: 15
+downloaded: 
+	L: 2
+Downloads: 
+	L: 3
+downward: 
+	L: 1
+downwards: 
+	L: 2
+drag: 
+	B: 14
+	L: 4
+DragBox: 
+	L: 1
+DragDelay: 
+	B: 1
+dragging: 
+	B: 4
+	L: 3
+DragThreshold: 
+	B: 1
+DragToScroll: 
+	B: 4
+draw: 
+	B: 1
+drawrect: 
+	B: 2
+drive: 
+	L: 10
+DriveGet: 
+	L: 6
+Drivelist: 
+	L: 4
+driven: 
+	L: 1
+drives: 
+	L: 1
+Dropdown: 
+	L: 3
+DropDownList: 
+	B: 1
+	L: 2
+DropDownLists: 
+	B: 1
+dropped: 
+	B: 2
+DT3: 
+	L: 1
+DtS: 
+	B: 1
+due: 
+	B: 6
+	L: 2
+Dummy: 
+	B: 1
+duplicate: 
+	B: 1
+	L: 2
+duration: 
+	B: 9
+during: 
+	B: 2
+	L: 2
+dw: 
+	L: 6
+Dwarf: 
+	B: 1
+dwExStyle: 
+	L: 2
+dwFlags: 
+	L: 2
+dwInfoFlags: 
+	L: 1
+DWord: 
+	L: 42
+DWORD32: 
+	L: 1
+DWORD64: 
+	L: 1
+DWORD_PTR: 
+	L: 1
+DWORDLONG: 
+	L: 1
+dwSize: 
+	L: 4
+dwState: 
+	L: 1
+dwStateMask: 
+	L: 1
+dwStyle: 
+	L: 2
+dwWindowStatus: 
+	L: 2
+dx: 
+	L: 4
+dy: 
+	L: 4
+dynamic: 
+	L: 1
+dynamically: 
+	L: 1
+e: 
+	B: 16
+	L: 24
+e_def: 
+	L: 1
+e_ver: 
+	L: 1
+each: 
+	B: 8
+	L: 14
+earlier: 
+	B: 1
+easier: 
+	B: 2
+	L: 1
+easily: 
+	B: 1
+	L: 1
+Easy: 
+	B: 2
+	L: 4
+Edge: 
+	B: 4
+	L: 4
+edges: 
+	B: 2
+Edit: 
+	B: 14
+	L: 2
+edit2: 
+	B: 1
+EditBoxes: 
+	B: 1
+edited: 
+	B: 2
+editing: 
+	B: 3
+edititing: 
+	B: 1
+Editor: 
+	L: 1
+Editors: 
+	B: 1
+edu: 
+	B: 2
+EEEEEE: 
+	B: 1
+effect: 
+	B: 3
+	L: 4
+effective: 
+	L: 2
+Efficiency: 
+	B: 1
+effort: 
+	B: 1
+	L: 1
+either: 
+	B: 2
+	L: 7
+elapse: 
+	L: 2
+element: 
+	L: 12
+elements: 
+	L: 8
+Else: 
+	B: 38
+	L: 71
+EM_LINESCROLL: 
+	B: 1
+email: 
+	B: 4
+	L: 1
+embedded: 
+	B: 1
+embeded: 
+	B: 1
+empty: 
+	B: 2
+	L: 3
+Emulator: 
+	B: 1
+en: 
+	B: 1
+	L: 18
+enable: 
+	B: 6
+	L: 1
+enabled: 
+	B: 3
+enables: 
+	B: 1
+encounter: 
+	B: 1
+encounters: 
+	L: 1
+encrypted: 
+	B: 1
+End: 
+	B: 6
+	L: 4
+EndDate: 
+	B: 3
+Endif: 
+	B: 2
+endpoint: 
+	L: 2
+EndTime: 
+	B: 2
+engine: 
+	L: 1
+Enjoy: 
+	B: 2
+	L: 1
+enjoyed: 
+	B: 1
+enormously: 
+	B: 1
+enough: 
+	B: 5
+	L: 1
+Ensures: 
+	B: 1
+	L: 1
+enter: 
+	B: 6
+	L: 3
+entered: 
+	B: 1
+entering: 
+	L: 1
+entire: 
+	B: 3
+	L: 6
+entries: 
+	L: 1
+entry: 
+	B: 2
+enum: 
+	L: 2
+enviroment: 
+	B: 1
+Environment: 
+	L: 2
+ergonomic: 
+	L: 1
+error: 
+	B: 20
+	L: 25
+error_id: 
+	L: 5
+Errore: 
+	B: 1
+ErrorLevel: 
+	B: 15
+	L: 21
+errors: 
+	B: 1
+	L: 2
+Esc: 
+	B: 4
+	L: 5
+Escaping: 
+	B: 1
+essential: 
+	L: 1
+etc: 
+	B: 4
+	L: 5
+even: 
+	B: 4
+	L: 6
+event: 
+	B: 2
+	L: 4
+Every: 
+	B: 1
+	L: 7
+everything: 
+	B: 2
+ex: 
+	L: 6
+ex1: 
+	L: 1
+ex2: 
+	L: 1
+ex3: 
+	L: 1
+example: 
+	B: 5
+	L: 39
+examples: 
+	B: 4
+	L: 10
+excel: 
+	B: 3
+excellent: 
+	L: 1
+except: 
+	L: 3
+exception: 
+	B: 1
+exe: 
+	B: 1
+	L: 9
+EXEcutables: 
+	B: 1
+execute: 
+	L: 2
+executing: 
+	L: 2
+execution: 
+	L: 1
+exist: 
+	B: 4
+	L: 6
+existing: 
+	L: 2
+exists: 
+	B: 1
+exit: 
+	B: 8
+	L: 7
+ExitApp: 
+	B: 23
+	L: 9
+ExitAppOnExit: 
+	B: 2
+exits: 
+	B: 1
+	L: 1
+ExitSub: 
+	L: 2
+expand: 
+	L: 3
+expectations: 
+	L: 1
+expected: 
+	L: 1
+experience: 
+	L: 1
+experiments: 
+	L: 1
+explain: 
+	L: 1
+explanatory: 
+	L: 1
+explore: 
+	B: 3
+	L: 1
+Explorer: 
+	B: 2
+	L: 9
+Export: 
+	B: 1
+	L: 1
+exports: 
+	L: 1
+expression: 
+	L: 1
+ExStyles: 
+	L: 1
+ext: 
+	L: 6
+extendible: 
+	L: 1
+extends: 
+	L: 22
+Extension: 
+	B: 1
+	L: 3
+extensions: 
+	L: 2
+extensively: 
+	B: 2
+external: 
+	B: 2
+	L: 1
+extra: 
+	L: 3
+ExtractAddress: 
+	B: 2
+extracting: 
+	B: 1
+extracts: 
+	B: 2
+	L: 1
+f: 
+	B: 1
+	L: 2
+f0: 
+	L: 1
+F1: 
+	L: 3
+F10: 
+	L: 4
+F11: 
+	L: 4
+F12: 
+	L: 4
+F2: 
+	L: 3
+F3: 
+	L: 3
+F4: 
+	L: 3
+F5: 
+	L: 4
+F6: 
+	L: 3
+F7: 
+	L: 3
+F8: 
+	L: 3
+F9: 
+	L: 3
+Facebook: 
+	L: 1
+facilitate: 
+	B: 1
+	L: 1
+fact: 
+	B: 2
+factored: 
+	L: 2
+facts: 
+	L: 1
+failed: 
+	B: 5
+	L: 2
+failing: 
+	B: 1
+fair: 
+	L: 1
+false: 
+	B: 13
+	L: 8
+FAQ: 
+	B: 1
+far: 
+	L: 1
+faster: 
+	B: 1
+favorite: 
+	L: 1
+FD_ACCEPT: 
+	B: 2
+FD_CLOSE: 
+	B: 2
+FD_READ: 
+	B: 2
+FD_WRITE: 
+	B: 1
+fear: 
+	L: 2
+Feature: 
+	B: 4
+	L: 2
+features: 
+	B: 5
+	L: 6
+Feb: 
+	B: 1
+fed: 
+	L: 1
+feed: 
+	L: 1
+feedbacks: 
+	L: 1
+Feel: 
+	B: 3
+	L: 3
+feels: 
+	B: 1
+FenrirMushaka: 
+	B: 3
+fErase: 
+	L: 1
+few: 
+	B: 3
+	L: 1
+FFX4: 
+	B: 1
+Field: 
+	B: 1
+	L: 1
+fields: 
+	B: 2
+fifty: 
+	B: 1
+figure: 
+	B: 1
+file: 
+	B: 15
+	L: 39
+fileappend: 
+	B: 1
+FileDelete: 
+	B: 3
+FileDeleteLine: 
+	B: 1
+FileExist: 
+	L: 7
+filename: 
+	B: 1
+	L: 1
+filenames: 
+	L: 1
+filepath: 
+	L: 1
+FileRead: 
+	B: 2
+files: 
+	B: 11
+	L: 9
+FileSelectFile: 
+	B: 1
+filetype: 
+	L: 1
+Fill: 
+	B: 3
+fills: 
+	B: 1
+filtering: 
+	L: 1
+finally: 
+	B: 1
+	L: 1
+fincs: 
+	L: 1
+fIncUpdate: 
+	L: 1
+find: 
+	B: 10
+	L: 15
+FindClick: 
+	L: 19
+findclick1: 
+	L: 1
+findclick2: 
+	L: 1
+finding: 
+	B: 1
+finds: 
+	B: 2
+	L: 2
+fine: 
+	L: 1
+finish: 
+	L: 1
+finished: 
+	B: 1
+	L: 5
+finishes: 
+	L: 1
+Firefox: 
+	B: 4
+	L: 1
+firewall: 
+	B: 1
+first: 
+	B: 5
+	L: 9
+Fisher: 
+	L: 1
+Fishing: 
+	B: 2
+fit: 
+	B: 1
+fits: 
+	B: 1
+Fix: 
+	B: 1
+Fixed: 
+	B: 4
+fixes: 
+	B: 3
+	L: 2
+flags: 
+	L: 1
+flash: 
+	L: 1
+flashing: 
+	B: 1
+flat: 
+	B: 2
+flexibility: 
+	L: 1
+flexible: 
+	B: 1
+Flick: 
+	B: 2
+flicking: 
+	B: 1
+Fling: 
+	B: 3
+Float: 
+	L: 3
+Floor: 
+	L: 1
+fluid: 
+	B: 1
+fluidly: 
+	B: 1
+fly: 
+	B: 3
+	L: 1
+FOB: 
+	B: 2
+focus: 
+	B: 5
+	L: 7
+focused: 
+	B: 2
+folder: 
+	B: 1
+	L: 3
+follow: 
+	B: 1
+	L: 1
+following: 
+	B: 3
+	L: 18
+follows: 
+	B: 1
+Font: 
+	B: 1
+for: 
+	B: 109
+	L: 140
+force: 
+	B: 4
+	L: 3
+forced: 
+	B: 1
+ForceMouseTipUpdate: 
+	B: 2
+ForceMouseTipUpdateDelayed: 
+	B: 2
+forces: 
+	B: 2
+forgot: 
+	L: 1
+form: 
+	L: 3
+format: 
+	B: 7
+	L: 9
+format_backup: 
+	L: 10
+formatted: 
+	L: 1
+formatting: 
+	B: 1
+forms: 
+	B: 1
+	L: 5
+Fortress: 
+	B: 1
+Forum: 
+	B: 4
+	L: 9
+forums: 
+	B: 2
+Forward: 
+	B: 1
+found: 
+	B: 6
+	L: 47
+FoundX: 
+	L: 7
+FoundY: 
+	L: 8
+fourth: 
+	L: 1
+FPS: 
+	L: 1
+Framework: 
+	B: 1
+free: 
+	B: 5
+	L: 1
+FreeLibrary: 
+	L: 1
+freenode: 
+	L: 2
+Frequently: 
+	L: 1
+fRestore: 
+	L: 1
+Fri: 
+	B: 1
+friction: 
+	B: 1
+friend: 
+	B: 1
+from: 
+	B: 24
+	L: 30
+Frt: 
+	B: 1
+ftp: 
+	B: 2
+Fuel: 
+	B: 1
+fulfill: 
+	B: 1
+full: 
+	B: 3
+	L: 7
+Full_Screen_Gui: 
+	L: 2
+fullest: 
+	L: 1
+FullName: 
+	L: 2
+fully: 
+	L: 1
+func: 
+	L: 2
+function: 
+	B: 18
+	L: 43
+functioning: 
+	L: 1
+functions: 
+	B: 14
+	L: 4
+fures: 
+	L: 1
+further: 
+	B: 2
+	L: 1
+future: 
+	B: 3
+	L: 1
+g: 
+	B: 14
+	L: 21
+g1: 
+	B: 2
+G15: 
+	B: 1
+g2: 
+	B: 2
+g_def: 
+	L: 1
+g_ver: 
+	L: 1
+game: 
+	B: 3
+	L: 1
+games: 
+	L: 1
+gapp1: 
+	L: 1
+gapp2: 
+	L: 1
+gave: 
+	L: 1
+GDI: 
+	L: 1
+GDIP: 
+	L: 1
+gDisplayMouseMovementCalculate: 
+	B: 1
+gDisplayMouseMovementCopy: 
+	B: 1
+gem: 
+	L: 1
+general: 
+	B: 1
+	L: 3
+generally: 
+	B: 1
+	L: 3
+generaly: 
+	B: 1
+generate: 
+	B: 1
+generated: 
+	B: 2
+Gesture: 
+	B: 3
+	L: 5
+gestures: 
+	L: 5
+get: 
+	B: 11
+	L: 21
+GetAddress: 
+	L: 1
+GetByte: 
+	L: 2
+GetDC: 
+	B: 1
+getElement: 
+	L: 1
+getElementById: 
+	L: 2
+getElementsByName: 
+	L: 2
+getElementsByTagName: 
+	L: 10
+GetKeyState: 
+	B: 1
+GetLocalTime: 
+	L: 1
+GetParent: 
+	L: 1
+getpingtestip: 
+	B: 4
+GetProcAddress: 
+	L: 3
+gets: 
+	B: 1
+	L: 2
+GetStarted: 
+	B: 1
+GetTimeZoneInformation: 
+	L: 1
+getting: 
+	B: 2
+GetWebBrowser: 
+	L: 1
+GetWindowInfo: 
+	L: 2
+GetWindowPlacement: 
+	L: 1
+GetWindowRect: 
+	L: 1
+GetWord: 
+	L: 2
+gext: 
+	L: 1
+gf: 
+	L: 2
+gGetStarted: 
+	B: 1
+gh: 
+	L: 5
+gHandleButton: 
+	B: 1
+gi: 
+	L: 10
+gih: 
+	L: 6
+gist: 
+	B: 3
+github: 
+	B: 3
+	L: 4
+give: 
+	B: 2
+	L: 4
+given: 
+	L: 4
+gives: 
+	B: 1
+giving: 
+	L: 1
+giw: 
+	L: 5
+gl: 
+	L: 6
+gladly: 
+	B: 1
+GlblcntUsage: 
+	L: 1
+GLC: 
+	B: 1
+global: 
+	B: 17
+	L: 12
+globally: 
+	B: 1
+Globaly: 
+	B: 1
+Gmail: 
+	L: 1
+go: 
+	B: 12
+	L: 2
+goal: 
+	L: 1
+goes: 
+	L: 1
+going: 
+	B: 3
+	L: 1
+good: 
+	B: 3
+	L: 3
+Google: 
+	B: 7
+	L: 2
+Googling: 
+	B: 1
+GoSub: 
+	B: 9
+	L: 8
+got: 
+	B: 2
+GoToHotSpot: 
+	B: 2
+gov: 
+	B: 2
+gp: 
+	B: 1
+	L: 5
+gpi: 
+	L: 3
+Grab: 
+	B: 1
+gracefully: 
+	B: 2
+gradient: 
+	B: 1
+grammar: 
+	L: 1
+grant: 
+	B: 1
+graphics: 
+	B: 1
+	L: 1
+graphs: 
+	B: 1
+grasp: 
+	L: 1
+great: 
+	B: 3
+	L: 3
+greatly: 
+	L: 1
+Green: 
+	B: 2
+	L: 2
+grep: 
+	B: 3
+grow: 
+	B: 1
+gs: 
+	L: 4
+gui: 
+	B: 53
+	L: 37
+GuiClose: 
+	B: 3
+	L: 2
+GuiControl: 
+	B: 1
+GuiControlGet: 
+	L: 9
+guide: 
+	L: 1
+guidelines: 
+	L: 1
+guidItem: 
+	L: 1
+GuiEscape: 
+	B: 2
+guiID: 
+	B: 2
+GUIs: 
+	B: 5
+guiTitle: 
+	L: 6
+GuiXt: 
+	B: 12
+gw: 
+	L: 5
+h: 
+	L: 3
+h140: 
+	L: 2
+h177: 
+	L: 1
+h20: 
+	B: 2
+	L: 2
+h200: 
+	L: 1
+h30: 
+	L: 2
+HACCEL: 
+	L: 1
+had: 
+	B: 2
+hadn: 
+	B: 1
+HALF_PTR: 
+	L: 1
+Hand: 
+	B: 3
+HANDLE: 
+	L: 2
+HandleButton: 
+	B: 1
+HandleCount: 
+	L: 1
+HandleMenu: 
+	B: 3
+handy: 
+	B: 1
+happen: 
+	L: 1
+happens: 
+	L: 1
+happy: 
+	B: 1
+	L: 1
+hard: 
+	B: 1
+	L: 1
+hardware: 
+	B: 1
+Harmony: 
+	B: 4
+has: 
+	B: 11
+	L: 14
+hash: 
+	L: 3
+have: 
+	B: 25
+	L: 21
+haven: 
+	B: 2
+having: 
+	B: 1
+	L: 1
+hBalloonIcon: 
+	L: 1
+HBITMAP: 
+	L: 1
+hbrBackground: 
+	L: 2
+HBRUSH: 
+	L: 3
+HCOLORSPACE: 
+	L: 1
+HCONV: 
+	L: 1
+HCONVLIST: 
+	L: 1
+HCURSOR: 
+	L: 5
+hdc: 
+	B: 4
+	L: 3
+HDDEDATA: 
+	L: 1
+HDESK: 
+	L: 1
+HDROP: 
+	L: 1
+HDWP: 
+	L: 1
+hear: 
+	B: 2
+Height: 
+	B: 3
+	L: 12
+heirarchy: 
+	L: 2
+Hello: 
+	L: 5
+help: 
+	B: 4
+	L: 13
+helped: 
+	B: 1
+	L: 2
+helper: 
+	B: 2
+helpful: 
+	L: 3
+helping: 
+	L: 1
+helps: 
+	L: 1
+HENHMETAFILE: 
+	L: 1
+her: 
+	B: 1
+here: 
+	B: 7
+	L: 17
+hereby: 
+	L: 1
+Heresy: 
+	B: 2
+Heritage: 
+	L: 1
+Hex: 
+	B: 2
+hexadecimal: 
+	L: 1
+HFILE: 
+	L: 1
+HFONT: 
+	L: 1
+HGDIOBJ: 
+	L: 1
+HGLOBAL: 
+	L: 1
+hh: 
+	B: 2
+HHOOK: 
+	L: 5
+hi: 
+	B: 1
+	L: 2
+HICON: 
+	L: 10
+hIconSm: 
+	L: 1
+hidden: 
+	L: 3
+HIDE: 
+	B: 5
+	L: 7
+HideMouseTip: 
+	B: 3
+Hider: 
+	L: 1
+hides: 
+	L: 2
+hiding: 
+	L: 1
+high: 
+	B: 1
+	L: 4
+higher: 
+	B: 5
+highlight: 
+	B: 3
+highlighted: 
+	B: 3
+Highlighting: 
+	B: 1
+highly: 
+	L: 2
+HINSTANCE: 
+	L: 5
+his: 
+	L: 3
+History: 
+	B: 3
+hit: 
+	B: 2
+	L: 4
+hiword: 
+	L: 1
+HKCU: 
+	L: 6
+HKEY: 
+	L: 1
+HKL: 
+	L: 1
+HLOCAL: 
+	L: 1
+HMENU: 
+	L: 1
+HMETAFILE: 
+	L: 1
+hMod: 
+	L: 7
+HMODULE: 
+	L: 6
+HMONITOR: 
+	L: 1
+hold: 
+	B: 5
+	L: 1
+holding: 
+	B: 4
+Home: 
+	L: 3
+homogenous: 
+	L: 2
+hook: 
+	L: 2
+hooks: 
+	L: 1
+hope: 
+	B: 1
+	L: 2
+hopefully: 
+	B: 1
+horizontal: 
+	B: 9
+horizontally: 
+	B: 2
+hostname: 
+	L: 4
+HotKey: 
+	B: 5
+	L: 33
+hotkeys: 
+	B: 2
+	L: 4
+hotstrings: 
+	L: 2
+hover: 
+	L: 1
+how: 
+	B: 11
+	L: 14
+However: 
+	L: 6
+HPALETTE: 
+	L: 1
+hParent: 
+	L: 5
+hPen: 
+	B: 2
+	L: 1
+HRESULT: 
+	L: 1
+HRGN: 
+	L: 1
+HRSRC: 
+	L: 1
+HSZ: 
+	L: 1
+htm: 
+	B: 8
+	L: 1
+HTML: 
+	B: 7
+	L: 18
+htons: 
+	B: 2
+http: 
+	B: 28
+	L: 33
+https: 
+	B: 8
+Huge: 
+	L: 1
+hugov: 
+	B: 7
+human: 
+	B: 1
+HWINSTA: 
+	L: 1
+hwnd: 
+	L: 17
+hWndhWnd: 
+	L: 1
+Hyde: 
+	L: 5
+hyde64: 
+	L: 3
+I: 
+	B: 84
+	L: 46
+icon: 
+	B: 4
+	L: 1
+Icons: 
+	B: 2
+ID: 
+	L: 10
+idea: 
+	B: 2
+ideas: 
+	B: 1
+IDs: 
+	B: 1
+IE: 
+	B: 2
+	L: 12
+IE9: 
+	L: 1
+IE_: 
+	L: 4
+IE_DocumentComplete: 
+	L: 2
+IEFrame: 
+	L: 2
+IEGet: 
+	L: 2
+IEReady: 
+	L: 1
+iexplore: 
+	L: 2
+if: 
+	B: 179
+	L: 333
+IfEqual: 
+	L: 2
+ifmsgbox: 
+	B: 2
+	L: 3
+ifnotexist: 
+	B: 3
+IfWinActive: 
+	L: 2
+IfWinExist: 
+	L: 1
+IfWinNotExist: 
+	B: 1
+	L: 1
+Ignore: 
+	B: 1
+II: 
+	B: 5
+illumination: 
+	B: 1
+illustrate: 
+	L: 1
+Image: 
+	B: 9
+	L: 54
+Imagebin: 
+	L: 1
+ImageFile: 
+	L: 37
+ImageH: 
+	L: 12
+ImagePresent: 
+	B: 2
+images: 
+	B: 4
+	L: 7
+imageseach: 
+	B: 1
+ImageSearch: 
+	B: 2
+	L: 15
+imagesearches: 
+	L: 2
+ImageW: 
+	L: 13
+imgur: 
+	L: 4
+imitate: 
+	B: 1
+immediately: 
+	B: 4
+implement: 
+	B: 1
+implementation: 
+	L: 2
+implementing: 
+	L: 1
+implemetations: 
+	B: 1
+importance: 
+	B: 1
+important: 
+	L: 1
+Improper: 
+	L: 1
+improve: 
+	B: 3
+Improved: 
+	L: 1
+improvement: 
+	L: 1
+improvements: 
+	B: 1
+improves: 
+	L: 2
+in: 
+	B: 87
+	L: 112
+inactive: 
+	B: 1
+	L: 2
+Inches: 
+	B: 4
+Incidentally: 
+	B: 1
+Include: 
+	B: 3
+	L: 5
+included: 
+	B: 1
+	L: 5
+includes: 
+	B: 2
+	L: 1
+including: 
+	L: 1
+inclusion: 
+	B: 1
+Incorporates: 
+	L: 1
+Incorrect: 
+	B: 2
+	L: 2
+incorrectly: 
+	L: 1
+Increase: 
+	B: 2
+Increased: 
+	B: 1
+independent: 
+	L: 1
+Index: 
+	B: 2
+	L: 5
+index_e: 
+	B: 1
+indicate: 
+	B: 1
+	L: 10
+indicated: 
+	B: 15
+indicates: 
+	L: 3
+indicating: 
+	L: 1
+individual: 
+	B: 1
+individualized: 
+	B: 1
+Inertia: 
+	B: 1
+inet_addr: 
+	B: 2
+infinite: 
+	B: 2
+info: 
+	B: 3
+	L: 2
+infomation: 
+	L: 1
+information: 
+	B: 8
+	L: 11
+Inherit: 
+	L: 2
+INI: 
+	B: 4
+	L: 7
+initial: 
+	B: 1
+	L: 1
+Initialize: 
+	L: 1
+InitParallelPort: 
+	L: 2
+inject: 
+	L: 2
+innactive: 
+	B: 1
+innerHTML: 
+	L: 2
+innerText: 
+	L: 6
+Inp32: 
+	L: 1
+inpout32: 
+	L: 3
+InProc: 
+	L: 6
+Input: 
+	B: 6
+	L: 39
+InputBox: 
+	B: 5
+	L: 1
+Insert: 
+	B: 1
+	L: 32
+inserted: 
+	L: 1
+InsertInteger: 
+	B: 8
+inside: 
+	B: 2
+inspiration: 
+	L: 1
+inspired: 
+	L: 1
+instaled: 
+	B: 1
+Install: 
+	B: 1
+Installation: 
+	B: 1
+	L: 1
+installed: 
+	L: 3
+Instance: 
+	L: 17
+instances: 
+	L: 1
+instead: 
+	B: 5
+	L: 8
+InStr: 
+	B: 3
+	L: 21
+instructions: 
+	B: 2
+	L: 3
+Int: 
+	B: 26
+	L: 49
+INT32: 
+	L: 1
+Int64: 
+	L: 6
+INT_PTR: 
+	L: 1
+Integer: 
+	B: 6
+	L: 6
+intended: 
+	B: 1
+intensive: 
+	B: 1
+interacting: 
+	B: 1
+interesting: 
+	B: 2
+interface: 
+	B: 1
+	L: 2
+interfere: 
+	B: 1
+intermediate: 
+	L: 1
+Internet: 
+	B: 3
+	L: 9
+InternetExplorer: 
+	L: 4
+interrupt: 
+	L: 1
+interval: 
+	L: 1
+into: 
+	B: 6
+	L: 13
+Intro: 
+	B: 1
+introduce: 
+	B: 3
+Introducing: 
+	B: 1
+Introduction: 
+	B: 2
+	L: 1
+intuitive: 
+	B: 1
+Inv: 
+	B: 2
+invalid: 
+	L: 3
+invariable: 
+	L: 1
+invert: 
+	B: 1
+Invertable: 
+	B: 1
+InvertDrag: 
+	B: 1
+invisible: 
+	L: 1
+Invoice: 
+	B: 8
+invoices: 
+	B: 1
+IP: 
+	B: 3
+	L: 5
+IPAddress: 
+	B: 4
+iPhone: 
+	B: 1
+IPPROTO_TCP: 
+	B: 2
+IPs: 
+	B: 1
+IRC: 
+	L: 2
+irrelevant: 
+	L: 2
+is: 
+	B: 68
+	L: 144
+IsLabel: 
+	B: 1
+IsMute: 
+	B: 2
+isn: 
+	B: 1
+IsObject: 
+	L: 9
+IsShowing: 
+	B: 4
+issues: 
+	B: 2
+it: 
+	B: 93
+	L: 96
+item: 
+	B: 3
+	L: 6
+Item1: 
+	B: 1
+Item2: 
+	B: 1
+Item3: 
+	B: 1
+items: 
+	B: 5
+	L: 2
+its: 
+	B: 7
+	L: 8
+itself: 
+	B: 2
+	L: 1
+iWeb: 
+	L: 1
+iWebBrowser2: 
+	L: 1
+j: 
+	B: 8
+jaco0646: 
+	L: 1
+January: 
+	L: 1
+JavaScript: 
+	L: 34
+joelpt: 
+	B: 1
+JohnCritton: 
+	B: 1
+joined: 
+	L: 2
+jp: 
+	L: 2
+jpg: 
+	B: 9
+Jul: 
+	B: 2
+jump: 
+	B: 1
+Jun: 
+	B: 2
+Junyx: 
+	B: 1
+just: 
+	B: 12
+	L: 13
+k: 
+	B: 4
+	L: 42
+k_def: 
+	L: 1
+k_ver: 
+	L: 1
+KatMouse: 
+	B: 1
+kB: 
+	B: 1
+keep: 
+	B: 1
+	L: 1
+keeping: 
+	L: 1
+Kept: 
+	B: 1
+kernel32: 
+	L: 2
+KernelNonpaged: 
+	L: 1
+KernelPaged: 
+	L: 1
+KernelTotal: 
+	L: 1
+Key: 
+	B: 5
+	L: 22
+key1: 
+	L: 6
+key2: 
+	L: 6
+keyboard: 
+	B: 4
+	L: 1
+keypresses: 
+	L: 2
+keys: 
+	B: 2
+	L: 2
+keystroke: 
+	L: 6
+keystrokes: 
+	B: 1
+KeyWait: 
+	B: 4
+Keywords: 
+	B: 1
+	L: 4
+kills: 
+	L: 2
+Kind: 
+	B: 1
+	L: 1
+kinds: 
+	B: 1
+Klark92: 
+	L: 1
+knob: 
+	B: 1
+knobs: 
+	B: 1
+know: 
+	B: 5
+	L: 5
+Known: 
+	B: 1
+	L: 1
+l: 
+	L: 4
+label: 
+	B: 2
+	L: 6
+LabelCStruct_Base_TreeView: 
+	L: 1
+LabelDisplayMouseMovement: 
+	B: 1
+LabelName: 
+	B: 2
+labels: 
+	B: 6
+LabelStart: 
+	B: 3
+LAlt: 
+	L: 3
+LAN: 
+	B: 1
+	L: 1
+LANGID: 
+	L: 1
+language: 
+	B: 1
+	L: 2
+laptops: 
+	B: 1
+large: 
+	B: 1
+	L: 1
+larger: 
+	L: 1
+last: 
+	B: 4
+	L: 10
+LastFound: 
+	L: 3
+LastFoundExist: 
+	L: 2
+LastImage: 
+	L: 3
+LastMouseTipMsg: 
+	B: 2
+LastMouseTipX: 
+	B: 4
+LastMouseTipY: 
+	B: 4
+LastOptions: 
+	L: 3
+Laszlo: 
+	B: 2
+later: 
+	B: 2
+	L: 1
+latest: 
+	L: 1
+latte: 
+	B: 1
+latter: 
+	L: 1
+launch: 
+	L: 1
+launcher: 
+	L: 2
+launching: 
+	L: 1
+lawyer: 
+	L: 2
+layer: 
+	B: 1
+layout: 
+	B: 1
+Lazslo: 
+	L: 1
+Lbutton: 
+	B: 6
+	L: 3
+LCID: 
+	L: 1
+LCtrl: 
+	L: 3
+LCTYPE: 
+	L: 1
+leading: 
+	B: 2
+learn: 
+	B: 2
+	L: 2
+Learner: 
+	L: 1
+learning: 
+	L: 5
+leave: 
+	L: 4
+leaves: 
+	B: 1
+Leaving: 
+	L: 2
+left: 
+	B: 13
+	L: 23
+leftclick: 
+	B: 1
+Legend: 
+	L: 1
+length: 
+	B: 1
+	L: 1
+less: 
+	B: 4
+	L: 2
+let: 
+	B: 8
+	L: 3
+lets: 
+	B: 1
+	L: 1
+letter: 
+	L: 25
+level: 
+	B: 1
+	L: 2
+Lexikos: 
+	L: 1
+LGRPID: 
+	L: 1
+lib: 
+	B: 6
+Library: 
+	B: 11
+	L: 23
+License: 
+	B: 1
+	L: 5
+licensed: 
+	L: 1
+lightly: 
+	B: 1
+like: 
+	B: 15
+	L: 12
+likely: 
+	B: 1
+limited: 
+	L: 1
+Limits: 
+	B: 1
+line: 
+	B: 7
+	L: 4
+lines: 
+	B: 10
+	L: 1
+link: 
+	L: 3
+links: 
+	B: 1
+	L: 3
+list: 
+	B: 2
+	L: 29
+listed: 
+	L: 2
+Listen: 
+	B: 4
+listening: 
+	L: 1
+ListVars: 
+	B: 2
+ListView: 
+	L: 1
+ListViews: 
+	B: 1
+Literal: 
+	B: 3
+	L: 11
+literally: 
+	B: 1
+little: 
+	B: 4
+	L: 1
+living: 
+	L: 1
+ll: 
+	B: 3
+llHeight: 
+	B: 3
+llrectA: 
+	B: 6
+llWidth: 
+	B: 3
+llwindowname: 
+	B: 2
+llX: 
+	B: 3
+llY: 
+	B: 3
+lo: 
+	L: 1
+load: 
+	B: 2
+loaded: 
+	L: 1
+loading: 
+	L: 9
+LoadLibrary: 
+	L: 4
+local: 
+	B: 3
+localhost: 
+	B: 1
+locate: 
+	L: 1
+location: 
+	B: 1
+	L: 3
+LocationName: 
+	L: 2
+locations: 
+	L: 1
+lock: 
+	B: 8
+	L: 12
+LockCheck: 
+	B: 2
+locked: 
+	L: 12
+locking: 
+	B: 2
+	L: 1
+locks: 
+	B: 1
+Log: 
+	B: 1
+Logitech: 
+	B: 1
+long: 
+	B: 5
+	L: 14
+LONG32: 
+	L: 1
+LONG64: 
+	L: 1
+LONG_PTR: 
+	L: 1
+longer: 
+	B: 1
+Longest: 
+	B: 2
+LONGLONG: 
+	L: 1
+look: 
+	B: 3
+	L: 8
+looking: 
+	B: 1
+	L: 1
+looks: 
+	B: 2
+	L: 1
+Lookup: 
+	L: 2
+loop: 
+	B: 31
+	L: 32
+loops: 
+	B: 1
+lot: 
+	B: 3
+	L: 1
+lots: 
+	B: 4
+love: 
+	B: 1
+low: 
+	L: 1
+lower: 
+	B: 2
+LPARAM: 
+	B: 3
+	L: 2
+LPBOOL: 
+	L: 1
+LPBYTE: 
+	L: 1
+LPCOLORREF: 
+	L: 1
+LPCSTR: 
+	L: 1
+LPCTSTR: 
+	L: 5
+LPCVOID: 
+	L: 1
+LPCWSTR: 
+	L: 1
+LPDWORD: 
+	L: 1
+lpfnWndProc: 
+	L: 2
+LPHANDLE: 
+	L: 1
+LPINT: 
+	L: 1
+LPLONG: 
+	L: 1
+LPSTR: 
+	L: 2
+lpszClassName: 
+	L: 4
+lpszMenuName: 
+	L: 4
+LPTSTR: 
+	L: 1
+LPVOID: 
+	L: 1
+LPWORD: 
+	L: 1
+LPWSTR: 
+	L: 1
+LRESULT: 
+	L: 1
+LV_Add: 
+	L: 9
+LWin: 
+	B: 1
+	L: 3
+m: 
+	B: 3
+	L: 22
+m100: 
+	L: 1
+m_: 
+	L: 3
+m_address: 
+	L: 27
+m_childStruct: 
+	L: 14
+m_def: 
+	L: 2
+m_formatBackup: 
+	L: 2
+m_size: 
+	L: 27
+m_struct: 
+	L: 5
+m_template: 
+	L: 20
+m_union: 
+	L: 30
+m_useTemplate: 
+	L: 3
+m_varList: 
+	L: 25
+m_ver: 
+	L: 1
+machine: 
+	B: 1
+	L: 1
+machines: 
+	B: 1
+Macro: 
+	L: 1
+macros: 
+	L: 1
+made: 
+	B: 5
+magically: 
+	B: 1
+mail: 
+	B: 1
+mailto: 
+	B: 3
+main: 
+	B: 1
+	L: 1
+mainly: 
+	B: 1
+MainSocket: 
+	B: 15
+MainWindow: 
+	B: 4
+majkinetor: 
+	B: 1
+majority: 
+	B: 1
+	L: 1
+make: 
+	B: 14
+	L: 7
+MakeCopy: 
+	B: 1
+MakeMatchList: 
+	B: 1
+makes: 
+	B: 4
+	L: 4
+making: 
+	B: 2
+	L: 2
+Malet: 
+	L: 1
+Manager: 
+	L: 7
+manipulate: 
+	B: 1
+	L: 1
+manipulation: 
+	B: 1
+manual: 
+	B: 2
+Many: 
+	B: 1
+	L: 5
+map: 
+	B: 1
+	L: 3
+mapped: 
+	B: 1
+mappings: 
+	B: 1
+maps: 
+	B: 1
+March: 
+	B: 1
+Margin: 
+	L: 1
+mark: 
+	B: 1
+mass: 
+	L: 1
+Master: 
+	B: 1
+match: 
+	B: 7
+	L: 3
+match1: 
+	B: 6
+matches: 
+	B: 1
+	L: 4
+matchlist: 
+	B: 2
+math1: 
+	B: 2
+max: 
+	L: 4
+MAX_MODULE_NAME32: 
+	L: 1
+MAX_PATH: 
+	L: 2
+MaxDataLength: 
+	B: 8
+MaxGuiRows: 
+	B: 3
+maximize: 
+	B: 1
+maximum: 
+	L: 2
+MaxIndex: 
+	L: 13
+may: 
+	B: 12
+	L: 19
+MD5: 
+	L: 5
+me: 
+	B: 7
+	L: 9
+meaning: 
+	B: 2
+means: 
+	B: 10
+	L: 6
+meant: 
+	L: 1
+MeasurementSelection: 
+	B: 8
+media: 
+	B: 1
+member: 
+	L: 15
+memberClassName: 
+	L: 3
+members: 
+	L: 1
+memory: 
+	L: 5
+mention: 
+	L: 1
+mentioned: 
+	B: 1
+mentions: 
+	L: 1
+MENU: 
+	B: 41
+	L: 34
+MenuChoice: 
+	B: 4
+menus: 
+	B: 2
+	L: 2
+merge: 
+	B: 1
+message: 
+	B: 15
+	L: 3
+messages: 
+	B: 7
+	L: 1
+method: 
+	B: 19
+	L: 10
+methods: 
+	B: 14
+	L: 6
+mg: 
+	L: 1
+MG_User: 
+	L: 3
+MGLahk: 
+	L: 1
+MI: 
+	B: 1
+Mickers: 
+	L: 1
+microphone: 
+	L: 1
+Microsoft: 
+	B: 1
+	L: 21
+mid: 
+	L: 1
+middle: 
+	B: 1
+	L: 1
+might: 
+	L: 4
+Milliseconds: 
+	L: 6
+Min2Tray: 
+	B: 4
+mind: 
+	B: 1
+minimal: 
+	B: 2
+	L: 1
+minimize: 
+	B: 3
+minimizing: 
+	B: 1
+minimum: 
+	B: 2
+minor: 
+	B: 1
+mirror: 
+	B: 1
+Misc: 
+	B: 1
+miss: 
+	B: 1
+mixed: 
+	B: 2
+MM: 
+	B: 4
+MM01: 
+	B: 1
+MM02: 
+	B: 1
+mmorpg: 
+	L: 1
+Mod: 
+	B: 3
+modBaseAddr: 
+	L: 1
+modBaseSize: 
+	L: 1
+mode: 
+	B: 8
+	L: 6
+Model: 
+	B: 1
+	L: 3
+modifications: 
+	L: 1
+modified: 
+	B: 1
+modify: 
+	B: 1
+	L: 2
+module: 
+	L: 2
+moment: 
+	B: 1
+momentum: 
+	B: 8
+Mon: 
+	B: 1
+monitor: 
+	B: 1
+	L: 2
+monitors: 
+	B: 1
+	L: 2
+MonitorSelection: 
+	B: 5
+MonitorSelectionDisplay: 
+	B: 1
+month: 
+	L: 2
+MonthCal: 
+	B: 2
+months: 
+	B: 1
+moral: 
+	L: 1
+more: 
+	B: 14
+	L: 10
+Morning: 
+	B: 2
+most: 
+	B: 7
+	L: 6
+mosty: 
+	B: 1
+mouse: 
+	B: 44
+	L: 19
+mouseclick: 
+	B: 1
+MouseDelay: 
+	L: 2
+MouseGesture: 
+	L: 3
+MouseGestureL: 
+	L: 5
+MouseGetPos: 
+	B: 4
+	L: 2
+MouseHunter: 
+	B: 1
+Mousemove: 
+	B: 14
+	L: 3
+MouseMoveOff: 
+	B: 1
+mousetip: 
+	B: 1
+MouseTipUpdateInterval: 
+	B: 5
+Mousetrap: 
+	B: 1
+mousewheel: 
+	B: 1
+MouseX: 
+	L: 5
+MouseY: 
+	L: 5
+move: 
+	B: 3
+	L: 5
+moved: 
+	B: 5
+movement: 
+	B: 3
+movements: 
+	L: 1
+moves: 
+	B: 2
+MoveToBobber: 
+	B: 2
+moving: 
+	B: 2
+mozilla: 
+	B: 1
+ms: 
+	B: 6
+ms632610: 
+	L: 1
+ms632611: 
+	L: 1
+ms633576: 
+	L: 1
+ms633577: 
+	L: 1
+ms684225: 
+	L: 1
+ms684824: 
+	L: 1
+ms684839: 
+	L: 1
+ms724950: 
+	L: 1
+ms725481: 
+	L: 1
+msdn: 
+	L: 19
+msg: 
+	L: 7
+msgbox: 
+	B: 30
+	L: 36
+much: 
+	B: 8
+	L: 3
+Mudrinic: 
+	L: 1
+multi: 
+	B: 1
+	L: 1
+multimedia: 
+	B: 1
+Multiple: 
+	B: 3
+	L: 6
+must: 
+	B: 3
+	L: 4
+mute: 
+	B: 10
+muted: 
+	B: 2
+My: 
+	B: 9
+	L: 8
+MyImage: 
+	L: 9
+N: 
+	B: 31
+	L: 75
+n00bz: 
+	L: 1
+n30: 
+	L: 2
+n_def: 
+	L: 1
+n_ver: 
+	L: 1
+NA: 
+	L: 1
+name: 
+	B: 3
+	L: 99
+name16: 
+	B: 1
+name_exist: 
+	L: 4
+named: 
+	B: 2
+	L: 1
+names: 
+	B: 3
+narryCount: 
+	L: 1
+Native: 
+	L: 1
+natural: 
+	L: 1
+Navi: 
+	L: 1
+Navigate: 
+	B: 1
+	L: 11
+navigation: 
+	L: 1
+Navigator: 
+	L: 2
+nbmp: 
+	L: 1
+nbsp: 
+	L: 1
+nCapsLock: 
+	B: 1
+nConnected: 
+	B: 1
+nDefaultGui: 
+	L: 3
+nDon: 
+	L: 1
+necessary: 
+	B: 1
+	L: 1
+need: 
+	B: 9
+	L: 13
+Needed: 
+	B: 4
+needing: 
+	L: 1
+NeedIP: 
+	B: 3
+needs: 
+	B: 2
+	L: 3
+negative: 
+	B: 1
+neighbor: 
+	L: 1
+neither: 
+	L: 2
+nesesity: 
+	B: 1
+net: 
+	B: 13
+	L: 10
+netbooks: 
+	B: 1
+NetUIHWND: 
+	B: 1
+network: 
+	B: 1
+NetworkAddress: 
+	B: 11
+NetworkPort: 
+	B: 5
+never: 
+	L: 2
+New: 
+	B: 22
+	L: 20
+newer: 
+	B: 1
+	L: 4
+newline: 
+	L: 6
+NewList: 
+	L: 5
+newly: 
+	B: 3
+Next: 
+	B: 2
+	L: 2
+nextVarSize: 
+	L: 9
+nGui: 
+	L: 4
+nice: 
+	B: 1
+	L: 1
+niche: 
+	B: 1
+nickname: 
+	L: 1
+nid: 
+	L: 1
+Night: 
+	B: 2
+nimda: 
+	L: 1
+ninitial: 
+	B: 1
+nNot: 
+	L: 1
+nnx: 
+	B: 8
+nny: 
+	B: 8
+no: 
+	B: 18
+	L: 14
+nObj: 
+	L: 24
+NoEnv: 
+	B: 4
+	L: 5
+NoHide: 
+	B: 1
+non: 
+	B: 4
+	L: 6
+Nonlinear: 
+	B: 1
+nonly: 
+	B: 1
+NonStructMember: 
+	L: 3
+normal: 
+	B: 4
+	L: 5
+NormalClose: 
+	B: 8
+normally: 
+	B: 1
+	L: 3
+normaly: 
+	B: 1
+	L: 2
+normName: 
+	L: 2
+north: 
+	B: 1
+NoSortHdr: 
+	L: 1
+NoStandard: 
+	B: 4
+	L: 1
+not: 
+	B: 36
+	L: 57
+notably: 
+	L: 1
+note: 
+	B: 6
+	L: 14
+notebooks: 
+	B: 1
+Noted: 
+	L: 1
+Notes: 
+	B: 3
+	L: 2
+notice: 
+	B: 1
+	L: 1
+Notifications: 
+	L: 2
+notify: 
+	L: 1
+notify_change: 
+	L: 2
+Nov: 
+	B: 1
+Now: 
+	B: 12
+	L: 12
+nowadays: 
+	B: 1
+npng: 
+	L: 1
+nsystemTime: 
+	L: 1
+nt: 
+	B: 1
+nThanks: 
+	B: 1
+nThis: 
+	L: 1
+NtQuerySystemInformation: 
+	L: 1
+number: 
+	B: 4
+	L: 21
+numbered: 
+	L: 1
+numbers: 
+	B: 2
+numeric: 
+	L: 2
+Numget: 
+	L: 20
+NumLock: 
+	L: 3
+NumPut: 
+	L: 10
+nvarName: 
+	L: 1
+nvarType: 
+	L: 1
+nWould: 
+	L: 1
+nx: 
+	B: 16
+ny: 
+	B: 18
+nYou: 
+	L: 1
+o: 
+	B: 2
+	L: 14
+o_def: 
+	L: 1
+o_ver: 
+	L: 1
+oAuth: 
+	L: 1
+obey: 
+	L: 1
+obj: 
+	B: 2
+	L: 20
+objB: 
+	B: 1
+Object: 
+	L: 37
+objects: 
+	L: 5
+ObjHasKey: 
+	L: 5
+objP: 
+	B: 1
+obsolete: 
+	L: 6
+obvious: 
+	B: 1
+occasions: 
+	B: 1
+occurs: 
+	B: 1
+Oct: 
+	B: 4
+octal: 
+	L: 1
+of: 
+	B: 87
+	L: 150
+Off: 
+	B: 17
+	L: 20
+Office: 
+	B: 3
+offset: 
+	L: 31
+often: 
+	B: 2
+	L: 1
+oh: 
+	L: 1
+ok: 
+	B: 2
+	L: 2
+okay: 
+	B: 1
+old: 
+	B: 2
+	L: 2
+older: 
+	B: 1
+	L: 1
+OLLxw9WiVj8: 
+	L: 1
+omit: 
+	B: 1
+	L: 5
+omitted: 
+	L: 4
+on: 
+	B: 47
+	L: 55
+oName: 
+	L: 4
+Once: 
+	B: 2
+	L: 1
+one: 
+	B: 12
+	L: 11
+ones: 
+	L: 2
+OnExit: 
+	B: 2
+	L: 1
+online: 
+	L: 4
+only: 
+	B: 14
+	L: 17
+OnMessage: 
+	B: 2
+	L: 1
+onscreen: 
+	L: 2
+Open: 
+	B: 2
+	L: 2
+opening: 
+	B: 1
+OPENSESAME: 
+	B: 2
+Opera: 
+	L: 1
+operate: 
+	B: 1
+operated: 
+	L: 1
+operates: 
+	L: 3
+operating: 
+	L: 2
+operation: 
+	L: 5
+operations: 
+	B: 1
+	L: 2
+opinion: 
+	L: 1
+OPTION: 
+	B: 5
+	L: 30
+optional: 
+	B: 1
+	L: 3
+optionally: 
+	L: 1
+options: 
+	B: 8
+	L: 17
+Or: 
+	B: 50
+	L: 67
+order: 
+	B: 3
+org: 
+	B: 3
+	L: 1
+original: 
+	B: 2
+	L: 1
+OSD: 
+	B: 2
+OSes: 
+	L: 1
+oShell: 
+	L: 4
+other: 
+	B: 6
+	L: 10
+others: 
+	B: 2
+	L: 2
+Otherwise: 
+	B: 2
+	L: 1
+oTransBlack: 
+	L: 2
+Our: 
+	B: 1
+	L: 1
+out: 
+	B: 5
+	L: 11
+out2: 
+	L: 1
+Out32: 
+	L: 1
+OutgoingSocket: 
+	B: 21
+OutProc: 
+	L: 6
+output: 
+	B: 4
+	L: 4
+outside: 
+	B: 1
+over: 
+	B: 2
+	L: 5
+overall: 
+	B: 1
+overhaul: 
+	B: 1
+overly: 
+	B: 1
+overwrite: 
+	B: 1
+	L: 4
+overwriten: 
+	B: 1
+overwritten: 
+	L: 1
+own: 
+	B: 2
+	L: 2
+OwnDialogs: 
+	B: 4
+Owner1: 
+	B: 1
+p: 
+	B: 2
+	L: 7
+package: 
+	L: 3
+Packed: 
+	L: 1
+packking: 
+	L: 2
+packSize: 
+	L: 8
+page: 
+	B: 4
+	L: 4
+pages: 
+	L: 1
+PageSize: 
+	L: 1
+paid: 
+	B: 2
+pairs: 
+	L: 4
+Panel: 
+	B: 2
+paragraph: 
+	B: 1
+Parallel: 
+	L: 2
+Param: 
+	L: 56
+Paramater: 
+	L: 6
+paramaters: 
+	B: 1
+	L: 3
+parameter: 
+	B: 1
+	L: 6
+Parameters: 
+	B: 2
+	L: 3
+ParentPutAddress: 
+	L: 4
+parmeter: 
+	L: 1
+Parse: 
+	B: 4
+	L: 13
+part: 
+	B: 8
+part1: 
+	B: 4
+part2: 
+	B: 3
+part3: 
+	B: 5
+part4: 
+	B: 6
+partial: 
+	B: 2
+partially: 
+	L: 1
+particular: 
+	B: 3
+parts: 
+	L: 1
+pass: 
+	B: 13
+	L: 2
+passed: 
+	B: 1
+password: 
+	B: 14
+past: 
+	B: 1
+paste: 
+	L: 4
+pastebin: 
+	L: 3
+pasted: 
+	B: 1
+path: 
+	B: 2
+	L: 5
+paths: 
+	B: 6
+pause: 
+	B: 3
+Payment: 
+	B: 11
+PBOOL: 
+	L: 1
+PBOOLEAN: 
+	L: 1
+PBYTE: 
+	L: 1
+PC: 
+	L: 2
+PCHAR: 
+	L: 1
+pcPriClassBase: 
+	L: 1
+PCSTR: 
+	L: 1
+PCTSTR: 
+	L: 1
+PCWSTR: 
+	L: 1
+pDest: 
+	B: 4
+PDF: 
+	B: 1
+PDFs: 
+	B: 1
+PDWORD: 
+	L: 1
+PDWORD32: 
+	L: 1
+PDWORD64: 
+	L: 1
+PDWORD_PTR: 
+	L: 1
+PDWORDLONG: 
+	L: 1
+people: 
+	B: 2
+	L: 4
+per: 
+	B: 5
+percentage: 
+	B: 3
+Perfect: 
+	B: 1
+	L: 1
+perform: 
+	B: 3
+	L: 1
+performance: 
+	B: 2
+	L: 4
+performed: 
+	B: 1
+performing: 
+	B: 1
+	L: 1
+period: 
+	B: 1
+permission: 
+	B: 1
+	L: 1
+Permit: 
+	B: 1
+persist: 
+	B: 1
+persisted: 
+	B: 1
+Persistent: 
+	B: 3
+person: 
+	L: 1
+personal: 
+	L: 1
+personally: 
+	B: 1
+PFLOAT: 
+	L: 1
+PHALF_PTR: 
+	L: 1
+PHANDLE: 
+	L: 1
+PHKEY: 
+	L: 1
+Photoshop: 
+	L: 1
+php: 
+	B: 1
+	L: 1
+PhysicalAvailable: 
+	L: 1
+PhysicalTotal: 
+	L: 1
+pic: 
+	B: 1
+Picture: 
+	B: 2
+	L: 1
+pictures: 
+	L: 2
+pie: 
+	L: 1
+pin: 
+	L: 1
+Ping: 
+	B: 3
+PINT: 
+	L: 1
+PINT32: 
+	L: 1
+PINT64: 
+	L: 1
+PINT_PTR: 
+	L: 1
+pInteger: 
+	B: 4
+Pixel: 
+	L: 1
+PixelGetColor: 
+	B: 10
+Pixels: 
+	B: 4
+	L: 6
+place: 
+	B: 2
+plane: 
+	B: 1
+Plans: 
+	B: 1
+play: 
+	B: 1
+	L: 4
+Player: 
+	B: 1
+playing: 
+	B: 1
+PLCID: 
+	L: 1
+please: 
+	B: 2
+	L: 5
+pleased: 
+	B: 1
+plenty: 
+	L: 1
+PLONG: 
+	L: 1
+PLONG32: 
+	L: 1
+PLONG64: 
+	L: 1
+PLONG_PTR: 
+	L: 1
+PLONGLONG: 
+	L: 1
+plotting: 
+	B: 1
+Plug: 
+	L: 1
+png: 
+	L: 6
+PO: 
+	B: 2
+pOffset: 
+	B: 4
+point: 
+	L: 1
+Point64: 
+	L: 1
+pointer: 
+	B: 4
+	L: 1
+POINTER_32: 
+	L: 1
+POINTER_64: 
+	L: 1
+POINTER_SIGNED: 
+	L: 1
+POINTER_UNSIGNED: 
+	L: 1
+pointers: 
+	B: 1
+points: 
+	B: 1
+polish: 
+	B: 1
+polyethene: 
+	L: 1
+pop: 
+	B: 2
+	L: 2
+PopUp: 
+	B: 4
+port: 
+	B: 6
+	L: 14
+portable: 
+	B: 1
+	L: 3
+position: 
+	B: 4
+	L: 5
+positions: 
+	B: 1
+positive: 
+	L: 1
+possible: 
+	B: 1
+	L: 5
+post: 
+	B: 6
+	L: 7
+posting: 
+	L: 2
+postion: 
+	B: 1
+PostMessage: 
+	B: 4
+potential: 
+	L: 1
+power: 
+	B: 1
+	L: 2
+powerful: 
+	B: 1
+	L: 2
+Powerpro: 
+	B: 1
+pre: 
+	B: 3
+preceded: 
+	B: 1
+precedence: 
+	B: 1
+precisely: 
+	B: 1
+precision: 
+	B: 1
+prefer: 
+	B: 1
+preference: 
+	L: 1
+preferences: 
+	B: 1
+prefix: 
+	L: 2
+PrepareSocket: 
+	B: 4
+prepend: 
+	B: 1
+prepended: 
+	B: 1
+present: 
+	B: 1
+press: 
+	B: 3
+	L: 1
+pressing: 
+	B: 2
+	L: 2
+pretty: 
+	B: 1
+	L: 1
+prevent: 
+	B: 2
+prevents: 
+	B: 2
+	L: 1
+PrevFiles: 
+	L: 12
+previous: 
+	B: 1
+primary: 
+	B: 1
+	L: 1
+priority: 
+	L: 1
+privilages: 
+	B: 1
+probably: 
+	B: 7
+problem: 
+	B: 1
+	L: 1
+problematic: 
+	B: 1
+problems: 
+	B: 2
+ProccntUsage: 
+	L: 1
+process: 
+	B: 7
+	L: 8
+Process32First: 
+	L: 1
+Process32FirstW: 
+	L: 1
+Process32Next: 
+	L: 1
+Process32NextW: 
+	L: 1
+ProcessCount: 
+	L: 1
+processes: 
+	L: 4
+processing: 
+	L: 2
+processor: 
+	B: 1
+procon: 
+	B: 1
+produce: 
+	B: 1
+	L: 1
+product: 
+	B: 1
+products: 
+	B: 1
+professional: 
+	B: 1
+program: 
+	B: 16
+	L: 5
+programming: 
+	L: 1
+programs: 
+	B: 5
+	L: 2
+progress: 
+	B: 11
+	L: 1
+progress_bak: 
+	B: 4
+prohibits: 
+	L: 1
+project: 
+	B: 1
+	L: 1
+prompt: 
+	B: 1
+PromptForAddy: 
+	B: 2
+prompts: 
+	B: 1
+proof: 
+	B: 1
+proper: 
+	B: 1
+properly: 
+	B: 3
+	L: 1
+Properties: 
+	B: 1
+	L: 1
+property: 
+	L: 1
+protect: 
+	B: 1
+protects: 
+	B: 1
+protocol: 
+	L: 1
+prove: 
+	L: 1
+provide: 
+	B: 1
+	L: 2
+provided: 
+	B: 1
+proximate: 
+	L: 1
+ps_Dash: 
+	B: 2
+PSHORT: 
+	L: 1
+pSize: 
+	B: 4
+PSIZE_T: 
+	L: 1
+PSSIZE_T: 
+	L: 1
+PSTR: 
+	L: 1
+PSYSTEMTIME: 
+	L: 1
+pt: 
+	L: 1
+ptArray: 
+	L: 1
+PTBYTE: 
+	L: 1
+PTCHAR: 
+	L: 1
+PTIME_ZONE_INFORMATION: 
+	L: 1
+ptMaxPosition: 
+	L: 1
+ptMinPosition: 
+	L: 1
+Ptr: 
+	L: 71
+PTSTR: 
+	L: 1
+public: 
+	B: 1
+PUCHAR: 
+	L: 1
+PUHALF_PTR: 
+	L: 1
+PUINT: 
+	L: 1
+PUINT32: 
+	L: 1
+PUINT64: 
+	L: 1
+PUINT_PTR: 
+	L: 1
+PULONG: 
+	L: 1
+PULONG32: 
+	L: 1
+PULONG64: 
+	L: 1
+PULONG_PTR: 
+	L: 1
+PULONGLONG: 
+	L: 1
+purely: 
+	L: 1
+Purpose: 
+	L: 2
+purposes: 
+	B: 1
+pushed: 
+	L: 1
+PUSHORT: 
+	L: 1
+put: 
+	B: 4
+	L: 4
+PVOID: 
+	L: 1
+pwb: 
+	L: 31
+PWCHAR: 
+	L: 1
+PWORD: 
+	L: 1
+PWSTR: 
+	L: 1
+px: 
+	B: 9
+py: 
+	B: 8
+q: 
+	B: 8
+QG: 
+	B: 1
+QLiteral: 
+	B: 1
+QN: 
+	B: 2
+qpaid: 
+	B: 2
+quest: 
+	B: 1
+question: 
+	L: 1
+Questions: 
+	B: 2
+	L: 1
+quick: 
+	B: 1
+	L: 2
+quickbooks: 
+	B: 3
+Quickfort: 
+	B: 2
+quickly: 
+	B: 2
+	L: 3
+Quit: 
+	B: 1
+quite: 
+	B: 2
+	L: 1
+quota: 
+	L: 2
+Quote: 
+	L: 2
+r: 
+	B: 1
+	L: 13
+r1: 
+	B: 2
+r2: 
+	B: 2
+r25: 
+	L: 1
+r9: 
+	L: 1
+radar: 
+	B: 1
+RADIAL: 
+	L: 24
+Radio: 
+	B: 1
+	L: 5
+Ragnarok: 
+	B: 4
+raise: 
+	B: 1
+Rajat: 
+	B: 1
+RAlt: 
+	L: 3
+Rand: 
+	B: 2
+Random: 
+	B: 1
+range: 
+	B: 1
+Range0: 
+	B: 1
+rangereplace: 
+	B: 1
+rarely: 
+	B: 1
+	L: 1
+rather: 
+	B: 4
+	L: 1
+raw: 
+	B: 2
+Rbutton: 
+	B: 5
+	L: 2
+RC4txt2hex: 
+	B: 4
+rcClient: 
+	L: 5
+rcMonitor: 
+	L: 1
+rcNormalPosition: 
+	L: 3
+rcPaint: 
+	L: 1
+RCtrl: 
+	L: 3
+rcWindow: 
+	L: 5
+rcWork: 
+	L: 1
+RDW_INVALIDATE: 
+	L: 1
+RDW_UPDATENOW: 
+	L: 1
+re: 
+	B: 5
+	L: 3
+reach: 
+	L: 1
+reachable: 
+	B: 1
+reached: 
+	B: 1
+read: 
+	B: 10
+	L: 5
+Reader: 
+	B: 2
+reading: 
+	B: 3
+ReadOnly: 
+	B: 1
+ReadParallelPort: 
+	L: 2
+ReadParallelPort1: 
+	L: 1
+ReadyState: 
+	L: 3
+real: 
+	L: 1
+realistic: 
+	L: 1
+realized: 
+	B: 2
+really: 
+	B: 5
+	L: 3
+RealVNC: 
+	B: 1
+reason: 
+	L: 1
+reasonable: 
+	L: 1
+reassign: 
+	B: 1
+rebooting: 
+	L: 1
+ReceiveData: 
+	B: 4
+ReceivedData: 
+	B: 24
+ReceivedDataLength: 
+	B: 6
+recent: 
+	B: 3
+recieved: 
+	B: 2
+recognizable: 
+	B: 1
+Recognized: 
+	B: 1
+recomended: 
+	B: 1
+recommend: 
+	B: 1
+	L: 2
+Recommended: 
+	B: 4
+	L: 7
+recommented: 
+	L: 1
+Record: 
+	L: 2
+recorded: 
+	L: 2
+Recorder: 
+	L: 1
+rect: 
+	L: 4
+rectangle: 
+	B: 4
+	L: 2
+recv: 
+	B: 4
+red: 
+	B: 4
+RedrawWindow: 
+	L: 1
+redundant: 
+	B: 1
+reference: 
+	L: 2
+references: 
+	B: 1
+	L: 1
+Refused: 
+	B: 1
+reg: 
+	L: 5
+REG_SZ: 
+	L: 4
+regardless: 
+	B: 1
+regards: 
+	L: 1
+RegEx: 
+	B: 1
+	L: 1
+RegExMatch: 
+	B: 11
+	L: 3
+RegExReplace: 
+	B: 4
+	L: 3
+region: 
+	L: 6
+register: 
+	L: 3
+registered: 
+	L: 2
+registry: 
+	L: 2
+RegRead: 
+	L: 2
+regular: 
+	L: 2
+regulation: 
+	L: 1
+RegWrite: 
+	L: 4
+related: 
+	B: 2
+	L: 1
+relative: 
+	B: 1
+	L: 3
+relatively: 
+	L: 2
+relax: 
+	B: 1
+release: 
+	B: 5
+	L: 4
+releases: 
+	B: 3
+	L: 1
+releasing: 
+	L: 1
+reliability: 
+	B: 1
+	L: 1
+reliable: 
+	L: 2
+reload: 
+	B: 8
+remains: 
+	L: 1
+Remote: 
+	B: 18
+removable: 
+	L: 3
+remove: 
+	B: 5
+	L: 4
+removeable: 
+	L: 2
+Removed: 
+	B: 1
+	L: 3
+Rename: 
+	B: 2
+repeat: 
+	L: 1
+repeating: 
+	L: 1
+replace: 
+	B: 3
+	L: 8
+replaced: 
+	B: 3
+replacement: 
+	B: 1
+	L: 1
+replaces: 
+	L: 1
+reply: 
+	B: 1
+reporting: 
+	B: 1
+reports: 
+	B: 1
+	L: 1
+Repository: 
+	L: 1
+repost: 
+	B: 1
+representing: 
+	L: 1
+requested: 
+	B: 1
+requests: 
+	L: 1
+required: 
+	B: 6
+	L: 1
+requirements: 
+	B: 1
+requires: 
+	B: 1
+	L: 4
+research: 
+	L: 1
+reset: 
+	B: 1
+	L: 2
+Resize: 
+	L: 1
+resolved: 
+	B: 1
+resource: 
+	L: 3
+resources: 
+	L: 1
+respect: 
+	L: 1
+responded: 
+	B: 1
+response: 
+	B: 1
+rest: 
+	B: 1
+restart: 
+	L: 2
+Restart_Server: 
+	B: 1
+restored: 
+	L: 1
+restriction: 
+	L: 1
+restSize: 
+	L: 5
+result: 
+	B: 40
+	L: 1
+results: 
+	B: 4
+	L: 9
+retrieve: 
+	L: 1
+retrieved: 
+	L: 1
+Retrieves: 
+	L: 2
+Retroactive: 
+	B: 1
+Retry: 
+	L: 1
+Retry_Count: 
+	L: 1
+return: 
+	B: 106
+	L: 128
+returned: 
+	B: 1
+	L: 7
+returning: 
+	L: 2
+returns: 
+	B: 8
+	L: 7
+ReturnStr: 
+	B: 1
+reverse: 
+	B: 2
+reviewed: 
+	L: 1
+reviewing: 
+	L: 1
+Revisits: 
+	L: 1
+Reworking: 
+	B: 1
+Rewrite: 
+	B: 3
+rewrited: 
+	L: 1
+rgbReserved: 
+	L: 1
+RichEdit: 
+	B: 2
+right: 
+	B: 12
+	L: 22
+rightmost: 
+	L: 1
+ring: 
+	L: 1
+Rino: 
+	B: 1
+risk: 
+	B: 1
+rktboy: 
+	L: 1
+RM: 
+	L: 2
+RM2module: 
+	L: 1
+RMD: 
+	L: 1
+road: 
+	L: 1
+Rocker: 
+	L: 1
+Rolls: 
+	B: 1
+room: 
+	B: 1
+round: 
+	B: 8
+routines: 
+	B: 1
+row: 
+	B: 1
+Rseding91: 
+	L: 2
+RtlFillMemory: 
+	B: 6
+RtlMoveMemory: 
+	L: 1
+RtlZeroMemory: 
+	L: 1
+rules: 
+	B: 1
+run: 
+	B: 6
+	L: 4
+running: 
+	B: 1
+	L: 4
+RunningCommands: 
+	B: 6
+runs: 
+	L: 2
+RunWait: 
+	B: 1
+RWin: 
+	L: 3
+s: 
+	B: 35
+	L: 60
+S10: 
+	B: 1
+s3: 
+	L: 2
+s4: 
+	L: 2
+s_addr: 
+	B: 2
+s_def: 
+	L: 1
+s_ver: 
+	L: 1
+safe: 
+	B: 1
+Safely: 
+	B: 1
+same: 
+	B: 7
+	L: 14
+sample: 
+	B: 5
+	L: 2
+sandbox: 
+	L: 1
+SAP: 
+	B: 8
+saptechnical: 
+	B: 1
+satisfying: 
+	B: 1
+save: 
+	B: 1
+	L: 8
+saved: 
+	B: 3
+	L: 3
+saves: 
+	B: 1
+	L: 1
+saving: 
+	B: 2
+	L: 1
+say: 
+	L: 6
+saying: 
+	L: 4
+says: 
+	L: 1
+sb: 
+	L: 15
+sBox: 
+	B: 20
+SC2: 
+	B: 2
+SC_HANDLE: 
+	L: 1
+SC_LOCK: 
+	L: 1
+Scenario: 
+	L: 4
+scenarios: 
+	L: 1
+Screen: 
+	B: 13
+	L: 18
+ScreenCapture: 
+	L: 1
+screencast: 
+	L: 1
+ScreenClipper: 
+	L: 1
+ScreenClipping: 
+	L: 2
+screens: 
+	B: 3
+Screenshot: 
+	B: 1
+	L: 15
+Screenshots: 
+	L: 4
+screwed: 
+	B: 1
+scrip: 
+	B: 1
+Script: 
+	B: 39
+	L: 51
+Script_Name: 
+	L: 1
+scripting: 
+	B: 3
+	L: 1
+scripts: 
+	B: 12
+	L: 7
+scroll: 
+	B: 25
+	L: 1
+scrollable: 
+	B: 1
+ScrollBar: 
+	B: 2
+scrollbars: 
+	B: 1
+scrolled: 
+	B: 2
+Scrolling: 
+	B: 32
+ScrollLock: 
+	B: 2
+	L: 3
+ScrollMessage: 
+	B: 1
+Scrolls: 
+	B: 3
+ScrollTrek: 
+	B: 4
+ScrollWheel: 
+	B: 1
+	L: 1
+SD: 
+	L: 1
+Sean: 
+	L: 7
+search: 
+	B: 9
+	L: 26
+Search1: 
+	L: 9
+Search2: 
+	L: 9
+Search3: 
+	L: 9
+Search4: 
+	L: 9
+search_keywords: 
+	L: 14
+SearchBoxBottomX: 
+	B: 4
+SearchBoxBottomY: 
+	B: 4
+SearchBoxTopX: 
+	B: 4
+SearchBoxTopY: 
+	B: 4
+searches: 
+	L: 5
+SearchForm: 
+	L: 4
+Searching: 
+	B: 1
+	L: 6
+searchtext: 
+	B: 2
+seasonal: 
+	B: 1
+second: 
+	B: 2
+	L: 4
+secondary: 
+	L: 2
+seconds: 
+	B: 1
+section: 
+	B: 1
+	L: 2
+sections: 
+	B: 1
+secure: 
+	B: 2
+security: 
+	B: 1
+see: 
+	B: 13
+	L: 9
+seemed: 
+	B: 1
+Seems: 
+	B: 4
+seen: 
+	B: 1
+select: 
+	B: 6
+	L: 3
+selected: 
+	B: 6
+	L: 4
+selectedIndex: 
+	L: 5
+selecting: 
+	B: 1
+Selection: 
+	B: 3
+	L: 6
+SelectObject: 
+	B: 2
+Selector: 
+	L: 1
+Self: 
+	B: 4
+	L: 9
+send: 
+	B: 49
+	L: 7
+SendData: 
+	B: 17
+SendEvent: 
+	L: 1
+sending: 
+	B: 1
+SendInput: 
+	B: 1
+	L: 1
+SendMode: 
+	B: 3
+	L: 5
+SendPlay: 
+	L: 1
+SendRet: 
+	B: 6
+sends: 
+	B: 10
+	L: 1
+sense: 
+	L: 2
+sent: 
+	B: 1
+sentence: 
+	B: 1
+	L: 1
+SEO: 
+	L: 1
+separable: 
+	B: 1
+separate: 
+	L: 2
+separately: 
+	B: 2
+separatly: 
+	B: 1
+separator: 
+	B: 1
+separators: 
+	B: 1
+seperator: 
+	B: 1
+Sept: 
+	B: 3
+Serial: 
+	L: 6
+serve: 
+	B: 1
+server: 
+	B: 10
+	L: 14
+servers: 
+	L: 1
+service: 
+	L: 1
+SERVICE_STATUS_HANDLE: 
+	L: 1
+Set: 
+	B: 9
+	L: 16
+SetBatchLines: 
+	B: 2
+SetCapacity: 
+	L: 2
+SetCapsLockState: 
+	B: 1
+SetControlDelay: 
+	L: 2
+SetFormat: 
+	B: 4
+	L: 2
+setmenu: 
+	L: 2
+SetMouseDelay: 
+	L: 2
+Sets: 
+	B: 3
+	L: 2
+SetStructCapacity: 
+	L: 25
+settimer: 
+	B: 10
+	L: 6
+setting: 
+	B: 4
+	L: 1
+settings: 
+	B: 22
+	L: 15
+SetTitleMatchMode: 
+	L: 2
+setup: 
+	B: 2
+	L: 4
+SetWindowPlacement: 
+	L: 1
+SetWindowPos: 
+	L: 1
+SetWindowsHookEx: 
+	L: 3
+SetWorkingDir: 
+	B: 2
+	L: 2
+several: 
+	B: 1
+shades: 
+	L: 2
+share: 
+	B: 2
+	L: 3
+shareSize: 
+	L: 6
+Shell: 
+	L: 2
+SHELL32: 
+	B: 2
+Shell_TrayWnd: 
+	L: 2
+Shift: 
+	B: 4
+shines: 
+	L: 1
+Ship: 
+	B: 1
+Short: 
+	L: 18
+shortcut: 
+	B: 1
+	L: 2
+shortcuts: 
+	L: 3
+shorter: 
+	B: 1
+shorthand: 
+	B: 1
+shot: 
+	L: 2
+Shots: 
+	L: 1
+should: 
+	B: 15
+	L: 7
+shouldn: 
+	B: 1
+show: 
+	B: 11
+	L: 14
+Show_MouseMovementInformation: 
+	B: 5
+showCmd: 
+	L: 1
+ShowMouseTip: 
+	B: 5
+shown: 
+	L: 5
+shows: 
+	B: 2
+	L: 2
+ShowSearchArea: 
+	B: 2
+shutdown: 
+	B: 3
+Shutdown_Computer: 
+	B: 1
+shutting: 
+	L: 1
+side: 
+	B: 2
+	L: 2
+signifies: 
+	L: 2
+Silent: 
+	L: 12
+Silent_def: 
+	L: 1
+Silent_ver: 
+	L: 1
+silently: 
+	L: 1
+similar: 
+	B: 4
+	L: 2
+similarly: 
+	B: 1
+Simple: 
+	B: 5
+	L: 13
+simplest: 
+	L: 1
+simplify: 
+	B: 1
+Simply: 
+	B: 2
+	L: 6
+simulate: 
+	B: 1
+simulated: 
+	L: 2
+sin_addr: 
+	B: 2
+sin_port: 
+	B: 2
+Since: 
+	L: 4
+single: 
+	B: 2
+	L: 5
+SingleInstance: 
+	B: 5
+	L: 1
+sink: 
+	L: 2
+sinkfaze: 
+	L: 2
+sit: 
+	B: 1
+site: 
+	L: 1
+size: 
+	B: 1
+	L: 28
+SIZE_T: 
+	L: 11
+sized: 
+	L: 1
+SizeOf: 
+	L: 8
+skinnable: 
+	L: 1
+skip: 
+	L: 5
+skipped: 
+	L: 1
+skips: 
+	L: 1
+sleep: 
+	B: 80
+	L: 11
+slightly: 
+	B: 2
+slow: 
+	B: 4
+slower: 
+	B: 1
+	L: 2
+slowly: 
+	B: 2
+sluggish: 
+	B: 1
+Small: 
+	B: 2
+	L: 1
+smaller: 
+	B: 1
+	L: 2
+Smooth: 
+	B: 3
+smoother: 
+	B: 1
+smoothest: 
+	B: 1
+snippets: 
+	L: 1
+so: 
+	B: 21
+	L: 15
+SOCK_STREAM: 
+	B: 2
+socket: 
+	B: 17
+	L: 1
+SocketAddress: 
+	B: 11
+software: 
+	B: 1
+	L: 9
+solution: 
+	B: 2
+SOMAXCONN: 
+	B: 1
+some: 
+	B: 24
+	L: 16
+something: 
+	B: 5
+	L: 1
+sometimes: 
+	B: 1
+	L: 1
+somewhat: 
+	B: 1
+somewhere: 
+	B: 2
+soon: 
+	B: 1
+Sorry: 
+	B: 1
+Sort: 
+	B: 1
+	L: 4
+sort_by: 
+	L: 4
+sort_dir: 
+	L: 5
+sound: 
+	B: 1
+	L: 2
+SoundGet: 
+	B: 4
+SoundInfo: 
+	B: 2
+sounds: 
+	L: 1
+SoundSet: 
+	B: 6
+source: 
+	B: 1
+	L: 5
+space: 
+	B: 5
+	L: 3
+spaces: 
+	B: 1
+Spades: 
+	L: 3
+sparsely: 
+	B: 1
+special: 
+	B: 2
+	L: 1
+specific: 
+	B: 2
+specifically: 
+	B: 3
+specified: 
+	B: 4
+	L: 5
+specify: 
+	L: 5
+specifying: 
+	B: 1
+	L: 2
+speed: 
+	B: 7
+	L: 2
+speeded: 
+	B: 1
+SpeedX: 
+	B: 1
+SpeedY: 
+	B: 1
+spend: 
+	L: 1
+split: 
+	B: 1
+SplitAt: 
+	B: 1
+splitby: 
+	B: 1
+splits: 
+	L: 1
+Spy: 
+	L: 1
+square: 
+	B: 1
+	L: 2
+ssd: 
+	B: 2
+SSIZE_T: 
+	L: 1
+stack: 
+	B: 1
+standalone: 
+	B: 1
+Standard: 
+	B: 2
+	L: 3
+StandardBias: 
+	L: 3
+StandardDate: 
+	L: 5
+StandardName: 
+	L: 4
+StarCraft: 
+	B: 6
+Start: 
+	B: 9
+	L: 8
+StartDate: 
+	B: 3
+started: 
+	B: 2
+	L: 2
+StartFishing: 
+	B: 2
+starting: 
+	B: 1
+	L: 6
+StartLine: 
+	B: 1
+starts: 
+	L: 4
+StartTime: 
+	B: 2
+startup: 
+	L: 1
+StartupMinimize: 
+	B: 1
+state: 
+	B: 1
+	L: 14
+state_old: 
+	L: 6
+StateFlags: 
+	L: 1
+Static: 
+	B: 1
+	L: 8
+Static1: 
+	L: 1
+stationary: 
+	B: 1
+Status: 
+	L: 2
+stays: 
+	B: 1
+stdlib: 
+	L: 1
+steering: 
+	L: 1
+Step: 
+	B: 1
+steps: 
+	L: 1
+sticking: 
+	B: 1
+still: 
+	B: 2
+	L: 5
+stop: 
+	B: 4
+	L: 1
+stops: 
+	B: 2
+StopSpeed: 
+	B: 1
+storage: 
+	L: 2
+stores: 
+	L: 1
+str: 
+	B: 14
+	L: 20
+StrGet: 
+	L: 7
+String: 
+	B: 3
+	L: 11
+StringReplace: 
+	B: 5
+	L: 9
+StringRight: 
+	L: 2
+strings: 
+	B: 2
+	L: 1
+StringSplit: 
+	L: 3
+StringTrimLeft: 
+	L: 1
+StringTrimRight: 
+	L: 1
+strlen: 
+	B: 7
+	L: 12
+StrokeIt: 
+	L: 1
+Struct: 
+	L: 27
+StructCopyFrom: 
+	L: 9
+StructSize: 
+	L: 3
+structStr: 
+	L: 5
+Structure: 
+	B: 2
+	L: 8
+structures: 
+	B: 1
+Study: 
+	L: 1
+stuff: 
+	L: 3
+style: 
+	L: 2
+Styles: 
+	L: 1
+SubArray: 
+	L: 6
+Subject: 
+	L: 1
+submenus: 
+	L: 1
+Submit: 
+	B: 2
+subsequent: 
+	L: 3
+SubStr: 
+	B: 11
+	L: 19
+succeeds: 
+	L: 1
+success: 
+	B: 4
+	L: 1
+successive: 
+	B: 1
+such: 
+	B: 4
+	L: 3
+sufficient: 
+	B: 1
+suggest: 
+	B: 2
+suggestions: 
+	B: 2
+	L: 1
+suitable: 
+	B: 2
+suite: 
+	B: 1
+Summon: 
+	B: 1
+Sumon: 
+	L: 5
+superior: 
+	B: 1
+	L: 1
+suported: 
+	B: 1
+supose: 
+	B: 1
+supply: 
+	B: 1
+Support: 
+	B: 2
+	L: 3
+supported: 
+	B: 1
+	L: 2
+Supports: 
+	B: 3
+	L: 2
+supposed: 
+	B: 1
+sure: 
+	B: 7
+	L: 2
+surface: 
+	B: 1
+surprised: 
+	B: 1
+Suspend: 
+	B: 2
+swapped: 
+	B: 1
+switch: 
+	L: 2
+switches: 
+	B: 1
+switching: 
+	B: 1
+	L: 1
+swordfish: 
+	B: 1
+synactive: 
+	B: 4
+SysListView: 
+	B: 1
+SysMenu: 
+	L: 1
+system: 
+	B: 1
+	L: 2
+system32: 
+	B: 2
+SystemCache: 
+	L: 1
+systemTime: 
+	L: 8
+systray: 
+	B: 1
+SysTreeView: 
+	B: 1
+szExeFile: 
+	L: 2
+szExePath: 
+	L: 2
+szInfo: 
+	L: 1
+szInfoTitle: 
+	L: 1
+szModule: 
+	L: 2
+szTip: 
+	L: 1
+t: 
+	B: 34
+	L: 22
+Tab: 
+	B: 34
+	L: 21
+tab1: 
+	L: 2
+tab2: 
+	L: 2
+Tabs: 
+	L: 3
+Tag: 
+	L: 2
+tageted: 
+	B: 1
+tagname: 
+	L: 2
+tags: 
+	L: 1
+tail: 
+	B: 1
+take: 
+	B: 2
+	L: 6
+taken: 
+	L: 1
+takes: 
+	L: 1
+tall: 
+	B: 1
+tank: 
+	L: 5
+target: 
+	B: 2
+	L: 1
+targets: 
+	B: 1
+Task: 
+	B: 2
+	L: 7
+taskbar: 
+	B: 1
+TBYTE: 
+	L: 1
+TCHAR: 
+	L: 11
+TCP: 
+	B: 2
+	L: 2
+TD: 
+	L: 2
+teach: 
+	L: 1
+tech: 
+	L: 1
+technique: 
+	L: 1
+techniques: 
+	L: 1
+telling: 
+	B: 1
+Temp1: 
+	L: 9
+template: 
+	L: 5
+temporary: 
+	L: 1
+Terms: 
+	L: 3
+test: 
+	B: 13
+	L: 2
+Tested: 
+	B: 2
+	L: 5
+testing: 
+	L: 1
+testmousecolors: 
+	B: 2
+tests: 
+	B: 1
+TestSend: 
+	B: 2
+TestTimout: 
+	B: 7
+Text: 
+	B: 47
+	L: 10
+TextFile: 
+	B: 1
+TF: 
+	B: 12
+TF_: 
+	B: 1
+TF_AlignCenter: 
+	B: 1
+TF_AlignLeft: 
+	B: 1
+TF_AlignRight: 
+	B: 2
+TF_Append: 
+	B: 1
+TF_ColCut: 
+	B: 1
+TF_ColGet: 
+	B: 1
+TF_ColPut: 
+	B: 1
+TF_ConCat: 
+	B: 3
+TF_Count: 
+	B: 1
+TF_Countlines: 
+	B: 2
+TF_Find: 
+	B: 6
+TF_Findlines: 
+	B: 3
+TF_GetData: 
+	B: 2
+TF_InsertLine: 
+	B: 1
+TF_InsertPrefix: 
+	B: 1
+TF_InsertSuffix: 
+	B: 1
+TF_Justify: 
+	B: 1
+TF_LineNumber: 
+	B: 1
+TF_MakeFile: 
+	B: 3
+TF_Merge: 
+	B: 3
+TF_Prepend: 
+	B: 1
+TF_RangeReplace: 
+	B: 2
+TF_Readlines: 
+	B: 2
+TF_Reformat: 
+	B: 1
+TF_RegExReplace: 
+	B: 2
+TF_RegExReplaceInLines: 
+	B: 2
+TF_RemoveBlankLines: 
+	B: 2
+TF_RemoveDuplicateLines: 
+	B: 1
+TF_RemoveLines: 
+	B: 2
+TF_Replace: 
+	B: 2
+TF_ReplaceInLines: 
+	B: 2
+TF_ReplaceLine: 
+	B: 1
+TF_ReturnOutput: 
+	B: 1
+TF_ReverseLines: 
+	B: 1
+TF_Save: 
+	B: 2
+TF_Sort: 
+	B: 1
+TF_Spaces2Tab: 
+	B: 1
+TF_SplitFileByLines: 
+	B: 2
+TF_SplitFileByText: 
+	B: 1
+TF_Substract: 
+	B: 2
+TF_SwapColumns: 
+	B: 1
+TF_SwapLines: 
+	B: 1
+TF_Tab2Spaces: 
+	B: 1
+TF_Tail: 
+	B: 3
+TF_TrimLeft: 
+	B: 1
+TF_TrimRight: 
+	B: 1
+TF_WhiteSpace: 
+	B: 1
+TF_Wrap: 
+	B: 1
+th32DefaultHeapID: 
+	L: 1
+th32ModuleID: 
+	L: 2
+th32ParentProcessID: 
+	L: 1
+th32ProcessID: 
+	L: 2
+than: 
+	B: 8
+	L: 4
+Thank: 
+	L: 2
+thanks: 
+	B: 6
+	L: 3
+that: 
+	B: 50
+	L: 48
+the: 
+	B: 347
+	L: 515
+Theese: 
+	B: 1
+their: 
+	L: 1
+them: 
+	B: 6
+	L: 6
+then: 
+	B: 3
+	L: 10
+theory: 
+	B: 1
+There: 
+	B: 4
+	L: 17
+thereof: 
+	L: 2
+These: 
+	B: 7
+	L: 9
+they: 
+	B: 8
+	L: 5
+thickness: 
+	B: 1
+thing: 
+	B: 1
+	L: 1
+things: 
+	B: 3
+	L: 1
+think: 
+	B: 2
+This: 
+	B: 60
+	L: 489
+those: 
+	B: 4
+	L: 3
+though: 
+	B: 1
+thought: 
+	B: 2
+thread: 
+	L: 1
+ThreadCount: 
+	L: 1
+threads: 
+	B: 2
+three: 
+	B: 3
+	L: 1
+through: 
+	B: 3
+	L: 6
+throughout: 
+	L: 2
+throught: 
+	L: 1
+thx: 
+	B: 1
+Tic: 
+	L: 2
+tick: 
+	B: 2
+tile: 
+	B: 1
+tiles: 
+	B: 1
+time: 
+	B: 13
+	L: 9
+TIME_ZONE_INFORMATION: 
+	L: 1
+Timeout: 
+	B: 4
+Timer: 
+	B: 5
+	L: 2
+times: 
+	L: 3
+timezone: 
+	L: 8
+tip: 
+	B: 26
+	L: 1
+Tips: 
+	B: 1
+title: 
+	B: 1
+	L: 4
+titlebar: 
+	B: 1
+TitleMatchMode: 
+	L: 1
+tmpObj: 
+	L: 8
+tnx: 
+	B: 1
+to: 
+	B: 212
+	L: 251
+TODO: 
+	B: 1
+toggle: 
+	B: 1
+	L: 7
+tol: 
+	B: 4
+too: 
+	B: 3
+	L: 2
+Tool: 
+	B: 2
+	L: 1
+ToolKit: 
+	L: 2
+tools: 
+	L: 2
+Tooltip: 
+	B: 19
+	L: 3
+tooltipp: 
+	L: 3
+ToolWindow: 
+	B: 1
+	L: 2
+top: 
+	B: 3
+	L: 16
+Topic: 
+	B: 1
+	L: 3
+topic50093: 
+	B: 1
+topic53493: 
+	L: 1
+topic59726: 
+	B: 1
+topic6772: 
+	B: 1
+topic68826: 
+	L: 1
+topic74542: 
+	L: 1
+topic77990: 
+	L: 1
+topics: 
+	L: 2
+TopX: 
+	B: 3
+TopY: 
+	B: 2
+ToString: 
+	L: 9
+total: 
+	B: 1
+	L: 2
+TouchFlo: 
+	B: 1
+trailing: 
+	B: 2
+Trampoline: 
+	L: 1
+Trans: 
+	L: 1
+Transfer: 
+	L: 8
+translate: 
+	L: 1
+translating: 
+	L: 2
+translations: 
+	L: 1
+TransmitFile: 
+	L: 2
+Transparency: 
+	B: 1
+transparent: 
+	B: 2
+	L: 2
+TransValue: 
+	B: 2
+Tray: 
+	B: 34
+	L: 6
+TrayCopy: 
+	B: 2
+TrayDisconnect: 
+	B: 2
+TrayEdit: 
+	B: 4
+TrayExit: 
+	B: 4
+TrayReload: 
+	B: 4
+TrayTip: 
+	B: 1
+Traytips: 
+	L: 2
+TreeView: 
+	L: 10
+trick: 
+	B: 2
+tricky: 
+	L: 1
+tried: 
+	B: 2
+	L: 1
+Trim: 
+	B: 3
+TrimLeft: 
+	B: 1
+trimming: 
+	B: 1
+TrimRight: 
+	B: 1
+trips: 
+	B: 1
+Trk: 
+	B: 1
+trouble: 
+	B: 1
+trough: 
+	B: 1
+true: 
+	B: 12
+	L: 22
+trunk: 
+	B: 1
+try: 
+	B: 3
+	L: 10
+trying: 
+	B: 1
+tt: 
+	B: 2
+ttx: 
+	B: 5
+tty: 
+	B: 5
+Tuncay: 
+	B: 1
+turn: 
+	B: 4
+	L: 1
+turned: 
+	B: 1
+turning: 
+	B: 4
+TurnMouseTipOff: 
+	B: 2
+TurnMouseTipOn: 
+	B: 2
+turns: 
+	L: 1
+Tutorial: 
+	B: 1
+	L: 16
+tutorials: 
+	B: 1
+	L: 1
+TV_Add: 
+	L: 3
+TV_Modify: 
+	L: 1
+Tweak: 
+	B: 1
+tweaking: 
+	B: 1
+twice: 
+	L: 2
+Twitter: 
+	L: 1
+two: 
+	B: 3
+	L: 3
+tx: 
+	B: 8
+txt: 
+	B: 5
+ty: 
+	B: 10
+type: 
+	B: 3
+	L: 32
+type_match: 
+	L: 2
+type_name: 
+	L: 9
+typedef: 
+	L: 2
+types: 
+	L: 2
+typeSize: 
+	L: 2
+typing: 
+	L: 1
+u: 
+	B: 2
+Uberi: 
+	B: 1
+uCallbackMessage: 
+	L: 1
+UChar: 
+	B: 6
+	L: 7
+UEoV: 
+	L: 1
+uFlags: 
+	L: 1
+ugly: 
+	B: 1
+UHALF_PTR: 
+	L: 1
+uID: 
+	L: 1
+UInt: 
+	B: 44
+	L: 43
+UINT32: 
+	L: 1
+UInt64: 
+	L: 7
+UINT_PTR: 
+	L: 1
+ULONG: 
+	L: 1
+ULONG32: 
+	L: 1
+ULONG64: 
+	L: 1
+ULONG_PTR: 
+	L: 2
+ULONGLONG: 
+	L: 1
+ultimate: 
+	L: 1
+ultimately: 
+	L: 1
+Ultra_Basic_Chat: 
+	B: 1
+UltraEdit: 
+	B: 1
+Un: 
+	B: 1
+unable: 
+	L: 2
+uName: 
+	B: 2
+unavoidable: 
+	L: 1
+UNC: 
+	B: 2
+unchanged: 
+	L: 2
+uncompiled: 
+	L: 2
+undelayed: 
+	B: 1
+under: 
+	B: 11
+	L: 1
+understand: 
+	L: 2
+understanding: 
+	L: 2
+unfortunately: 
+	B: 1
+UnhookWindowsHookEx: 
+	L: 1
+Uni: 
+	L: 1
+unicode: 
+	L: 7
+Uninitialize: 
+	L: 1
+Uninstallation: 
+	L: 1
+unintended: 
+	B: 1
+unintrusive: 
+	B: 1
+union: 
+	L: 1
+union_end: 
+	L: 4
+union_start: 
+	L: 4
+unionState: 
+	L: 7
+unique: 
+	L: 2
+unit: 
+	B: 1
+Universal: 
+	B: 2
+unless: 
+	B: 1
+	L: 1
+unlike: 
+	B: 1
+unlinked: 
+	B: 1
+unlock: 
+	B: 1
+	L: 1
+unlocked: 
+	L: 4
+unnecessary: 
+	B: 1
+unregister: 
+	L: 3
+unsuccessful: 
+	L: 1
+unsupported: 
+	L: 1
+until: 
+	B: 1
+	L: 6
+unzipped: 
+	L: 1
+up: 
+	B: 34
+	L: 7
+uPass: 
+	B: 2
+update: 
+	B: 11
+	L: 11
+Update_URL: 
+	L: 2
+updated: 
+	B: 7
+	L: 3
+updater: 
+	L: 3
+updates: 
+	B: 3
+updating: 
+	L: 1
+UpDown: 
+	B: 1
+upgrade: 
+	B: 1
+upload: 
+	L: 5
+uploaded: 
+	L: 1
+uploads: 
+	L: 2
+upon: 
+	B: 3
+	L: 2
+upper: 
+	L: 4
+UPtr: 
+	L: 107
+URL: 
+	B: 2
+	L: 9
+UrlDownloadToFile: 
+	B: 2
+URLs: 
+	B: 6
+us: 
+	B: 2
+	L: 18
+usable: 
+	B: 1
+	L: 2
+Usage: 
+	B: 2
+	L: 3
+USB: 
+	B: 1
+	L: 1
+UsbKey: 
+	L: 3
+UsbKey_L: 
+	L: 1
+use: 
+	B: 34
+	L: 61
+used: 
+	B: 24
+	L: 11
+useful: 
+	B: 4
+	L: 4
+UseMovementCheck: 
+	B: 1
+user: 
+	B: 16
+	L: 5
+user32: 
+	L: 3
+username: 
+	B: 3
+users: 
+	B: 1
+Uses: 
+	B: 3
+	L: 5
+UShort: 
+	B: 4
+	L: 10
+using: 
+	B: 15
+	L: 20
+USN: 
+	L: 1
+usually: 
+	L: 1
+utility: 
+	B: 2
+	L: 1
+uTimeout: 
+	L: 1
+uVersion: 
+	L: 1
+v: 
+	B: 160
+	L: 74
+v0: 
+	B: 1
+	L: 1
+v1: 
+	B: 19
+	L: 5
+v2: 
+	B: 7
+	L: 3
+v3: 
+	B: 7
+	L: 2
+v4: 
+	L: 3
+v7: 
+	L: 1
+valid: 
+	L: 1
+valuable: 
+	L: 1
+value: 
+	B: 3
+	L: 67
+Value1: 
+	L: 1
+Value2: 
+	L: 1
+Value3: 
+	L: 1
+Value4: 
+	L: 1
+valuea: 
+	L: 4
+valueb: 
+	L: 4
+values: 
+	B: 1
+	L: 6
+var: 
+	B: 1
+	L: 5
+var1: 
+	L: 2
+var2: 
+	L: 2
+variable: 
+	B: 9
+	L: 3
+variables: 
+	B: 10
+	L: 1
+variation: 
+	B: 3
+	L: 2
+various: 
+	B: 2
+varList: 
+	L: 5
+varName: 
+	L: 38
+varOffset: 
+	L: 12
+VarSetCapacity: 
+	B: 10
+	L: 3
+varSize: 
+	L: 7
+varType: 
+	L: 31
+vast: 
+	L: 1
+vchs1: 
+	L: 1
+vchs2: 
+	L: 1
+vDisplayCount: 
+	B: 1
+ve: 
+	B: 2
+	L: 1
+vEndDate: 
+	B: 1
+Vendite: 
+	B: 1
+vEndTime: 
+	B: 1
+Ver: 
+	L: 7
+verification: 
+	L: 1
+verify: 
+	B: 1
+version: 
+	B: 15
+	L: 32
+Version_Number: 
+	L: 2
+versions: 
+	B: 1
+	L: 1
+vertical: 
+	B: 6
+vertically: 
+	B: 2
+Verts: 
+	B: 2
+very: 
+	B: 7
+	L: 1
+VfZTMHJA: 
+	L: 1
+via: 
+	B: 1
+video: 
+	B: 1
+	L: 2
+View_Server_Code: 
+	B: 1
+viewer: 
+	B: 1
+viewing: 
+	B: 1
+	L: 1
+viewtopic: 
+	B: 1
+	L: 1
+Visible: 
+	L: 6
+Vista: 
+	B: 1
+	L: 1
+visual: 
+	L: 2
+visualize: 
+	B: 2
+vMeasurementSelection: 
+	B: 1
+vMonitorSelection: 
+	B: 1
+vMonitorSelectionDisplay: 
+	B: 1
+vNetworkAddress: 
+	B: 1
+vNetworkPort: 
+	B: 1
+void: 
+	L: 5
+voil: 
+	L: 1
+Vol: 
+	B: 1
+vol_BarOff: 
+	B: 3
+vol_BarOptionsMaster: 
+	B: 2
+vol_DisplayTime: 
+	B: 2
+vol_Master: 
+	B: 2
+vol_Mute: 
+	B: 6
+vol_PosX: 
+	B: 2
+vol_PosY: 
+	B: 2
+vol_Round: 
+	B: 2
+vol_ShowBars: 
+	B: 4
+vol_Step: 
+	B: 3
+vol_Text: 
+	B: 4
+vol_Thick: 
+	B: 3
+vol_Width: 
+	B: 3
+VolLevel: 
+	B: 2
+Volume: 
+	B: 13
+Volume_Down: 
+	B: 4
+Volume_Mute: 
+	B: 1
+Volume_Up: 
+	B: 4
+VolumeDown: 
+	B: 2
+VolumeMute: 
+	B: 2
+VolumeOSD: 
+	B: 1
+VolumeOSDxyz: 
+	B: 4
+volumes: 
+	B: 1
+VolumeUp: 
+	B: 2
+vs: 
+	L: 13
+VS2010: 
+	B: 1
+vStartDate: 
+	B: 1
+vStartTime: 
+	B: 1
+VxE: 
+	L: 1
+w: 
+	B: 11
+	L: 13
+w1: 
+	L: 6
+w100: 
+	B: 2
+w140: 
+	L: 4
+w145: 
+	B: 1
+w152: 
+	L: 1
+w175: 
+	B: 1
+w2: 
+	L: 4
+w225: 
+	B: 15
+W3Schools: 
+	L: 1
+w400: 
+	L: 2
+w475: 
+	B: 1
+w500: 
+	B: 1
+w64: 
+	B: 2
+w80: 
+	L: 2
+w_def: 
+	L: 1
+w_val: 
+	B: 3
+w_ver: 
+	L: 1
+Wait: 
+	L: 6
+WaitForTrigger: 
+	B: 2
+Waiting: 
+	L: 1
+want: 
+	B: 4
+	L: 18
+wanted: 
+	B: 3
+wants: 
+	B: 1
+	L: 3
+Warcraft: 
+	B: 2
+Warn: 
+	B: 1
+was: 
+	B: 9
+	L: 8
+wasn: 
+	B: 1
+watch: 
+	L: 5
+way: 
+	B: 10
+	L: 6
+ways: 
+	B: 1
+	L: 2
+WB: 
+	L: 28
+wchar: 
+	L: 8
+wCreatorVersion: 
+	L: 2
+WD: 
+	L: 1
+wDay: 
+	L: 3
+wDayOfWeek: 
+	L: 3
+We: 
+	B: 3
+	L: 8
+web: 
+	L: 7
+webbrowser: 
+	B: 1
+webchat: 
+	L: 1
+Webpage: 
+	L: 24
+webpages: 
+	B: 2
+	L: 7
+website: 
+	L: 4
+welcome: 
+	B: 1
+	L: 1
+well: 
+	B: 5
+	L: 8
+west: 
+	B: 1
+wh: 
+	L: 4
+What: 
+	B: 4
+	L: 6
+whatever: 
+	B: 2
+whatsoever: 
+	L: 2
+wheel: 
+	B: 6
+	L: 1
+WheelDown: 
+	L: 1
+Wheeler: 
+	B: 1
+WheelHere: 
+	B: 1
+WheelKey: 
+	B: 1
+WheelLeft: 
+	L: 1
+WheelMessage: 
+	B: 2
+WheelRight: 
+	L: 1
+wheels: 
+	B: 2
+wheelscroling: 
+	B: 1
+WheelUp: 
+	L: 1
+when: 
+	B: 6
+	L: 13
+whenever: 
+	L: 1
+where: 
+	B: 5
+	L: 5
+which: 
+	B: 13
+	L: 30
+while: 
+	B: 5
+	L: 16
+white: 
+	L: 1
+whitespace: 
+	B: 1
+who: 
+	B: 4
+	L: 1
+wHour: 
+	L: 3
+Why: 
+	L: 1
+WI: 
+	L: 18
+widen: 
+	B: 1
+Width: 
+	B: 5
+	L: 10
+wih: 
+	B: 1
+will: 
+	B: 23
+	L: 92
+win: 
+	B: 9
+Win7: 
+	L: 1
+WinActivate: 
+	B: 2
+WinActive: 
+	L: 2
+WinClose: 
+	L: 1
+window: 
+	B: 31
+	L: 32
+windowed: 
+	B: 3
+WINDOWINFO: 
+	L: 1
+Windows: 
+	B: 23
+	L: 33
+WinExist: 
+	B: 3
+	L: 4
+WinGet: 
+	L: 5
+WinGetPos: 
+	B: 2
+	L: 4
+WinGetTitle: 
+	L: 3
+Winhide: 
+	L: 3
+WinHider: 
+	L: 8
+WinList: 
+	L: 5
+winName: 
+	L: 1
+WinSet: 
+	B: 1
+	L: 2
+WinShow: 
+	L: 5
+Winsock: 
+	B: 19
+	L: 3
+WinsockError: 
+	B: 8
+wintype: 
+	L: 3
+WinWait: 
+	B: 1
+WinXP: 
+	B: 1
+wise: 
+	B: 1
+wish: 
+	B: 2
+	L: 1
+with: 
+	B: 60
+	L: 52
+within: 
+	B: 2
+	L: 6
+without: 
+	B: 3
+	L: 8
+WizMouse: 
+	B: 1
+WL: 
+	L: 1
+WM_MOUSEWHEEL: 
+	B: 3
+WM_SCROLL: 
+	B: 1
+wMilliseconds: 
+	L: 3
+wMinute: 
+	L: 3
+wMonth: 
+	L: 3
+WNDPROC: 
+	L: 3
+won: 
+	B: 2
+	L: 1
+wonder: 
+	L: 1
+wondered: 
+	B: 1
+wondering: 
+	L: 1
+Word: 
+	L: 35
+words: 
+	B: 3
+work: 
+	B: 18
+	L: 6
+worked: 
+	B: 1
+working: 
+	B: 4
+	L: 8
+Works: 
+	B: 14
+	L: 8
+World: 
+	B: 3
+	L: 4
+worlds: 
+	B: 1
+would: 
+	B: 4
+	L: 6
+WoW: 
+	B: 1
+WP: 
+	L: 5
+WPARAM: 
+	B: 5
+	L: 2
+WR: 
+	L: 1
+wrap: 
+	B: 1
+wrapper: 
+	L: 3
+write: 
+	B: 2
+	L: 3
+WriteParallelPort: 
+	L: 2
+WriteParallelPort1: 
+	L: 1
+writing: 
+	L: 2
+written: 
+	L: 7
+wrong: 
+	B: 1
+	L: 2
+WrongArrayNumber: 
+	L: 3
+wrote: 
+	B: 2
+	L: 1
+ws: 
+	B: 2
+Ws2_32: 
+	B: 36
+WSAAsyncSelect: 
+	B: 4
+WSACleanup: 
+	B: 2
+wsaData: 
+	B: 4
+WSAGetLastError: 
+	B: 15
+WSAStartup: 
+	B: 6
+wSecond: 
+	L: 3
+WTFPL: 
+	L: 1
+WU: 
+	L: 1
+ww: 
+	L: 2
+www: 
+	B: 24
+	L: 16
+wx: 
+	L: 3
+wy: 
+	L: 3
+wYear: 
+	L: 3
+x: 
+	B: 15
+	L: 32
+x0: 
+	L: 2
+x1: 
+	B: 2
+	L: 3
+x10: 
+	B: 9
+	L: 1
+x2: 
+	B: 2
+	L: 5
+x6: 
+	L: 6
+x64: 
+	L: 6
+x70: 
+	L: 2
+x86: 
+	L: 9
+x_def: 
+	L: 1
+x_val: 
+	B: 2
+x_ver: 
+	L: 1
+XBorders: 
+	L: 1
+xCenter: 
+	L: 1
+Xcoord: 
+	L: 1
+xit: 
+	B: 2
+xm: 
+	B: 1
+XP: 
+	B: 3
+	L: 1
+xpos: 
+	B: 4
+XPSP3: 
+	B: 1
+xywh: 
+	L: 1
+Y: 
+	B: 7
+	L: 26
+y0: 
+	L: 2
+y1: 
+	B: 2
+	L: 2
+y10: 
+	B: 3
+	L: 1
+y110: 
+	L: 1
+y140: 
+	L: 1
+y2: 
+	B: 2
+	L: 4
+y30: 
+	L: 1
+y60: 
+	L: 1
+y80: 
+	L: 1
+y_def: 
+	L: 1
+y_ver: 
+	L: 1
+Yahoo: 
+	L: 1
+yay: 
+	B: 1
+YBorders: 
+	L: 1
+yCenter: 
+	L: 1
+Ycoord: 
+	L: 1
+year: 
+	L: 2
+Yes: 
+	B: 6
+	L: 4
+yet: 
+	B: 2
+	L: 1
+yh: 
+	L: 1
+yield: 
+	B: 2
+ym: 
+	B: 1
+you: 
+	B: 83
+	L: 95
+your: 
+	B: 24
+	L: 33
+yourself: 
+	B: 1
+Youtube: 
+	L: 10
+youtube_annotations: 
+	L: 1
+youtube_x: 
+	L: 1
+yp: 
+	B: 9
+ypos: 
+	B: 4
+yyyy: 
+	B: 2
+z: 
+	B: 2
+	L: 5
+zA: 
+	B: 1
+zero: 
+	B: 3
+ZH: 
+	B: 1
+zip: 
+	L: 4
+Zizor: 
+	L: 1
+Zizorz: 
+	L: 10
+ZX4: 
+	B: 1
+ZY2: 
+	B: 1

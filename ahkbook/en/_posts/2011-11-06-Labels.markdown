@@ -1,0 +1,91 @@
+---
+title: Labels
+layout: post
+permalink: /en/Labels.html
+---
+
+# Labels
+
+## Structuring code
+Well, you know about the [auto-execute section](auto-execute-section.html) now. You learned how to trigger code by [hotkeys]() and [hotstrings]().
+But you needn't put all your code in the auto-execute section or in hotkeys etc. There are some other ways to structure your code.
+One of those are [user-defined functions](), which we will cover later.
+The other one are so-called <cite>labels</cite>.
+
+## A basic label:
+A label consists of the label name, the code to execute and (usually) a `return` statement. An example:
+
+{% highlight ahk linenos %}
+MyLabel: ; the label name followed by a colon
+MsgBox A label! ; the code to execute
+return ; stops the label
+{% endhighlight %}
+
+## Execution flow on labels
+Unlike hotkeys, labels **do not stop execution** automatically as if there was a `return` before it. This allows the execution flow to "fall through" several labels.
+Also, if you just copy the above code, save it as script and execute it, the `MsgBox` will be shown automatically, as there's no return before the label. This differs from function behaviour.
+
+## Jumping to a label
+Except for some special labels AutoHotkey uses directly, you need a possibility to jump from your current line to a label to use it.
+There are 2 commands for this: `gosub` and `goto`. The big difference:
+
+* `gosub` jumps to the label, executes it until it reaches a `return` or the end of the script, and *returns to where it came from.* 
+* Contrary, `goto` just jumps to the label and *will never come back*. When it reaches a `return` or the end, it stops execution.
+
+An example for illustration:
+{% highlight ahk linenos %}
+MsgBox This is the auto-execute section.
+Gosub MyLabel ; jumps to MyLabel and back
+MsgBox Auto-execute section again!
+GoTo MyLabel ; jumps to MyLabel and stays there
+MsgBox ; this will never be executed as goto doesn't return
+return
+
+MyLabel:
+MsgBox This is a label.
+return ; goto will exit the script here
+{% endhighlight %}
+
+## Using labels
+Besides the possibilities above, there are some ways to use labels with built-in functionality.
+
+### OnExit
+`OnExit` let's you specify a label name to which the script will jump to before it exits. You can put there some routines to clean up some memory, files or whatever your script used.
+
+### Gui labels
+When we deal with GUIs later, we will specify label names (so-called "g-Labels") that are launched if something happens to a control.
+Also, there are some standard label names that are launched when a GUI closes etc.
+
+### OnClipboardChange
+If you add a label named <cite>OnClipboardChange</cite> to your script, it will be launched whenever the system clipboard changes. You can retrieve the contents and modify or react on them.
+
+### IsLabel()
+One more thing to mention is the built-in function `IsLabel()` which can be used to test if a given name (often a variable) is an existing label.
+If you try to jump to a non-existing label, AutoHotkey will throw an error. In case you have a dynamic label name, you can use this function to avoid this error.
+
+## spaghetti code
+Generally, labels and any other feature exist to be used. However, be careful: excessive use of labels combined with `Gosub` **and especially `GoTo`** can lead to so-called "spaghetti code": code that nobody can understand, that you loose control of, and that is very very difficult to debug or improve, potentially leading to infinite loops. An example:
+{% highlight ahk linenos %}; any AutoHotkey version
+; NOTE: to be replaced with a real-world example
+
+#Q::
+GoTo label1
+return
+
+label1:
+MsgBox
+a := 1
+goTo label3
+return
+
+label2:
+a := 0
+goTo label3
+return
+
+label3:
+if (a)
+	goto label2
+return
+{% endhighlight %}
+Now try to find out what the code does in what order. How long do you need?

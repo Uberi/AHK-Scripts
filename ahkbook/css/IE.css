@@ -1,0 +1,6 @@
+/* Conditional style sheet for MS Internet Explorer */
+
+/* Fix "max-width" not being supported. */
+.content {
+	width: 90%;
+}
