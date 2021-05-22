@@ -30,3 +30,10 @@ Highlights
 * [A webserver built on top of Winsock](https://github.com/Uberi/AHK-Scripts/tree/master/Basic%20Webserver).
 * [An IRC library](https://github.com/Uberi/AHK-Scripts/blob/master/IRC.ahk) (I remember there was a bot built on top of this too, but can't find it anymore)
 * [A minifier that... operations almost entirely through regular expressions!](https://github.com/Uberi/AHK-Scripts/blob/master/Minifier.ahk)
+
+License
+-------
+
+I don't own all of the code in this repo - specifically the stuff under `@Saved` - but for the stuff that was written by me, I hereby release under the [MIT License](https://en.wikipedia.org/wiki/MIT_License).
+
+If you wrote something that was included in these archives, and you'd like me to remove it, please feel free to reach out at me@anthonyz.ca.
